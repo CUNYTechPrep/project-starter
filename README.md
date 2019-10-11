@@ -16,42 +16,42 @@ A starter repo for building CUNY Tech Prep projects with React, Express.js, and 
 
 *Project Structure*
 
-```
+<pre>
 .
 ├── README.md
-├── api
+├── <strong>api</strong>
 │   ├── app.js
-│   ├── config
+│   ├── <strong>config</strong>
 │   │   └── config.json
-│   ├── controllers
+│   ├── <strong>controllers</strong>
 │   │   ├── appConfig.js
 │   │   ├── index.js
 │   │   └── posts.js
-│   └── models
+│   └── <strong>models</strong>
 │       ├── index.js
 │       └── post.js
-├── client
+├── <strong>client</strong>
 │   ├── README.md
 │   ├── package-lock.json
 │   ├── package.json
-│   ├── public
+│   ├── <strong>public</strong>
 │   │   ├── favicon.ico
 │   │   ├── index.html
 │   │   ├── logo192.png
 │   │   ├── logo512.png
 │   │   ├── manifest.json
 │   │   └── robots.txt
-│   └── src
+│   └── <strong>src</strong>
 │       ├── App.css
 │       ├── App.js
 │       ├── App.test.js
-│       ├── components
+│       ├── <strong>components</strong>
 │       │   ├── Loading.js
 │       │   └── Post.js
 │       ├── index.css
 │       ├── index.js
 │       ├── logo.svg
-│       ├── pages
+│       ├── <strong>pages</strong>
 │       │   ├── AboutUsPage.js
 │       │   ├── PostFormPage.js
 │       │   ├── PostsListPage.js
@@ -59,7 +59,7 @@ A starter repo for building CUNY Tech Prep projects with React, Express.js, and 
 │       └── serviceWorker.js
 ├── package-lock.json
 └── package.json
-```
+</pre>
 
 
 ## Dev Setup
