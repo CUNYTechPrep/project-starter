@@ -14,8 +14,57 @@ A starter repo for building CUNY Tech Prep projects with React, Express.js, and 
 - Bootstrap 4.x added to `/client/public/index.html`
 - React Router
 
+*Project Structure*
 
-## Dev Setup, each team member
+```
+.
+├── README.md
+├── api
+│   ├── app.js
+│   ├── config
+│   │   └── config.json
+│   ├── controllers
+│   │   ├── appConfig.js
+│   │   ├── index.js
+│   │   └── posts.js
+│   └── models
+│       ├── index.js
+│       └── post.js
+├── client
+│   ├── README.md
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   └── src
+│       ├── App.css
+│       ├── App.js
+│       ├── App.test.js
+│       ├── components
+│       │   ├── Loading.js
+│       │   └── Post.js
+│       ├── index.css
+│       ├── index.js
+│       ├── logo.svg
+│       ├── pages
+│       │   ├── AboutUsPage.js
+│       │   ├── PostFormPage.js
+│       │   ├── PostsListPage.js
+│       │   └── ShowPostPage.js
+│       └── serviceWorker.js
+├── package-lock.json
+└── package.json
+```
+
+
+## Dev Setup
+
+Each team member will need to do this on their local machine.
 
 ### Create a postgres db
 
@@ -54,6 +103,9 @@ cd client
 npm install
 npm start
 ```
+
+- api-backend will launch at: http://localhost:8080
+- react-client will launch at: http://localhost:3000
 
 > In production you will only deploy a single app. The react client will build into static files that will be served from the backend.
 
