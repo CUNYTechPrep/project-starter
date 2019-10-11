@@ -83,6 +83,8 @@ Create a separate db for this project:
 createdb -h localhost -U ctp_user MYAPPNAME_development
 ```
 
+> For this sample app you can change the database name to: `app2019_development`
+
 > You will create a DB for each project you start based on this repo.
 
 *For more details see this [installing postgres guide](https://github.com/CUNYTechPrep/ctp2019/blob/master/guides/installing-postgresql.md)*
