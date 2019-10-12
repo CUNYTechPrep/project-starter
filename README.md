@@ -80,12 +80,10 @@ createuser -P -s -e ctp_user
 Create a separate db for this project:
 
 ```
-createdb -h localhost -U ctp_user MYAPPNAME_development
+createdb -h localhost -U ctp_user app2019_development
 ```
 
-> For this sample app you can change the database name to: `app2019_development`
-
-> You will create a DB for each project you start based on this repo.
+> You will create a DB for each project you start based on this repo. For other projects change `app2019_development` to the new apps database name.
 
 *For more details see this [installing postgres guide](https://github.com/CUNYTechPrep/ctp2019/blob/master/guides/installing-postgresql.md)*
 
@@ -93,14 +91,17 @@ createdb -h localhost -U ctp_user MYAPPNAME_development
 
 For local development you will need two terminals open, one for the api-backend and another for the react-client.
 
+*Clone* this app, then:
+
 ```bash
-# api-backend
+# api-backend terminal 1
+cp .env.example .env
 npm install
 npm run dev
 ```
 
 ```bash
-# react-client
+# react-client terminal 2
 cd client
 npm install
 npm start
