@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node api/app.js",
-    "dev": "PORT=8080 nodemon api/app.js",
+    "dev": "nodemon -r dotenv/config api/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm install && npm run build"
   },
@@ -21,6 +21,7 @@
     "sqlite3": "^4.1.0"
   },
   "devDependencies": {
+    "dotenv": "^8.1.0",
     "nodemon": "^1.19.3",
     "sequelize-cli": "^5.5.1"
   },
