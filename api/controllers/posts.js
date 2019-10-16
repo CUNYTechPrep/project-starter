@@ -42,7 +42,8 @@ router.get('/:id', (req, res) => {
   Post.findByPk(id)
     .then((post) => {
       if (!post) {
-        return res.sendStatus(404);
+        res.sendStatus(404);
+        return;
       }
 
       res.json(post);
@@ -53,9 +54,11 @@ router.get('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   Post.findByPk(id)
-    .then((post) => {
+    .then((obj) => {
+      const post = obj;
       if (!post) {
-        return res.sendStatus(404);
+        res.sendStatus(404);
+        return;
       }
 
       post.content = req.body.content;
@@ -75,7 +78,8 @@ router.delete('/:id', (req, res) => {
   Post.findByPk(id)
     .then((post) => {
       if (!post) {
-        return res.sendStatus(404);
+        res.sendStatus(404);
+        return;
       }
 
       post.destroy();
