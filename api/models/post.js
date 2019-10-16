@@ -1,4 +1,4 @@
-'use strict';
+
 const { Model } = require('sequelize');
 
 
@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [3, 250],
         notEmpty: true,
-      }
+      },
     },
   }, {
     sequelize,
-    modelName: 'post'
+    modelName: 'post',
   });
 
   Post.associate = (models) => {
