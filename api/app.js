@@ -21,12 +21,12 @@ app.use('/api', require('./controllers'));
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 
-  // all unknown routes should be handed to our react app	
+  // all unknown routes should be handed to our react app
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   });
 }
-plz break
+
 // update DB tables based on model updates. Does not handle renaming tables/columns
 // NOTE: toggling this to true drops all tables (including data)
 db.sequelize.sync({ force: false });
