@@ -60,8 +60,8 @@ router.put('/:id', (req, res) => {
 
       post.content = req.body.content;
       post.save()
-        .then((post) => {
-          res.json(post);
+        .then((updatedPost) => {
+          res.json(updatedPost);
         })
         .catch((err) => {
           res.status(400).json(err);
