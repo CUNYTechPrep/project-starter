@@ -5,11 +5,11 @@ const { Post } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
-//    GET    /posts
-//    POST   /posts
-//    GET    /posts/:id
-//    PUT    /posts/:id
-//    DELETE /posts/:id 
+//    GET    /api/posts
+//    POST   /api/posts
+//    GET    /api/posts/:id
+//    PUT    /api/posts/:id
+//    DELETE /api/posts/:id 
 
 // There are other styles for creating these route handlers, we typically
 // explore other patterns to reduce code duplication.
