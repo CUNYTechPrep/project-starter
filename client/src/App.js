@@ -21,7 +21,7 @@ function Navigation(props) {
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/posts/new">
-            Create a Micro Post
+            Create a Burger
           </NavLink>
         </li>
         <li className="nav-item">
