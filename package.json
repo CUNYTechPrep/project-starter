@@ -20,6 +20,7 @@
     "sequelize": "^5.19.2",
     "sqlite3": "^4.1.0"
   },
+  
   "devDependencies": {
     "dotenv": "^8.1.0",
     "nodemon": "^1.19.3",
