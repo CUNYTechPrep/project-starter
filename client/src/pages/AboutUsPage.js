@@ -2,7 +2,7 @@ import React from 'react';
 
 function AboutUsPage(props) {
   return (
-    <div>Zaiba is annoying</div>
+    <div>Zaiba is not annoying</div>
   );
 }
 
