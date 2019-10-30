@@ -57,3 +57,28 @@ class App extends React.Component {
 
 
 export default App;
+
+
+
+// what are the minimum needs of the frontend?
+// - profile 
+//    - header 
+//      - name 
+//      - photo
+//      - bio 
+//      - total posts 
+//      - total countries  
+//    - image grid
+//      - image card 
+//      - image card pop up with caption, date, location
+// - nav bar 
+//    - profile/"home"
+//    - upload page 
+//    - map functionality 
+// what are the reusable componenets?
+//    - image cards
+//    - user photo 
+//    - map functionality 
+// how will the pages be seperated?
+//    - i was thinking two pages, and a reusable componenets page that spans across both 
+//    - pages. 
