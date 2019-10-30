@@ -1,10 +1,16 @@
 const db = require('./models');
 const { User } = db;
 
+// const USER = [
+//   {id: 1, name: 'Action'},
+//   {id: 2, name: 'Comedy'},
+//   {id: 3, name: 'Drama'},
+// ];
+
 const USER = [
-  {id: 1, name: 'Action'},
-  {id: 2, name: 'Comedy'},
-  {id: 3, name: 'Drama'},
+  {id: 1, username: 'shahzoda', password: 'zzoda', email: 'shahzoda@gmail.com', bio: 'here are the things i want to include'},
+  {id: 2, username: 'noor', password: 'zzodaaaa', email: 'noor@gmail.com', bio: 'here are the things i want to include'},
+  {id: 3, username: 'narvisha', password: 'narnar', email: 'narvisha@gmail.com', bio: 'here are the things i want to include'},
 ];
 
 const seed = () => {
