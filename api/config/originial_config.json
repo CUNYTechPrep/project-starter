@@ -1,9 +1,9 @@
 {
     "development": {
-        "username": "postgres",
-        "password": "admin",
-        "database": "test",
-        "host": "localhost",
+        "username": "ctp_user",
+        "password": "ctp_pass",
+        "database": "app2019_development",
+        "host": "127.0.0.1",
         "dialect": "postgres"
     },
     "test": {

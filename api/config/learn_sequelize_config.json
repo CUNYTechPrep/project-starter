@@ -1,0 +1,11 @@
+{
+    "development": {
+        "dialect": "sqlite",
+        "storage": "./db_dev.sqlite3"
+    },
+    "test": {
+        "dialect": "sqlite",
+        "storage": ":memory:",
+        "logging": false
+    }
+}
