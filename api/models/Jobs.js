@@ -21,9 +21,6 @@ module.exports = (sequelize, DataTypes) => {
             primaryrole: {
                 //Software developer, technology analyst, etc
                 type: DataTypes.STRING
-            },
-            salary: {
-                type: DataTypes.STRING
             }
         },
         {
@@ -36,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         // associations can be defined here
         Job.belongsTo(models.Company, {
             foreignKey: "companyId",
+            as: "jobPoster",
             onDelete: "CASCADE"
         });
 
