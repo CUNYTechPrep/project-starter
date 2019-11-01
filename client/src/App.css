@@ -33,3 +33,7 @@
 .user-card h2 {
   text-align: left;
 }
+
+.btn-secondary {
+  margin-right: 15px;
+}

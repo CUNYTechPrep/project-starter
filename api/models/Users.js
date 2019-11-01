@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
 
     User.associate = (models) => {
         // This adds UserID into the Trip Table
-        models.User.hasMany(models.Trip);
+        // models.User.hasMany(models.Trip);
     };
 
     return User;

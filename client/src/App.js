@@ -7,7 +7,7 @@ import {
   NavLink
 } from 'react-router-dom';
 import PostsListPage from './pages/PostsListPage';
-import PostFormPage from './pages/PostFormPage';
+import PostFormPage from './pages/PostTripsForm';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 
