@@ -42,7 +42,6 @@ class PostsListPage extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    console.log(id);
     fetch("/api/trips/userId/" + id)
       .then(res => res.json())
       .then(posts => {
@@ -61,9 +60,6 @@ class PostsListPage extends React.Component {
 
     return (
       <div className="container text-center">
-        <div className="row justify-content-center">
-          { this.state.posts }
-        </div>
         <User />
         <div className="row">
         { this.state.posts }
