@@ -2,7 +2,7 @@
     "development": {
         "username": "postgres",
         "password": "admin",
-        "database": "iwork_test",
+        "database": "test",
         "host": "localhost",
         "dialect": "postgres"
     },
