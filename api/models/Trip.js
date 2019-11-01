@@ -3,7 +3,7 @@ const { Model } = require('sequelize');
 
 
 module.exports = (sequelize, DataTypes) => {
-    class Trip extends Model {}
+    class Trip extends Model { }
     Trip.init({
         name: {
             type: DataTypes.STRING,
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true,
                 isEmail: true,
             }
-        }, 
+        },
         bio: {
             type: DataTypes.TEXT
         },
@@ -34,15 +34,13 @@ module.exports = (sequelize, DataTypes) => {
         modelName: 'Trip'
     });
 
-     Trip.associate = (models) => {
-        models.Trip.belongsTo(models.Users);
-        
+    Trip.associate = (models) => {
+        // This adds UserID into the Trip Table
+        models.Trip.belongsTo(models.User);
 
-
-        // associations can be defined here
-        // This will add TripId as a column to the Trip table
-         
-     };
+        // This adds TripID into the Media Table
+        models.Trip.hasMany(models.Media);
+    };
 
     return Trip;
 };

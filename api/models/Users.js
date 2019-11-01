@@ -41,11 +41,10 @@ module.exports = (sequelize, DataTypes) => {
         modelName: 'User'
     });
 
-    // User.associate = (models) => {
-        // associations can be defined here
-        // This will add userId as a column to the Trip table
-        // models.User.belongsTo(models.Trip);
-    // };
+    User.associate = (models) => {
+        // This adds UserID into the Trip Table
+        models.User.hasMany(models.Trip);
+    };
 
     return User;
 };

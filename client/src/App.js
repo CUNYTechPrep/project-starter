@@ -17,7 +17,7 @@ import './App.css';
 function Navigation(props) {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Trippin</Link>
+      <Link className="navbar-brand" to="/user/1">Trippin</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/posts/new">
@@ -46,7 +46,7 @@ class App extends React.Component {
                 <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/" component={PostsListPage} />
+                <Route path="/user/:id" component={PostsListPage} />
               </Switch>
             </div>
           </div>

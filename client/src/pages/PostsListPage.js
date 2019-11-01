@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from '../components/Post';
+// import Post from '../components/Post';
 import Loading from '../components/Loading';
 import sally from '../assets/images/sally.png';
 import ImageCard from '../components/ImageCard.js';
@@ -10,13 +10,27 @@ class PostsListPage extends React.Component {
     loading: true,
   }
 
+  // componentDidMount() {
+  //   fetch("/api/posts")
+  //     .then(res => res.json())
+  //     .then(posts => {
+  //       this.setState({
+  //         loading: false,
+  //         posts: posts.map((p,ii) => <Post {...p} key={ii} />),
+  //       });
+  //     })
+  //     .catch(err => console.log("API ERROR: ", err));
+  // }
+
   componentDidMount() {
-    fetch("/api/posts")
+    const { id } = this.props.match.params;
+    console.log(id);
+    fetch("/api/UserId/" + id)
       .then(res => res.json())
       .then(posts => {
         this.setState({
           loading: false,
-          posts: posts.map((p,ii) => <Post {...p} key={ii} />),
+          posts: posts.map((p,ii) => <ImageCard {...p} key={ii} />),
         });
       })
       .catch(err => console.log("API ERROR: ", err));
@@ -45,11 +59,7 @@ class PostsListPage extends React.Component {
           </div>
         </div>
         <div className="row">
-          <ImageCard />
-          <ImageCard />
-          <ImageCard />
-          <ImageCard />
-          <ImageCard />
+        { this.state.posts }
         </div>
       </div>
     );
