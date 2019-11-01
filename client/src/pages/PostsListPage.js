@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from '../components/Post';
 import Loading from '../components/Loading';
-
+import sally from '../assets/images/sally.png';
 
 class PostsListPage extends React.Component {
   state = {
@@ -27,9 +27,32 @@ class PostsListPage extends React.Component {
     }
 
     return (
-      <div className="container-fluid text-center">
+      <div className="container text-center">
         <div className="row justify-content-center">
           { this.state.posts }
+        </div>
+        <div className="user-card card">
+          <div className="card-body">
+          <div className="row">
+            <div className="col-4">
+              <img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/>
+            </div>
+            <div className="col-8">
+              <h2>Sally Sue</h2>
+              <p>Here is all the places I've been. Life is an adventure and I just capture it</p></div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
+          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
+          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
+          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
+          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
+          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
+          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
+          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
+          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
         </div>
       </div>
     );

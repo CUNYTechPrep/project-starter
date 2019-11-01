@@ -21,3 +21,15 @@
   color: #09d3ac;
 }
 */
+
+
+.user-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.user-card p,
+.user-card h2 {
+  text-align: left;
+}
