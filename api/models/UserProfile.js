@@ -26,12 +26,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             sequelize,
-            modelName: "userprofile"
+            modelName: "userProfile"
         }
     );
 
     UserProfile.associate = models => {
-        // associations can be defined here
         UserProfile.belongsTo(models.User, {
             foreignKey: "userId",
             onDelete: "CASCADE"
