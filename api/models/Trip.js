@@ -3,30 +3,29 @@ const { Model } = require('sequelize');
 
 
 module.exports = (sequelize, DataTypes) => {
-    class Trip extends Model { }
-
+    class Trip extends Model {}
     Trip.init({
-        tripname: {
+        name: {
             type: DataTypes.STRING,
             validate: {
                 notEmpty: true
             }
         },
-        password: {
+        description: {
             type: DataTypes.STRING,
             validate: {
-                len: [3, 10],
+                len: [3, 500],
                 notEmpty: true,
             }
         },
-        email: {
-            type: DataTypes.STRING,
+        coverPhoto: {
+            type: DataTypes.STRING, //What data type to carry images?
             validate: {
                 len: [3, 10],
                 notEmpty: true,
                 isEmail: true,
             }
-        },
+        }, 
         bio: {
             type: DataTypes.TEXT
         },
@@ -35,11 +34,15 @@ module.exports = (sequelize, DataTypes) => {
         modelName: 'Trip'
     });
 
-    // Trip.associate = (models) => {
+     Trip.associate = (models) => {
+        models.Trip.belongsTo(models.Users);
+        
+
+
         // associations can be defined here
         // This will add TripId as a column to the Trip table
-        // models.Trip.belongsTo(models.Trip);
-    // };
+         
+     };
 
     return Trip;
 };
