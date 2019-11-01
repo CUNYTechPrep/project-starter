@@ -54,24 +54,22 @@ router.get('/users/:id', (req, res) => {
 
 // for the username, you can change many items, 
 // how would you handle that?
-
-router.put('/:id', (req, res) => {
-    const { id } = req.params;
-    Post.findByPk(id)
-        .then(post => {
-            if (!post) {
-                return res.sendStatus(404);
-            }
-
-            post.content = req.body.content;
-            post.save()
-                .then(post => {
-                    res.json(post);
-                })
-                .catch(err => {
-                    res.status(400).json(err);
-                });
-        });
-});
+// router.put('/:id', (req, res) => {
+//     const { id } = req.params;
+//     Post.findByPk(id)
+//         .then(post => {
+//             if (!post) {
+//                 return res.sendStatus(404);
+//             }
+//             post.content = req.body.content;
+//             post.save()
+//                 .then(post => {
+//                     res.json(post);
+//                 })
+//                 .catch(err => {
+//                     res.status(400).json(err);
+//                 });
+//         });
+// });
 
 module.exports = router;

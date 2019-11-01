@@ -2,6 +2,7 @@ import React from 'react';
 import Post from '../components/Post';
 import Loading from '../components/Loading';
 import sally from '../assets/images/sally.png';
+import ImageCard from '../components/ImageCard.js';
 
 class PostsListPage extends React.Component {
   state = {
@@ -44,15 +45,11 @@ class PostsListPage extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
-          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
-          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
-          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
-          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
-          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
-          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
-          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
-          <div className="col-4"><img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/></div>
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
         </div>
       </div>
     );
