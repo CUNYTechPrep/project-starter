@@ -1,5 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import Navbar from '../components/navbar-component';
+
 
 class PostFormPage extends React.Component {
   state = {
@@ -55,17 +57,20 @@ class PostFormPage extends React.Component {
     }
 
     return (
-      <div className="col-10 col-md-8 col-lg-7">
-        { errorMessage }
-        <div className="input-group">
-          <input 
-            type="text" 
-            placeholder="Add your words of wisdom here..." 
-            value={this.state.content}
-            className="form-control mr-3 rounded"
-            onChange={this.contentChanged}
-          />
-          <button className="btn btn-primary" onClick={this.savePost}>Save Post</button>
+      <div>
+        <Navbar/>
+        <div className="col-10 col-md-8 col-lg-7">
+          { errorMessage }
+          <div className="input-group">
+            <input 
+              type="text" 
+              placeholder="Add your words of wisdom here..." 
+              value={this.state.content}
+              className="form-control mr-3 rounded"
+              onChange={this.contentChanged}
+            />
+            <button className="btn btn-primary" onClick={this.savePost}>Save Post</button>
+          </div>
         </div>
       </div>
     );
