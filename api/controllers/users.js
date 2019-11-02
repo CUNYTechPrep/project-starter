@@ -59,7 +59,22 @@ router.post(
                 password: hashedPassword
             });
 
-            res.json(user);
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            };
+
+            //Creates jwt token
+            jwt.sign(
+                payload,
+                process.env.secret,
+                { expiresIn: "7 days" },
+                (err, token) => {
+                    if (err) throw err;
+                    res.json({ token });
+                }
+            );
         } catch (error) {
             console.error(error);
             res.status(500).json({ msg: "server error" });
