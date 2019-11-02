@@ -12,4 +12,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/api/config
+
+config.json
