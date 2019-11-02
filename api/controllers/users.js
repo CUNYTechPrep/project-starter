@@ -49,8 +49,33 @@ router.post(
         });
       }
 
-      user = await User.create(req.body);
-      res.json(user);
+      //Hash the password -
+      const salt = await bcrypt.genSalt(10);
+      hashedPassword = await bcrypt.hash(password, salt);
+
+      user = await User.create({
+        firstName,
+        lastName,
+        email,
+        password: hashedPassword
+      });
+
+      const payload = {
+        user: {
+          id: user.id
+        }
+      };
+
+      //Creates jwt token
+      jwt.sign(
+        payload,
+        process.env.secret,
+        { expiresIn: "7 days" },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
     } catch (error) {
       console.error(error);
       res.status(500).json({ msg: "server error" });
