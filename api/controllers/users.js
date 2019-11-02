@@ -48,7 +48,17 @@ router.post(
                 });
             }
 
-            user = await User.create(req.body);
+            //Hash the password -
+            const salt = await bcrypt.genSalt(10);
+            hashedPassword = await bcrypt.hash(password, salt);
+
+            user = await User.create({
+                firstName,
+                lastName,
+                email,
+                password: hashedPassword
+            });
+
             res.json(user);
         } catch (error) {
             console.error(error);
