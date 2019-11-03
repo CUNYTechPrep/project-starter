@@ -38,13 +38,8 @@ module.exports = (sequelize, DataTypes) => {
         // TO-DO: store images with BLOB Datatype 
     }, {
         sequelize,
-        modelName: 'User'
+        modelName: 'user'
     });
-
-    User.associate = (models) => {
-        // This adds UserID into the Trip Table
-        // models.User.hasMany(models.Trip);
-    };
 
     return User;
 };

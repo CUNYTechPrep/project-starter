@@ -16,9 +16,16 @@ const { Trip, User } = db;
 // TODO: Can you spot where we have some duplication below?
 
 
-router.get('/', (req,res) => {
-  Trip.findAll({})
-    .then(posts => res.json(posts));
+router.get('/:id', (req,res) => {
+  const { id } = req.params;
+  Trip.findAll({where: {UserId: id}})
+  .then(trip => {
+    if(!trip) {
+      return res.sendStatus(404);
+    }
+
+    res.json(trip);
+  });
 });
 
 // when authentication is in place, we will know who to add to but for 
@@ -31,9 +38,9 @@ router.post('/', async (req, res) => {
     await trip.setUser(user);
 
     res.status(201).json({
-          trip,
-          user
-        });
+      trip,
+      user
+    });
   } catch(e) {
     res.status(400).json(e);
   }
@@ -41,53 +48,16 @@ router.post('/', async (req, res) => {
 
 
 // get all trips from user
-router.get('/userId/:id', (req, res) => {
-    const { id } = req.params;
-    Trip.findAll({where: {UserId: id}})
-    .then(post => {
-      if(!post) {
-        return res.sendStatus(404);
-      }
-
-      res.json(post);
-    });
-});
-
-
-
-
-router.put('/:id', (req, res) => {
-  const { id } = req.params;
-  Trip.findByPk(id)
-    .then(post => {
-      if(!post) {
-        return res.sendStatus(404);
-      }
-
-      post.content = req.body.content;
-      post.save()
-        .then(post => {
-          res.json(post);
-        })
-        .catch(err => {
-          res.status(400).json(err);
-        });
-    });
-});
-
-
-// router.delete('/:id', (req, res) => {
-//   const { id } = req.params;
-//   Trip.findByPk(id)
+// router.get('/userId/:id', (req, res) => {
+//     const { id } = req.params;
+//     Trip.findAll({where: {UserId: id}})
 //     .then(post => {
 //       if(!post) {
 //         return res.sendStatus(404);
 //       }
 
-//       post.destroy();
-//       res.sendStatus(204);
+//       res.json(post);
 //     });
 // });
-
 
 module.exports = router;

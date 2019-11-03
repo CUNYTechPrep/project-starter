@@ -7,26 +7,29 @@ module.exports = (sequelize, DataTypes) => {
     Trip.init({
         name: {
             type: DataTypes.STRING,
+            validate: {
+                notEmpty: true,
+            }
 
         },
         description: {
             type: DataTypes.STRING,
 
         },
-        coverPhoto: {
-            type: DataTypes.STRING, //What data type to carry images?
+        coverphoto: {
+            type: DataTypes.STRING, 
+            validate: {
+                notEmpty: true,
+            }
         },
     }, {
         sequelize,
-        modelName: 'Trip'
+        modelName: 'trip'
     });
 
     Trip.associate = (models) => {
         // This adds UserID into the Trip Table
         models.Trip.belongsTo(models.User);
-
-        // This adds TripID into the Media Table
-        models.Trip.hasMany(models.Media);
     };
 
     return Trip;

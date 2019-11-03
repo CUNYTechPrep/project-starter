@@ -1,5 +1,4 @@
 import React from 'react';
-// import Post from '../components/Post';
 import Loading from '../components/Loading';
 import sally from '../assets/images/sally.png';
 import ImageCard from '../components/ImageCard.js';
@@ -28,21 +27,9 @@ class PostsListPage extends React.Component {
     loading: true,
   }
 
-  // componentDidMount() {
-  //   fetch("/api/posts")
-  //     .then(res => res.json())
-  //     .then(posts => {
-  //       this.setState({
-  //         loading: false,
-  //         posts: posts.map((p,ii) => <Post {...p} key={ii} />),
-  //       });
-  //     })
-  //     .catch(err => console.log("API ERROR: ", err));
-  // }
-
   componentDidMount() {
-    const { id } = this.props.match.params;
-    fetch("/api/trips/userId/" + id)
+    const id = 1;
+    fetch("/api/trips/" + id)
       .then(res => res.json())
       .then(posts => {
         this.setState({

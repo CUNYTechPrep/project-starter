@@ -68,18 +68,18 @@ router.put('/:id', (req, res) => {
 });
 
 
-// router.delete('/:id', (req, res) => {
-//   const { id } = req.params;
-//   Post.findByPk(id)
-//     .then(post => {
-//       if(!post) {
-//         return res.sendStatus(404);
-//       }
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  Post.findByPk(id)
+    .then(post => {
+      if(!post) {
+        return res.sendStatus(404);
+      }
 
-//       post.destroy();
-//       res.sendStatus(204);
-//     });
-// });
+      post.destroy();
+      res.sendStatus(204);
+    });
+});
 
 
 module.exports = router;

@@ -8,27 +8,22 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING,
             validate: {
-                notEmpty: true
+                len: [3, 10],
+                notEmpty: true,
             }
         },
         description: {
+            type: DataTypes.STRING
+        },
+        photo: {
             type: DataTypes.STRING,
             validate: {
-                len: [3, 500],
                 notEmpty: true,
-            }
-        },
-        coverPhoto: {
-            type: DataTypes.STRING, 
-            validate: {
-                len: [3, 10],
-                notEmpty: true,
-                isEmail: true,
             }
         }, 
     }, {
         sequelize,
-        modelName: 'Media'
+        modelName: 'media'
     });
 
      Media.associate = (models) => {
