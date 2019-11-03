@@ -49,73 +49,6 @@ router.get("/companies", auth, async (req, res) => {
 //@desc     Login user
 //@access   Public
 router.post(
-  "/users",
-  [
-    check("email", "Please enter a valid email").isEmail(),
-    check("password", "Please enter a password").exists()
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const { email, password } = req.body;
-
-    try {
-      //Find user by email
-      const user = await User.findOne({ where: { email } });
-
-      //If no user was found
-      if (!user) {
-        return res.status(400).json({
-          errors: [
-            {
-              params: "invalidCredentials",
-              msg: "Invalid Credentials"
-            }
-          ]
-        });
-      }
-
-      //Compares password - returns true or false
-      const passwordMatches = await bcrypt.compare(password, user.password);
-
-      //If passwords don't match
-      if (!passwordMatches) {
-        return res.status(400).json({
-          errors: [
-            {
-              params: "invalidCredentials",
-              msg: "Invalid Credentials"
-            }
-          ]
-        });
-      }
-
-      const payload = {
-        user: {
-          id: user.id
-        }
-      };
-
-      //return payload
-      jwt.sign(
-        payload,
-        process.env.secret,
-        { expiresIn: "7 days" },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ msg: "Server error" });
-    }
-  }
-
     "/users",
     [
         check("email", "Please enter a valid email").isEmail(),
@@ -191,72 +124,75 @@ router.post(
 //@desc     Login companies
 //@access   Public
 router.post(
-  "/companies",
-  [
-    check("email", "Please enter a valid email").isEmail(),
-    check("password", "Please enter a password").exists()
-  ],
+    "/companies",
+    [
+        check("email", "Please enter a valid email").isEmail(),
+        check("password", "Please enter a password").exists()
+    ],
 
-  async (req, res) => {
-    const errors = validationResult(req);
+    async (req, res) => {
+        const errors = validationResult(req);
 
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const { email, password } = req.body;
-
-    try {
-      //find company by email
-      const company = await Company.findOne({ where: { email } });
-      //console.log("COMPANY--", company);
-      if (!company) {
-        return res.status(400).json({
-          errors: [
-            {
-              params: "invalidCredentials",
-              msg: "Invalid Credentials"
-            }
-          ]
-        });
-      }
-
-      //compares passwords - boolean
-      const passwordMatches = await bcrypt.compare(password, company.password);
-
-      //if passwords do not match
-      if (!passwordMatches) {
-        return res.status(400).json({
-          errors: [
-            {
-              params: "invalidCredentials",
-              msg: "Invalid Credentials"
-            }
-          ]
-        });
-      }
-
-      const payload = {
-        compnay: {
-          id: company.id
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
         }
-      };
 
-      //return payload
-      jwt.sign(
-        payload,
-        process.env.secret,
-        { expiresIn: "7 days" },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
+        const { email, password } = req.body;
+
+        try {
+            //find company by email
+            const company = await Company.findOne({ where: { email } });
+            //console.log("COMPANY--", company);
+            if (!company) {
+                return res.status(400).json({
+                    errors: [
+                        {
+                            params: "invalidCredentials",
+                            msg: "Invalid Credentials"
+                        }
+                    ]
+                });
+            }
+
+            //compares passwords - boolean
+            const passwordMatches = await bcrypt.compare(
+                password,
+                company.password
+            );
+
+            //if passwords do not match
+            if (!passwordMatches) {
+                return res.status(400).json({
+                    errors: [
+                        {
+                            params: "invalidCredentials",
+                            msg: "Invalid Credentials"
+                        }
+                    ]
+                });
+            }
+
+            const payload = {
+                compnay: {
+                    id: company.id
+                }
+            };
+
+            //return payload
+            jwt.sign(
+                payload,
+                process.env.secret,
+                { expiresIn: "7 days" },
+                (err, token) => {
+                    if (err) throw err;
+                    res.json({ token });
+                }
+            );
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ msg: "server error" });
         }
-      );
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ msg: "server error" });
     }
-  }
 );
 
 //@route    DELETE api/auth/users
