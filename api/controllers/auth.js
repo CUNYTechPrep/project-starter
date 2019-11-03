@@ -11,38 +11,38 @@ const { Company, User } = db;
 //@desc     Get current user
 //@access   Private
 router.get("/users", auth, async (req, res) => {
-  if (!req.user) {
-    return res.status(401).json({ msg: "Unauthorized" });
-  }
-  try {
-    const { id } = req.user;
-    const user = await User.findByPk(id, {
-      attributes: { exclude: ["password"] }
-    });
-    res.json(user);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ msg: "Server error" });
-  }
+    if (!req.user) {
+        return res.status(401).json({ msg: "Unauthorized" });
+    }
+    try {
+        const { id } = req.user;
+        const user = await User.findByPk(id, {
+            attributes: { exclude: ["password"] }
+        });
+        res.json(user);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: "Server error" });
+    }
 });
 
 //@route    GET api/auth/company
 //@desc     Get current company
 //@access   Private
 router.get("/companies", auth, async (req, res) => {
-  if (!req.company) {
-    return res.status(401).json({ msg: "Unauthorized" });
-  }
-  try {
-    const { id } = req.company;
-    const company = await Company.findByPk(id, {
-      attributes: { exclude: ["password"] }
-    });
-    res.json(company);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ msg: "Server error" });
-  }
+    if (!req.company) {
+        return res.status(401).json({ msg: "Unauthorized" });
+    }
+    try {
+        const { id } = req.company;
+        const company = await Company.findByPk(id, {
+            attributes: { exclude: ["password"] }
+        });
+        res.json(company);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ msg: "Server error" });
+    }
 });
 
 //@route    POST api/auth/users
@@ -127,6 +127,22 @@ router.post(
 //@route    DELETE api/auth/users
 //@desc     Delete user
 //@access   Private
-router.delete("/auth/users", auth, async (req, res) => {});
+router.delete("/users", auth, async (req, res) => {
+    try {
+        if (!req.user) {
+            return res.status(401).json({ msg: "Unauthorized" });
+        }
+        const { id } = req.user;
+        const user = await User.findByPk(id);
+        if (!user) {
+            return res.status(404).json({ msg: "User does not exist" });
+        }
+        await user.destroy();
+        res.json({ msg: "User deleted" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: "Server error" });
+    }
+});
 
 module.exports = router;
