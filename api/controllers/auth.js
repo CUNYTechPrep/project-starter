@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const { check, validationResult } = require("express-validator");
 const db = require("../models");
 const auth = require("../middleware/auth");
 const { Company, User, UserProfile } = db;
@@ -45,6 +48,77 @@ router.get("/companies", auth, async (req, res) => {
 //@route    POST api/auth/users
 //@desc     Login user
 //@access   Public
+router.post(
+    "/users",
+    [
+        check("email", "Please enter a valid email").isEmail(),
+        check("password", "Please enter a password").exists()
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        const { email, password } = req.body;
+
+        try {
+            //Find user by email
+            const user = await User.findOne({ where: { email } });
+
+            //If no user was found
+            if (!user) {
+                return res.status(400).json({
+                    errors: [
+                        {
+                            params: "invalidCredentials",
+                            msg: "Invalid Credentials"
+                        }
+                    ]
+                });
+            }
+
+            //Compares password - returns true or false
+            const passwordMatches = await bcrypt.compare(
+                password,
+                user.password
+            );
+
+            //If passwords don't match
+            if (!passwordMatches) {
+                return res.status(400).json({
+                    errors: [
+                        {
+                            params: "invalidCredentials",
+                            msg: "Invalid Credentials"
+                        }
+                    ]
+                });
+            }
+
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            };
+
+            //return payload
+            jwt.sign(
+                payload,
+                process.env.secret,
+                { expiresIn: "7 days" },
+                (err, token) => {
+                    if (err) throw err;
+                    res.json({ token });
+                }
+            );
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ msg: "Server error" });
+        }
+    }
+);
 
 //@route    POST api/auth/companies
 //@desc     Login companies
