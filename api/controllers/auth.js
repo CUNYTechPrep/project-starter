@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 const db = require("../models");
 const auth = require("../middleware/auth");
-const { Company, User, UserProfile } = db;
+const { Company, User } = db;
 
 //@route    GET api/auth/users
 //@desc     Get current user
@@ -104,5 +104,10 @@ router.post(
 //@route    POST api/auth/companies
 //@desc     Login companies
 //@access   Public
+
+//@route    DELETE api/auth/users
+//@desc     Delete user
+//@access   Private
+router.delete("/auth/users", auth, async (req, res) => {});
 
 module.exports = router;
