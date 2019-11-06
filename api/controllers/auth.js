@@ -10,7 +10,7 @@ const { Company, User } = db;
 //@route    GET api/auth/users
 //@desc     Get current user
 //@access   Private
-router.get("/users", auth, async (req, res) => {
+router.get("/user", auth, async (req, res) => {
     if (!req.user) {
         return res.status(401).json({ msg: "Unauthorized" });
     }
@@ -29,7 +29,7 @@ router.get("/users", auth, async (req, res) => {
 //@route    GET api/auth/company
 //@desc     Get current company
 //@access   Private
-router.get("/companies", auth, async (req, res) => {
+router.get("/company", auth, async (req, res) => {
     if (!req.company) {
         return res.status(401).json({ msg: "Unauthorized" });
     }
@@ -49,7 +49,7 @@ router.get("/companies", auth, async (req, res) => {
 //@desc     Login user
 //@access   Public
 router.post(
-    "/users",
+    "/user",
     [
         check("email", "Please enter a valid email").isEmail(),
         check("password", "Please enter a password").exists()
@@ -124,7 +124,7 @@ router.post(
 //@desc     Login companies
 //@access   Public
 router.post(
-    "/companies",
+    "/company",
     [
         check("email", "Please enter a valid email").isEmail(),
         check("password", "Please enter a password").exists()
@@ -198,7 +198,7 @@ router.post(
 //@route    DELETE api/auth/users
 //@desc     Delete user
 //@access   Private
-router.delete("/users", auth, async (req, res) => {
+router.delete("/user", auth, async (req, res) => {
     try {
         if (!req.user) {
             return res.status(401).json({ msg: "Unauthorized" });

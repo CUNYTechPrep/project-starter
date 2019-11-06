@@ -1,9 +1,9 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-    class CompanyProfile extends Model {}
+    class Companyprofile extends Model {}
 
-    CompanyProfile.init(
+    Companyprofile.init(
         {
             overview: {
                 type: DataTypes.STRING
@@ -29,17 +29,17 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             sequelize,
-            modelName: "companyProfile"
+            modelName: "companyprofile"
         }
     );
 
-    CompanyProfile.associate = models => {
+    Companyprofile.associate = models => {
         // associations can be defined here
-        CompanyProfile.belongsTo(models.Company, {
+        Companyprofile.belongsTo(models.Company, {
             foreignKey: "companyId",
             onDelete: "CASCADE"
         });
     };
 
-    return CompanyProfile;
+    return Companyprofile;
 };
