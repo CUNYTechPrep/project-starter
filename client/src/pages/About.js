@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * Currently serves as check for scroll
+ */
+
 class About extends React.Component {
     render() {
         return <div>
