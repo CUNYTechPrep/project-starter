@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
 
     User.associate = models => {
         // associations can be defined here
-        User.hasOne(models.UserProfile, {
+        User.hasOne(models.Userprofile, {
             foreignKey: "userId"
         });
 
