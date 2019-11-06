@@ -1,9 +1,9 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-    class UserProfile extends Model {}
+    class Userprofile extends Model {}
 
-    UserProfile.init(
+    Userprofile.init(
         {
             bio: {
                 type: DataTypes.STRING
@@ -26,16 +26,16 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             sequelize,
-            modelName: "userProfile"
+            modelName: "userprofile"
         }
     );
 
-    UserProfile.associate = models => {
-        UserProfile.belongsTo(models.User, {
+    Userprofile.associate = models => {
+        Userprofile.belongsTo(models.User, {
             foreignKey: "userId",
             onDelete: "CASCADE"
         });
     };
 
-    return UserProfile;
+    return Userprofile;
 };
