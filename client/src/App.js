@@ -1,59 +1,55 @@
 import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route, 
+import Landing from './pages/Landing.js';
+import About from './pages/About.js';
+import Login from './pages/Login.js';
+import SignUp from './pages/SignUp.js';
+import './App.css';
+import logo from './img/logo.png';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
   Link,
-  NavLink
-} from 'react-router-dom';
-import PostsListPage from './pages/PostsListPage';
-import PostFormPage from './pages/PostFormPage';
-import ShowPostPage from './pages/ShowPostPage';
-import AboutUsPage from './pages/AboutUsPage';
-
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
 import './App.css';
 
+function Navigation() {
+  return (<nav>
+    <NavLink exact to="/"><img className="nav-logo" src={logo} /></NavLink>
+    <ul>
+      <NavLink exact to="/"><li><span>Home</span></li></NavLink>
+      <NavLink exact to="/about"><li><span>About</span></li></NavLink>
+      <NavLink exact to="/login"><li><span>Login</span></li></NavLink>
+      <NavLink exact to="/sign-up"><li><span>Sign Up</span></li></NavLink>
+    </ul>
+  </nav>)
+}
 
-function Navigation(props) {
+function App() {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Micro Blog</Link>
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
-            Create a Micro Post
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/about-us">
-            About Us
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+    <Router>
+      <Navigation />
+      <div className="body">
+        <Switch>
+          <Route exact path="/">
+            <Landing />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/sign-up">
+            <SignUp />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
-
-
-class App extends React.Component {
-  render() {
-    return (
-        <Router>
-          <Navigation />
-          <div className="container-fluid text-center">
-            <div className="row justify-content-center">
-              <Switch>
-                <Route path="/posts/new" component={PostFormPage} />
-                <Route path="/posts/:id" component={ShowPostPage} />
-                <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/" component={PostsListPage} />
-              </Switch>
-            </div>
-          </div>
-        </Router>
-    );
-  }
-}
-
 
 export default App;
