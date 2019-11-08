@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'react';
 
 import "../css/login-sign-up.css";
 
@@ -6,9 +7,20 @@ import "../css/login-sign-up.css";
 export default class LoginPage extends Component {
     constructor(props) {
         super(props);
-        this.state = { email: '', password: '' };
+        this.state = { 
+            email: '', 
+            password: '' 
+        };
     }
-  
+    
+    
+    handleChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.signin(this.state);
+    }
 
 
     
@@ -30,7 +42,7 @@ export default class LoginPage extends Component {
                             <div className="forgot-link form-group d-flex justify-content-between align-items-center">
                                 <div className="form-check">
                                     <input type="checkbox" className="form-check-input" id="remember"/>
-                                    <label className="form-check-label" for="remember">Remember Password</label>
+                                    <label className="form-check-label" htmlFor="remember">Remember Password</label>
                                 </div>
                                 <a href="/forgot">Forgot Password?</a>
                             </div>
