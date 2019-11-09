@@ -18,7 +18,7 @@ const { Trip, User } = db;
 
 router.get('/:id', (req,res) => {
   const { id } = req.params;
-  Trip.findAll({where: {UserId: id}})
+  Trip.findAll({where: {userId: id}})
   .then(trip => {
     if(!trip) {
       return res.sendStatus(404);
@@ -33,6 +33,7 @@ router.get('/:id', (req,res) => {
 router.post('/', async (req, res) => {
   try {
     let { content } = req.body;
+    console.log(content)
     const trip = await Trip.create(content);
     const user = await User.findByPk(1);
     await trip.setUser(user);
