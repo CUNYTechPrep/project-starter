@@ -1,10 +1,15 @@
 const express = require("express");
 const router = express.Router();
-
-const { check, validationResult } = require("express-validator");
 const db = require("../models");
 const auth = require("../middleware/auth");
-const { Company, User, Companyprofile, Userprofile } = db;
+const {
+    Company,
+    User,
+    Companyprofile,
+    Userprofile,
+    Education,
+    Experience
+} = db;
 
 //@route    POST api/profile/user
 //@desc     Create or Update profile
@@ -31,12 +36,30 @@ router.post("/user", auth, async (req, res) => {
         if (website) profileFields.website = website;
 
         if (!profile) {
-            profile = await Userprofile.create(profileFields);
-            return res.json(profile);
+            await Userprofile.create(profileFields);
+            const user = await User.findOne({
+                where: { id },
+                attributes: { exclude: ["password"] },
+                include: [
+                    { model: Userprofile },
+                    { model: Education },
+                    { model: Experience }
+                ]
+            });
+            return res.json(user);
         }
 
         await profile.update(profileFields);
-        res.json(profile);
+        const user = await User.findOne({
+            where: { id },
+            attributes: { exclude: ["password"] },
+            include: [
+                { model: Userprofile },
+                { model: Education },
+                { model: Experience }
+            ]
+        });
+        res.json(user);
     } catch (error) {
         console.log(error);
         res.status(500).json({ msg: "server error" });
@@ -94,14 +117,20 @@ router.get("/user/:id", auth, async (req, res) => {
     try {
         //Extracts the profile ID
         const { id } = req.params;
-        const profile = await Userprofile.findOne({
+
+        const user = await User.findOne({
             where: { id },
-            include: { model: User, attributes: { exclude: ["password"] } }
+            attributes: { exclude: ["password"] },
+            include: [
+                { model: Userprofile },
+                { model: Education },
+                { model: Experience }
+            ]
         });
-        if (!profile) {
-            return res.status(404).json({ msg: "Profile not found" });
+        if (!user) {
+            return res.status(404).json({ msg: "User not found" });
         }
-        res.json(profile);
+        res.json(user);
     } catch (err) {
         console.error(err);
         res.status(500).json({ msg: "Server Error" });
