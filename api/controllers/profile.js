@@ -92,10 +92,35 @@ router.post("/company", auth, async (req, res) => {
 //@access   PRIVATE
 router.get("/user/:id", auth, async (req, res) => {
     try {
+        //Extracts the profile ID
         const { id } = req.params;
         const profile = await Userprofile.findOne({
             where: { id },
             include: { model: User, attributes: { exclude: ["password"] } }
+        });
+        if (!profile) {
+            return res.status(404).json({ msg: "Profile not found" });
+        }
+        res.json(profile);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: "Server Error" });
+    }
+});
+
+//@route    GET api/profile/company/:id
+//@desc     Get company profile
+//@access   PRIVATE
+router.get("/company/:id", auth, async (req, res) => {
+    try {
+        //Extracts the profile ID
+        const { id } = req.params;
+        const profile = await Companyprofile.findOne({
+            where: { id },
+            include: {
+                model: Company,
+                attributes: { exclude: ["password", "email"] }
+            }
         });
         if (!profile) {
             return res.status(404).json({ msg: "Profile not found" });
