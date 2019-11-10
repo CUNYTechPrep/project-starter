@@ -1,6 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
+const cloudinary = window.cloudinary;
+
 class TripFormPage extends React.Component {
   state = {
     error: false,
@@ -55,6 +57,15 @@ class TripFormPage extends React.Component {
   }
 
   render() {
+    let myWidget = cloudinary.createUploadWidget({
+      cloudName: 'my_cloud_name', 
+      uploadPreset: 'my_preset'}, (error, result) => { 
+        if (!error && result && result.event === "success") { 
+          console.log('Done! Here is the image info: ', result.info); 
+        }
+      }
+    )
+    
     if(this.state.success) return <Redirect to="/" />;
 
     let errorMessage = null;
@@ -84,7 +95,7 @@ class TripFormPage extends React.Component {
             className="form-control mr-3 rounded"
             onChange={this.nameChanged}
           />
-          <button className="btn btn-secondary" >Upload</button>
+          <button className="btn cloudinary-button" onClick={myWidget.open()}>Upload</button>
           <button className="btn btn-primary" onClick={this.savePost}>Post</button>
         </div>
       </div>
