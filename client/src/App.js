@@ -7,7 +7,7 @@ import {
   NavLink
 } from 'react-router-dom';
 import PostsListPage from './pages/PostsListPage';
-import PostFormPage from './pages/PostFormPage';
+import TripFormPage from './pages/TripFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 
@@ -17,16 +17,16 @@ import './App.css';
 function Navigation(props) {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Micro Blog</Link>
+      <Link className="navbar-brand" to="/">Trippin</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/posts/new">
-            Create a Micro Post
+            New Post
           </NavLink>
         </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/about-us">
-            About Us
+            Settings
           </NavLink>
         </li>
       </ul>
@@ -43,7 +43,7 @@ class App extends React.Component {
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
-                <Route path="/posts/new" component={PostFormPage} />
+                <Route path="/posts/new" component={TripFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/" component={PostsListPage} />
@@ -57,3 +57,28 @@ class App extends React.Component {
 
 
 export default App;
+
+
+
+// what are the minimum needs of the frontend?
+// - profile 
+//    - header 
+//      - name 
+//      - photo
+//      - bio 
+//      - total posts 
+//      - total countries  
+//    - image grid
+//      - image card 
+//      - image card pop up with caption, date, location
+// - nav bar 
+//    - profile/"home"
+//    - upload page 
+//    - map functionality 
+// what are the reusable componenets?
+//    - image cards
+//    - user photo 
+//    - map functionality 
+// how will the pages be seperated?
+//    - i was thinking two pages, and a reusable componenets page that spans across both 
+//    - pages. 
