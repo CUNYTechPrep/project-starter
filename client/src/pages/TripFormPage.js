@@ -95,7 +95,7 @@ class TripFormPage extends React.Component {
             className="form-control mr-3 rounded"
             onChange={this.nameChanged}
           />
-          <button className="btn cloudinary-button" onClick={myWidget.open()}>Upload</button>
+          <button className="btn cloudinary-button" onClick={() => myWidget.open()}>Upload</button>
           <button className="btn btn-primary" onClick={this.savePost}>Post</button>
         </div>
       </div>
