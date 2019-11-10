@@ -20,10 +20,6 @@ router.get('/:id', (req,res) => {
   const { id } = req.params;
   Trip.findAll({where: {userId: id}})
   .then(trip => {
-    if(!trip) {
-      return res.sendStatus(404);
-    }
-
     res.json(trip);
   });
 });

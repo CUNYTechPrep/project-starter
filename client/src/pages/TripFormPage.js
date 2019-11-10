@@ -40,7 +40,7 @@ class TripFormPage extends React.Component {
           return res.json()
         }
 
-        throw new Error('Content validation');
+        throw new Error('Error Saving this post.');
       })
       .then(post => {
         this.setState({
