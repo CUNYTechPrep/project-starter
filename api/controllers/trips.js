@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const { Trip, User } = db;
+const { Trip, User, Media } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -26,21 +26,24 @@ router.get('/:id', (req,res) => {
 
 // when authentication is in place, we will know who to add to but for 
 // now user is hardcoded to be 1
-router.post('/', async (req, res) => {
-  try {
-    let { content } = req.body;
-    console.log(content)
-    const trip = await Trip.create(content);
-    const user = await User.findByPk(1);
-    await trip.setUser(user);
-
-    res.status(201).json({
-      trip,
-      user
-    });
-  } catch(e) {
-    res.status(400).json(e);
-  }
+router.post('/', (req, res) => {
+  let { content } = req.body;
+  Trip.create({
+    name: content.name,
+    description: content.description,
+    coverphoto: content.coverPhoto,
+    userId: 1,
+  })
+  .then((trip) => {
+    content.pics.forEach((el) => {
+      Media.create({name:'1233', description:'', photo: el})
+      .then((media) =>{
+        media.setTrip(trip);
+      }); 
+    })
+      res.json(trip)
+  })
+  .catch( e => res.json(e));
 });
 
 

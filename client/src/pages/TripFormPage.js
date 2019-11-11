@@ -10,8 +10,9 @@ class TripFormPage extends React.Component {
     success: false,
     name: '',
     desc: '',
-    photoPath: '/assets/images/sally.png',
+    photoPath: "",
     pics: [],
+    picUrls:[],
   }
 
   descChanged = (event) => {
@@ -35,7 +36,8 @@ class TripFormPage extends React.Component {
       body: JSON.stringify({content: {
         name: this.state.name,
         description: this.state.desc,
-        coverPhoto: this.state.photoPath
+        coverPhoto: this.state.picUrls[0],
+        pics: this.state.picUrls,
       }
     }),
     })
@@ -88,7 +90,8 @@ class TripFormPage extends React.Component {
       }, (error, result) => { 
         if (!error && result && result.event === "success") { 
           console.log('Done! Here is the image info: ', result.info); 
-          this.setState({pics: this.state.pics.concat(<ImageCard src={result.info.secure_url} />)
+          this.setState({pics: this.state.pics.concat(<ImageCard src={result.info.secure_url} />), 
+            picUrls: this.state.picUrls.concat(result.info.secure_url),
           })
         }
       }
