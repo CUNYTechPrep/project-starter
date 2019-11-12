@@ -4,12 +4,14 @@ import {
   Switch, 
   Route, 
 } from 'react-router-dom';
-// import PostsListPage from './pages/PostsListPage';
-// import PostFormPage from './pages/PostFormPage';
+import PostsListPage from './pages/PostsListPage';
+import PostFormPage from './pages/PostFormPage';
 // import ShowPostPage from './pages/ShowPostPage';
 
 
 import LoginPage from './pages/LoginPage';
+import PrivateRoute from './components/PrivateRoute';
+import AuthButton from './components/AuthButton';
 import SignUpPage from './pages/SignUpPage';
 import AboutUsPage from './pages/AboutUsPage';
 
@@ -27,13 +29,14 @@ class App extends React.Component {
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
-                {/* <Route path="/" component={PostsListPage} /> */}
+                {/*  */}
                 {/* <Route path="/posts/new" component={PostFormPage} /> */}
                 {/* <Route path="/posts/:id" component={ShowPostPage} /> */}
-                
-                <Route path="/login" component={LoginPage} /> 
-                <Route path="/signup" component={SignUpPage} /> 
-                <Route path="/about-us" component={AboutUsPage} />
+                <Route exact path="/" component={AboutUsPage} />
+                <Route exact path="/login" component={LoginPage} /> 
+                <PrivateRoute exact path="/posts/new" component={PostFormPage} />
+                <Route exact path="/signup" component={SignUpPage} /> 
+                <Route exact path="/about-us" component={AboutUsPage} />
 
               </Switch>
             </div>

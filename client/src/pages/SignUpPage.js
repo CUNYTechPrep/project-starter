@@ -1,16 +1,68 @@
 import React, { Component } from 'react';
-
+import {Link, withRouter, Redirect} from 'react-router-dom';
 import "../css/login-sign-up.css";
 
-
-export default class SignUpPage extends Component {
+class SignUpPage extends Component {
     constructor(props) {
         super(props); 
-        this.state = { email: '', password: '' };
+        this.state = { 
+            username: '', 
+            email: '', 
+            password: '', 
+            password2: '',
+            success: false,
+            error: false };
     }
+
+    onChange = e => {
+        this.setState({ [e.target.id]: e.target.value });
+    }
+
+    onSubmit = e => {
+        e.preventDefault();
+
+        console.log("DO SOMETHING")
+        const newUser = {
+            firstName: this.state.username,
+            lastName: this.state.username,
+            email: this.state.email,
+            password: this.state.password,
+            password2: this.state.password2
+        }
+
+        console.log(newUser);
+
+        fetch("/api/auth/signup/", {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({content: newUser}),
+        })
+        .then(res => {
+            if(res.ok) {
+                return res.json()
+              }
+      
+              throw new Error('Something messed up, bro');
+        })
+        .then(post => {
+            this.setState({
+                success: true,
+            });
+        })
+        .catch(err => {
+            this.setState({
+                error: true,
+            });
+        });
+
+    } 
     
   
     render() {
+      if (this.state.success) return <Redirect to="/login" />;
       return (
             <div>
                 <div className="d-flex justify-content-center align-items-center login-container">
@@ -19,23 +71,43 @@ export default class SignUpPage extends Component {
                         <h1 className="mb-5 font-weight-light text-uppercase">Sign Up</h1>
 
                         <div className="form-group">
-                            <input type="text" className="form-control rounded-pill form-control-lg" placeholder="email adress"/>
+                            <input type="text" 
+                            id="email"
+                            className="form-control rounded-pill form-control-lg" 
+                            onChange={this.onChange}
+                            value={this.state.email}
+                            placeholder="email address"/>
                         </div>
 
                         <div className="form-group">
-                            <input type="text" className="form-control rounded-pill form-control-lg" placeholder="Username"/>
+                            <input type="text" 
+                            id="username"
+                            className="form-control rounded-pill form-control-lg" 
+                            onChange={this.onChange}
+                            value={this.state.name}
+                            placeholder="Username"/>
                         </div>
 
                         <div className="form-group">
-                            <input type="password" className="form-control rounded-pill form-control-lg" placeholder="Password"/>
+                            <input type="password" 
+                            id="password"
+                            className="form-control rounded-pill form-control-lg"
+                            onChange={this.onChange}
+                            value={this.state.password} 
+                            placeholder="Password"/>
                         </div>
 
                         <div className="form-group">
-                            <input type="password" className="form-control rounded-pill form-control-lg" placeholder="Confirm Password"/>
+                            <input type="password" 
+                            id="password2"
+                            className="form-control rounded-pill form-control-lg" 
+                            onChange={this.onChange}
+                            value={this.state.password2}
+                            placeholder="Confirm Password"/>
                         </div>
 
-                        <button type="submit" className="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">Register</button>
-                        <p className="mt-3 font-weight-normal">Already have an account? <a href="/login"><strong>Login</strong></a></p>
+                        <button onClick={this.onSubmit} className="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">Register</button>
+                        <p className="mt-3 font-weight-normal">Already have an account? <Link to="/login"><strong>Login</strong></Link></p>
 
                     </form>
                 </div>
@@ -43,3 +115,6 @@ export default class SignUpPage extends Component {
         );
     }
 }
+
+
+export default withRouter(SignUpPage);
