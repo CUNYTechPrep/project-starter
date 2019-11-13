@@ -6,7 +6,7 @@ const path = require('path');
 const db = require('./models');
 const passport = require('./middlewares/authentication');
 const app = express();
-const routes = require("./controllers/index");
+const routes = require("./controllers");
 const PORT = process.env.PORT || 8000;
 
 
@@ -27,7 +27,7 @@ const logFormat = process.env.NODE_ENV==='production' ? 'combined' : 'dev';
 app.use(morgan(logFormat));
 
 // this mounts controllers/index.js at the route `/api`
-app.use('/contollers/index', routes);
+app.use('/api', routes);
 
 // This is feature database branch ... 
 

@@ -37,7 +37,7 @@ class App extends React.Component {
                 <PrivateRoute exact path="/posts/new" component={PostFormPage} />
                 <Route exact path="/signup" component={SignUpPage} /> 
                 <Route exact path="/about-us" component={AboutUsPage} />
-
+      
               </Switch>
             </div>
           </div>

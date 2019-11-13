@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link, withRouter, Redirect} from 'react-router-dom';
+import axios from "axios";
 import "../css/login-sign-up.css";
 
 class SignUpPage extends Component {
@@ -32,8 +33,29 @@ class SignUpPage extends Component {
 
         console.log(newUser);
 
-        fetch("/api/auth/signup/", {
-            method: 'POST',
+        axios
+            .post("api/auth/signup/", newUser)
+            .then(res => {
+                if(res.ok) {
+                    console.log("Okay")
+                    return res.json()
+                }
+                throw new Error('Somethign went wrong')
+            })
+            .then(post => {
+                    console.log("Setting state")
+                this.setState({
+                    success: true,
+                });
+            })
+            .catch(err => {
+                console.log(err)
+                this.setState({
+                    error: true,
+                });
+            });
+        /*fetch("/api/auth/signup/", {
+            method: 'post',
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
@@ -56,19 +78,26 @@ class SignUpPage extends Component {
             this.setState({
                 error: true,
             });
-        });
+        }); */
 
     } 
     
   
     render() {
+      let error_text = ""
       if (this.state.success) return <Redirect to="/login" />;
+      if (this.state.error) error_text = "Something went wrong with your registration.";
       return (
             <div>
                 <div className="d-flex justify-content-center align-items-center login-container">
+                   
                     <form className="login-form text-center">
-
+                    
                         <h1 className="mb-5 font-weight-light text-uppercase">Sign Up</h1>
+
+                        <span className="red-text">
+                            {error_text}
+                        </span>
 
                         <div className="form-group">
                             <input type="text" 
