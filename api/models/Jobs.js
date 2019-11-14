@@ -27,6 +27,9 @@ module.exports = (sequelize, DataTypes) => {
             },
             state: {
                 type: DataTypes.STRING
+            },
+            website: {
+                type: DataTypes.STRING
             }
         },
         {

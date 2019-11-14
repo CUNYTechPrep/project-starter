@@ -51,6 +51,7 @@ router.post(
             jobDetails.companyId = id;
             if (city) jobDetails.city = city;
             if (state) jobDetails.state = state;
+            if (website) jobDetails.website = website;
 
             await Job.create(jobDetails);
 
