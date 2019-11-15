@@ -54,31 +54,6 @@ class SignUpPage extends Component {
                     error: true,
                 });
             });
-        /*fetch("/api/auth/signup/", {
-            method: 'post',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({content: newUser}),
-        })
-        .then(res => {
-            if(res.ok) {
-                return res.json()
-              }
-      
-              throw new Error('Something messed up, bro');
-        })
-        .then(post => {
-            this.setState({
-                success: true,
-            });
-        })
-        .catch(err => {
-            this.setState({
-                error: true,
-            });
-        }); */
 
     } 
     
