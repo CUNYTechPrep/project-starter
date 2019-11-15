@@ -29,6 +29,11 @@ function Navigation(props) {
             About Us
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/restaurants">
+            Restaurants
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
