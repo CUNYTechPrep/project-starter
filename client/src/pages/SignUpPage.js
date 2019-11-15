@@ -34,6 +34,10 @@ export default class SignUpPage extends Component {
                             <input type="password" className="form-control rounded-pill form-control-lg" placeholder="Confirm Password"/>
                         </div>
 
+                        <div className="form-group">
+                            <input type="number" className="form-control rounded-pill form-control-lg" placeholder="Phone Number"/>
+                        </div>
+
                         <button type="submit" className="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">Register</button>
                         <p className="mt-3 font-weight-normal">Already have an account? <a href="/login"><strong>Login</strong></a></p>
 
