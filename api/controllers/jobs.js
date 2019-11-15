@@ -121,7 +121,3 @@ router.post(
         }
     }
 );
-
-//@route    GET api/jobs
-//@desc     Get all jobs
-//@access   PRIVATE
