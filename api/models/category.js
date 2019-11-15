@@ -27,10 +27,10 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Category.associate = (models) => {
-    Category.hasOne(models.Product, {
-      foreignKey: 'categoryID',
-      foreignKeyConstraint: true,
-    });
+    // Category.hasOne(models.Product, {
+    //   foreignKey: 'categoryID',
+    //   foreignKeyConstraint: true,
+    // });
   };
 
   return Category;

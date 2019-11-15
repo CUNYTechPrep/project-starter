@@ -19,9 +19,9 @@ module.exports = (sequelize, DataTypes) => {
         field: 'sellerID',
         allowNull: false,
       },
-      categoryID: {
-        type: DataTypes.INTEGER,
-        field: 'categoryID',
+      category: {
+        type: DataTypes.STRING,
+        field: 'category',
         allowNull: false,
       },
       productName: {
@@ -58,10 +58,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'sellerID',
       foreignKeyConstraint: true,
     });
-    Product.belongsTo(models.Category, {
-      foreignKey: 'categoryID',
-      foreignKeyConstraint: true,
-    });
+    // Product.belongsTo(models.Category, {
+    //   foreignKey: 'categoryID',
+    //   foreignKeyConstraint: true,
+    // });
     Product.hasMany(models.Transaction, {
       foreignKey: 'productID',
       foreignKeyConstraint: true,

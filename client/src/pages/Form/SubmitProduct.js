@@ -13,7 +13,9 @@ class SubmitProduct extends React.Component {
       productName: "",
       description: "",
       price: "",
-      amount: ""
+      amount: "",
+      sellerID: "",
+      category: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,7 +27,9 @@ class SubmitProduct extends React.Component {
       productName: this.state.productName,
       description: this.state.description,
       price: this.state.price,
-      amount: this.state.amount
+      amount: this.state.amount,
+      sellerID: this.state.sellerID,
+      category: this.state.category,
     };
 
     console.log(productData);
@@ -41,6 +45,7 @@ class SubmitProduct extends React.Component {
       .then(res => {
         if (res.ok) {
           return res.json();
+          console.log(res);
         }
         throw new Error("Product Validation");
       })
@@ -127,6 +132,32 @@ class SubmitProduct extends React.Component {
             required
             onChange={e => {
               this.setState({ amount: e.target.value });
+            }}
+            variant="outlined"
+          />
+          <TextField
+            id="outlined-full-width"
+            label="sellerID"
+            style={{ margin: 8 }}
+            fullWidth
+            margin="normal"
+            type="number"
+            required
+            onChange={e => {
+              this.setState({ sellerID: e.target.value });
+            }}
+            variant="outlined"
+          />
+          <TextField
+            id="outlined-full-width"
+            label="category"
+            style={{ margin: 8 }}
+            fullWidth
+            margin="normal"
+            type="text"
+            required
+            onChange={e => {
+              this.setState({ category: e.target.value });
             }}
             variant="outlined"
           />
