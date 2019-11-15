@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-
 import auth from '../services/auth';
+import axios from 'react';
 
 import "../css/login-sign-up.css";
 
@@ -15,7 +15,6 @@ class LoginPage extends Component {
             email: "", 
             password: "" };
     }
-  
 
     fieldChanged = (name) => {
         return (event) => {
@@ -75,10 +74,12 @@ class LoginPage extends Component {
 
                             <div className="forgot-link form-group d-flex justify-content-between align-items-center">
                                 <div className="form-check">
+
                                     <input type="checkbox" 
                                         className="form-check-input" 
                                         id="remember"/>
                                     <label className="form-check-label">Remember Password</label>
+
                                 </div>
                                 <a href="/forgot">Forgot Password?</a>
                             </div>
