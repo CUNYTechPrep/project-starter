@@ -30,7 +30,7 @@ class SubmitProduct extends React.Component {
 
     console.log(productData);
 
-    fetch("/api/products/", {
+    fetch("/api/products", {
       method: "POST",
       credentials: "include",
       headers: {

@@ -7,6 +7,28 @@ module.exports = (sequelize, DataTypes) => {
 
   Transaction.init(
     {
+      transactionID: {
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+        field: 'transactionID',
+        allowNull: false,
+        autoIncrement: true,
+      },
+      sellerID: {
+        type: DataTypes.INTEGER,
+        field: 'sellerID',
+        allowNull: false,
+      },
+      buyerID: {
+        type: DataTypes.INTEGER,
+        field: 'buyerID',
+        allowNull: false,
+      },
+      productID: {
+        type: DataTypes.INTEGER,
+        field: 'productID',
+        allowNull: false,
+      },
       price: {
         type: DataTypes.INTEGER,
         validate: {
@@ -19,6 +41,8 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: true
         }
       },
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE,
     },
     {
       sequelize,
@@ -27,8 +51,15 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Transaction.associate = (models) => {
-    models.Transaction.belongsTo(models.User);
-    models.Transaction.hasMany(models.Product);
+    Transaction.belongsTo(models.Product, {
+      foreignKey: 'productID',
+      foreignKeyConstraint: true,
+    });
+    Transaction.belongsTo(models.User, {
+      foreignKey: 'buyerID',
+      foreignKey: 'sellerID',
+      foreignKeyConstraint: true,
+    });
   };
 
   return Transaction;

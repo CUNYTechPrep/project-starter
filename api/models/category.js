@@ -7,20 +7,30 @@ module.exports = (sequelize, DataTypes) => {
 
   Category.init(
     {
+      categoryID: {
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+        field: 'categoryID',
+        allowNull: false,
+        autoIncrement: true,
+      },
       categoryName: {
         type: DataTypes.STRING,
-        validate: {
-          notEmpty: true
-        }
+        filed: 'categoryName',
       }
     },
     {
       sequelize,
+      timestamps : false,
       modelName: "category"
     }
   );
 
   Category.associate = (models) => {
+    Category.hasOne(models.Product, {
+      foreignKey: 'categoryID',
+      foreignKeyConstraint: true,
+    });
   };
 
   return Category;
