@@ -103,7 +103,7 @@ function Navigation(props) {
                                     {/* <!-- Nothing to see here --> */}
                                 </ul> {/* <!-- end of Unordered List --> */}
                             </div>
-                            {/* <!-- -end of sidebar --> */}
+                            {/* <!-- end of sidebar --> */}
                             
                         </div>
                     </div>

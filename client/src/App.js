@@ -12,7 +12,7 @@ import {
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import AboutUsPage from './pages/AboutUsPage';
-
+import DashboardPage from './pages/DashboardPage';
 
 
 import './css/App.css';
@@ -33,6 +33,7 @@ class App extends React.Component {
                 
                 <Route path="/login" component={LoginPage} /> 
                 <Route path="/signup" component={SignUpPage} /> 
+                <Route path="/dashboard" component={DashboardPage} />
                 <Route path="/about-us" component={AboutUsPage} />
 
               </Switch>
