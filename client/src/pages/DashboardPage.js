@@ -13,7 +13,7 @@ export default class DashboardPage extends Component {
       return (
             <div>
                 <Navigation/>       {/* This is the side bar navbar */}
-             </div>
+            </div>
         );
     }
 }
