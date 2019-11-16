@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 len: [3, 50],
                 notEmpty: true,
-                notNull: true,
+                allowNull: false,
             }
         },
         UserPassword: {
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 len: [8, 50],
                 notEmpty: true,
-                notNull: true,
+                allowNull: false,
                 isIn: [['@', '!','#','$','%','&','^','<','>','/','?','+']],
                 isLowercase: true,        
                 isUppercase: true,
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 //len: [3, 50],
                 notEmpty: true,
-                notNull: true,
+                allowNull: false,
                 isEmail: true,
                 
             }
@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 //len: 10,
                 notEmpty: true,
-                notNull: true,
+                allowNull: false,
             }
         },
         Auth_Token: {
@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 //len: 50,
                 notEmpty: true,
-                notNull: true,
+                allowNull: false,
             }
         },
         

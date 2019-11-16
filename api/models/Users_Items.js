@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 
                 notEmpty: true,
-                notNull: true,
+                allowNull: false,
                 isNumeric: true,
                 
             }
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
             
                 notEmpty: true,
-                notNull: true,
+                allowNull: false,
                 
             }
         },
@@ -34,12 +34,12 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     
-    Items.associate = (models) => {
+    Users_Items.associate = (models) => {
         // associations can be defined here
         models.Users_Items.belongsToMany(models.Recipes, {through: 'UsersItems_Recipes'});
 
     };
 
-    return Items;
+    return Users_Items;
     
 };

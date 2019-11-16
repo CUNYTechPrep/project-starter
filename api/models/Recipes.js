@@ -12,24 +12,21 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 //len: [3, 50],
                 notEmpty: true,
-                notNull: true,
+                allowNull: false,
             }
-        },
-        
- 
-         
+        },        
     }, {
         sequelize,
-        modelName: 'Recipe'
+        modelName: 'Recipes'
     });
 
     
-    Items.associate = (models) => {
+    Recipes.associate = (models) => {
         // associations can be defined here
         models.Recipes.belongsToMany(models.Users_Items, {through: 'UsersItems_Recipes'});
 
     };
 
-    return Items;
+    return Recipes;
     
 };

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
               len: [10],
               notEmpty: true,
-              notNull: true
+              allownull: false,
             }
           },
         
@@ -23,12 +23,12 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     
-    Items.associate = (models) => {
+    DietaryRestricts.associate = (models) => {
         // associations can be defined here
         models.DietaryRestricts.belongsToMany(models.Users, {through: 'Users_DietaryRestricts'});
 
     };
 
-    return Items;
+    return DietaryRestricts;
     
 };
