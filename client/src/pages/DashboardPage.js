@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Navigation from '../components/navbar-component';
+import SideBar from '../components/navbar-component';
+import TopBar from '../components/topbar-component';
+
 
 export default class DashboardPage extends Component {
     constructor(props) {
@@ -12,8 +14,10 @@ export default class DashboardPage extends Component {
     render() {
       return (
             <div>
-                <Navigation/>       {/* This is the side bar navbar */}
-             </div>
+                <SideBar/>          {/* This is the side bar navbar */}
+                <TopBar/>           {/* This is the top bar navbar */}
+
+            </div>
         );
     }
 }
