@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     class Users extends Model { }
 
     Users.init({
-        UserName: {
+        //timestamps: false,
+        username: {
             type: DataTypes.STRING,
             unique: true,
             validate: {
@@ -15,18 +16,18 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
             }
         },
-        UserPassword: {
+        password: {
             type: DataTypes.STRING,
             validate: {
                 len: [8, 50],
                 notEmpty: true,
                 allowNull: false,
-                isIn: [['@', '!','#','$','%','&','^','<','>','/','?','+']],
-                isLowercase: true,        
-                isUppercase: true,
+                //isIn: [['@', '!','#','$','%','&','^','<','>','/','?','+']],
+                //isLowercase: true,        
+                //isUppercase: true,
             }
         },
-        Email: {
+        email: {
             type: DataTypes.STRING,
             unique: true,
             validate: {
@@ -37,8 +38,8 @@ module.exports = (sequelize, DataTypes) => {
                 
             }
         },
-        Phonenumber: {
-            type: DataTypes.INTEGER,
+        phonenumber: {
+            type: DataTypes.BIGINT,
             unique: true,
             validate: {
                 //len: 10,
@@ -46,11 +47,11 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
             }
         },
-        Auth_Token: {
+        authtoken: {
             type: DataTypes.STRING,
             unique: true,
             validate: {
-                //len: 50,
+                
                 notEmpty: true,
                 allowNull: false,
             }
@@ -58,7 +59,8 @@ module.exports = (sequelize, DataTypes) => {
         
     }, {
         sequelize,
-        modelName: 'users'
+        modelName: 'users',
+        timestamps: false,
     });
 
     

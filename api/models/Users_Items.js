@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Users_Items.init({
         
-        Amount: {
+        qty: {
             type: DataTypes.FLOAT,
             validate: {
                 
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
                 
             }
         },
-        Expiration: {
+        expiration: {
             type: DataTypes.DATE,
             
             validate: {
@@ -30,7 +30,8 @@ module.exports = (sequelize, DataTypes) => {
          
     }, {
         sequelize,
-        modelName: 'users_items'
+        modelName: 'users_items',
+        timestamps: false,
     });
 
     

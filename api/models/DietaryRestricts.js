@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
     class DietaryRestricts extends Model { }
 
     DietaryRestricts.init({
-        DietaryRestrictName: {
+        //timestamps: false,
+        dietaryrestrictname: {
             type: DataTypes.STRING,
             unique: true,
             validate: {
-              len: [10],
               notEmpty: true,
               allownull: false,
             }
@@ -19,12 +19,13 @@ module.exports = (sequelize, DataTypes) => {
          
     }, {
         sequelize,
-        modelName: 'dietaryrestricts'
+        modelName: 'dietaryrestricts',
+        timestamps: false,
     });
 
     
     DietaryRestricts.associate = (models) => {
-        console.log(models);
+        
         // associations can be defined here
         models.Dietaryrestricts.belongsToMany(models.Users, {through: 'users_dietaryrestricts'});
         models.Dietaryrestricts.belongsToMany(models.Items, {through: 'items_dietaryrestricts'});

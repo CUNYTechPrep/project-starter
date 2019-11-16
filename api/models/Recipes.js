@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     class Recipes extends Model { }
 
     Recipes.init({
-
-        RecipeName: {
+        
+        recipesname: {
             type: DataTypes.STRING,
             unique: true,
             validate: {
@@ -17,18 +17,19 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
 
-        Description: {
+        instruction: {
             type: DataTypes.TEXT,
             unique: true,
             validate: {
-                //len: [3, 50],
+                
                 notEmpty: true,
                 allowNull: false,
             }
         },        
     }, {
         sequelize,
-        modelName: 'recipes'
+        modelName: 'recipes',
+        timestamps: false,
     });
 
     

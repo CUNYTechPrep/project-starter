@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     class Items extends Model { }
 
     Items.init({
-        ItemName: {
+        
+        itemname: {
             type: DataTypes.STRING,
             unique: true,
             validate: {
@@ -19,12 +20,13 @@ module.exports = (sequelize, DataTypes) => {
          
     }, {
         sequelize,
-        modelName: 'items'
+        modelName: 'items',
+        timestamps: false,
     });
 
     
     Items.associate = (models) => {
-        console.log(models);
+        //console.log(models);
         // associations can be defined here
         models.Items.belongsToMany(models.Users, {through: 'users_items'});
         models.Items.belongsToMany(models.Recipes, {through: 'items_recipes'});
