@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const { Post } = db;
+const { Users } = db;
+const { Items } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -25,7 +27,7 @@ router.get('/', (req,res) => {
 router.post('/', (req, res) => {
   let { content } = req.body;
   
-  Post.create({ content })
+  Users.create({ content })
     .then(post => {
       res.status(201).json(post);
     })
@@ -38,6 +40,7 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   Post.findByPk(id)
+  
     .then(post => {
       if(!post) {
         return res.sendStatus(404);
