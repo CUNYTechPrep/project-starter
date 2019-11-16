@@ -68,6 +68,13 @@ module.exports = (sequelize, DataTypes) => {
         models.Users.belongsToMany(models.DietaryRestricts, {through: 'Users_DietaryRestricts'});
 
     };
+
+    Users.beforeSave((user, options) => {
+        if(user.password) {
+          user.passwordHash = bcrypt.hashSync(user.password, 10);
+        }
+      });
+    
     
 
     return Users;

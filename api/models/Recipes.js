@@ -6,7 +6,18 @@ module.exports = (sequelize, DataTypes) => {
     class Recipes extends Model { }
 
     Recipes.init({
-        description: {
+
+        RecipeName: {
+            type: DataTypes.STRING,
+            unique: true,
+            validate: {
+                len: [3, 50],
+                notEmpty: true,
+                allowNull: false,
+            }
+        },
+
+        Description: {
             type: DataTypes.TEXT,
             unique: true,
             validate: {
@@ -23,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     
     Recipes.associate = (models) => {
         // associations can be defined here
-        models.Recipes.belongsToMany(models.Users_Items, {through: 'UsersItems_Recipes'});
+        models.Recipes.belongsToMany(models.Items, {through: 'Items_Recipes'});
 
     };
 

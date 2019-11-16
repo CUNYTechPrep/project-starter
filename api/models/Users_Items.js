@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     Users_Items.init({
         
         Amount: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             validate: {
                 
                 notEmpty: true,
