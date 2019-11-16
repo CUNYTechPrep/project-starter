@@ -30,13 +30,13 @@ module.exports = (sequelize, DataTypes) => {
          
     }, {
         sequelize,
-        modelName: 'Users_Items'
+        modelName: 'users_items'
     });
 
     
     Users_Items.associate = (models) => {
         // associations can be defined here
-        models.Users_Items.belongsToMany(models.Recipes, {through: 'UsersItems_Recipes'});
+    
 
     };
 

@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
          
     }, {
         sequelize,
-        modelName: 'Items_Recipes'
+        modelName: 'items_recipes'
     });
 
     

@@ -19,14 +19,15 @@ module.exports = (sequelize, DataTypes) => {
          
     }, {
         sequelize,
-        modelName: 'DietaryRestricts'
+        modelName: 'dietaryrestricts'
     });
 
     
     DietaryRestricts.associate = (models) => {
+        console.log(models);
         // associations can be defined here
-        models.DietaryRestricts.belongsToMany(models.Users, {through: 'Users_DietaryRestricts'});
-        models.DietaryRestricts.belongsToMany(models.Items, {through: 'Items_DietaryRestricts'});
+        models.Dietaryrestricts.belongsToMany(models.Users, {through: 'users_dietaryrestricts'});
+        models.Dietaryrestricts.belongsToMany(models.Items, {through: 'items_dietaryrestricts'});
 
 
     };

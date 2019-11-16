@@ -28,13 +28,13 @@ module.exports = (sequelize, DataTypes) => {
         },        
     }, {
         sequelize,
-        modelName: 'Recipes'
+        modelName: 'recipes'
     });
 
     
     Recipes.associate = (models) => {
         // associations can be defined here
-        models.Recipes.belongsToMany(models.Items, {through: 'Items_Recipes'});
+        models.Recipes.belongsToMany(models.Items, {through: 'items_recipes'});
 
     };
 
