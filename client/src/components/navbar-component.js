@@ -1,4 +1,9 @@
 import React from 'react';
+import '../css/dashboard-style.css';
+import '../css/style.css';
+
+import Profile_Image from '../images/profile-photo.jpg';
+
 
 function Navigation(props) {
     return (
@@ -17,7 +22,7 @@ function Navigation(props) {
                                 {/* <!-- Profile Photo --> */}
                                 <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">Perfect Pantry</a>
                                 <div class="bottom-border pb-3">
-                                    <img src="./images/profile-photo.jpg" alt="Todd Howard" width="50" class="rounded-circle mr-3"/>
+                                    <img width="50" class="rounded-circle mr-3" src={Profile_Image} />
                                     <a href="#" class="text-white">Todd Howard</a>
                                 </div>
 
