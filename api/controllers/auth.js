@@ -1,24 +1,27 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { Users } = require('../models');
 const passport = require('../middlewares/authentication');
 
 
 router.post('/signup', (req, res) => {
-  console.log("POST body: ", req.body);
-  User.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: req.body.password,
-  })
-    .then((user) => {
-      console.log("IS SUCC?")
-      req.login(user, () => res.status(201).json(user));
+
+  if(req.body.password == req.body.password2) {
+    Users.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+      phonenumber: req.body.phonenumber,
+      auth_token: req.body.email
     })
-    .catch((err) => {
-      console.log("FAIL")
-      res.status(400).json({ msg: 'Failed Signup', err });
-    });
+      .then((user) => {
+        req.login(user, () => res.status(201).json(user));
+      })
+      .catch((err) => {
+        console.log(err)
+        res.status(400).json({ msg: 'Failed Signup', err });
+      });
+  }
+
 });
 
 router.post('/signup?', (req, res) => {

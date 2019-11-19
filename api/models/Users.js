@@ -1,58 +1,79 @@
 'use strict';
 const { Model } = require('sequelize');
+const bcrypt = require('bcryptjs');
 
 
 module.exports = (sequelize, DataTypes) => {
     class Users extends Model { }
 
     Users.init({
-        UserName: {
+        username: {
             type: DataTypes.STRING,
             unique: true,
+            allowNull: false,
             validate: {
                 len: [3, 50],
                 notEmpty: true,
-                allowNull: false,
+                //allowNull: false,
             }
         },
-        UserPassword: {
-            type: DataTypes.STRING,
+        password: {
+            type: DataTypes.VIRTUAL,
+            allowNull: false,
             validate: {
                 len: [8, 50],
                 notEmpty: true,
-                allowNull: false,
-                isIn: [['@', '!','#','$','%','&','^','<','>','/','?','+']],
-                isLowercase: true,        
-                isUppercase: true,
+                //allowNull: false,
+                //isIn: [['@', '!','#','$','%','&','^','<','>','/','?','+']],
+                is: {
+                    args: "(?=.*[a-z])",
+                    msg: "One lowercase character please."
+                },
+                is: {
+                    args: "(?=.*[A-Z])",
+                    msg: "One Uppercase character please."
+                },
+            //    is: { 
+            //        args: "(?=.*\W)",
+            //        msg: "One $peci@l character please."
+            //    },
+                //isLowercase: true,        
+                //isUppercase: true,
             }
         },
-        Email: {
+        passwordHash: {
+            type: DataTypes.STRING
+        },
+        email: {
             type: DataTypes.STRING,
             unique: true,
+            allowNull: false,
             validate: {
-                //len: [3, 50],
+                len: [3, 50],
                 notEmpty: true,
-                allowNull: false,
+                //allowNull: false,
                 isEmail: true,
                 
             }
         },
-        Phonenumber: {
+        phonenumber: {
             type: DataTypes.INTEGER,
             unique: true,
+            allowNull: false,
             validate: {
                 //len: 10,
                 notEmpty: true,
-                allowNull: false,
+                //allowNull: false,
             }
         },
-        Auth_Token: {
+        auth_token: {
             type: DataTypes.STRING,
             unique: true,
+            allowNull: false,
             validate: {
                 //len: 50,
                 notEmpty: true,
-                allowNull: false,
+                //allowNull: false,
             }
         },
         

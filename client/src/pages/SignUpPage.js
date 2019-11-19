@@ -9,6 +9,7 @@ class SignUpPage extends Component {
         this.state = { 
             username: '', 
             email: '', 
+            phonenumber: '',
             password: '', 
             password2: '',
             success: false,
@@ -22,28 +23,26 @@ class SignUpPage extends Component {
     onSubmit = e => {
         e.preventDefault();
 
-        console.log("DO SOMETHING")
         const newUser = {
-            firstName: this.state.username,
-            lastName: this.state.username,
+            username: this.state.username,
             email: this.state.email,
             password: this.state.password,
-            password2: this.state.password2
+            password2: this.state.password2,
+            phonenumber: this.state.phonenumber,
         }
 
-        console.log(newUser);
-
+        // Transmit Info
         axios
             .post("api/auth/signup/", newUser)
             .then(res => {
-                if(res.ok) {
-                    console.log("Okay")
-                    return res.json()
+                console.log(res.status)
+                console.log(res.status == 201)
+                if(res.status == 201) {
+                    return res.json
                 }
-                throw new Error('Somethign went wrong')
+                throw new Error('Somethign went wrong: ' + res.status)
             })
             .then(post => {
-                    console.log("Setting state")
                 this.setState({
                     success: true,
                 });
@@ -111,7 +110,12 @@ class SignUpPage extends Component {
                         </div>
 
                         <div className="form-group">
-                            <input type="number" className="form-control rounded-pill form-control-lg" placeholder="Phone Number"/>
+                            <input type="number" 
+                            id="phonenumber"
+                            className="form-control rounded-pill form-control-lg"
+                            onChange={this.onChange}
+                            value={this.state.phonenumber}
+                            placeholder="Phone Number"/>
                         </div>
 
                         <button onClick={this.onSubmit} className="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">Register</button>
