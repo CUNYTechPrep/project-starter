@@ -37,3 +37,7 @@
 .btn-secondary {
   margin-right: 15px;
 }
+
+.form-list * {
+  float: left;
+}

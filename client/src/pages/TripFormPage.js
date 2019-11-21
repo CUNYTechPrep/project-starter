@@ -1,5 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import ImageCard from '../components/ImageCard.js';
+
+const cloudinary = window.cloudinary;
 
 class TripFormPage extends React.Component {
   state = {
@@ -7,7 +10,9 @@ class TripFormPage extends React.Component {
     success: false,
     name: '',
     desc: '',
-    photoPath: '/assets/images/sally.png'
+    photoPath: "",
+    pics: [],
+    picUrls:[],
   }
 
   descChanged = (event) => {
@@ -31,7 +36,8 @@ class TripFormPage extends React.Component {
       body: JSON.stringify({content: {
         name: this.state.name,
         description: this.state.desc,
-        coverPhoto: this.state.photoPath
+        coverPhoto: this.state.picUrls[0],
+        pics: this.state.picUrls,
       }
     }),
     })
@@ -54,7 +60,43 @@ class TripFormPage extends React.Component {
       });
   }
 
+  picsAdded = (event) => {
+    this.state.pics.forEach(function(i){
+      console.log(i)
+    })
+  }
+
+  // componentDidMount() {
+  //   const id = 1;
+  //   fetch("/api/trips/" + id)
+  //     .then(res => res.json())
+  //     .then(posts => {
+  //       this.setState({
+  //         loading: false,
+  //         posts: posts.map((p,ii) => <ImageCard {...p} key={ii} />),
+  //       });
+  //     })
+  //     .catch(err => console.log("API ERROR: ", err));
+  // }
+
   render() {
+    let myWidget = cloudinary.createUploadWidget({
+      cloudName: 'ctptrippin', 
+      uploadPreset: 'hdhhww5k', 
+      tags:['1'],
+      cropping: true,
+      showSkipCropButton: false,
+      croppingAspectRatio: 1.0,
+      }, (error, result) => { 
+        if (!error && result && result.event === "success") { 
+          console.log('Done! Here is the image info: ', result.info); 
+          this.setState({pics: this.state.pics.concat(<ImageCard src={result.info.secure_url} />), 
+            picUrls: this.state.picUrls.concat(result.info.secure_url),
+          })
+        }
+      }
+    )
+    
     if(this.state.success) return <Redirect to="/" />;
 
     let errorMessage = null;
@@ -63,8 +105,7 @@ class TripFormPage extends React.Component {
         <div className="alert alert-danger">
           "There was an error saving this post."
         </div>
-      );
-    }
+      )};
 
     return (
       <div className="col-10 col-md-8 col-lg-7">
@@ -84,8 +125,11 @@ class TripFormPage extends React.Component {
             className="form-control mr-3 rounded"
             onChange={this.nameChanged}
           />
-          <button className="btn btn-secondary" >Upload</button>
+          <button className="btn cloudinary-button" onClick={() => myWidget.open()}>Upload</button>
           <button className="btn btn-primary" onClick={this.savePost}>Post</button>
+          <div className="form-list">
+            {this.state.pics}
+          </div>
         </div>
       </div>
     );

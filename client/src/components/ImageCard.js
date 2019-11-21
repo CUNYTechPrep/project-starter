@@ -1,5 +1,4 @@
 import React from 'react';
-import sally from '../assets/images/japan.jpg';
 
 function ImageCard(props) {
   // import photo from String(".." + props.coverPhoto);

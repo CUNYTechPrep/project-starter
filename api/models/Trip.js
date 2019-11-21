@@ -30,6 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     Trip.associate = (models) => {
         // This adds UserID into the Trip Table
         models.Trip.belongsTo(models.User);
+        models.Trip.hasMany(models.Media);
+
     };
 
     return Trip;
