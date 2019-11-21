@@ -5,7 +5,6 @@ function ImageCard(props) {
   // console.log(photo)
   return (
     <div className="col-4">
-    {console.log(props.src)}
         <img className="img-thumbnail img-responsive" src={props.src} alt="sally's icon"/>
     </div>
   );

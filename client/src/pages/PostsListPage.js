@@ -3,7 +3,7 @@ import Loading from '../components/Loading';
 import sally from '../assets/images/sally.png';
 import ImageCard from '../components/ImageCard.js';
 
-function User(props){
+function User(props) {
   return(
     <div className="user-card card">
     <div className="card-body">
@@ -12,21 +12,33 @@ function User(props){
         <img className="img-thumbnail img-responsive" src={sally} alt="sally's icon"/>
       </div>
       <div className="col-8">
-        <h2>Sally Sue</h2>
-        <p>Here is all the places I've been. Life is an adventure and I just capture it</p></div>
+        <h2>{ props.username }</h2>
+        <p>{ props.bio}</p></div>
       </div>
     </div>
   </div>
   )
 }
 
-
 class PostsListPage extends React.Component {
-  state = {
-    posts: [],
-    loading: true,
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [],
+      loading: true,
+      user: undefined,
+    }
+    this.callUser()
   }
 
+  callUser(){
+    fetch("/api/users/")
+    .then(res => res.json())
+    .then(user => {
+      this.setState({user: user});
+    })
+    .catch(err => console.log("API ERROR: ", err));
+  }
   componentDidMount() {
     const id = 1;
     fetch("/api/trips/" + id)
@@ -47,7 +59,7 @@ class PostsListPage extends React.Component {
 
     return (
       <div className="container text-center">
-        <User />
+        <User username={this.state.user.username} bio={this.state.user.bio}/>
         <div className="row">
         { this.state.posts }
         </div>
