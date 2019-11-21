@@ -1,5 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 class HomePage extends React.Component {
 
@@ -7,6 +9,8 @@ class HomePage extends React.Component {
     super(props);
     this.state = {
       signedIn: false,
+      displaySeeker: false,
+      displayEmployer: false,
     };
   }
 
@@ -39,62 +43,56 @@ class HomePage extends React.Component {
   seekerForm = (event) => {
     return (
       <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#seekerForm">
-          Launch demo modal
-        </button>
-        <div class="modal fade" id="seekerForm" tabindex="-1" role="dialog" aria-labelledby="seekerForm" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Job Seeker</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                First Name<br />
-                <input type="text" placeholder="John" required />
+        <Button variant="primary" onClick={handleShow}>
+          Seeker
+        </Button>
 
-                Last Name<br />
-                <input type="text" placeholder="Doe" required />
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
 
-                Email Address<br />
-                <input type="text" placeholder="jdoe@example.com" required />
+          First Name<br />
+          <input type="text" placeholder="John" required />
 
-                Business Name<br />
-                <input type="text" placeholder="Reentry Org" required />
+          Last Name<br />
+          <input type="text" placeholder="Doe" required />
 
-                City<br />
-                <input type="text" placeholder="Buffalo" />
+          Email Address<br />
+          <input type="text" placeholder="jdoe@example.com" required />
 
-                State<br />
-                <input type="text" placeholder="New York" required />
+          City<br />
+          <input type="text" placeholder="Buffalo" />
 
-                Zip Code<br />
-                <input type="text" placeholder="10450" required />
+          State<br />
+          <input type="text" placeholder="New York" required />
 
-                Looking For (select as many as apply)<br />
-                <input type="checkbox" name="looking-for" value="GD" />
-                Graphic Designer<br />
-                <input type="checkbox" name="looking-for" value="PA" />
-                Painter<br />
-                <input type="checkbox" name="looking-for" value="EL" />
-                Electrician<br />
-                <input type="checkbox" name="looking-for" value="CA" />
-                Carpenter<br />
-                <input type="checkbox" name="looking-for" value="FS" />
-                Food Servicer<br />
-                <input type="checkbox" name="looking-for" value="OT" />
-                Other<br />
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Send</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+          Zip Code<br />
+          <input type="text" placeholder="10450" required />
+
+          Experience (select as many as apply)<br />
+          <input type="checkbox" name="looking-for" value="GD" />
+          Graphic Designer<br />
+          <input type="checkbox" name="looking-for" value="PA" />
+          Painter<br />
+          <input type="checkbox" name="looking-for" value="EL" />
+          Electrician<br />
+          <input type="checkbox" name="looking-for" value="CA" />
+          Carpenter<br />
+          <input type="checkbox" name="looking-for" value="FS" />
+          Food Servicer<br />
+          <input type="checkbox" name="looking-for" value="OT" />
+          Other<br />
+        <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={handleClose}>
+          Save Changes
+        </Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
     );
   }
 
@@ -158,11 +156,14 @@ class HomePage extends React.Component {
   };
 
   render() {
+    const {displaySeeker} = this.state;
+    const {displayEmployer} = this.state;
     return (
       <div>
         <div>The First Step is Reentry</div>
         {this.carousel}
-        <button className="" onClick={(event) => this.seekerForm(event)}>Seeker</button>
+        <button className="" onClick={(event) => this.setState({displayButton: true})}>Seeker</button>
+        {displayButton && this.seekerForm()}
         <button className="" onClick={() => this.employerForm()}>Employers</button>
       </div>
     );
