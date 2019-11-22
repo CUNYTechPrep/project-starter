@@ -7,36 +7,44 @@ module.exports = (sequelize, DataTypes) => {
 
   Product.init(
     {
+      productID: {
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+        field: 'productID',
+        allowNull: false,
+        autoIncrement: true,
+      },
+      sellerID: {
+        type: DataTypes.INTEGER,
+        field: 'sellerID',
+        allowNull: false,
+      },
+      category: {
+        type: DataTypes.STRING,
+        field: 'category',
+      },
       productName: {
         type: DataTypes.STRING,
-        validate: {
-          notEmpty: true
-        }
+        filed: 'productName',
       },
       price: {
         type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: true
-        }
+        field: 'price',
       },
       amount: {
         type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: true
-        }
+        field: 'amount',
       },
       description: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: true
-        }
+        type: DataTypes.TEXT,
+        field: 'description',
       },
-      image: {
-        type: DataTypes.BLOB,
-        validate: {
-          notEmpty: true
-        }
+      imageURL: {
+        type: DataTypes.TEXT,
+        field: 'imageURL',
       },
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE,
     },
     {
       sequelize,
@@ -45,8 +53,18 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Product.associate = (models) => {
-    models.Product.belongsTo(models.User);
-    models.Product.belongsTo(models.Category);
+    Product.belongsTo(models.User, {
+      foreignKey: 'sellerID',
+      foreignKeyConstraint: true,
+    });
+    // Product.belongsTo(models.Category, {
+    //   foreignKey: 'categoryID',
+    //   foreignKeyConstraint: true,
+    // });
+    Product.hasMany(models.Transaction, {
+      foreignKey: 'productID',
+      foreignKeyConstraint: true,
+    });
   };
 
   return Product;

@@ -12,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE,
   }, {
     sequelize,
     modelName: 'userBlacklist'

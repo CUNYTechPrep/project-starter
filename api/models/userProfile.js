@@ -7,35 +7,25 @@ module.exports = (sequelize, DataTypes) => {
 
   UserProfile.init(
     {
-      userId: {
-        type: DataTypes.INTEGER,
+      userID: {
         primaryKey: true,
-        autoIncrement: true
+        type: DataTypes.INTEGER,
+        field: 'userID',
+        allowNull: false,
       },
       firstName: {
         type: DataTypes.STRING,
-        validate: {
-          notEmpty: true
-        }
+        allowNull: false,
       },
       lastName: {
         type: DataTypes.STRING,
-        validate: {
-          notEmpty: true
-        }
+        allowNull: false,
       },
       school: {
         type: DataTypes.STRING,
-        validate: {
-          notEmpty: true
-        }
+        field: 'school',
+        allowNull: false,
       },
-      email: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: true
-        }
-      }
     },
     {
       sequelize,
@@ -44,7 +34,10 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   UserProfile.associate = (models) => {
-    models.UserProfile.belongsTo(models.User);
+    UserProfile.belongsTo(models.User, {
+      foreignKey: 'userID',
+      foreignKeyConstraint: true,
+    });
   };
 
   return UserProfile;
