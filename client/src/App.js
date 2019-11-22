@@ -18,7 +18,7 @@ function Navigation(props) {
       <Link className="navbar-brand" to="/">College Sharing</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/product">
+          <NavLink className="nav-link" exact to="/productSubmission">
             Add Product
           </NavLink>
         </li>
@@ -36,7 +36,7 @@ class App extends React.Component {
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
-                <Route path="/product" component={SubmitProduct} />
+                <Route path="/productSubmission" component={SubmitProduct} />
                 <Route path="/" component={PostsListPage} />
               </Switch>
             </div>
