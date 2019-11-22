@@ -1,4 +1,5 @@
 import React from 'react';
+import HandleSignOutModal from '../components/modal-component';
 import '../css/dashboard-style.css';
 import '../css/style.css';
 
@@ -11,7 +12,7 @@ function TopBar (props) {
                 <div className="row align-items-center">
                     {/* <!-- Description --> */}
                     <div className="col-md-4">
-                        <h4 className="text-light text-uppercase mb-0">Dashboard</h4>
+                        <h4 className="text-light text-uppercase mb-0">Pantry</h4>
                     </div>
                     {/* <!-- Search bar --> */}
                     <div className="col-md-5">
@@ -25,9 +26,8 @@ function TopBar (props) {
                     {/* <!-- Icons: Comment, Bell, Sign-Out --> */} 
                     <div className="col-md-3">
                         <ul className="navbar-nav">
-                            <li className="nav-item icon-parent"><a href="#" className="nav-link icon-bullet"><i className="fas fa-comments text-muted fa-lg"/></a></li>
-                            <li className="nav-item icon-parent"><a href="#" className="nav-link icon-bullet"><i className="fas fa-bell text-muted fa-lg"/></a></li>
-                            <li className="nav-item ml-md-auto"><a href="#" className="nav-link" data-toggle="modal" data-target="#sign-out"><button >Sign Out</button></a></li>
+                            
+                            <li className="nav-item ml-md-auto"><a><HandleSignOutModal/></a></li>
                         </ul>
                     </div>
                 </div>

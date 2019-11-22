@@ -1,4 +1,12 @@
 import React from 'react';
+
+
+import '@fortawesome/react-fontawesome';
+import '@fortawesome/fontawesome-free';
+import '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/free-brands-svg-icons';
+import '@fortawesome/free-solid-svg-icons';
+
 import '../css/dashboard-style.css';
 import '../css/style.css';
 

@@ -28,7 +28,8 @@ function LogOutModal(props) {
                     <img className=" img-fluid rounded mt-3" src={Tsundere_Meme} ></img>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide}>Close</Button>
+                    <Button className="btn-success" onClick={props.onHide}>Stay Here</Button>
+                    <Button className="btn-danger" onClick={props.onHide}>Confirm Sign Out</Button>
                 </Modal.Footer>
             </Modal>
         </div>
@@ -36,13 +37,14 @@ function LogOutModal(props) {
     );
   }
 
+
   function HandleSignOutModal() {
         const [modalshow, setModalShow] = React.useState(false);
 
         return (
             <div>
                 <ButtonToolbar>
-                    <Button variant="primary" onClick={() => setModalShow(true)}>
+                    <Button className="btn-danger" variant="primary" onClick={() => setModalShow(true)}>
                     Sign Out
                     </Button>
             
@@ -54,5 +56,6 @@ function LogOutModal(props) {
             </div>
         );  
   }
+
 
   export default HandleSignOutModal;
