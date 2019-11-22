@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 len: [3, 50],
                 notEmpty: true,
-
+                //allowNull: false,
             }
         },
         password: {
@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 len: [8, 50],
                 notEmpty: true,
+
                 // Ideally would have a 1 special character requirement but reg-ex's wilin
                 is: {
                     args: "(?=.*[a-z])",
@@ -32,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
                     args: "(?=.*[A-Z])",
                     msg: "One Uppercase character please."
                 },
+            }
         },
         passwordHash: {
             type: DataTypes.STRING
@@ -43,8 +45,8 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 len: [3, 50],
                 notEmpty: true,
-                isEmail: true,
                 
+                isEmail: true,
             }
         },
         phonenumber: {
