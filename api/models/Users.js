@@ -62,22 +62,22 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             unique: true,
             allowNull: false,
-            validate: {
-                //len: 50,
+            validate: { 
                 notEmpty: true,
             }
         },
         
     }, {
         sequelize,
-        modelName: 'Users'
+        modelName: 'users',
+        timestamps: false,
     });
 
     
     Users.associate = (models) => {
         // associations can be defined here
-        models.Users.belongsToMany(models.Items, {through: 'Users_Items'});
-        models.Users.belongsToMany(models.DietaryRestricts, {through: 'Users_DietaryRestricts'});
+        models.Users.belongsToMany(models.Items, {through: 'users_items'});
+        models.Users.belongsToMany(models.Dietaryrestricts, {through: 'users_dietaryrestricts'});
 
     };
 

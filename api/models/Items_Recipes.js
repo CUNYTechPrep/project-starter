@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     class Items_Recipes extends Model { }
 
     Items_Recipes.init({
-        Amount: {
+        //timestamps: false,
+        qty: {
             type: DataTypes.FLOAT,
             validate: {
                 notEmpty: true,
@@ -18,13 +19,14 @@ module.exports = (sequelize, DataTypes) => {
          
     }, {
         sequelize,
-        modelName: 'Items_Recipes'
+        modelName: 'items_recipes',
+        timestamps: false,
     });
 
     
     Items_Recipes.associate = (models) => {
         // associations can be defined here
-    
+        
 
     };
 

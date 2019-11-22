@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Users_Items.init({
         
-        Amount: {
+        qty: {
             type: DataTypes.FLOAT,
             validate: {
                 
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
                 
             }
         },
-        Expiration: {
+        expiration: {
             type: DataTypes.DATE,
             
             validate: {
@@ -30,13 +30,14 @@ module.exports = (sequelize, DataTypes) => {
          
     }, {
         sequelize,
-        modelName: 'Users_Items'
+        modelName: 'users_items',
+        timestamps: false,
     });
 
     
     Users_Items.associate = (models) => {
         // associations can be defined here
-        models.Users_Items.belongsToMany(models.Recipes, {through: 'UsersItems_Recipes'});
+    
 
     };
 
