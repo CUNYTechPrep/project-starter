@@ -22,7 +22,6 @@ module.exports = (sequelize, DataTypes) => {
       category: {
         type: DataTypes.STRING,
         field: 'category',
-        allowNull: false,
       },
       productName: {
         type: DataTypes.STRING,
@@ -37,13 +36,13 @@ module.exports = (sequelize, DataTypes) => {
         field: 'amount',
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         field: 'description',
       },
-      // image: {
-      //   type: DataTypes.BLOB,
-      //   field: 'image',
-      // },
+      imageURL: {
+        type: DataTypes.TEXT,
+        field: 'imageURL',
+      },
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,
     },
