@@ -2,6 +2,8 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
+// import {storage} from '../../../firebase';
+import { storage } from "../../firebase";
 
 class SubmitProduct extends React.Component {
   constructor(props) {
@@ -15,14 +17,57 @@ class SubmitProduct extends React.Component {
       price: "",
       amount: "",
       sellerID: "",
-      category: "",
+      category: "Textbook",
+      image: null,
+      imageURL: "",
     };
 
+    this.handleChange = this.handleChange.bind(this);
+    this.handleImgChange = this.handleImgChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  handleImgChange = (event) => {
+    // this.setState({
+    //   img: URL.createObjectURL(event.target.files[0])
+    // })
+    if (event.target.files[0]) {
+      const image = event.target.files[0];
+      console.log(image);
+      this.setState({
+        image: image
+      });
+      const uploadTask = storage.ref(`listingImages/${image.name}`).put(image);
+      uploadTask.on('state_changed',
+      (snapshot) => {
+        // progress function
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        this.setState({progress});
+      },
+      (error) => {
+        // error function
+        console.log(error);
+      },
+      () => {
+        // complete function
+        storage.ref('listingImages').child(`${image.name}`).getDownloadURL().then(url => {
+          console.log(url);
+          this.setState({
+            imageURL: url
+          });
+          console.log(this.state.imageURL);
+          console.log('url is saved');
+        })
+      });
+    }
   }
 
   handleSubmit(event) {
     event.preventDefault();
+    
     const productData = {
       productName: this.state.productName,
       description: this.state.description,
@@ -30,9 +75,10 @@ class SubmitProduct extends React.Component {
       amount: this.state.amount,
       sellerID: this.state.sellerID,
       category: this.state.category,
+      imageURL: this.state.imageURL,
     };
 
-    console.log(productData);
+    console.log(productData)
 
     fetch("/api/products", {
       method: "POST",
@@ -59,6 +105,7 @@ class SubmitProduct extends React.Component {
           error: true
         });
         console.log(err);
+        // console.log(formData.get("productName"));
       });
   }
 
@@ -80,23 +127,21 @@ class SubmitProduct extends React.Component {
           Please enter following information for submitting product to sell
         </h3>
         {errorMessage}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <TextField
-            id="outlined-full-width"
             label="Product Name"
+            name="productName"
             style={{ margin: 8 }}
             fullWidth
             margin="normal"
             type="text"
             required
-            onChange={e => {
-              this.setState({ productName: e.target.value });
-            }}
+            onChange={this.handleChange}
             variant="outlined"
           />
           <TextField
-            id="outlined-full-width"
             label="Product Description"
+            name="description"
             style={{ margin: 8 }}
             fullWidth
             margin="normal"
@@ -104,63 +149,59 @@ class SubmitProduct extends React.Component {
             required
             rows="5"
             multiline
-            onChange={e => {
-              this.setState({ description: e.target.value });
-            }}
+            onChange={this.handleChange}
             variant="outlined"
           />
           <TextField
-            id="outlined-full-width"
             label="Price"
+            name="price"
             style={{ margin: 8 }}
             fullWidth
             margin="normal"
             type="number"
+            inputProps={{ min: "1" }}
             required
-            onChange={e => {
-              this.setState({ price: e.target.value });
-            }}
+            onChange={this.handleChange}
             variant="outlined"
           />
           <TextField
-            id="outlined-full-width"
             label="Amount"
+            name="amount"
             style={{ margin: 8 }}
             fullWidth
             margin="normal"
             type="number"
+            inputProps={{ min: "1" }}
             required
-            onChange={e => {
-              this.setState({ amount: e.target.value });
-            }}
+            onChange={this.handleChange}
             variant="outlined"
           />
+          <label>
+            Choose a Category
+            <select name="category" value={this.state.category} onChange={this.handleChange}>
+              <option disabled>Please choose one of the following</option>
+              <option value="Textbook">Textbook</option>
+              <option value="Class Notes">Class Notes</option>
+              <option value="Electronic">Electronic</option>
+              <option value="Others">Others</option>
+            </select>
+          </label>
           <TextField
-            id="outlined-full-width"
             label="sellerID"
+            name="sellerID"
             style={{ margin: 8 }}
             fullWidth
             margin="normal"
             type="number"
             required
-            onChange={e => {
-              this.setState({ sellerID: e.target.value });
-            }}
+            onChange={this.handleChange}
             variant="outlined"
           />
-          <TextField
-            id="outlined-full-width"
-            label="category"
-            style={{ margin: 8 }}
-            fullWidth
-            margin="normal"
-            type="text"
-            required
-            onChange={e => {
-              this.setState({ category: e.target.value });
-            }}
-            variant="outlined"
-          />
+          <div className="form-group">
+            {/* <label htmlFor="exampleFormControlFile1">Image Upload</label> */}
+            <input type="file" className="form-control-file" accept="image/*" onChange={this.handleImgChange} required />
+            <img className="imgUpload" src={this.state.imageURL} />
+          </div>
           <Button
             type="submit"
             fullWidth
