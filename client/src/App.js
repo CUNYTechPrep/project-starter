@@ -4,8 +4,12 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import PostsListPage from './pages/PostsListPage';
-import PostFormPage from './pages/PostFormPage';
+
+import fontawesome from '@fortawesome/fontawesome-free';
+
+
+// import PostsListPage from './pages/PostsListPage';
+// import PostFormPage from './pages/PostFormPage';
 // import ShowPostPage from './pages/ShowPostPage';
 
 
@@ -18,7 +22,6 @@ import DashboardPage from './pages/DashboardPage';
 
 
 import './css/App.css';
-
 
 
 

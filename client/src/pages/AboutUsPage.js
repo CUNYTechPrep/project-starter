@@ -1,10 +1,10 @@
 import React from 'react';
-import Navbar from '../components/navbar-component';
+import Sidebar from '../components/sidebar-component';
 
 function AboutUsPage(props) {
   return (
     <div>
-      <Navbar/>
+      <Sidebar />
       <div>A little info about us.</div>
     </div>
   );
