@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import CandidatesPage from './pages/CandidatesPage';
+import AboutUsPage from './pages/AboutUsPage';
 
 import './App.css';
 
@@ -51,7 +52,10 @@ class App extends React.Component {
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
-                <Route path="/" component={HomePage} />
+                <Route path="/" exact={true} component={HomePage} />
+
+                <Route path="/about-us" component={AboutUsPage} />
+
                 <Route path="/candidates" component={CandidatesPage} />
               </Switch>
             </div>
