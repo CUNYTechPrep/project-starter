@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
 });
 
 
-// get all trips from user
+// // get all trips from user
 // router.get('/userId/:id', (req, res) => {
 //     const { id } = req.params;
 //     Trip.findAll({where: {UserId: id}})
