@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 len: [3, 50],
                 notEmpty: true,
-                //allowNull: false,
+
             }
         },
         password: {
@@ -23,8 +23,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 len: [8, 50],
                 notEmpty: true,
-                //allowNull: false,
-                //isIn: [['@', '!','#','$','%','&','^','<','>','/','?','+']],
+                // Ideally would have a 1 special character requirement but reg-ex's wilin
                 is: {
                     args: "(?=.*[a-z])",
                     msg: "One lowercase character please."
@@ -33,13 +32,6 @@ module.exports = (sequelize, DataTypes) => {
                     args: "(?=.*[A-Z])",
                     msg: "One Uppercase character please."
                 },
-            //    is: { 
-            //        args: "(?=.*\W)",
-            //        msg: "One $peci@l character please."
-            //    },
-                //isLowercase: true,        
-                //isUppercase: true,
-            }
         },
         passwordHash: {
             type: DataTypes.STRING
@@ -51,7 +43,6 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 len: [3, 50],
                 notEmpty: true,
-                //allowNull: false,
                 isEmail: true,
                 
             }
@@ -63,7 +54,6 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 //len: 10,
                 notEmpty: true,
-                //allowNull: false,
             }
         },
         auth_token: {
@@ -73,7 +63,6 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 //len: 50,
                 notEmpty: true,
-                //allowNull: false,
             }
         },
         
