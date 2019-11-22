@@ -183,11 +183,11 @@ class SubmitProduct extends React.Component {
               <option value="Textbook">Textbook</option>
               <option value="Class Notes">Class Notes</option>
               <option value="Electronic">Electronic</option>
-              <option value="Electronic">Books</option>
-              <option value="Others">Notebooks</option>
-              <option value="Electronic">Arts & Crafts</option>
-              <option value="Electronic">Bags</option>
-              <option value="Electronic">Others</option>
+              <option value="Books">Books</option>
+              <option value="Notebooks">Notebooks</option>
+              <option value="Arts and Crafts">Arts and Crafts</option>
+              <option value="Bags">Bags</option>
+              <option value="Others">Others</option>
             </select>
           </label>
           <TextField
