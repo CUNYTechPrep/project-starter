@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const { User } = db;
+const { Job } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -15,24 +15,18 @@ const { User } = db;
 // explore other patterns to reduce code duplication.
 // TODO: Can you spot where we have some duplication below?
 
-// command: curl localhost:8080/api/users/
-//return all users
+
 router.get('/', (req,res) => {
-  User.findAll({})
+  
+  Job.findAll({})
     .then(posts => res.json(posts));
 });
 
-//post user info to User table
-//command: curl localhost:8080/api/users/
 
 router.post('/', (req, res) => {
   let { content } = req.body;
-  //console.log(req.body);
-
-  if(req.body.zipcode.length != 5){
-    res.status(400);
-  }
-  User.create({ content })
+  
+  Job.create({ content })
     .then(post => {
       res.status(201).json(post);
     })
@@ -44,7 +38,7 @@ router.post('/', (req, res) => {
 
 // router.get('/:id', (req, res) => {
 //   const { id } = req.params;
-//   User.findByPk(id)
+//   Post.findByPk(id)
 //     .then(post => {
 //       if(!post) {
 //         return res.sendStatus(404);
