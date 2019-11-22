@@ -27,7 +27,7 @@ function TopBar (props) {
                         <ul className="navbar-nav">
                             <li className="nav-item icon-parent"><a href="#" className="nav-link icon-bullet"><i className="fas fa-comments text-muted fa-lg"/></a></li>
                             <li className="nav-item icon-parent"><a href="#" className="nav-link icon-bullet"><i className="fas fa-bell text-muted fa-lg"/></a></li>
-                            <li className="nav-item ml-md-auto"><a href="#" className="nav-link" data-toggle="modal" data-target="#sign-out"><i className="fas fa-sign-out-alt text-danger fa-lg"/></a></li>
+                            <li className="nav-item ml-md-auto"><a href="#" className="nav-link" data-toggle="modal" data-target="#sign-out"><button >Sign Out</button></a></li>
                         </ul>
                     </div>
                 </div>

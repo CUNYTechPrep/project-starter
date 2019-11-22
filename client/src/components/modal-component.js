@@ -1,19 +1,8 @@
 import React from 'react';
-import Tsundere_Meme from '../images/Tsundere-Meme.png';
-
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
-
-
-import ModalDialog from 'react-bootstrap/ModalDialog';
-import ModalHeader from 'react-bootstrap/ModalHeader';
-import ModalTitle from 'react-bootstrap/ModalTitle';
-import ModalBody from 'react-bootstrap/ModalBody';
-import ModalFooter from 'react-bootstrap/ModalFooter';
-import { func } from 'prop-types';
-
+import Tsundere_Meme from '../images/Tsundere-Meme.png';
 
 
 function LogOutModal(props) {
@@ -27,16 +16,16 @@ function LogOutModal(props) {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                    Modal heading
+                    Do You Want to Sign Out
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>Centered Modal</h4>
+                    <h4>Are you sure? </h4>
                     <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
+                    Fine Todd-chan you can leave it's ... it's not like ... 
+                    I ... I need you or anything! "Mr. Everything just Works" ... BAKA! 
                     </p>
+                    <img className=" img-fluid rounded mt-3" src={Tsundere_Meme} ></img>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={props.onHide}>Close</Button>
@@ -49,14 +38,12 @@ function LogOutModal(props) {
 
   function HandleSignOutModal() {
         const [modalshow, setModalShow] = React.useState(false);
-        
-        
 
         return (
             <div>
                 <ButtonToolbar>
                     <Button variant="primary" onClick={() => setModalShow(true)}>
-                    Launch vertically centered modal
+                    Sign Out
                     </Button>
             
                     <LogOutModal
