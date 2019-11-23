@@ -12,17 +12,23 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         description: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
         },
         photo: {
             type: DataTypes.STRING,
             validate: {
                 notEmpty: true,
-            }
+            },
         }, 
+        location: {
+            type: DataTypes.DATE,
+            validate: {
+                notEmpty: true,
+            },
+        }
     }, {
         sequelize,
-        modelName: 'media'
+        modelName: 'media',
     });
 
      Media.associate = (models) => {
