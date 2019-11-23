@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { Users } = require('../models');
 const passport = require('../middlewares/authentication');
 
 
 router.post('/signup', (req, res) => {
   console.log("POST body: ", req.body);
-  User.create({
+  Users.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
@@ -23,7 +23,7 @@ router.post('/signup', (req, res) => {
 
 router.post('/signup?', (req, res) => {
   console.log("POST body: ", req.body);
-  User.create({
+  Users.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
