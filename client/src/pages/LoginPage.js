@@ -13,7 +13,10 @@ class LoginPage extends Component {
             redirectToReferrer: false,
             failed: false,
             email: "", 
-            password: "" };
+            password: "",
+            success: false,
+            error: false,
+        };
     }
 
     fieldChanged = (name) => {
@@ -28,14 +31,22 @@ class LoginPage extends Component {
         let { email, password } = this.state;
         auth.authenticate(email, password)
             .then((user) => {
-                this.setState({redirectToReferrer: true});
+                this.setState({
+                    redirectToReferrer: true,
+                    success: true,
+                });
             })
             .catch((err) => {
                 this.setState({failed: true});
             })
+            
     }
     
     render() {
+
+        if (this.state.success === true) return <Redirect to="/dashboard" />;
+
+
         const { from } = this.props.location.state || {from: {pathname: '/'} };
         const { redirectToReferrer, failed } = this.state;
 
@@ -47,7 +58,8 @@ class LoginPage extends Component {
         if (failed) {
             err = <div className="alert alert-danger" role="alert">Login Failed</div>;
         }
-      return (
+
+        return (
             <div>
                 <div className="d-flex justify-content-center align-items-center login-container">
                     <form onSubmit={this.login} className="login-form text-center">

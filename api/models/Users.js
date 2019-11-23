@@ -1,59 +1,69 @@
 'use strict';
 const { Model } = require('sequelize');
+const bcrypt = require('bcryptjs');
 
 
 module.exports = (sequelize, DataTypes) => {
     class Users extends Model { }
 
     Users.init({
-        //timestamps: false,
         username: {
             type: DataTypes.STRING,
             unique: true,
+            allowNull: false,
             validate: {
                 len: [3, 50],
                 notEmpty: true,
-                allowNull: false,
+                //allowNull: false,
             }
         },
         password: {
-            type: DataTypes.STRING,
+            type: DataTypes.VIRTUAL,
+            allowNull: false,
             validate: {
                 len: [8, 50],
                 notEmpty: true,
-                allowNull: false,
-                //isIn: [['@', '!','#','$','%','&','^','<','>','/','?','+']],
-                //isLowercase: true,        
-                //isUppercase: true,
+
+                // Ideally would have a 1 special character requirement but reg-ex's wilin
+                is: {
+                    args: "(?=.*[a-z])",
+                    msg: "One lowercase character please."
+                },
+                is: {
+                    args: "(?=.*[A-Z])",
+                    msg: "One Uppercase character please."
+                },
             }
+        },
+        passwordHash: {
+            type: DataTypes.STRING
         },
         email: {
             type: DataTypes.STRING,
             unique: true,
+            allowNull: false,
             validate: {
-                //len: [3, 50],
+                len: [3, 50],
                 notEmpty: true,
-                allowNull: false,
-                isEmail: true,
                 
+                isEmail: true,
             }
         },
         phonenumber: {
-            type: DataTypes.BIGINT,
+            type: DataTypes.INTEGER,
             unique: true,
+            allowNull: false,
             validate: {
                 //len: 10,
                 notEmpty: true,
-                allowNull: false,
             }
         },
-        authtoken: {
+        auth_token: {
             type: DataTypes.STRING,
             unique: true,
-            validate: {
-                
+            allowNull: false,
+            validate: { 
                 notEmpty: true,
-                allowNull: false,
             }
         },
         
