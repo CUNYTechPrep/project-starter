@@ -13,7 +13,8 @@ class SignUpPage extends Component {
             password: '', 
             password2: '',
             success: false,
-            error: false };
+            error: false 
+        };
     }
 
     onChange = e => {
