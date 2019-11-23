@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SARA</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="styleBrowser.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <a class="navbar-brand" href="#">SARA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+				<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Course
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="https://www.zybooks.com" target="_blank">Zybook</a>
+            <a class="dropdown-item" href="https://tophat.com" target="_blank">TopHat</a>
+            <a class="dropdown-item" href="https://tinyurl.com/CSCI355-Fall2019" target="_blank">Course Google Drive</a>
+						<a class="dropdown-item" href="https://www.w3schools.com" target="_blank">W3Schools</a>
+						<div class="dropdown-divider"></div>
+          	<a class="dropdown-item" href="https://ssologin.cuny.edu/cuny.html?resource_url=https%3A%2F%2Fbbhosted.cuny.edu%252Fwebapps%252Flogin%252Fnoportal" target="_blank">CUNY Blackboard</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Browser
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="navigator.html">Navigator</a>
+            <a class="dropdown-item" href="window.html">Window</a>
+						<a class="dropdown-item" href="screen.html">Screen</a>
+						<a class="dropdown-item" href="location.html">Location</a>
+						<a class="dropdown-item" href="geolocation.html">Geolocation</a>
+          </div>
+        </li>
+				<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            About
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="../about/developer.html">Developer</a>
+            <a class="dropdown-item" href="../about/contact.html">Contact</a>
+          </div>
+        </li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Search
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="../search/searchFile.html">From File</a>
+						<a class="dropdown-item" href="../search/googleAPI.html">Google API</a>
+						<a class="dropdown-item" href="../search/searchEngine.html">My Search Engine</a>
+					</div>
+				</li>
+			</ul>
+    </div>
+  </nav>
+
+  <div class="title">
+    <h2> Browser Window Information</h2>
+  </div>
+
+  <div class="card border-dark" style="max-width: 80%;">
+    <div class="card-body">
+      <h4> Inner Width </h4>
+      <p id="width"></p>
+
+      <h4> Inner Height </h4>
+      <p id="height"></p>
+
+      <script>
+        var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        var x = document.getElementById("width");
+        var y = document.getElementById("height");
+        x.innerHTML = w + "px";
+        y.innerHTML = h + "px";
+      </script>
+    </div>
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<body>
+</html>
