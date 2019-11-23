@@ -75,7 +75,7 @@ module.exports = (sequelize, DataTypes) => {
         if(user.password) {
           user.passwordHash = bcrypt.hashSync(user.password, 10);
         }
-      });
+    });
     
     
 

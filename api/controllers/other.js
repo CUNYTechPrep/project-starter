@@ -10,7 +10,7 @@ const router = express.Router();
 // explore other patterns to reduce code duplication.
 
 router.get('/about-us', (req, res) => {
-
+    res.send("Hello ");
 });
 
 module.exports = router;

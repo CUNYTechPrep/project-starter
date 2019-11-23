@@ -15,3 +15,5 @@ router.use('/other', otherController);
 router.use('/posts', postsController);
 router.use('/application-configuration', appConfigController);
 
+
+module.exports = router;
