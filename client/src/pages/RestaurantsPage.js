@@ -2,7 +2,7 @@ import React from 'react';
 
 function RestaurantsPage(props) {
   return (
-    <div>List of Restaurants</div>
+    <div>Lists of Restaurants</div>
   );
 }
 
