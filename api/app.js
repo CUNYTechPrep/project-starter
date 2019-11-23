@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const path = require('path');
 const db = require('./models');
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 
 // this lets us parse 'application/json' content in http requests

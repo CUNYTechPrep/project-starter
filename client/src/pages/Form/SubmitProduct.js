@@ -80,7 +80,7 @@ class SubmitProduct extends React.Component {
 
     console.log(productData)
 
-    fetch("/api/productSubmission", {
+    fetch("/api/products", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -89,9 +89,10 @@ class SubmitProduct extends React.Component {
       body: JSON.stringify(productData)
     })
       .then(res => {
+        console.log(res);
         if (res.ok) {
+        
           return res.json();
-          console.log(res);
         }
         throw new Error("Product Validation");
       })
@@ -180,14 +181,14 @@ class SubmitProduct extends React.Component {
             Choose a Category
             <select name="category" value={this.state.category} onChange={this.handleChange}>
               <option disabled>Please choose one of the following</option>
-              <option value="Textbook">Textbook</option>
-              <option value="Class Notes">Class Notes</option>
-              <option value="Electronic">Electronic</option>
-              <option value="Books">Books</option>
-              <option value="Notebooks">Notebooks</option>
-              <option value="Arts and Crafts">Arts and Crafts</option>
-              <option value="Bags">Bags</option>
-              <option value="Others">Others</option>
+              <option value="textbooks">Textbooks</option>
+              <option value="class-notes">Class Notes</option>
+              <option value="electronics">Electronics</option>
+              <option value="books">Books</option>
+              <option value="notebooks">Notebooks</option>
+              <option value="arts-and-crafts">Arts and Crafts</option>
+              <option value="bags">Bags</option>
+              <option value="other">Others</option>
             </select>
           </label>
           <TextField
