@@ -13,23 +13,34 @@ class CandidatesPage extends React.Component {
     notFound: false,
   }
 
+  // componentDidMount() {
+  //   //const { id } = this.props.match.params;
+  //   fetch("/api/users/")
+  //     .then(res => res.json())
+  //     .then(post => {
+  //       this.setState({
+  //         post: <Candidate {...post} />,
+  //         loading: false,
+  //       });
+  //     })
+  //     .catch(err => {
+  //       this.setState({
+  //         notFound: true,
+  //       });
+  //     });
+  // }
+
   componentDidMount() {
-    //const { id } = this.props.match.params;
-    fetch("/api/users/")
+    fetch("/api/users")
       .then(res => res.json())
-      .then(post => {
+      .then(posts => {
         this.setState({
-          post: <Candidate {...post} />,
           loading: false,
+          posts: posts.map((p,ii) => <Candidate {...p} key={ii} />),
         });
       })
-      .catch(err => {
-        this.setState({
-          notFound: true,
-        });
-      });
+      .catch(err => console.log("API ERROR: ", err));
   }
-
 
   render() {
     if(this.state.notFound) return <Redirect to="/" />;
