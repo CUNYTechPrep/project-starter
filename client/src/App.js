@@ -38,6 +38,11 @@ function Navigation(props) {
             About Us
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/candidates">
+            Candidates 
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
