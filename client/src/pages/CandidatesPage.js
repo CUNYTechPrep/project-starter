@@ -36,6 +36,7 @@ class CandidatesPage extends React.Component {
       .then(posts => {
         this.setState({
           loading: false,
+          //unsure about the line below
           posts: posts.map((p,ii) => <Candidate {...p} key={ii} />),
         });
       })
@@ -45,6 +46,7 @@ class CandidatesPage extends React.Component {
   render() {
     if(this.state.notFound) return <Redirect to="/" />;
     if(this.state.loading) return <Loading />;
+    //console.log(this.state.post);
     return this.state.post;
     // return (
     //   <div>
