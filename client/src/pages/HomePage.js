@@ -11,6 +11,8 @@ class HomePage extends React.Component {
       signedIn: false,
       displaySeeker: false,
       displayEmployer: false,
+      show: false,
+      setShow : false,
     };
   }
 
@@ -43,15 +45,66 @@ class HomePage extends React.Component {
   seekerForm = (event) => {
     return (
       <div>
-        <Button variant="primary" onClick={handleShow}>
-          Seeker
-        </Button>
 
-        <Modal show={show} onHide={handleClose}>
+        <Modal show="true" onHide={(event) => this.setState({displaySeeker: false})}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Let's Get Started!</Modal.Title>
           </Modal.Header>
+          <Modal.Body>
 
+            First Name<br />
+            <input type="text" placeholder="John" required />
+
+            Last Name<br />
+            <input type="text" placeholder="Doe" required />
+
+            Email Address<br />
+            <input type="text" placeholder="jdoe@example.com" required />
+
+            City<br />
+            <input type="text" placeholder="Buffalo" />
+
+            State<br />
+            <input type="text" placeholder="New York" required />
+
+            Zip Code<br />
+            <input type="text" placeholder="10450" required />
+
+            Experience (select as many as apply)<br />
+            <input type="checkbox" name="looking-for" value="GD" />
+            Graphic Designer<br />
+            <input type="checkbox" name="looking-for" value="PA" />
+            Painter<br />
+            <input type="checkbox" name="looking-for" value="EL" />
+            Electrician<br />
+            <input type="checkbox" name="looking-for" value="CA" />
+            Carpenter<br />
+            <input type="checkbox" name="looking-for" value="FS" />
+            Food Servicer<br />
+            <input type="checkbox" name="looking-for" value="OT" />
+            Other<br />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={(event) => this.setState({displaySeeker: false})}>
+              Close
+           </Button>
+            <Button variant="primary" onClick={(event) => this.setState({displaySeeker: false})}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+  }
+
+  employerForm = () => {
+  return (
+    <div>
+      <Modal show="true" onHide={(event) => this.setState({displayEmployer: false})}>
+        <Modal.Header closeButton>
+          <Modal.Title>Welcome Aboard</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           First Name<br />
           <input type="text" placeholder="John" required />
 
@@ -60,6 +113,9 @@ class HomePage extends React.Component {
 
           Email Address<br />
           <input type="text" placeholder="jdoe@example.com" required />
+
+          Business Name<br />
+          <input type="text" placeholder="Reentry Org" required />
 
           City<br />
           <input type="text" placeholder="Buffalo" />
@@ -70,7 +126,7 @@ class HomePage extends React.Component {
           Zip Code<br />
           <input type="text" placeholder="10450" required />
 
-          Experience (select as many as apply)<br />
+          Looking For (select as many as apply)<br />
           <input type="checkbox" name="looking-for" value="GD" />
           Graphic Designer<br />
           <input type="checkbox" name="looking-for" value="PA" />
@@ -83,91 +139,62 @@ class HomePage extends React.Component {
           Food Servicer<br />
           <input type="checkbox" name="looking-for" value="OT" />
           Other<br />
+        </Modal.Body>
         <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={handleClose}>
-          Save Changes
-        </Button>
+          <Button variant="secondary" onClick={(event) => this.setState({displayEmployer: false})}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={(event) => this.setState({displayEmployer: false})}>
+            Save Changes
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>
-    );
-  }
-
-  employerForm = () => {
-    return (
-      <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#employerForm">
-          Launch demo modal
-        </button>
-        <div class="modal fade" id="employerForm" tabindex="-1" role="dialog" aria-labelledby="employerForm" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Business</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                First Name<br />
-                <input type="text" placeholder="John" required />
-
-                Last Name<br />
-                <input type="text" placeholder="Doe" required />
-
-                Email Address<br />
-                <input type="text" placeholder="jdoe@example.com" required />
-
-                City<br />
-                <input type="text" placeholder="Buffalo" />
-
-                State<br />
-                <input type="text" placeholder="New York" required />
-
-                Zip Code<br />
-                <input type="text" placeholder="10450" required />
-
-                Experience (select as many as apply)<br />
-                <input type="checkbox" name="looking-for" value="GD" />
-                Graphic Designer<br />
-                <input type="checkbox" name="looking-for" value="PA" />
-                Painter<br />
-                <input type="checkbox" name="looking-for" value="EL" />
-                Electrician<br />
-                <input type="checkbox" name="looking-for" value="CA" />
-                Carpenter<br />
-                <input type="checkbox" name="looking-for" value="FS" />
-                Food Servicer<br />
-                <input type="checkbox" name="looking-for" value="OT" />
-                Other<br />
-                </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Send</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     );
   };
 
   render() {
     const {displaySeeker} = this.state;
     const {displayEmployer} = this.state;
+    const {carousel} = this.state;
+
     return (
       <div>
         <div>The First Step is Reentry</div>
-        {this.carousel}
-        <button className="" onClick={(event) => this.setState({displayButton: true})}>Seeker</button>
-        {displayButton && this.seekerForm()}
-        <button className="" onClick={() => this.employerForm()}>Employers</button>
+        {carousel}
+        <button className="" onClick={(event) => this.setState({displaySeeker: true})}>Seeker</button>
+        {displaySeeker && this.seekerForm()}
+        <button className="" onClick={(event) => this.setState({displayEmployer: true})}>Employers</button>
+        {displayEmployer && this.employerForm()}
       </div>
     );
   }
 }
 
 export default HomePage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
