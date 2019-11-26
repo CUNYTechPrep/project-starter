@@ -19,7 +19,10 @@ const { User } = db;
 //return all users
 router.get('/', (req,res) => {
   User.findAll({})
-    .then(posts => res.json(posts));
+    .then(posts => {console.log(posts);
+      res.json(posts);
+    })
+    
 });
 
 //post user info to User table
@@ -32,7 +35,7 @@ router.post('/', (req, res) => {
   if(req.body.zipcode.length != 5){
     res.status(400);
   }
-  User.create({ content })
+  User.create({ ...req.body })
     .then(post => {
       res.status(201).json(post);
     })

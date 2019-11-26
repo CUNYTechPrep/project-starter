@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom';
 class CandidatesPage extends React.Component {
   state = {
     loading: false,
-    post: null,
+    posts: null,
     notFound: false,
   }
 
@@ -34,11 +34,14 @@ class CandidatesPage extends React.Component {
     fetch("/api/users")
       .then(res => res.json())
       .then(posts => {
+        //debugger
         this.setState({
           loading: false,
           //unsure about the line below
           posts: posts.map((p,ii) => <Candidate {...p} key={ii} />),
-        });
+        }, (nextState => {
+          console.log(this.state)
+        }));
       })
       .catch(err => console.log("API ERROR: ", err));
   }
@@ -46,8 +49,9 @@ class CandidatesPage extends React.Component {
   render() {
     if(this.state.notFound) return <Redirect to="/" />;
     if(this.state.loading) return <Loading />;
-    //console.log(this.state.post);
-    return this.state.post;
+    console.log(this.state.post);
+    return this.state.posts;
+    
     // return (
     //   <div>
     //     <h1>Our Candidates</h1>
