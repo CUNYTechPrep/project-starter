@@ -9,7 +9,7 @@ const { Post } = db;
 //    POST   /api/posts
 //    GET    /api/posts/:id
 //    PUT    /api/posts/:id
-//    DELETE /api/posts/:id 
+//    DELETE /api/posts/:id
 
 // There are other styles for creating these route handlers, we typically
 // explore other patterns to reduce code duplication.
@@ -24,7 +24,7 @@ router.get('/', (req,res) => {
 
 router.post('/', (req, res) => {
   let { content } = req.body;
-  
+
   Post.create({ content })
     .then(post => {
       res.status(201).json(post);
