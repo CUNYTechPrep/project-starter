@@ -15,26 +15,22 @@ const { Job } = db;
 // explore other patterns to reduce code duplication.
 // TODO: Can you spot where we have some duplication below?
 
-
 router.get('/', (req,res) => {
   
   Job.findAll({})
     .then(posts => res.json(posts));
 });
 
-
 router.post('/', (req, res) => {
-  let { content } = req.body;
-  
-  Job.create({ content })
-    .then(post => {
-      res.status(201).json(post);
+ 
+  Job.create({ ...req.body })
+    .then(jobs => {
+      res.status(201).json(jobs);
     })
     .catch(err => {
       res.status(400).json(err);
     });
 });
-
 
 // router.get('/:id', (req, res) => {
 //   const { id } = req.params;
@@ -81,6 +77,5 @@ router.post('/', (req, res) => {
 //       res.sendStatus(204);
 //     });
 // });
-
 
 module.exports = router;
