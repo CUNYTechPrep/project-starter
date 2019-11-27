@@ -7,7 +7,7 @@
 }
 
 .transbox {
-  margin-top: 35%;
+  margin-top: 210px;
   margin-bottom: 15px;
   padding: 10px 20px;
   background-color: #fff;
@@ -16,6 +16,7 @@
   filter: alpha(opacity=80);
   box-shadow: 10px #333;
   display: inline-block;
+  position: relative;
 }
 
 .transbox h1 {

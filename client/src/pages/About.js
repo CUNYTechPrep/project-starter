@@ -21,7 +21,7 @@ class About extends React.Component {
                   <h4><span>Here to serve the Food Allergy Community!</span></h4>
                 </div>
                 <br />
-                <a href="#" className="btn btn-primary">SignUp</a>
+                <a href="/sign-up" className="btn btn-success">SignUp</a>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 /* NAV CSS (may move to new file) */
-nav {
+/* nav {
   position:fixed;
   top: 0;
   background-color: #3D3D33;
@@ -8,12 +8,33 @@ nav {
   border-bottom: 1px solid #707070;
   z-index: 100;
 }
-
+*/
 nav .nav-logo {
-  width: 300px;
+  width: 125px;
+  border:1px solid #fff
 }
 
-nav ul {
+.bg-dark {
+  background-color: #fff !important;
+}
+
+
+.navbar .navbar-nav .nav > li > a:hover {
+    color: #F56E6E;
+}
+
+
+
+/* .navbar-default {
+    background-color: #fff;
+    border-color: #E7E7E7;
+} */
+/* Title */
+/* .navbar-default .navbar-brand {
+    color: #000;
+} */
+
+/* nav ul {
   padding: 0;
   list-style: none;
   position: absolute;
@@ -30,10 +51,10 @@ nav ul li {
   width: 100px;
   height: 30px;
   text-align:center;
-}
+} */
 
 /* to fix position */
-nav ul li span {
+/* nav ul li span {
   position: relative;
   top: 3px;
 }
@@ -49,4 +70,4 @@ nav ul li:hover {
   height:100%;
   top: 100px;
   overflow-y: auto;
-}
+} */
