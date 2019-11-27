@@ -6,8 +6,11 @@ import {
   Link,
   NavLink
 } from 'react-router-dom';
-import HomePage from './pages/HomePage';
 
+import HomePage from './pages/HomePage';
+import CandidatesPage from './pages/CandidatesPage';
+import AboutUsPage from './pages/AboutUsPage';
+import JobBoard from './pages/JobBoardPage';
 import './App.css';
 
 
@@ -36,6 +39,11 @@ function Navigation(props) {
             About Us
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/candidates">
+            Candidates 
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
@@ -50,7 +58,10 @@ class App extends React.Component {
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
-                <Route path="/" component={HomePage} />
+                <Route path="/about-us" component={AboutUsPage} />
+                <Route path="/candidates" component={CandidatesPage} />
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/jobs" component={JobBoard} />
               </Switch>
             </div>
           </div>
