@@ -15,10 +15,10 @@ function PhotoEdit(props){
       />
     </div>
     <div className='col-4'>
-      <Datetime inputProps={{ placeholder: 'Select a date'}} onChange={props.onChange}/>
+      <Datetime inputProps={{ placeholder: 'Select a date'}} onChange={props.onTimeChange}/>
     </div>
     <div className='col-4'>
-      <input type='text' placeholder='desc' className='form-control mr-3 rounded'/>
+      <input type='text' placeholder='desc' className='form-control mr-3 rounded' onChange={props.onDescChange} />
     </div>
     </div>
   )
@@ -59,6 +59,14 @@ class TripFormPage extends React.Component {
     media[parseInt(counter)].location=utcTime;
     this.setState({medias: media});
   }
+
+  photoCaptionChange = (event, counter) => {
+    let desc = event.target.value;
+    let media = this.state.medias;
+    media[parseInt(counter)].desc=desc;
+    this.setState({medias: media});
+  }
+
 
   savePost = (event) => {
     console.log('medias', this.state.medias)
@@ -109,7 +117,7 @@ class TripFormPage extends React.Component {
           console.log('Done! Here is the image info: ', result); 
           let url = result.info.secure_url;
           let counter = this.state.counter;
-          this.setState({pics: this.state.pics.concat(<PhotoEdit src={url} onChange={(e) => this.timeChanged(e, counter) }/>), 
+          this.setState({pics: this.state.pics.concat(<PhotoEdit src={url} onTimeChange={(e) => this.timeChanged(e, counter)} onDescChange={(e) => this.photoCaptionChange(e, counter)}/>), 
             picUrls: this.state.picUrls.concat(url),
             medias: this.state.medias.concat({url:url, desc:"", location:""}),
             counter: this.state.counter + 1
