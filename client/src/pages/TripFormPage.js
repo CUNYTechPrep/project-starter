@@ -1,7 +1,6 @@
 import React from 'react';
 import Datetime from 'react-datetime';
 import { Redirect } from 'react-router-dom';
-import { throws } from 'assert';
 
 const cloudinary = window.cloudinary;
 
@@ -10,7 +9,7 @@ function PhotoEdit(props){
     <div className='row'>
     <hr className='col-12'/>
     <div className='col-4'>
-      <img alt='posted photo' 
+      <img alt='posted' 
         className='img-thumbnail img-responsive' 
         src={props.src} 
       />
@@ -35,7 +34,8 @@ class TripFormPage extends React.Component {
     photoPath: '',
     pics: [],
     picUrls:[],
-    medias: new Map(),
+    medias: [],
+    counter: 0
   }
 
   descChanged = (event) => {
@@ -53,13 +53,15 @@ class TripFormPage extends React.Component {
       console.log(i)
     })
   }
-  timeChanged = (event, url) => {
-    let unixTime = event.unix();
-    this.setState({medias: this.state.medias.set(url, unixTime) })
-    console.log(this.state)
+  timeChanged = (event, counter) => {
+    let utcTime = event.utc().format();
+    let media = this.state.medias;
+    media[parseInt(counter)].location=utcTime;
+    this.setState({medias: media});
   }
 
   savePost = (event) => {
+    console.log('medias', this.state.medias)
     fetch('/api/trips/', {
       method: 'POST',
       credentials: 'include',
@@ -72,12 +74,6 @@ class TripFormPage extends React.Component {
         coverPhoto: this.state.picUrls[0],
         pics: this.state.picUrls,
         medias: this.state.medias
-        // pics: this.state.picUrls,
-        // we need to send the url and the timestamp
-        // jin's approach: {
-        //    url: time,
-        //    url: time,
-        // }
       }
     }),
     })
@@ -111,10 +107,12 @@ class TripFormPage extends React.Component {
       }, (error, result) => { 
         if (!error && result && result.event === 'success') { 
           console.log('Done! Here is the image info: ', result); 
-          let url = result.info.secure_url
-          this.setState({pics: this.state.pics.concat(<PhotoEdit src={url} onChange={(e) => this.timeChanged(e, url) }/>), 
+          let url = result.info.secure_url;
+          let counter = this.state.counter;
+          this.setState({pics: this.state.pics.concat(<PhotoEdit src={url} onChange={(e) => this.timeChanged(e, counter) }/>), 
             picUrls: this.state.picUrls.concat(url),
-            medias: this.state.medias.set(url, '')
+            medias: this.state.medias.concat({url:url, desc:"", location:""}),
+            counter: this.state.counter + 1
           })
         }
       }
@@ -129,7 +127,6 @@ class TripFormPage extends React.Component {
           'There was an error saving this post.'
         </div>
       )};
-    const url = 'http://res.cloudinary.com/ctptrippin/image/upload/v1574537167/niwovestykjf63dl6phq.png';
     return (
       <div className='col-10 col-md-8 col-lg-7'>
         { errorMessage }
@@ -152,9 +149,8 @@ class TripFormPage extends React.Component {
           <button className='btn btn-primary' onClick={this.savePost}>Post</button>
           <div className='form-list col-12' >
             {this.state.pics}
-            <PhotoEdit src={url}
-                onChange={(e) => this.timeChanged(e, url)}
-            />
+            {/* <PhotoEdit src="https://res.cloudinary.com/ctptrippin/image/upload/v1574558507/tbmleanfctsozvpvj1ze.png"  onChange={(e) => this.timeChanged(e) }/>
+            <PhotoEdit src="https://res.cloudinary.com/ctptrippin/image/upload/v1574558094/snh6i4erlpgwoayvdwdi.png" onChange={(e) => this.timeChanged(e) }/> */}
           </div>
         </div>
       </div>

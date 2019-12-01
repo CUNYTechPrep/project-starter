@@ -5,12 +5,6 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Media extends Model {}
     Media.init({
-        name: {
-            type: DataTypes.STRING,
-            validate: {
-                len: [3, 10],
-            }
-        },
         description: {
             type: DataTypes.STRING,
         },

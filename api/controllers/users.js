@@ -17,8 +17,8 @@ const { User } = db;
 //  y = foo.y;
 
 router.get('/', (req,res) => {
-    User.findAll()
-        .then(users => res.json(users));
+    User.findByPk(1)
+        .then(user => res.json(user));
 });
 
 
