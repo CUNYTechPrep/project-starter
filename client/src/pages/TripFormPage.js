@@ -1,8 +1,29 @@
 import React from 'react';
+import Datetime from 'react-datetime';
 import { Redirect } from 'react-router-dom';
-import ImageCard from '../components/ImageCard.js';
 
 const cloudinary = window.cloudinary;
+
+function PhotoEdit(props){
+  return(
+    <div className='row'>
+    <hr className='col-12'/>
+    <div className='col-4'>
+      <img alt='posted' 
+        className='img-thumbnail img-responsive' 
+        src={props.src} 
+      />
+    </div>
+    <div className='col-4'>
+      <Datetime inputProps={{ placeholder: 'Select a date'}} onChange={props.onTimeChange}/>
+    </div>
+    <div className='col-4'>
+      <input type='text' placeholder='desc' className='form-control mr-3 rounded' onChange={props.onDescChange} />
+    </div>
+    </div>
+  )
+}
+
 
 class TripFormPage extends React.Component {
   state = {
@@ -10,9 +31,11 @@ class TripFormPage extends React.Component {
     success: false,
     name: '',
     desc: '',
-    photoPath: "",
+    photoPath: '',
     pics: [],
     picUrls:[],
+    medias: [],
+    counter: 0
   }
 
   descChanged = (event) => {
@@ -25,9 +48,29 @@ class TripFormPage extends React.Component {
       name: event.target.value
     });
   }
+  picsAdded = (event) => {
+    this.state.pics.forEach(function(i){
+      console.log(i)
+    })
+  }
+  timeChanged = (event, counter) => {
+    let utcTime = event.utc().format();
+    let media = this.state.medias;
+    media[parseInt(counter)].timedate=utcTime;
+    this.setState({medias: media});
+  }
+
+  photoCaptionChange = (event, counter) => {
+    let desc = event.target.value;
+    let media = this.state.medias;
+    media[parseInt(counter)].desc=desc;
+    this.setState({medias: media});
+  }
+
 
   savePost = (event) => {
-    fetch("/api/trips/", {
+    console.log('medias', this.state.medias)
+    fetch('/api/trips/', {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -38,6 +81,7 @@ class TripFormPage extends React.Component {
         description: this.state.desc,
         coverPhoto: this.state.picUrls[0],
         pics: this.state.picUrls,
+        medias: this.state.medias
       }
     }),
     })
@@ -60,25 +104,6 @@ class TripFormPage extends React.Component {
       });
   }
 
-  picsAdded = (event) => {
-    this.state.pics.forEach(function(i){
-      console.log(i)
-    })
-  }
-
-  // componentDidMount() {
-  //   const id = 1;
-  //   fetch("/api/trips/" + id)
-  //     .then(res => res.json())
-  //     .then(posts => {
-  //       this.setState({
-  //         loading: false,
-  //         posts: posts.map((p,ii) => <ImageCard {...p} key={ii} />),
-  //       });
-  //     })
-  //     .catch(err => console.log("API ERROR: ", err));
-  // }
-
   render() {
     let myWidget = cloudinary.createUploadWidget({
       cloudName: 'ctptrippin', 
@@ -88,47 +113,52 @@ class TripFormPage extends React.Component {
       showSkipCropButton: false,
       croppingAspectRatio: 1.0,
       }, (error, result) => { 
-        if (!error && result && result.event === "success") { 
-          console.log('Done! Here is the image info: ', result.info); 
-          this.setState({pics: this.state.pics.concat(<ImageCard src={result.info.secure_url} />), 
-            picUrls: this.state.picUrls.concat(result.info.secure_url),
+        if (!error && result && result.event === 'success') { 
+          console.log('Done! Here is the image info: ', result); 
+          let url = result.info.secure_url;
+          let counter = this.state.counter;
+          this.setState({pics: this.state.pics.concat(<PhotoEdit src={url} onTimeChange={(e) => this.timeChanged(e, counter)} onDescChange={(e) => this.photoCaptionChange(e, counter)}/>), 
+            picUrls: this.state.picUrls.concat(url),
+            medias: this.state.medias.concat({url:url, desc:"", timedate:""}),
+            counter: this.state.counter + 1
           })
         }
       }
     )
     
-    if(this.state.success) return <Redirect to="/" />;
+    if(this.state.success) return <Redirect to='/' />;
 
     let errorMessage = null;
     if(this.state.error) {
       errorMessage = (
-        <div className="alert alert-danger">
-          "There was an error saving this post."
+        <div className='alert alert-danger'>
+          'There was an error saving this post.'
         </div>
       )};
-
     return (
-      <div className="col-10 col-md-8 col-lg-7">
+      <div className='col-10 col-md-8 col-lg-7'>
         { errorMessage }
-        <div className="input-group">
+        <div className='input-group'>
           <input 
-            type="text" 
-            placeholder="Description here" 
+            type='text' 
+            placeholder='Description here' 
             value={this.state.desc}
-            className="form-control mr-3 rounded"
+            className='form-control mr-3 rounded'
             onChange={this.descChanged}
           />
           <input 
-            type="text" 
-            placeholder="Name of the trip" 
+            type='text' 
+            placeholder='Name of the trip' 
             value={this.state.name}
-            className="form-control mr-3 rounded"
+            className='form-control mr-3 rounded'
             onChange={this.nameChanged}
           />
-          <button className="btn cloudinary-button" onClick={() => myWidget.open()}>Upload</button>
-          <button className="btn btn-primary" onClick={this.savePost}>Post</button>
-          <div className="form-list">
+          <button className='btn cloudinary-button' onClick={() => myWidget.open()}>Upload</button>
+          <button className='btn btn-primary' onClick={this.savePost}>Post</button>
+          <div className='form-list col-12' >
             {this.state.pics}
+            {/* <PhotoEdit src="https://res.cloudinary.com/ctptrippin/image/upload/v1574558507/tbmleanfctsozvpvj1ze.png"  onChange={(e) => this.timeChanged(e) }/>
+            <PhotoEdit src="https://res.cloudinary.com/ctptrippin/image/upload/v1574558094/snh6i4erlpgwoayvdwdi.png" onChange={(e) => this.timeChanged(e) }/> */}
           </div>
         </div>
       </div>

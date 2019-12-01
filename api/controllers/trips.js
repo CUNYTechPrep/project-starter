@@ -35,13 +35,13 @@ router.post('/', (req, res) => {
     userId: 1,
   })
   .then((trip) => {
-    content.pics.forEach((el) => {
-      Media.create({name:'1233', description:'', photo: el})
+    content.medias.forEach(obj => {
+      Media.create({description:obj.desc, photo: obj.url, timedate: obj.timedate})
       .then((media) =>{
         media.setTrip(trip);
       }); 
     })
-      res.json(trip)
+      res.json(trip);
   })
   .catch( e => res.json(e));
 });
