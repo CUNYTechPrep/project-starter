@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true,
             },
         }, 
-        location: {
+        timedate: {
             type: DataTypes.DATE,
             validate: {
                 notEmpty: true,

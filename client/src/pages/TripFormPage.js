@@ -56,7 +56,7 @@ class TripFormPage extends React.Component {
   timeChanged = (event, counter) => {
     let utcTime = event.utc().format();
     let media = this.state.medias;
-    media[parseInt(counter)].location=utcTime;
+    media[parseInt(counter)].timedate=utcTime;
     this.setState({medias: media});
   }
 
@@ -119,7 +119,7 @@ class TripFormPage extends React.Component {
           let counter = this.state.counter;
           this.setState({pics: this.state.pics.concat(<PhotoEdit src={url} onTimeChange={(e) => this.timeChanged(e, counter)} onDescChange={(e) => this.photoCaptionChange(e, counter)}/>), 
             picUrls: this.state.picUrls.concat(url),
-            medias: this.state.medias.concat({url:url, desc:"", location:""}),
+            medias: this.state.medias.concat({url:url, desc:"", timedate:""}),
             counter: this.state.counter + 1
           })
         }
