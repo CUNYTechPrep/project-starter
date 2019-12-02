@@ -1,6 +1,6 @@
 import React from 'react';
 import Datetime from 'react-datetime';
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';import Geosuggest from 'react-geosuggest';
 
 const cloudinary = window.cloudinary;
 
@@ -14,11 +14,11 @@ function PhotoEdit(props){
         src={props.src} 
       />
     </div>
-    <div className='col-4'>
-      <Datetime inputProps={{ placeholder: 'Select a date'}} onChange={props.onTimeChange}/>
-    </div>
-    <div className='col-4'>
-      <input type='text' placeholder='desc' className='form-control mr-3 rounded' onChange={props.onDescChange} />
+
+    <div class="col-8">
+      <input type='text' placeholder='Add a Description' className='form-control mr-3 rounded' onChange={props.onDescChange} />
+      <Datetime inputProps={{ placeholder: 'Select a Date'}} onChange={props.onTimeChange} />
+      <Geosuggest placeholder="Select Location"  onChange={props.onLocationChange} />
     </div>
     </div>
   )
@@ -67,6 +67,13 @@ class TripFormPage extends React.Component {
     this.setState({medias: media});
   }
 
+  locationChange = (event, counter) => {
+    let location = event.target.value;
+    let media = this.state.medias;
+    media[parseInt(counter)].location=location;
+    this.setState({medias: media});
+    console.log(this.state.medias)
+  }
 
   savePost = (event) => {
     console.log('medias', this.state.medias)
@@ -117,9 +124,14 @@ class TripFormPage extends React.Component {
           console.log('Done! Here is the image info: ', result); 
           let url = result.info.secure_url;
           let counter = this.state.counter;
-          this.setState({pics: this.state.pics.concat(<PhotoEdit src={url} onTimeChange={(e) => this.timeChanged(e, counter)} onDescChange={(e) => this.photoCaptionChange(e, counter)}/>), 
+          this.setState({
+            pics: this.state.pics.concat(<PhotoEdit src={url} 
+                                                    onTimeChange={(e) => this.timeChanged(e, counter)} 
+                                                    onDescChange={(e) => this.photoCaptionChange(e, counter)} 
+                                                    onLocationChange={(e) => this.locationChange(e, counter) }
+                                                  />), 
             picUrls: this.state.picUrls.concat(url),
-            medias: this.state.medias.concat({url:url, desc:"", timedate:""}),
+            medias: this.state.medias.concat({ url:url, desc:"", timedate:"", location:"" }),
             counter: this.state.counter + 1
           })
         }
@@ -136,7 +148,7 @@ class TripFormPage extends React.Component {
         </div>
       )};
     return (
-      <div className='col-10 col-md-8 col-lg-7'>
+      <div id='tripFormPage' className='col-10 col-md-8 col-lg-7'>
         { errorMessage }
         <div className='input-group'>
           <input 
