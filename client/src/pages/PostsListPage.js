@@ -1,5 +1,4 @@
 import React from 'react';
-import Post from '../components/Post';
 import Loading from '../components/Loading';
 import Product from '../components/Product';
 
@@ -9,7 +8,6 @@ class PostsListPage extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      posts: [],
       products: [],
       content: '',
       loading: true,
@@ -17,7 +15,7 @@ class PostsListPage extends React.Component {
     }
     this.handleChecked = this.handleChecked.bind(this);
   }
-
+ 
   componentDidMount() {
     console.log("component mount");
     fetch("/api/products")
@@ -38,7 +36,6 @@ class PostsListPage extends React.Component {
   }
   contentChanged = (event) => {
     
-    //console.log('PREESED ' + this.state.content);
     this.setState({
       content: event.target.value,
     }, () => {
@@ -62,13 +59,14 @@ class PostsListPage extends React.Component {
     
   }
   handleChecked = ev =>{
-  
-   // console.log('PREESED ' + ev.currentTarget.value);
     fetch("/api/products"+ev.currentTarget.value)
 
       .then(res => res.json())
 
       .then(prod => {
+        if(prod[0]){
+          console.log("amount is "+prod[0].amount);
+        }
         this.setState({
           loading: false,
           products: prod.map((p,ii) => <Product {...p} key={ii} />),

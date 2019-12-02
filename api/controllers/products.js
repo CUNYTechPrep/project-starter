@@ -23,15 +23,12 @@ router.get('/', (req,res) => {
     Product.findAll({})
     .then(posts =>{ res.json(posts);
       
-    //console.log("INSIDE GET REQ   "+posts);
     })
 });
 
 
 router.post('/', (req, res) => {
   let { content } = req.body;
- // console.log("INSIDE THE POST    " + req.body);
-  
   Product.create(req.body)
     .then(post => {
       res.status(201).json(post);
@@ -43,7 +40,7 @@ router.post('/', (req, res) => {
 
 
 router.get('/:productName',(req, res) => {
-  console.log(req.params.productName);
+  console.log("\n " + req.params.productName);
 
   Product.findAll({where: { productName:{ [op.iLike] :'%'+req.params.productName+'%'}} })
     .then(post => {
@@ -96,6 +93,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
+  console.log("\n id is "+ id);
   Product.findByPk(id)
     .then(post => {
       if(!post) {
@@ -195,6 +193,16 @@ router.get('/category/textbooks',(req, res) => {
     });
 });
 
+router.get('/u/:sellerID',(req, res) => {
+  Product.findAll({where: { sellerID: req.params.sellerID} })
+    .then(post => {
+      if(!post) {
+        return res.sendStatus(404);
+      }
+
+      res.json(post);
+    });
+});
 
 
 

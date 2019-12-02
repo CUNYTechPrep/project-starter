@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 
 
 
-function Product({ productName, desc, price, amount, imageURL, createdAt, sellerID, category }) {
+function Product({ productID, productName, desc, price, amount, imageURL, createdAt, sellerID, category }) {
     console.log("\n Product.js \n");
     //  let x = name;
     //  if(name != null && name.length > 30)
     //  x = name.substring(0,30) + "...";
-    
+  if(amount <= 0 )
+    return(<div></div>);  
 
   return (
     
@@ -19,7 +20,7 @@ function Product({ productName, desc, price, amount, imageURL, createdAt, seller
             <img src={imageURL} alt="IMAGE!" style={{maxWidth:'40%', height: 'auto'}} />
             <br></br>
             <br></br>
-            <Link to={"/products/"+sellerID} style={{color:'#555555'}}>{ productName }</Link>
+            <Link to={"/products/"+productID} style={{color:'#555555'}}>{ productName }</Link>
               
             
           </div>
