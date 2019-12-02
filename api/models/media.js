@@ -19,6 +19,18 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 notEmpty: true,
             },
+        },
+        lng: {
+            type: DataTypes.FLOAT,
+            validate: {
+                notEmpty: true,
+            },
+        },
+        lat: {
+            type: DataTypes.FLOAT,
+            validate: {
+                notEmpty: true,
+            },
         }
     }, {
         sequelize,

@@ -28,6 +28,7 @@ router.get('/:id', (req,res) => {
 // now user is hardcoded to be 1
 router.post('/', (req, res) => {
   let { content } = req.body;
+  console.log(content)
   Trip.create({
     name: content.name,
     description: content.description,
@@ -36,7 +37,7 @@ router.post('/', (req, res) => {
   })
   .then((trip) => {
     content.medias.forEach(obj => {
-      Media.create({description:obj.desc, photo: obj.url, timedate: obj.timedate})
+      Media.create({description:obj.desc, photo: obj.url, timedate: obj.timedate, lng: obj.location.lng, lat: obj.location.lat})
       .then((media) =>{
         media.setTrip(trip);
       }); 
