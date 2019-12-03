@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {
   Row, Col, Card, CardBody, CardTitle, CardText, CardImg
 } from 'reactstrap';
+const Google_token = Sys.getenv("GOOGLE_MAPS_API_KEY");
 
 
 class RestaurantsPage extends React.Component{
