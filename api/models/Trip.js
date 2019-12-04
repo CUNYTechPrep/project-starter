@@ -22,6 +22,18 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true,
             }
         },
+        coverlat: {
+            type: DataTypes.FLOAT,
+            validate: {
+                notEmpty: true,
+            },
+        },
+        coverlng: {
+            type: DataTypes.FLOAT,
+            validate: {
+                notEmpty: true,
+            },
+        },
     }, {
         sequelize,
         modelName: 'trip'

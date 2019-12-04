@@ -1,6 +1,7 @@
 import React from 'react';
 import Datetime from 'react-datetime';
-import { Redirect } from 'react-router-dom';import Geosuggest from 'react-geosuggest';
+import { Redirect } from 'react-router-dom';
+import Geosuggest from 'react-geosuggest';
 
 const cloudinary = window.cloudinary;
 
@@ -51,7 +52,6 @@ class TripFormPage extends React.Component {
   }
   picsAdded = (event) => {
     this.state.pics.forEach(function(i){
-      console.log(i)
     })
   }
   timeChanged = (event, counter) => {
@@ -72,14 +72,12 @@ class TripFormPage extends React.Component {
     let lng = s.location.lng;
     let lat = s.location.lat;
     let media = this.state.medias;
-    console.log("s", s)
     media[parseInt(counter)].location={lat: lat, lng: lng};
     this.setState({medias: media});
-    console.log(this.state.medias)
   }
 
   savePost = (event) => {
-    console.log('medias', this.state.medias)
+    console.log('state to be saved:', this.state)
     fetch('/api/trips/', {
       method: 'POST',
       credentials: 'include',
@@ -90,6 +88,8 @@ class TripFormPage extends React.Component {
         name: this.state.name,
         description: this.state.desc,
         coverPhoto: this.state.picUrls[0],
+        coverLng: this.state.medias[0].location.lng,
+        coverLat: this.state.medias[0].location.lat,
         pics: this.state.picUrls,
         medias: this.state.medias
       }
@@ -129,10 +129,10 @@ class TripFormPage extends React.Component {
           let counter = this.state.counter;
           this.setState({
             pics: this.state.pics.concat(<PhotoEdit src={url} 
-                                                    onTimeChange={(e) => this.timeChanged(e, counter)} 
-                                                    onDescChange={(e) => this.photoCaptionChange(e, counter)} 
-                                                    onLocationChange={(e) => this.locationChange(e, counter) }
-                                                  />), 
+                    onTimeChange={(e) => this.timeChanged(e, counter)} 
+                    onDescChange={(e) => this.photoCaptionChange(e, counter)} 
+                    onLocationChange={(e) => this.locationChange(e, counter) }
+                  />), 
             picUrls: this.state.picUrls.concat(url),
             medias: this.state.medias.concat({ url:url, desc:"", timedate:"", location:{} }),
             counter: this.state.counter + 1

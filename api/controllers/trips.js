@@ -33,6 +33,8 @@ router.post('/', (req, res) => {
     name: content.name,
     description: content.description,
     coverphoto: content.coverPhoto,
+    coverlng: content.coverLng,
+    coverlat: content.coverLat,
     userId: 1,
   })
   .then((trip) => {

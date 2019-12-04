@@ -10,6 +10,7 @@ import PostsListPage from './pages/PostsListPage';
 import TripFormPage from './pages/TripFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
+import MapPage from './pages/MapPage';
 
 import './App.css';
 
@@ -19,6 +20,11 @@ function Navigation(props) {
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
       <Link className="navbar-brand" to="/">Trippin</Link>
       <ul className="navbar-nav mr-auto">
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/map">
+            Map
+          </NavLink>
+        </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/posts/new">
             New Post
@@ -46,6 +52,7 @@ class App extends React.Component {
                 <Route path="/posts/new" component={TripFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
+                <Route path="/map" component={MapPage} />
                 <Route path="/" component={PostsListPage} />
               </Switch>
             </div>
