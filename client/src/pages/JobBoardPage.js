@@ -55,8 +55,8 @@ class JobBoard extends React.Component {
   }
 
   showJobs = () => {
-    fetch('/api/jobs').
-      then((response) => {
+    fetch('/api/jobs')
+      .then((response) => {
         if(response.ok) {
           return response.json();
         } else 

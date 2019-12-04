@@ -1,7 +1,4 @@
 import React from 'react';
-
-
-  
 import Candidate from '../components/Candidate';
 import Loading from '../components/Loading';
 import { Redirect } from 'react-router-dom';
