@@ -7,27 +7,22 @@ import { Link } from 'react-router-dom';
 function Transaction({ transactionID, sellerID, buyerID, productID, price, amount, createdAt }) {
 
     console.log("\n Transaction.js \n");
-    let sellerName = "aaaa";
+    let sellerName = "";
     let buyerName = "";
 
-    const request = async () => {
+   /* const request = async () => {
         const response = await  fetch("/api/users/"+sellerID)
         const json = await response.json();
         console.log("json is "+ json[0].username + "  selletId is "+ sellerID);
         
         sellerName = json[0].username;
         
-    console.log("sellerName IN REQUEST is "+ sellerName);
-    }
-    console.log("sellerName is "+ sellerName);
-    request();
+    request(); */
     
-    console.log("sellerName AFTER REEQUEST() is "+ sellerName);
    
 
   return (
         <div className="col-12" style={{textAlign:"left"}}>
-           
             <div>
                 <ul>
                     <li>
@@ -53,6 +48,8 @@ function Transaction({ transactionID, sellerID, buyerID, productID, price, amoun
                     </li>
                 </ul>
             </div>
+            
+            <hr color="#c7c34c" size="2" width="100%"></hr>
 
         </div>
       

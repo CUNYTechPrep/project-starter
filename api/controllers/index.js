@@ -15,6 +15,8 @@ const transactionController = require('./transactions.js');
 router.use('/posts', postsController);
 router.use('/application-configuration', appConfigController);
 router.use('/products', postProductController);
+router.use('/signup', signUpController);
+router.use('/signin', loginController);
 router.use('/users', userController);
 router.use('/transactions', transactionController);
 

@@ -8,6 +8,8 @@ import {
 } from 'react-router-dom';
 import PostsListPage from './pages/PostsListPage';
 import SubmitProduct from './pages/Form/SubmitProduct';
+import Signup from './pages/Form/Signup';
+import Login from './pages/Form/Login';
 import AccountPage from './pages/AccountPage';
 
 import './App.css';

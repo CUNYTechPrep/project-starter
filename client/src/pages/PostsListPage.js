@@ -101,7 +101,7 @@ class PostsListPage extends React.Component {
 
 
       <div  style={{display:'contents'}}>
-          <div className='filter-category justify-content-left col-3 col-md-3 col-lg-2' style={{background:'#c0c0c0', height:'100%', float:'left',textAlign:'left', paddingTop:'10px', paddingBottom:'10px'}}>
+          <div className='filter-category justify-content-left col-3 col-md-3 col-lg-2' style={{background:'#c0c0c0', height:'fit-content', float:'left',textAlign:'left', paddingTop:'10px', paddingBottom:'10px'}}>
             Catrgories:
               <br></br>
               <input type="radio" name="example" value="/category/electronics" onClick={this.handleChecked} style={{marginRight: '15px'}}/>

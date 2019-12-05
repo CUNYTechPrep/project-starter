@@ -23,14 +23,12 @@ router.get('/', (req,res) => {
     User.findAll({where: {userID: {[op.lte]: 1}} } )
     .then(posts =>{ res.json(posts);
       
-    console.log("\n INSIDE GET REQ FOR USERS  "+posts);
     })
 });
 
 
 router.post('/', (req, res) => {
   let { content } = req.body;
- // console.log("INSIDE THE POST    " + req.body);
   
     User.create(req.body)
     .then(post => {
@@ -45,16 +43,25 @@ router.post('/', (req, res) => {
 
 router.get('/:userID', (req, res) => {
   
-  console.log("\n ID \n \n " + req.params.userID+ "   "+ req.params.username);
-  const { id } = req.params.userID;
+  console.log("\n get user by userID \n  " + req.params.userID+ "   "+ req.params.username);
+
   User.findAll({where: {userID: req.params.userID} } )
   .then(posts =>{ res.json(posts);
     
-    console.log("\n INSIDE GET REQ FOR USERS  \n"+posts);
   })
 });
 
 
+
+router.get('/username/:username', (req, res) => {
+  
+    console.log("\n username \n \n " + req.params.username+ "   "+ req.params.userID);
+  
+    User.findAll({where: {username: req.params.username} } )
+    .then(posts =>{ res.json(posts);
+      
+    })
+  });
 
 router.put('/:id', (req, res) => {
   const { id } = req.params;
@@ -91,38 +98,6 @@ router.delete('/:id', (req, res) => {
 
 
 
-
-
-/*
-This was what was orignially here I'm leaving this here just in case we need it later. The post isn't working I'm trying to fix it.
-
-const db = require('../models');
-const { Product } = db;
-
-module.exports = {
-  postProduct(req,res){
-    console.log("POST body: ", req.body);
-    const {productName, price, amount, description, sellerID, category, imageURL} = req.body;
-    Product.create({
-      productName, 
-      price, 
-      amount, 
-      description, 
-      sellerID, 
-      category,
-      imageURL,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    })
-      .then((product) => {
-        res.status(200).json(product);
-      })
-      .catch((err) => {
-        res.status(400).json({ msg: 'Failed to submit product', err });
-      });
-  }
-}
-*/
 
 
 module.exports = router;

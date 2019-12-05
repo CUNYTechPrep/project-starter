@@ -1,67 +1,51 @@
 import React from 'react';
-import Post from '../components/Post';
 import Loading from '../components/Loading';
-import User from '../components/User';
+import User from '../components/UserInfo';
 import Product from'../components/Product';
 
 import Transaction from'../components/Transaction';
 import { display } from '@material-ui/system';
-//import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-
-// Be sure to include styles at some point, probably during your bootstraping
-//import '@trendmicro/react-sidenav/dist/react-sidenav.css';
-
-//TODO: Display the contents for this account page. Lets say its user1 who is signed in.
-// I will need to display one section for his personal info, name, email, school etc...
-// Then I will need to display all of his transactions. In two parts what he has sold and what he has bought.
-// Then display a list of all prdoucts he currently has for sale.
-
-//I think I can split this into either 3 sub-pages or have one fragmented page where the user selectse what he wants to see A, B, or C
-// and the content fragment will display the cooresponding infomation.
+import cookie from "react-cookies";
 class AccountPage extends React.Component {
   state = {
-    posts: <User userID = '3' username = 'user3' email = 'user3@email.com' password = 'test' />,
-    products: [],
-    user: [],
-    seller: [],
-    buyer: [],
+    content:[],
+    currentUserName: cookie.load('username'),
     currentUserId: 1,
-    loading: false,
+    loading: true,
   }
 
 
   componentDidMount() {
-    console.log("component mount");
-    fetch("/api/users/"+this.state.currentUserId)
+    console.log("component mount cookie is " + cookie.load('username'));
+    fetch("/api/users/username/"+this.state.currentUserName)
       .then(res => res.json())
 
-      .then(prod => {
+      .then(user => {
         console.log("state saved");
         this.setState({
           loading: false, 
-          content: prod.map((p,ii) => <User {...p} key={ii} />),
+          content: user.map((p,ii) => <User {...p} key={ii} />),
+          currentUserId: user[0].userID,
+          title: "Your user info is:"
         },
         console.log("content " + this.state.content),
         );
 
       })
 
-      .catch(err => console.log("API ERROR: " , err));  
+      .catch(err => console.log("API ERROR: " , err));
   }
 
 
-
-  
   showUser = ev =>{
     fetch("/api/users/"+this.state.currentUserId)
     .then(res => res.json())
 
-    .then(prod => {
-      console.log("state saved");
+    .then(user => {
       this.setState({
         loading: false, 
-        content: prod.map((p,ii) => <User {...p} key={ii} />),
-       
+        content: user.map((p,ii) => <User {...p} key={ii} />),
+        title: "Your user info is:"
       },
       console.log("content " + this.state.content),
       );
@@ -70,6 +54,8 @@ class AccountPage extends React.Component {
 
     .catch(err => console.log("API ERROR: " , err));
   }
+
+
   showCurrentProducts = ev =>{
     fetch("/api/products/u/"+this.state.currentUserId)
     .then(res => res.json())
@@ -79,6 +65,7 @@ class AccountPage extends React.Component {
       this.setState({
         loading: false, 
         content: prod.map((p,ii) => <Product {...p} key={ii} />),
+        title: "Your products currently on sale:"
       },
       );
 
@@ -86,15 +73,17 @@ class AccountPage extends React.Component {
 
     .catch(err => console.log("API ERROR: products " , err));
   }
+
   showSoldProducts = ev => {
     fetch("/api/transactions/seller/"+this.state.currentUserId)
       .then(res => res.json())
 
-      .then(prod => {
-        console.log("state saved transaction");
+      .then(trans => {
+        console.log("state saved transaction" + this.state.content[0]);
         this.setState({
           loading: false, 
-          content: prod.map((p,ii) => <Transaction {...p} key={ii} />),
+          content: trans.map((p,ii) => <Transaction {...p} key={ii} />),
+          title: "Previous products you have sold:"
         },
         );
 
@@ -108,11 +97,12 @@ class AccountPage extends React.Component {
     fetch("/api/transactions/buyer/"+this.state.currentUserId)
     .then(res => res.json())
 
-    .then(prod => {
-      console.log("state saved transaction");
+    .then(trans => {
+      console.log("state saved transaction" + this.state.content);
       this.setState({
         loading: false, 
-        content: prod.map((p,ii) => <Transaction {...p} key={ii} />),
+        content: trans.map((p,ii) => <Transaction {...p} key={ii} />),
+        title: "Previous products you have bought:"
       },
       );
 
@@ -122,18 +112,27 @@ class AccountPage extends React.Component {
    }
 
   render() {
+      
+    let errorMessage = null;
     if(this.state.loading) {
       return <Loading />;
+    }
+    else if (this.state.content[0] === undefined) {
+      errorMessage = (
+        <div className="alert alert-warning">
+          "No relavent information to show"
+        </div>
+      );
     }
 
     return (
       
       <div style={{width:'100%'}}>  
-
+        {errorMessage}
       <span className="container-fluid text-center">
-        
+       
       <div  style={{display:'contents'}}>
-          <div className='filter-category justify-content-left col-3 col-md-3 col-lg-2' style={{background:'#c0c0c0', height:'100%', float:'left',textAlign:'left', paddingTop:'10px', paddingBottom:'10px'}}>
+          <div className='filter-category justify-content-left col-3 col-md-3 col-lg-2' style={{background:'#c0c0c0', height:'fit-content', float:'left',textAlign:'left', paddingTop:'10px', paddingBottom:'10px'}}>
             Catrgories:
               <br></br>
               <input type="radio" name="example" value="users/" onClick={this.showUser} style={{marginRight: '15px'}} defaultChecked/>
@@ -150,9 +149,13 @@ class AccountPage extends React.Component {
               <br></br>
           </div>
 
-          <div className="row justify-content-center col-9 col-md-9 col-lg-10" style={{marginLeft: '0px', marginRight: '50px' }}>
+          <div>
+              <h2>{this.state.title}</h2>
+          </div>
+
+          <div className="row justify-content-center col-sm-5 col-5 col-md-9 col-lg-10" style={{marginLeft: '0px', marginRight: '50px' }}>
+           
               {this.state.content}
-              <hr color="#c7c34c" size="2" width="100%"></hr>
            
           </div>
        </div>
