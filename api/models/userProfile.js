@@ -26,6 +26,8 @@ module.exports = (sequelize, DataTypes) => {
         field: 'school',
         allowNull: false,
       },
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE,
     },
     {
       sequelize,

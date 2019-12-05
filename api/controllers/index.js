@@ -6,6 +6,8 @@ const router = express.Router();
 const postsController = require('./posts.js');
 const appConfigController = require('./appConfig.js');
 const postProductController = require('./products.js');
+const signUpController = require('./authentication/signup.js');
+const loginController = require('./authentication/login.js');
 
 const userController = require('./users.js');
 const transactionController = require('./transactions.js');
@@ -19,5 +21,6 @@ router.use('/signup', signUpController);
 router.use('/signin', loginController);
 router.use('/users', userController);
 router.use('/transactions', transactionController);
+
 
 module.exports = router;

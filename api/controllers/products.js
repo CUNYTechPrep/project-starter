@@ -5,6 +5,7 @@ const db = require('../models');
 const { Product } = require('../models');
 const Sequelize = require('sequelize');
 const op = Sequelize.Op;
+const { tokenAuthentiation } = require('./user');
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -19,28 +20,59 @@ const op = Sequelize.Op;
 // TODO: Can you spot where we have some duplication below?
 
 console.log("INSIDE PRODUCTS");
-router.get('/', (req,res) => {
+router.get('/', async (req,res) => {
+  try{
+    // req.userID = await tokenAuthentiation(req.headers.authorization);
     Product.findAll({})
     .then(posts =>{ res.json(posts);
       
+    //console.log("INSIDE GET REQ   "+posts);
     })
+  }catch(err){
+    res.status(500).json({"message": err.message});
+  }
+
 });
 
-
-router.post('/', (req, res) => {
-  let { content } = req.body;
-  Product.create(req.body)
-    .then(post => {
-      res.status(201).json(post);
+router.post('/', async (req,res) => {
+  console.log("POST body: ", req.body);
+  req.body.sellerID = await tokenAuthentiation(req.headers.authorization);
+  const {productName, price, amount, description, sellerID, category, imageURL} = req.body;
+  Product.create({
+    productName, 
+    price, 
+    amount, 
+    description, 
+    sellerID, 
+    category,
+    imageURL,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  })
+    .then((product) => {
+      res.status(200).json(product);
     })
-    .catch(err => {
-      res.status(400).json(err);
+    .catch((err) => {
+      res.status(400).json({ msg: 'Failed to submit product', err });
     });
-});
+})
+
+// router.post('/', (req, res) => {
+//   let { content } = req.body;
+//  // console.log("INSIDE THE POST    " + req.body);
+  
+//   Product.create(req.body)
+//     .then(post => {
+//       res.status(201).json(post);
+//     })
+//     .catch(err => {
+//       res.status(400).json(err);
+//     });
+// });
 
 
 router.get('/:productName',(req, res) => {
-  console.log("\n " + req.params.productName);
+  console.log(req.params.productName);
 
   Product.findAll({where: { productName:{ [op.iLike] :'%'+req.params.productName+'%'}} })
     .then(post => {
@@ -93,7 +125,6 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  console.log("\n id is "+ id);
   Product.findByPk(id)
     .then(post => {
       if(!post) {

@@ -3,8 +3,8 @@ import {
     Link,
     NavLink
   } from 'react-router-dom';
-import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import cookie from "react-cookies";
+import LocalLibraryOutlinedIcon from '@material-ui/icons/LocalLibraryOutlined';
 
 
 class Navigation extends React.Component {
@@ -29,8 +29,7 @@ class Navigation extends React.Component {
     // console.log("isAuth = " + isAuthenticated);
     return (
       <nav className="navbar navbar-expand-sm navbar-dark shadow mb-3" style={{backgroundColor: '#800080'}}>
-        <LocalLibraryIcon />
-        
+        <LocalLibraryOutlinedIcon/>
         <Link className="navbar-brand" to="/">
           College Sharing
         </Link>

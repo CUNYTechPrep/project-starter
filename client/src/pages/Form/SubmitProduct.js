@@ -2,8 +2,8 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-// import {storage} from '../../../firebase';
 import { storage } from "../../firebase";
+import cookie from "react-cookies";
 
 class SubmitProduct extends React.Component {
   constructor(props) {
@@ -16,12 +16,10 @@ class SubmitProduct extends React.Component {
       description: "",
       price: "",
       amount: "",
-      sellerID: "",
       category: "Textbook",
       image: null,
       imageURL: "",
     };
-
     this.handleChange = this.handleChange.bind(this);
     this.handleImgChange = this.handleImgChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -54,7 +52,6 @@ class SubmitProduct extends React.Component {
       () => {
         // complete function
         storage.ref('listingImages').child(`${image.name}`).getDownloadURL().then(url => {
-          console.log(url);
           this.setState({
             imageURL: url
           });
@@ -67,31 +64,32 @@ class SubmitProduct extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    const header = cookie.load('token');
     
     const productData = {
       productName: this.state.productName,
       description: this.state.description,
       price: this.state.price,
       amount: this.state.amount,
-      sellerID: this.state.sellerID,
       category: this.state.category,
       imageURL: this.state.imageURL,
     };
 
-    console.log(productData)
+    // console.log(productData)
 
     fetch("/api/products", {
       method: "POST",
       credentials: "include",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${header}`
       },
       body: JSON.stringify(productData)
     })
       .then(res => {
         console.log(res);
         if (res.ok) {
-        
           return res.json();
         }
         throw new Error("Product Validation");
@@ -106,7 +104,6 @@ class SubmitProduct extends React.Component {
           error: true
         });
         console.log(err);
-        // console.log(formData.get("productName"));
       });
   }
 
@@ -128,7 +125,7 @@ class SubmitProduct extends React.Component {
           Please enter following information for submitting product to sell
         </h3>
         {errorMessage}
-        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
+        <form onSubmit={this.handleSubmit}>
           <TextField
             label="Product Name"
             name="productName"
@@ -191,17 +188,6 @@ class SubmitProduct extends React.Component {
               <option value="other">Others</option>
             </select>
           </label>
-          <TextField
-            label="sellerID"
-            name="sellerID"
-            style={{ margin: 8 }}
-            fullWidth
-            margin="normal"
-            type="number"
-            required
-            onChange={this.handleChange}
-            variant="outlined"
-          />
           <div className="form-group">
             {/* <label htmlFor="exampleFormControlFile1">Image Upload</label> */}
             <input type="file" className="form-control-file" accept="image/*" onChange={this.handleImgChange} required />
