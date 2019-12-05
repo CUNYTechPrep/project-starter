@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {
   Row, Col, Card, CardBody, CardTitle, CardText, CardImg
 } from 'reactstrap';
-const Google_token = Sys.getenv("GOOGLE_MAPS_API_KEY");
 
 
 class RestaurantsPage extends React.Component{
@@ -50,7 +49,7 @@ const ContentItem = ({item}) => (
        <Card>
          <CardBody>
            <CardTitle>
-             <CardImg top width="100%" src={"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+item.photos[0].photo_reference+"&key=________________"}></CardImg>
+             <CardImg top width="100%" src={"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+item.photos[0].photo_reference+"&key=___"}></CardImg>
              {item.name}
            </CardTitle>
            <CardText>

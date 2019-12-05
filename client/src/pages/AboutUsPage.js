@@ -1,21 +1,9 @@
 import React from 'react';
 
-class Component extends React.Component
-{
-        constructor()
-        {
-            this.googleInput = React.createRef();
-        }
-
-        render()
-        {
-            return
-            (
-                <div ref={this.googleInput}>
-                    {/* Details */}
-                </div>
-            );
-        }
-    }
+function AboutUsPage(props) {
+  return (
+    <div></div>
+  );
+}
 
 export default AboutUsPage;
