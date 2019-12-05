@@ -16,13 +16,31 @@ const { Post } = db;
 // TODO: Can you spot where we have some duplication below?
 
 
-router.get('/', (req,res) => {
+router.get('/', (req,res) => 
+{
   Post.findAll({})
     .then(posts => res.json(posts));
 });
 
-
 router.post('/', (req, res) => {
+  let { content } = req.body;
+  
+  Post.create({ content })
+    .then(post => {
+      res.status(201).json(post);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+}); 
+
+router.get('/Skill', (req,res) => 
+{
+  Post.findAll({})
+    .then(Skill => res.json(posts));
+});
+
+router.post('/Skill/name', (req, res) => {
   let { content } = req.body;
   
   Post.create({ content })
@@ -46,7 +64,6 @@ router.get('/:id', (req, res) => {
       res.json(post);
     });
 });
-
 
 router.put('/:id', (req, res) => {
   const { id } = req.params;
