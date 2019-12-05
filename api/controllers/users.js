@@ -18,7 +18,11 @@ const { User } = db;
 // command: curl localhost:8080/api/users/
 //return all users
 router.get('/', (req,res) => {
-  User.findAll({})
+  User.findAll({
+    where: {
+    isBiz: false
+  }
+  })
     .then(posts => res.json(posts));
 });
 
@@ -26,13 +30,7 @@ router.get('/', (req,res) => {
 //command: curl localhost:8080/api/users/
 
 router.post('/', (req, res) => {
-  let { content } = req.body;
-  //console.log(req.body);
-
-  if(req.body.zipcode.length != 5){
-    res.status(400);
-  }
-  User.create({ content })
+  User.create({ ...req.body })
     .then(post => {
       res.status(201).json(post);
     })
