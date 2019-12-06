@@ -50,12 +50,13 @@ export default class DashboardPage extends Component {
             "headers" : {"authorization" : "bearer " + localStorage.getItem("token")}
         })
         .then(response => {
-        this.setState({ item: response.data.items })
+        this.setState({ items: response.data.items })
         })
         .catch((error) => {
         console.log(error);
         })
     }
+
 
 
     deleteItems(id) {
@@ -65,9 +66,11 @@ export default class DashboardPage extends Component {
         .then(response => { console.log(response.data)});
 
     this.setState({
-        medication: this.state.medication.filter(el => el._id !== id)
+        items: this.state.items.filter(el => el._id !== id)
     })
     }
+
+
 
     ingredientsList() {
     return this.state.items.map(currentitems => {
