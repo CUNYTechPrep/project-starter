@@ -83,10 +83,11 @@ router.patch('/users'), (req, res) => {
 //     
 // }
 // @desc  Get a users info
-router.get('/users'), (req, res) => {
+router.get('/users/:id'), (req, res) => {
 
+    const { id } = req.params;
     // Use ID to pull
-    Users.findByPk(req.body.id) 
+    Users.findByPk(id) 
     .then(user => {
 
         // === CONCERN ===
