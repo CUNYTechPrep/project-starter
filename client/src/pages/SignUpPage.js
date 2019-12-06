@@ -37,8 +37,8 @@ class SignUpPage extends Component {
             .post("api/auth/signup/", newUser)
             .then(res => {
                 console.log(res.status)
-                console.log(res.status == 201)
-                if(res.status == 201) {
+                console.log(res.status === 201)
+                if(res.status === 201) {
                     return res.json
                 }
                 throw new Error('Somethign went wrong: ' + res.status)

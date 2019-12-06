@@ -25,15 +25,16 @@ export default class DashboardPage extends Component {
 
     render() {
 
-        if(this.state.Loggedin === false) return <Redirect to="/login" />
+        if(this.state.Loggedin === false) return <Redirect to="/login" />  // Safety Pre-Caution against hackers! ;)
+
 
 
         return (
             <div>
-                <SideBar/>          {/* This is the side bar navbar component */}
-                <TopBar/>           {/* This is the top bar navbar component it also contains the modal-component*/}
-                <Cards />           {/* This is the Cards component */}
-                <TableLight />      {/* This is the table light component */}
+                <SideBar/>          {/* This is the side bar navbar component */}   
+                <TopBar/>           {/* This is the top bar navbar component it also contains the modal-component*/}    
+                <Cards />           {/* This is the Cards component */}         
+                <TableLight />      {/* This is the table light component */}   
                 <TableDark />       {/* This is the table dark component */}    
                 
             </div>
