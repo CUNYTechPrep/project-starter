@@ -48,7 +48,7 @@ const ContentItem = ({ item }) => (
       <Card>
         <CardBody>
           <CardTitle>
-            {/* {<CardImg top width="100%" src={"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + item.photos.photo_reference + "&key=GOOGLE_MAPS_API_KEY=AIzaSyBtd93FCtB6B-vJlN9O5oDQQBbH_hi5YoI"}></CardImg>} */}
+            {/* {<CardImg top width="100%" src={"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + item.photos.photo_reference + "&key=GOOGLE_MAPS_API_KEY="}></CardImg>} */}
             {item.name}
           </CardTitle>
           <CardText>

@@ -52,7 +52,7 @@ class App extends React.Component {
         <div className="container-fluid text-center">
           <div className="row justify-content-center">
             <Switch>
-              <Route path="/posts/new" component={Random} />
+              <Route path="/Random" component={Random} />
               {/* <Route path="/posts/:id" component={ShowPostPage} /> */}
               <Route path="/restaurants" component={RestaurantsPage} />
               <Route path="/about-us" component={AboutUsPage} />
