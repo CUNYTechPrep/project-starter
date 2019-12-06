@@ -1,0 +1,46 @@
+milk
+eggs
+butter
+salt
+pepper
+heavy cream
+light cream
+whipped cream
+half and half
+potatoes
+russet potatoes
+carrots
+baby carrots
+bananas
+apples
+lettuce
+romaine lettuce
+iceberg lettuce
+white vinegar
+red wine
+apple cider
+honey
+maple syrup
+milk chocolate
+dark chocolate
+flour
+baking soda
+spaghetti
+fettucini
+linguini
+tomatoes
+cherry tomatoes
+grape tomatoes
+beefsteak tomatoes
+celery
+broccoli
+sweetcorn
+red onions
+white onions
+garlic
+bread
+white bread
+whole wheat bread
+pumpernickle bread
+
+
