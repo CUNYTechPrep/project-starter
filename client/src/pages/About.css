@@ -1,0 +1,45 @@
+.jumbotron {
+  background: url(../img/allergy.jpg) top center;
+  background-size: cover;
+  padding-top: 30em;
+  padding-bottom: 30em;
+  height: 500px;
+}
+
+.transbox {
+  margin-top: 210px;
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  background-color: #fff;
+  border: 1px solid black;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  box-shadow: 10px #333;
+  display: inline-block;
+  position: relative;
+}
+
+.transbox h1 {
+  font-weight: bold;
+  color: #000000;
+}
+
+.transbox h4 {
+  color: #000000;
+}
+
+.layout {
+  float: left;
+  position: absolute;
+}
+
+.info {
+  margin-top: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  font-weight: bold;
+}

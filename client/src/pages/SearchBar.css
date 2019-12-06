@@ -1,0 +1,58 @@
+.title {
+  margin-top: 20%;
+}
+
+
+.bg-dark {
+  color: white !important;
+  border-bottom-left-radius: 4px !important;
+  border-top-right-radius: 4px !important;
+  border:1px solid #ccc !important;
+  border-bottom: none !important;
+}
+
+.search {
+  width: 85% !important;
+}
+
+.allergenList .header input {
+  padding: 10px;
+  font-size: 16px;
+  width: 170px;
+  border-radius: 4px;
+}
+
+.allergenList .header button {
+  padding: 9px;
+  font-size: 16px;
+  margin: 10px;
+  margin-right: 0px;
+}
+
+.allergenList .header button:hover {
+  cursor: pointer;
+  color: #228B22;
+}
+
+.allergenList .theList li {
+  color: #333;
+  background-color: #8FBC8F;
+  padding: 7px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  width: 150px;
+  list-style: none;
+}
+
+ul.theList {
+  padding: 0;
+  margin-left: -6%;
+}
+
+#check{
+  width:10%;
+  justify-content: center;
+  display: flex;
+  margin: 0 41%;
+
+}
