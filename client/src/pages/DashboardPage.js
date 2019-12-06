@@ -10,6 +10,7 @@ import TopBar from '../components/topbar-component';
 import Cards from '../components/card-component';
 import TableLight from '../components/table-light-component';
 import TableDark from '../components/table-dark-component';
+import Loading from '../components/Loading';
 
 const Ingredients = props => (
     <tr>
@@ -99,10 +100,9 @@ export default class DashboardPage extends Component {
     }
 
 
-
-
     render() {
-
+        
+        if(this.state.loading) return <Loading />;
         if(this.state.Loggedin === false) return <Redirect to="/login" />  // Safety Pre-Caution against hackers! ;)
 
 
