@@ -6,24 +6,38 @@ module.exports = (sequelize, DataTypes) => {
     class Users_Items extends Model { }
 
     Users_Items.init({
-        
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
+        item_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
         qty: {
             type: DataTypes.FLOAT,
+            allowNull: false,
             validate: {
                 
                 notEmpty: true,
-                allowNull: false,
                 isNumeric: true,
                 
             }
         },
         expiration: {
             type: DataTypes.DATE,
+            allowNull: false,
             
             validate: {
             
                 notEmpty: true,
-                allowNull: false,
+                
                 
             }
         },
