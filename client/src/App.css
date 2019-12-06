@@ -1,11 +1,12 @@
 /*.App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
 }
-
+div {
+    display: block;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -16,8 +17,50 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
 .App-link {
   color: #09d3ac;
 }
 */
+/* :root{
+background-color: blue;
+/* background-image: url("neon.jpg"); */ 
+.navbar-dark .navbar-brand {
+  font-size: 30px;
+  font-family: 'Futura';
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #FF0080, 0 0 30px #FF0080, 0 0 40px #FF0080, 0 0 55px #FF0080, 0 0 75px #FF0080;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+}
+/* div {
+  display: block;
+  color: white;
+} */
+/* .navbar-dark .navbar-nav .nav-link {
+  color: rgba(255,255,255,.5);
+  font-size: 22px;
+}
+.bg-dark {
+  background-color: orange;
+}
+.navbar{
+  background-color: orange;
+} */
+.bg {
+  background-image: url("https://ak4.picdn.net/shutterstock/videos/1027770314/thumb/1.jpg");
+  /* height: 370vh;
+  background-position: center;
+ background-repeat: no-repeat; */
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  margin-top:0;
+}
+.aboutus{
+ color: white;
+}
+.bg-dark{
+  background-color: #000000;
+}
