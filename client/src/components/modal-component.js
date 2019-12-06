@@ -29,7 +29,7 @@ function LogOutModal(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className="btn-success" onClick={props.onHide}>Stay Here</Button>
-                    <Button className="btn-danger" onClick={props.onHide}>Confirm Sign Out</Button>
+                    <Button className="btn-danger" onClick={logout}>Confirm Sign Out</Button>
                 </Modal.Footer>
             </Modal>
         </div>
@@ -37,6 +37,11 @@ function LogOutModal(props) {
     );
   }
 
+
+  function logout() {
+    localStorage.clear();               // Clear the Authentication Token and Cookies
+    window.location.href = '/login';
+}
 
   function HandleSignOutModal() {
         const [modalshow, setModalShow] = React.useState(false);

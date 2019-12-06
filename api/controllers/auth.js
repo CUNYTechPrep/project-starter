@@ -26,7 +26,7 @@ router.post('/signup', (req, res) => {
 
 
 router.post('/login',
-  passport.authenticate('local'), 
+  passport.authenticate('local'),
   (req, res) => {
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
@@ -38,4 +38,4 @@ router.post('/logout', (req, res) => {
   res.status(200).json({ message: 'Logout successful' });
 })
 
-module.exports = router; 
+module.exports = router;
