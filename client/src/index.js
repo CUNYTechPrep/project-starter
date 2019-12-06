@@ -24,9 +24,9 @@ function success(pos) {
   var crd = pos.coords;
   var lng = pos.coords.longitude;
   var lat = pos.coords.latitude;
-  fetch('/api/places?lat='+lat+'2&lng='+lng+'&keyword=pizza')
-  .then(res => res.json())
-  .then(res => console.log(res))
+  fetch('/api/places?lat=' + lat + '2&lng=' + lng + '&keyword=restaurant')
+    .then(res => res.json())
+    .then(res => console.log(res))
 
   console.log('Your current position is:');
   console.log(`Latitude : ${crd.latitude}`);
