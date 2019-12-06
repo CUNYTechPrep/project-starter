@@ -86,10 +86,10 @@ app.post('/api/search', async (req, res) => {
     res.json(json);
 })
 
-app.post('/api/check/:id', async (req, res) => {
+app.post('/api/check', async (req, res) => {
     let check = true;
     let allergies = req.body.allergies;
-    let ingredients = await performFoodDbDetailedSearch(req.params.id);
+    let ingredients = await performFoodDbDetailedSearch(req.body.id);
     let allergyKeywords = [];
     let queryString = "SELECT keywords.name FROM keywords INNER JOIN allergens ON keywords.allergen = allergens.id WHERE";
     let querySearch = [];
