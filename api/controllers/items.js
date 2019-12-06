@@ -57,9 +57,7 @@ router.get('/items/:u_id'), (req, res) => {
     User_Items.findAll({ where: {user_id: u_id}})
     .then(items => {
         let found_items = []
-        for(item in items) {
-            if()
-        }
+
         res.status(200).json({items: items})
     })
     .catch(err => {
