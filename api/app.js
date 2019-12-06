@@ -102,7 +102,7 @@ app.post('/api/check', async (req, res) => {
         if (count === -1) {
             queryString += " allergens.name = ? ";
             count++;
-        } else 
+        } else
             queryString += "OR allergens.name = ? ";
         querySearch.push(element);
     })
@@ -120,12 +120,14 @@ app.post('/api/check', async (req, res) => {
 
             console.log(allergyKeywords);
 
-            //Check if any allergies match
-            for (let i = 0; i < allergyKeywords.length; i++) {
-                console.log(allergyKeywords[i].toUpperCase());
-                if (ingredients.includes(allergyKeywords[i].toUpperCase())) {
-                    check = false;
-                    break;
+            //Check if any allergies match, if and only if ingredients is not undef
+            if (ingredients) {
+                for (let i = 0; i < allergyKeywords.length; i++) {
+                    console.log(allergyKeywords[i].toUpperCase());
+                    if (ingredients.includes(allergyKeywords[i].toUpperCase())) {
+                        check = false;
+                        break;
+                    }
                 }
             }
 
