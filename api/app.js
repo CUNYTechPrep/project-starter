@@ -1,35 +1,138 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const path = require('path');
-const db = require('./models');
+const cors = require('cors');
+const fetch = require('node-fetch');
+const mysql = require('mysql2');
+
+//mySQL configs
+const pool = mysql.createPool({
+    host: "35.237.190.4",
+    user: 'root',
+    password: '@4#C^&1O0^jE0hDs',
+    database: 'main',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+})
+
+//Express configs
 const app = express();
-const PORT = process.env.PORT || 8000;
+const port = 8000;
+app.use(cors());
+app.use(bodyParser.json());
 
+//USDA API configs
+const foodDbKey = "?api_key=0gsnVutfUqh3JglxfREjB3Qhsc9FbWidg3p2DxAI";
+const foodDbEndpoint = "https://api.nal.usda.gov/fdc/v1/search";
+const foodDbDetailedEndpoint = "https://api.nal.usda.gov/fdc/v1/";
 
-// this lets us parse 'application/json' content in http requests
-app.use(bodyParser.json())
+performFoodDbSearch = async (req) => {
 
-// add http request logging to help us debug and audit app use
-const logFormat = process.env.NODE_ENV==='production' ? 'combined' : 'dev';
-app.use(morgan(logFormat));
+    let foodsList;
+    let responseList = [];
+    try {
+        await fetch(foodDbEndpoint + foodDbKey, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(
+                {
+                    'generalSearchInput': req.q
+                }
+            )
+        })
+            .then((response) => response.json())
+            .then((json) => {
+                foodsList = json.foods;
+            })
+        foodsList.forEach((element) => {
+            responseList.push({
+                'id': element.fdcId,
+                'name': element.description
+            })
+        })
+    }
+    catch (err) {
+        console.log(err);
+    }
 
-// this mounts controllers/index.js at the route `/api`
-app.use('/api', require('./controllers'));
-
-// for production use, we serve the static react build folder
-if(process.env.NODE_ENV==='production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-
-  // all unknown routes should be handed to our react app
-  app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
+    return responseList;
 }
 
-// update DB tables based on model updates. Does not handle renaming tables/columns
-// NOTE: toggling this to true drops all tables (including data)
-db.sequelize.sync({ force: false });
+performFoodDbDetailedSearch = async (id) => {
+    let returnObj = [];
+    await fetch(foodDbDetailedEndpoint + id + foodDbKey)
+        .then((response) => response.json())
+        .then((json) => {
+            returnObj = json.ingredients;
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    return returnObj;
+}
 
-// start up the server
-app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+app.get('/', (req, res) => {
+    res.send("success");
+
+    // //Test SQL connection
+    // pool.query("SELECT * FROM allergens", (err, rows, fields) => {
+    //     console.log(rows[0].name);
+    // })
+})
+
+app.post('/api/search', async (req, res) => {
+
+    let json = await performFoodDbSearch(req.body);
+    res.json(json);
+})
+
+app.post('/api/check/:id', async (req, res) => {
+    let check = true;
+    let allergies = req.body.allergies;
+    let ingredients = await performFoodDbDetailedSearch(req.params.id);
+    let allergyKeywords = [];
+    let queryString = "SELECT keywords.name FROM keywords INNER JOIN allergens ON keywords.allergen = allergens.id WHERE";
+    let querySearch = [];
+    let count = -1;
+
+    //if we have time do this:
+    //put every ingredient into set
+    //get allergy keywords from database
+    allergies.forEach((element) => {
+        if (count === -1) {
+            queryString += " allergens.name = ? ";
+            count++;
+        } else 
+            queryString += "OR allergens.name = ? ";
+        querySearch.push(element);
+    })
+
+    queryString += ";";
+
+    console.log(queryString);
+    pool.execute(queryString,
+        querySearch,
+        (err, results, fields) => {
+
+            results.forEach((element) => {
+                allergyKeywords.push(element.name)
+            })
+
+            console.log(allergyKeywords);
+
+            //Check if any allergies match
+            for (let i = 0; i < allergyKeywords.length; i++) {
+                console.log(allergyKeywords[i].toUpperCase());
+                if (ingredients.includes(allergyKeywords[i].toUpperCase())) {
+                    check = false;
+                    break;
+                }
+            }
+
+            res.json({
+                'check': check
+            });
+        })
+})
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
