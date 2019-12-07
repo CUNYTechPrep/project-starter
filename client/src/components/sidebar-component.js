@@ -45,7 +45,7 @@ function Navigation(props) {
                                     </li>
                                     {/* <!-- Saved Recipes --> */}
                                     <li className="nav-item">
-                                        <a href="#" className="nav-link text-white p-3 mb-2 sidebar-link">
+                                        <a href="/recipes" className="nav-link text-white p-3 mb-2 sidebar-link">
                                             <i className="fas fa-user text-light fa-lg mr-3"/>
                                             Saved Recipes
                                         </a>

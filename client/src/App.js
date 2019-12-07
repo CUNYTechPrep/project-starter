@@ -39,6 +39,8 @@ class App extends React.Component {
                 <Route path="/login" component={LoginPage} />
                 <Route path="/signup" component={SignUpPage} />
                 <Route path="/dashboard" component={DashboardPage} />
+
+
                 <Route path="/about-us" component={AboutUsPage} />
 
               </Switch>

@@ -11,6 +11,7 @@ import Cards from '../components/card-component';
 import TableLight from '../components/table-light-component';
 import TableDark from '../components/table-dark-component';
 import Loading from '../components/Loading';
+import IngredientsListPage from '../components/ingredients-component';
 
 const Ingredients = props => (
     <tr>
@@ -47,7 +48,7 @@ export default class DashboardPage extends Component {
     // Then redirect to sign in page
 
     componentDidMount() {
-        axios.get('api/items/items', {
+        /* axios.get('api/items/items', {
             "headers" : {"authorization" : "bearer " + localStorage.getItem("token")}
         })
         .then(response => {
@@ -55,7 +56,7 @@ export default class DashboardPage extends Component {
         })
         .catch((error) => {
         console.log(error);
-        })
+        }) */
     }
 
 
@@ -72,11 +73,19 @@ export default class DashboardPage extends Component {
     }
 
 
+    getIngredients(id){
+        axios.get('/api/items/items/'+id, {
+
+        })
+            .then( res => {
+                this.setState ({
+                    items: this.items,          // Overwriting the empty array ...  
+                })
+            })
+    }
 
     ingredientsList() {
-    return this.state.items.map(currentitems => {
-        return <Ingredients ingredients={currentitems} deleteItems={this.deleteItems} key={currentitems._id}/>;
-    })
+
     }
 
     onSubmit(e) {
