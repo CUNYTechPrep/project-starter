@@ -13,6 +13,7 @@ import TableDark from '../components/table-dark-component';
 import Loading from '../components/Loading';
 import IngredientsListPage from '../components/ingredients-component';
 
+
 const Ingredients = props => (
     <tr>
       <td>{props.ingredients.name}</td>

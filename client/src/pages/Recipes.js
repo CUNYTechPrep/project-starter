@@ -1,13 +1,13 @@
-
-// Pages
 import React from 'react';
-
 import { Link } from "react-router-dom";
+import Recipe from "../components/Recipe";
+import Form from "../components/Form";
+import Router from "../components/Router";
 
-const Recipes = props => (
-    <div className="container">
-        <div className="row">
-        { props.recipes.map((recipe) => {
+
+function Content (props) {
+    if (this.props.data) {
+        props.recipes.map((recipe) => {
             return (
                 <div key={recipe.recipe.label} className="col-md-4" style={{ marginBottom:"2rem" }}>
                     <div className="recipes__box">
@@ -26,7 +26,16 @@ const Recipes = props => (
                     </div>
                 </div>
             ); 
-        })}
+        })
+    }
+}
+
+
+
+const Recipes = props => (
+    <div className="container">
+        <div className="row">
+            <Content/>
         </div>
     </div>
 );

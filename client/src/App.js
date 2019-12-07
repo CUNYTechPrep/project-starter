@@ -19,7 +19,9 @@ import AuthButton from './components/AuthButton';
 import SignUpPage from './pages/SignUpPage';
 import AboutUsPage from './pages/AboutUsPage';
 import DashboardPage from './pages/DashboardPage';
-
+import Recipes from "./pages/Recipes";
+import Saved from "./pages/savedPage";
+import Settings from "./pages/settingsPage";
 
 import './css/App.css';
 
@@ -40,8 +42,11 @@ class App extends React.Component {
                 <Route path="/signup" component={SignUpPage} />
                 <Route path="/dashboard" component={DashboardPage} />
 
-
+                <Route path="/recipes" component={Recipes} />
+                <Route path="/settings" component={Settings} />
+                <Route path="/saved" component={Saved} />
                 <Route path="/about-us" component={AboutUsPage} />
+
 
               </Switch>
             </div>

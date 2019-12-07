@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+import Recipe from "../components/Recipe";
 import App from "../App";
-import Recipe from "./Recipe";
 
 const Router = () => (
     <BrowserRouter>
