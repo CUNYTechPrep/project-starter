@@ -1,11 +1,13 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom'; 
 
 import '@fortawesome/react-fontawesome';
 import '@fortawesome/fontawesome-free';
 import '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/free-brands-svg-icons';
 import '@fortawesome/free-solid-svg-icons';
+
 
 import '../css/dashboard-style.css';
 import '../css/style.css';
@@ -45,21 +47,21 @@ function Navigation(props) {
                                     </li>
                                     {/* <!-- Saved Recipes --> */}
                                     <li className="nav-item">
-                                        <a href="#" className="nav-link text-white p-3 mb-2 sidebar-link">
+                                        <Link href="/saved" className="nav-link text-white p-3 mb-2 sidebar-link">
                                             <i className="fas fa-user text-light fa-lg mr-3"/>
                                             Saved Recipes
-                                        </a>
+                                        </Link>
                                     </li>
                                     {/* <!-- Suggested Recipes --> */}
                                     <li className="nav-item">
-                                        <a href="#" className="nav-link text-white p-3 mb-2 sidebar-link">
-                                            <i className="fas fa-envelope text-light fa-lg mr-3"/>
+                                        <Link href="/recipes" className="nav-link text-white p-3 mb-2 sidebar-link">
+                                            <i className="fas fa-user text-light fa-lg mr-3"/>
                                             Suggested Recipes
-                                        </a>
+                                        </Link>
                                     </li>
                                     {/* <!-- Settings --> */}
                                     <li className="nav-item">
-                                        <a href="#" className="nav-link text-white p-3 mb-2 sidebar-link">
+                                        <a href="/settings" className="nav-link text-white p-3 mb-2 sidebar-link">
                                             <i className="fas fa-wrench text-light fa-lg mr-3"/>
                                             Settings
                                         </a>

@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Recipes.init({
         
-        recipesname: {
+        name: {
             type: DataTypes.STRING,
             unique: true,
             validate: {
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
 
-        instruction: {
+        instructions: {
             type: DataTypes.TEXT,
             unique: true,
             validate: {

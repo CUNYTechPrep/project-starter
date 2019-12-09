@@ -7,11 +7,25 @@ module.exports = (sequelize, DataTypes) => {
 
     Items_Recipes.init({
         //timestamps: false,
+        recipe_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
+        item_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
         qty: {
             type: DataTypes.FLOAT,
+            allowNull: false,
             validate: {
                 notEmpty: true,
-                allowNull: false,
                 isNumeric: true,
             }
         },

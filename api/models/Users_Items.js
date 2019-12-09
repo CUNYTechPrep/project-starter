@@ -6,14 +6,30 @@ module.exports = (sequelize, DataTypes) => {
     class Users_Items extends Model { }
 
     Users_Items.init({
-        
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
+        item_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                notEmpty: true
+            }
+        },
         qty: {
             type: DataTypes.FLOAT,
             allowNull: false,
             validate: {
                 
                 notEmpty: true,
+<<<<<<< HEAD
                 
+=======
+>>>>>>> f5cc572c44aeefc1df1648ca3368da43f2d42abf
                 isNumeric: true,
                 
             }
@@ -21,6 +37,10 @@ module.exports = (sequelize, DataTypes) => {
         expiration: {
             type: DataTypes.DATE,
             allowNull: false,
+<<<<<<< HEAD
+=======
+            
+>>>>>>> f5cc572c44aeefc1df1648ca3368da43f2d42abf
             validate: {
             
                 notEmpty: true,

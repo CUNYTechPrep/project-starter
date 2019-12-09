@@ -13,8 +13,12 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             validate: {
                 len: [3, 50],
+<<<<<<< HEAD
                 notEmpty: true,
                 
+=======
+                notEmpty: true
+>>>>>>> f5cc572c44aeefc1df1648ca3368da43f2d42abf
             }
         },
        

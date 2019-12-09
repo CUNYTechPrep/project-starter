@@ -24,23 +24,6 @@ router.post('/signup', (req, res) => {
 
 });
 
-router.post('/signup?', (req, res) => {
-  console.log("POST body: ", req.body);
-  Users.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: req.body.password,
-  })
-    .then((user) => {
-      console.log("IS SUCC?")
-      req.login(user, () => res.status(201).json(user));
-    })
-    .catch((err) => {
-      console.log("FAIL")
-      res.status(400).json({ msg: 'Failed Signup', err });
-    });
-});
 
 router.post('/login',
   passport.authenticate('local'),
