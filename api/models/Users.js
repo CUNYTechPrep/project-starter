@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         phonenumber: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             unique: true,
             allowNull: false,
             validate: {

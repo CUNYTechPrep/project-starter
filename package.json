@@ -22,7 +22,8 @@
     "pg": "^7.12.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.19.2",
-    "sqlite3": "^4.1.0"
+    "sqlite3": "^4.1.0",
+    "twilio": "^3.38.0"
   },
   "devDependencies": {
     "dotenv": "^8.1.0",

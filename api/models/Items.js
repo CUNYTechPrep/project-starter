@@ -10,10 +10,11 @@ module.exports = (sequelize, DataTypes) => {
         itemname: {
             type: DataTypes.STRING,
             unique: true,
+            allowNull: false,
             validate: {
                 len: [3, 50],
                 notEmpty: true,
-                allowNull: false,
+                
             }
         },
        

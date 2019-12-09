@@ -9,21 +9,22 @@ module.exports = (sequelize, DataTypes) => {
         
         qty: {
             type: DataTypes.FLOAT,
+            allowNull: false,
             validate: {
                 
                 notEmpty: true,
-                allowNull: false,
+                
                 isNumeric: true,
                 
             }
         },
         expiration: {
             type: DataTypes.DATE,
-            
+            allowNull: false,
             validate: {
             
                 notEmpty: true,
-                allowNull: false,
+                
                 
             }
         },
