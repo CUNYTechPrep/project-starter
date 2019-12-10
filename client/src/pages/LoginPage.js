@@ -1,7 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-
+import { Card, CardBody, Button, CardTitle, CardText, CardImg } from 'reactstrap';
 import auth from '../services/auth';
+
 
 class LoginPage extends React.Component {
   state = {
@@ -44,29 +45,39 @@ class LoginPage extends React.Component {
     }
 
     return (
-      <form onSubmit={this.login}>
-        <div className="form-row">
-          { err }
-          <input 
-            type="email"
-            className="form-control"
-            name="email"
-            placeholder="Email" 
-            value={this.state.email} 
-            onChange={this.fieldChanged('email')} />
-          <input 
-            type="password"
-            className="form-control"
-            name="password"
-            placeholder="Password" 
-            value={this.state.password} 
-            onChange={this.fieldChanged('password')} />
-          <button 
-            type="submit"
-            className="btn btn-primary ml-auto"
-          >Login</button>
-        </div>
-      </form>
+      <div>
+        <Card className="text-center" >
+          <CardImg top width="100%" src="logo.svg" alt="Cool image" />
+          <CardBody>
+            <CardTitle>Login Here</CardTitle>
+            <form onSubmit={this.login}>
+              <div className="form-row">
+                { err }
+                <input 
+                  type="email"
+                  className="form-control"
+                  name="email"
+                  placeholder="Email" 
+                  value={this.state.email} 
+                  onChange={this.fieldChanged('email')} />
+                <input 
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  placeholder="Password" 
+                  value={this.state.password} 
+                  onChange={this.fieldChanged('password')} />
+                <br /><br />
+                <button 
+                  type="submit"
+                  className="btn btn-primary ml-auto">
+                  Login
+                </button>
+              </div>
+            </form>
+          </CardBody>
+        </Card>
+      </div>
     );
   }
 }

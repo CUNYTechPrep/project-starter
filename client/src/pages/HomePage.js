@@ -45,7 +45,6 @@ class HomePage extends React.Component {
   seekerForm = (event) => {
     return (
       <div>
-
         <Modal show="true" onHide={(event) => this.setState({displaySeeker: false})}>
           <Modal.Header closeButton>
             <Modal.Title>Let's Get Started!</Modal.Title>
