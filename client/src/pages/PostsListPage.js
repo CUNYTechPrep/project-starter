@@ -39,6 +39,7 @@ class PostsListPage extends React.Component {
     })
     .catch(err => console.log("API ERROR: ", err));
   }
+  
   componentDidMount() {
     const id = 1;
     fetch("/api/trips/" + id)
