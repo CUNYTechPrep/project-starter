@@ -6,6 +6,7 @@ const passport = require('../middlewares/authentication');
 router.post('/signup', (req, res) => {
 
   if(req.body.password == req.body.password2) {
+    console.log("Pass match")
     Users.create({
       username: req.body.username,
       email: req.body.email,
