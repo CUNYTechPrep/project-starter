@@ -15,13 +15,13 @@ function LogOutModal(props) {
             centered
             >
                 <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
+                    <Modal.Title id="contained-modal-title-vcenter" className="text-dark">
                     Do You Want to Sign Out
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>Are you sure? </h4>
-                    <p>
+                    <h4 className="text-dark">Are you sure? </h4>
+                    <p className="text-dark">
                     Fine Todd-chan you can leave it's ... it's not like ... 
                     I ... I need you or anything! "Mr. Everything just Works" ... BAKA! 
                     </p>
