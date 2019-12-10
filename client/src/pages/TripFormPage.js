@@ -156,17 +156,17 @@ class TripFormPage extends React.Component {
         <div className='input-group'>
           <input 
             type='text' 
-            placeholder='Description here' 
-            value={this.state.desc}
-            className='form-control mr-3 rounded'
-            onChange={this.descChanged}
-          />
-          <input 
-            type='text' 
             placeholder='Name of the trip' 
             value={this.state.name}
             className='form-control mr-3 rounded'
             onChange={this.nameChanged}
+          />
+          <input 
+            type='text' 
+            placeholder='Description here' 
+            value={this.state.desc}
+            className='form-control mr-3 rounded'
+            onChange={this.descChanged}
           />
           <button className='btn cloudinary-button' onClick={() => myWidget.open()}>Upload</button>
           <button className='btn btn-primary' onClick={this.savePost}>Post</button>

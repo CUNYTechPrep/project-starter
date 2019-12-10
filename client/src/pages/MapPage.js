@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import ImageCard from '../components/ImageCard.js';
 
-const AnyReactComponent = ({ icon }) => <div><img style={{ width: '5em', height: '5em', border:'1px solid white' }} src={icon} /></div>;
+const AnyReactComponent = ({ icon }) => <div> <img style={{ width: '5em', height: '5em', border:'1px solid white' }} src={icon} /> </div>
 
 class Map extends React.Component {
   static defaultProps = {
@@ -14,9 +14,6 @@ class Map extends React.Component {
   };
 
   render() {
-  //   let lat = this.props.posts[0].props.coverlat
-  //   let lng = this.props.posts[0].props.coverlng
-
     let markers = this.props.posts.map((obj) => <AnyReactComponent
         lat={obj.props.coverlat}
         lng={obj.props.coverlng}
@@ -73,6 +70,7 @@ class MapPage extends React.Component {
   render() {
     return(
       <div>
+        <h1>You've been around.</h1>
         <Map posts = { this.state.posts }/>
         { this.state.posts }
       </div>

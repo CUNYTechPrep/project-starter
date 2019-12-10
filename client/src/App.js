@@ -21,13 +21,13 @@ function Navigation(props) {
       <Link className="navbar-brand" to="/">Trippin</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/map">
-            Map
+          <NavLink className="nav-link" exact to="/posts/new">
+            New Post
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
-            New Post
+          <NavLink className="nav-link" exact to="/map">
+            Map
           </NavLink>
         </li>
         <li className="nav-item">
