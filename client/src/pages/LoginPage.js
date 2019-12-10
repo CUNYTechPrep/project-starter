@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import auth from '../services/auth';
-import axios from 'react';
 
 import "../css/login-sign-up.css";
 

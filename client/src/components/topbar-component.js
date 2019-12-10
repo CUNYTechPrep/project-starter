@@ -27,7 +27,7 @@ function TopBar (props) {
                     <div className="col-md-3">
                         <ul className="navbar-nav">
                             
-                            <li className="nav-item ml-md-auto"><a><HandleSignOutModal/></a></li>
+                            <li className="nav-item ml-md-auto"><HandleSignOutModal/></li>
                         </ul>
                     </div>
                 </div>

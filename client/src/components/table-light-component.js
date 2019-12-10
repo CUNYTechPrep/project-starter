@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
 
 
 function TableLight() {
@@ -63,7 +62,7 @@ function TableLight() {
                                         </tbody>
                                     </table>
                                 </div>
-                            {/* start of Pagination: */}
+                            {/* start of Pagination: 
                             <nav>
                                 <ul className="pagination justify-content-center">
                                     <li className="page-item">
@@ -93,7 +92,7 @@ function TableLight() {
                                     </li>
                                 </ul>
                             </nav>
-                            {/* end of Pagination: */}
+                             end of Pagination: */}
                         </div>
                     </div>
                 </div>

@@ -25,7 +25,7 @@ function LogOutModal(props) {
                     Fine Todd-chan you can leave it's ... it's not like ... 
                     I ... I need you or anything! "Mr. Everything just Works" ... BAKA! 
                     </p>
-                    <img className=" img-fluid rounded mt-3" src={Tsundere_Meme} ></img>
+                    <img className=" img-fluid rounded mt-3" src={Tsundere_Meme} alt="Meme"></img>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className="btn-success" onClick={props.onHide}>Stay Here</Button>

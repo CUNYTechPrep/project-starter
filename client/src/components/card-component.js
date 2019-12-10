@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
 
 
 function Cards() {
@@ -21,7 +20,7 @@ function Cards() {
                                                     <i className="fas fa-shopping-cart fa-3x text-warning" />
                                                     <div className="text-right text-secondary">
                                                         <h5>Sales</h5>
-                                                        <h3>$347,850</h3>       {/* This is just a dummy value could be replaced with variables */}
+                                                        <h3>$34,750</h3>       {/* This is just a dummy value could be replaced with variables */}
                                                     </div>
                                                 </div>
                                             </div>
@@ -46,7 +45,7 @@ function Cards() {
                                                     <i className="fas fa-money-bill-alt fa-3x text-success" />
                                                     <div className="text-right text-secondary">
                                                         <h5>Expenses</h5>
-                                                        <h3>$25,000</h3>       {/* This is just a dummy value could be replaced with variables */}
+                                                        <h3>$2,500</h3>       {/* This is just a dummy value could be replaced with variables */}
                                                     </div>
                                                 </div>
                                             </div>

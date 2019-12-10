@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 
 
-
-const API_KEY = "00d0cd3d6af26d7e2647971839f1d9bd";         // SHOULD BE IN .env FILE!!!!!
+const API_KEY = "00d0cd3d6af26d7e2647971839f1d9bd";         // SHOULD BE IN '.env' FILE!!!!!
 const API_ID = "d3e031d2";
 
 class Recipe extends React.Component {
@@ -33,7 +32,7 @@ class Recipe extends React.Component {
                             <span><a href={recipe.url}>{recipe.url}</a></span>
                         </p>
                         <button className="active-recipe__button">
-                            <Link to="/">Go Home</Link>
+                            <Link to="/dashboard">Go Home</Link>
                         </button>
                     </div>
 

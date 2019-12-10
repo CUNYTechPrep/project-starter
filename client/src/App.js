@@ -5,17 +5,9 @@ import {
   Route,
 } from 'react-router-dom';
 
-import fontawesome from '@fortawesome/fontawesome-free';
-
-
-// import PostsListPage from './pages/PostsListPage';
-// import PostFormPage from './pages/PostFormPage';
-// import ShowPostPage from './pages/ShowPostPage';
-
+// import fontawesome from '@fortawesome/fontawesome-free';     // <--- The Fon't awesome Icons are not loading, will need to do more research on how to get them working in React.
 
 import LoginPage from './pages/LoginPage';
-import PrivateRoute from './components/PrivateRoute';
-import AuthButton from './components/AuthButton';
 import SignUpPage from './pages/SignUpPage';
 import AboutUsPage from './pages/AboutUsPage';
 import DashboardPage from './pages/DashboardPage';
@@ -23,6 +15,9 @@ import Recipes from "./pages/Recipes";
 import Saved from "./pages/savedPage";
 import Settings from "./pages/settingsPage";
 
+import "./pages/Recipe";
+import "./pages/Form";
+import "./pages/Router";
 import './css/App.css';
 
 
@@ -34,7 +29,7 @@ class App extends React.Component {
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
-                {/*  */}
+                
                 {/* <Route path="/posts/new" component={PostFormPage} /> */}
                 {/* <Route path="/posts/:id" component={ShowPostPage} /> */}
                 

@@ -1,10 +1,4 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
-
-
-
-
-
 
 
 function TableDark() {
@@ -23,7 +17,7 @@ function TableDark() {
                                 <tr className="text-muted">
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Pricey</th>
+                                    <th>Price</th>
                                     <th>Date</th>
                                     <th>Status</th>
                                 </tr>
