@@ -34,13 +34,12 @@ export default class savedPage extends Component {
                         <TopBar />              {/* This is the top bar component */} 
                     </div>
                     <div className="row comingSoonBanners">
-                        <div className="col-xl-10 col-lg-9 col-md-8 ml-auto bg-warning py-2 mt-4">
+                        <div className="col-xl-10 col-lg-9 col-md-8 py-2 mt-4">
                             <h1 className="mt-auto mb-4">Comming Soon</h1>
                             <Button type="submit" onClick={ () => this.setState( {goBack: true} ) } className="mt-4" >Go back to dashboard </Button>
                         </div>
                     </div>
                 </div>
-                <section></section>
                 
                 </section>
             </div>
