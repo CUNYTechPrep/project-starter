@@ -2,13 +2,13 @@
     padding: 20%;
 }
 
-section {
+html,body {
 	display: block;
 	margin: auto;
 	width: 100%;
-	height: auto;
+	height: 100%;
 	color: #fff;
-	background: linear-gradient(-45deg, #FF944D, #EE7752, #E73C7E, #23A6D5, #23D5AB, #00B359);
+    background: linear-gradient(-45deg, #FF944D, #EE7752, #E73C7E, #23A6D5, #23D5AB, #00B359);
 	background-size: 400%, 400%;
 	position: relative; 
 	animation: animate 10s ease-in-out infinite; 
@@ -29,9 +29,4 @@ section {
 		background-position: 0 50%;
 	}
 
-}
-
-html,
-body {
-    background: #fff;
 }

@@ -119,35 +119,32 @@ export default class DashboardPage extends Component {
 
         return (
             <div>
-                <section>
-                    <SideBar/>              {/* This is the side bar navbar component */}   
-                    <TopBar/>               {/* This is the top bar navbar component it also contains the modal-component*/}    
-                    <Cards />               {/* This is the Cards component */}         
-                </section>
+                <SideBar/>              {/* This is the side bar navbar component */}   
+                <TopBar/>               {/* This is the top bar navbar component it also contains the modal-component*/}    
+                <Cards />               {/* This is the Cards component */}         
 
-                <section>
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-xl-10 col-lg-9 col-md-8 ml-auto">
-                                <h3>Ingredients Cabinet: </h3>
-                                <table className="table">
-                                    <thead className="thead-light">
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Quantity</th>
-                                            <th>Expiration Date</th>
-                                            <th>Actions</th>
-                                            <th>ID</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        { this.ingredientsList() }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </section>                    
+                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto">
+                    <h3>Ingredients Cabinet: </h3>
+                    <table className="table">
+                        <thead className="thead-light">
+                            <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Expiration Date</th>
+                                <th>Actions</th>
+                                <th>ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            { this.ingredientsList() }
+                        </tbody>
+                    </table>
+                </div>
+
+                
+                <TableLight />
+                <TableDark />
+                
             </div>
         );
     }
