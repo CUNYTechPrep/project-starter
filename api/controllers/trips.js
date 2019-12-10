@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const { Trip, User, Media } = db;
+const { Trip, Media } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -15,13 +15,11 @@ const { Trip, User, Media } = db;
 // explore other patterns to reduce code duplication.
 // TODO: Can you spot where we have some duplication below?
 
-
 router.get('/:id', (req,res) => {
   const { id } = req.params;
   Trip.findAll({where: {userId: id}})
-  .then(trip => {
-    res.json(trip);
-  });
+  .then(trip => res.json(trip))
+  .catch(e => res.json(e));
 });
 
 // when authentication is in place, we will know who to add to but for 
@@ -40,13 +38,12 @@ router.post('/', (req, res) => {
   .then((trip) => {
     content.medias.forEach(obj => {
       Media.create({description:obj.desc, photo: obj.url, timedate: obj.timedate, lng: obj.location.lng, lat: obj.location.lat})
-      .then((media) =>{
-        media.setTrip(trip);
-      }); 
+      .then((media) => media.setTrip(trip))
+      .catch(e => res.json(e));
     })
-      res.json(trip);
+    res.json(trip);
   })
-  .catch( e => res.json(e));
+  .catch(e => res.json(e));
 });
 
 
