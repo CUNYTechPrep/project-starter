@@ -28,18 +28,66 @@ function TableDark() {
                                 
                                 <tr>
                                     <th>1</th>
-                                    <td>Red Stone of Ajiea</td>
-                                    <td>$2,000,000</td>
+                                    <td>Carrots</td>
+                                    <td>$5.99</td>
                                     <td>25/05/1889</td>
-                                    <td><span className="badge badge-success w-75">Approved</span></td>
+                                    <td><span className="badge badge-success w-75">Good</span></td>
                                 </tr>
                                 
                                 <tr>
                                     <th>2</th>
-                                    <td>Magian's Red</td>
-                                    <td>$3,500</td>
+                                    <td>Olives</td>
+                                    <td>$7.99</td>
                                     <td>25/05/1920</td>
-                                    <td><span className="badge badge-success w-75">Approved</span></td>
+                                    <td><span className="badge badge-success w-75">Good</span></td>
+                                </tr>
+
+                                <tr>
+                                    <th>3</th>
+                                    <td>Salmon</td>
+                                    <td>$9.99</td>
+                                    <td>25/05/1920</td>
+                                    <td><span className="badge badge-danger w-75">Expired</span></td>
+                                </tr>
+
+                                <tr>
+                                    <th>4</th>
+                                    <td>Eggs</td>
+                                    <td>$3.50</td>
+                                    <td>25/05/1920</td>
+                                    <td><span className="badge badge-success w-75">Good</span></td>
+                                </tr>
+
+                                <tr>
+                                    <th>5</th>
+                                    <td>Milk</td>
+                                    <td>$3.75</td>
+                                    <td>25/05/1920</td>
+                                    <td><span className="badge badge-warning w-75">close</span></td>
+                                </tr>
+
+                                <tr>
+                                    <th>6</th>
+                                    <td>Mozarella Cheese</td>
+                                    <td>$14.99</td>
+                                    <td>25/05/1920</td>
+                                    <td><span className="badge badge-warning w-75">close</span></td>
+                                </tr>
+
+                                <tr>
+                                    <th>7</th>
+                                    <td>Olive Oil</td>
+                                    <td>$35</td>
+                                    <td>25/05/1920</td>
+                                    <td><span className="badge badge-success w-75">Good</span></td>
+                                </tr>
+
+                                <tr>
+                                    <th>8</th>
+                                    <td>Cereal</td>
+                                    <td>$12</td>
+                                    <td>25/05/1920</td>
+                                    <td><span className="badge badge-success w-75">Good</span></td>
                                 </tr>
 
                             </tbody>
