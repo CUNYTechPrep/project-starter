@@ -30,7 +30,7 @@ class RestaurantsPage extends React.Component {
   render() {
 
     return (
-      <ul>
+      <Row>
         {this.state.items.map(function (item, index) {
           return (
             <ContentItem item={item} key={index} />
@@ -38,7 +38,7 @@ class RestaurantsPage extends React.Component {
           )
         })
         }
-      </ul>);
+      </Row>);
   }
 
 
@@ -47,22 +47,22 @@ class RestaurantsPage extends React.Component {
 }
 const ContentItem = ({ item }) => (
 
-  <Row>
-    <Col xs="3" />
-    <Col xs="12" sm="6">
-      <Card>
-        <CardBody>
-          <CardTitle>
-            {<CardImg className="aa" top width="100%" src={"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + item.photos[0].photo_reference + "&key=AIzaSyBtd93FCtB6B-vJlN9O5oDQQBbH_hi5YoI"}></CardImg>}
-            {item.name}
-          </CardTitle>
-          <CardText>
-            {"Rating: " + item.rating}
-          </CardText>
-        </CardBody>
-      </Card>
-    </Col>
-  </Row>
+
+
+  <Col xs="12" sm="6" md="4">
+    <Card>
+      <CardBody>
+        <CardTitle>
+          {<CardImg className="aa" top width="100%" src={"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + item.photos[0].photo_reference + "&key=AIzaSyBtd93FCtB6B-vJlN9O5oDQQBbH_hi5YoI"}></CardImg>}
+          {item.name}
+        </CardTitle>
+        <CardText>
+          {"Rating: " + item.rating}
+        </CardText>
+      </CardBody>
+    </Card>
+  </Col>
+
 )
 
 // < Row >
