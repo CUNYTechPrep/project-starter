@@ -1,8 +1,15 @@
+@import 'https://fonts.googleapis.com/css?family=Righteous';
+
 div {
     display: block;
     color: violet;
   } 
-  img{
+  .RI{
       height: 60% ;
       width: 60%;
+  }
+  button{
+    text-align: center;
+
+    
   }

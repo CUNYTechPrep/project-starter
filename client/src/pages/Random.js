@@ -1,5 +1,6 @@
 import React from 'react';
 import '../style/main.css'
+
 class Random extends React.Component {
     constructor(props) {
         super(props);
@@ -23,7 +24,10 @@ class Random extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.buttonPressedHandler}>What's your Next Adventure </button>
+                <div>
+                    <text>What's Your Next Adventure</text>
+                </div>
+                <button onClick={this.buttonPressedHandler}>Let's GO!! </button>
                 {this.state.isFetchedRandom ?
                     <div>
                         <div>
@@ -35,7 +39,7 @@ class Random extends React.Component {
                         <div>
                             {this.state.randomRestaurant.vicinity}
                         </div>
-                        <img src={`https://maps.googleapis.com/maps/api/place/photo?key=&photoreference=${this.state.randomRestaurant.photos[0].photo_reference}&maxheight=${this.state.randomRestaurant.photos[0].height}`} />
+                        <img className="RI" src={`https://maps.googleapis.com/maps/api/place/photo?key=&photoreference=${this.state.randomRestaurant.photos[0].photo_reference}&maxheight=${this.state.randomRestaurant.photos[0].height}`} />
                     </div>
                     : null}
             </div>

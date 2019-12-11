@@ -11,6 +11,7 @@ import Random from "./pages/Random";
 // import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 import RestaurantsPage from './pages/RestaurantsPage';
+import Incoming from './pages/Incoming';
 import './App.css';
 function Navigation(props) {
   return (
@@ -28,8 +29,8 @@ function Navigation(props) {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
-            User *incoming*
+          <NavLink className="nav-link" exact to="/incoming">
+            Incoming
           </NavLink>
         </li>
       </ul>
@@ -45,7 +46,7 @@ class App extends React.Component {
           <div className="container-fluid text-center" >
             <div className="row justify-content-center">
               <Switch>
-                {/* <Route path="/posts/:id" component={ShowPostPage} /> */}
+                <Route path="/incoming" component={Incoming} />
                 <Route path="/restaurants" component={RestaurantsPage} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/" component={Random} />
