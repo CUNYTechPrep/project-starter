@@ -42,8 +42,8 @@ class RestaurantsPage extends React.Component {
   }
 
 
-    <div>Lists of Restaurants</div>
-  );
+  // <div>Lists of Restaurants</div>
+
 }
 const ContentItem = ({ item }) => (
 
@@ -65,22 +65,22 @@ const ContentItem = ({ item }) => (
   </Row>
 )
 
-   <Row>
-     <Col xs="3" />
-     <Col xs="12" sm="6">
-       <Card>
-         <CardBody>
-           <CardTitle>
-             <CardImg top width="100%" src={"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+item.photos[0].photo_reference+"&key=___"}></CardImg>
-             {item.name}
-           </CardTitle>
-           <CardText>
-             {"Rating: "+item.rating}
-           </CardText>
-         </CardBody>
-       </Card>
-     </Col>
-   </Row>
-  )
+// < Row >
+// <Col xs="3" />
+// <Col xs="12" sm="6">
+//   <Card>
+//     <CardBody>
+//       <CardTitle>
+//         <CardImg top width="100%" src={"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + item.photos[0].photo_reference + "&key=___"}></CardImg>
+//         {item.name}
+//       </CardTitle>
+//       <CardText>
+//         {"Rating: " + item.rating}
+//       </CardText>
+//     </CardBody>
+//   </Card>
+// </Col>
+//  </Row >
+// )
 
 export default RestaurantsPage;
