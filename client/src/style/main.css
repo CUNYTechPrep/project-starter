@@ -1,5 +1,8 @@
 @import 'https://fonts.googleapis.com/css?family=Righteous';
-
+div{
+    background-image: url("https://thumbs.dreamstime.com/b/abstract-gradient-pink-purple-neon-background-business-card-style-design-banner-your-designs-140163833.jpg");
+/* background-image: url("https://besthqwallpapers.com/Uploads/23-3-2019/84513/thumb2-blue-neon-masonry-texture-neon-brick-texture-black-background-neon-abstraction-masonry.jpg"); */
+}
 div {
     display: block;
     color: violet;

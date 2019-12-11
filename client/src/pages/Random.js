@@ -24,10 +24,13 @@ class Random extends React.Component {
     render() {
         return (
             <div>
+                <br />
                 <div>
-                    <text>What's Your Next Adventure</text>
+                    What's Your Next Adventure
                 </div>
-                <button onClick={this.buttonPressedHandler}>Let's GO!! </button>
+
+                <br />
+                <button className="btn btn-primary" onClick={this.buttonPressedHandler}>Let's GO!! </button>
                 {this.state.isFetchedRandom ?
                     <div>
                         <div>
@@ -39,7 +42,7 @@ class Random extends React.Component {
                         <div>
                             {this.state.randomRestaurant.vicinity}
                         </div>
-                        <img className="RI" src={`https://maps.googleapis.com/maps/api/place/photo?key=&photoreference=${this.state.randomRestaurant.photos[0].photo_reference}&maxheight=${this.state.randomRestaurant.photos[0].height}`} />
+                        <img className="RI" src={`https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyBtd93FCtB6B-vJlN9O5oDQQBbH_hi5YoI&photoreference=${this.state.randomRestaurant.photos[0].photo_reference}&maxheight=${this.state.randomRestaurant.photos[0].height}`} />
                     </div>
                     : null}
             </div>
