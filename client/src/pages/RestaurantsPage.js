@@ -40,6 +40,9 @@ render() {
     </ul>);
  }
 
+
+    <div>Lists of Restaurants</div>
+  );
 }
 const ContentItem = ({item}) => (
 
