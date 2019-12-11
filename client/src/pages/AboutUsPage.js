@@ -18,3 +18,12 @@ function AboutUsPage(props) {
   );
 }
 export default AboutUsPage;
+
+
+function AboutUsPage(props) {
+  return (
+    <div></div>
+  );
+}
+
+export default AboutUsPage;
