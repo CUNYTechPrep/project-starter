@@ -42,7 +42,7 @@ class Random extends React.Component {
                         <div>
                             {this.state.randomRestaurant.vicinity}
                         </div>
-                        <img className="RI" alt="map of restaurant" src={`https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyBtd93FCtB6B-vJlN9O5oDQQBbH_hi5YoI&photoreference=${this.state.randomRestaurant.photos[0].photo_reference}&maxheight=${this.state.randomRestaurant.photos[0].height}`} />
+                        <img className="RI" alt="map of restaurant" src={`https://maps.googleapis.com/maps/api/place/photo?key=&photoreference=${this.state.randomRestaurant.photos[0].photo_reference}&maxheight=${this.state.randomRestaurant.photos[0].height}`} />
                     </div>
                     : null}
             </div>
