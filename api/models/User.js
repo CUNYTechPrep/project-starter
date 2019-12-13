@@ -70,10 +70,16 @@ module.exports = (sequelize, DataTypes) => {
     unique: false, 
   },
 
-  pass_hash: {
-    type: DataTypes.STRING,
-    validate: {
-      notEmpty: true,
+  pass_hash: { type: DataTypes.STRING},
+    password: {
+      type: DataTypes.VIRTUAL,
+      validate: {
+      isLongEnough: (val) => {
+        if(val.length < 7) {
+          throw new Error("Please choose a longer password");
+        }
+      },
+          notEmpty: true,
     },
     unique: true, 
   },
