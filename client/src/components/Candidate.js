@@ -1,26 +1,36 @@
 import React from 'react';
 import {
     Card, Button, CardImg, CardTitle, CardText, CardDeck,
-    CardSubtitle, CardBody
+    CardSubtitle, CardBody, CardGroup, CardLink
   } from 'reactstrap';
 
-function Candidate({ fname, email, city, zipcode, resumeURL, isBiz }) {
+  
+
+function Candidate({ fname, email, city, zipcode, state, resumeURL, isBiz }) {
   return (
    <div>
-       <Card>
+
+<CardDeck>
+       <Card >
            <CardBody>
                <CardTitle>
-                   Candidate {fname}
+                   Meet {fname}!
                </CardTitle>
                <CardText>
-                   <ul>
-                       <li>City: {city}</li>
-                       <li>Zip Code: {zipcode}</li>
-                       <li>Resume: {resumeURL}</li>
-                   </ul>
+                   I'm from {city}, {state} {zipcode}.
+
+               </CardText>
+               <CardText>
+               My resume can be found here: {resumeURL}.
                </CardText>
            </CardBody>
+           <Button>Message {fname}</Button>
+
        </Card>
+       </CardDeck>
+       <CardDeck></CardDeck> 
+
+     
     </div>
   );
 }
