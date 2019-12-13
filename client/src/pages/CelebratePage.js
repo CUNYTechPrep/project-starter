@@ -30,7 +30,7 @@ export default class celebratePage extends Component {
                 <SideBar/>              {/* This is the side bar navbar component */}                     
                 <TopBar />              {/* This is the top bar component */}
                 
-                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5">
+                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto bg-success py-2 mt-5">
                     <h1>Christmas 2019</h1>
                     <h2 className="christmas">Tis the Season to be Jolly</h2>
                     <p>For this is holiday season you can watch specially curated instructional content hand picked by our editors, to create the best holiday feast ever!</p>
