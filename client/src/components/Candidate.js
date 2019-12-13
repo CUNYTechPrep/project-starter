@@ -1,42 +1,34 @@
 import React from 'react';
 import {
     Card, Button, CardImg, CardTitle, CardText, CardDeck,
-<<<<<<< Updated upstream
-    CardSubtitle, CardBody
-=======
     CardSubtitle, CardBody, CardGroup, CardLink, Row, Col
->>>>>>> Stashed changes
   } from 'reactstrap';
 
-function Candidate({ fname, email, city, zipcode, resumeURL, isBiz }) {
+function Candidate({ fname, email, city, state, zipcode, resumeURL, isBiz }) {
   return (
    <div>
-<<<<<<< Updated upstream
-       <Card>
-=======
 
 <CardDeck>
-<Row sm="10">
+<Row sm="2">
       <Col sm="10">
-       <Card >
+       <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
        
->>>>>>> Stashed changes
            <CardBody>
                <CardTitle>
-                   Candidate {fname}
+                   Meet {fname}!
                </CardTitle>
                <CardText>
-                   <ul>
-                       <li>City: {city}</li>
-                       <li>Zip Code: {zipcode}</li>
-                       <li>Resume: {resumeURL}</li>
-                   </ul>
+                  {fname} is from {city}, {state} in {zipcode}.
+               </CardText>
+               <CardText>
+                   {fname} is currently open to new job opportunities. 
+                   
+               </CardText>
+               <CardText>
+               His/her resume can be found here: {resumeURL}.
                </CardText>
            </CardBody>
-<<<<<<< Updated upstream
-       </Card>
-=======
-           <Button>Message {fname}</Button>
+           <Button color="primary">Message {fname}</Button>
        </Card>
     </Col>
     </Row>
@@ -44,7 +36,6 @@ function Candidate({ fname, email, city, zipcode, resumeURL, isBiz }) {
        <CardDeck></CardDeck> 
 
      
->>>>>>> Stashed changes
     </div>
   );
 }
