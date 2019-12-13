@@ -10,7 +10,9 @@
     "react-icons": "^3.8.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
-    "reactstrap": "^8.1.1"
+    "reactstrap": "^8.1.1",
+    "scandit-sdk": "^4.6.1",
+    "scandit-sdk-react": "^1.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
