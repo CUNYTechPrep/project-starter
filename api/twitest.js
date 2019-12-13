@@ -40,26 +40,36 @@ db.sequelize.query(`SELECT * FROM users as u inner join users_items as ui on ui.
         
         user.forEach(u => {
             console.log(i);
-            //console.log(user[1].userId);
+            //console.log(user[i+1]);
             itemtext = u.itemname+", "+itemtext;
+            console.log(itemtext);
 
+            if(typeof user[i+1] === 'undefined'){
+                to = u.phonenumber;
+                console.log(to);
+                body = "Hi Dear "+u.username+". Your "+itemtext+" has expired!";
+                console.log(body);
+                runText(from, to, body);
+                
+            }
+            
             if(u.userId != user[i+1].userId){
 
                 to = u.phonenumber;
                 console.log(to);
                 body = "Hi Dear "+u.username+". Your "+itemtext+" has expired!";
                 console.log(body);
-                runText(from, to, body);
+                //runText(from, to, body);
                 itemtext = "";
-            }else if(i == user.length-1){
-                to = u.phonenumber;
-                console.log(to);
-                body = "Hi Dear "+u.username+". Your "+itemtext+" has expired!";
-                console.log(body);
             }
+
+            
+           
             i++;
             //console.log(itemtext);
             
+        }).catch(err=>{
+            console.log(err);
         })
         
     })
