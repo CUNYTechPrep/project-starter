@@ -1,7 +1,9 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
+//import Button from 'react-bootstrap/Button'
+import {Form, Button, FormGroup, Carousel, Label, Input, Col} from 'reactstrap';
+
 
 class HomePage extends React.Component {
 
@@ -139,7 +141,7 @@ class HomePage extends React.Component {
       <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active" data-interval="10000">
-            <img src="..." class="d-block w-100" alt="..." />
+            <img src="https://setoncenter.org/wp-content/uploads/hands-2805248_1920-768x572.png" class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item" data-interval="2000">
             <img src="..." class="d-block w-100" alt="..." />
@@ -165,10 +167,88 @@ class HomePage extends React.Component {
       <div>
 
         <Modal show="true" onHide={(event) => this.setState({displaySeeker: false})}>
+        <Modal.Header closeButton>
+          <Modal.Title>Welcome to Reentry! Enter your information below.</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+
+        
           
-          <form onSubmit = {this.handleSubmit} >
-            <label htmlFor="fname"> Enter first name</label>
-            <input id="fname" value={this.state.fname} name = "fname" type="text" onChange={this.fnameChanged}/>
+          <Form onSubmit = {this.handleSubmit} >
+        
+
+      <FormGroup row>
+      <Label htmlFor="fname" sm={2}>First Name</Label> 
+      <Col sm={10}>
+      <Input id="fname" value={this.state.fname} name = "fname" type="text" placeholder="Walter" onChange={this.fnameChanged}/> 
+      </Col>
+      </FormGroup>
+
+
+      <FormGroup row>
+      <Label htmlFor="lname" sm={2}>Last Name</Label>
+           
+      <Col sm={10}>
+      <Input id="lname" value={this.state.lname} name = "lname" type="text" placeholder="White" onChange={this.lnameChanged}/>      </Col>
+      </FormGroup>
+
+      <FormGroup row>
+      <Label htmlFor="email" sm={2}>Email</Label> 
+      <Col sm={10}>
+      <Input id="email" value={this.state.email} name = "email" type="text" placeholder="ww@hotmail.com" onChange={this.emailChanged}/> 
+      </Col>
+      </FormGroup>
+
+      <FormGroup row>
+      <Label htmlFor="city" sm={2}>City</Label> 
+      <Col sm={10}>
+      <Input id="city" value={this.state.city} name = "city" type="text" placeholder="Los Angeles" onChange={this.cityChanged}/> 
+      </Col>
+      </FormGroup>
+
+      <FormGroup row>
+      <Label htmlFor="state" sm={2}>State</Label> 
+      <Col sm={10}>
+      <Input id="state" value={this.state.state} name = "state" type="text" placeholder="CA" onChange={this.stateChanged}/> 
+      </Col>
+      </FormGroup>
+
+      <FormGroup row>
+      <Label htmlFor="zipcode" sm={2}>Zipcode</Label> 
+      <Col sm={10}>
+      <Input id="zipcode" value={this.state.zipcode} name = "zipcode" type="text" placeholder="90210" onChange={this.zipcodeChanged}/> 
+      </Col>
+      </FormGroup>
+
+      <FormGroup row>
+      <Label htmlFor="resumeURL" sm={2}>Resume URL</Label> 
+      <Col sm={10}>
+      <Input id="resumeURL" value={this.state.resumeURL} name = "resumeURL" type="text" placeholder="https://breakingbad.fandom.com/wiki/Walter_White" onChange={this.resumeURLChanged}/> 
+      </Col>
+      </FormGroup>
+
+      <FormGroup row>
+      <Label htmlFor="skill" sm={2}>Skills</Label> 
+      <Col sm={10}>
+      
+            <Input type="checkbox" name="looking-for" value="GD" />
+            Graphic Designer<br />
+            <Input type="checkbox" name="looking-for" value="PA" />
+            Painter<br />
+            <Input type="checkbox" name="looking-for" value="EL" />
+            Electrician<br />
+            <Input type="checkbox" name="looking-for" value="CA" />
+            Carpenter<br />
+            <Input type="checkbox" name="looking-for" value="FS" />
+            Food Servicer<br />
+            <Input type="checkbox" name="looking-for" value="OT" />
+            Other<br /> 
+      </Col>
+      </FormGroup>
+
+{/*       
+            <Label htmlFor="fname">First Name</Label> 
+            <Input id="fname" value={this.state.fname} name = "fname" type="text" onChange={this.fnameChanged}/> 
 
             <label htmlFor="lname"> Enter last name</label>
             <input id="lname" value={this.state.lname} name = "lname" type="text" onChange={this.lnameChanged}/>
@@ -186,12 +266,17 @@ class HomePage extends React.Component {
             <input id="state" value={this.state.state} name = "state" maxLength="2" minLength="2" type="text" onChange={this.stateChanged}/>
 
             <label htmlFor="resumeURL"> Enter a link to your resume</label>
-            <input id="resumeURL" value={this.state.resumeURL} name = "resumeURL" type="text" onChange={this.resumeURLChanged}/>
+            <input id="resumeURL" value={this.state.resumeURL} name = "resumeURL" type="text" onChange={this.resumeURLChanged}/> */}
 
-            <button variant="primary" type="submit" >Submit!</button>
+            <Button color="primary" type="submit" >Submit!</Button>
 
             {/* onClick={(event) => this.setState({displaySeeker: false})} */}
-          </form>
+          </Form>
+
+          </Modal.Body>
+          <Modal.Footer>
+            Please Note: The only personal information prospective employers will see is your first name and location. Please make sure your resume does not include any information you do not want to be shared.
+          </Modal.Footer>
           
           
           
@@ -247,7 +332,7 @@ class HomePage extends React.Component {
 
 
 
-        {/* <Modal.Header closeButton>
+        <Modal.Header closeButton>
           <Modal.Title>Welcome Aboard</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -286,7 +371,7 @@ class HomePage extends React.Component {
           <Button variant="primary" onClick={(event) => this.setState({displayEmployer: false})}>
             Save Changes
           </Button>
-        </Modal.Footer> */}
+        </Modal.Footer>
       </Modal>
     </div>
     );
@@ -294,11 +379,11 @@ class HomePage extends React.Component {
   render() {
     const {displaySeeker} = this.state;
     const {displayEmployer} = this.state;
-    // const {carousel} = this.state;
+    const {carousel} = this.state;
     return (
       <div>
         <div>The First Step is Reentry</div>
-        {/* {carousel} */}
+        {carousel}
         <button type="button"className="" onClick={(event) => this.setState({displaySeeker: true})}>Seeker</button>
         {displaySeeker && this.seekerForm()}
         <button type="button"className="" onClick={(event) => this.setState({displayEmployer: true})}>Employers</button>

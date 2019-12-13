@@ -24,16 +24,7 @@ function Navigation(props) {
             Our Mission
           </NavLink>
         </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/events">
-            Team
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="nav-link" exact to="/partners">
-            News
-          </NavLink>
-        </li>
+        
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/about-us">
             About Us
@@ -42,6 +33,11 @@ function Navigation(props) {
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/candidates">
             Candidates 
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/jobs">
+            Jobs 
           </NavLink>
         </li>
       </ul>

@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
   // //make sure it's req.body, not content
   // User.create(req.body)
 
-  User.create({ ...req.body })
+  User.create(req.body )
     .then(post => {
       res.status(201).json(post);
     })
