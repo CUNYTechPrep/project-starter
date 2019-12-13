@@ -18,7 +18,7 @@ class FuzzySearch extends React.Component {
               </div>
             </div>*/}
 
-            <div class="row justify-content-left ml-4">
+            {/*<div class="row justify-content-left ml-4">
               <div class="col-sm-6 col-md-6 col-lg-5 offset-md-4 ml-0 mt-5 border border-success pt-3 search">
                 <div class="input-group mb-3">
                   <input type="text" class="form-control" placeholder="Nutter Butter" aria-label="Recipient's username"></input>
@@ -26,6 +26,7 @@ class FuzzySearch extends React.Component {
               </div>
             </div>
           {/* card to print */}
+
 
           </div>
         );

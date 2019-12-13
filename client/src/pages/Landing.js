@@ -1,5 +1,7 @@
 import React from 'react';
 import example from '../img/example.jpg';
+import warning from '../img/warning.png';
+import good from '../img/good.png';
 import SearchResult from '../components/SearchResult.js';
 import {NavLink} from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
@@ -17,6 +19,14 @@ class Landing extends React.Component {
 
     this.state = {
       items: []
+    };
+
+    this.style = {
+       textAlign: 'center'
+    };
+
+    this.styleImg = {
+      textAlign: 'center',
     };
 
     this.addItem = this.addItem.bind(this);
@@ -87,13 +97,57 @@ class Landing extends React.Component {
                 </div>
               </div>
               <div class="row justify-content-center">
-                <AllergenItems entries={this.state.items}
-                               delete={this.deleteItem}/>
+                <AllergenItems entries={this.state.items} delete={this.deleteItem}/>
               </div>
               <div id="check">
-                <NavLink exact to="/fuzzy-search"><span class="input-group-text bg-dark">Check <FaCheck style={{color:"#008000"}}/></span></NavLink>
+                {/*<NavLink exact to="/fuzzy-search"><span class="input-group-text bg-dark">Check <FaCheck style={{color:"#008000"}}/></span></NavLink> */}
+                <button type="button" class="input-group-text bg-dark" data-toggle="modal" data-target="#good">Check <FaCheck style={{color:"#008000"}}/></button>
               </div>
             </div>
+
+            {/*WARNING Modal*/}
+            <div class="modal fade" id="warning" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title w-100 text-center" id="exampleModalLongTitle">Warning</h1>
+                  </div>
+                  <div class="modal-body">
+                    <div style={this.styleImg}>
+                      <img  src={warning} alt="WARNING" width={150} height={150}/>
+                    </div>
+                    <h5 style={this.style} class="placeCenter"> This product will trigger a syptom of yours!</h5>
+                    <h5> Ingrediants: </h5>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="justify-content-center btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/*Good Modal*/}
+            <div class="modal fade" id="good" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title w-100 text-center" id="exampleModalLongTitle">Good To Go!</h1>
+                  </div>
+                  <div class="modal-body">
+                    <div style={this.styleImg}>
+                      <img src={good} alt="GOOD" width={150} height={150}/>
+                    </div>
+                    <h5 style={this.style} class="placeCenter"> This product will not trigger a syptom of yours!</h5>
+                    <h5> Ingrediants: </h5>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="justify-content-center btn btn-success" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
           </div>
 
         );
