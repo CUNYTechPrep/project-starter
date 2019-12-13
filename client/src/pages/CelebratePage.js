@@ -30,13 +30,14 @@ export default class celebratePage extends Component {
                 <SideBar/>              {/* This is the side bar navbar component */}                     
                 <TopBar />              {/* This is the top bar component */}
                 
-                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto bg-success py-2 mt-5">
+                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto bg-success py-2 mt-5 shadow-lg">
                     <h1>Christmas 2019</h1>
                     <h2 className="christmas">Tis the Season to be Jolly</h2>
                     <p>For this is holiday season you can watch specially curated instructional content hand picked by our editors, to create the best holiday feast ever!</p>
+                    <iframe src="https://giphy.com/embed/tkx3RlxxY4O4" width="480" height="361" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
 
-                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5">
+                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5 shadow-lg">
                     <h3>The Secret lies in a good breakfeast</h3>
                 </div>
 
@@ -46,7 +47,7 @@ export default class celebratePage extends Component {
                     </div>
                 </div>
 
-                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5">
+                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5 shadow-lg">
                     <h3>Preparation is key</h3>
                 </div>
 
@@ -56,8 +57,9 @@ export default class celebratePage extends Component {
                     </div>
                 </div>
 
-                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5">
+                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5 shadow-lg">
                     <h3>It's D-Day</h3>
+                    <iframe src="https://giphy.com/embed/x7gjmBuaHrWak" width="325" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
 
 
