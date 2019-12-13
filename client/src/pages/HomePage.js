@@ -13,8 +13,126 @@ class HomePage extends React.Component {
       displayEmployer: false,
       show: false,
       setShow : false,
+      error: false,
+      success: false,
+      
+        fname:'',
+        lname:'',
+        email:'',
+        city:'',
+        zipcode:'',
+        state:'',
+        resumeURL:''
+      
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+
+  fnameChanged = (event) => {
+    this.setState({
+      fname: event.target.value
+    });
+  }
+
+  lnameChanged = (event) => {
+    this.setState({
+      lname: event.target.value
+    });
+  }
+
+  emailChanged = (event) => {
+    this.setState({
+      email: event.target.value
+    });
+  }
+
+
+   cityChanged = (event) => {
+    this.setState({
+      city: event.target.value
+    });
+  }
+
+  zipcodeChanged = (event) => {
+    this.setState({
+      zipcode: event.target.value
+    });
+  }
+
+  stateChanged = (event) => {
+    this.setState({
+      state: event.target.value
+    });
+  }
+
+  resumeURLChanged = (event) => {
+    this.setState({
+      resumeURL: event.target.value
+    });
+  }
+
+  handleSubmit(event) {
+    console.log(event);
+    
+    
+    fetch("/api/users/", {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({fname: this.state.fname, 
+        lname: this.state.lname, 
+        email: this.state.email, 
+        city: this.state.city,
+        zipcode: this.state.zipcode, 
+        state: this.state.state, 
+        resumeURL: this.state.resumeURL
+
+      }),
+    })
+  
+      .then(res => {
+        if(res.ok) {
+          return res.json()
+        }
+
+        throw new Error('Content validation');
+      })
+      .then(post => {
+        this.setState({
+          success: true,
+        });
+      })
+      .catch(err => {
+        this.setState({
+          error: true,
+        });
+      });
+  }
+  
+
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  //   const data = new FormData(event.target);
+
+  //   fetch ('/api/users', {
+  //     method: 'POST',
+  //     //body: data,
+  //     credentials: 'include',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({content: this.state.content}),
+    
+
+    
+
+  //   });
+
+
+  // }
 
   carousel = () => {
     return (
@@ -47,7 +165,39 @@ class HomePage extends React.Component {
       <div>
 
         <Modal show="true" onHide={(event) => this.setState({displaySeeker: false})}>
-          <Modal.Header closeButton>
+          
+          <form onSubmit = {this.handleSubmit} >
+            <label htmlFor="fname"> Enter first name</label>
+            <input id="fname" value={this.state.fname} name = "fname" type="text" onChange={this.fnameChanged}/>
+
+            <label htmlFor="lname"> Enter last name</label>
+            <input id="lname" value={this.state.lname} name = "lname" type="text" onChange={this.lnameChanged}/>
+
+            <label htmlFor="email"> Enter your email</label>
+            <input id="email" value={this.state.email} name = "email" type="email" onChange={this.emailChanged}/>
+
+            <label htmlFor="city"> Enter city</label>
+            <input id="city" value={this.state.city} name = "city" type="text" onChange={this.cityChanged}/>
+
+            <label htmlFor="zipcode"> Enter zipcode</label>
+            <input id="zipcode" value={this.state.zipcode} name = "zipcode" maxLength="5" minLength="5" type="text" onChange={this.zipcodeChanged}/>
+
+            <label htmlFor="state"> Enter state</label>
+            <input id="state" value={this.state.state} name = "state" maxLength="2" minLength="2" type="text" onChange={this.stateChanged}/>
+
+            <label htmlFor="resumeURL"> Enter a link to your resume</label>
+            <input id="resumeURL" value={this.state.resumeURL} name = "resumeURL" type="text" onChange={this.resumeURLChanged}/>
+
+            <button variant="primary" type="submit" >Submit!</button>
+
+            {/* onClick={(event) => this.setState({displaySeeker: false})} */}
+          </form>
+          
+          
+          
+          {
+          
+          /* <Modal.Header closeButton>
             <Modal.Title>Let's Get Started!</Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -84,7 +234,7 @@ class HomePage extends React.Component {
             <Button variant="primary" onClick={(event) => this.setState({displaySeeker: false})}>
               Save Changes
             </Button>
-          </Modal.Footer>
+          </Modal.Footer> */}
         </Modal>
       </div>
     );
@@ -93,7 +243,11 @@ class HomePage extends React.Component {
   return (
     <div>
       <Modal show="true" onHide={(event) => this.setState({displayEmployer: false})}>
-        <Modal.Header closeButton>
+
+
+
+
+        {/* <Modal.Header closeButton>
           <Modal.Title>Welcome Aboard</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -132,7 +286,7 @@ class HomePage extends React.Component {
           <Button variant="primary" onClick={(event) => this.setState({displayEmployer: false})}>
             Save Changes
           </Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </div>
     );
@@ -140,17 +294,28 @@ class HomePage extends React.Component {
   render() {
     const {displaySeeker} = this.state;
     const {displayEmployer} = this.state;
-    const {carousel} = this.state;
+    // const {carousel} = this.state;
     return (
       <div>
         <div>The First Step is Reentry</div>
-        {carousel}
-        <button className="" onClick={(event) => this.setState({displaySeeker: true})}>Seeker</button>
+        {/* {carousel} */}
+        <button type="button"className="" onClick={(event) => this.setState({displaySeeker: true})}>Seeker</button>
         {displaySeeker && this.seekerForm()}
-        <button className="" onClick={(event) => this.setState({displayEmployer: true})}>Employers</button>
+        <button type="button"className="" onClick={(event) => this.setState({displayEmployer: true})}>Employers</button>
         {displayEmployer && this.employerForm()}
       </div>
     );
   }
 }
+
+
 export default HomePage;
+
+
+function stringifyFormData(fd) {
+  const data = {};
+	for (let key of fd.keys()) {
+  	data[key] = fd.get(key);
+  }
+  return JSON.stringify(data, null, 2);
+}

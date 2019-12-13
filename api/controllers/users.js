@@ -27,12 +27,14 @@ router.get('/', (req,res) => {
 
 router.post('/', (req, res) => {
   let { content } = req.body;
-  //console.log(req.body);
+  console.log(req.body);
 
-  if(req.body.zipcode.length != 5){
-    res.status(400);
-  }
-  User.create({ content })
+  // if(req.body.zipcode.length != 5){
+  //   res.status(400);
+  // }
+
+  //make sure it's req.body, not content
+  User.create(req.body)
     .then(post => {
       res.status(201).json(post);
     })
