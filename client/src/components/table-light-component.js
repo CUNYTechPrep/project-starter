@@ -17,46 +17,46 @@ function TableLight() {
                                         <thead>
                                             <tr className="text-muted">
                                                 <th>#</th>
-                                                <th>Name</th>
-                                                <th>Salary</th>
+                                                <th>Ingredient</th>
+                                                <th>Price</th>
                                                 <th>Date</th>
-                                                <th>Contact</th>
+                                                <th>Re-Stock</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
                                                 <th>1</th>
-                                                <td>Johnathan</td>
-                                                <td>$2,000</td>
-                                                <td>25/05/1889</td>
+                                                <td>Apple</td>
+                                                <td>$4.59</td>
+                                                <td>09/03/2019</td>
                                                 <td><button type="button" className="btn btn-info btn-sm">Message</button></td>
                                             </tr>
                                             <tr>
                                                 <th>2</th>
-                                                <td>Joseph</td>
-                                                <td>$3,500</td>
-                                                <td>25/05/1920</td>
+                                                <td>Garlic</td>
+                                                <td>$14.99</td>
+                                                <td>25/05/2019</td>
                                                 <td><button type="button" className="btn btn-info btn-sm">Message</button></td>
                                             </tr>
                                             <tr>
                                                 <th>3</th>
-                                                <td>Jotaro</td>
-                                                <td>$7,500</td>
-                                                <td>25/05/1970</td>
+                                                <td>Onions</td>
+                                                <td>$12.99</td>
+                                                <td>25/05/2019</td>
                                                 <td><button type="button" className="btn btn-info btn-sm">Message</button></td>
                                             </tr>
                                             <tr>
                                                 <th>4</th>
-                                                <td>Dio</td>
-                                                <td>$75,000,000</td>
-                                                <td>ZA WARDO!!!!</td>
+                                                <td>Cocoa Beans</td>
+                                                <td>$120</td>
+                                                <td>05/05/2019</td>
                                                 <td><button type="button" className="btn btn-info btn-sm">Message</button></td>
                                             </tr>
                                             <tr>
                                                 <th>5</th>
-                                                <td>Lisa</td>
-                                                <td>$6,500</td>
-                                                <td>25/05/1900</td>
+                                                <td>Oatmeal</td>
+                                                <td>8.99</td>
+                                                <td>02/06/2019</td>
                                                 <td><button type="button" className="btn btn-info btn-sm">Message</button></td>
                                             </tr>
                                         </tbody>
