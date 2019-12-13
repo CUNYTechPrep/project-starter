@@ -35,7 +35,7 @@ const NoResults = () => {
         </p>
         <br />
         <p>
-          <Button href="https://www.google.com/?client=safari" variant="primary">In The Meantime Look Here To Get Prapared</Button>
+          <Button href="https://www.themuse.com/advice/the-ultimate-interview-guide-30-prep-tips-for-job-interview-success" variant="primary">In The Meantime Look Here To Get Prapared</Button>
         </p>
       </Jumbotron>
     </div>

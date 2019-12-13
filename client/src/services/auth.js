@@ -7,10 +7,13 @@
 
 const auth = {
   isAuthenticated: false,
-  authenticate(email, password) {
-    return fetch('/api/auth/login', { 
+  authenticate(email, pass_hash) {
+    console.log(email)
+    console.log(pass_hash)
+
+    return fetch('/api/users/login', { 
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, pass_hash }),
       headers: {
         'Content-Type': 'application/json',
       }
@@ -28,7 +31,7 @@ const auth = {
       });
   },
   signout(cb) {
-    return fetch('/api/auth/logout', { 
+    return fetch('/api/users/logout', { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

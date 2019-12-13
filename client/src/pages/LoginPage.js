@@ -1,8 +1,9 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { Card, CardBody, Button, CardTitle, CardText, CardImg } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardImg } from 'reactstrap';
 import auth from '../services/auth';
 
+import pic from '../imgs/Sign-in.jpg';
 
 class LoginPage extends React.Component {
   state = {
@@ -45,9 +46,9 @@ class LoginPage extends React.Component {
     }
 
     return (
-      <div>
-        <Card className="text-center" >
-          <CardImg top width="100%" src="logo.svg" alt="Cool image" />
+      <div style={{width: "50%", margin: "auto"}}>
+        <Card>
+          <CardImg top width="100%" src={pic} alt="Cool image" />
           <CardBody>
             <CardTitle>Login Here</CardTitle>
             <form onSubmit={this.login}>
@@ -68,15 +69,24 @@ class LoginPage extends React.Component {
                   value={this.state.password} 
                   onChange={this.fieldChanged('password')} />
                 <br /><br />
+                <span>
+                <button
+                  onClick={(e): void => { e.preventDefault(); window.location.href='http://localhost:3000/';}}
+                  type="submit"
+                  className="btn btn-light ml-auto center">
+                  Cancel
+                </button>    
                 <button 
                   type="submit"
-                  className="btn btn-primary ml-auto">
+                  className="btn btn-primary ml-auto center">
                   Login
                 </button>
+                </span>                
               </div>
             </form>
           </CardBody>
         </Card>
+        <br /><br />
       </div>
     );
   }

@@ -1,14 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const expressSession = require('express-session');
 const morgan = require('morgan');
 const path = require('path');
 const db = require('./models');
+const passport = require('./middlewares/authentication');
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-//console.log(db);
+
 // this lets us parse 'application/json' content in http requests
 app.use(bodyParser.json())
+
+// setup passport and session cookies
+app.use(expressSession({ 
+  secret: process.env.SESSION_SECRET, 
+  resave: false,
+  saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // add http request logging to help us debug and audit app use
 const logFormat = process.env.NODE_ENV==='production' ? 'combined' : 'dev';

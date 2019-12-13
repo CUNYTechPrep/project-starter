@@ -33,19 +33,22 @@ router.get('/', (req,res) => {
 router.post('/signup', (req, res) => {
   User.create({ ...req.body })
     .then(user => {
+      console.log(user)
       req.login(user, () => res.status(201).json(user));
     })
     .catch(err => {
       res.status(400).json(err);
+      console.log(err)
     });
 });
 
-router.post('/login',
-passport.authenticate('local'),
-(req,res) => {
-  // If this function gets called, authentication was successful.
+router.post('/login', (req,res) => {
+passport.authenticate('local', (err,user,info) =>{
+   console.log(err, user,info)
+   // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
     res.json(req.user);
+  })(req,res)
 }); 
 
 router.post('/logout', (req, res) => {
