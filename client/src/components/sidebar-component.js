@@ -74,6 +74,14 @@ function Navigation(props) {
                                         </Link>
                                     </li>
 
+                                    {/* <!-- About Us --> */}
+                                    <li className="nav-item">
+                                        <Link to="/aboutUs" className="nav-link text-white p-3 mb-2 sidebar-link">
+                                            <i className="fas fa-wrench text-light fa-lg mr-3"/>
+                                            About Us
+                                        </Link>
+                                    </li>
+
                                 </ul> {/* <!-- end of Unordered List --> */}
                             </div>
                             {/* <!-- end of sidebar --> */}

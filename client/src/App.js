@@ -41,7 +41,7 @@ class App extends React.Component {
                 <Route path="/holiday" component={CelebratePage} />
                 <Route path="/settings" component={SettingsPage} />
                 <Route path="/saved" component={SavedPage} />
-                <Route path="/about-us" component={AboutUsPage} />
+                <Route path="/aboutUs" component={AboutUsPage} />
 
 
               </Switch>

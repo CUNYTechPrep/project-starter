@@ -97,6 +97,16 @@ export default class celebratePage extends Component {
                     </div>
                 </div>
 
+                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto bg-dark py-2 mt-5 shadow-lg">
+                    <h1>Thanksgiving 2019</h1>
+                    <h2 className="thanksgiving">The season of giving</h2>
+                    <p>Thanksgiving is over, come back next year for more amazing curated content!</p>
+                    <iframe src="https://giphy.com/embed/R1bq4ZgEyvAjK" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+                                
+                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5 mb-5">
+                    <p>Team Star Platinum © 2019</p>
+                </div>
 
             </div>
         );
