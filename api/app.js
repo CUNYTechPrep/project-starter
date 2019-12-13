@@ -8,7 +8,7 @@ const mysql = require('mysql2');
 const pool = mysql.createPool({
     host: "35.237.190.4",
     user: 'root',
-    password: '@4#C^&1O0^jE0hDs',
+    password: 'zti^H$9iVhaG6upQ%Y3#NA54Xx4F9HYIna6',
     database: 'main',
     waitForConnections: true,
     connectionLimit: 10,
