@@ -8,7 +8,7 @@ const { User } = db;
 //    GET    /posts
 //    POST   /posts
 //    GET    /posts/:id
-//    PUT    /posts/:id
+//    PUT    /posts/:id 
 //    DELETE /posts/:id 
 
 // There are other styles for creating these route handlers, we typically
@@ -26,15 +26,17 @@ router.get('/', (req,res) => {
 //command: curl localhost:8080/api/users/
 
 router.post('/', (req, res) => {
-  let { content } = req.body;
-  console.log(req.body);
+  // let { content } = req.body;
+  // console.log(req.body);
 
-  // if(req.body.zipcode.length != 5){
-  //   res.status(400);
-  // }
+  // // if(req.body.zipcode.length != 5){
+  // //   res.status(400);
+  // // }
 
-  //make sure it's req.body, not content
-  User.create(req.body)
+  // //make sure it's req.body, not content
+  // User.create(req.body)
+
+  User.create({ ...req.body })
     .then(post => {
       res.status(201).json(post);
     })

@@ -19,21 +19,19 @@ const { Job } = db;
 router.get('/', (req,res) => {
   
   Job.findAll({})
-    .then(posts => res.json(posts));
+    .then(job => res.json(job));
 });
 
 
-router.post('/', (req, res) => {
-  let { content } = req.body;
-  
-  Job.create({ content })
-    .then(post => {
-      res.status(201).json(post);
+router.post('/', (req, res) => {  
+  Job.create({ ...req.body })
+    .then(job => {
+      res.status(201).json(job);
     })
     .catch(err => {
       res.status(400).json(err);
     });
-});
+}); 
 
 
 // router.get('/:id', (req, res) => {
