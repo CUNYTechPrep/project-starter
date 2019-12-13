@@ -1,6 +1,7 @@
 import React from 'react';
 import '../style/main.css'
 
+
 class Random extends React.Component {
     constructor(props) {
         super(props);
@@ -11,7 +12,7 @@ class Random extends React.Component {
         this.buttonPressedHandler = this.buttonPressedHandler.bind(this);
     }
     buttonPressedHandler(event) {
-        fetch('/api/places/random?lat=40.7666332999999952&lng=-73.99474479999999&keyword=restaurants')
+        fetch('/api/places/random?lat=40.75401&lng=-74.0028101&keyword=food')
             .then((res) => res.json())
             .then((res) => {
                 this.setState({
@@ -25,14 +26,17 @@ class Random extends React.Component {
         return (
             <div>
                 <br />
-                <div>
-                    What's Your Next Adventure
-                </div>
+                <div className="sign">
+
+                    What's Your Next
+                    <br />
+                    Adventure?
+            </div>
 
                 <br />
-                <button className="btn btn-primary" onClick={this.buttonPressedHandler}>Let's GO!! </button>
+                <button className="btn btn-primary btn-lg" onClick={this.buttonPressedHandler}>Let's GO!! </button>
                 {this.state.isFetchedRandom ?
-                    <div>
+                    <div className="rating">
                         <div>
                             {this.state.randomRestaurant.name}
                         </div>
@@ -42,7 +46,7 @@ class Random extends React.Component {
                         <div>
                             {this.state.randomRestaurant.vicinity}
                         </div>
-                        <img className="RI" alt="map of restaurant" src={`https://maps.googleapis.com/maps/api/place/photo?key=&photoreference=${this.state.randomRestaurant.photos[0].photo_reference}&maxheight=${this.state.randomRestaurant.photos[0].height}`} />
+                        <img className="RI" alt="map of restaurant" src={`https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyBtd93FCtB6B-vJlN9O5oDQQBbH_hi5YoI&photoreference=${this.state.randomRestaurant.photos[0].photo_reference}&maxheight=${this.state.randomRestaurant.photos[0].height}`} />
                     </div>
                     : null}
             </div>

@@ -1,18 +1,66 @@
 @import 'https://fonts.googleapis.com/css?family=Righteous';
-div{
-    background-image: url("https://thumbs.dreamstime.com/b/abstract-gradient-pink-purple-neon-background-business-card-style-design-banner-your-designs-140163833.jpg");
+/* div{
+    /* background-image: url("https://images.wallpaperscraft.com/image/background_solid_purple_65808_300x168.jpg"); */
+    /* background-image: cover;
+    background-repeat: no-repeat; */
+  /* background-image: linear-gradient(to bottom right, purple, pink); */
 /* background-image: url("https://besthqwallpapers.com/Uploads/23-3-2019/84513/thumb2-blue-neon-masonry-texture-neon-brick-texture-black-background-neon-abstraction-masonry.jpg"); */
-}
-div {
+/* div {
     display: block;
     color: violet;
-  } 
+  }  */
   .RI{
       height: 60% ;
       width: 60%;
   }
   button{
     text-align: center;
-
-    
   }
+ .col-12 {
+    background-color: rgb(0, 0, 0);
+    background-image: url("https://i.ytimg.com/vi/IaWNB-6fipg/maxresdefault.jpg"); 
+ }
+ .cardbody{
+    background-color: rgb(0, 0, 0);
+    background-image: url("https://i.ytimg.com/vi/IaWNB-6fipg/maxresdefault.jpg"); 
+  }
+/* .row{
+    background-color: rgb(192, 76, 167);
+    padding:0%;
+} */
+  .card-text{
+      font-family: 'Lucida Sans';
+      font-size: 20px;
+      border:none;
+      color: white;
+      -webkit-text-stroke: 1px black;
+        font-size: 30px;
+      padding:0%;
+  }
+  .card-title{
+      color:white;
+      font-family: swap;
+      font-weight: bold;
+      -webkit-text-stroke: 1px black;
+      font-size:30px;
+  }
+  .card{
+      border:none;
+      background:rgb(0, 0, 0);
+      padding: 0%;
+      background-color: #d038bc;
+      background-image: url("https://i.ytimg.com/vi/IaWNB-6fipg/maxresdefault.jpg"); 
+
+  }
+  .sign{
+      font-family: Righteous;
+      font-size: 100px;
+      color:rgb(240, 240, 240);
+      -webkit-text-stroke: 1px black;
+	-webkit-text-fill-color: linear-gradient(to bottom right, rgb(151, 34, 151), pink);
+  }
+  .btn-primary{
+    width: 25vh;
+    height:10vh;
+    font-size:30px;
+    }

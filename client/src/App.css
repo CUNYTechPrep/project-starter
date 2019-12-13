@@ -26,7 +26,7 @@ div {
 background-color: blue;
 /* background-image: url("neon.jpg"); */ 
 .navbar-dark .navbar-brand {
-  font-size: 30px;
+  font-size: 40px;
   font-family: 'Futura';
   color: #fff;
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #FF0080, 0 0 30px #FF0080, 0 0 40px #FF0080, 0 0 55px #FF0080, 0 0 75px #FF0080;
@@ -50,31 +50,54 @@ background-color: blue;
   background-color: orange;
 } */
 .bg {
-  
-  /* height: 370vh;
-  background-position: center;
- background-repeat: no-repeat; */
+  background-image: url("https://i.ytimg.com/vi/IaWNB-6fipg/maxresdefault.jpg");  /* height: 370vh;
+    background-position: center;
+   */
+   background-repeat: no-repeat;
+    background-size: cover;
+    height: 150vh;
+    width: 100vw;
+    margin-top:0;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
-  width: 100vw;
-  margin-top:0;
+  }
+  body{
+    background: black;
 }
 .aboutus{
- color: white;
+ text-decoration-color: orange;
 }
 .bg-dark{
   background-color: #000000;
 }
-
 .navbar-dark .navbar-brand {
   color: white;
-  font-family: ‘Quicksand’, sans-serif;
+  font-family: 'Quicksand', sans-serif;
   text-shadow: 0 0 10px rgb(255, 7, 214);
 }
 .navbar-dark .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.5);
-  font-size: 22px;
+  font-size: 30px;
 }
 .bg-dark {
-  background-color: #00CDCD!important;
+/* background-color: #00CDCD!important; */
+background-color: rgb(0, 0, 0)!important;
+}
+/* .RI {
+  background-color: #FF0080;
+} */
+/* .bg{
+  background-color: antiquewhite;
+} */
+.navbar-expand-sm navbar-dark bg-dark {
+  background-color: black;
+}
+div.bg{
+  background-color: #D96CBE;}
+.rating{
+  font-size: 30px;
+  font-family: swap;
+  color: #fff;
 }

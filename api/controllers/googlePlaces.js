@@ -26,7 +26,7 @@ router.get('/random', (req, res) => {
     if (err) {
       res.json(err);
     }
-    res.json(google.json.results[Math.floor(Math.random() * 20)]);
+    res.json(google.json.results[Math.floor(Math.random() * 19)]);
   })
 });
 module.exports = router;

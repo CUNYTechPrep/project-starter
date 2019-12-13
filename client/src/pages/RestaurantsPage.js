@@ -23,7 +23,7 @@ class RestaurantsPage extends React.Component {
   }
 
   getRes() {
-    fetch('/api/places?lat=40.7666332999999952&lng=-73.99474479999999&keyword=restaurants')
+    fetch('/api/places?lat=40.75401&lng=-74.0028101&keyword=food')
       .then(res => res.json())
       .then(res => this.setState({ 'items': res.json.results }));
   }
@@ -50,10 +50,11 @@ const ContentItem = ({ item }) => (
 
 
   <Col xs="12" sm="6" md="4">
-    <Card>
+    <Card className="card`">
       <CardBody>
         <CardTitle>
-          {<CardImg className="aa" top width="100%" src={"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + item.photos[0].photo_reference + "&key="}></CardImg>}
+          {<CardImg className="aa" top width="100%" src={"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + item.photos[0].photo_reference + "&key=AIzaSyBtd93FCtB6B-vJlN9O5oDQQBbH_hi5YoI"}></CardImg>}
+          <br />
           {item.name}
         </CardTitle>
         <CardText>

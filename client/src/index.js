@@ -24,7 +24,7 @@ function success(pos) {
   var crd = pos.coords;
   var lng = pos.coords.longitude;
   var lat = pos.coords.latitude;
-  fetch('/api/places?lat=' + lat + '2&lng=' + lng + '&keyword=restaurant')
+  fetch('/api/places?lat=' + lat + '&lng=' + lng + '&keyword=bar')
     .then(res => res.json())
     .then(res => console.log(res))
 

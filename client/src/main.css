@@ -12,16 +12,23 @@
       border-radius:50%;
       border: solid #666 1px;
   } */
-  button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    border-radius:50%;
-    border: solid #666 1px;
+  .col-12 {
+    background-color: rgb(255, 255, 255);
+ }
+ .cardbody{
+    background-color: rgb(255, 255, 255);
+  }
+/* .row{
+    background-color: rgb(192, 76, 167);
+    padding:0%;
+} */
+  .card-text{
+      font-family: 'Lucida Sans';
+      font-size: 20px;
+      border:none;
+      padding:0%;
+  }
+  .card{
+      border:none;
+      background:rgb(255, 255, 255);
   }
