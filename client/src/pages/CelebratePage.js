@@ -6,7 +6,6 @@ import { Redirect } from 'react-router-dom';
 import SideBar from '../components/sidebar-component';
 import TopBar from '../components/topbar-component';
 import Loading from '../components/Loading';
-import Button from 'react-bootstrap/Button';
 import '../css/saved.css';
 
 
@@ -34,11 +33,11 @@ export default class celebratePage extends Component {
                     <h1>Christmas 2019</h1>
                     <h2 className="christmas">Tis the Season to be Jolly</h2>
                     <p>For this is holiday season you can watch specially curated instructional content hand picked by our editors, to create the best holiday feast ever!</p>
-                    <iframe src="https://giphy.com/embed/tkx3RlxxY4O4" width="480" height="361" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                    <iframe title="Saint Grinch" src="https://giphy.com/embed/tkx3RlxxY4O4" width="480" height="361" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
 
                 <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5 bg-dark shadow-lg">
-                    <iframe src="https://free.timeanddate.com/countdown/i72dbzza/n179/cf12/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cacfff/cpc000/pct/tcfff/fs100/szw256/szh108/tatChristmas%20is%20in%3A%20/tacfff/tptIt's%20Christmas!/tpcfff/macfff/mpc000/iso2019-12-25T00:00:00" allowTransparency="true" frameborder="0" width="109" height="59"></iframe>
+                    <iframe title="Christmas Countdown" src="https://free.timeanddate.com/countdown/i72dbzza/n179/cf12/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cacfff/cpc000/pct/tcfff/fs100/szw256/szh108/tatChristmas%20is%20in%3A%20/tacfff/tptIt's%20Christmas!/tpcfff/macfff/mpc000/iso2019-12-25T00:00:00" allowTransparency="true" frameborder="0" width="109" height="59"></iframe>
                 </div>
 
                 <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5 shadow-lg">
@@ -101,7 +100,7 @@ export default class celebratePage extends Component {
                     <h1>Thanksgiving 2019</h1>
                     <h2 className="thanksgiving">The season of giving</h2>
                     <p>Thanksgiving is over, come back next year for more amazing curated content!</p>
-                    <iframe src="https://giphy.com/embed/R1bq4ZgEyvAjK" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                    <iframe title="Thanksgiving" src="https://giphy.com/embed/R1bq4ZgEyvAjK" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
                                 
                 <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5 mb-5">
