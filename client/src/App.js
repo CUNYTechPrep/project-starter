@@ -11,7 +11,10 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import AboutUsPage from './pages/AboutUsPage';
 import DashboardPage from './pages/DashboardPage';
-import RecipesPage from './pages/Recipes';
+
+import Recipe from "./pages/Recipe";
+import Recipe_API from "./RecipeApi";
+
 import CelebratePage from './pages/CelebratePage';
 import SavedPage from "./pages/savedPage";
 import SharePage from './SharePage';
@@ -41,7 +44,10 @@ class App extends React.Component {
                 <Route path="/login" component={LoginPage} />
                 <Route path="/signup" component={SignUpPage} />
                 <Route path="/dashboard" component={DashboardPage} />
-                <Route path="/recipes" component={RecipesPage} />
+                
+                <Route path="/recipe" component={Recipe_API} exact />
+                <Route path="/recipe/:id" component={Recipe} />
+
                 <Route path="/holiday" component={CelebratePage} />
                 <Route path="/settings" component={SettingsPage} />
                 <Route path="/saved" component={SavedPage} />

@@ -54,7 +54,7 @@ function Navigation(props) {
                                     </li>
                                     {/* <!-- Suggested Recipes --> */}
                                     <li className="nav-item">
-                                        <Link to="/recipes" className="nav-link text-white p-3 mb-2 sidebar-link">
+                                        <Link to="/recipe" className="nav-link text-white p-3 mb-2 sidebar-link">
                                             <i className="fas fa-user text-light fa-lg mr-3"/>
                                             Suggested Recipes
                                         </Link>
