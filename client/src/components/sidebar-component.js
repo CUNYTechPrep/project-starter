@@ -66,6 +66,13 @@ function Navigation(props) {
                                             Celebrate
                                         </Link>
                                     </li>
+                                    {/* <!-- SMS Twilio Front-End --> */}
+                                    <li className="nav-item">
+                                        <Link to="/api/messages" className="nav-link text-white p-3 mb-2 sidebar-link">
+                                            <i className="fas fa-user text-light fa-lg mr-3"/>
+                                            Share
+                                        </Link>
+                                    </li>
                                     {/* <!-- Settings --> */}
                                     <li className="nav-item">
                                         <Link to="/settings" className="nav-link text-white p-3 mb-2 sidebar-link">

@@ -71,8 +71,8 @@ export default class aboutUsPage extends Component {
                 </div>
               </div>
 
-              <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5 shadow-lg">
-                <h3>The Secret to Good things lie in Team Work</h3>
+              <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5 shadow-lg px-5">
+                <h3>The Secret behind amazing products lies in good Team Work</h3>
               </div>
                               
               <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5">

@@ -10,7 +10,7 @@ body {
 /* ---- start of side-bar ---- */
 .sidebar {
 	height: 100vh;		/* This enables it to stretch and take 100% of the viewport */
-	background: linear-gradient(rgba(0,0,0, .6), rgba(0,0,0, .9)), url("../images/sidebar-bg-3.png");
+	background: linear-gradient(rgba(0,0,0, .6), rgba(0,0,0, .5)), url("../images/sidebar-bg-10.png");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;

@@ -14,7 +14,11 @@ import DashboardPage from './pages/DashboardPage';
 import RecipesPage from './pages/Recipes';
 import CelebratePage from './pages/CelebratePage';
 import SavedPage from "./pages/savedPage";
+import SharePage from './SharePage';
 import SettingsPage from "./pages/settingsPage";
+
+
+import "./SMSForm"
 
 import "./pages/Recipe";
 import "./pages/Form";
@@ -41,6 +45,7 @@ class App extends React.Component {
                 <Route path="/holiday" component={CelebratePage} />
                 <Route path="/settings" component={SettingsPage} />
                 <Route path="/saved" component={SavedPage} />
+                <Route path="/api/messages" component={SharePage} />
                 <Route path="/aboutUs" component={AboutUsPage} />
 
 
