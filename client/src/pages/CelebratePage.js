@@ -37,6 +37,10 @@ export default class celebratePage extends Component {
                     <iframe src="https://giphy.com/embed/tkx3RlxxY4O4" width="480" height="361" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
 
+                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5 bg-dark shadow-lg">
+                    <iframe src="https://free.timeanddate.com/countdown/i72dbzza/n179/cf12/cm0/cu4/ct0/cs0/ca0/cr0/ss0/cacfff/cpc000/pct/tcfff/fs100/szw256/szh108/tatChristmas%20is%20in%3A%20/tacfff/tptIt's%20Christmas!/tpcfff/macfff/mpc000/iso2019-12-25T00:00:00" allowTransparency="true" frameborder="0" width="109" height="59"></iframe>
+                </div>
+
                 <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5 shadow-lg">
                     <h3>The Secret lies in a good breakfeast</h3>
                 </div>
