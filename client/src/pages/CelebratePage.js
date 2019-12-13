@@ -47,7 +47,7 @@ export default class celebratePage extends Component {
 
                 <div className="col-xl-10 col-lg-9 col-md-8 ml-auto bg-dark py-2 mt-5 shadow-lg">
                     <div className="embed-responsive embed-responsive-16by9">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/gBJjRYk0yC0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe title="Crispy Eggs Benadict" width="560" height="315" src="https://www.youtube.com/embed/gBJjRYk0yC0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
 
@@ -57,13 +57,13 @@ export default class celebratePage extends Component {
 
                 <div className="col-xl-10 col-lg-9 col-md-8 ml-auto bg-dark py-2 mt-5 shadow-lg">
                     <div className="embed-responsive embed-responsive-16by9">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/QDCO_J1lOrA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe title="The Day Before Christmas" width="560" height="315" src="https://www.youtube.com/embed/QDCO_J1lOrA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
 
                 <div className="col-xl-10 col-lg-9 col-md-8 ml-auto py-2 mt-5 shadow-lg">
                     <h3>It's D-Day</h3>
-                    <iframe src="https://giphy.com/embed/x7gjmBuaHrWak" width="325" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                    <iframe title="Grinch Smile" src="https://giphy.com/embed/x7gjmBuaHrWak" width="325" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
                 </div>
 
 
@@ -82,6 +82,18 @@ export default class celebratePage extends Component {
                 <div className="col-xl-10 col-lg-9 col-md-8 ml-auto bg-dark py-2 mt-5 shadow-lg">
                     <div className="embed-responsive embed-responsive-16by9">
                         <iframe title="Mashed Potatoes" width="560" height="315" src="https://www.youtube.com/embed/x6O9SwocyKQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto bg-dark py-2 mt-5 shadow-lg">
+                    <div className="embed-responsive embed-responsive-16by9">
+                        <iframe title="Christman Ham" width="560" height="315" src="https://www.youtube.com/embed/c5KOthuMywA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto bg-dark py-2 mt-5 shadow-lg">
+                    <div className="embed-responsive embed-responsive-16by9">
+                        <iframe title="Christmas Beef" width="560" height="315" src="https://www.youtube.com/embed/Cyskqnp1j64" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
 
