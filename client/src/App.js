@@ -41,12 +41,12 @@ function Navigation(props) {
           <li class="nav-item active">
             <a class="nav-link" href="/about">About</a>
           </li>
-          <li class="nav-item active">
+          {/* <li class="nav-item active">
             <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item active">
+          </li> */}
+          {/* <li class="nav-item active">
             <a class="nav-link" href="/sign-up">Sign Up</a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>
@@ -61,9 +61,8 @@ function App() {
         <Switch>
           <Route exact path="/"> <Landing /> </Route>
           <Route path="/about"> <About /> </Route>
-          <Route path="/login"> <Login /> </Route>
-          <Route path="/sign-up"> <SignUp /> </Route>
-          <Route path="/sign-up"> <SignUp /> </Route>
+          {/* <Route path="/login"> <Login /> </Route> */}
+          {/* <Route path="/sign-up"> <SignUp /> </Route> */}
           <Route path="/fuzzy-search"> <FuzzySearch /> </Route>
         </Switch>
       </div>
