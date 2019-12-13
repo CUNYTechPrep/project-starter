@@ -94,7 +94,7 @@ router.delete('/:id', (req, res) => {
       }
 
       post.destroy();
-      res.sendStatus(204);
+      res.sendStatus(404); //Changed from 204 - 404 
     });
 });
 

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const { User } = db;
+const passport = require('../middlewares/authentication');
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -18,33 +19,55 @@ const { User } = db;
 // command: curl localhost:8080/api/users/
 //return all users
 router.get('/', (req,res) => {
-  User.findAll({})
+  User.findAll({
+    where: {
+    isBiz: false
+  }
+  })
     .then(posts => res.json(posts));
 });
 
 //post user info to User table
 //command: curl localhost:8080/api/users/
 
-router.post('/', (req, res) => {
-  // let { content } = req.body;
-  // console.log(req.body);
-
-  // // if(req.body.zipcode.length != 5){
-  // //   res.status(400);
-  // // }
-
-  // //make sure it's req.body, not content
-  // User.create(req.body)
-
-  User.create(req.body )
-    .then(post => {
-      res.status(201).json(post);
+router.post('/signup', (req, res) => {
+  User.create({ ...req.body })
+    .then(user => {
+      console.log(user)
+      req.login(user, () => res.status(201).json(user));
     })
     .catch(err => {
       res.status(400).json(err);
+      console.log(err)
     });
 });
 
+router.post('/login', (req,res) => {
+passport.authenticate('local', (err,user,info) =>{
+   console.log(err, user,info)
+   // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    res.json(req.user);
+  })(req,res)
+}); 
+
+router.post('/logout', (req, res) => {
+  req.logout();
+  res.status(200).json({ message: 'Logout successful' });
+})
+
+
+router.get('/:id', (req, res) => {
+  const { id } = req.params;
+  User.findByPk(id)
+    .then(user => {
+      if(!user) {
+        return res.sendStatus(404);
+      }
+
+      res.json(post);
+    });
+});
 
 // router.get('/:id', (req, res) => {
 //   const { id } = req.params;

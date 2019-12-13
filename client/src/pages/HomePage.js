@@ -5,6 +5,10 @@ import Modal from 'react-bootstrap/Modal'
 import {Form, Button, FormGroup, Carousel, Label, Input, Col} from 'reactstrap';
 
 
+import img1 from '../imgs/abolition.jpg';
+import img2 from '../imgs/memories-carousel.jpg';
+import img3 from '../imgs/recidivism-rehab.jpg';
+
 class HomePage extends React.Component {
 
   constructor(props) {
@@ -141,13 +145,13 @@ class HomePage extends React.Component {
       <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active" data-interval="10000">
-            <img src="https://setoncenter.org/wp-content/uploads/hands-2805248_1920-768x572.png" class="d-block w-100" alt="..." />
+            <img src={img1} class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item" data-interval="2000">
-            <img src="..." class="d-block w-100" alt="..." />
+            <img src={img2} class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="..." />
+            <img src={img3} class="d-block w-100" alt="..." />
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
@@ -165,7 +169,6 @@ class HomePage extends React.Component {
   seekerForm = (event) => {
     return (
       <div>
-
         <Modal show="true" onHide={(event) => this.setState({displaySeeker: false})}>
         <Modal.Header closeButton>
           <Modal.Title>Welcome to Reentry! Enter your information below.</Modal.Title>
@@ -379,15 +382,15 @@ class HomePage extends React.Component {
   render() {
     const {displaySeeker} = this.state;
     const {displayEmployer} = this.state;
-    const {carousel} = this.state;
     return (
       <div>
         <div>The First Step is Reentry</div>
-        {carousel}
+        {this.carousel()}
         <button type="button"className="" onClick={(event) => this.setState({displaySeeker: true})}>Seeker</button>
         {displaySeeker && this.seekerForm()}
         <button type="button"className="" onClick={(event) => this.setState({displayEmployer: true})}>Employers</button>
         {displayEmployer && this.employerForm()}
+        <br /><br /><br />
       </div>
     );
   }
