@@ -32,28 +32,39 @@ function runText(from, to, body) {
 // postgres any uppercase add "userId"
 
 db.sequelize.query(`SELECT * FROM users as u inner join users_items as ui on ui."userId" = u.id inner join items as i on i.id = ui."itemId" where ui.expiration <= '${today}' order by ui."userId"`).then(users => {
-    let itemtext=" ";
+    let itemtext="";
     var i = 0;
     users.map(user => {
-
+        //console.log(user);
+        console.log(user.length);
+        
         user.forEach(u => {
-            
-            itemtext = u.itemname+","+itemtext;
+            console.log(i);
+            //console.log(user[1].userId);
+            itemtext = u.itemname+", "+itemtext;
 
-            if(u.id != u[i+1].id){
+            if(u.userId != user[i+1].userId){
 
                 to = u.phonenumber;
-                body = "Hi Dear "+u.username+". Your"+itemtext+" has expired";
+                console.log(to);
+                body = "Hi Dear "+u.username+". Your "+itemtext+" has expired!";
+                console.log(body);
                 runText(from, to, body);
-                itemtext = " ";
+                itemtext = "";
+            }else if(i == user.length-1){
+                to = u.phonenumber;
+                console.log(to);
+                body = "Hi Dear "+u.username+". Your "+itemtext+" has expired!";
+                console.log(body);
             }
             i++;
+            //console.log(itemtext);
             
-            
-
         })
+        
     })
 
+    
 
 
 })
