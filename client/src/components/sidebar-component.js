@@ -59,6 +59,13 @@ function Navigation(props) {
                                             Suggested Recipes
                                         </Link>
                                     </li>
+                                    {/* <!-- Celebrate the Holidays --> */}
+                                    <li className="nav-item">
+                                        <Link to="/holiday" className="nav-link text-white p-3 mb-2 sidebar-link">
+                                            <i className="fas fa-user text-light fa-lg mr-3"/>
+                                            Celebrate
+                                        </Link>
+                                    </li>
                                     {/* <!-- Settings --> */}
                                     <li className="nav-item">
                                         <Link to="/settings" className="nav-link text-white p-3 mb-2 sidebar-link">

@@ -5,6 +5,7 @@ import '../css/style.css';
 
 
 function TopBar (props) {
+    
     return (
         <div>
             {/* <!-- start of top-nav --> */}
@@ -12,7 +13,7 @@ function TopBar (props) {
                 <div className="row align-items-center">
                     {/* <!-- Description --> */}
                     <div className="col-md-4">
-                        <h4 className="text-light text-uppercase mb-0">Pantry</h4>
+                        <h4 className="text-light mb-0">Virtual Pantry</h4>
                     </div>
                     {/* <!-- Search bar --> */}
                     <div className="col-md-5">

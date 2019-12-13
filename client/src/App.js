@@ -5,15 +5,16 @@ import {
   Route,
 } from 'react-router-dom';
 
-// import fontawesome from '@fortawesome/fontawesome-free';     // <--- The Fon't awesome Icons are not loading, will need to do more research on how to get them working in React.
+// import fontawesome from '@fortawesome/fontawesome-free';     // <--- The Fon't awesome Icons are not loading, I need to do more research on how to get them working in React.
 
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import AboutUsPage from './pages/AboutUsPage';
 import DashboardPage from './pages/DashboardPage';
-import Recipes from "./pages/Recipes";
-import Saved from "./pages/savedPage";
-import Settings from "./pages/settingsPage";
+import RecipesPage from './pages/Recipes';
+import CelebratePage from './pages/CelebratePage';
+import SavedPage from "./pages/savedPage";
+import SettingsPage from "./pages/settingsPage";
 
 import "./pages/Recipe";
 import "./pages/Form";
@@ -36,10 +37,10 @@ class App extends React.Component {
                 <Route path="/login" component={LoginPage} />
                 <Route path="/signup" component={SignUpPage} />
                 <Route path="/dashboard" component={DashboardPage} />
-
-                <Route path="/recipes" component={Recipes} />
-                <Route path="/settings" component={Settings} />
-                <Route path="/saved" component={Saved} />
+                <Route path="/recipes" component={RecipesPage} />
+                <Route path="/holiday" component={CelebratePage} />
+                <Route path="/settings" component={SettingsPage} />
+                <Route path="/saved" component={SavedPage} />
                 <Route path="/about-us" component={AboutUsPage} />
 
 
