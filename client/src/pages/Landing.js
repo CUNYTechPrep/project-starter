@@ -182,8 +182,10 @@ class Landing extends React.Component {
         onScan={(e) => {
           this.toggleScanner();
           this.setState({
-            searchValue: e.barcodes[0].data
+            searchValue: e.barcodes[0].data.substring(1)
           });
+          this.searchClicked = true;
+          this.productSearch(this.state.searchValue);
           console.log(this.state.scanUPC);
         }}
         onScanError={console.log}
@@ -219,7 +221,7 @@ class Landing extends React.Component {
                     console.log(this.state.searchValue);
                   }
                 }></input>
-                <button onClick={(e) => {this.toggleScanner()}}>Scan</button>
+                <button onClick={(e) => { this.toggleScanner() }}>Scan</button>
               </div>
             </div>
           </div>
