@@ -35,7 +35,7 @@ export default class savedPage extends Component {
                     </div>
                     <div className="row comingSoonBanners">
                         <div className="col-xl-10 col-lg-9 col-md-8 py-2 mt-4 bg-warning shadow-lg">
-                            <h1 className="mt-auto mb-4">Comming Soon</h1>
+                            <h1 className="mt-auto mb-4">Coming Soon</h1>
                             <Button type="submit" onClick={ () => this.setState( {goBack: true} ) } className="mt-4" >Go back to dashboard </Button>
                         </div>
                     </div>

@@ -19,8 +19,8 @@ function Cards() {
                                                 <div className="d-flex justify-content-between"> {/* Ensures that Text are in the same line aligned seperately */}
                                                     <i className="fas fa-shopping-cart fa-3x text-warning" />
                                                     <div className="text-right text-secondary">
-                                                        <h5>Sales</h5>
-                                                        <h3>$34,750</h3>       {/* This is just a dummy value could be replaced with variables */}
+                                                        <h5>Expenses</h5>
+                                                        <h3>$189.63</h3>       {/* This is just a dummy value could be replaced with variables */}
                                                     </div>
                                                 </div>
                                             </div>

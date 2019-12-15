@@ -11,7 +11,7 @@ function TableLight() {
                             <div className="col-xl-10 col-lg-9 col-md-8 ml-auto">       {/* Column */}
                                 <div className="row">       {/* Inner Grid */}
                                     <div className="col-12 mb-4">
-                                        <h3 className="text-white text-center mb-3">Staff Salary</h3>
+                                        <h3 className="text-white text-center mb-3">Groceries List</h3>
                                     </div>
                                     <table className="table table-striped bg-light text-center">
                                         <thead>

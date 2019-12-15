@@ -6,7 +6,7 @@ function TableDark() {
            <div>
                 <div className="col-xl-10 col-lg-9 col-md-8 ml-auto">
                     <div className="col-12 mb-4">
-                        <h3 className="text-white text-center mb-3">Recent Payments and Orders</h3>
+                        <h3 className="text-white text-center mb-3">Current Inventory</h3>
                     </div>
 
                     <form id="Ingredients">     {/* <------  This id is very VERY IMPORTANT!!!!!! */}

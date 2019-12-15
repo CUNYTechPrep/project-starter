@@ -19,8 +19,6 @@ import CelebratePage from './pages/CelebratePage';
 import SavedPage from "./pages/savedPage";
 import SharePage from './SharePage';
 import SettingsPage from "./pages/settingsPage";
-
-
 import "./SMSForm"
 
 import "./pages/Recipe";

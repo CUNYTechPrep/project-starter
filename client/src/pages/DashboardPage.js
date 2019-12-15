@@ -121,28 +121,9 @@ export default class DashboardPage extends Component {
             <div>
                 <SideBar/>              {/* This is the side bar navbar component */}   
                 <TopBar/>               {/* This is the top bar navbar component it also contains the modal-component*/}    
-                <Cards />               {/* This is the Cards component */}         
-
-                <div className="col-xl-10 col-lg-9 col-md-8 ml-auto">
-                    <h3>Ingredients Cabinet: </h3>
-                    <table className="table">
-                        <thead className="thead-light">
-                            <tr>
-                                <th>Name</th>
-                                <th>Quantity</th>
-                                <th>Expiration Date</th>
-                                <th>Actions</th>
-                                <th>ID</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            { this.ingredientsList() }
-                        </tbody>
-                    </table>
+                <div className="mt-5">     
+                    <TableLight />
                 </div>
-
-                
-                <TableLight />
                 <TableDark />
                 
             </div>
