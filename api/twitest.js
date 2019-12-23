@@ -1,6 +1,6 @@
 const db = require('./models');
-const accountSid = 'AC8f6280567821be8b29f921d80cf154db';
-const authToken = 'a919c151b6d4c8a4148225db6ac0e3a9';
+const accountSid = process.env.TWILIO_ACCOUT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 const from = "+17162433764"
 
@@ -31,7 +31,7 @@ function runText(from, to, body) {
 
 // postgres any uppercase add "userId"
 
-db.sequelize.query(`SELECT * FROM users as u inner join users_items as ui on ui."userId" = u.id inner join items as i on i.id = ui."itemId" where ui.expiration <= '${today}' order by ui."userId"`).then(users => {
+db.sequelize.query(`SELECT * FROM users as u inner join users_items as ui on ui."userId" = u.id inner join items as i on i.id = ui."itemId" where DATEDIFF(day, ui.expiration, '${today}' ) <= 10 order by ui."userId"`).then(users => {
     let itemtext="";
     var i = 0;
     users.map(user => {
@@ -49,7 +49,7 @@ db.sequelize.query(`SELECT * FROM users as u inner join users_items as ui on ui.
                 console.log(to);
                 body = "Hi Dear "+u.username+". Your "+itemtext+" has expired!";
                 console.log(body);
-                runText(from, to, body);
+                //runText(from, to, body);
                 
             }
             
@@ -57,9 +57,9 @@ db.sequelize.query(`SELECT * FROM users as u inner join users_items as ui on ui.
 
                 to = u.phonenumber;
                 console.log(to);
-                body = "Hi Dear "+u.username+". Your "+itemtext+" has expired!";
+                body = "Hi Dear "+u.username+". Your "+itemtext+" will expire in 10 days!";
                 console.log(body);
-                //runText(from, to, body);
+                runText(from, to, body);
                 itemtext = "";
             }
 
