@@ -18,8 +18,22 @@ router.post('/signup', (req, res) => {
         req.login(user, () => res.status(201).json(user));
       })
       .catch((err) => {
-        console.log(err)
-        res.status(400).json({ msg: 'Failed Signup', err });
+      
+        const message = err["errors"][0]["message"]
+
+
+        let errmsg = "Signup Error" 
+        if(message == "email must be unique") {
+          console.log("Email in use")
+          errmsg = "Email already in use"
+        } else if(message == "username must be unique") {
+          errmsg = "Username already in use"
+        } else if(message == "phonenumber must be unique") {
+          errmsg = "Phone number already in use"
+        }
+        
+        console.log("Post error check")
+        res.status(400).json({ msg: errmsg  });
       });
   }
 
@@ -40,3 +54,4 @@ router.post('/logout', (req, res) => {
 })
 
 module.exports = router;
+
