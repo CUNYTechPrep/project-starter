@@ -13,7 +13,8 @@ class SignUpPage extends Component {
             password: '', 
             password2: '',
             success: false,
-            error: false 
+            error: false,
+            errmsg: ''
         };
     }
 
@@ -50,8 +51,10 @@ class SignUpPage extends Component {
             })
             .catch(err => {
                 console.log(err)
+                const response = err.response
                 this.setState({
                     error: true,
+                    errmsg: response["data"]["msg"]
                 });
             });
 
@@ -61,7 +64,7 @@ class SignUpPage extends Component {
     render() {
       let error_text = ""
       if (this.state.success) return <Redirect to="/login" />;
-      if (this.state.error) error_text = "Something went wrong with your registration.";
+      if (this.state.error) error_text = this.state.errmsg;
       return (
             <div>
                 <div className="d-flex justify-content-center align-items-center login-container">

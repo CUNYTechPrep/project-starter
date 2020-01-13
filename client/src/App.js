@@ -7,6 +7,7 @@ import {
 
 // import fontawesome from '@fortawesome/fontawesome-free';     // <--- The Fon't awesome Icons are not loading, I need to do more research on how to get them working in React.
 
+import Landing from './pages/Landing';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import AboutUsPage from './pages/AboutUsPage';
@@ -38,7 +39,7 @@ class App extends React.Component {
                 
                 {/* <Route path="/posts/new" component={PostFormPage} /> */}
                 {/* <Route path="/posts/:id" component={ShowPostPage} /> */}
-                
+                <Route exact path="/" component={Landing} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/signup" component={SignUpPage} />
                 <Route path="/dashboard" component={DashboardPage} />
