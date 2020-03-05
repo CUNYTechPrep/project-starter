@@ -124,6 +124,9 @@ Install the heroku cli if you don't already have it.
 ```bash
 # on mac
 brew install heroku/brew/heroku
+# on Windows or Linux follow instructions here:
+# https://devcenter.heroku.com/articles/heroku-cli
+
 heroku login
 ```
 
