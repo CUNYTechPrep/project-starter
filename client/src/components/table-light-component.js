@@ -16,11 +16,11 @@ function TableLight() {
                                     <table className="table table-striped bg-light text-center">
                                         <thead>
                                             <tr className="text-muted">
-                                                <th>#</th>
-                                                <th>Ingredient</th>
-                                                <th>Price</th>
-                                                <th>Date</th>
-                                                <th>Re-Stock</th>
+                                                <th>#</th> {/** 03/06/20: Unsure why this is here, same as dark table. */}
+                                                <th>Ingredient</th> {/** 03/06/20: Could be renamed to item */}
+                                                <th>Price</th> {/** 03/06/20: Unsure if the logic for having this here is sound. */}
+                                                <th>Date</th> {/** 03/06/20: Unsure if this is DATE ADDED or DATE NEEDED BY */}
+                                                <th>Re-Stock</th> {/** Unsure */}
                                             </tr>
                                             </thead>
                                             <tbody>
