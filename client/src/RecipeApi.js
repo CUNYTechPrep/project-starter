@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Form from "./pages/Form";
 import Recipes from "./pages/Recipes";
-const API_KEY = "00d0cd3d6af26d7e2647971839f1d9bd";
-const API_ID = "d3e031d2";
+const API_KEY = "00d0cd3d6af26d7e2647971839f1d9bd"; // good fucking god why
+const API_ID = "d3e031d2"; // yooooooo
 
 class RecipeApi extends Component {
   state = {

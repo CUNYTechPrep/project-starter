@@ -15,12 +15,13 @@ router.post('/signup', (req, res) => {
       auth_token: req.body.email
     })
       .then((user) => {
+        console.log("Signup Create Then")
         req.login(user, () => res.status(201).json(user));
       })
       .catch((err) => {
       
         const message = err["errors"][0]["message"]
-
+        console.log(message)
 
         let errmsg = "Signup Error" 
         if(message == "email must be unique") {
@@ -30,6 +31,8 @@ router.post('/signup', (req, res) => {
           errmsg = "Username already in use"
         } else if(message == "phonenumber must be unique") {
           errmsg = "Phone number already in use"
+        } else if(message == "Validation len on password failed") {
+          errmsg = "Password too short."
         }
         
         console.log("Post error check")
@@ -43,6 +46,7 @@ router.post('/signup', (req, res) => {
 router.post('/login',
   passport.authenticate('local'),
   (req, res) => {
+    console.log("Begin?")
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
     res.json(req.user);

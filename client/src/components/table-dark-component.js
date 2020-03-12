@@ -15,11 +15,11 @@ function TableDark() {
                             <thead>
 
                                 <tr className="text-muted">
-                                    <th>#</th>
-                                    <th>Ingredients</th>
-                                    <th>Price</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
+                                    <th>#</th> {/* 03/06/20: Unsure if this is necessary to display. */ }
+                                    <th>Ingredients</th> 
+                                    <th>Price</th> {/* 03/06/20: Very unsure if this should even be here rn. */}
+                                    <th>Date</th> {/* 03/06/20: The expiration date */}
+                                    <th>Status</th> {/** 03/06/20: Could be co-opted into the text color of the date. */}
                                 </tr>
 
                             </thead>
@@ -99,4 +99,4 @@ function TableDark() {
       );
 }
 
-export default TableDark;
+export default TableDark; 
