@@ -34,9 +34,9 @@ const Navigation = withRouter(({ history }) => {
 
                     {!auth.isAuthenticated ? (
                         <>
-                            <Button color="inherit">Home</Button>
-                            <Button color="inherit">About</Button>
-                            <Button color="inherit">Sign Up</Button>
+                            <Button color="inherit" onClick={() => history.push("/home")} >Home</Button>
+                            <Button color="inherit" onClick={() => history.push("/about-us")}>About</Button>
+                            <Button color="inherit" onClick={() => history.push("/sign-up")}>Sign Up</Button>
                             <Button color="inherit" onClick={() => history.push("/login")}>
                                 Login
                             </Button>
