@@ -9,14 +9,26 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 
+
+
 // this lets us parse 'application/json' content in http requests
 app.use(bodyParser.json())
 
-// setup passport and session cookies
 app.use(expressSession({ 
   secret: process.env.SESSION_SECRET, 
   resave: false,
   saveUninitialized: true }));
+
+  //app.use(session({resave: true, saveUninitialized: true, secret: 'XCR3rsasa%RDHHH', cookie: { maxAge: 60000 }}));
+
+console.log("process.env.port", process.env.SESSION_SECRET);
+// setup passport and session cookies
+// app.use(expressSession({ 
+//   secret: process.env.SESSION_SECRET, 
+//   resave: false,
+//   saveUninitialized: true }));
+//app.use(express.cookieParser('your secret here'));
+//app.use(express.session());
 app.use(passport.initialize());
 app.use(passport.session());
 
