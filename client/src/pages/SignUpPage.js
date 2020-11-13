@@ -1,19 +1,33 @@
 import React from 'react';
+import Axios from 'axios';
 import './SignUpPage.css';
 import {useForm} from 'react-hook-form';
+import auth from "../services/auth"
+import {useHistory} from "react-router-dom"
+
 //class SignUpPage extends React.Component
 export default function SignUpPage(){
 
     const { register, handleSubmit, errors } = useForm();
-
+    const history = useHistory()
     const onSubmit = (data) =>{
-        console.log(data)
+        Axios.post("/api/auth/signup", {
+            email: data.email,
+            password: data.password,
+        }).then((response) =>{
+            if (response.ok) {
+                auth.isAuthenticated = true
+                history.push("/")
+            }
+            console.log(response)
+        });
     }
+
 
 
         return(
             <div className='container'>
-                <h1>Create An Account</h1>
+                <h3>Create An Account</h3>
             <form className={"ui form"} onSubmit={handleSubmit(onSubmit)}>
             <div className="field">
                 <label>Email:</label>
@@ -29,7 +43,7 @@ export default function SignUpPage(){
                         }
                       })}
                 />
-                {errors.email && <p>{errors.email.message}</p>}
+                {errors.email && <p style={{color: "red"}}>{errors.email.message}</p>}
 
 
             </div>
@@ -40,12 +54,12 @@ export default function SignUpPage(){
                     name="password" 
                     placeholder="Password" 
                     ref={register({required: "Password Required", minLength: {value: 8, message: 'Too short'}})}/>
-                {errors.password && <p>{errors.password.message}</p>}
+                {errors.password && <p style={{color: "red"}} >{errors.password.message}</p>}
             </div>
-            
-
                 <button className={"ui button"} type="submit">Submit</button>
+                
             </form>
+           
             </div>
             );
 

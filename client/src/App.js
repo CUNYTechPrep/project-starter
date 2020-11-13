@@ -4,7 +4,7 @@ import PostsListPage from "./pages/PostsListPage"
 import PostFormPage from "./pages/PostFormPage"
 import ShowPostPage from "./pages/ShowPostPage"
 import AboutUsPage from "./pages/AboutUsPage"
-import HomePage from './pages/HomePage'
+import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
 import SignUpPage from "./pages/SignUpPage"
 import PrivateRoute from "./components/PrivateRoute"
@@ -48,7 +48,7 @@ class App extends React.Component {
                             <Route path="/posts/:id" component={ShowPostPage} />
                             <Route path="/about-us" component={AboutUsPage} />
                             <Route path="/home" component={HomePage} />
-                            <Route path='/sign-up' component={SignUpPage} />
+                            <Route path='/signup' component={SignUpPage} />
                             <Route path="/" component={PostsListPage} />
 
                         </Switch>
