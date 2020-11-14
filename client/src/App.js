@@ -1,39 +1,14 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom"
-import PostsListPage from "./pages/PostsListPage"
-import PostFormPage from "./pages/PostFormPage"
-import ShowPostPage from "./pages/ShowPostPage"
 import AboutUsPage from "./pages/AboutUsPage"
+import LandingPage from "./pages/LandingPage"
 import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
 import SignUpPage from "./pages/SignUpPage"
 import PrivateRoute from "./components/PrivateRoute"
-import AuthButton from "./components/AuthButton"
 import { Navigation } from "./components/Navigation"
 import "./App.css"
-
-// function Navigation(props) {
-//     return (
-//         <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-//             <Link className="navbar-brand" to="/">
-//                 Micro Blog
-//             </Link>
-//             <ul className="navbar-nav mr-auto">
-//                 <li className="nav-item">
-//                     <NavLink className="nav-link" exact to="/posts/new">
-//                         Create a Micro Post
-//                     </NavLink>
-//                 </li>
-//                 <li className="nav-item">
-//                     <NavLink className="nav-link" exact to="/about-us">
-//                         About Us
-//                     </NavLink>
-//                 </li>
-//             </ul>
-//             <AuthButton />
-//         </nav>
-//     )
-// }
+import auth from "./services/auth"
 
 class App extends React.Component {
     render() {
@@ -44,13 +19,15 @@ class App extends React.Component {
                     <div className="row justify-content-center">
                         <Switch>
                             <Route path="/login" component={LoginPage} />
-                            <PrivateRoute path="/posts/new" component={PostFormPage} />
-                            <Route path="/posts/:id" component={ShowPostPage} />
+                            <Route
+                                path="/"
+                                render={() =>
+                                    auth.isAuthenticated ? <HomePage /> : <LandingPage />
+                                }
+                            />
                             <Route path="/about-us" component={AboutUsPage} />
                             <Route path="/home" component={HomePage} />
-                            <Route path='/signup' component={SignUpPage} />
-                            <Route path="/" component={PostsListPage} />
-
+                            <Route path="/signup" component={SignUpPage} />
                         </Switch>
                     </div>
                 </div>
