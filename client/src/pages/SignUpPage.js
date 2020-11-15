@@ -3,13 +3,13 @@ import Axios from 'axios';
 import './SignUpPage.css';
 import {useForm} from 'react-hook-form';
 import auth from "../services/auth"
-import {useHistory} from "react-router-dom"
+import {useHistory} from "react-router-dom";
 
 //class SignUpPage extends React.Component
 export default function SignUpPage(){
 
     const { register, handleSubmit, errors } = useForm();
-    const history = useHistory()
+    const history = useHistory();
     const onSubmit = (data) =>{
         Axios.post("/api/auth/signup", {
             email: data.email,
@@ -24,10 +24,9 @@ export default function SignUpPage(){
     }
 
 
-
         return(
             <div className='container'>
-                <h3>Create An Account</h3>
+                <h2>Create An Account</h2>
             <form className={"ui form"} onSubmit={handleSubmit(onSubmit)}>
             <div className="field">
                 <label>Email:</label>

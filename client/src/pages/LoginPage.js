@@ -1,5 +1,6 @@
 import React from "react"
 import { Redirect } from "react-router-dom"
+import './SignUpPage.css';
 
 import auth from "../services/auth"
 
@@ -48,9 +49,12 @@ class LoginPage extends React.Component {
         }
 
         return (
+            <div className="container">
+            <h2>Sign In</h2>
             <form onSubmit={this.login}>
-                <div className="form-row">
+                <div className={"ui form"} >
                     {err}
+                    <div className="field" >
                     <input
                         type="email"
                         className="form-control"
@@ -59,6 +63,9 @@ class LoginPage extends React.Component {
                         value={this.state.email}
                         onChange={this.fieldChanged("email")}
                     />
+                   </div>
+                    <div className="field" >
+
                     <input
                         type="password"
                         className="form-control"
@@ -67,11 +74,13 @@ class LoginPage extends React.Component {
                         value={this.state.password}
                         onChange={this.fieldChanged("password")}
                     />
-                    <button type="submit" className="btn btn-primary ml-auto">
+                    </div>
+                    <button type="submit" className={"ui button"}>
                         Login
                     </button>
                 </div>
             </form>
+            </div>
         )
     }
 }

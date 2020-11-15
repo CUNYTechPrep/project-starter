@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-rou
 import PostsListPage from "./pages/PostsListPage"
 import PostFormPage from "./pages/PostFormPage"
 import ShowPostPage from "./pages/ShowPostPage"
-import AboutUsPage from "./pages/AboutUsPage"
 import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
 import SignUpPage from "./pages/SignUpPage"
@@ -46,7 +45,7 @@ class App extends React.Component {
                             <Route path="/login" component={LoginPage} />
                             <PrivateRoute path="/posts/new" component={PostFormPage} />
                             <Route path="/posts/:id" component={ShowPostPage} />
-                            <Route path="/about-us" component={AboutUsPage} />
+                           
                             <Route path="/home" component={HomePage} />
                             <Route path='/signup' component={SignUpPage} />
                             <Route path="/" component={PostsListPage} />
@@ -55,6 +54,7 @@ class App extends React.Component {
                     </div>
                 </div>
             </Router>
+           
         )
     }
 }
