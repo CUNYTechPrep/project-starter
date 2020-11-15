@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Image from './Images/ConnectionImage.png';
-import "./HomePage.css";
+import "./LandingPage.css";
 
-function AboutUsPage(props) {
+function LandingPage(props) {
   return (
     <div className="ui grid">
       <div className="eight wide column left-container"> 
@@ -26,4 +26,4 @@ function AboutUsPage(props) {
   );
 }
 
-export default AboutUsPage;
+export default LandingPage;

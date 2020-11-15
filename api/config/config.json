@@ -4,14 +4,16 @@
         "password": "ctp_pass",
         "database": "app2020_development",
         "host": "postgres-db.sltd99.me",
-        "dialect": "postgres"
+        "dialect": "postgres",
+        "logging": false
     },
     "test": {
         "username": "ctp_user",
         "password": "ctp_pass",
         "database": "app2020_test",
         "host": "postgres-db.sltd99.me",
-        "dialect": "postgres"
+        "dialect": "postgres",
+        "logging": false
     },
     "production": {
         "use_env_variable": "DATABASE_URL",
