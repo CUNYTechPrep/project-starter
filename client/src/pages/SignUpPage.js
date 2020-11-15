@@ -3,24 +3,14 @@ import Axios from "axios"
 import "./SignUpPage.css"
 import { useForm } from "react-hook-form"
 import auth from "../services/auth"
-<<<<<<< HEAD
-import {useHistory} from "react-router-dom";
-=======
 import { Redirect } from "react-router-dom"
->>>>>>> 171b603de1a8e1f932b44d0560d63bf243bc7211
 
 //class SignUpPage extends React.Component
 export default function SignUpPage() {
     const [success, setSuccess] = useState(false)
 
-<<<<<<< HEAD
-    const { register, handleSubmit, errors } = useForm();
-    const history = useHistory();
-    const onSubmit = (data) =>{
-=======
     const { register, handleSubmit, errors } = useForm()
     const onSubmit = data => {
->>>>>>> 171b603de1a8e1f932b44d0560d63bf243bc7211
         Axios.post("/api/auth/signup", {
             email: data.email,
             password: data.password,
@@ -32,15 +22,9 @@ export default function SignUpPage() {
 
     if (success) return <Redirect to="/" />
 
-<<<<<<< HEAD
-        return(
-            <div className='container'>
-                <h2>Create An Account</h2>
-=======
     return (
         <div className="container">
             <h3>Create An Account</h3>
->>>>>>> 171b603de1a8e1f932b44d0560d63bf243bc7211
             <form className={"ui form"} onSubmit={handleSubmit(onSubmit)}>
                 <div className="field">
                     <label>Email:</label>
