@@ -1,8 +1,8 @@
 import React from "react"
-import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect } from "react-router-dom"
 import AboutUsPage from "./pages/AboutUsPage"
 import LandingPage from "./pages/LandingPage"
-import HomePage from "./pages/HomePage"
+import HomePage from "./pages/LandingPage"
 import LoginPage from "./pages/LoginPage"
 import SignUpPage from "./pages/SignUpPage"
 import PrivateRoute from "./components/PrivateRoute"
@@ -18,16 +18,19 @@ class App extends React.Component {
                 <div className="container-fluid text-center">
                     <div className="row justify-content-center">
                         <Switch>
-                            <Route path="/login" component={LoginPage} />
                             <Route
+                                exact
                                 path="/"
                                 render={() =>
-                                    auth.isAuthenticated ? <HomePage /> : <LandingPage />
+                                    auth.isAuthenticated ? <h1>Home Page</h1> : <LandingPage />
                                 }
                             />
-                            <Route path="/about-us" component={AboutUsPage} />
-                            <Route path="/home" component={HomePage} />
-                            <Route path="/signup" component={SignUpPage} />
+                            <Route exact path="/login" component={LoginPage} />
+                            <Route exact path="/about-us" component={AboutUsPage} />
+
+                            <Route exact path="/signup" component={SignUpPage} />
+                            {/* Force nomatch urls redirect to login page */}
+                            <Route render={() => <Redirect to="/" />} />
                         </Switch>
                     </div>
                 </div>
