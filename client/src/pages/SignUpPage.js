@@ -14,10 +14,14 @@ export default function SignUpPage() {
         Axios.post("/api/auth/signup", {
             email: data.email,
             password: data.password,
-        }).then(response => {
-            auth.isAuthenticated = true
-            setSuccess(true)
         })
+            .then(response => {
+                auth.isAuthenticated = true
+                setSuccess(true)
+            })
+            .catch(err => {
+                console.log(1234)
+            })
     }
 
     if (success) return <Redirect to="/" />

@@ -1,8 +1,6 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route, Link, NavLink, Redirect } from "react-router-dom"
-import AboutUsPage from "./pages/AboutUsPage"
 import LandingPage from "./pages/LandingPage"
-// fix here
 
 import LoginPage from "./pages/LoginPage"
 import SignUpPage from "./pages/SignUpPage"
@@ -27,7 +25,6 @@ class App extends React.Component {
                                 }
                             />
                             <Route exact path="/login" component={LoginPage} />
-                            <Route exact path="/about-us" component={AboutUsPage} />
 
                             <Route exact path="/signup" component={SignUpPage} />
                             {/* Force nomatch urls redirect to login page */}
@@ -36,7 +33,6 @@ class App extends React.Component {
                     </div>
                 </div>
             </Router>
-           
         )
     }
 }
