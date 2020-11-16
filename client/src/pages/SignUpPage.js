@@ -26,15 +26,9 @@ export default function SignUpPage() {
 
     if (success) return <Redirect to="/" />
 
-<<<<<<< Updated upstream
-    return (
-        <div className="container">
-            <h3>Create An Account</h3>
-=======
         return(
             <div className='container'>
                 <h2>Create An Account</h2>
->>>>>>> Stashed changes
             <form className={"ui form"} onSubmit={handleSubmit(onSubmit)}>
                 <div className="field">
                     <label>Email:</label>
