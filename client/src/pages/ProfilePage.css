@@ -1,0 +1,11 @@
+.profile {
+  background-color: white;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #31326f;
+  width: 50%;
+  padding: 20px;
+  margin: auto;
+  margin-top: 80px;
+}

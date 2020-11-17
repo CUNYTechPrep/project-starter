@@ -15,6 +15,7 @@ import auth from "./services/auth"
 class App extends React.Component {
     render() {
         return (
+            <div className="App">
             <Router>
                 <Navigation />
                 <div className="container-fluid text-center">
@@ -39,6 +40,7 @@ class App extends React.Component {
                     </div>
                 </div>
             </Router>
+            </div>
         )
     }
 }
