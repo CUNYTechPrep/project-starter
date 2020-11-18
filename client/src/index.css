@@ -12,3 +12,7 @@ code {
     monospace;
 }
 */
+
+*body {
+  background-color: blue;
+}
