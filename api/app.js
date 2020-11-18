@@ -69,5 +69,5 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
     // await Friendship.create({ firstUserId: 1, secondUserId: 2, pendingState: 3 })
 
-    console.log(user1?.firstUserFriends[0]?.id, user2.secondUserFriends[0]?.id)
+    console.log(user1.firstUserFriends[0].id, user2.secondUserFriends[0].id)
 })()

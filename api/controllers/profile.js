@@ -7,8 +7,7 @@ const passport = require("../middlewares/authentication")
 //router.get("/", passport.isAuthenticated(), (req, res) => { }
 
 router.get("/", passport.isAuthenticated(), (req, res) => {
-    // db.User.findAll().then(User => res.send(Users));
-    Profile.findAll().then(Profiles => res.send(Profiles))
+    User.findAll().then(Users => res.send(Users))
     //Model.sync().then(function(err) {
     // insert new user
     // Profile.create({
@@ -28,6 +27,8 @@ router.get("/", passport.isAuthenticated(), (req, res) => {
     console.log("Testing")
 })
 
-router.post("/:id", passport.isAuthenticated(), (req, res) => {})
+router.post("/:id", passport.isAuthenticated(), (req, res) => {
+    
+})
 
 module.exports = router
