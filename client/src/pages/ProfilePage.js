@@ -1,9 +1,10 @@
 import React from 'react'
 import './ProfilePage.css';
 import Tag from '../components/Tag';
-
+import profile from "../services/profile"
 
 class ProfilePage extends React.Component{
+    // get profile from http://localhost:8080/api/profile
     state= {
         name: "Sett Hein",
         school: "Baruch College",
@@ -14,6 +15,22 @@ class ProfilePage extends React.Component{
         ],
         bio: "I am a senior studying Computer Information Systems at Baruch College. I am also a Software Engineering fellow at CTP where I am learning full-stack Javascript. I love to play sports but very injury-prone",
     }
+
+
+    login = e => {
+        e.preventDefault()
+        let { email, password } = this.state
+        
+        profile.getProfile(email, password)
+            .then(userProfile => {
+            console.log("user profile", userProfile);
+            //state= userProfile;
+            this.setState({ redirectToReferrer: true })
+        })
+        .catch(err => {
+            this.setState({ failed: true })
+        })
+    } 
 
     render(){
         return(
