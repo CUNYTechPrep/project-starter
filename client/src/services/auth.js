@@ -7,6 +7,7 @@
 
 const auth = {
   isAuthenticated: false,
+  user: '',
   authenticate(email, password) {
     return fetch('/api/auth/login', { 
       method: 'POST',
@@ -24,6 +25,7 @@ const auth = {
       })
       .then((body) => {
         this.isAuthenticated = true;
+        this.user = email;
         return body;
       });
   },
