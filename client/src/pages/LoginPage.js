@@ -1,5 +1,5 @@
 import React from "react"
-import { Redirect } from "react-router-dom"
+import { Redirect, Link } from "react-router-dom"
 import './SignUpPage.css';
 
 import auth from "../services/auth"
@@ -49,6 +49,7 @@ class LoginPage extends React.Component {
         }
 
         return (
+            <div>
             <div className="container">
             <h2>Sign In</h2>
             <form onSubmit={this.login}>
@@ -75,11 +76,14 @@ class LoginPage extends React.Component {
                         onChange={this.fieldChanged("password")}
                     />
                     </div>
-                    <button type="submit" className={"ui button"}>
+                    <button type="submit" className={"ui button"} style={{right: 0}}>
                         Login
                     </button>
                 </div>
             </form>
+
+            </div>
+            <div style={{textAlign: "center", marginTop: "10px"}}>No Account? <Link to="/signup">Sign up here</Link></div>
             </div>
         )
     }

@@ -3,7 +3,8 @@ import Axios from "axios"
 import "./SignUpPage.css"
 import { useForm } from "react-hook-form"
 import auth from "../services/auth"
-import { Redirect } from "react-router-dom"
+import { Redirect, Link } from "react-router-dom"
+
 
 //class SignUpPage extends React.Component
 export default function SignUpPage() {
@@ -27,6 +28,7 @@ export default function SignUpPage() {
     if (success) return <Redirect to="/" />
 
         return(
+            <div>
             <div className='container'>
                 <h2>Create An Account</h2>
             <form className={"ui form"} onSubmit={handleSubmit(onSubmit)}>
@@ -63,6 +65,9 @@ export default function SignUpPage() {
                     Submit
                 </button>
             </form>
-        </div>
+            </div>
+            <div style={{textAlign: "center", marginTop: "10px"}}>Already have account? <Link to="/login">Login here</Link></div>
+            </div>
+  
     )
 }

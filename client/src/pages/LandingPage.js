@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Image from './Images/connection.svg';
 import "./LandingPage.css";
-import Tag from '../components/Tag';
 
 function LandingPage(props) {
   return (

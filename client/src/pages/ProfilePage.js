@@ -6,6 +6,7 @@ import Loading from '../components/Loading';
 import { Redirect } from 'react-router-dom';
 import auth from '../services/auth'; // replace with js-cookie or react-cookie
 
+
 class ProfilePage extends React.Component{
     // get profile from http://localhost:8080/api/profile
 
@@ -64,6 +65,10 @@ class ProfilePage extends React.Component{
           });
     }
     
+   
+    handleClick = e =>{
+        this.props.history.push('/profile-edit');
+    };
 
     render(){
         // if(this.state.notFound) return <Redirect to="/" />;
@@ -79,8 +84,12 @@ class ProfilePage extends React.Component{
                 <h3>About</h3>
                 {this.state.profile.bio}
                 <hr />
-                {/* <h3>Classes</h3> */}
-                {/* <Tag classes = {this.state.profile.classes}/> */}
+
+                <h3>Classes</h3>
+                <Tag classes = {this.state.classes}/>
+                <button onClick={this.handleClick} className="positive ui button">Edit Profile</button>
+
+
             </div>
         )
 

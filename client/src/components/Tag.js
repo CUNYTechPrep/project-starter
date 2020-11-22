@@ -4,8 +4,8 @@ import './Tag.css';
 export default function Tag(props) {
     return (
         <div>
-        {props.classes.map((c) =>(
-            <span className="tag">{c}</span>
+        {props.classes.map((c, key) =>(
+            <span className="tag" key={key}>{c}</span>
         ))}
     </div>
     );
