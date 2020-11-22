@@ -6,8 +6,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Course.init(
         {
-            firstName: { type: DataTypes.STRING },
-            lastName: { type: DataTypes.STRING },
+            topic: { type: DataTypes.STRING },
         },
         {
             sequelize,
@@ -15,8 +14,16 @@ module.exports = (sequelize, DataTypes) => {
         }
     )
 
-    Course.associate = models => {}
+    Course.associate = models => {
+        const { User } = models
 
+        Course.belongsToMany(User, {
+            as: "studentsEnrolled",
+            through: "student_course",
+        })
+
+        User.belongsToMany(Course, { as: "coursesTaken", through: "student_course" })
+    }
     Course.beforeSave((user, options) => {})
 
     return Course

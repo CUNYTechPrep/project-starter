@@ -7,7 +7,7 @@ const db = require("./models")
 const passport = require("./middlewares/authentication")
 const app = express()
 const PORT = process.env.PORT || 8000
-const { User, Friendship } = require("./models")
+const { User, Friendship, Course } = require("./models")
 
 // this lets us parse 'application/json' content in http requests
 app.use(bodyParser.json())
@@ -59,15 +59,19 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`))
 ;(async () => {
     const user1 = await User.findOne({
         where: { id: 1 },
-        include: "firstUserFriends",
+        include: ["firstUserFriends", "coursesTaken"],
     })
 
     const user2 = await User.findOne({
         where: { id: 2 },
-        include: "secondUserFriends",
+        include: ["secondUserFriends"],
     })
 
     // await Friendship.create({ firstUserId: 1, secondUserId: 2, pendingState: 3 })
 
     console.log(user1.firstUserFriends[0].id, user2.secondUserFriends[0].id)
+
+    const course2 = await Course.findOne({ where: { id: 2 }, include: ["studentsEnrolled"] })
+    console.log(user1.coursesTaken.length)
+    console.log(course2.studentsEnrolled.length)
 })()
