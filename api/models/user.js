@@ -4,8 +4,8 @@ const bcrypt = require("bcryptjs")
 
 module.exports = (sequelize, DataTypes) => {
     class User extends Model {
-        getFullname() {
-            return [this.firstName, this.lastName].join(" ")
+        toJSON() {
+            return { ...this.get(), passwordHash: undefined }
         }
     }
 
@@ -31,9 +31,7 @@ module.exports = (sequelize, DataTypes) => {
             bio: { type: DataTypes.TEXT },
 
             passwordHash: { type: DataTypes.STRING },
-            password: {
-                type: DataTypes.VIRTUAL,
-            },
+            password: { type: DataTypes.VIRTUAL },
         },
         {
             sequelize,

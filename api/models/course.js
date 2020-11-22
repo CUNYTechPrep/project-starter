@@ -22,8 +22,12 @@ module.exports = (sequelize, DataTypes) => {
             through: "student_course",
         })
 
-        User.belongsToMany(Course, { as: "coursesTaken", through: "student_course" })
+        User.belongsToMany(Course, {
+            as: "coursesTaken",
+            through: "student_course",
+        })
     }
+
     Course.beforeSave((user, options) => {})
 
     return Course
