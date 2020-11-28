@@ -75,3 +75,9 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`))
     console.log(user1.coursesTaken.length)
     console.log(course2.studentsEnrolled.length)
 })()
+
+// const fs = require("fs")
+// const data = fs.readFileSync(process.cwd() + "/api/data/qc_2020_fall.json", "utf-8")
+// const qc = JSON.parse(data)[0]
+
+// qc.courses.forEach(({ topic }) => Course.create({ topic }))
