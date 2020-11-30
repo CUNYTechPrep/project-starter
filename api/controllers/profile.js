@@ -13,14 +13,14 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
             include: {
                 model: Course,
                 as: "coursesTaken",
-                attributes: ["topic"],
+                attributes: ["value","label"],
                 through: { attributes: [] },
             },
         })
 
         console.log(user.get())
 
-        const coursesTaken = user.coursesTaken.map(course => course.topic)
+        const coursesTaken = user.coursesTaken.map(course =>  course.value + ": " + course.label)
 
         res.json({ ...user.get(), coursesTaken })
     } catch (error) {
