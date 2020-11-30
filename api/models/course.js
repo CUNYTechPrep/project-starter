@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
 
     Course.init(
         {
-            topic: { type: DataTypes.STRING },
+            value: { type: DataTypes.STRING },
+            label: { type: DataTypes.STRING }
         },
         {
             sequelize,
