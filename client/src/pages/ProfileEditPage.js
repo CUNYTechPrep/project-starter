@@ -7,6 +7,7 @@ import auth from "../services/auth"
 import { Redirect } from "react-router-dom"
 import axios from "axios"
 
+
 export default function ProfileEditPage() {
     const { register, control, handleSubmit, errors } = useForm()
 
@@ -14,6 +15,15 @@ export default function ProfileEditPage() {
         // POST request
         const response = await axios.post("/api/profile", data)
         console.log(response.data)
+    }
+    
+
+    const onGetCourses = async data => {
+        // GET request
+        const courses = await axios.get('/api/all-courses');
+        console.log(courses);
+        // const response = await axios.post("/api/profile", data)
+        // console.log(response.data)
     }
 
     if (!auth.profile) return <Redirect to="profile" />
@@ -77,6 +87,7 @@ export default function ProfileEditPage() {
                         <Controller name="year" options={year} as={Select} control={control} />
                     </div>
                 </div>
+                <div>{JSON.stringify(onGetCourses)} </div>
                 <div className="field">
                     <label>Classes</label>
                     <Controller

@@ -18,11 +18,16 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
             },
         })
 
-        console.log(user.get())
+        //console.log("print all courses", Course.findAll())
 
+        // const courses = await Course.findAll();
+        // console.log("all courses", courses); 
+
+        
         const coursesTaken = user.coursesTaken.map(course =>  course.value + ": " + course.label)
 
-        res.json({ ...user.get(), coursesTaken })
+        console.log(user.coursesTaken)
+        res.json({ ...user.get(), coursesTaken})
     } catch (error) {
         console.log(error)
         res.sendStatus(404)

@@ -1,3 +1,9 @@
+// import React, { useState } from "react"
+// import "./ProfilePage.css"
+// import Select from "react-select"
+// import Loading from "../components/Loading"
+// import axios from "axios"
+
 const schools = [
     { value: "baruch", label: "Baruch College" },
     { value: "brooklyn", label: "Brooklyn College" },
@@ -35,5 +41,26 @@ const interest = [
     { value: "Baking", label: "Baking" },
     { value: "Running", label: "Running" },
 ]
+
+// class allCourses extends React.Component {
+//     // get profile from http://localhost:8080/api/profile
+
+//     state = {
+//         loading: true,
+//         courses: null,
+//         notFound: false,
+//     }
+
+//     async componentDidMount() {
+//         const courses = (await axios.get("/api/all-courses")).data
+//         this.setState({ courses, loading: false })
+//     }
+
+
+//     render() {
+//         if (this.state.loading) return <Loading />
+//         return(this.state.courses)
+//     }
+// }
 
 export { schools, year, interest }
