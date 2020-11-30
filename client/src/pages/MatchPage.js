@@ -1,14 +1,22 @@
 import React from 'react'
+import MatchBox from '../components/MatchBox';
+import './MatchPage.css';
 
 export default function MatchPage() {
     return (
-        <div>
-            <h1>Hello World</h1>
-            <p>asdfas fw4T ASF AEF AWEF </p>
-            <hr/>
-            <h1>Hello World</h1>
-            <p>asdfas fw4T ASF AEF AWEF </p>
+        <div className="MatchPage">
+        <div className="ui four cards">
+        <MatchBox />
+        <MatchBox />
+
+        <MatchBox />
+        <MatchBox />
+        <MatchBox />
+        <MatchBox />
+
+        </div>
         </div>
     )
+            
 }
 

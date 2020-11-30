@@ -1,25 +1,29 @@
-import React, { useState } from "react"
+import React from "react"
 import "./ProfilePage.css"
 import Select from "react-select"
-import { schools, year, interest } from "../components/SchoolYearData"
+import { schools, year, interest, courses, majors } from "../components/SchoolYearData"
 import { useForm, Controller } from "react-hook-form"
 import auth from "../services/auth"
 import { Redirect } from "react-router-dom"
 import axios from "axios"
 
 export default function ProfileEditPage() {
-    const { register, control, handleSubmit, errors } = useForm()
-
+    const { register, control, handleSubmit } = useForm()
+   
     const onSubmit = async data => {
         // POST request
         const response = await axios.post("/api/profile", data)
         console.log(response.data)
+        
+
     }
+
+    
 
     if (!auth.profile) return <Redirect to="profile" />
 
     const profile = auth.profile
-
+    console.log(profile.year)
     return (
         <div className="profile">
             <form className="ui form" onSubmit={handleSubmit(onSubmit)}>
@@ -53,28 +57,40 @@ export default function ProfileEditPage() {
                             as={Select}
                             options={schools}
                             control={control}
-                            defaultValue={profile.school}
+                            defaultValue={schools.filter(s => s.value === profile.school)[0]}
                         />
                     </div>
                     <div className="field">
                         <label>Year</label>
-                        <Controller name="year" options={year} as={Select} control={control} />
+                        <Controller 
+                        name="year" 
+                        options={year} 
+                        as={Select} 
+                        control={control}
+                        // graduat_date should be either an interger or string 
+                        defaultValue={year.filter(y => y.label === profile.graduate_date)[0]}
+
+                         />
                     </div>
                 </div>
                 <div className="two fields">
                     <div className="field">
                         <label>Major</label>
                         <Controller
-                            name="school"
+                            name="major"
                             as={Select}
-                            options={schools}
+                            options={majors}
                             control={control}
                             defaultValue={profile.major}
                         />
                     </div>
                     <div className="field">
                         <label>Minor</label>
-                        <Controller name="year" options={year} as={Select} control={control} />
+                        <Controller 
+                        name="minor" 
+                        options={majors} 
+                        as={Select} 
+                        control={control} />
                     </div>
                 </div>
                 <div className="field">
@@ -82,10 +98,10 @@ export default function ProfileEditPage() {
                     <Controller
                         as={Select}
                         isMulti
-                        name="classes"
+                        name="courses"
                         className="basic-multi-select"
                         classNamePrefix="select"
-                        options={schools}
+                        options={courses}
                         control={control}
                     />
                 </div>
@@ -104,7 +120,7 @@ export default function ProfileEditPage() {
                 <div class="field">
                     <label>Bio</label>
                     <textarea
-                        spellcheck="false"
+                        spellCheck="false"
                         name="bio"
                         ref={register}
                         defaultValue={profile.bio}

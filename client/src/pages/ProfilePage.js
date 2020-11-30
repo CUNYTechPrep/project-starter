@@ -19,6 +19,7 @@ class ProfilePage extends React.Component {
     async componentDidMount() {
         const profile = (await axios.get("/api/profile")).data
         this.setState({ profile, loading: false })
+        console.log(profile)
     }
 
     handleClick = e => {

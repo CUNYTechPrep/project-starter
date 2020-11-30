@@ -1,6 +1,7 @@
 const schools = [
-    { value: "baruch", label: "Baruch College" },
-    { value: "brooklyn", label: "Brooklyn College" },
+    { value: "Baruch College", label: "Baruch College" },
+    { value: "Queens College", label: "Queens College" },
+    { value: "Brooklyn College", label: "Brooklyn College" },
     { value: "csi", label: "College of Staten Island" },
     { value: "johnJay", label: "John Jay College of Criminal Justice" },
     { value: "lehman", label: "Lehman College" },
@@ -36,4 +37,21 @@ const interest = [
     { value: "Running", label: "Running" },
 ]
 
-export { schools, year, interest }
+const majors = [
+    { value: "Computer Science", label: "Computer Science" },
+    { value: "Accounting", label: "Accounting" },
+    { value: "Physic", label: "Physic" },
+    { value: "Computer Information Systems", label: "Computer Information Systems" },
+]
+
+const courses = [
+    {value: "47980", label: " ACCT 100 - Fin & Mgr Acct 47980" },
+    {value: "45514", label: " ACCT 101 - Intro Thry & Prac of Acct I 45514" },
+    {value: "45515", label: " ACCT 101 - Intro Thry & Prac of Acct I 45515" },
+    {value: "45537", label: " ACCT 102 - Intro Theo & Prac Acct II 45537" },
+    {value: "48139", label: " CSCI 211 - Object-Oriented Program in C++ 45537" },
+]
+
+export { schools, year, interest, courses, majors }
+
+
