@@ -15,6 +15,8 @@ import auth from "./services/auth"
 
 class App extends React.Component {
     render() {
+        // DEBUG ONLY
+        auth.isAuthenticated = true
         return (
             <div className="App">
             <Router>
