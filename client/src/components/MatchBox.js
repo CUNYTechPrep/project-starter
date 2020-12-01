@@ -23,7 +23,12 @@ export default function MatchPage() {
                 <div className="ui small label">
                 ENG 3140
                 </div>
-            </div>
+                </div>
+                <div class="ui bottom attached button">
+                    <i class="add icon"></i>
+                    Add Friend
+                </div>
+            
         </div>
     )
 }

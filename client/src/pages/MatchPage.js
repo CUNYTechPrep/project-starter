@@ -8,7 +8,6 @@ export default function MatchPage() {
         <div className="ui four cards">
         <MatchBox />
         <MatchBox />
-
         <MatchBox />
         <MatchBox />
         <MatchBox />
