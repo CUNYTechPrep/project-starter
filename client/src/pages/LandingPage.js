@@ -13,16 +13,17 @@ function LandingPage(props) {
         <Link to="/signup">
         <button className="ui blue basic button">Sign Up</button>
         </Link>
-      </div>
-      </div>
-      <div className="eight wide column right-container"> 
-        <div className="col2">
-      
-        <img src={Image} style={{width: "80%"}} alt="Connection"/>
-      
-        </div>
-      </div>
-    </div>
+       
+            </div>
+            </div>
+            <div className="eight wide column right-container"> 
+              <div className="col2">
+            
+              <img src={Image} style={{width: "80%"}} alt="Connection"/>
+            
+              </div>
+            </div>
+          </div>
   );
 }
 
