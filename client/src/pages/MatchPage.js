@@ -7,22 +7,12 @@ export default function MatchPage() {
     const [matches, setMatches] = useState([])
 
     useEffect(() => {
-        // axios.post().then()
-        setMatches([
-            {
-                name: "Sett",
-                college: "baruch",
-                major: "CS",
-                courses: ["CS 101", "CS 102"],
-            },
+        const fetchData = async () => {
+            const response = await axios.get("/api/match")
+            setMatches(response.data)
+        }
 
-            {
-                name: "Alex",
-                college: "queens",
-                major: "CS",
-                courses: ["CS 101", "CS 103"],
-            },
-        ])
+        fetchData()
     }, [])
 
     return (

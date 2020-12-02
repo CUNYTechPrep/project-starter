@@ -9,12 +9,20 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
 
     const studentsEnrolled = await Promise.all(studentsEnrolledPromises)
 
-    const uniqueClassmates = studentsEnrolled
-        .flat()
-        .filter(
-            (student, index, students) =>
-                student.id !== user.id && students.findIndex(s => s.id === student.id) === index
-        )
+    const uniqueClassmates = await Promise.all(
+        studentsEnrolled
+            .flat()
+            .filter(
+                (student, index, students) =>
+                    student.id !== user.id && students.findIndex(s => s.id === student.id) === index
+            )
+            .map(async classmate => ({
+                name: classmate.firstName + " " + classmate.lastName,
+                college: classmate.school,
+                major: classmate.major,
+                courses: (await classmate.getCoursesTaken()).map(course => course.label),
+            }))
+    )
 
     res.json(uniqueClassmates)
 })

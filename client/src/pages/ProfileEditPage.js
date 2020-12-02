@@ -52,16 +52,11 @@ export default function ProfileEditPage() {
         } // use effect cleanup to set flag false, if unmounted
     }, [])
 
-    if (profileEdited) return <Redirect to="profile" />
-
-    if (!auth.profile) return <Redirect to="profile" />
-
-    const profile = auth.profile
-
-    console.log(profile.coursesTaken)
+    if (profileEdited || !auth.profile) return <Redirect to="profile" />
 
     if (allcourses === null) return <Loading />
 
+    const profile = auth.profile
     return (
         <div className="profile">
             <form className="ui form" onSubmit={handleSubmit(onSubmit)}>
@@ -122,7 +117,7 @@ export default function ProfileEditPage() {
                     </div>
                     <div className="field">
                         <label>Minor</label>
-                        <Controller name="year" options={minors} as={Select} control={control} />
+                        <Controller name="minors" options={minors} as={Select} control={control} />
                     </div>
                 </div>
                 <div className="field">
