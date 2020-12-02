@@ -1,34 +1,61 @@
-import React, { useState } from "react"
+// import React, { useState } from "react"
+import React, { useState, useEffect } from 'react';
 import "./ProfilePage.css"
 import Select from "react-select"
 import { schools, year, interest } from "../components/SchoolYearData"
 import { useForm, Controller } from "react-hook-form"
 import auth from "../services/auth"
+import Loading from "../components/Loading"
+// import courses from "../services/courses"
 import { Redirect } from "react-router-dom"
 import axios from "axios"
 
-
 export default function ProfileEditPage() {
     const { register, control, handleSubmit, errors } = useForm()
+
+   //     const [state, setState] = useState({});
+    const [allcourses, setCourses] = useState(null);
 
     const onSubmit = async data => {
         // POST request
         const response = await axios.post("/api/profile", data)
         console.log(response.data)
     }
-    
 
-    const onGetCourses = async data => {
-        // GET request
-        const courses = await axios.get('/api/all-courses');
-        console.log(courses);
-        // const response = await axios.post("/api/profile", data)
-        // console.log(response.data)
-    }
+    // see https://www.robinwieruch.de/react-hooks-fetch-data/
+    // https://medium.com/@timtan93/states-and-componentdidmount-in-functional-components-with-hooks-cac5484d22ad
+    // https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
+ 
+  useEffect(() => {
+      let isMounted = true; // note this flag denote mount status
+       const fetchData = async () => {
+          const resp = await axios.get('/api/all-courses',);
+          // console.log(resp.data);
+         // setCourses(resp.data['courses']);
+	   return resp.data['courses'];
+        }
+ 
+       fetchData().then(data => {
+          if (isMounted){
+             setCourses(data);
+          }
+      })
+      return () => { isMounted = false }; // use effect cleanup to set flag false, if unmounted
+  },[]);
 
-    if (!auth.profile) return <Redirect to="profile" />
 
-    const profile = auth.profile
+    console.log("what was found: ", allcourses)
+    //    console.log("what was found: ", schools)
+
+   if (!auth.profile) return <Redirect to="profile" />
+
+   const profile = auth.profile
+  
+
+  if (allcourses === null ) return <Loading />
+  //  if (allcourses === null) {
+  //     return 'Loading...';
+  //   }
 
     return (
         <div className="profile">
@@ -87,7 +114,6 @@ export default function ProfileEditPage() {
                         <Controller name="year" options={year} as={Select} control={control} />
                     </div>
                 </div>
-                <div>{JSON.stringify(onGetCourses)} </div>
                 <div className="field">
                     <label>Classes</label>
                     <Controller
@@ -96,7 +122,7 @@ export default function ProfileEditPage() {
                         name="classes"
                         className="basic-multi-select"
                         classNamePrefix="select"
-                        options={schools}
+                        options={allcourses}
                         control={control}
                     />
                 </div>
@@ -112,10 +138,10 @@ export default function ProfileEditPage() {
                         control={control}
                     />
                 </div>
-                <div class="field">
+                <div className="field">
                     <label>Bio</label>
                     <textarea
-                        spellcheck="false"
+                        spellCheck="false"
                         name="bio"
                         ref={register}
                         defaultValue={profile.bio}

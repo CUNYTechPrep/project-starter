@@ -5,8 +5,9 @@
 // import axios from "axios"
 
 const schools = [
-    { value: "baruch", label: "Baruch College" },
-    { value: "brooklyn", label: "Brooklyn College" },
+    { value: "Baruch College", label: "Baruch College" },
+    { value: "Queens College", label: "Queens College" },
+    { value: "Brooklyn College", label: "Brooklyn College" },
     { value: "csi", label: "College of Staten Island" },
     { value: "johnJay", label: "John Jay College of Criminal Justice" },
     { value: "lehman", label: "Lehman College" },

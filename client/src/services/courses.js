@@ -5,28 +5,28 @@
 // in the backend api. It was also modified to return promises instead
 // of using callbacks `cb`.
 
-const courses = {
-  //isAuthenticated: false,
-  getCourses() {
-    return fetch('/api/profile', { 
-      method: 'GET',
-      body: JSON.stringify({ email, password }),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
-      .then((response) => {
-        if(!response.ok) {
-          throw new Error('Profile Failed');
-        }
+// const courses = {
+//   //isAuthenticated: false,
+//   getCourses() {
+//     return fetch('/api/profile', { 
+//       method: 'GET',
+//       body: JSON.stringify({ email, password }),
+//       headers: {
+//         'Content-Type': 'application/json',
+//       }
+//     })
+//       .then((response) => {
+//         if(!response.ok) {
+//           throw new Error('Profile Failed');
+//         }
 
-        return response.json();
-      })
-      .then((body) => {
-        //this.isAuthenticated = true;
-        return body;
-      });
-  },
-}
+//         return response.json();
+//       })
+//       .then((body) => {
+//         //this.isAuthenticated = true;
+//         return body;
+//       });
+//   },
+// }
 
-export default profile;
+// export default profile;
