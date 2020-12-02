@@ -5,18 +5,16 @@ const passport = require("../middlewares/authentication")
 
 router.get("/", passport.isAuthenticated(), async (req, res) => {
     try {
-        const courses = await Course.findAll()
+        const courses = (await Course.findAll())
+            .map(course => ({
+                ...course.get(),
+            }))
+            .filter(
+                (course, index, courses) =>
+                    courses.findIndex(c => c.label === course.label) === index
+            )
 
-        //console.log("print all courses", Course.findAll())
-
-        // const courses = await Course.findAll();
-        // console.log("all courses", courses); 
-
-        
-        // const coursesTaken = user.coursesTaken.map(course =>  course.value + ": " + course.label)
-
-        // console.log(user.coursesTaken)
-        res.json({ courses})
+        res.json({ courses })
     } catch (error) {
         console.log(error)
         res.sendStatus(404)
@@ -24,6 +22,5 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
 })
 
 // TODO
-
 
 module.exports = router

@@ -6,7 +6,7 @@ import Loading from "../components/Loading"
 import { Redirect } from "react-router-dom"
 import axios from "axios"
 import auth from "../services/auth" // replace with js-cookie or react-cookie
-import Header3 from '../components/Header3';
+import Header3 from "../components/Header3"
 
 class ProfilePage extends React.Component {
     // get profile from http://localhost:8080/api/profile
@@ -32,17 +32,19 @@ class ProfilePage extends React.Component {
         if (this.state.loading) return <Loading />
         return (
             <div className="profile">
-                <Header3 headerName={` ${this.state.profile.firstName} ${this.state.profile.lastName}`} />
+                <Header3
+                    headerName={` ${this.state.profile.firstName} ${this.state.profile.lastName}`}
+                />
                 <div> {this.state.profile.school} </div>
                 <div> {this.state.profile.major} </div>
-                <hr style={{borderColor: "rgba(0.1, 0.1, 0, 0.1)"}}/>
-                <Header3 headerName="About"/>
+                <hr style={{ borderColor: "rgba(0.1, 0.1, 0, 0.1)" }} />
+                <Header3 headerName="About" />
                 {this.state.profile.bio}
-                <hr style={{borderColor: "rgba(0.1, 0.1, 0, 0.1)"}}/>
-                <Header3 headerName="Classes"/>
-                <Tag classes={this.state.profile.coursesTaken} />
-                <hr style={{borderColor: "rgba(0.1, 0.1, 0, 0.1)"}}/>
-                <Header3 headerName="Interests"/>
+                <hr style={{ borderColor: "rgba(0.1, 0.1, 0, 0.1)" }} />
+                <Header3 headerName="Classes" />
+                <Tag classes={this.state.profile.coursesTaken.map(course => course.label)} />
+                <hr style={{ borderColor: "rgba(0.1, 0.1, 0, 0.1)" }} />
+                <Header3 headerName="Interests" />
                 <br />
                 <button onClick={this.handleClick} className="positive ui button">
                     Edit Profile

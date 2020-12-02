@@ -1,8 +1,8 @@
 // import React, { useState } from "react"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react"
 import "./ProfilePage.css"
 import Select from "react-select"
-import { schools, year, interest } from "../components/SchoolYearData"
+import { schools, years, interests, majors, minors } from "../components/SchoolYearData"
 import { useForm, Controller } from "react-hook-form"
 import auth from "../services/auth"
 import Loading from "../components/Loading"
@@ -11,51 +11,56 @@ import { Redirect } from "react-router-dom"
 import axios from "axios"
 
 export default function ProfileEditPage() {
+    const [profileEdited, setProfileEdited] = useState(false)
+
     const { register, control, handleSubmit, errors } = useForm()
 
-   //     const [state, setState] = useState({});
-    const [allcourses, setCourses] = useState(null);
+    const [allcourses, setCourses] = useState(null)
 
     const onSubmit = async data => {
-        // POST request
+        data = {
+            ...data,
+            classes: data.classes?.map(c => c.value) || [],
+            major: data.major.value,
+            school: data.school.value,
+            year: data.year.value,
+        }
+
+        console.log(data)
         const response = await axios.post("/api/profile", data)
-        console.log(response.data)
+        setProfileEdited(true)
     }
 
-    // see https://www.robinwieruch.de/react-hooks-fetch-data/
-    // https://medium.com/@timtan93/states-and-componentdidmount-in-functional-components-with-hooks-cac5484d22ad
-    // https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
- 
-  useEffect(() => {
-      let isMounted = true; // note this flag denote mount status
-       const fetchData = async () => {
-          const resp = await axios.get('/api/all-courses',);
-          // console.log(resp.data);
-         // setCourses(resp.data['courses']);
-	   return resp.data['courses'];
+    useEffect(() => {
+        if (!auth.profile) return
+
+        let isMounted = true // note this flag denote mount status
+        const fetchData = async () => {
+            const resp = await axios.get("/api/all-courses")
+            // console.log(resp.data);
+            // setCourses(resp.data['courses']);
+            return resp.data.courses
         }
- 
-       fetchData().then(data => {
-          if (isMounted){
-             setCourses(data);
-          }
-      })
-      return () => { isMounted = false }; // use effect cleanup to set flag false, if unmounted
-  },[]);
 
+        fetchData().then(data => {
+            if (isMounted) {
+                setCourses(data)
+            }
+        })
+        return () => {
+            isMounted = false
+        } // use effect cleanup to set flag false, if unmounted
+    }, [])
 
-    console.log("what was found: ", allcourses)
-    //    console.log("what was found: ", schools)
+    if (profileEdited) return <Redirect to="profile" />
 
-   if (!auth.profile) return <Redirect to="profile" />
+    if (!auth.profile) return <Redirect to="profile" />
 
-   const profile = auth.profile
-  
+    const profile = auth.profile
 
-  if (allcourses === null ) return <Loading />
-  //  if (allcourses === null) {
-  //     return 'Loading...';
-  //   }
+    console.log(profile.coursesTaken)
+
+    if (allcourses === null) return <Loading />
 
     return (
         <div className="profile">
@@ -65,7 +70,7 @@ export default function ProfileEditPage() {
                         <label>First Name</label>
                         <input
                             type="text"
-                            name="firstname"
+                            name="firstName"
                             placeholder="First Name"
                             defaultValue={profile.firstName}
                             ref={register}
@@ -75,7 +80,7 @@ export default function ProfileEditPage() {
                         <label>Last Name</label>
                         <input
                             type="text"
-                            name="lastname"
+                            name="lastName"
                             placeholder="Last Name"
                             defaultValue={profile.lastName}
                             ref={register}
@@ -90,28 +95,34 @@ export default function ProfileEditPage() {
                             as={Select}
                             options={schools}
                             control={control}
-                            defaultValue={profile.school}
+                            defaultValue={schools.find(school => school.label === profile.school)}
                         />
                     </div>
                     <div className="field">
                         <label>Year</label>
-                        <Controller name="year" options={year} as={Select} control={control} />
+                        <Controller
+                            name="year"
+                            options={years}
+                            as={Select}
+                            control={control}
+                            defaultValue={years.find(year => year.value == profile.graduate_date)}
+                        />
                     </div>
                 </div>
                 <div className="two fields">
                     <div className="field">
                         <label>Major</label>
                         <Controller
-                            name="school"
+                            name="major"
                             as={Select}
-                            options={schools}
+                            options={majors}
                             control={control}
-                            defaultValue={profile.major}
+                            defaultValue={majors.find(major => major.value === profile.major)}
                         />
                     </div>
                     <div className="field">
                         <label>Minor</label>
-                        <Controller name="year" options={year} as={Select} control={control} />
+                        <Controller name="year" options={minors} as={Select} control={control} />
                     </div>
                 </div>
                 <div className="field">
@@ -124,6 +135,10 @@ export default function ProfileEditPage() {
                         classNamePrefix="select"
                         options={allcourses}
                         control={control}
+                        defaultValue={profile.coursesTaken.map(course => ({
+                            label: course.label,
+                            value: course.classCode,
+                        }))}
                     />
                 </div>
                 <div className="field">
@@ -134,7 +149,7 @@ export default function ProfileEditPage() {
                         name="interest"
                         className="basic-multi-select"
                         classNamePrefix="select"
-                        options={interest}
+                        options={interests}
                         control={control}
                     />
                 </div>
@@ -148,7 +163,9 @@ export default function ProfileEditPage() {
                     ></textarea>
                 </div>
 
-                <input type="submit" />
+                <button type="submit" className="positive ui button">
+                    Edit Profile
+                </button>
             </form>
         </div>
     )

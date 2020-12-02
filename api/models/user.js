@@ -24,10 +24,9 @@ module.exports = (sequelize, DataTypes) => {
             },
             school: { type: DataTypes.STRING },
 
-            graduate_date: { type: DataTypes.DATEONLY },
+            graduate_date: { type: DataTypes.INTEGER },
             major: { type: DataTypes.STRING },
 
-            dateOfBirth: { type: DataTypes.DATEONLY },
             bio: { type: DataTypes.TEXT },
 
             passwordHash: { type: DataTypes.STRING },

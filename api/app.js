@@ -56,34 +56,38 @@ db.sequelize.sync({ force: false })
 
 // start up the server
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))
-;(async () => {
-    const user1 = await User.findOne({
-        where: { id: 1 },
-        include: ["firstUserFriends", "coursesTaken"],
-    })
+// ;(async () => {
+//     const user1 = await User.findOne({
+//         where: { id: 1 },
+//         include: ["firstUserFriends", "coursesTaken"],
+//     })
 
-    const user2 = await User.findOne({
-        where: { id: 2 },
-        include: ["secondUserFriends"],
-    })
+//     const user2 = await User.findOne({
+//         where: { id: 2 },
+//         include: ["secondUserFriends"],
+//     })
 
-    // await Friendship.create({ firstUserId: 1, secondUserId: 2, pendingState: 3 })
+//     // await Friendship.create({ firstUserId: 1, secondUserId: 2, pendingState: 3 })
 
-    console.log(user1.firstUserFriends[0].id, user2.secondUserFriends[0].id)
+//     console.log(user1.firstUserFriends[0].id, user2.secondUserFriends[0].id)
 
-    const course2 = await Course.findOne({ where: { id: 2 }, include: ["studentsEnrolled"] })
-    console.log(user1.coursesTaken.length)
-    console.log(course2.studentsEnrolled.length)
-})()
+//     const course2 = await Course.findOne({ where: { id: 2 }, include: ["studentsEnrolled"] })
+//     console.log(user1.coursesTaken.length)
+//     console.log(course2.studentsEnrolled.length)
+// })()
 
 // const fs = require("fs")
 // const data = fs.readFileSync(process.cwd() + "/api/data/qc_2020_fall.json", "utf-8")
 // const qc = JSON.parse(data)[0]
 
-//qc.courses.forEach(({ topic }) => Course.create({ topic }))
-
-//qc.courses.forEach(({ topic, sections }) => console.log(({ value:sections[0]["classCode"], label:topic})))
-
-//qc.courses.forEach(({ topic, sections }) => sections.forEach(({classCode}) => console.log(({ value:classCode, label:topic}))))
-
-// qc.courses.forEach(({ topic, sections }) => sections.forEach(({classCode}) => Course.create(({ value:classCode, label:topic}))))
+// qc.courses.forEach(({ topic, sections }) => {
+//     sections.forEach(({ classCode, instructor }) => {
+//         Course.create({
+//             value: classCode,
+//             label:
+//                 topic.slice(0, topic.indexOf("-")) +
+//                 "- " +
+//                 instructor.slice(0, instructor.indexOf(",")),
+//         })
+//     })
+// })

@@ -13,7 +13,7 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
             include: {
                 model: Course,
                 as: "coursesTaken",
-                attributes: ["value","label"],
+                attributes: ["value", "label"],
                 through: { attributes: [] },
             },
         })
@@ -21,13 +21,14 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
         //console.log("print all courses", Course.findAll())
 
         // const courses = await Course.findAll();
-        // console.log("all courses", courses); 
+        // console.log("all courses", courses);
 
-        
-        const coursesTaken = user.coursesTaken.map(course =>  course.value + ": " + course.label)
+        const coursesTaken = user.coursesTaken.map(course => ({
+            classCode: course.value,
+            label: course.label,
+        }))
 
-        console.log(user.coursesTaken)
-        res.json({ ...user.get(), coursesTaken})
+        res.json({ ...user.get(), coursesTaken })
     } catch (error) {
         console.log(error)
         res.sendStatus(404)
@@ -37,14 +38,29 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
 // TODO
 router.post("/", passport.isAuthenticated(), async (req, res) => {
     try {
-        const { firstName, lastName } = req.body
-        const user = req.user
+        const { firstName, lastName, school, major, year, classes, bio } = req.body
+        const user = await User.findOne({
+            where: { id: req.user.id },
+            include: "coursesTaken",
+        })
         user.firstName = firstName
-        // user.major = body.major
+        user.lastName = lastName
+        user.school = school
+        user.major = major
+        user.graduate_date = year
+        user.bio = bio
 
-        // await user.save()
+        const courses = await Promise.all(
+            classes.map(classCode => Course.findOne({ where: { value: classCode } }))
+        )
+        // user.major
 
-        // res.sendStatus(200)
+        await user.setCoursesTaken([])
+        await user.addCoursesTaken(courses)
+
+        await user.save()
+
+        res.sendStatus(200)
     } catch (e) {
         console.log(e)
         res.sendStatus(404)

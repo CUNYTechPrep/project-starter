@@ -8,17 +8,20 @@ const schools = [
     { value: "Baruch College", label: "Baruch College" },
     { value: "Queens College", label: "Queens College" },
     { value: "Brooklyn College", label: "Brooklyn College" },
-    { value: "csi", label: "College of Staten Island" },
-    { value: "johnJay", label: "John Jay College of Criminal Justice" },
-    { value: "lehman", label: "Lehman College" },
-    { value: "hunter", label: "Hunter College" },
-    { value: "medgar", label: "Medgar Evers College" },
-    { value: "cityTech", label: "New York City College of Technology" },
-    { value: "city", label: "The City College of New York" },
-    { value: "york", label: "York College" },
+    { value: "College of Staten Island", label: "College of Staten Island" },
+    {
+        value: "John Jay College of Criminal Justice",
+        label: "John Jay College of Criminal Justice",
+    },
+    { value: "Lehman College", label: "Lehman College" },
+    { value: "Hunter College", label: "Hunter College" },
+    { value: "Medgar Evers College", label: "Medgar Evers College" },
+    { value: "New York City College of Technology", label: "New York City College of Technology" },
+    { value: "The City College of New York", label: "The City College of New York" },
+    { value: "York College", label: "York College" },
 ]
 
-const year = [
+const years = [
     { value: 2020, label: "2020" },
     { value: 2021, label: "2021" },
     { value: 2022, label: "2022" },
@@ -26,7 +29,7 @@ const year = [
     { value: 2024, label: "2024" },
 ]
 
-const interest = [
+const interests = [
     { value: "Sport", label: "Sport" },
     { value: "Gaming", label: "Gaming" },
     { value: "Cooking", label: "Cooking" },
@@ -43,25 +46,16 @@ const interest = [
     { value: "Running", label: "Running" },
 ]
 
-// class allCourses extends React.Component {
-//     // get profile from http://localhost:8080/api/profile
+const majors = [
+    { value: "Computer Science", label: "Computer Science" },
+    { value: "Accounting", label: "Accounting" },
+    { value: "Physics", label: "Physics" },
+]
 
-//     state = {
-//         loading: true,
-//         courses: null,
-//         notFound: false,
-//     }
+const minors = [
+    { value: "Math", label: "Math" },
+    { value: "Accounting", label: "Accounting" },
+    { value: "Physics", label: "Physics" },
+]
 
-//     async componentDidMount() {
-//         const courses = (await axios.get("/api/all-courses")).data
-//         this.setState({ courses, loading: false })
-//     }
-
-
-//     render() {
-//         if (this.state.loading) return <Loading />
-//         return(this.state.courses)
-//     }
-// }
-
-export { schools, year, interest }
+export { schools, years, interests, majors, minors }
