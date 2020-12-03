@@ -58,7 +58,18 @@ class ProfilePage extends React.Component {
                 <hr style={{ borderColor: "rgba(0.1, 0.1, 0, 0.1)" }} />
                 <Header3 headerName="Interests" />
                 <Tag  classes={["Hiking", "Reading", "Investing"]} />
+                <hr style={{ borderColor: "rgba(0.1, 0.1, 0, 0.1)" }} />
+
+                <Header3 headerName="I can give" />
+                <Tag  classes={["Mentorship", "Major Advices", "Career Advices"]} />
+                <hr style={{ borderColor: "rgba(0.1, 0.1, 0, 0.1)" }} />
+                <Header3 headerName="I am looking for " />
+                <Tag  classes={["Study Buddies", "Mentorship"]} />
+                <hr style={{ borderColor: "rgba(0.1, 0.1, 0, 0.1)" }} />
+                <a href="">https://www.linkedin.com/in/sett-hein/</a>
                 <br/>
+                <br />
+
                 <button onClick={this.handleClick} className="positive ui button">
                     Edit Profile
                 </button>

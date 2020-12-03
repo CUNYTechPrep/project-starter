@@ -13,7 +13,6 @@ function LandingPage(props) {
         <Link to="/signup">
         <button className="ui blue basic button">Sign Up</button>
         </Link>
-       
             </div>
             </div>
             <div className="eight wide column right-container"> 

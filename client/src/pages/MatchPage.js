@@ -5,7 +5,7 @@ import "./MatchPage.css"
 
 export default function MatchPage() {
     const [matches, setMatches] = useState([])
-
+  
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios.get("/api/match")
@@ -15,6 +15,8 @@ export default function MatchPage() {
         fetchData()
     }, [])
 
+
+
     return (
         <div className="MatchPage">
             <div className="ui four cards">
@@ -22,6 +24,7 @@ export default function MatchPage() {
                     <MatchBox key={index} {...match} />
                 ))}
             </div>
+            
         </div>
     )
 }
