@@ -15,7 +15,7 @@ export default function MatchBox(props) {
                 <div className="meta">{college}</div>
                 <div className="meta">{major}</div>
 
-                {courses.map(course => (
+                {courses?.map(course => (
                     <div key="course" className="ui small label">
                         {course}
                     </div>
