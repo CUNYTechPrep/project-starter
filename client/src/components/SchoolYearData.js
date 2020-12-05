@@ -58,4 +58,12 @@ const minors = [
     { value: "Physics", label: "Physics" },
 ]
 
-export { schools, years, interests, majors, minors }
+const goals =[
+    { value: "Study Buddy", label: "Study Buddy" },
+    { value: "Mentoring", label: "Mentoring" },
+    { value: "Collabrate", label: "Collabrate" },
+    { value: "Gaming Buddy", label: "Gaming Buddy" },
+    { value: "Hookup", label: "Hookup" },
+]
+
+export { schools, years, interests, majors, minors, goals }

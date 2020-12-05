@@ -2,18 +2,19 @@
 import React, { useState, useEffect } from "react"
 import "./ProfilePage.css"
 import Select from "react-select"
-import { schools, years, interests, majors, minors } from "../components/SchoolYearData"
+import { schools, years, interests, majors, minors, goals } from "../components/SchoolYearData"
 import { useForm, Controller } from "react-hook-form"
 import auth from "../services/auth"
 import Loading from "../components/Loading"
 // import courses from "../services/courses"
 import { Redirect } from "react-router-dom"
 import axios from "axios"
+import SingleDropdown from '../components/SingleDropDown';
 
 export default function ProfileEditPage() {
     const [profileEdited, setProfileEdited] = useState(false)
 
-    const { register, control, handleSubmit, errors } = useForm()
+    const { register, control, handleSubmit} = useForm()
 
     const [allcourses, setCourses] = useState(null)
 
@@ -66,7 +67,6 @@ export default function ProfileEditPage() {
                         <input
                             type="text"
                             name="firstName"
-                            placeholder="First Name"
                             defaultValue={profile.firstName}
                             ref={register}
                         />
@@ -76,49 +76,41 @@ export default function ProfileEditPage() {
                         <input
                             type="text"
                             name="lastName"
-                            placeholder="Last Name"
                             defaultValue={profile.lastName}
                             ref={register}
                         />
                     </div>
                 </div>
                 <div className="two fields">
-                    <div className="field">
-                        <label>School</label>
-                        <Controller
-                            name="school"
-                            as={Select}
-                            options={schools}
-                            control={control}
-                            defaultValue={schools.find(school => school.label === profile.school)}
-                        />
-                    </div>
-                    <div className="field">
-                        <label>Year</label>
-                        <Controller
-                            name="year"
-                            options={years}
-                            as={Select}
-                            control={control}
-                            defaultValue={years.find(year => year.value == profile.graduate_date)}
-                        />
-                    </div>
+                    <SingleDropdown 
+                        name={"school"}
+                        label={"School"} 
+                        options={schools} 
+                        control={control} 
+                        currentValue ={profile.school}
+                    />
+                    <SingleDropdown 
+                        name={"year"}
+                        label={"Year"} 
+                        options={years} 
+                        control={control} 
+                        currentValue = {profile.graduate_date}
+                    />
                 </div>
                 <div className="two fields">
-                    <div className="field">
-                        <label>Major</label>
-                        <Controller
-                            name="major"
-                            as={Select}
-                            options={majors}
-                            control={control}
-                            defaultValue={majors.find(major => major.value === profile.major)}
+                    <SingleDropdown 
+                        name={"major"}
+                        label={"Major"} 
+                        options={majors} 
+                        control={control} 
+                        currentValue = {profile.major}
                         />
-                    </div>
-                    <div className="field">
-                        <label>Minor</label>
-                        <Controller name="minors" options={minors} as={Select} control={control} />
-                    </div>
+                    <SingleDropdown 
+                        name={"minor"}
+                        label={"Minor"} 
+                        options={minors} 
+                        control={control} 
+                        />
                 </div>
                 <div className="field">
                     <label>Classes</label>
@@ -137,6 +129,20 @@ export default function ProfileEditPage() {
                     />
                 </div>
                 <div className="field">
+                    <label>What are your goals?</label>
+                    <Controller
+                        as={Select}
+                        isMulti
+                        name="goals"
+                        className="basic-multi-select"
+                        classNamePrefix="select"
+                        options={goals}
+                        control={control}
+                        defaultValue = {[goals[0], goals[1]]}
+                    />
+                </div>
+                
+                <div className="field">
                     <label>Interest</label>
                     <Controller
                         as={Select}
@@ -146,6 +152,8 @@ export default function ProfileEditPage() {
                         classNamePrefix="select"
                         options={interests}
                         control={control}
+                        defaultValue = {[interests[0], interests[1]]}
+
                     />
                 </div>
                 <div className="field">
@@ -157,6 +165,15 @@ export default function ProfileEditPage() {
                         defaultValue={profile.bio}
                     ></textarea>
                 </div>
+                <div className="field">
+                        <label>Linkedin</label>
+                        <input
+                            type="text"
+                            name="linkedin"
+                            defaultValue={"https://www.linkedin.com/in/sett-hein/"}
+                            ref={register}
+                        />
+                    </div>
 
                 <button type="submit" className="positive ui button">
                     Edit Profile
