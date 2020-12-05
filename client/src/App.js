@@ -7,6 +7,7 @@ import SignUpPage from "./pages/SignUpPage"
 import MessagePage from "./pages/MessagePage"
 import MatchPage from "./pages/MatchPage"
 import ProfilePage from "./pages/ProfilePage"
+import PublicProfilePage from "./pages/PublicProfilePage"
 import ProfileEditPage from "./pages/ProfileEditPage"
 import PrivateRoute from "./components/PrivateRoute"
 import { Navigation } from "./components/Navigation"
@@ -35,6 +36,11 @@ class App extends React.Component {
                                 <Route exact path="/signup" component={SignUpPage} />
                                 {/* Force nomatch urls redirect to login page */}
                                 <PrivateRoute exact path="/profile" component={ProfilePage} />
+                                <PrivateRoute
+                                    exact
+                                    path="/profile/:id"
+                                    component={PublicProfilePage}
+                                />
                                 <PrivateRoute
                                     exact
                                     path="/profile-edit"

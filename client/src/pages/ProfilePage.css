@@ -1,11 +1,11 @@
 .profile {
-  background-color: white;
-  border-radius: 5px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgba(0.1, 0.1, 0, 0.1);
-  width: 50%;
-  padding: 20px;
-  margin: auto;
-  margin-top: 80px;
+    background-color: white;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0.1, 0.1, 0, 0.1);
+    width: 50%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 30px;
 }

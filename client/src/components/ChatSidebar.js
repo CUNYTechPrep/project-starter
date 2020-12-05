@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Typography, Tabs, Tab, Grid, Button } from "@material-ui/core"
+import { Box, Typography, Tabs, Tab, Grid } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/core/styles"
 import List from "@material-ui/core/List"
@@ -7,7 +7,8 @@ import ListItem from "@material-ui/core/ListItem"
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction"
 import ListItemText from "@material-ui/core/ListItemText"
 import ListItemAvatar from "@material-ui/core/ListItemAvatar"
-import Checkbox from "@material-ui/core/Checkbox"
+import IconButton from "@material-ui/core/IconButton"
+import CommentIcon from "@material-ui/icons/Comment"
 import Avatar from "@material-ui/core/Avatar"
 
 const useStyles = makeStyles(theme => ({
@@ -60,9 +61,9 @@ function ChatSidebar() {
                                     </ListItemAvatar>
                                     <ListItemText id={labelId} primary={`User ${value + 1}`} />
                                     <ListItemSecondaryAction>
-                                        <Button variant="outlined" color="primary" dark>
-                                            Chat
-                                        </Button>
+                                        <IconButton edge="end" aria-label="comments">
+                                            <CommentIcon />
+                                        </IconButton>
                                     </ListItemSecondaryAction>
                                 </ListItem>
                             )
