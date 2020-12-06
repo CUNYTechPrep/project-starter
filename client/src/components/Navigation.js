@@ -34,17 +34,27 @@ const Navigation = withRouter(({ history }) => {
 
                     {!auth.isAuthenticated ? (
                         <>
-                            <Button color="inherit" onClick={() => history.push("/home")} >Home</Button>
-                            <Button color="inherit" onClick={() => history.push("/signup")}>Sign Up</Button>
+                            <Button color="inherit" onClick={() => history.push("/home")}>
+                                Home
+                            </Button>
+                            <Button color="inherit" onClick={() => history.push("/signup")}>
+                                Sign Up
+                            </Button>
                             <Button color="inherit" onClick={() => history.push("/login")}>
                                 Login
                             </Button>
                         </>
                     ) : (
                         <>
-                            <Button color="inherit" onClick={() => history.push("/profile")}>Profile</Button>
-                            <Button color="inherit" onClick={() => history.push("/match")}>Matches</Button>
-                            <Button color="inherit" onClick={() => history.push("/message")}>Messages</Button>
+                            <Button color="inherit" onClick={() => history.push("/profile")}>
+                                Profile
+                            </Button>
+                            <Button color="inherit" onClick={() => history.push("/match")}>
+                                Matches
+                            </Button>
+                            <Button color="inherit" onClick={() => history.push("/message")}>
+                                Messages
+                            </Button>
                             <Button color="inherit">Settings</Button>
                             <Button
                                 color="inherit"

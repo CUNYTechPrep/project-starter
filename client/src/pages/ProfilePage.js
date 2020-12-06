@@ -22,7 +22,6 @@ class ProfilePage extends React.Component {
     async componentDidMount() {
         const profile = (await axios.get("/api/profile")).data
         this.setState({ profile, loading: false })
-        console.log(profile)
     }
 
     handleClick = e => {
@@ -32,10 +31,11 @@ class ProfilePage extends React.Component {
 
     render() {
         if (this.state.loading) return <Loading message="Loading" />
+
         return (
             <div className="profile">
                 <div className="ui grid">
-                    <div class="three wide column">
+                    <div className="three wide column">
                         <img src={headshot} style={{ width: "100px" }} alt="headshot" />
                     </div>
                     <div className="thirteen wide column" style={{ marginTop: "10px" }}>

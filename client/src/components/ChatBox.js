@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useCallback } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import {
     Grid,
@@ -12,6 +12,8 @@ import {
     List,
     ListItemText,
 } from "@material-ui/core"
+import auth from "../services/auth"
+import Loading from "../components/Loading"
 
 const id = () => {
     return Math.random().toString(36).substr(2, 9)
@@ -24,34 +26,43 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-function Chatbox() {
+function Chatbox(props) {
+    const { currentChat, mutualFriends } = props
+
     const classes = useStyles()
     const [message, setMessage] = useState("")
-    const [messages, setMessages] = useState([
-        {
-            isMyMessage: false,
-            message: "Hey I'm Sett, nice to meet you!",
-        },
-    ])
+    const [messages, setMessages] = useState([])
 
     const lastMessage = useRef()
 
     const sendMessage = () => {
         if (message.trim() !== "") {
             setMessages([...messages, { message, isMyMessage: true }])
+            auth.socket.emit("send-message", { id: currentChat.id, message })
             setMessage("")
         }
     }
 
     useEffect(() => {
-        lastMessage.current.scrollIntoView()
+        if (lastMessage.current) lastMessage.current.scrollIntoView()
     }, [messages])
+
+    useEffect(() => {
+        auth.socket.on("receive-message", message => {
+            setMessages([...messages, { message, isMyMessage: false }])
+        })
+    }, [])
+
+    // fetch chat history
+    // if () return <Loading />
+
+    if (!currentChat) return <h1>Go make some friends!</h1>
 
     return (
         <Grid container item xs={4} direction="column" justify="flex-end">
             <Grid item>
                 <Box ml={3}>
-                    <Typography>Sett</Typography>
+                    <Typography>{`${currentChat.firstName} ${currentChat.lastName}`}</Typography>
                 </Box>
             </Grid>
 

@@ -8,6 +8,8 @@ const passport = require("./middlewares/authentication")
 const app = express()
 const PORT = process.env.PORT || 8000
 const { User, Friendship, Course } = require("./models")
+const server = require("http").createServer(app)
+const io = require("socket.io")(server)
 
 // this lets us parse 'application/json' content in http requests
 app.use(bodyParser.json())
@@ -54,8 +56,13 @@ if (process.env.NODE_ENV === "production") {
 // NOTE: toggling this to true drops all tables (including data)
 db.sequelize.sync({ force: false })
 
+io.on("connect", socket => {
+    require("./socket/chat")(socket, io)
+})
+
 // start up the server
-app.listen(PORT, () => console.log(`Listening on ${PORT}`))
+server.listen(PORT, () => console.log(`Listening on ${PORT}`))
+
 // ;(async () => {
 //     const user1 = await User.findOne({
 //         where: { id: 1 },

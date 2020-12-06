@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Box, Typography, Tabs, Tab, Grid } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/core/styles"
@@ -8,16 +8,15 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction"
 import ListItemText from "@material-ui/core/ListItemText"
 import ListItemAvatar from "@material-ui/core/ListItemAvatar"
 import IconButton from "@material-ui/core/IconButton"
-import CommentIcon from "@material-ui/icons/Comment"
 import Avatar from "@material-ui/core/Avatar"
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        width: "100%",
-        maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
-    },
-}))
+// const useStyles = makeStyles(theme => ({
+//     root: {
+//         width: "100%",
+//         maxWidth: 360,
+//         backgroundColor: theme.palette.background.paper,
+//     },
+// }))
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props
@@ -26,15 +25,19 @@ function TabPanel(props) {
         <div role="tabpanel" hidden={value !== index} {...other}>
             {value === index && (
                 <Box p={1} overflow={"auto"} height="50vh">
-                    <Typography>{children}</Typography>
+                    <Typography component={"span"}>{children}</Typography>
                 </Box>
             )}
         </div>
     )
 }
 
-function ChatSidebar() {
-    const [value, setValue] = React.useState(0)
+function ChatSidebar(props) {
+    const { pendingFriends, mutualFriends, setCurrentChat } = props
+
+    const [value, setValue] = useState(0)
+
+    useEffect(() => {}, [])
 
     const handleChange = (event, newValue) => {
         setValue(newValue)
@@ -52,19 +55,19 @@ function ChatSidebar() {
             <Grid item>
                 <TabPanel value={value} index={0}>
                     <List dense>
-                        {[0, 1, 2, 3].map(value => {
-                            const labelId = `checkbox-list-secondary-label-${value}`
+                        {mutualFriends.map((friend, index) => {
                             return (
-                                <ListItem key={value} button>
+                                <ListItem key={index} button onClick={() => setCurrentChat(friend)}>
                                     <ListItemAvatar>
-                                        <Avatar alt="H" src={""} />
+                                        <Avatar
+                                            alt="H"
+                                            src={`https://randomuser.me/api/portraits/med/men/${index}.jpg`}
+                                        />
                                     </ListItemAvatar>
-                                    <ListItemText id={labelId} primary={`User ${value + 1}`} />
-                                    <ListItemSecondaryAction>
-                                        <IconButton edge="end" aria-label="comments">
-                                            <CommentIcon />
-                                        </IconButton>
-                                    </ListItemSecondaryAction>
+                                    <ListItemText
+                                        primary={`${friend.firstName} ${friend.lastName}`}
+                                    />
+                                    <ListItemSecondaryAction></ListItemSecondaryAction>
                                 </ListItem>
                             )
                         })}

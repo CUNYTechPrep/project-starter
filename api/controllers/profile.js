@@ -1,5 +1,4 @@
 const router = require("express").Router()
-const { Model } = require("sequelize")
 const { User, Course } = require("../models")
 const passport = require("../middlewares/authentication")
 
