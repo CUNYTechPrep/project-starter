@@ -26,7 +26,7 @@ export default function MatchPage() {
             college: "Queens College",
             major: "Computer Science",
             courses: ["Software Engineer at Facebook"],
-            pic: `https://randomuser.me/api/portraits/med/men/120jpg`,
+            pic: `https://randomuser.me/api/portraits/med/men/12.jpg`,
         },
         {
             name: "Jonathan Cruz",
@@ -69,14 +69,7 @@ export default function MatchPage() {
         const fetchData = async () => {
             const matchResponse = await axios.get("/api/match")
 
-            setMatches(
-                matchResponse.data.map((match, index) => ({
-                    ...match,
-                    pic: `https://randomuser.me/api/portraits/med/${
-                        Math.random() < 0.5 ? "wo" : ""
-                    }men/${index}.jpg`,
-                }))
-            )
+            setMatches(matchResponse.data)
         }
         fetchData()
     }, [])

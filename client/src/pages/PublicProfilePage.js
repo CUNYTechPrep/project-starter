@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import Header3 from "../components/Header3"
@@ -11,6 +11,7 @@ import Loading from "../components/Loading"
 export default function PublicProfilePage() {
     const { id } = useParams()
     const [profile, setProfile] = useState()
+    const [pendingState, setPendingState] = useState()
     const [recommendation, setRecommendation] = useState([
         {
             name: "John Cena",
@@ -42,27 +43,65 @@ export default function PublicProfilePage() {
         },
     ])
 
+    const addFriendRef = useRef()
+
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`/api/profile/${id}`)
-            setProfile(response.data)
-            response.data.coursesTaken.map(course => {
-                console.log(course.label)
-            })
+            const [profileResponse, friendResponse] = await Promise.all([
+                axios.get(`/api/profile/${id}`),
+                axios.get(`/api/friend/${id}`),
+            ])
+
+            setProfile(profileResponse.data)
+            setPendingState(friendResponse.data.pendingState)
         }
 
         fetchData()
     }, [])
 
+    useEffect(() => {
+        switch (pendingState) {
+            case 1:
+                addFriendRef.current.classList.toggle("disabled")
+                addFriendRef.current.textContent = "Requested"
+                break
+
+            case 3:
+                addFriendRef.current.classList.toggle("disabled")
+                addFriendRef.current.textContent = "Added"
+                break
+
+            default:
+        }
+    }, [pendingState])
+
     if (!profile) return <Loading />
+
+    const addFriend = async e => {
+        const buttonClasses = e.target.classList
+        buttonClasses.toggle("loading")
+
+        const response = await axios.post("/api/friend", { id })
+
+        const { pendingState } = response.data
+
+        buttonClasses.toggle("loading")
+        setPendingState(pendingState)
+    }
 
     // ----------------------------------------------------------------
     return (
         <div className="publicProfile">
             <div className="profile">
                 <div className="ui grid">
-                    <div class="three wide column">
-                        <img src={headshot} style={{ width: "100px" }} alt="headshot" />
+                    <div className="three wide column">
+                        {/* <img src={headshot} style={{ width: "100px" }} alt="headshot" /> */}
+                        <img
+                            className="ui medium circular image"
+                            src={profile.pic}
+                            style={{ width: "100px" }}
+                            alt="headshot"
+                        />
                     </div>
                     <div className="ten wide column" style={{ marginTop: "10px" }}>
                         <Header3 headerName={` ${profile.firstName} ${profile.lastName}`} />
@@ -71,7 +110,9 @@ export default function PublicProfilePage() {
                         <div style={{ color: "grey" }}> {`Class of ${profile.graduate_date}`} </div>
                     </div>
                     <div className="three wide column">
-                        <button class="ui green button">Add Friend</button>
+                        <button ref={addFriendRef} className="ui green button" onClick={addFriend}>
+                            Add Friend
+                        </button>
                     </div>
                 </div>
                 <hr style={{ borderColor: "rgba(0.1, 0.1, 0, 0.1)" }} />

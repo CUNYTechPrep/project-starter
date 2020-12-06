@@ -19,8 +19,8 @@ export default function MatchBox(props) {
                 ))}
             </div>
             <Link to={`/profile/${id}`}>
-                <div class="ui bottom attached button">
-                    <i class="add icon"></i>
+                <div className="ui bottom attached button">
+                    <i className="add icon"></i>
                     <span style={{ color: "blue" }}>View Profile</span>
                 </div>
             </Link>

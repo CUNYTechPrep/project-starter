@@ -34,9 +34,15 @@ class ProfilePage extends React.Component {
 
         return (
             <div className="profile">
-                <div className="ui grid">
+                <div className="ui grid" style={{ alignItems: "center" }}>
                     <div className="three wide column">
-                        <img src={headshot} style={{ width: "100px" }} alt="headshot" />
+                        {/* <img src={headshot} style={{ width: "100px" }} alt="headshot" /> */}
+                        <img
+                            className="ui medium circular image"
+                            src={this.state.profile.pic}
+                            style={{ width: "100px" }}
+                            alt="headshot"
+                        />
                     </div>
                     <div className="thirteen wide column" style={{ marginTop: "10px" }}>
                         <Header3

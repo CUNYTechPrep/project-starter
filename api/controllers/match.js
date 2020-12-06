@@ -21,6 +21,7 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
                 name: classmate.firstName + " " + classmate.lastName,
                 college: classmate.school,
                 major: classmate.major,
+                pic: classmate.pic,
                 courses: (await classmate.getCoursesTaken()).map(course => course.label),
             }))
     )

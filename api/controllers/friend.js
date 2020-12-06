@@ -30,6 +30,37 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
     res.json({ requestedFriends, pendingFriends, mutualFriends })
 })
 
+router.get("/:id", passport.isAuthenticated(), async (req, res) => {
+    const { id } = req.params
+
+    if (req.user === id) {
+        res.sendStatus(404)
+        return
+    }
+
+    const firstUserId = Math.min(+req.user.id, +id)
+    const secondUserId = Math.max(+req.user.id, +id)
+
+    const isFirstUser = req.user.id == firstUserId
+
+    try {
+        let { pendingState } = await Friendship.findOne({
+            where: {
+                firstUserId,
+                secondUserId,
+            },
+        })
+
+        if (!isFirstUser) {
+            pendingState = pendingState === 1 ? 2 : 1
+        }
+
+        res.json({ pendingState })
+    } catch (err) {
+        res.json({ pendingState: 0 })
+    }
+})
+
 router.post("/", passport.isAuthenticated(), async (req, res) => {
     const { id } = req.body
 
@@ -54,7 +85,7 @@ router.post("/", passport.isAuthenticated(), async (req, res) => {
         await friendship.save()
     }
 
-    return res.sendStatus(200)
+    return res.json({ pendingState: friendship.pendingState })
 })
 
 module.exports = router
