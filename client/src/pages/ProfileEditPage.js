@@ -1,7 +1,8 @@
 // import React, { useState } from "react"
 import React, { useState, useEffect } from "react"
 import "./ProfilePage.css"
-import Select from "react-select"
+import Select, { createFilter } from "react-select"
+import { VariableSizeList as List } from "react-window"
 import { schools, years, interests, majors, minors, goals } from "../components/SchoolYearData"
 import { useForm, Controller } from "react-hook-form"
 import auth from "../services/auth"
@@ -9,12 +10,12 @@ import Loading from "../components/Loading"
 // import courses from "../services/courses"
 import { Redirect } from "react-router-dom"
 import axios from "axios"
-import SingleDropdown from '../components/SingleDropDown';
+import SingleDropdown from "../components/SingleDropDown"
 
 export default function ProfileEditPage() {
     const [profileEdited, setProfileEdited] = useState(false)
 
-    const { register, control, handleSubmit} = useForm()
+    const { register, control, handleSubmit } = useForm()
 
     const [allcourses, setCourses] = useState(null)
 
@@ -82,35 +83,35 @@ export default function ProfileEditPage() {
                     </div>
                 </div>
                 <div className="two fields">
-                    <SingleDropdown 
+                    <SingleDropdown
                         name={"school"}
-                        label={"School"} 
-                        options={schools} 
-                        control={control} 
-                        currentValue ={profile.school}
+                        label={"School"}
+                        options={schools}
+                        control={control}
+                        currentValue={profile.school}
                     />
-                    <SingleDropdown 
+                    <SingleDropdown
                         name={"year"}
-                        label={"Year"} 
-                        options={years} 
-                        control={control} 
-                        currentValue = {profile.graduate_date}
+                        label={"Year"}
+                        options={years}
+                        control={control}
+                        currentValue={profile.graduate_date}
                     />
                 </div>
                 <div className="two fields">
-                    <SingleDropdown 
+                    <SingleDropdown
                         name={"major"}
-                        label={"Major"} 
-                        options={majors} 
-                        control={control} 
-                        currentValue = {profile.major}
-                        />
-                    <SingleDropdown 
+                        label={"Major"}
+                        options={majors}
+                        control={control}
+                        currentValue={profile.major}
+                    />
+                    <SingleDropdown
                         name={"minor"}
-                        label={"Minor"} 
-                        options={minors} 
-                        control={control} 
-                        />
+                        label={"Minor"}
+                        options={minors}
+                        control={control}
+                    />
                 </div>
                 <div className="field">
                     <label>Classes</label>
@@ -121,6 +122,9 @@ export default function ProfileEditPage() {
                         className="basic-multi-select"
                         classNamePrefix="select"
                         options={allcourses}
+                        components={{ MenuList }}
+                        filterOption={createFilter({ ignoreAccents: false })}
+                        noOptionsMessage={() => "No class found"}
                         control={control}
                         defaultValue={profile.coursesTaken.map(course => ({
                             label: course.label,
@@ -138,10 +142,10 @@ export default function ProfileEditPage() {
                         classNamePrefix="select"
                         options={goals}
                         control={control}
-                        defaultValue = {[goals[0], goals[1]]}
+                        defaultValue={[goals[0], goals[1]]}
                     />
                 </div>
-                
+
                 <div className="field">
                     <label>Interest</label>
                     <Controller
@@ -152,8 +156,7 @@ export default function ProfileEditPage() {
                         classNamePrefix="select"
                         options={interests}
                         control={control}
-                        defaultValue = {[interests[0], interests[1]]}
-
+                        defaultValue={[interests[0], interests[1]]}
                     />
                 </div>
                 <div className="field">
@@ -166,19 +169,60 @@ export default function ProfileEditPage() {
                     ></textarea>
                 </div>
                 <div className="field">
-                        <label>Linkedin</label>
-                        <input
-                            type="text"
-                            name="linkedin"
-                            defaultValue={"https://www.linkedin.com/in/sett-hein/"}
-                            ref={register}
-                        />
-                    </div>
+                    <label>Linkedin</label>
+                    <input
+                        type="text"
+                        name="linkedin"
+                        defaultValue={"https://www.linkedin.com/in/sett-hein/"}
+                        ref={register}
+                    />
+                </div>
 
                 <button type="submit" className="positive ui button">
                     Edit Profile
                 </button>
             </form>
         </div>
+    )
+}
+
+function MenuList(props) {
+    const GROUP_HEADER_HEIGHT = 13
+    const ITEM_HEIGHT = 34
+
+    const { options, getValue } = props
+    const [value] = getValue()
+
+    const initialOffset = options.indexOf(value) * ITEM_HEIGHT
+
+    const children = React.Children.toArray(props.children)
+
+    function getOptionSize(option) {
+        if (option.options) {
+            return option.options.length * ITEM_HEIGHT + GROUP_HEADER_HEIGHT
+        }
+        return ITEM_HEIGHT
+    }
+
+    function getItemSize(i) {
+        return getOptionSize(options[i])
+    }
+
+    const totalHeight = options.reduce((height, option) => {
+        return height + getOptionSize(option)
+    }, 0)
+
+    const estimatedItemSize = totalHeight / options.length
+
+    return (
+        <List
+            height={Math.min(totalHeight, ITEM_HEIGHT * 5)}
+            itemCount={children.length}
+            itemSize={getItemSize}
+            estimatedItemSize={estimatedItemSize}
+            initialScrollOffset={initialOffset}
+        >
+            {({ index, style }) => <div style={style}>{children[index]}</div>}
+        </List>
     )
 }
