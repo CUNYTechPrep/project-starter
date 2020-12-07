@@ -25,7 +25,7 @@ const Navigation = withRouter(({ history }) => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="static" style={{ background: "#0c343dff" }}>
                 <Toolbar>
                     <PeopleIcon />
                     <Typography variant="h6" className={classes.title}>
