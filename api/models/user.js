@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
                 },
             },
             school: { type: DataTypes.STRING },
+            pic: { type: DataTypes.STRING },
 
             graduate_date: { type: DataTypes.INTEGER },
             major: { type: DataTypes.STRING },

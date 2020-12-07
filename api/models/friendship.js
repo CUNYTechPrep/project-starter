@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         {
             firstUserId: { type: DataTypes.INTEGER, primaryKey: true },
             secondUserId: { type: DataTypes.INTEGER, primaryKey: true },
+            //
             pendingState: { type: DataTypes.INTEGER },
         },
         {

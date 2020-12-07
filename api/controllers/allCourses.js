@@ -21,6 +21,4 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
     }
 })
 
-// TODO
-
 module.exports = router

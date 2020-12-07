@@ -17,9 +17,11 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
                     student.id !== user.id && students.findIndex(s => s.id === student.id) === index
             )
             .map(async classmate => ({
+                id: classmate.id,
                 name: classmate.firstName + " " + classmate.lastName,
                 college: classmate.school,
                 major: classmate.major,
+                pic: classmate.pic,
                 courses: (await classmate.getCoursesTaken()).map(course => course.label),
             }))
     )

@@ -1,12 +1,11 @@
 const router = require("express").Router()
-const { Model } = require("sequelize")
 const { User, Course } = require("../models")
 const passport = require("../middlewares/authentication")
 
-router.get("/", passport.isAuthenticated(), async (req, res) => {
+router.get("/:id?", passport.isAuthenticated(), async (req, res) => {
     try {
         const user = await User.findOne({
-            where: { id: req.user.id },
+            where: { id: req.params.id || req.user.id },
             attributes: {
                 exclude: ["passwordHash"],
             },
@@ -17,11 +16,6 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
                 through: { attributes: [] },
             },
         })
-
-        //console.log("print all courses", Course.findAll())
-
-        // const courses = await Course.findAll();
-        // console.log("all courses", courses);
 
         const coursesTaken = user.coursesTaken.map(course => ({
             classCode: course.value,
@@ -35,7 +29,6 @@ router.get("/", passport.isAuthenticated(), async (req, res) => {
     }
 })
 
-// TODO
 router.post("/", passport.isAuthenticated(), async (req, res) => {
     try {
         const { firstName, lastName, school, major, year, classes, bio } = req.body
@@ -53,7 +46,6 @@ router.post("/", passport.isAuthenticated(), async (req, res) => {
         const courses = await Promise.all(
             classes.map(classCode => Course.findOne({ where: { value: classCode } }))
         )
-        // user.major
 
         await user.setCoursesTaken([])
         await user.addCoursesTaken(courses)
