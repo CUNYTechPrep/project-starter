@@ -43,7 +43,7 @@ export default function PublicProfilePage() {
         },
     ])
 
-    const addFriendRef = useRef()
+    const connectRef = useRef()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -62,13 +62,16 @@ export default function PublicProfilePage() {
     useEffect(() => {
         switch (pendingState) {
             case 1:
-                addFriendRef.current.classList.toggle("disabled")
-                addFriendRef.current.textContent = "Requested"
+                connectRef.current.classList.toggle("disabled")
+                connectRef.current.textContent = "Requested"
                 break
 
+            case 2:
+                connectRef.current.textContent = "Connect Back"
+                break
             case 3:
-                addFriendRef.current.classList.toggle("disabled")
-                addFriendRef.current.textContent = "Added"
+                connectRef.current.classList.toggle("disabled")
+                connectRef.current.textContent = "Connected"
                 break
 
             default:
@@ -77,7 +80,7 @@ export default function PublicProfilePage() {
 
     if (!profile) return <Loading />
 
-    const addFriend = async e => {
+    const connect = async e => {
         const buttonClasses = e.target.classList
         buttonClasses.toggle("loading")
 
@@ -110,8 +113,8 @@ export default function PublicProfilePage() {
                         <div style={{ color: "grey" }}> {`Class of ${profile.graduate_date}`} </div>
                     </div>
                     <div className="three wide column">
-                        <button ref={addFriendRef} className="ui green button" onClick={addFriend}>
-                            Add Friend
+                        <button ref={connectRef} className="ui green button" onClick={connect}>
+                            Connect
                         </button>
                     </div>
                 </div>

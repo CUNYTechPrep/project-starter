@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Box, Typography, Tabs, Tab, Grid } from "@material-ui/core"
+import { Box, Typography, Tabs, Tab, Grid, Button } from "@material-ui/core"
 
 import { makeStyles } from "@material-ui/core/styles"
 import List from "@material-ui/core/List"
@@ -33,11 +33,9 @@ function TabPanel(props) {
 }
 
 function ChatSidebar(props) {
-    const { pendingFriends, mutualFriends, setCurrentChat } = props
+    const { pendingFriends, mutualFriends, setCurrentChat, tabState, setCurrentInfo } = props
 
-    const [value, setValue] = useState(0)
-
-    useEffect(() => {}, [])
+    const [value, setValue] = tabState
 
     const handleChange = (event, newValue) => {
         setValue(newValue)
@@ -46,9 +44,15 @@ function ChatSidebar(props) {
     return (
         <Grid container item direction="column" xs={2}>
             <Grid item style={{ width: "inherit" }}>
-                <Tabs value={value} onChange={handleChange} indicatorColor="primary">
-                    <Tab label="Chats" />
-                    <Tab label="Contacts" />
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    variant="scrollable"
+                    scrollButtons="on"
+                    indicatorColor="primary"
+                >
+                    <Tab style={{ minWidth: "5rem" }} label="Contacts" />
+                    <Tab style={{ minWidth: "5rem" }} label="Requests" />
                 </Tabs>
             </Grid>
 
@@ -73,8 +77,43 @@ function ChatSidebar(props) {
                         })}
                     </List>
                 </TabPanel>
+
+                {/* -------------------------------------------------------------------------------------------- */}
                 <TabPanel value={value} index={1}>
-                    Item Two
+                    <List dense>
+                        {pendingFriends.map((friend, index) => {
+                            return (
+                                <ListItem
+                                    key={index}
+                                    button
+                                    onClick={() =>
+                                        setCurrentInfo({
+                                            id: friend.id,
+                                            name: `${friend.firstName} ${friend.lastName}`,
+                                            college: friend.school,
+                                            major: friend.major,
+                                            pic: friend.pic,
+                                        })
+                                    }
+                                >
+                                    <ListItemAvatar>
+                                        <Avatar
+                                            alt="H"
+                                            src={`https://randomuser.me/api/portraits/med/men/${index}.jpg`}
+                                        />
+                                    </ListItemAvatar>
+                                    <ListItemText
+                                        primary={`${friend.firstName} ${friend.lastName}`}
+                                    />
+                                    <ListItemSecondaryAction>
+                                        <Button variant="outlined" onClick={() => {}}>
+                                            Confirm
+                                        </Button>
+                                    </ListItemSecondaryAction>
+                                </ListItem>
+                            )
+                        })}
+                    </List>
                 </TabPanel>
             </Grid>
         </Grid>

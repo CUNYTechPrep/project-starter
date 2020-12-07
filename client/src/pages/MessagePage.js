@@ -14,7 +14,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function MessagePage() {
     const classes = useStyles()
+    const [tab, setTab] = useState(0)
     const [currentChat, setCurrentChat] = useState()
+    const [currentInfo, setCurrentInfo] = useState()
     const [friends, setFriends] = useState()
 
     useEffect(() => {
@@ -33,8 +35,18 @@ export default function MessagePage() {
     return (
         <div className={classes.root}>
             <Grid container justify="center">
-                <ChatSidebar setCurrentChat={setCurrentChat} {...friends} />
-                <ChatBox currentChat={currentChat} mutualFriends={friends.mutualFriends} />
+                <ChatSidebar
+                    setCurrentChat={setCurrentChat}
+                    {...friends}
+                    tabState={[tab, setTab]}
+                    setCurrentInfo={setCurrentInfo}
+                />
+                <ChatBox
+                    tab={tab}
+                    currentChat={currentChat}
+                    currentInfo={currentInfo}
+                    mutualFriends={friends.mutualFriends}
+                />
             </Grid>
         </div>
     )

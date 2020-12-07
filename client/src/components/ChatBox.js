@@ -13,11 +13,9 @@ import {
     ListItemText,
 } from "@material-ui/core"
 import auth from "../services/auth"
-import Loading from "../components/Loading"
-
-const id = () => {
-    return Math.random().toString(36).substr(2, 9)
-}
+import { v4 as uuid } from "uuid"
+import MatchBox from "./MatchBox"
+import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -27,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function Chatbox(props) {
-    const { currentChat, mutualFriends } = props
+    const { currentChat, mutualFriends, tab, currentInfo } = props
 
     const classes = useStyles()
     const [message, setMessage] = useState("")
@@ -37,7 +35,7 @@ function Chatbox(props) {
 
     const sendMessage = () => {
         if (message.trim() !== "") {
-            setMessages([...messages, { message, isMyMessage: true }])
+            setMessages(messages => [...messages, { key: uuid(), message, isMyMessage: true }])
             auth.socket.emit("send-message", { id: currentChat.id, message })
             setMessage("")
         }
@@ -49,12 +47,20 @@ function Chatbox(props) {
 
     useEffect(() => {
         auth.socket.on("receive-message", message => {
-            setMessages([...messages, { message, isMyMessage: false }])
+            setMessages(messages => [...messages, { key: uuid(), message, isMyMessage: false }])
         })
     }, [])
 
     // fetch chat history
     // if () return <Loading />
+
+    if (tab === 1) {
+        return (
+            <Grid container item xs={4} direction="column" justify="flex-end">
+                {currentInfo && <MatchBox {...currentInfo} />}
+            </Grid>
+        )
+    }
 
     if (!currentChat) return <h1>Go make some friends!</h1>
 
@@ -69,9 +75,9 @@ function Chatbox(props) {
             <Grid item style={{}}>
                 <Box component="ul" style={{ height: "45vh", overflowY: "auto" }}>
                     <List className={classes.root}>
-                        {messages.map((msg, index) => (
+                        {messages.map(msg => (
                             <ListItem
-                                key={index}
+                                key={msg.key}
                                 alignItems="flex-start"
                                 style={{
                                     flexDirection: msg.isMyMessage ? "row-reverse" : "row",
