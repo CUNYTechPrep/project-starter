@@ -12,13 +12,8 @@ export default function MatchBox(props) {
                 <div className="meta">{college}</div>
                 <div className="meta">{major}</div>
 
-<<<<<<< HEAD
-                {courses?.map(course => (
-                    <div key="course" className="ui small label">
-=======
                 {courses?.map((course, index) => (
                     <div key={index} className="ui small label">
->>>>>>> d7c799bd012ef24224cc4c32d838e299405f2e45
                         {course}
                     </div>
                 ))}

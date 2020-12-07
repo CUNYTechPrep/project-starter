@@ -14,7 +14,7 @@ function LandingPage(props) {
                         hold insight
                     </p>
                     <Link to="/signup">
-                        <button className="ui blue basic button">Sign Up</button>
+                        <button className="ui green basic button">Sign Up</button>
                     </Link>
                 </div>
             </div>
