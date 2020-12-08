@@ -5,6 +5,7 @@ import ChatBox from "../components/ChatBox"
 import { Grid } from "@material-ui/core"
 import Loading from "../components/Loading"
 import axios from "axios"
+import auth from "../services/auth"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -21,14 +22,21 @@ export default function MessagePage() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get("/api/friend")
-            const friends = response.data
+            const [friendResponse] = await Promise.all([axios.get("/api/friend")])
+            const friends = friendResponse.data
             setFriends(friends)
-            setCurrentChat(friends.mutualFriends[0])
         }
 
         fetchData()
     }, [])
+
+    const handleCurrentChat = friend => {
+        if (currentChat?.id === friend.id) return
+        setCurrentChat({
+            ...friend,
+            messages: auth.chat[friend.id],
+        })
+    }
 
     if (!friends) return <Loading />
 
@@ -36,17 +44,12 @@ export default function MessagePage() {
         <div className={classes.root}>
             <Grid container justify="center">
                 <ChatSidebar
-                    setCurrentChat={setCurrentChat}
+                    handleCurrentChat={handleCurrentChat}
                     {...friends}
                     tabState={[tab, setTab]}
                     setCurrentInfo={setCurrentInfo}
                 />
-                <ChatBox
-                    tab={tab}
-                    currentChat={currentChat}
-                    currentInfo={currentInfo}
-                    mutualFriends={friends.mutualFriends}
-                />
+                <ChatBox tab={tab} currentChat={currentChat} currentInfo={currentInfo} />
             </Grid>
         </div>
     )

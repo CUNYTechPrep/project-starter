@@ -8,6 +8,7 @@ const profileController = require("./profile")
 const matchController = require("./match")
 const allCourses = require("./allCourses")
 const friendController = require("./friend")
+const messageController = require("./message")
 // Mount each controller under a specific route. These
 // will be prefixes to all routes defined inside the controller
 router.use("/auth", authController)
@@ -16,5 +17,6 @@ router.use("/profile", profileController)
 router.use("/match", matchController)
 router.use("/all-courses", allCourses)
 router.use("/friend", friendController)
+router.use("/message", messageController)
 
 module.exports = router
