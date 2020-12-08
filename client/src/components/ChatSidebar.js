@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from "react"
-import { Box, Typography, Tabs, Tab, Grid, Button } from "@material-ui/core"
+import React, { useState } from "react"
+import { Box, Typography, Tabs, Tab, Grid, Badge } from "@material-ui/core"
 
-import { makeStyles } from "@material-ui/core/styles"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction"
 import ListItemText from "@material-ui/core/ListItemText"
 import ListItemAvatar from "@material-ui/core/ListItemAvatar"
-import IconButton from "@material-ui/core/IconButton"
 import Avatar from "@material-ui/core/Avatar"
-
-// const useStyles = makeStyles(theme => ({
-//     root: {
-//         width: "100%",
-//         maxWidth: 360,
-//         backgroundColor: theme.palette.background.paper,
-//     },
-// }))
+import { Redirect } from "react-router-dom"
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props
@@ -24,7 +15,7 @@ function TabPanel(props) {
     return (
         <div role="tabpanel" hidden={value !== index} {...other}>
             {value === index && (
-                <Box p={1} overflow={"auto"} height="50vh">
+                <Box p={1} overflow={"auto"} height="70vh">
                     <Typography component={"span"}>{children}</Typography>
                 </Box>
             )}
@@ -33,16 +24,26 @@ function TabPanel(props) {
 }
 
 function ChatSidebar(props) {
-    const { pendingFriends, mutualFriends, handleCurrentChat, tabState, setCurrentInfo } = props
+    const { pendingFriends, mutualFriends, handleCurrentChat } = props
 
-    const [value, setValue] = tabState
+    const [value, setValue] = useState(0)
+    const [redirect, setRedirect] = useState()
+
+    if (redirect) return <Redirect to={`/profile/${redirect}`} />
 
     const handleChange = (event, newValue) => {
         setValue(newValue)
     }
 
     return (
-        <Grid container item direction="column" xs={2}>
+        <Grid
+            container
+            item
+            direction="column"
+            xs={4}
+            md={3}
+            style={{ borderRight: "1px solid rgba(0.1, 0.1, 0, 0.1)" }}
+        >
             <Grid item style={{ width: "inherit" }}>
                 <Tabs
                     value={value}
@@ -67,10 +68,7 @@ function ChatSidebar(props) {
                                     onClick={() => handleCurrentChat(friend)}
                                 >
                                     <ListItemAvatar>
-                                        <Avatar
-                                            alt="H"
-                                            src={`https://randomuser.me/api/portraits/med/men/${index}.jpg`}
-                                        />
+                                        <Avatar alt="H" src={friend.pic} />
                                     </ListItemAvatar>
                                     <ListItemText
                                         primary={`${friend.firstName} ${friend.lastName}`}
@@ -87,33 +85,16 @@ function ChatSidebar(props) {
                     <List dense>
                         {pendingFriends.map((friend, index) => {
                             return (
-                                <ListItem
-                                    key={index}
-                                    button
-                                    onClick={() =>
-                                        setCurrentInfo({
-                                            id: friend.id,
-                                            name: `${friend.firstName} ${friend.lastName}`,
-                                            college: friend.school,
-                                            major: friend.major,
-                                            pic: friend.pic,
-                                        })
-                                    }
-                                >
+                                <ListItem key={index} button onClick={() => setRedirect(friend.id)}>
                                     <ListItemAvatar>
-                                        <Avatar
-                                            alt="H"
-                                            src={`https://randomuser.me/api/portraits/med/men/${index}.jpg`}
-                                        />
+                                        <Badge color="secondary" variant="dot">
+                                            <Avatar alt="H" src={friend.pic} />
+                                        </Badge>
                                     </ListItemAvatar>
                                     <ListItemText
                                         primary={`${friend.firstName} ${friend.lastName}`}
                                     />
-                                    <ListItemSecondaryAction>
-                                        <Button variant="outlined" onClick={() => {}}>
-                                            Confirm
-                                        </Button>
-                                    </ListItemSecondaryAction>
+                                    <ListItemSecondaryAction></ListItemSecondaryAction>
                                 </ListItem>
                             )
                         })}

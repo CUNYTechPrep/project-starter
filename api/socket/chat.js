@@ -17,8 +17,11 @@ module.exports = (socket, io) => {
         )
 
         Message.create({ senderId: id, receiverId: data.id, content: data.message })
-        io.to(users[data.id]).emit("receive-message", data)
-        io.to(users[data.id]).emit("current-message", data.message)
+
+        const newData = { ...data, id }
+
+        io.to(users[data.id]).emit("receive-message", newData)
+        io.to(users[data.id]).emit("current-message", newData)
     })
 
     // socket.on('message-read', data => {})

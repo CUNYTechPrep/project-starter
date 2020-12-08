@@ -13,19 +13,27 @@ import {
     ListItemText,
 } from "@material-ui/core"
 import auth from "../services/auth"
-import { v4 as uuid } from "uuid"
-import MatchBox from "./MatchBox"
-import Loading from "./Loading"
 
 const useStyles = makeStyles(theme => ({
     root: {
         width: "100%",
-        // backgroundColor: theme.palette.background.paper,
+    },
+    online: {
+        "&::before": {
+            content: '""',
+            display: "inline-block",
+            verticalAlign: "baseline",
+            backgroundColor: "#009900",
+            width: "0.5rem",
+            height: "0.5rem",
+            marginRight: "0.2rem",
+            borderRadius: "50%",
+        },
     },
 }))
 
 function Chatbox(props) {
-    const { currentChat, tab, currentInfo } = props
+    const { currentChat } = props
 
     const classes = useStyles()
     const [message, setMessage] = useState("")
@@ -69,99 +77,116 @@ function Chatbox(props) {
             setLoading(true)
             chatbox.current.style.visibility = "hidden"
 
-            auth.socket.on("current-message", message => {
-                setMessages(messages => [...messages, { message, isMyMessage: false }])
+            auth.socket.on("current-message", ({ id, message }) => {
+                if (id == currentChat.id) {
+                    setMessages(messages => [...messages, { message, isMyMessage: false }])
+                }
             })
+
+            return () => {
+                if (auth.socket) auth.socket.off("current-message")
+            }
         }
     }, [currentChat])
 
-    if (!currentChat || tab === 1) {
-        return (
-            <Grid container item xs={4} direction="column" justify="flex-end">
-                {currentInfo && <MatchBox {...currentInfo} />}
-            </Grid>
-        )
-    }
+    // FIXME re-render problem?
 
     return (
-        <Grid container item xs={4} direction="column" justify="flex-end">
-            <Grid item>
-                <Box ml={3}>
-                    <Typography>{`${currentChat.firstName} ${currentChat.lastName}`}</Typography>
-                </Box>
-            </Grid>
+        <Grid container item xs={8} md={9} direction="column" justify="flex-start">
+            {currentChat && (
+                <>
+                    <Grid
+                        item
+                        style={{ height: "48px", borderBottom: "1px solid rgba(0.1, 0.1, 0, 0.1)" }}
+                    >
+                        <Box ml={3} mt={2}>
+                            <Typography component="span" className={classes.online}>
+                                {`${currentChat.firstName} ${currentChat.lastName}`}
+                            </Typography>
+                        </Box>
+                    </Grid>
 
-            <Grid item>
-                <Box
-                    component="ul"
-                    ref={chatbox}
-                    style={{ height: "45vh", overflowY: "auto", visibility: "hidden" }}
-                >
-                    <List className={classes.root}>
-                        {messages?.map((msg, index) => (
-                            <ListItem
-                                key={index}
-                                alignItems="flex-start"
-                                style={{
-                                    flexDirection: msg.isMyMessage ? "row-reverse" : "row",
-                                    transform: `translateX(${msg.isMyMessage ? "0" : "-2rem"})`,
-                                }}
-                            >
-                                <ListItemAvatar
-                                    style={{
-                                        marginLeft: msg.isMyMessage ? "5px" : "0px",
-                                        transform: "translateY(-1rem)",
-                                    }}
-                                >
-                                    <Avatar
-                                        alt="Remy Sharp"
-                                        src="https://randomuser.me/api/portraits/med/men/3.jpg"
-                                    />
-                                </ListItemAvatar>
-
-                                <ListItemText
-                                    style={{
-                                        maxWidth: "50%",
-                                        marginRight: "10px",
-                                        display: "flex",
-                                        justifyContent: msg.isMyMessage ? "flex-end" : "flex-start",
-                                    }}
-                                    secondary={
-                                        <Typography
+                    <Grid item>
+                        <Box
+                            component="ul"
+                            ref={chatbox}
+                            style={{ height: "65vh", overflowY: "auto", visibility: "hidden" }}
+                        >
+                            <List className={classes.root}>
+                                {messages?.map((msg, index) => (
+                                    <ListItem
+                                        key={index}
+                                        alignItems="flex-start"
+                                        style={{
+                                            flexDirection: msg.isMyMessage ? "row-reverse" : "row",
+                                            transform: `translateX(${
+                                                msg.isMyMessage ? "0" : "-2rem"
+                                            })`,
+                                        }}
+                                    >
+                                        <ListItemAvatar
                                             style={{
-                                                overflowWrap: "anywhere",
+                                                marginLeft: msg.isMyMessage ? "5px" : "0px",
+                                                transform: "translateY(-1rem)",
                                             }}
-                                            component="span"
-                                            variant="body1"
-                                            color="textPrimary"
                                         >
-                                            {msg.message}
-                                        </Typography>
-                                    }
-                                />
-                            </ListItem>
-                        ))}
-                        <div ref={lastMessage}></div>
-                    </List>
-                </Box>
-            </Grid>
+                                            <Avatar
+                                                alt="Remy Sharp"
+                                                src={
+                                                    msg.isMyMessage
+                                                        ? auth.profile.pic
+                                                        : currentChat.pic
+                                                }
+                                            />
+                                        </ListItemAvatar>
 
-            <Grid container item alignItems="center">
-                <Grid item xs={11}>
-                    <TextField
-                        size="small"
-                        fullWidth
-                        value={message}
-                        onChange={e => setMessage(e.target.value)}
-                        onKeyDown={e => e.key === "Enter" && sendMessage()}
-                        variant="outlined"
-                    />
-                </Grid>
+                                        <ListItemText
+                                            style={{
+                                                maxWidth: "50%",
+                                                marginRight: "10px",
+                                                display: "flex",
+                                                justifyContent: msg.isMyMessage
+                                                    ? "flex-end"
+                                                    : "flex-start",
+                                            }}
+                                            secondary={
+                                                <Typography
+                                                    style={{
+                                                        overflowWrap: "anywhere",
+                                                    }}
+                                                    component="span"
+                                                    variant="body1"
+                                                    color="textPrimary"
+                                                >
+                                                    {msg.message}
+                                                </Typography>
+                                            }
+                                        />
+                                    </ListItem>
+                                ))}
+                                <div ref={lastMessage}></div>
+                            </List>
+                        </Box>
+                    </Grid>
 
-                <Grid item xs={1}>
-                    <Button onClick={sendMessage}>Send</Button>
-                </Grid>
-            </Grid>
+                    <Grid container item alignItems="center">
+                        <Grid item xs={11}>
+                            <TextField
+                                size="small"
+                                fullWidth
+                                value={message}
+                                onChange={e => setMessage(e.target.value)}
+                                onKeyDown={e => e.key === "Enter" && sendMessage()}
+                                variant="outlined"
+                            />
+                        </Grid>
+
+                        <Grid item xs={1}>
+                            <Button onClick={sendMessage}>Send</Button>
+                        </Grid>
+                    </Grid>
+                </>
+            )}
         </Grid>
     )
 }

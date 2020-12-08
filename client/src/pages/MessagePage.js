@@ -11,24 +11,22 @@ const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
     },
+    grid: {
+        width: "80%",
+        marginTop: "30px",
+        backgroundColor: "white",
+        borderRadius: "5px",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "rgba(0.1, 0.1, 0, 0.1)",
+        margin: "auto",
+    },
 }))
 
 export default function MessagePage() {
     const classes = useStyles()
-    const [tab, setTab] = useState(0)
     const [currentChat, setCurrentChat] = useState()
-    const [currentInfo, setCurrentInfo] = useState()
     const [friends, setFriends] = useState()
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const [friendResponse] = await Promise.all([axios.get("/api/friend")])
-            const friends = friendResponse.data
-            setFriends(friends)
-        }
-
-        fetchData()
-    }, [])
 
     const handleCurrentChat = friend => {
         if (currentChat?.id === friend.id) return
@@ -38,18 +36,27 @@ export default function MessagePage() {
         })
     }
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const [friendResponse] = await Promise.all([axios.get("/api/friend")])
+            const friends = friendResponse.data
+            setFriends(friends)
+
+            if (friends.mutualFriends.length > 0) {
+                handleCurrentChat(friends.mutualFriends[0])
+            }
+        }
+
+        fetchData()
+    }, [])
+
     if (!friends) return <Loading />
 
     return (
         <div className={classes.root}>
-            <Grid container justify="center">
-                <ChatSidebar
-                    handleCurrentChat={handleCurrentChat}
-                    {...friends}
-                    tabState={[tab, setTab]}
-                    setCurrentInfo={setCurrentInfo}
-                />
-                <ChatBox tab={tab} currentChat={currentChat} currentInfo={currentInfo} />
+            <Grid container justify="center" className={classes.grid}>
+                <ChatSidebar handleCurrentChat={handleCurrentChat} {...friends} />
+                <ChatBox currentChat={currentChat} />
             </Grid>
         </div>
     )

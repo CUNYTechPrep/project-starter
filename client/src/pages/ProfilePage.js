@@ -21,11 +21,11 @@ class ProfilePage extends React.Component {
 
     async componentDidMount() {
         const profile = (await axios.get("/api/profile")).data
+        auth.profile = profile
         this.setState({ profile, loading: false })
     }
 
     handleClick = e => {
-        auth.profile = this.state.profile
         this.props.history.push("/profile-edit")
     }
 

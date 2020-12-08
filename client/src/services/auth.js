@@ -37,12 +37,15 @@ const auth = {
                 axios.get(`/api/message/${this.messageLimit}`).then(({ data }) => {
                     for (const [friendId, messages] of Object.entries(data)) {
                         this.chat[friendId] = messages
-                            .map(({ content, senderId }) => ({
+                            .map(({ id, content, senderId }) => ({
+                                id,
                                 message: content,
                                 isMyMessage: senderId === this.id,
                             }))
-                            .reverse()
+                            .sort((a, b) => a.id - b.id)
                     }
+
+                    console.log(this.chat)
 
                     this.socket.on("receive-message", data => {
                         const message = { message: data.message, isMyMessage: false }

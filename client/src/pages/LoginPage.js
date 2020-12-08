@@ -8,8 +8,8 @@ class LoginPage extends React.Component {
     state = {
         redirectToReferrer: false,
         failed: false,
-        email: "",
-        password: "",
+        email: "test@test.com",
+        password: "12345678",
     }
 
     fieldChanged = name => {
