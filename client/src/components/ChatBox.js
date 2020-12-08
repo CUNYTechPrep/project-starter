@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import {
     Grid,
@@ -25,44 +25,63 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function Chatbox(props) {
-    const { currentChat, mutualFriends, tab, currentInfo } = props
+    const { currentChat, tab, currentInfo } = props
 
     const classes = useStyles()
     const [message, setMessage] = useState("")
     const [messages, setMessages] = useState([])
+    const [loading, setLoading] = useState(true)
 
+    const chatbox = useRef()
     const lastMessage = useRef()
 
     const sendMessage = () => {
         if (message.trim() !== "") {
-            setMessages(messages => [...messages, { key: uuid(), message, isMyMessage: true }])
-            auth.socket.emit("send-message", { id: currentChat.id, message })
             setMessage("")
+            setMessages(messages => {
+                return [...messages, { message, isMyMessage: true }]
+            })
+            auth.socket.emit("send-message", { id: currentChat.id, message })
+            setTimeout(() => {
+                auth.chat[currentChat.id].push({ message, isMyMessage: true })
+            }, 66)
         }
     }
 
     useEffect(() => {
-        if (lastMessage.current) lastMessage.current.scrollIntoView()
+        if (lastMessage.current) {
+            if (loading) {
+                lastMessage.current.scrollIntoView()
+                setTimeout(() => {
+                    chatbox.current.style.visibility = "visible"
+                }, 0)
+
+                setLoading(false)
+            } else {
+                lastMessage.current.scrollIntoView({ behavior: "smooth" })
+            }
+        }
     }, [messages])
 
     useEffect(() => {
-        auth.socket.on("receive-message", message => {
-            setMessages(messages => [...messages, { key: uuid(), message, isMyMessage: false }])
-        })
-    }, [])
+        if (currentChat) {
+            setMessages(currentChat.messages)
+            setLoading(true)
+            chatbox.current.style.visibility = "hidden"
 
-    // fetch chat history
-    // if () return <Loading />
+            auth.socket.on("current-message", message => {
+                setMessages(messages => [...messages, { message, isMyMessage: false }])
+            })
+        }
+    }, [currentChat])
 
-    if (tab === 1) {
+    if (!currentChat || tab === 1) {
         return (
             <Grid container item xs={4} direction="column" justify="flex-end">
                 {currentInfo && <MatchBox {...currentInfo} />}
             </Grid>
         )
     }
-
-    if (!currentChat) return <h1>Go make some friends!</h1>
 
     return (
         <Grid container item xs={4} direction="column" justify="flex-end">
@@ -72,12 +91,16 @@ function Chatbox(props) {
                 </Box>
             </Grid>
 
-            <Grid item style={{}}>
-                <Box component="ul" style={{ height: "45vh", overflowY: "auto" }}>
+            <Grid item>
+                <Box
+                    component="ul"
+                    ref={chatbox}
+                    style={{ height: "45vh", overflowY: "auto", visibility: "hidden" }}
+                >
                     <List className={classes.root}>
-                        {messages.map(msg => (
+                        {messages?.map((msg, index) => (
                             <ListItem
-                                key={msg.key}
+                                key={index}
                                 alignItems="flex-start"
                                 style={{
                                     flexDirection: msg.isMyMessage ? "row-reverse" : "row",
@@ -118,8 +141,8 @@ function Chatbox(props) {
                                 />
                             </ListItem>
                         ))}
+                        <div ref={lastMessage}></div>
                     </List>
-                    <div ref={lastMessage}></div>
                 </Box>
             </Grid>
 

@@ -40,16 +40,32 @@ module.exports = (sequelize, DataTypes) => {
     )
 
     User.associate = models => {
+        const { Friendship, Message } = models
+
         User.belongsToMany(User, {
             as: "firstUserFriends",
             foreignKey: "firstUserId",
-            through: models.Friendship,
+            through: Friendship,
         })
 
         User.belongsToMany(User, {
             as: "secondUserFriends",
             foreignKey: "secondUserId",
-            through: models.Friendship,
+            through: Friendship,
+        })
+
+        User.hasMany(Message, {
+            as: "sentMessages",
+            foreignKey: "senderId",
+            // sourceKey: "id",
+            // targetKey: "senderId",
+        })
+
+        User.hasMany(Message, {
+            as: "receivedMessages",
+            foreignKey: "receiverId",
+            // sourceKey: "id",
+            // targetKey: "receiverId",
         })
     }
 

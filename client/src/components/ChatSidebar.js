@@ -33,7 +33,7 @@ function TabPanel(props) {
 }
 
 function ChatSidebar(props) {
-    const { pendingFriends, mutualFriends, setCurrentChat, tabState, setCurrentInfo } = props
+    const { pendingFriends, mutualFriends, handleCurrentChat, tabState, setCurrentInfo } = props
 
     const [value, setValue] = tabState
 
@@ -61,7 +61,11 @@ function ChatSidebar(props) {
                     <List dense>
                         {mutualFriends.map((friend, index) => {
                             return (
-                                <ListItem key={index} button onClick={() => setCurrentChat(friend)}>
+                                <ListItem
+                                    key={index}
+                                    button
+                                    onClick={() => handleCurrentChat(friend)}
+                                >
                                     <ListItemAvatar>
                                         <Avatar
                                             alt="H"

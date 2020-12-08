@@ -4,11 +4,14 @@
 // This version was modified to use real authentication implemented
 // in the backend api. It was also modified to return promises instead
 // of using callbacks `cb`.
+import axios from "axios"
+
 const auth = {
     isAuthenticated: false,
     user: "",
     id: null,
     socket: null,
+    messageLimit: 50,
     authenticate(email, password) {
         return fetch("/api/auth/login", {
             method: "POST",
@@ -28,7 +31,33 @@ const auth = {
                 this.isAuthenticated = true
                 this.user = email
                 this.id = body.id
-                this.socket = this.socket || window.io("/", { query: `id=${this.id}` })
+                this.socket = window.io("/", { query: `id=${this.id}` })
+                this.chat = {}
+
+                axios.get(`/api/message/${this.messageLimit}`).then(({ data }) => {
+                    for (const [friendId, messages] of Object.entries(data)) {
+                        this.chat[friendId] = messages
+                            .map(({ content, senderId }) => ({
+                                message: content,
+                                isMyMessage: senderId === this.id,
+                            }))
+                            .reverse()
+                    }
+
+                    this.socket.on("receive-message", data => {
+                        const message = { message: data.message, isMyMessage: false }
+
+                        if (this.chat[data.id]) {
+                            if (this.chat[data.id].length === this.messageLimit) {
+                                this.chat[data.id].shift()
+                            }
+                            this.chat[data.id].push(message)
+                        } else {
+                            this.chat[data.id] = [message]
+                        }
+                    })
+                })
+
                 return body
             })
     },
@@ -54,6 +83,7 @@ const auth = {
                     this.socket.close()
                     this.socket = null
                 }
+                this.chat = null
                 return body
             })
     },

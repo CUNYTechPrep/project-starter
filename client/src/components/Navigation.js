@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button"
 import PeopleIcon from "@material-ui/icons/People"
 import { withRouter } from "react-router-dom"
 import auth from "../services/auth"
+import logo from "../pages/Images/Logo.png";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -27,9 +28,9 @@ const Navigation = withRouter(({ history }) => {
         <div className={classes.root}>
             <AppBar position="static" style={{ background: "#0c343dff" }}>
                 <Toolbar>
-                    <PeopleIcon />
+                    <img src={logo} style={{width:"6%"}}/>
+
                     <Typography variant="h6" className={classes.title}>
-                        PeerFinder
                     </Typography>
 
                     {!auth.isAuthenticated ? (
