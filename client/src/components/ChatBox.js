@@ -38,9 +38,8 @@ function Chatbox(props) {
     const classes = useStyles()
     const [message, setMessage] = useState("")
     const [messages, setMessages] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [visibility, setVisibility] = useState("hidden")
 
-    const chatbox = useRef()
     const lastMessage = useRef()
 
     const sendMessage = () => {
@@ -57,39 +56,31 @@ function Chatbox(props) {
     }
 
     useEffect(() => {
-        if (lastMessage.current) {
-            if (loading) {
-                lastMessage.current.scrollIntoView()
-                setTimeout(() => {
-                    chatbox.current.style.visibility = "visible"
-                }, 0)
+        lastMessage.current.scrollIntoView()
+        const timer = setTimeout(() => {
+            setVisibility("visible")
+        }, 11)
 
-                setLoading(false)
-            } else {
-                lastMessage.current.scrollIntoView({ behavior: "smooth" })
-            }
+        return () => {
+            clearTimeout(timer)
         }
     }, [messages])
 
     useEffect(() => {
-        if (currentChat) {
-            setMessages(currentChat.messages)
-            setLoading(true)
-            chatbox.current.style.visibility = "hidden"
+        setMessages(currentChat.messages)
 
-            auth.socket.on("current-message", ({ id, message }) => {
-                if (id == currentChat.id) {
-                    setMessages(messages => [...messages, { message, isMyMessage: false }])
-                }
-            })
+        setVisibility("hidden")
 
-            return () => {
-                if (auth.socket) auth.socket.off("current-message")
+        auth.socket.on("current-message", ({ id, message }) => {
+            if (id == currentChat.id) {
+                setMessages(messages => [...messages, { message, isMyMessage: false }])
             }
+        })
+
+        return () => {
+            if (auth.socket) auth.socket.off("current-message")
         }
     }, [currentChat])
-
-    // FIXME re-render problem?
 
     return (
         <Grid container item xs={8} md={9} direction="column" justify="flex-start">
@@ -109,8 +100,7 @@ function Chatbox(props) {
                     <Grid item>
                         <Box
                             component="ul"
-                            ref={chatbox}
-                            style={{ height: "65vh", overflowY: "auto", visibility: "hidden" }}
+                            style={{ height: "65vh", overflowY: "scroll", visibility }}
                         >
                             <List className={classes.root}>
                                 {messages?.map((msg, index) => (

@@ -45,8 +45,6 @@ const auth = {
                             .sort((a, b) => a.id - b.id)
                     }
 
-                    console.log(this.chat)
-
                     this.socket.on("receive-message", data => {
                         const message = { message: data.message, isMyMessage: false }
 
@@ -83,6 +81,8 @@ const auth = {
                 this.email = ""
                 this.id = null
                 if (this.socket) {
+                    this.socket.off("receive-message")
+                    this.socket.off("current-message")
                     this.socket.close()
                     this.socket = null
                 }

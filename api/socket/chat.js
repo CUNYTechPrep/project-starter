@@ -20,8 +20,8 @@ module.exports = (socket, io) => {
 
         const newData = { ...data, id }
 
-        io.to(users[data.id]).emit("receive-message", newData)
         io.to(users[data.id]).emit("current-message", newData)
+        io.to(users[data.id]).emit("receive-message", newData)
     })
 
     // socket.on('message-read', data => {})

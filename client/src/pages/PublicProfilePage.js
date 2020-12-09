@@ -7,6 +7,7 @@ import Tag from "../components/Tag"
 import { SocialIcon } from "react-social-icons"
 import MatchBox from "../components/MatchBox"
 import Loading from "../components/Loading"
+import auth from "../services/auth"
 
 export default function PublicProfilePage() {
     const { id } = useParams()
@@ -87,6 +88,8 @@ export default function PublicProfilePage() {
         const response = await axios.post("/api/friend", { id })
 
         const { pendingState } = response.data
+
+        if (pendingState === 3) auth.chat[id] = []
 
         buttonClasses.toggle("loading")
         setPendingState(pendingState)

@@ -68,7 +68,7 @@ class ProfilePage extends React.Component {
                 <Tag classes={this.state.profile.coursesTaken.map(course => course.label)} />
                 <hr style={{ borderColor: "rgba(0.1, 0.1, 0, 0.1)" }} />
                 <Header3 headerName="What are your Goals?" />
-                <Tag classes={["Study Buddies", "Mentorship", "Hook-up"]} />
+                <Tag classes={["Study Buddies", "Mentorship"]} />
                 <hr style={{ borderColor: "rgba(0.1, 0.1, 0, 0.1)" }} />
                 <Header3 headerName="Interests" />
                 <Tag classes={["Hiking", "Reading", "Investing"]} />

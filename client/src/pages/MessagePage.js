@@ -50,7 +50,7 @@ export default function MessagePage() {
         fetchData()
     }, [])
 
-    if (!friends) return <Loading />
+    if (!friends || !currentChat) return <Loading />
 
     return (
         <div className={classes.root}>

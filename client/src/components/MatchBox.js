@@ -18,10 +18,10 @@ export default function MatchBox(props) {
                     </div>
                 ))}
             </div>
-            <div class="extra content">
+            <div className="extra content">
                 <Link to={`/profile/${id}`}>
-                    <div class="ui two buttons">
-                        <div class="ui basic green button">View Profile</div>
+                    <div className="ui two buttons">
+                        <div className="ui basic green button">View Profile</div>
                     </div>
                 </Link>
             </div>
