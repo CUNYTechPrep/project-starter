@@ -23,8 +23,7 @@
     "pg-hstore": "^2.3.3",
     "reactjs-popup": "^2.0.4",
     "sequelize": "^5.22.3",
-    "socketio": "^1.0.0",
-    "sqlite3": "^4.2.0"
+    "socketio": "^1.0.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
