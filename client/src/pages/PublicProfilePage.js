@@ -19,7 +19,7 @@ export default function PublicProfilePage() {
             college: "Queens College",
             major: "Computer Science",
             courses: ["Software Engineer at Google"],
-            pic: `https://randomuser.me/api/portraits/med/men/3.jpg`,
+            pic: `https://randomuser.me/api/portraits/med/men/10.jpg`,
         },
         {
             name: "Eli Wong",

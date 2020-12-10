@@ -12,7 +12,7 @@ export default function MatchPage() {
             college: "Queens College",
             major: "Computer Science",
             courses: ["Software Engineer at Google"],
-            pic: `https://randomuser.me/api/portraits/med/men/3.jpg`,
+            pic: `https://randomuser.me/api/portraits/med/men/11.jpg`,
         },
         {
             name: "Eli Wong",
@@ -40,7 +40,7 @@ export default function MatchPage() {
             college: "Queens College",
             major: "Computer Science",
             courses: ["Software Engineer at Google"],
-            pic: `https://randomuser.me/api/portraits/med/men/3.jpg`,
+            pic: `https://randomuser.me/api/portraits/med/men/21.jpg`,
         },
         {
             name: "Veronica Alaba",
