@@ -16,7 +16,11 @@
         "logging": false
     },
     "production": {
-        "use_env_variable": "DATABASE_URL",
-        "dialect": "postgres"
+        "username": "ctp_user",
+        "password": "ctp_pass",
+        "database": "app2020_development",
+        "host": "srv-captain--postgres-db",
+        "dialect": "postgres",
+        "logging": false
     }
 }
