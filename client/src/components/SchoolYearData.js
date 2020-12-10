@@ -61,9 +61,11 @@ const minors = [
 const goals =[
     { value: "Study Buddy", label: "Study Buddy" },
     { value: "Mentoring", label: "Mentoring" },
-    { value: "Collabrate", label: "Collabrate" },
+    { value: "Provide Tutoring", label: "Provide Tutoring" },
+    { value: "Need Tutors", label: "Need Tutors" },
     { value: "Gaming Buddy", label: "Gaming Buddy" },
-    { value: "Hookup", label: "Hookup" },
+    { value: "Work on a startup", label: "Work on a startup" },
+    { value: "Virtual Hookup", label: "Virtual Hookup" },
 ]
 
 export { schools, years, interests, majors, minors, goals }
