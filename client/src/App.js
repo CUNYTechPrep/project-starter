@@ -1,59 +1,62 @@
-import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route, 
-  Link,
-  NavLink
-} from 'react-router-dom';
-import PostsListPage from './pages/PostsListPage';
-import PostFormPage from './pages/PostFormPage';
-import ShowPostPage from './pages/ShowPostPage';
-import AboutUsPage from './pages/AboutUsPage';
+import React from "react"
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
+import LandingPage from "./pages/LandingPage"
+import LoginPage from "./pages/LoginPage"
+import SignUpPage from "./pages/SignUpPage"
 
-import './App.css';
-
-
-function Navigation(props) {
-  return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Micro Blog</Link>
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
-            Create a Micro Post
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/about-us">
-            About Us
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
-  );
-}
-
+import MessagePage from "./pages/MessagePage"
+import MatchPage from "./pages/MatchPage"
+import ProfilePage from "./pages/ProfilePage"
+import PublicProfilePage from "./pages/PublicProfilePage"
+import ProfileEditPage from "./pages/ProfileEditPage"
+import PrivateRoute from "./components/PrivateRoute"
+import { Navigation } from "./components/Navigation"
+import "./App.css"
+import auth from "./services/auth"
 
 class App extends React.Component {
-  render() {
-    return (
-        <Router>
-          <Navigation />
-          <div className="container-fluid text-center">
-            <div className="row justify-content-center">
-              <Switch>
-                <Route path="/posts/new" component={PostFormPage} />
-                <Route path="/posts/:id" component={ShowPostPage} />
-                <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/" component={PostsListPage} />
-              </Switch>
+    render() {
+        // DEBUG ONLY
+        // auth.isAuthenticated = true
+        return (
+            <div className="App">
+                <Router>
+                    <Navigation />
+                    <div className="container-fluid text-center">
+                        <div className="row justify-content-center">
+                            <Switch>
+                                <Route
+                                    exact
+                                    path="/"
+                                    render={() =>
+                                        auth.isAuthenticated ? <div>Hello</div> : <LandingPage />
+                                    }
+                                />
+                                <Route exact path="/login" component={LoginPage} />
+                                <Route exact path="/signup" component={SignUpPage} />
+                                {/* Force nomatch urls redirect to login page */}
+                                <PrivateRoute exact path="/profile" component={ProfilePage} />
+                                <PrivateRoute
+                                    exact
+                                    path="/profile/:id"
+                                    component={PublicProfilePage}
+                                />
+                                <PrivateRoute
+                                    exact
+                                    path="/profile-edit"
+                                    component={ProfileEditPage}
+                                />
+                                <PrivateRoute exact path="/match" component={MatchPage} />
+                                <PrivateRoute exact path="/message" component={MessagePage} />
+
+                                <Route render={() => <Redirect to="/" />} />
+                            </Switch>
+                        </div>
+                    </div>
+                </Router>
             </div>
-          </div>
-        </Router>
-    );
-  }
+        )
+    }
 }
 
-
-export default App;
+export default App

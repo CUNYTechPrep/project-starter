@@ -1,0 +1,20 @@
+.left-container {
+  margin-top: 120px;
+}
+
+.col1 {
+  margin: auto;
+  width: 70%;
+}
+
+.right-container {
+  margin-top: 50px;
+}
+
+.col2 {
+  text-align: center;
+}
+
+.title {
+  font-size: 50px;
+}
