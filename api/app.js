@@ -1,14 +1,13 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const path = require('path');
 const db = require('./models');
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 
 
 // this lets us parse 'application/json' content in http requests
-app.use(bodyParser.json())
+app.use(express.json());
 
 // add http request logging to help us debug and audit app use
 const logFormat = process.env.NODE_ENV==='production' ? 'combined' : 'dev';
@@ -32,4 +31,8 @@ if(process.env.NODE_ENV==='production') {
 db.sequelize.sync({ force: false });
 
 // start up the server
-app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+if(PORT) {
+  app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+} else {
+  console.log("===== ERROR ====\nCREATE A .env FILE!\n===== /ERROR ====")
+}
