@@ -11,25 +11,37 @@ import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 
+import LoginPage from './pages/LoginPage';
+import PlacesPage from './pages/PlacesPage';
+
 import './App.css';
+import SignUpPage from './pages/SignUpPage';
 
 
 function Navigation(props) {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Micro Blog</Link>
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
+    <nav className="navbar navbar-default navbar-dark" >
+      <Link className="navbar-brand" to="/">Fitbud</Link>
+        <div className="nav-item">
           <NavLink className="nav-link" exact to="/posts/new">
-            Create a Micro Post
+            Forum
           </NavLink>
-        </li>
-        <li className="nav-item">
+        </div>
+        <div className="nav-item">
+          <NavLink className="nav-link" exact to="/places">
+            Places
+          </NavLink>
+        </div>
+        <div className="nav-item">
+          <NavLink className="nav-link" exact to="/sign-in">
+            Sign In
+          </NavLink>
+        </div>
+        <div className="nav-item">
           <NavLink className="nav-link" exact to="/about-us">
             About Us
           </NavLink>
-        </li>
-      </ul>
+        </div>
     </nav>
   );
 }
@@ -45,7 +57,10 @@ class App extends React.Component {
               <Switch>
                 <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
+                <Route path="/places" component={PlacesPage} />
                 <Route path="/about-us" component={AboutUsPage} />
+                <Route path="/sign-in" component={LoginPage} />
+                <Route path="/sign-up" component={SignUpPage} />
                 <Route path="/" component={PostsListPage} />
               </Switch>
             </div>

@@ -21,3 +21,73 @@
   color: #09d3ac;
 }
 */
+
+.navbar-default {
+  background-color: hsl(162, 67%, 42%);
+  color: white;
+  display: flex;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-item.active .nav-link,
+.nav-item:hover .nav-link {
+  color:#6dffec;
+}
+
+.div-background {
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.div-heading {
+  padding: 10% 50px 10% 50px;
+}
+
+.h1 {
+  font-family:'Garamond', sans-serif;
+}
+
+.logo {
+  height: 150px;
+  width: 150px;
+}
+
+.button-login {
+  background-color:hsl(162, 67%, 42%);
+  border-color: lightseagreen;
+  border-radius: 10%;
+  color: white;
+  font-family:'Garamond', sans-serif;
+  margin-right: 20px;
+
+}
+
+.button-signup {
+  background-color: #f0850c;
+  border-radius: 10%;
+  color: white;
+  font-family:'Garamond', sans-serif;
+  margin-left: 20px;
+}
+.button-signup-only {
+  background-color: #f0850c;
+  border-radius: 10%;
+  color: white;
+  font-family:'Garamond', sans-serif;
+}
+
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
+}
+.yellow {
+  color: yellow;
+}
+.green {
+  color: green;
+}
