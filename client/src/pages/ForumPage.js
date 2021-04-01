@@ -1,9 +1,21 @@
 import React from 'react';
+import ThreadStarterTable from '../components/ThreadStarterTable';
+import ThreadTable from '../components/ThreadTable';
 
+//HIERARCHY//
+// -ForumPage
+/// -ThreadTable
+//// -ThreadRow
 function ForumPage(props) {
   return (
     <div>
-      <h1>Hello Forum</h1>
+      <button>New Thread</button>
+      <section>
+        <ThreadTable />
+      </section>
+      <section>
+        <ThreadStarterTable />
+      </section>
     </div>
   );
 }
