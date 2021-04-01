@@ -8,29 +8,36 @@ function ThreadRow(props) {
         <th>Posts</th>
       </tr>
       <tr>
-        <td>Advice</td>
+        <td>
+          Advice
+          <p className="thread-description">
+            Everybody could use a little help sometimes - give and receive tips
+            from your fellow Buds!
+          </p>
+        </td>
         <td>55</td>
       </tr>
-      <p>
-        Everybody could use a little help sometimes - give and receive tips from
-        your fellow Buds!
-      </p>
+
       <tr>
-        <td>Community</td>
+        <td>
+          Community
+          <p className="thread-description">
+            Theres no community without U in it - share news, events or personal
+            achievments!
+          </p>
+        </td>
         <td>20</td>
       </tr>
-      <p>
-        Theres no community without U in it - share news, events or personal
-        achievments!
-      </p>
       <tr>
-        <td>Fun</td>
+        <td>
+          Fun
+          <p className="thread-description">
+            Being fit doesn't have to be so serious - post memes, epic fails or
+            cute dogs!
+          </p>
+        </td>
         <td>98</td>
       </tr>
-      <p>
-        Being fit doesn't have to be so serious - post memes, epic fails or cute
-        dogs!
-      </p>
     </>
   );
 }

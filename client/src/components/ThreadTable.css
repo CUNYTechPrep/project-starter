@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.thread-table {
+  width: 1000px;
+  font-size: large;
+  border: 1px solid black;
+}
+.thread-table th {
+  background-color: hsl(162, 67%, 42%);
+  border: 1px solid black;
+  text-align: left;
+  color: white;
+  padding-left: 5px;
+}
+
+.thread-table td {
+  text-align: left;
+  border: 1px solid black;
+  padding-left: 5px;
+}
+
+.thread-description {
+  font-size: 0.7rem;
+}
