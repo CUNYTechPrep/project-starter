@@ -11,7 +11,10 @@ function ThreadStarterTableRow(props) {
       </tr>
       <tr>
         <td>Best ways to cut while bulking?</td>
-        <td>MsFriedChicken22</td>
+        <td>
+          MsFriedChicken22
+          <p>2-21-2021, 6:50pm</p>
+        </td>
         <td>7</td>
         <td>23</td>
       </tr>
