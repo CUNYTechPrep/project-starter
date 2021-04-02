@@ -10,10 +10,9 @@ import PostsListPage from './pages/PostsListPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
-
 import LoginPage from './pages/LoginPage';
 import PlacesPage from './pages/PlacesPage';
-
+import WelcomePage from './pages/WelcomePage';
 import './App.css';
 import SignUpPage from './pages/SignUpPage';
 
@@ -21,7 +20,7 @@ import SignUpPage from './pages/SignUpPage';
 function Navigation(props) {
   return (
     <nav className="navbar navbar-default navbar-dark" >
-      <Link className="navbar-brand" to="/">Fitbud</Link>
+      <NavLink className="navbar-brand" exact to="/welcome">Fitbud</NavLink>
         <div className="nav-item">
           <NavLink className="nav-link" exact to="/posts/new">
             Forum
@@ -62,6 +61,7 @@ class App extends React.Component {
                 <Route path="/sign-in" component={LoginPage} />
                 <Route path="/sign-up" component={SignUpPage} />
                 <Route path="/" component={PostsListPage} />
+                <Route path="/welcome" component={WelcomePage} />
               </Switch>
             </div>
           </div>
