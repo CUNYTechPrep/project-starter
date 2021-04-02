@@ -1,10 +1,10 @@
 import React from 'react';
 
-function ThreadRow(props) {
+function ThreadCategoryTableRow(props) {
   return (
     <>
       <tr>
-        <th>Thread</th>
+        <th>Thread Categories</th>
         <th>Posts</th>
       </tr>
       <tr>
@@ -15,7 +15,7 @@ function ThreadRow(props) {
             from your fellow Buds!
           </p>
         </td>
-        <td>55</td>
+        <td>2</td>
       </tr>
 
       <tr>
@@ -26,7 +26,7 @@ function ThreadRow(props) {
             personal achievments!
           </p>
         </td>
-        <td>20</td>
+        <td>1</td>
       </tr>
       <tr>
         <td>
@@ -36,10 +36,10 @@ function ThreadRow(props) {
             cute dogs!
           </p>
         </td>
-        <td>98</td>
+        <td>1</td>
       </tr>
     </>
   );
 }
 
-export default ThreadRow;
+export default ThreadCategoryTableRow;

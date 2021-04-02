@@ -4,13 +4,12 @@
   box-sizing: border-box;
 }
 
-.thread-table {
+.thread-category-table {
   width: 1000px;
-  font-size: large;
-  margin-top: 30px;
+  margin-top: 50px;
   font-family: 'Garamond', sans-serif;
 }
-.thread-table th {
+.thread-category-table th {
   background-color: hsl(162, 67%, 42%);
   border: 1.2px solid rgb(162, 158, 158);
   text-align: left;
@@ -18,7 +17,7 @@
   padding-left: 5px;
 }
 
-.thread-table td {
+.thread-category-table td {
   text-align: left;
   border: 1.1px solid rgb(162, 158, 158);
   padding-left: 5px;
@@ -42,6 +41,8 @@
   position: relative;
   border-radius: 5px;
   background-color: rgba(245, 245, 245, 0.986);
+  margin-top: 100px;
+  margin-left: -900px;
 }
 
 .new-thread-button:hover {

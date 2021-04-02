@@ -5,7 +5,7 @@ import './ThreadCategoryTable.css';
 function ThreadCategoryTable(props) {
   return (
     <section>
-      <table className="thread-table">
+      <table className="thread-category-table">
         <ThreadCategoryTableRow />
       </table>
     </section>

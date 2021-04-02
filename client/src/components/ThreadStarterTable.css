@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.thread-starter-table {
+  width: 1000px;
+  margin-top: 4px;
+  font-family: 'Garamond', sans-serif;
+}
+.thread-starter-table th {
+  background-color: hsl(162, 67%, 42%);
+  border: 1.2px solid rgb(162, 158, 158);
+  text-align: left;
+  color: white;
+  padding-left: 5px;
+}
+
+.thread-starter-table td {
+  text-align: left;
+  border: 1.1px solid rgb(162, 158, 158);
+  padding-left: 5px;
+}
+
+.thread-starter-title {
+  color: hsl(162, 67%, 42%);
+}
+
+.thread-starter-info {
+  font-size: 0.7rem;
+}
+
+.starter-user {
+  color: hsl(162, 68%, 29%);
+}
