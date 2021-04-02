@@ -17,6 +17,7 @@ import PlacesPage from './pages/PlacesPage';
 
 import './App.css';
 import SignUpPage from './pages/SignUpPage';
+import Thread from './components/Thread';
 
 function Navigation(props) {
   return (
@@ -59,6 +60,7 @@ class App extends React.Component {
               <Route path="/forum" component={ForumPage} />
               <Route path="/posts/:id" component={ShowPostPage} />
               <Route path="/places" component={PlacesPage} />
+              <Route path="/thread-list" component={Thread} />
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/sign-in" component={LoginPage} />
               <Route path="/sign-up" component={SignUpPage} />

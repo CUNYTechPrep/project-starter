@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function ThreadStarterTableRow(props) {
   return (
@@ -12,7 +13,10 @@ function ThreadStarterTableRow(props) {
       <tr>
         <td>
           <text className="thread-starter-title">
-            Advice: <b>Best ways to cut while bulking?</b>
+            Advice:
+            <Link to="/">
+              <b>Best ways to cut while bulking?</b>
+            </Link>
           </text>
           <p className="thread-starter-info">
             by <text className="starter-user">John Cena</text>, 02-13-2021
