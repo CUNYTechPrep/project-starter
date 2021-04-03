@@ -14,10 +14,11 @@ import ForumPage from './pages/ForumPage';
 
 import LoginPage from './pages/LoginPage';
 import PlacesPage from './pages/PlacesPage';
+import SignUpPage from './pages/SignUpPage';
+import ContactUsPage from './pages/ContactUsPage';
+//import Thread from './components/Thread';
 
 import './App.css';
-import SignUpPage from './pages/SignUpPage';
-import Thread from './components/Thread';
 
 function Navigation(props) {
   return (
@@ -45,12 +46,18 @@ function Navigation(props) {
           About Us
         </NavLink>
       </div>
+      <div className="nav-item">
+        <NavLink className="nav-link" exact to="/contact-us">
+          Contact
+        </NavLink>
+      </div>
     </nav>
   );
 }
 
 class App extends React.Component {
   render() {
+    //<Route path="/thread-list" component={Thread} />
     return (
       <Router>
         <Navigation />
@@ -60,10 +67,10 @@ class App extends React.Component {
               <Route path="/forum" component={ForumPage} />
               <Route path="/posts/:id" component={ShowPostPage} />
               <Route path="/places" component={PlacesPage} />
-              <Route path="/thread-list" component={Thread} />
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/sign-in" component={LoginPage} />
               <Route path="/sign-up" component={SignUpPage} />
+              <Route path='/contact-us' component={ContactUsPage} />
               <Route path="/" component={PostsListPage} />
             </Switch>
           </div>

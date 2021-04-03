@@ -82,6 +82,7 @@
 .red {
   color: red;
 }
+
 .blue {
   color: blue;
 }
@@ -91,3 +92,15 @@
 .green {
   color: green;
 }
+
+.flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+}  
+
+.flex-child:first-child {
+  margin-right: 20px;
+} 
