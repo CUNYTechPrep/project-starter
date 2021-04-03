@@ -16,7 +16,7 @@ import LoginPage from './pages/LoginPage';
 import PlacesPage from './pages/PlacesPage';
 import SignUpPage from './pages/SignUpPage';
 import ContactUsPage from './pages/ContactUsPage';
-//import Thread from './components/Thread';
+import Thread from './components/Thread';
 
 import './App.css';
 
@@ -57,7 +57,6 @@ function Navigation(props) {
 
 class App extends React.Component {
   render() {
-    //<Route path="/thread-list" component={Thread} />
     return (
       <Router>
         <Navigation />
@@ -70,11 +69,12 @@ class App extends React.Component {
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/sign-in" component={LoginPage} />
               <Route path="/sign-up" component={SignUpPage} />
-              <Route path='/contact-us' component={ContactUsPage} />
+              <Route path="/contact-us" component={ContactUsPage} />
               <Route path="/" component={PostsListPage} />
             </Switch>
           </div>
         </div>
+        <Route path="/thread-list" component={Thread} />
       </Router>
     );
   }
