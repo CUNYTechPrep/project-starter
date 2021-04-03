@@ -10,15 +10,13 @@ function AboutUsPage(props) {
         <div className="div-heading">
         <h1>About Us!</h1>
           <div class="flex-container">
-            <div display="flex-child">
+            <div class=".col-auto .mr-auto">
               <img className="profile-pictures" src={Farhene}
                 style={{width: 245, height: 310, 
-                  borderRadius: 30, border: '3px ridge #45C493',
-                  marginRight: 30, marginBottom: 20, marginLeft: 30,
-                  marginTop: 20}}
+                  borderRadius: 30, border: '3px ridge #45C493', zIndex: 3}}
               />
-              <div className="flex-child">
-                <div style={{backgroundColor: "#88E0BE", borderRadius: 10, marginRight: 10, marginLeft: 10}}>
+              <div>
+                <div style={{backgroundColor: "#88E0BE", borderRadius: 10}}>
                   <div style={{color: "#FF2DA1" , 
                      marginRight: 20, marginLeft: 25}} >
                     Farhene Sultana
@@ -31,14 +29,12 @@ function AboutUsPage(props) {
             </div>
 
 
-            <div display="flex-child">
+            <div class=".col-auto .mr-auto">
               <img className="profile-pictures" src={Justin}
                 style={{width: 255, height: 310, 
-                  borderRadius: 30, border: '3px ridge #88E0BE',
-                  marginRight: 30, marginBottom: 20, marginLeft: 30,
-                  marginTop: 20}}              
+                  borderRadius: 30, border: '3px ridge #88E0BE', zIndex: 3}}              
               />
-              <div className="flex-child">
+              <div>
                 <div style={{backgroundColor: "#88E0BE", borderRadius: 10, marginRight: 10, marginLeft: 10}}>
                   <div style={{color: "#2656B1", 
                     marginRight: 20, marginLeft: 25}}>
@@ -52,14 +48,12 @@ function AboutUsPage(props) {
             </div>
 
 
-            <div display="flex-child">
+            <div class=".col-auto .mr-auto">
               <img className="profile-pictures" src={logo}
                 style={{width: 255, height: 310, 
-                  borderRadius: 30, border: '3px ridge #45C493',
-                  marginRight: 30, marginBottom: 20, marginLeft: 30,
-                  marginTop: 20}}
+                  borderRadius: 30, border: '3px ridge #45C493', zIndex: 3}}
               />
-              <div className="flex-child">
+              <div>
                 <div style={{backgroundColor: "#88E0BE", borderRadius: 10, marginRight: 10, marginLeft: 10}}>
                   <div style={{color: "green", 
                     marginRight: 20, marginLeft: 25}}>
@@ -73,14 +67,12 @@ function AboutUsPage(props) {
             </div>
 
 
-            <div display="float-child">
+            <div class=".col-auto .mr-auto">
               <img className="profile-pictures" src={logo}
                 style={{width: 255, height: 310, 
-                  borderRadius: 30, border: '3px ridge #88E0BE',
-                  marginRight: 30, marginBottom: 20, marginLeft: 30,
-                  marginTop: 20}}
+                  borderRadius: 30, border: '3px ridge #88E0BE', zIndex: 3}}
               />
-              <div className="float-child">
+              <div>
                 <div style={{backgroundColor: "#88E0BE", borderRadius: 10, marginRight: 10, marginLeft: 10}}>
                   <div style={{color: "#DD1D3D", 
                     marginRight: 20, marginLeft: 25}}>
