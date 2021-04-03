@@ -10,7 +10,7 @@ function AboutUsPage(props) {
         <div className="div-heading">
         <h1>About Us!</h1>
           <div class="flex-container">
-            <div>
+            <div style={{marginRight: 20, marginLeft: 20}}>
               <img className="profile-pictures" src={Farhene}
                 style={{width: 245, height: 310, 
                   borderRadius: 30, border: '3px ridge #45C493'}}
@@ -61,7 +61,7 @@ function AboutUsPage(props) {
             </div>
 
 
-            <div>
+            <div  style={{marginRight: 20, marginLeft: 20}}>
               <img className="profile-pictures" src={Justin}
                 style={{width: 255, height: 310, 
                   borderRadius: 30, border: '3px ridge #88E0BE'}}              
@@ -109,7 +109,7 @@ function AboutUsPage(props) {
             </div>
 
 
-            <div>
+            <div style={{marginRight: 20, marginLeft: 20}}>
               <img className="profile-pictures" src={logo}
                 style={{width: 255, height: 310, 
                   borderRadius: 30, border: '3px ridge #45C493'}}
@@ -156,7 +156,7 @@ function AboutUsPage(props) {
             </div>
 
 
-            <div>
+            <div style={{marginRight: 20, marginLeft: 20}}>
               <img className="profile-pictures" src={logo}
                 style={{width: 255, height: 310, 
                   borderRadius: 30, border: '3px ridge #88E0BE'}}
