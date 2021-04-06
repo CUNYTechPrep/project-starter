@@ -16,6 +16,7 @@ import LoginPage from './pages/LoginPage';
 import PlacesPage from './pages/PlacesPage';
 import SignUpPage from './pages/SignUpPage';
 import ContactUsPage from './pages/ContactUsPage';
+import Thread from './components/Thread';
 import ProfilePage from './pages/ProfilePage';
 
 import './App.css';
@@ -69,12 +70,13 @@ class App extends React.Component {
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/sign-in" component={LoginPage} />
               <Route path="/sign-up" component={SignUpPage} />
-              <Route path='/contact-us' component={ContactUsPage} />
+              <Route path="/contact-us" component={ContactUsPage} />
               <Route path='/profile' component={ProfilePage} />
               <Route path="/" component={PostsListPage} />
             </Switch>
           </div>
         </div>
+        <Route path="/thread" component={Thread} />
         <Route path="/welcomepage" component={WelcomePage}/>
       </Router>
     );

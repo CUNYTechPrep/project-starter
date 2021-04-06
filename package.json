@@ -12,10 +12,13 @@
   "author": "Edgardo Molina",
   "license": "ISC",
   "dependencies": {
+    "clipboard": "^2.0.8",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "pg": "^8.4.1",
     "pg-hstore": "^2.3.3",
+    "react-resize-image": "^1.0.4",
+    "resize-image": "^0.1.0",
     "sequelize": "^5.22.3"
   },
   "devDependencies": {

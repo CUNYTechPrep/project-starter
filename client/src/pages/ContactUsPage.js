@@ -1,10 +1,9 @@
 import React from 'react';
 import logo from '../img/dumbbell.png';
-import Clipboard from "clipboard";
-const clip =new Clipboard(".btn");
+import Clipboard from 'clipboard';
 
 function ContactUsPage(props) {
-  var clip = new Clipboard('.btn');
+  new Clipboard('.btn');
   return (
       <div  className="div-heading">
             <img className="logo" src={logo}/>
@@ -14,8 +13,6 @@ function ContactUsPage(props) {
                 fitbudteam@gmail.com
             </button>
       </div>
-    
-    
   );
 }
 
