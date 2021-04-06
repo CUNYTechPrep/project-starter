@@ -6,6 +6,7 @@
     "clipboard": "^2.0.8",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-resize-image": "^1.0.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3"
   },
