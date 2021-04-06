@@ -19,7 +19,8 @@
     "pg-hstore": "^2.3.3",
     "react-resize-image": "^1.0.4",
     "resize-image": "^0.1.0",
-    "sequelize": "^5.22.3"
+    "sequelize": "^5.22.3",
+    "w3-css": "^4.1.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

@@ -2,7 +2,7 @@ import React from 'react';
 
 function PostUserInfo(props) {
   return (
-    <div>
+    <div className="user-info-container">
       <h6> John Cena </h6>
       <img
         alt="John Cena"
@@ -10,9 +10,9 @@ function PostUserInfo(props) {
         width="90px"
         height="90px"
       ></img>
-      <p>
-        Height: 6'1 <br></br>Weight: 251 lbs<br></br>Bud rep: 1,462 nugs
-      </p>
+      <p>Height: 6'1 </p>
+      <p>Weight:251 lbs</p>
+      <p>Bud rep: 1,462 nugs</p>
     </div>
   );
 }

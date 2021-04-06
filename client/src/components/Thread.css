@@ -7,3 +7,23 @@
 .thread {
   display: flex;
 }
+
+.thread-topic {
+  color: rgb(0, 131, 0);
+}
+
+.thread-heading {
+  margin-bottom: 20px;
+}
+.post-date {
+  font-size: 0.9rem;
+  margin-bottom: 0px;
+  background-color: rgb(0, 131, 0);
+  color: white;
+}
+
+.user-info-container {
+  margin-right: 10px;
+  padding-right: 50px;
+  background-color: rgba(128, 128, 128, 0.639);
+}
