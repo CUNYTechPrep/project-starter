@@ -16,11 +16,11 @@ body, html {height: 100%}
     margin-top: 25px;
     font-size: 21px;
     text-align: center;
-    -webkit-transition: opacity 2s ease-in;
-    -moz-transition: opacity 2s ease-in;
-    -o-transition: opacity 2s ease-in;
-    -ms-transition: opacity 2s ease-in;
-    transition: opacity 2s ease-in;
+    -webkit-transition: opacity 6s ease-in;
+    -moz-transition: opacity 6s ease-in;
+    -o-transition: opacity 6s ease-in;
+    -ms-transition: opacity 6s ease-in;
+    transition: opacity 6s ease-in;
     
   }
   .welcometitles{
@@ -42,3 +42,6 @@ body, html {height: 100%}
     margin: 4px 2px !important;
     cursor: pointer !important;
   }
+
+
+
