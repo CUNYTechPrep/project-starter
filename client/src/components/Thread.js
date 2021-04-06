@@ -1,15 +1,17 @@
 import React from 'react-dom';
 import ThreadPost from './ThreadPost';
 import './Thread.css';
+import { Link } from 'react-router-dom';
 
 function Thread(props) {
   return (
     <div>
-      <h5>
+      <h6 className="thread-heading">
         <b>Thread: </b>
-        <text>Best ways to cut while bulking?</text>
-      </h5>
-      <p>Posted on: 02-13-2021 9:20am</p>
+        <text className="thread-topic">
+          <Link to="/thread">Best ways to cut while bulking?</Link>
+        </text>
+      </h6>
       <ThreadPost />
     </div>
   );
