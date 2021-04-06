@@ -11,7 +11,7 @@ import PostsListPage from './pages/PostsListPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 import ForumPage from './pages/ForumPage';
-
+import WelcomePage from './pages/WelcomePage';
 import LoginPage from './pages/LoginPage';
 import PlacesPage from './pages/PlacesPage';
 import SignUpPage from './pages/SignUpPage';
@@ -23,7 +23,7 @@ import './App.css';
 function Navigation(props) {
   return (
     <nav className="navbar navbar-default navbar-dark">
-      <Link className="navbar-brand" to="/">
+      <Link className="navbar-brand" to="/welcomepage">
         Fitbud
       </Link>
       <div className="nav-item">
@@ -75,6 +75,7 @@ class App extends React.Component {
             </Switch>
           </div>
         </div>
+        <Route path="/welcomepage" component={WelcomePage}/>
       </Router>
     );
   }
