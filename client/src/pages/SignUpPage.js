@@ -4,7 +4,6 @@ import logo from '../img/dumbbell.png';
 import '../App.css';
 
 function SignUpPage(props) {
-  //Here if user is not registered, I will prompt user to go to SignUpPage.js
   return (
     <div>
       <div className="div-heading">
@@ -26,9 +25,10 @@ function SignUpPage(props) {
         </form>
       </div>
       <div style={{ color: 'gray', paddingTop: 20 }}>OR</div>
-      <div style={{ paddingTop: 20 }}>
+      <div style={{ paddingTop: 20}}>
         <button
-          style={{ backgroundColor: 'lightgray', borderRadius: 5 }}
+          style={{ backgroundColor: 'lightgray', borderRadius: 5
+          , marginBottom: 40  }}
           type="submit"
         >
           Sign Up with <span className="blue">G</span>
@@ -38,6 +38,10 @@ function SignUpPage(props) {
           <span className="green">l</span>
           <span className="red">e</span>
         </button>
+      </div>
+      <div style={{float: "right", color: "#979797",
+        marginBottom: 10}}>
+        @Fitbud
       </div>
     </div>
   );

@@ -11,12 +11,47 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 50px;
   font-weight: 600px;
-  color: hsl(22, 73%, 53%);
+  color: hsl(0, 0%, 100%);
   -webkit-text-stroke: 0.5px rgb(129, 116, 116);
-  background: linear-gradient(#8ebbac, #fcffff);
+  background: linear-gradient(hsl(160, 55%, 33%), hsl(180, 65%, 44%));
+
 }
 
 .background {
   margin-bottom: 40px;
 }
+
+.button-edits {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10%;
+  color: rgb(255, 255, 255);
+  margin-right: 20px;
+  font-family:'Garamond', sans-serif;
+  background-color:hsl(162, 67%, 42%);
+  font-weight: bold;
+}
+
+/* Used an online reference */
+.button-edits:after {
+  content: "";
+  position: absolute;  
+  left: -210%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right, hsla(0, 0%, 100%, 0.314) 50%,
+              hsla(143, 72%, 7%, 0.129) 100%
+    );
+}
+
+/* when hovered, look at the after class */
+.button-edits:hover:after {
+  top: 0%;
+  left: 0%;
+  transition-property: top, left;
+  transition-duration: 0.7s, 0.7s;
+  transition-timing-function: ease-in-out;
+  color: goldenrod;
+} 
 
