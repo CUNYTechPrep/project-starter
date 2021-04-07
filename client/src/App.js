@@ -17,6 +17,7 @@ import PlacesPage from './pages/PlacesPage';
 import SignUpPage from './pages/SignUpPage';
 import ContactUsPage from './pages/ContactUsPage';
 import ProfilePage from './components/Profile/ProfilePage';
+import Thread from './components/Thread/Thread';
 
 import './App.css';
 import { ReactComponent as CloseMenu } from "./assets/x.svg";
@@ -91,12 +92,13 @@ class App extends React.Component {
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/sign-in" component={LoginPage} />
               <Route path="/sign-up" component={SignUpPage} />
-              <Route path='/contact-us' component={ContactUsPage} />
+              <Route path="/contact-us" component={ContactUsPage} />
               <Route path='/profile' component={ProfilePage} />
               {/* <Route path="/" component={PostsListPage} /> */}
             </Switch>
           </div>
         </div>
+        <Route path="/thread" component={Thread} />
         <Route path="/welcomepage" component={WelcomePage}/>
       </Router>
     );

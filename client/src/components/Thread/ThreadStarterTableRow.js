@@ -14,7 +14,7 @@ function ThreadStarterTableRow(props) {
         <td>
           <text className="thread-starter-title">
             Advice:
-            <Link to="/">
+            <Link to="/thread">
               <b>Best ways to cut while bulking?</b>
             </Link>
           </text>
