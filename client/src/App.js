@@ -98,7 +98,7 @@ class App extends React.Component {
             </Switch>
           </div>
         </div>
-        <Route path="/thread" component={Thread} />
+        <Route path='/thread' component={Thread} />
         <Route path="/welcomepage" component={WelcomePage}/>
       </Router>
     );
