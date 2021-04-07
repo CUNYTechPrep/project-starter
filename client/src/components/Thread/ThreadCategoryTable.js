@@ -1,6 +1,6 @@
 import React from 'react';
 import ThreadCategoryTableRow from './ThreadCategoryTableRow';
-import './ThreadCategoryTable.css';
+import '../../css/ThreadCategoryTable.css';
 
 function ThreadCategoryTable(props) {
   return (

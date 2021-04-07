@@ -55,48 +55,6 @@
   width: 150px;
 }
 
-.button-login {
-  background-color:hsl(162, 67%, 42%);
-  border-color: lightseagreen;
-  border-radius: 10%;
-  color: white;
-  font-family:'Garamond', sans-serif;
-  margin-right: 20px;
-
-}
-
-.button-signup {
-  background-color: #f0850c;
-  border-radius: 10%;
-  color: white;
-  font-family:'Garamond', sans-serif;
-  margin-left: 20px;
-}
-.button-signup-only {
-  background-color: #f0850c;
-  border-radius: 10%;
-  color: white;
-  font-family:'Garamond', sans-serif;
-}
-
-.button-search {
-
-}
-
-.red {
-  color: red;
-}
-
-.blue {
-  color: blue;
-}
-.yellow {
-  color: yellow;
-}
-.green {
-  color: green;
-}
-
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -120,25 +78,6 @@ body > div > div {
   margin-top: 20px;
   background: white;
   margin-bottom: 20px;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
-  z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
 }
 
 

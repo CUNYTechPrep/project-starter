@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import logo from '../img/dumbbell.png';
 import '../App.css';
+import '../css/LoginPage.css';
 
 function LoginPage(props) {
   //Here if user is not registered, I will prompt user to go to SignUpPage.js

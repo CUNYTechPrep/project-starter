@@ -1,0 +1,22 @@
+
+
+.flex-container-profile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.title {
+  margin-top: 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+  font-weight: 600px;
+  color: hsl(22, 73%, 53%);
+  -webkit-text-stroke: 0.5px rgb(129, 116, 116);
+  background: linear-gradient(#8ebbac, #fcffff);
+}
+
+.background {
+  margin-bottom: 40px;
+}
+

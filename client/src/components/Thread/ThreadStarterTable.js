@@ -1,6 +1,6 @@
 import React from 'react';
 import ThreadStarterTableRow from './ThreadStarterTableRow';
-import './ThreadStarterTable.css';
+import '../../css/ThreadStarterTable.css';
 
 function ThreadStarterTable(props) {
   return (
