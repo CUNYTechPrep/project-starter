@@ -1,12 +1,12 @@
 import React from 'react';
-import ThreadCategoryTableRow from './ThreadCategoryTableRow';
-import '../../css/ThreadCategoryTable.css';
+import ForumCategoryTableRow from './ForumCategoryTableRow';
+import '../../css/ForumCategoryTable.css';
 
 function ThreadCategoryTable(props) {
   return (
     <section>
       <table className="thread-category-table">
-        <ThreadCategoryTableRow />
+        <ForumCategoryTableRow />
       </table>
     </section>
   );
