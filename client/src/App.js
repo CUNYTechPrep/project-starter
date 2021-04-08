@@ -1,5 +1,5 @@
-import React from 'react';
 
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,7 +7,7 @@ import {
   Link,
   NavLink,
 } from 'react-router-dom';
-import PostsListPage from './pages/PostsListPage';
+//import PostsListPage from './pages/PostsListPage';
 //import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
@@ -17,14 +17,24 @@ import LoginPage from './pages/LoginPage';
 import PlacesPage from './pages/PlacesPage';
 import SignUpPage from './pages/SignUpPage';
 import ContactUsPage from './pages/ContactUsPage';
-import Thread from './components/Thread';
+
 import ProfilePage from './pages/ProfilePage';
 import SwipePage from './pages/SwipePage'
+import ProfilePage from './components/Profile/ProfilePage';
+import Thread from './components/Thread/Thread';
 
 import './App.css';
+import { ReactComponent as CloseMenu } from './assets/x.svg';
+import { ReactComponent as MenuIcon } from './assets/menu.svg';
+import './css/Burger.css';
 
 
 function Navigation(props) {
+  //Learned from online
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+  const closeMenu = () => setClick(false); //to close the burger menu
+
   return (
     <nav className="navbar navbar-default navbar-dark">
       <Link className="navbar-brand" to="/welcomepage">
@@ -36,24 +46,53 @@ function Navigation(props) {
         </NavLink>
       </div>
       <div className="nav-item">
-        <NavLink className="nav-link" exact to="/places">
-          Places
-        </NavLink>
-      </div>
-      <div className="nav-item">
         <NavLink className="nav-link" exact to="/sign-in">
           Sign In
         </NavLink>
       </div>
-      <div className="nav-item">
-        <NavLink className="nav-link" exact to="/about-us">
-          About Us
-        </NavLink>
-      </div>
-      <div className="nav-item">
-        <NavLink className="nav-link" exact to="/contact-us">
-          Contact
-        </NavLink>
+      <ul className={click ? 'nav-item-burger active' : 'nav-item-burger'}>
+        {click ? (
+          <CloseMenu className="menu-icon-close" />
+        ) : (
+          <MenuIcon className="menu-icon" />
+        )}
+        <li className="option" onClick={closeMenu}>
+          <NavLink className="nav-link" onClick={closeMenu} exact to="/profile">
+            My Profile
+          </NavLink>
+        </li>
+        <li className="option" onClick={closeMenu}>
+          <NavLink className="nav-link" onClick={closeMenu} exact to="/places">
+            Places
+          </NavLink>
+        </li>
+        <li className="option" onClick={closeMenu}>
+          <NavLink
+            className="nav-link"
+            onClick={closeMenu}
+            exact
+            to="/about-us"
+          >
+            About Us
+          </NavLink>
+        </li>
+        <li className="option" onClick={closeMenu}>
+          <NavLink
+            className="nav-link"
+            onClick={closeMenu}
+            exact
+            to="/contact-us"
+          >
+            Contact
+          </NavLink>
+        </li>
+      </ul>
+      <div className="menu" onClick={handleClick}>
+        {click ? (
+          <CloseMenu className="menu-icon" />
+        ) : (
+          <MenuIcon className="menu-icon" />
+        )}
       </div>
       <div className="nav-item">
         <NavLink className="nav-link" exact to="/swipe">
@@ -80,13 +119,14 @@ class App extends React.Component {
               <Route path="/sign-up" component={SignUpPage} />
               <Route path="/contact-us" component={ContactUsPage} />
               <Route path="/swipe" component={SwipePage} />
-              <Route path='/profile' component={ProfilePage} />
-              <Route path="/" component={PostsListPage} />
+          
+              <Route path="/profile" component={ProfilePage} />
+              {/* <Route path="/" component={PostsListPage} /> */}
             </Switch>
           </div>
         </div>
         <Route path="/thread" component={Thread} />
-        <Route path="/welcomepage" component={WelcomePage}/>
+        <Route path="/welcomepage" component={WelcomePage} />
       </Router>
     );
   }

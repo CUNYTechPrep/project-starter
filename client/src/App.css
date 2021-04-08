@@ -55,48 +55,6 @@
   width: 150px;
 }
 
-.button-login {
-  background-color:hsl(162, 67%, 42%);
-  border-color: lightseagreen;
-  border-radius: 10%;
-  color: white;
-  font-family:'Garamond', sans-serif;
-  margin-right: 20px;
-
-}
-
-.button-signup {
-  background-color: #f0850c;
-  border-radius: 10%;
-  color: white;
-  font-family:'Garamond', sans-serif;
-  margin-left: 20px;
-}
-.button-signup-only {
-  background-color: #f0850c;
-  border-radius: 10%;
-  color: white;
-  font-family:'Garamond', sans-serif;
-}
-
-.button-search {
-
-}
-
-.red {
-  color: red;
-}
-
-.blue {
-  color: blue;
-}
-.yellow {
-  color: yellow;
-}
-.green {
-  color: green;
-}
-
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -122,6 +80,7 @@ body > div > div {
   margin-bottom: 20px;
 }
 
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -140,4 +99,5 @@ body > div > div {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 

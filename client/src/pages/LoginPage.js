@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import logo from '../img/dumbbell.png';
 import '../App.css';
+import '../css/LoginPage.css';
 
 function LoginPage(props) {
   //Here if user is not registered, I will prompt user to go to SignUpPage.js
@@ -34,7 +35,8 @@ function LoginPage(props) {
       <div style={{ color: 'gray', paddingTop: 20 }}>OR</div>
       <div style={{ paddingTop: 20 }}>
         <button
-          style={{ backgroundColor: 'lightgray', borderRadius: 5 }}
+          style={{ backgroundColor: 'lightgray', borderRadius: 5
+          , marginBottom: 40  }}
           type="submit"
         >
           Sign in with <span className="blue">G</span>
@@ -44,6 +46,10 @@ function LoginPage(props) {
           <span className="green">l</span>
           <span className="red">e</span>
         </button>
+      </div>
+      <div style={{float: "right", color: "#979797",
+        marginBottom: 10}}>
+        @Fitbud
       </div>
     </div>
   );

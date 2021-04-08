@@ -1,20 +1,11 @@
 import React from 'react';
-import ThreadStarterTable from '../components/ThreadStarterTable';
-import ThreadCategoryTable from '../components/ThreadCategoryTable';
-import '../components/ThreadCategoryTable.css';
-
-//HIERARCHY//
-
-// -ForumPage
-
-/// -ThreadTable
-//// -ThreadRow
-/// -ThreadStarterTableRow
-//// -ThreadStarterTableRow
+import ThreadStarterTable from '../components/Thread/ForumStarterTable';
+import ThreadCategoryTable from '../components/Thread/ForumCategoryTable';
+import '../css/ForumCategoryTable.css';
 
 function ForumPage(props) {
   return (
-    <div>
+    <div style={{ marginBottom: 40 }}>
       <ThreadCategoryTable />
       <button className="new-thread-button">New Thread</button>
       <ThreadStarterTable />

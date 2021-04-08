@@ -1,7 +1,7 @@
 import React from 'react';
-import PostUserInfo from './PostUserInfo';
-import PostInfo from './PostInfo';
-import './Thread.css';
+import PostUserInfo from './ThreadPostUserInfo';
+import PostInfo from './ThreadPostInfo';
+import '../../css/Thread.css';
 
 function ThreadPost(props) {
   return (

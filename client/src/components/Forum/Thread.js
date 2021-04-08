@@ -1,6 +1,6 @@
 import React from 'react-dom';
 import ThreadPost from './ThreadPost';
-import './Thread.css';
+import '../../css/Thread.css';
 import { Link } from 'react-router-dom';
 
 function Thread(props) {

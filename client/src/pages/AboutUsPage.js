@@ -3,6 +3,7 @@ import React from 'react';
 import logo from '../img/dumbbell.png';
 import Farhene from '../img/Ria.jpg';
 import Justin from '../img/Justin.png';
+import '../css/AboutUsPage.css';
 
 function AboutUsPage(props) {
   return (
