@@ -12,6 +12,7 @@
   "author": "Edgardo Molina",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.6.0",
     "clipboard": "^2.0.8",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
@@ -20,6 +21,7 @@
     "react-resize-image": "^1.0.4",
     "resize-image": "^0.1.0",
     "sequelize": "^5.22.3",
+    "swiper": "^6.5.4",
     "w3-css": "^4.1.0"
   },
   "devDependencies": {

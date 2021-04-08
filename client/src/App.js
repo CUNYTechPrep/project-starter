@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,8 +19,10 @@ import SignUpPage from './pages/SignUpPage';
 import ContactUsPage from './pages/ContactUsPage';
 import Thread from './components/Thread';
 import ProfilePage from './pages/ProfilePage';
+import swipePage from './pages/swipePage'
 
 import './App.css';
+
 
 function Navigation(props) {
   return (
@@ -52,6 +55,11 @@ function Navigation(props) {
           Contact
         </NavLink>
       </div>
+      <div className="nav-item">
+        <NavLink className="nav-link" exact to="/swipe-page">
+          Swipe
+        </NavLink>
+      </div>
     </nav>
   );
 }
@@ -71,6 +79,7 @@ class App extends React.Component {
               <Route path="/sign-in" component={LoginPage} />
               <Route path="/sign-up" component={SignUpPage} />
               <Route path="/contact-us" component={ContactUsPage} />
+              <Route path="/swipe-page" component={swipePage} />
               <Route path='/profile' component={ProfilePage} />
               <Route path="/" component={PostsListPage} />
             </Switch>
