@@ -1,0 +1,30 @@
+.map-container {
+    display:flex;
+    height: 400px;
+    width: 8fr;
+    background-image: url('../nyc-map-placeholder.png');
+    background-position: center;
+    background-size: auto;
+}
+
+.map-controls {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    box-sizing: content-box;
+    top: 162px;
+    right: 1rem;
+}
+
+.filters-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: lightgrey;
+    min-height: 100px;
+    padding: 1.4rem 2.5rem;
+}
+
+.btn {
+    background-color: rgb(105, 72, 196);
+}
