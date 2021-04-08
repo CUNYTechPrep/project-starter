@@ -1,0 +1,16 @@
+.profilePic {
+    width: 200px;
+    height: 200px; 
+    border-radius: 50%;
+    background-color: black;
+}
+
+label{
+    float: left;
+    clear: left;
+    text-align: right;
+}
+
+div{
+    padding: 10px;
+}
