@@ -19,7 +19,7 @@ import SignUpPage from './pages/SignUpPage';
 import ContactUsPage from './pages/ContactUsPage';
 import Thread from './components/Thread';
 import ProfilePage from './pages/ProfilePage';
-import swipePage from './pages/swipePage'
+import SwipePage from './pages/SwipePage'
 
 import './App.css';
 
@@ -56,7 +56,7 @@ function Navigation(props) {
         </NavLink>
       </div>
       <div className="nav-item">
-        <NavLink className="nav-link" exact to="/swipe-page">
+        <NavLink className="nav-link" exact to="/swipe">
           Swipe
         </NavLink>
       </div>
@@ -79,7 +79,7 @@ class App extends React.Component {
               <Route path="/sign-in" component={LoginPage} />
               <Route path="/sign-up" component={SignUpPage} />
               <Route path="/contact-us" component={ContactUsPage} />
-              <Route path="/swipe-page" component={swipePage} />
+              <Route path="/swipe" component={SwipePage} />
               <Route path='/profile' component={ProfilePage} />
               <Route path="/" component={PostsListPage} />
             </Switch>

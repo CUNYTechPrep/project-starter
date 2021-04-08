@@ -21,7 +21,7 @@
     "react-resize-image": "^1.0.4",
     "resize-image": "^0.1.0",
     "sequelize": "^5.22.3",
-    "swiper": "^6.5.4",
+    "swiper": "^6.5.5",
     "w3-css": "^4.1.0"
   },
   "devDependencies": {
