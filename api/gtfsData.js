@@ -31,4 +31,4 @@ function findStopId(_stopName) {
   return null
 }
 
-module.exports = { stops, stopId, stopName, findStopName};
+module.exports = { stops, stopId, stopName, findStopName, findStopId};

@@ -40,6 +40,21 @@ async function getTrips(urlList, tripData, callback) {
   })
 }
 
+function findTrainStation(station, tripData, relevantStops){
+  traindb.stops.forEach(row => {
+    if(station === row.stop_name){
+      var stopId = row.stop_id
+      if(stopId.charAt(stopId.length-1) == 'N' || stopId.charAt(stopId.length-1) == 'S')
+        stopId = stopId.substring(0, stopId.length-1)
+        relevantStops[stopId] = {
+          stopName: row.stop_name,
+          trains: {}
+      }
+    }
+  })
+}
+
+
 // Initialize stationMap with all stations of a certain line
 function findTrainStops(train, tripData, stationMap) {
   tripData.forEach(data => {
@@ -80,6 +95,7 @@ function updateTrainStops(train, tripData, stationMap) {
     const trip = data.trip
     const trainType = trip.routeId
     const stops = data.stopTimeUpdate;
+
     stops.forEach(stop => {
       // Time given by MTA is time since epoch, so we have to convert it
       const arrival = stop.arrival ? stop.arrival.time : null
@@ -195,4 +211,4 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	}
 }
 
-module.exports = { distance, convertEpochToLocalDate, findNearbyStops, updateNearbyStops, findTrainStops, updateTrainStops, getTrips};
+module.exports = { distance, convertEpochToLocalDate, findNearbyStops, updateNearbyStops, findTrainStops, updateTrainStops, getTrips, findTrainStation};

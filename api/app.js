@@ -82,6 +82,17 @@ app.get('/line/:train', (req, res) => {
   })
 });
 
+app.get('/station/:station', (req, res) => {
+  const station = req.params.station
+  relevantStops = {}
+  var tripData = []
+  trainfn.getTrips(urls, tripData, () => {
+    trainfn.findTrainStation(station, tripData, relevantStops)
+    trainfn.updateNearbyStops(tripData, relevantStops)
+    res.send(JSON.stringify(relevantStops))
+  })
+})
+
 // Return nearby station names  based on lat,lon and min distance in KM
 app.get('/stops/nearby/lat/:lat/lon/:lon/dist/:dist', (req, res) => {
   const lat = req.params.lat
