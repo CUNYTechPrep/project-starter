@@ -1,6 +1,6 @@
 import React from 'react';
-import ThreadStarterTable from '../components/Thread/ForumStarterTable';
-import ThreadCategoryTable from '../components/Thread/ForumCategoryTable';
+import ThreadStarterTable from '../components/Forum/ForumStarterTable';
+import ThreadCategoryTable from '../components/Forum/ForumCategoryTable';
 import '../css/ForumCategoryTable.css';
 
 function ForumPage(props) {

@@ -18,10 +18,9 @@ import PlacesPage from './pages/PlacesPage';
 import SignUpPage from './pages/SignUpPage';
 import ContactUsPage from './pages/ContactUsPage';
 
-import ProfilePage from './pages/ProfilePage';
 import SwipePage from './pages/SwipePage'
 import ProfilePage from './components/Profile/ProfilePage';
-import Thread from './components/Thread/Thread';
+import Thread from './components/Forum/Thread';
 
 import './App.css';
 import { ReactComponent as CloseMenu } from './assets/x.svg';
@@ -40,6 +39,11 @@ function Navigation(props) {
       <Link className="navbar-brand" to="/welcomepage">
         Fitbud
       </Link>
+      <div className="nav-item">
+        <NavLink className="nav-link" exact to="/swipe">
+          Swipe
+        </NavLink>
+      </div>
       <div className="nav-item">
         <NavLink className="nav-link" exact to="/forum">
           Forum
@@ -93,11 +97,6 @@ function Navigation(props) {
         ) : (
           <MenuIcon className="menu-icon" />
         )}
-      </div>
-      <div className="nav-item">
-        <NavLink className="nav-link" exact to="/swipe">
-          Swipe
-        </NavLink>
       </div>
     </nav>
   );
