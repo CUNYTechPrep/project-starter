@@ -10,6 +10,7 @@ import {
 import LoginRegister from './pages/LoginRegisterPage';
 import HomePage from './pages/HomePage';
 
+
 const App = () => {
   return (
     <Router>
