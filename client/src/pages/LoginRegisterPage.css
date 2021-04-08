@@ -2,11 +2,8 @@ body {
   background-color: rgba(28,28,30,0.9);
   color: rgb(255,255,255);
   height: 100%;
-}
-
-.temp{
-  position: relative;
-  z-index: 2;
+  font-family: 'Montserrat', 'sanserif';
+  overflow-x: hidden;
 }
 
 .slideshow{
@@ -32,18 +29,18 @@ body {
 .slideshow li:nth-child(1) span{
   background-image:url(../imgs/mta1.png);
   filter: blur(8px);
-  -webkit-filter: blur(8px);
+  -webkit-filter: blur(7px);
 }
 .slideshow li:nth-child(2) span{
   background-image:url(../imgs/mta2.png);
   filter: blur(8px);
-  -webkit-filter: blur(8px);
+  -webkit-filter: blur(7px);
   animation-delay: 8s;
 }
 .slideshow li:nth-child(3) span{
   background-image:url(../imgs/mta3.png);
   filter: blur(8px);
-  -webkit-filter: blur(8px);
+  -webkit-filter: blur(7px);
   animation-delay: 16s;
 }
 
@@ -56,5 +53,16 @@ body {
 }
 
 .no-cssanimations .cb-slideshow li span{
-	opacity: 1;
+  opacity: 1;
+}
+
+.company{
+  position: relative;
+  z-index: 2;
+}
+
+.company-name{
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 4px 4px rgba(28,28,30,0.9);
 }
