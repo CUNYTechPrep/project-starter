@@ -175,18 +175,25 @@ function AboutUsPage(props) {
                     Comp Sci Student @ CUNY City Tech
                   </h4>
                   <h4 style={{ fontSize: 13.5, marginLeft: 20, maxWidth: 200 }}>
-                    Your bio
-                    <div className="dropdown">
-                      <span>front [or end or full stack] development.</span>
+                   I am currently a student focused in web development
+                   and looking to expand my skills in order 
+                   to exceed my own expectations. I want to becomea software developer
+                    and create desktop applications.
+                                    <div className="dropdown">
+                      <span>Full Stack Development.</span>
                       <div className="dropdown-content">
-                        <p>Type your skills here</p>
+                        <p> OOP Java, Apache,JAVA FX,JavaScript, PHP, JSP , HTML, CSS, C++, Python,
+                           Android Studio,Reactjs, C#,Nodejs, Expressjs, Mongo DB, PostgreSQL, SQL.
+                           </p>
                       </div>
                     </div>
-                    <br></br>I aspire to be a
+                    <br></br>I aspire to be 
                     <div className="dropdown">
-                      <span>[Type your future goal here]</span>
+                      <span>a Software Developer working on embedded systems</span>
                       <div className="dropdown-content">
-                        <p>[Explain your goal here]</p>
+                        <p>I want to attain a Bachelor's Degree in Computer Science
+                          to pursue a fullstack developemnt career at a company working on
+                           Electric vehicles</p>
                       </div>
                     </div>
                     <p style={{ color: '#88E0BE' }}>................</p>

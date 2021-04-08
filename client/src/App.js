@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -16,6 +17,9 @@ import LoginPage from './pages/LoginPage';
 import PlacesPage from './pages/PlacesPage';
 import SignUpPage from './pages/SignUpPage';
 import ContactUsPage from './pages/ContactUsPage';
+
+import ProfilePage from './pages/ProfilePage';
+import SwipePage from './pages/SwipePage'
 import ProfilePage from './components/Profile/ProfilePage';
 import Thread from './components/Thread/Thread';
 
@@ -23,6 +27,7 @@ import './App.css';
 import { ReactComponent as CloseMenu } from './assets/x.svg';
 import { ReactComponent as MenuIcon } from './assets/menu.svg';
 import './css/Burger.css';
+
 
 function Navigation(props) {
   //Learned from online
@@ -89,6 +94,11 @@ function Navigation(props) {
           <MenuIcon className="menu-icon" />
         )}
       </div>
+      <div className="nav-item">
+        <NavLink className="nav-link" exact to="/swipe">
+          Swipe
+        </NavLink>
+      </div>
     </nav>
   );
 }
@@ -108,6 +118,8 @@ class App extends React.Component {
               <Route path="/sign-in" component={LoginPage} />
               <Route path="/sign-up" component={SignUpPage} />
               <Route path="/contact-us" component={ContactUsPage} />
+              <Route path="/swipe" component={SwipePage} />
+          
               <Route path="/profile" component={ProfilePage} />
               {/* <Route path="/" component={PostsListPage} /> */}
             </Switch>
