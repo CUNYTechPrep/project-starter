@@ -12,15 +12,6 @@ import '../styles.css';
 
 
 function swipePage() {
-  var person= {  
-    "name" : "John Cena",  
-    "id" : 312,  
-    "preference" : "18+",    
-    "height" : 163,    
-    "lastOverScore" : [4, 1, 6, 6, 2, 1]
-
-  }
-
 
   
   return ( 
