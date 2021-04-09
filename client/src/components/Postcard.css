@@ -1,0 +1,35 @@
+.post-container {
+    display: flex;
+    min-height: 400px;
+    
+    background-color: whitesmoke;
+    
+}
+
+.img-area {
+    background-image: url("../nyc-skyline.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.post-title {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-auto-rows: minmax(20px, auto);
+    margin: 1rem 2rem;
+}
+
+.one, .three {
+    text-align: left;
+}
+
+.two, .four {
+    text-align: right;
+}
+
+.post-body {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 1.4rem;
+}

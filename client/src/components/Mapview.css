@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: lightgrey;
+    background-color: whitesmoke;
     min-height: 100px;
     padding: 1.4rem 2.5rem;
 }
