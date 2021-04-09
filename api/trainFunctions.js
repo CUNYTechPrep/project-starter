@@ -32,7 +32,7 @@ async function getTrips(urlList, tripData, callback) {
         numFetched ++
         // console.log(feed)
         if(numFetched === 8) {
-          console.log("Finished fetching live data from all 8 APIs")
+          console.log("\nFinished fetching live data from all 8 APIs")
           callback()
         }
       } 
@@ -147,8 +147,12 @@ function findNearbyStops(lat, lon, dist, tripData, nearbyStops) {
   console.log("Found all nearby stops at (", lat, lon, ") at a distance of", dist, "KM" )
 }
 
-// Update nearby stops with information
-function updateNearbyStops(tripData, nearbyStops) {
+// Given a stops object that is initialize with 
+// stops[stopId] = {
+//   stopName: 'stop_name',
+//   trains: {}
+// We will update it with all trains and time
+function updateStops(tripData, stopsObj) {
   tripData.forEach(data => {
     const trip = data.trip
     const trainType = trip.routeId
@@ -211,4 +215,4 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	}
 }
 
-module.exports = { distance, convertEpochToLocalDate, findNearbyStops, updateNearbyStops, findTrainStops, updateTrainStops, getTrips, findTrainStation};
+module.exports = { distance, convertEpochToLocalDate, findNearbyStops, updateStops, findTrainStops, getTrips, findTrainStation};

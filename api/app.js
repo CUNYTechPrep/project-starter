@@ -69,7 +69,7 @@ app.get('/line/:train', (req, res) => {
   var stationMap = {}
   trainfn.getTrips(urls, tripData, () => {
     trainfn.findTrainStops(train, tripData, stationMap)
-    trainfn.updateTrainStops(train, tripData, stationMap)
+    trainfn.updateStops(tripData, stationMap)
     // Sort by StopId
     stationMap = Object.keys(stationMap).sort().reduce(
       (obj, key) => { 
@@ -82,13 +82,14 @@ app.get('/line/:train', (req, res) => {
   })
 });
 
+// Return information about stations with same name
 app.get('/station/:station', (req, res) => {
   const station = req.params.station
   relevantStops = {}
   var tripData = []
   trainfn.getTrips(urls, tripData, () => {
     trainfn.findTrainStation(station, tripData, relevantStops)
-    trainfn.updateNearbyStops(tripData, relevantStops)
+    trainfn.updateStops(tripData, relevantStops)
     res.send(JSON.stringify(relevantStops))
   })
 })
@@ -103,7 +104,7 @@ app.get('/stops/nearby/lat/:lat/lon/:lon/dist/:dist', (req, res) => {
   var tripData = []
   trainfn.getTrips(urls, tripData, () => {
     trainfn.findNearbyStops(lat, lon, dist, tripData, nearbyStops)
-    trainfn.updateNearbyStops(tripData, nearbyStops)
+    trainfn.updateStops(tripData, nearbyStops)
     res.send(JSON.stringify(nearbyStops))
   })
 });
