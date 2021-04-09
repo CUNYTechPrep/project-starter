@@ -33,7 +33,7 @@ function LogInForm(props){
                 </div>
 
                 <div className="col-12">
-                    <input  className="btn btn-primary m-3" type="submit"/>
+                    <input  className="btn btn-primary m-3" type="submit" value="Log In"/>
                     <button className="btn btn-danger m-3" onClick={props.OnCancle} >Cancel</button>
                 </div>
             </form>

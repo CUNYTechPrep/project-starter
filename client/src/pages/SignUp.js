@@ -27,7 +27,7 @@ function SignUpForm(props) {
                 <div onClick = {()=> imageUploader.current.click()}>
                     <img ref={uploadedImage} src="https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg" className="profilePic"/> 
                 </div>
-                Click to upload Profile picture
+                Click to upload profile picture
             </div>
 
             <div className="col-md-12">
@@ -68,7 +68,7 @@ function SignUpForm(props) {
             </div>
 
             <div className="col-12">
-                <input  className="btn btn-primary m-3" type="submit"/>
+                <input  className="btn btn-primary m-3" type="submit" value="Sign Up"/>
                 <button className="btn btn-danger m-3" onClick={props.OnCancle} >Cancel</button>
             </div>
 
