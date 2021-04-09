@@ -1,15 +1,51 @@
 .post-container {
     display: flex;
     min-height: 400px;
-    
+    width: 8fr;
     background-color: whitesmoke;
     
 }
 
 .img-area {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 0.5fr);
+    align-items: center;
+    
     background-image: url("../nyc-skyline.jpg");
     background-size: cover;
     background-position: center;
+}
+
+.post-profile-pic {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+.post-sharing-controls {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.post-prev-pic-btn {
+    grid-column: 1;
+    grid-row: 3/5;
+}
+
+.post-next-pic-btn {
+    grid-column: 3;
+    grid-row: 3/5;
+}
+
+.post-likes {
+    grid-column: 1;
+    grid-row: 5;
+    color: whitesmoke;
+}
+
+.post-pic-enlarge {
+    grid-column: 3;
+    grid-row: 5;
 }
 
 .post-title {
