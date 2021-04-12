@@ -85,7 +85,7 @@ function convertEpochToLocalDate(epoch) {
     var utcSeconds = epoch.low;
     var date = new Date(0);
     date.setUTCSeconds(utcSeconds);
-    return date.toLocaleString('en-GB', { hour:'numeric', minute:'numeric', second:'numeric', hour12:false } )
+    return date.toLocaleString('en-GB', { hour:'numeric', minute:'numeric', second:'numeric', hour12:true } )
   }
 }
 
