@@ -89,48 +89,6 @@ function convertEpochToLocalDate(epoch) {
   }
 }
 
-// Update information of all stops for a certain line
-function updateTrainStops(train, tripData, stationMap) {
-  tripData.forEach(data => {
-    const trip = data.trip
-    const trainType = trip.routeId
-    const stops = data.stopTimeUpdate;
-
-    stops.forEach(stop => {
-      // Time given by MTA is time since epoch, so we have to convert it
-      const arrival = stop.arrival ? stop.arrival.time : null
-      const departure = stop.departure ? stop.departure.time : null
-      
-      var stopId = stop.stopId
-      const direction = stopId.charAt(stopId.length-1) === 'N' ? "uptown" : "downtown"
-      stopName = traindb.findStopName(stopId)
-      stopId = stopId.substring(0, stopId.length-1)
-
-      // Return if station doesn't exist
-      if(!(stopId in stationMap))
-        return
-
-      // Create traintype for the station if it doesn't exist
-      if(!(trainType in stationMap[stopId]['trains'])) {
-        stationMap[stopId]['trains'][trainType] = {
-          "uptown": null,
-          "downtown": null,
-        }
-      }
-
-      // Update Uptown/Downtown Time for each train
-      
-      var oldStationTime = stationMap[stopId]['trains'][trainType][direction]
-      var newStationTime = convertEpochToLocalDate(arrival ? arrival : departure)
-      if(oldStationTime === null)
-        stationMap[stopId]['trains'][trainType][direction] = newStationTime
-      else
-        stationMap[stopId]['trains'][trainType][direction] = newStationTime < oldStationTime ? newStationTime : oldStationTime
-    })
-  })
-  console.log("Updated train stops for line", train)
-}
-
 // Find all nearby stops and initialize nearbyStops object
 function findNearbyStops(lat, lon, dist, tripData, nearbyStops) {
   traindb.stops.forEach(row => {
@@ -162,18 +120,18 @@ function updateStops(tripData, stopsObj) {
       const arrival = stop.arrival ? stop.arrival.time : null
       const departure = stop.departure ? stop.departure.time : null
       var stopId = stop.stopId
-      delete nearbyStops[stopId]
+      delete stopsObj[stopId]
       const direction = stopId.charAt(stopId.length-1) === 'N' ? "uptown" : "downtown"
       const stopName = traindb.findStopName(stopId)
       stopId = stopId.substring(0, stopId.length-1)
       
       // Return if parsed stop is not nearby, else initialize stop if it doesn't exist yet
-      if(!(stopId in nearbyStops))
+      if(!(stopId in stopsObj))
         return
 
       // Create traintype for the stop if it doesn't exist already
-      if(!(trainType in nearbyStops[stopId]['trains'])) {
-        nearbyStops[stopId]['trains'][trainType] = {
+      if(!(trainType in stopsObj[stopId]['trains'])) {
+        stopsObj[stopId]['trains'][trainType] = {
           "uptown": null,
           "downtown": null,
         }
@@ -181,12 +139,12 @@ function updateStops(tripData, stopsObj) {
       
 
       // Update Uptown/Downtown Time for each stop
-      var oldStationTime = nearbyStops[stopId]['trains'][trainType][direction]
-      var newStationTime = convertEpochToLocalDate(arrival ? arrival : departure)
+      var oldStationTime = stopsObj[stopId]['trains'][trainType][direction]
+      var newStationTime = parseFloat(arrival ? arrival : departure)
       if(oldStationTime === null)
-        nearbyStops[stopId]['trains'][trainType][direction] = newStationTime
+        stopsObj[stopId]['trains'][trainType][direction] = newStationTime
       else
-        nearbyStops[stopId]['trains'][trainType][direction] = newStationTime < oldStationTime ? newStationTime : oldStationTime
+        stopsObj[stopId]['trains'][trainType][direction] = newStationTime < oldStationTime ? newStationTime : oldStationTime
     })
   })
   console.log("Updated nearby train stops")
