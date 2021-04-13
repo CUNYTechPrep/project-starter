@@ -79,7 +79,6 @@ const useStyles = makeStyles((theme) => ({
 export default function TrainIcon(props) {
   const { train, width} = props
   const classes = useStyles();
-  console.log(width)
   
   return (
     <Icon classes={{root: classes.iconRoot}}>

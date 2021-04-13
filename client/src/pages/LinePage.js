@@ -26,20 +26,20 @@ const testObj = {
     "stopName": "125 St",
     "trains": {
       "A": {
-        "uptown": "20:46:26",
-        "downtown": "20:51:37"
+        "uptown": 1618345729,
+        "downtown": 1618345375
       },
       "C": {
-        "uptown": "20:51:07",
-        "downtown": "20:51:00"
+        "uptown": 1618345795,
+        "downtown": 1618345675
       },
       "B": {
-        "uptown": "20:52:51",
-        "downtown": "20:46:41"
+        "uptown": 1618345375,
+        "downtown": 1618345525
       },
       "D": {
-        "uptown": "20:44:07",
-        "downtown": "20:43:01"
+        "uptown": 1618345375,
+        "downtown": 1618345585
       }
     }
   },
@@ -47,20 +47,20 @@ const testObj = {
     "stopName": "59 St-Columbus Circle",
     "trains": {
       "A": {
-        "uptown": "20:47:07",
-        "downtown": "20:48:31"
+        "uptown": 1618345305,
+        "downtown": 1618345375
       },
       "C": {
-        "uptown": "20:47:37",
-        "downtown": "20:52:37"
+        "uptown": 1618345985,
+        "downtown": 1618345645
       },
       "B": {
-        "uptown": "20:47:37",
-        "downtown": "20:43:01"
+        "uptown": 1618345395,
+        "downtown": 1618345465
       },
       "D": {
-        "uptown": "20:44:07",
-        "downtown": "20:43:01"
+        "uptown": 1618345527,
+        "downtown": 1618345305
       }
     }
   },
@@ -68,8 +68,8 @@ const testObj = {
     "stopName": "9 Av",
     "trains": {
       "D": {
-        "uptown": "20:48:07",
-        "downtown": "20:48:07"
+        "uptown": 1618345525,
+        "downtown": 1618345537
       }
     }
   },
@@ -77,8 +77,8 @@ const testObj = {
     "stopName": "Fort Hamilton Pkwy",
     "trains": {
       "D": {
-        "uptown": "20:45:37",
-        "downtown": "20:50:07"
+        "uptown": 1618345375,
+        "downtown": 1618345657
       }
     }
   },
@@ -86,8 +86,8 @@ const testObj = {
     "stopName": "50 St",
     "trains": {
       "D": {
-        "uptown": "20:44:07",
-        "downtown": "20:51:37"
+        "uptown": 1618345305,
+        "downtown": 1618345747
       }
     }
   },
@@ -95,8 +95,8 @@ const testObj = {
     "stopName": "55 St",
     "trains": {
       "D": {
-        "uptown": "20:43:01",
-        "downtown": "20:43:01"
+        "uptown": 1618345725,
+        "downtown": 1618345305
       }
     }
   },
@@ -104,8 +104,8 @@ const testObj = {
     "stopName": "62 St",
     "trains": {
       "D": {
-        "uptown": "20:57:02",
-        "downtown": "20:43:01"
+        "uptown": 1618345605,
+        "downtown": 1618345375
       }
     }
   },
@@ -113,8 +113,8 @@ const testObj = {
     "stopName": "71 St",
     "trains": {
       "D": {
-        "uptown": "20:55:02",
-        "downtown": "20:45:01"
+        "uptown": 1618345485,
+        "downtown": 1618345495
       }
     }
   },
@@ -122,8 +122,8 @@ const testObj = {
     "stopName": "79 St",
     "trains": {
       "D": {
-        "uptown": "20:53:32",
-        "downtown": "20:47:01"
+        "uptown": 1618345395,
+        "downtown": 1618345615
       }
     }
   },
@@ -131,8 +131,8 @@ const testObj = {
     "stopName": "18 Av",
     "trains": {
       "D": {
-        "uptown": "20:52:02",
-        "downtown": "20:48:31"
+        "uptown": 1618345305,
+        "downtown": 1618345705
       }
     }
   },
@@ -140,8 +140,8 @@ const testObj = {
     "stopName": "20 Av",
     "trains": {
       "D": {
-        "uptown": "20:50:32",
-        "downtown": "20:50:01"
+        "uptown": 1618345305,
+        "downtown": 1618345795
       }
     }
   },
@@ -149,8 +149,8 @@ const testObj = {
     "stopName": "Bay Pkwy",
     "trains": {
       "D": {
-        "uptown": "20:49:32",
-        "downtown": "20:42:56"
+        "uptown": 1618345537,
+        "downtown": 1618345855
       }
     }
   },
@@ -158,8 +158,8 @@ const testObj = {
     "stopName": "25 Av",
     "trains": {
       "D": {
-        "uptown": "20:48:02",
-        "downtown": "20:44:07"
+        "uptown": 1618345447,
+        "downtown": 1618345295
       }
     }
   },
@@ -167,8 +167,8 @@ const testObj = {
     "stopName": "Bay 50 St",
     "trains": {
       "D": {
-        "uptown": "20:45:32",
-        "downtown": "20:48:07"
+        "uptown": 1618345305,
+        "downtown": 1618345375
       }
     }
   },
@@ -176,98 +176,138 @@ const testObj = {
     "stopName": "Norwood-205 St",
     "trains": {
       "D": {
-        "uptown": "20:52:06",
-        "downtown": "20:51:00"
+        "uptown": 1618345830,
+        "downtown": 1618345590
       }
     }
   },
   "D03": {
     "stopName": "Bedford Park Blvd",
     "trains": {
+      "B": {
+        "uptown": 1618345585,
+        "downtown": 1618345650
+      },
       "D": {
-        "uptown": "20:49:36",
-        "downtown": "20:43:02"
+        "uptown": 1618345680,
+        "downtown": 1618345305
       }
     }
   },
   "D04": {
     "stopName": "Kingsbridge Rd",
     "trains": {
+      "B": {
+        "uptown": 1618345465,
+        "downtown": 1618345380
+      },
       "D": {
-        "uptown": "20:47:36",
-        "downtown": "20:44:07"
+        "uptown": 1618345560,
+        "downtown": 1618345375
       }
     }
   },
   "D05": {
     "stopName": "Fordham Rd",
     "trains": {
+      "B": {
+        "uptown": 1618345375,
+        "downtown": 1618345500
+      },
       "D": {
-        "uptown": "20:46:06",
-        "downtown": "20:45:37"
+        "uptown": 1618345470,
+        "downtown": 1618345465
       }
     }
   },
   "D06": {
     "stopName": "182-183 Sts",
     "trains": {
+      "B": {
+        "uptown": 1618345305,
+        "downtown": 1618345305
+      },
       "D": {
-        "uptown": "20:44:36",
-        "downtown": "20:47:07"
+        "uptown": null,
+        "downtown": 1618345555
       }
     }
   },
   "D07": {
     "stopName": "Tremont Av",
     "trains": {
+      "B": {
+        "uptown": 1618345945,
+        "downtown": 1618345305
+      },
       "D": {
-        "uptown": "20:43:01",
-        "downtown": "20:43:01"
+        "uptown": 1618345305,
+        "downtown": 1618345645
       }
     }
   },
   "D08": {
     "stopName": "174-175 Sts",
     "trains": {
+      "B": {
+        "uptown": 1618345855,
+        "downtown": 1618345395
+      },
       "D": {
-        "uptown": "20:43:01",
-        "downtown": "20:44:07"
+        "uptown": null,
+        "downtown": 1618345306
       }
     }
   },
   "D09": {
     "stopName": "170 St",
     "trains": {
+      "B": {
+        "uptown": 1618345735,
+        "downtown": 1618345545
+      },
       "D": {
-        "uptown": "20:48:46",
-        "downtown": "20:46:37"
+        "uptown": null,
+        "downtown": 1618345395
       }
     }
   },
   "D10": {
     "stopName": "167 St",
     "trains": {
+      "B": {
+        "uptown": 1618345615,
+        "downtown": 1618345665
+      },
       "D": {
-        "uptown": "20:46:46",
-        "downtown": "20:48:37"
+        "uptown": null,
+        "downtown": 1618345515
       }
     }
   },
   "D11": {
     "stopName": "161 St-Yankee Stadium",
     "trains": {
+      "B": {
+        "uptown": 1618345465,
+        "downtown": 1618345815
+      },
       "D": {
-        "uptown": "20:44:16",
-        "downtown": "20:51:07"
+        "uptown": null,
+        "downtown": 1618345665
       }
     }
   },
   "D12": {
     "stopName": "155 St",
     "trains": {
+      "B": {
+        "uptown": 1618345375,
+        "downtown": 1618345905
+      },
       "D": {
-        "uptown": "20:43:01",
-        "downtown": "20:43:01"
+        "uptown": null,
+        "downtown": 1618345305
       }
     }
   },
@@ -275,12 +315,12 @@ const testObj = {
     "stopName": "145 St",
     "trains": {
       "B": {
-        "uptown": "20:44:07",
-        "downtown": "20:43:01"
+        "uptown": 1618345305,
+        "downtown": 1618345305
       },
       "D": {
-        "uptown": "20:47:37",
-        "downtown": "20:44:07"
+        "uptown": 1618345585,
+        "downtown": 1618345375
       }
     }
   },
@@ -288,16 +328,16 @@ const testObj = {
     "stopName": "7 Av",
     "trains": {
       "E": {
-        "uptown": "20:44:07",
-        "downtown": "20:44:16"
+        "uptown": 1618345465,
+        "downtown": 1618345615
       },
       "B": {
-        "uptown": "20:45:37",
-        "downtown": "20:44:07"
+        "uptown": 1618345305,
+        "downtown": 1618345305
       },
       "D": {
-        "uptown": "20:43:01",
-        "downtown": "20:44:11"
+        "uptown": 1618345377,
+        "downtown": 1618345406
       }
     }
   },
@@ -305,20 +345,20 @@ const testObj = {
     "stopName": "47-50 Sts-Rockefeller Ctr",
     "trains": {
       "B": {
-        "uptown": "20:44:07",
-        "downtown": "20:45:37"
+        "uptown": 1618345585,
+        "downtown": 1618345375
       },
       "D": {
-        "uptown": "20:47:42",
-        "downtown": "20:45:41"
+        "uptown": 1618345305,
+        "downtown": 1618345526
       },
       "F": {
-        "uptown": "20:43:01",
-        "downtown": "20:49:07"
+        "uptown": 1618345495,
+        "downtown": 1618345305
       },
       "M": {
-        "uptown": "20:46:07",
-        "downtown": "20:46:21"
+        "uptown": 1618345395,
+        "downtown": 1618345466
       }
     }
   },
@@ -326,20 +366,20 @@ const testObj = {
     "stopName": "42 St-Bryant Pk",
     "trains": {
       "B": {
-        "uptown": "20:43:01",
-        "downtown": "20:47:07"
+        "uptown": 1618345495,
+        "downtown": 1618345465
       },
       "D": {
-        "uptown": "20:46:12",
-        "downtown": "20:47:11"
+        "uptown": 1618345290,
+        "downtown": 1618345616
       },
       "F": {
-        "uptown": "20:49:51",
-        "downtown": "20:43:01"
+        "uptown": 1618345375,
+        "downtown": 1618345378
       },
       "M": {
-        "uptown": "20:44:07",
-        "downtown": "20:47:51"
+        "uptown": 1618345305,
+        "downtown": 1618345616
       }
     }
   },
@@ -347,20 +387,20 @@ const testObj = {
     "stopName": "34 St-Herald Sq",
     "trains": {
       "B": {
-        "uptown": "20:52:46",
-        "downtown": "20:48:37"
+        "uptown": 1618345375,
+        "downtown": 1618345585
       },
       "D": {
-        "uptown": "20:44:42",
-        "downtown": "20:43:01"
+        "uptown": 1618345457,
+        "downtown": 1618345736
       },
       "F": {
-        "uptown": "20:48:21",
-        "downtown": "20:44:07"
+        "uptown": 1618345305,
+        "downtown": 1618345468
       },
       "M": {
-        "uptown": "20:43:01",
-        "downtown": "20:43:01"
+        "uptown": 1618346130,
+        "downtown": 1618345706
       }
     }
   },
@@ -368,20 +408,20 @@ const testObj = {
     "stopName": "W 4 St-Wash Sq",
     "trains": {
       "B": {
-        "uptown": "20:49:46",
-        "downtown": "20:51:37"
+        "uptown": 1618345950,
+        "downtown": 1618345300
       },
       "D": {
-        "uptown": "20:43:01",
-        "downtown": "20:42:56"
+        "uptown": 1618345306,
+        "downtown": 1618345916
       },
       "F": {
-        "uptown": "20:42:56",
-        "downtown": "20:49:37"
+        "uptown": 1618345555,
+        "downtown": 1618345798
       },
       "M": {
-        "uptown": "20:44:22",
-        "downtown": "20:47:37"
+        "uptown": 1618345800,
+        "downtown": 1618345305
       }
     }
   },
@@ -389,20 +429,20 @@ const testObj = {
     "stopName": "Broadway-Lafayette St",
     "trains": {
       "B": {
-        "uptown": "20:47:46",
-        "downtown": "20:43:01"
+        "uptown": 1618345830,
+        "downtown": 1618345375
       },
       "D": {
-        "uptown": "20:55:01",
-        "downtown": "20:44:07"
+        "uptown": 1618346005,
+        "downtown": 1618345305
       },
       "F": {
-        "uptown": "20:46:01",
-        "downtown": "20:52:07"
+        "uptown": 1618345375,
+        "downtown": 1618345375
       },
       "M": {
-        "uptown": "20:43:01",
-        "downtown": "20:50:07"
+        "uptown": 1618345620,
+        "downtown": 1618345305
       }
     }
   },
@@ -410,188 +450,83 @@ const testObj = {
     "stopName": "Grand St",
     "trains": {
       "B": {
-        "uptown": "20:45:46",
-        "downtown": "20:44:07"
+        "uptown": 1618345680,
+        "downtown": 1618345495
       },
       "D": {
-        "uptown": "20:53:01",
-        "downtown": "20:46:07"
+        "uptown": 1618345855,
+        "downtown": 1618345375
       }
     }
   },
   "D43": {
     "stopName": "Coney Island-Stillwell Av",
     "trains": {
-      "N": {
-        "uptown": "20:54:30",
-        "downtown": "20:44:07"
-      },
-      "Q": {
-        "uptown": "20:50:30",
-        "downtown": "20:44:07"
-      },
       "D": {
-        "uptown": "20:43:01",
-        "downtown": "20:53:37"
+        "uptown": 1618345590,
+        "downtown": 1618345660
       },
       "F": {
-        "uptown": "20:43:30",
-        "downtown": "20:44:07"
-      }
-    }
-  },
-  "R30": {
-    "stopName": "DeKalb Av",
-    "trains": {
-      "N": {
-        "uptown": "20:50:13",
-        "downtown": null
+        "uptown": 1618345650,
+        "downtown": 1618345685
       },
-      "W": {
-        "uptown": null,
-        "downtown": "21:24:07"
+      "N": {
+        "uptown": 1618345860,
+        "downtown": 1618345615
       },
       "Q": {
-        "uptown": "20:55:07",
-        "downtown": "20:45:31"
-      },
-      "R": {
-        "uptown": "20:43:01",
-        "downtown": "20:58:16"
-      },
-      "B": {
-        "uptown": "20:45:11",
-        "downtown": "20:42:56"
-      },
-      "D": {
-        "uptown": "20:43:01",
-        "downtown": null
+        "uptown": 1618345650,
+        "downtown": 1618345290
       }
     }
   },
   "R31": {
     "stopName": "Atlantic Av-Barclays Ctr",
     "trains": {
+      "D": {
+        "uptown": 1618345590,
+        "downtown": 1618345555
+      },
       "N": {
-        "uptown": "20:44:43",
-        "downtown": "20:52:34"
+        "uptown": 1618345375,
+        "downtown": 1618345555
       },
       "W": {
-        "uptown": null,
-        "downtown": "21:27:37"
+        "uptown": 1618347900,
+        "downtown": null
+      },
+      "Q": {
+        "uptown": 1618348350,
+        "downtown": null
       },
       "R": {
-        "uptown": "20:48:00",
-        "downtown": "20:43:01"
-      },
-      "D": {
-        "uptown": "20:51:07",
-        "downtown": "20:47:33"
-      }
-    }
-  },
-  "R32": {
-    "stopName": "Union St",
-    "trains": {
-      "N": {
-        "uptown": "20:43:01",
-        "downtown": null
-      },
-      "W": {
-        "uptown": null,
-        "downtown": "21:29:37"
-      },
-      "R": {
-        "uptown": "20:46:00",
-        "downtown": "20:44:51"
-      },
-      "D": {
-        "uptown": "20:49:07",
-        "downtown": null
-      }
-    }
-  },
-  "R33": {
-    "stopName": "4 Av-9 St",
-    "trains": {
-      "N": {
-        "uptown": "20:54:33",
-        "downtown": null
-      },
-      "W": {
-        "uptown": null,
-        "downtown": "21:31:37"
-      },
-      "R": {
-        "uptown": "20:43:30",
-        "downtown": "20:42:56"
-      },
-      "D": {
-        "uptown": "20:47:37",
-        "downtown": null
-      }
-    }
-  },
-  "R34": {
-    "stopName": "Prospect Av",
-    "trains": {
-      "N": {
-        "uptown": "20:53:03",
-        "downtown": null
-      },
-      "W": {
-        "uptown": null,
-        "downtown": "21:33:37"
-      },
-      "R": {
-        "uptown": "20:43:01",
-        "downtown": "20:42:56"
-      },
-      "D": {
-        "uptown": "20:45:37",
-        "downtown": null
-      }
-    }
-  },
-  "R35": {
-    "stopName": "25 St",
-    "trains": {
-      "N": {
-        "uptown": "20:51:03",
-        "downtown": null
-      },
-      "W": {
-        "uptown": null,
-        "downtown": "21:35:07"
-      },
-      "R": {
-        "uptown": "20:59:00",
-        "downtown": "20:44:07"
-      },
-      "D": {
-        "uptown": "20:44:07",
-        "downtown": null
+        "uptown": 1618345401,
+        "downtown": 1618345803
       }
     }
   },
   "R36": {
     "stopName": "36 St",
     "trains": {
+      "D": {
+        "uptown": 1618345305,
+        "downtown": 1618345307
+      },
       "N": {
-        "uptown": "20:49:03",
-        "downtown": "20:58:04"
+        "uptown": 1618345755,
+        "downtown": 1618345465
       },
       "W": {
-        "uptown": null,
-        "downtown": "21:37:07"
+        "uptown": 1618347330,
+        "downtown": null
+      },
+      "Q": {
+        "uptown": 1618348020,
+        "downtown": null
       },
       "R": {
-        "uptown": "20:57:00",
-        "downtown": "20:46:07"
-      },
-      "D": {
-        "uptown": "20:43:01",
-        "downtown": "20:44:07"
+        "uptown": 1618345305,
+        "downtown": 1618345305
       }
     }
   }
@@ -600,7 +535,7 @@ const testObj = {
 export default function LinePage() {
   const classes = useStyles()
   const { train } = useParams()
-
+  const curTime = new Date()
   return (
     <div className={classes.root}>
       <ThemeProvider theme={theme}>
@@ -614,12 +549,13 @@ export default function LinePage() {
               Object.keys(testObj).map((key, i) => 
                 <Grid key={i} item xs={12} md={4}>
                   <Box mt={3}>
-                    <StopCard stopId = {key} stopInfo={testObj[key]}/>
+                    <StopCard stopId = {key} stopInfo={testObj[key]} curTime={curTime}/>
                   </Box>
                 </Grid>
               )
             }
           </Grid>
+          <Box my={4}/>
         </Container>
       </ThemeProvider>
     </div>

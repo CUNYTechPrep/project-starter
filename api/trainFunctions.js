@@ -111,6 +111,7 @@ function findNearbyStops(lat, lon, dist, tripData, nearbyStops) {
 //   trains: {}
 // We will update it with all trains and time
 function updateStops(tripData, stopsObj) {
+  // const curTimeEpoch = new Date().getTime() / 1000
   tripData.forEach(data => {
     const trip = data.trip
     const trainType = trip.routeId
