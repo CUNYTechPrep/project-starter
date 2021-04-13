@@ -49,17 +49,17 @@ export default function StopCard(props) {
     setExpanded(!expanded);
   };
 
-  const [state, setFavorite] = React.useState("")
+  const [favorite, setFavorite] = React.useState("default")
   const handleColor = () => {
-    setFavorite(state === "" ? "secondary" : "");
+    setFavorite(favorite === "default" ? "secondary" : "default");
   }
 
   return (
     <Card className={classes.root}>
       <CardHeader
         action={
-          <IconButton aria-label="favorite">
-            <FavoriteIcon color = {state} onClick = {handleColor}/>
+          <IconButton aria-label="favorite" color = {favorite} onClick = {handleColor}>
+            <FavoriteIcon/>
           </IconButton>
         }
         title={stopInfo.stopName}

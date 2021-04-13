@@ -41,7 +41,7 @@ const LogIn = ({ onClick, styles }) => {
         </FormControl>
       </div>
       <h3>Don't have an Account? <a href="#" className={styles.link} onClick= {onClick}>Register Here!</a></h3>
-      <Button size="large" fullWidth="true" variant="contained" color="primary" onClick= {handleClick} className={classes.button}>
+      <Button size="large" fullWidth={true} variant="contained" color="primary" onClick= {handleClick} className={classes.button}>
         Log In
       </Button>
       
