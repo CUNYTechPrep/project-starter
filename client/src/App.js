@@ -25,9 +25,7 @@ const App = () => {
         <Route path="/about">
           <AboutUs />
         </Route>
-        <Route exact path="/line/:train">
-          <LinePage />
-        </Route>
+        <Route path="/line/:train" component={LinePage}/>
       </Switch>
     </Router>
   )

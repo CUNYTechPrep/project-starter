@@ -599,8 +599,7 @@ const testObj = {
 
 export default function LinePage() {
   const classes = useStyles()
-  // const { train } = useParams()
-  // console.log(train)
+  const { train } = useParams()
 
   return (
     <div className={classes.root}>
@@ -608,7 +607,7 @@ export default function LinePage() {
         <CssBaseline />
         <Container>
           <Box my={4}>
-            <TrainIcon train={'D'} width={75}/>
+            <TrainIcon train={train} width={75}/>
           </Box>
           <Grid container align="center">
             {
