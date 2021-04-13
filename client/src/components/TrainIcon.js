@@ -7,9 +7,9 @@ import train3 from '../imgs/svg/3.svg';
 import train4 from '../imgs/svg/4.svg';
 import train5 from '../imgs/svg/5.svg';
 import train6 from '../imgs/svg/6.svg';
-import train6d from '../imgs/svg/6d.svg';
+import train6x from '../imgs/svg/6x.svg';
 import train7 from '../imgs/svg/7.svg';
-import train7d from '../imgs/svg/7d.svg';
+import train7x from '../imgs/svg/7x.svg';
 import traina from '../imgs/svg/a.svg';
 import trainb from '../imgs/svg/b.svg';
 import trainc from '../imgs/svg/c.svg';
@@ -24,11 +24,7 @@ import trainm from '../imgs/svg/m.svg';
 import trainn from '../imgs/svg/n.svg';
 import trainq from '../imgs/svg/q.svg';
 import trainr from '../imgs/svg/r.svg';
-import trains from '../imgs/svg/s.svg';
-import trainsf from '../imgs/svg/sf.svg';
 import trainsir from '../imgs/svg/sir.svg';
-import trainsr from '../imgs/svg/sr.svg';
-import traint from '../imgs/svg/t.svg';
 import trainw from '../imgs/svg/w.svg';
 import trainz from '../imgs/svg/z.svg';
 
@@ -39,10 +35,11 @@ const paths = {
   '3': train3,
   '4': train4,
   '5': train5,
+  '5x': train5,
   '6': train6,
-  '6d': train6d,
+  '6x': train6x,
   '7': train7,
-  '7d': train7d,
+  '7x': train7x,
   'a': traina,
   'b': trainb,
   'c': trainc,
@@ -57,11 +54,7 @@ const paths = {
   'n': trainn,
   'q': trainq,
   'r': trainr,
-  's': trains,
-  'sf': trainsf,
-  'sir': trainsir,
-  'sr': trainsr,
-  't': traint,
+  'si': trainsir,
   'w': trainw,
   'z': trainz
 }

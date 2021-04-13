@@ -2,17 +2,22 @@ import 'fontsource-roboto';
 import { useParams } from 'react-router';
 import React from 'react';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import { CssBaseline, Typography, unstable_createMuiStrictModeTheme as createMuiTheme, Container, Box, Grid} from '@material-ui/core';
+import { CssBaseline, Typography, unstable_createMuiStrictModeTheme as createMuiTheme, Container, Box, Grid, Divider} from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import ReorderIcon from '@material-ui/icons/Reorder';
 // Custom Components
 import StopCard from '../components/StopCard.js'
 import TrainIcon from '../components/TrainIcon.js'
 
 // Material UI CSS
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     textAlign: "center",
-  }
-});
+  },
+  divider: {
+    marginTop: theme.spacing(4),
+  },
+}));
 
 // Material UI Theme
 const theme = createMuiTheme({
@@ -21,6 +26,66 @@ const theme = createMuiTheme({
   },
 });
 
+// const paths = {
+//   '1': train1,
+//   '2': train2,
+//   '3': train3,
+//   '4': train4,
+//   '5': train5,
+//   '5x': train5,
+//   '6': train6,
+//   '6x': train6x,
+//   '7': train7,
+//   '7x': train7x,
+//   'a': traina,
+//   'b': trainb,
+//   'c': trainc,
+//   'd': traind,
+//   'e': traine,
+//   'f': trainf,
+//   'g': traing,
+//   'h': trainh,
+//   'j': trainj,
+//   'l': trainl,
+//   'm': trainm,
+//   'n': trainn,
+//   'q': trainq,
+//   'r': trainr,
+//   'si': trainsir,
+//   'w': trainw,
+//   'z': trainz
+// }
+// Train Descrpitions
+const descriptions = {
+  '1': 'Trains operate between 242 St in the Bronx and South Ferry in Manhattan, at all times',
+  '2': 'Trains operate between Wakefield-241 St, Bronx, and Flatbush Av-Brooklyn College, Brooklyn, at all times. Trains operate local in Bronx and Brooklyn. Trains operate express in Manhattan except late night when it operates local.',
+  '3': 'Trains operate between 148 St, 7 Av, Manhattan, and New Lots Av, Brooklyn, at all times except late nights. During late nights, trains operate only in Manhattan between 148 St, 7 Av and Times Square-42 St.',
+  '4': 'Trains operate daily between Woodlawn/Jerome Av, Bronx, and Utica Av/Eastern Pkwy, Brooklyn, running express in Manhattan and Brooklyn. During late night and early morning hours, trains run local in Manhattan and Brooklyn, and extend beyond Utica Av to New Lots/Livonia Avs, Brooklyn.',
+  '5': 'Weekdays daytime, most trains operate between either Dyre Av or 238 St-Nereid Av, Bronx, and Flatbush Av-Brooklyn College, Brooklyn.',
+  '5x': 'Weekdays daytime, most trains operate between either Dyre Av or 238 St-Nereid Av, Bronx, and Flatbush Av-Brooklyn College, Brooklyn.',
+  '6': 'Local trains operate between Pelham Bay Park/Bruckner Expwy, Bronx, and Brooklyn Bridge/City Hall, Manhattan, at all times.',
+  '6x': 'Express trains operate between Pelham Bay Park/Bruckner Expwy, Bronx, and Brooklyn Bridge/City Hall, Manhattan, weekday mornings express in the Bronx toward Manhattan. Weekday afternoons and evenings, these trains operate express in the Bronx toward Pelham Bay Park.',
+  '7': 'Trains operate between Main St-Flushing, Queens, and 34th-Hudson Yards, Manhattan, at all times. ',
+  '7x': 'Trains operate between Main St-Flushing, Queens, and 34th St-Hudson Yards, Manhattan, weekday mornings toward Manhattan. Weekday afternoons and evenings, these trains operate express to Queens.',
+  'a': 'Trains operate between Inwood-207 St, Manhattan and Far Rockaway-Mott Avenue, Queens at all times.',
+  'b': 'Trains operate, weekdays only, between 145 St, Manhattan, and Brighton Beach, Brooklyn at all times except late nights. The route extends to Bedford Park Blvd, Bronx, during rush hours.',
+  'c': 'Trains operate between 168 St, Manhattan, and Euclid Av, Brooklyn, daily from about 6 AM to 11 PM.',
+  'd': 'Trains operate, at all times, from 205 Street, Bronx, to Stillwell Avenue, Brooklyn via Central Park West and 6th Avenue in Manhattan, and via the Manhattan Bridge to and from Brooklyn.',
+  'e': 'Trains operate between Jamaica Center (Parsons/Archer), Queens, and World Trade Center, Manhattan, at all times. E trains operate express in Queens at all times except late nights when they operate local.',
+  'f': 'Trains operate at all times between Jamaica-179 St, Queens, and Stillwell Av, Brooklyn via the 63 St Connector (serving 21 St-Queensbridge, Roosevelt Island, Lexington Av-63 St, and 57 St-6 Av). F trains operate local in Manhattan and express in Queens at all times.',
+  'g': 'Trains operate between Court Square, Queens and Church Av, Brooklyn on weekdays, late nights, and weekends.',
+  'h': 'Service operates at all times between Broad Channel, and Rockaway Park, Queens.',
+  'j': 'Trains operate weekdays between Jamaica Center (Parsons/Archer), Queens, and Broad St, Manhattan at all times.',
+  'l': 'Trains operate between 8 Av/14 St, Manhattan, and Rockaway Pkwy/Canarsie, Brooklyn, at all times.',
+  'm': 'Trains operate between Middle Village-Metropolitan Avenue, Queens and Myrtle Avenue, Brooklyn at all times. Service is extended weekdays (except late nights) Continental Ave, Queens, All trains provide local service.',
+  'n': 'Trains operate from Astoria-Ditmars Boulevard, Queens, to Stillwell Avenue, Brooklyn, at all times.',
+  'q': 'Trains operate between 96 St-2 Av, Manhattan, and Stillwell Av, Brooklyn at all times. Trains operate local in Brooklyn at all times. Train operate express in Manhattan at all times, except late nights when trains operate local in Manhattan.',
+  'r': 'Trains operate local between Forest Hills-71 Av, Queens, and 95 St/4 Av, Brooklyn, at all times except late nights. During late nights, trains operate only in Brooklyn between 36 St and 95 St/4 Av.',
+  'si': 'Service runs 24 hours a day between the St George and Tottenville terminals. At the St George terminal, customers can make connections with Staten Island Ferry service to Manhattan.',
+  'w': 'Trains operate from Astoria-Ditmars Boulevard, Queens, to Whitehall St, Manhattan, on weekdays only.',
+  'z': 'Trains operate weekday rush hours only. During weekday rush hours, J and Z trains provide skip-stop service.'
+
+}
 const testObj = {
   "A15": {
     "stopName": "125 St",
@@ -532,32 +597,57 @@ const testObj = {
   }
 }
 
-export default function LinePage() {
+export default function LinePage(props) {
   const classes = useStyles()
   const { train } = useParams()
   const curTime = new Date()
-  return (
-    <div className={classes.root}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Container>
-          <Box my={4}>
-            <TrainIcon train={train} width={75}/>
-          </Box>
-          <Grid container align="center">
-            {
-              Object.keys(testObj).map((key, i) => 
-                <Grid key={i} item xs={12} md={4}>
-                  <Box mt={3}>
-                    <StopCard stopId = {key} stopInfo={testObj[key]} curTime={curTime}/>
-                  </Box>
-                </Grid>
-              )
-            }
-          </Grid>
-          <Box my={4}/>
-        </Container>
-      </ThemeProvider>
-    </div>
-  )
+  
+  var jsonData = [];
+  for(var i in testObj)
+    jsonData.push([i, testObj[i]]);
+  const [stops, setStops] = React.useState(jsonData);
+  const handleReverse = () => {
+    setStops(stops.slice().reverse())
+  }
+  
+  if(train in descriptions)
+    return (
+      <div className={classes.root}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Container>
+            <Box my={4}>
+              <TrainIcon train={train} width={75}/>
+            </Box>
+            <Typography variant="h6" color="textSecondary">
+              {descriptions[train.toLowerCase()]}
+            </Typography>
+            <Divider className={classes.divider} variant="middle"/>
+            <Grid container justify="flex-end">
+              <Box mr={3}>
+                <IconButton aria-label="sort" onClick={handleReverse}>
+                  <ReorderIcon fontSize="large"/>
+                </IconButton>
+              </Box>
+            </Grid>
+            <Grid container align="center">
+              {
+                stops.map((val, i) => 
+                  <Grid key={i} item xs={12} md={4}>
+                    <Box mt={3}>
+                      <StopCard stopId = {val[0]} stopInfo={val[1]} curTime={curTime}/>
+                    </Box>
+                  </Grid>
+                )
+              }
+            </Grid>
+            <Box my={4}/>
+          </Container>
+        </ThemeProvider>
+      </div>
+    )
+  else
+    return (
+      <div className={classes.root}> Invalid Train </div>
+    )
 }

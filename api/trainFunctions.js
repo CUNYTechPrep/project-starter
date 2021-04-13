@@ -32,7 +32,7 @@ async function getTrips(urlList, tripData, callback) {
         numFetched ++
         // console.log(feed)
         if(numFetched === 8) {
-          console.log("\nFinished fetching live data from all 8 APIs")
+          console.log("\nFinished fetching live data from all 9 APIs")
           callback()
         }
       } 

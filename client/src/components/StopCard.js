@@ -68,7 +68,7 @@ export default function StopCard(props) {
   }
 
   return (
-    <Card className={classes.root}>
+    <Box component={Card} className={classes.root} boxShadow={3}>
       <CardHeader
         action={
           <IconButton aria-label="favorite" color = {favorite} onClick = {handleColor}>
@@ -138,6 +138,6 @@ export default function StopCard(props) {
           </Grid>
         </CardContent>
       </Collapse>
-    </Card>
+    </Box>
   );
 }
