@@ -56,7 +56,7 @@ body {
   opacity: 1;
 }
 
-.company{
+.front{
   position: relative;
   z-index: 2;
 }
@@ -65,4 +65,11 @@ body {
   font-weight: bold;
   text-align: center;
   text-shadow: 4px 4px rgba(28,28,30,0.9);
+}
+
+.container{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgba(0,0,0,0.8);
+  margin-bottom: 20px;
 }

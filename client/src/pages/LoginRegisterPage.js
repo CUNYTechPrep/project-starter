@@ -1,7 +1,8 @@
 import { React, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid, Typography } from '@material-ui/core';
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { makeStyles, ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import LogIn from '../components/LogIn';
+import Register from '../components/Register';
 import './LoginRegisterPage.css';
 
 /*
@@ -22,7 +23,34 @@ const useStyles = makeStyles({
       marginTop: '75px',
       marginBottom: '25px',
     }
-  }
+  },
+  root: {
+    '& label.Mui-focused': {
+      color: 'rgb(255,255,255)',
+      fontWeight: 'bold'
+    },
+  },
+  inputLabel: {
+    fontFamily: 'Montserrat, san-serif',
+    color: 'rgb(255,255,255)'
+  },
+  input: {
+    borderRadius: 3,
+    backgroundColor: 'rgb(255,255,255)',
+    padding: '5px 12px',
+    fontSize: '1.5em',
+    fontFamily: 'Montserrat, san-serif',
+    '@media (min-width:0px)': {
+      width: '390px'
+    },
+    '@media (min-width:600px)': {
+      width: '550px'
+    },
+  },
+  link: {
+    textDecoration: 'underline', 
+    color:'rgb(33,150,243)',
+  },
 })
 
 const theme = createMuiTheme({
@@ -32,17 +60,27 @@ const theme = createMuiTheme({
 });
 
 theme.typography.h1 = {
-  fontSize: '2rem',
+  fontSize: '2.5rem',
   [theme.breakpoints.up('sm')]: {
-    fontSize: '2.5rem',
+    fontSize: '3rem',
   },
   [theme.breakpoints.up('md')]: {
     fontSize: '4rem',
   },
 }
 
+
 const LoginRegister = () => {
   const classes = useStyles();
+
+  const [toggleView, setToggleView] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const toggleClick = (e) => {
+    e.preventDefault();
+    return (toggleView === 0 ? setToggleView(1) : setToggleView(0));
+  }
+
   return (
     <div>
       <ul className="slideshow">
@@ -62,8 +100,8 @@ const LoginRegister = () => {
         direction="row"
         justify="center"
         alignItems="center"
-        className={`${classes.grid} company`}
-        style={{ border: "1px solid red" }}>
+        className={`${classes.grid} front`}
+      >
         <Grid item>
           <h2>img svg</h2>
         </Grid>
@@ -73,6 +111,9 @@ const LoginRegister = () => {
           </ThemeProvider>
         </Grid>
       </Grid>
+      <Container maxWidth="sm" className="front container">
+        {toggleView === 0 ? <LogIn onClick={toggleClick} styles= {classes}/> : <Register onClick={toggleClick} styles= {classes}/>}
+      </Container>
     </div>
   )
 }

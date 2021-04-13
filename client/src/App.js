@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import LoginRegister from './pages/LoginRegisterPage';
 import HomePage from './pages/HomePage';
-
+import AboutUs from './pages/AboutUsPage';
 
 const App = () => {
   return (
@@ -20,6 +20,9 @@ const App = () => {
         </Route>
         <Route path="/home">
           <HomePage />
+        </Route>
+        <Route path="/about">
+          <AboutUs />
         </Route>
       </Switch>
     </Router>
