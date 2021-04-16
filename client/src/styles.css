@@ -1,37 +1,45 @@
 .swiper-container{
   width: 600px;
-  height:550px ;
+  height: 550px ;
+  /* margin: 0 auto; */
+  
 }
 .swiper-wrapper{
-  padding-inline-start: 0;
+  padding-inline-end: 1;
+  /* margin: 0 auto; */
 }
-.rectangle {  
-  position: relative;
 
+.rectangle {  
+  position: center;
   width: 414px;
   height: 548px;
-  left: 1px;
-  top: 0px;
-  background: #16b97b;
+
+  background: hsl(155, 36%, 91%);
+  border-color: hsl(147, 39%, 38%);
+  border: 3px groove;
 }
 .profile_image{
   position: relative;
   width: 388.87px;
   height: 299px;
-  left: 13.5px;
+  left: 10.5px;
   top: 10px;
   background: url(img/jc.jpg);
   background-size: cover;
-  border-radius: 100px;
+  border-radius: 10px;
+  border-color: green;
+  border: 3px groove;
 }
 .detailcontainer{
-position: relative;
-width: 414px;
-height: 166px;
-top:33px;
-left: 0px;
-
-background-color: rgb(79, 82, 105);
+  position: relative;
+  width: 408px;
+  height: 166px;
+  top:33px;
+  left: 0px;
+  color: white;
+  font-family: 'Work Sans', sans-serif;
+  
+  background-color: hsl(155, 45%, 49%);
 }
 .name_box{
   position:relative;
@@ -43,26 +51,26 @@ background-color: rgb(79, 82, 105);
   
   }
 .name_word{
-position: relative;
-width: 160px;
-height: 30px;
+  position: relative;
+  width: 200px;
+  height: 30px;
 
-font-family: Red Hat Text;
-font-style: normal;
-font-weight: bold;
-font-size: 14px;
-line-height: 19px;
-text-align: center;
+  font-family: Red Hat Text;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 19px;
+  text-align: center;
 
-color: #FFFFFF;
+  color: #FFFFFF;
 }
 .preference_box{
   position: relative;
-  width: 207px;
+  width: 200px;
   height: 73px;
   left: 207px;
   top: -72.5px;
-  background: #6db7b9;
+  background: hsl(182, 62%, 80%);
 }
 .preference_word{
   position: relative;
@@ -78,34 +86,26 @@ color: #FFFFFF;
 }
 .bio_box{
   position: relative;
-  width: 414px;
-  height: 127px;
+  width: 408px;
+  height: 163px;
   left: 0px;
-  top: -72px;
-  background: #6db7b9;
+  top: 10px;
+  color:#234e3e;
+  font-weight: normal;
+  background: #a0f0d8;
 }
 .bio_words{
   position: relative;
-  width: 356px;
-  height: 44px;
-  
-  
-  font-family: Red Hat Text;
-  font-style: normal;
   font-weight: bold;
-  font-size: 12px;
-  line-height: 16px;
-  text-align: center;
-  
-  color: #B9FFDD;
+  color: #6e6c6c;
 }
 
-.swiper-button-next {
-  width: 116px;
+.swiper-button-prev:after, 
+.swiper-button-next:after {
+  width: 306px;
   height: 105px;
- border-radius: 100px;
-left: 400px;
-  background: #45DE37;
-}
-
+  border-radius: 100px;
+  position: relative;
+  color: var(--swiper-navigation-color, #45de37);
+  background: #45DE37;}
 

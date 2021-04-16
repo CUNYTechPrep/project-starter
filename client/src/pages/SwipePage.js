@@ -12,26 +12,35 @@ import'swiper/swiper-bundle.css';
 // Ask users for their zipcode and then compare their zipcodes for area check
 // compare against the user's last known location
 
-SwiperCore.use(Navigation);
+SwiperCore.use([Navigation]);
 
 function SwipePage() {
   const slides=[];
 
   for (let i=0; i<5; i+=1){
     slides.push(
-      <SwiperSlide key={`slide-${i}`} tag="li">
+      <SwiperSlide key={`slide-${i}`} tag="ul">
         <div class='rectangle'>
-          test
           <div class='profile_image'></div>
           <div class='detailcontainer'>
-            <div class='name_box'>
-              <div class='name_word'> </div>
-            </div>
-            <div class='preference_box'>
-              <div class='preference_word'> John Cena,23</div>
-            </div>
+            <span style={{fontSize: 25}}>
+              John Cena, {i+20}
+            </span>
+
             <div class='bio_box'>
-              <div class='bio_word'>user bio  awawawawawawawawa</div>
+              <div style={{float: "left", marginLeft: 30, marginTop: 10}}>
+                <b>Height:</b> 6'1"
+              </div>
+              <div style={{float: "right", marginRight: 20, marginTop: 10}}>
+              <b>Weight:</b> 260 lbs
+              </div>
+              <br></br><br></br>
+              <div >
+                <b>Fitlevel:</b> Pro
+              </div>
+              <div className="bio_words" style={{marginLeft: 10, marginRight: 10, marginTop: 30}}>
+                I like bench pressing and squatting! Need somebody who is willing to work hard.
+              </div>
             </div>    
           </div>
         </div>
@@ -47,13 +56,13 @@ function SwipePage() {
       wrapperTag="ul" 
       navigation
       //pagination   //blue dots in bottom not needed
-      spaceBetween={.5} 
+      spaceBetween={0.5} 
+      speed={400}
       slidesPerView={1}
       onInit={(swiper) => console.log('Swiper initialized!', swiper)}
       onSlideChange={(swiper) => console.log('Slide index changed to !', swiper.activeIndex)}
       onReachEnd={() => console.log('Swiper end reached!')}
-
-      >
+    >
         {slides}
       </Swiper>
     </React.Fragment>
