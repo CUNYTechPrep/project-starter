@@ -56,3 +56,5 @@ function PlacesPage(props) {
 }
 
 export default PlacesPage;
+
+//Try Google Places API, or try NYC Open Data 

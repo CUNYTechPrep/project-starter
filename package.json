@@ -18,10 +18,11 @@
     "morgan": "^1.10.0",
     "pg": "^8.4.1",
     "pg-hstore": "^2.3.3",
+    "react-id-swiper": "^4.0.0",
     "react-resize-image": "^1.0.4",
     "resize-image": "^0.1.0",
     "sequelize": "^5.22.3",
-    "swiper": "^6.5.5",
+    "swiper": "^6.5.7",
     "w3-css": "^4.1.0"
   },
   "devDependencies": {

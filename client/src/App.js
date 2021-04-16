@@ -28,6 +28,11 @@ import { ReactComponent as MenuIcon } from './assets/menu.svg';
 import './css/Burger.css';
 
 
+// src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFXY2dx8oaeL9wTegcl2HMui-IIYYchJY&callback=initMap">
+// send data to back end point 
+// save their location in their account since not all users are always online
+// Ask users for their zipcode and then compare their zipcodes for area check
+
 function Navigation(props) {
   //Learned from online
   const [click, setClick] = useState(false);
