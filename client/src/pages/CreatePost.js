@@ -41,7 +41,7 @@ function Form (props) {
 
                     <div className="col-md-12" >
                         <label className="form-label text-warning"> Click the button to upload photos : </label>
-                        <input type="file"  name="photoAttachment" />
+                        <input type="file"  name="photoAttachment" accept="image/*" />
                     </div>
 
                     <div className="col-12">
@@ -72,7 +72,9 @@ class CreatePost extends React.Component {
                             state : " ",
                             zip : " ",
                             body : " "
-                        }
+                        }, 
+
+            files : []
         };
 
 
@@ -89,6 +91,7 @@ class CreatePost extends React.Component {
         let state = e.target.state.value;
         let zipCode = e.target.zipCode.value;
         let body = e.target.body.value;
+        let file = e.target.photoAttachment.files[0];
 
         this.setState(prevState => {
             let dataObj = { ...prevState.dataObj };
@@ -104,8 +107,13 @@ class CreatePost extends React.Component {
         })
 
         this.setState({
-            success : true
+            files : this.state.files.push(file)
+            //success : true
         })
+
+        
+
+
     }
 
 
