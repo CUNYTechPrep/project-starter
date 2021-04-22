@@ -1,20 +1,19 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const expressSession = require('express-session');
 const morgan = require('morgan');
 const path = require('path');
 const db = require('./models');
 const passport = require('./middlewares/authentication');
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 
 
 // this lets us parse 'application/json' content in http requests
-app.use(bodyParser.json())
+app.use(express.json());
 
 // setup passport and session cookies
-app.use(expressSession({ 
-  secret: process.env.SESSION_SECRET, 
+app.use(expressSession({
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true }));
 app.use(passport.initialize());
@@ -42,4 +41,8 @@ if(process.env.NODE_ENV==='production') {
 db.sequelize.sync({ force: false });
 
 // start up the server
-app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+if(PORT) {
+  app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+} else {
+  console.log("===== ERROR ====\nCREATE A .env FILE!\n===== /ERROR ====")
+}

@@ -1,4 +1,4 @@
-# Project Starter 
+# Project Starter
 A starter repo for building CUNY Tech Prep projects with React, Express.js, and Sequelize.js
 
 ## Stack
@@ -116,7 +116,7 @@ npm start
 
 ### Setting up Heroku
 
-Install the heroku cli if you don't already have it. 
+Install the heroku cli if you don't already have it.
 
 > You will also need a heroku account
 > And this will only be done once on your machine
@@ -145,8 +145,7 @@ heroku addons:create heroku-postgresql:hobby-dev
 Whenever you want to update the app run this command.
 
 ```bash
-git push heroku master
+git push heroku main
 ```
 
-> This command deploys your master branch. You can change that and deploy a different branch such as: `git push heroku development`
-
+> This command deploys your main branch. You can change that and deploy a different branch such as: `git push heroku development`
