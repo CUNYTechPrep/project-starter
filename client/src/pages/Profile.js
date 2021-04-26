@@ -31,13 +31,9 @@ function ProfilePage(props) {
                 Click to upload profile picture
                 </div>
 
-
-
                 <div className="col-md-3">
                     <label className="form-label text-warning float-start"> Email :</label>
                     <input type="text" name="email" className="form-control" placeholder="Enter Email" />
-
-
 
                     <label className="form-label text-warning"> First Name : </label>
                     <input type="text" name="firstName" className="form-control" placeholder="Enter First Name" />
@@ -45,24 +41,19 @@ function ProfilePage(props) {
 
                     <label className="form-label text-warning"> Birth Date : </label>
                     <input name="dateOfBirth" className="form-control" placeholder="" type="date" min="1900-01-01" max={new Date().toISOString().split("T")[0]} />
-
                 </div>
 
                 <div className='col mid-4'>
-
                     <label className="form-label text-warning"> Zip Code : </label>
                     <input name="zipCode" className="form-control" placeholder="Enter Zip Code" />
 
                     <label className="form-label text-warning"> Last Name : </label>
                     <input type="text" name="lastName" className="form-control" placeholder="Enter Last Name" />
 
-
-
                 </div>
 
                 <div className="col-12">
                     <input className="btn btn-primary m-3" type="submit" value="Update" />
-
                 </div>
 
             </div>
@@ -72,11 +63,42 @@ function ProfilePage(props) {
     );
 }
 
+function Tags(props){
+
+    return (
+       
+            <div className='row justify-content-around bg-secondary'>
+
+                <div className='col-md-4 bg-light'>
+                    <p>Tag</p>
+                </div>
+
+                <div className='col-md-4 bg-light'>
+                    <p>Tag</p>
+                </div>
+                <div className='col-md-4 bg-light'>
+                    <p>Tag</p>
+                </div>
+                <div className='col-md-4 bg-light'>
+                    <p>Tag</p>
+                </div>
+                <div className='col-md-4 bg-light'>
+                    <p>Tag</p>
+                </div>
+
+            </div>
+       
+    )
+}
+
 class Profile extends React.Component {
 
     render() {
         return (
-            <ProfilePage />
+            <div>
+                <ProfilePage />
+                <Tags />
+            </div>
         )
     }
 
