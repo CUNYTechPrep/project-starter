@@ -21,7 +21,7 @@ import './App.css';
 
 
 function Navigation(props) {
-
+/*
   const [dropdown, setDropdown] = useState(false);
 
   const onMouseEnter = () => {
@@ -38,7 +38,8 @@ function Navigation(props) {
     } else {
       setDropdown(false);
     }
-  };
+  }; 
+  */
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
       <Link className="navbar-brand" to="/">Micro Blog</Link>
@@ -88,8 +89,8 @@ class App extends React.Component {
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/sign-up" component={SignUp} />
               <Route path="/log-in" component={LogIn} />
-              <Route path="/" component={PostsListPage} />
               <Route path="/profile" component={Profile} />
+              <Route path="/" component={PostsListPage} />
             </Switch>
           </div>
         </div>
