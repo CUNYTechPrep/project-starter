@@ -1,4 +1,4 @@
-/*.dropsize{
+.dropsize{
     max-height: 200px;
     max-width:400px;
     overflow: scroll;
@@ -34,4 +34,8 @@
 .checkbox-menu li.active label:hover,
 .checkbox-menu li.active label:focus {
     background-color: #b8b8ff;
-}*/
+}
+
+.rowPad{
+    padding: 20px 20px 0;
+}

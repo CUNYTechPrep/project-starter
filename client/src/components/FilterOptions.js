@@ -1,32 +1,80 @@
 import React from 'react';
 import "../styles/Filter.css"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Dropdown, DropdownButton} from "react-bootstrap";
 
 const preventDropdownClose = (e) =>{
-    if(e.target.localName !== "button"){
+    console.log(e)
+    /*if(e.target.localName !== "button"){
         e.stopPropagation()
-    }
+    }*/
 }
 const checkedBox = (e) => {
     console.log(e)
 }
 const SizeFilter = () => {
     return(
-        <div className="dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
-            </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a className="dropdown-item" href="#">Action</a></li>
-                <li><a className="dropdown-item" href="#">Another action</a></li>
-                <li><a className="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-        </div>
+        <DropdownButton onClick={(e)=>console.log(e)} id="dropdown-basic-button" title="Size">
+            <Dropdown.Item >Action</Dropdown.Item>
+            <Dropdown.Item >Another action</Dropdown.Item>
+            <Dropdown.Item >Something else</Dropdown.Item>
+        </DropdownButton>
     )
+}
+const SubwayFilter = () => {
+    return(
+        <div className="dropdown" onClick={(e)=> preventDropdownClose(e)}>
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Subway
+            </button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a className="dropdown-item" >Action</a>
+                <a className="dropdown-item" >Another action</a>
+                <a className="dropdown-item" >Something else here</a>
+            </div>
+        </div>
+    );
+}
+const SportsFilter = () => {
+    return(
+        <div className="dropdown" onClick={(e)=> preventDropdownClose(e)}>
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sports
+            </button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a className="dropdown-item" >Action</a>
+                <a className="dropdown-item" >Another action</a>
+                <a className="dropdown-item" >Something else here</a>
+            </div>
+        </div>
+    );
+}
+
+const MoreFilter = () =>{
+    return(
+        <div className="dropdown" onClick={(e)=> preventDropdownClose(e)}>
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                More Filter
+            </button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a className="dropdown-item" >Action</a>
+                <a className="dropdown-item" >Another action</a>
+                <a className="dropdown-item" >Something else here</a>
+            </div>
+        </div>
+    );
 }
 const FilterRow = () => {
     return(
-                <SizeFilter/>
+        <div className="row justify-content-center rowPad">
+            <div className="col"><SizeFilter/></div>
+                
+
+            <div className="col"><SubwayFilter/></div>
+                
+            <div className="col"><SportsFilter/></div>
+
+            <div className="col"><MoreFilter/></div>
+        </div>
     );
 }
 

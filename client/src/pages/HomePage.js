@@ -37,6 +37,7 @@ const HomePage = () => {
       </div>
     );
   }*/
+console.log(React.version);
 
   
   return(

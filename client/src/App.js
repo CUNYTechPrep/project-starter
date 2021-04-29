@@ -16,10 +16,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.css";
-import $ from 'jquery';
-import Popper from 'popper.js';
-import 'bootstrap/dist/js/bootstrap.bundle';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 // import PostFormPage from "./pages/PostFormPage";
 // import ShowPostPage from "./pages/ShowPostPage";
@@ -81,8 +77,8 @@ function Navigation(props) {
   );
 }
 
-class App extends React.Component {
-  render() {
+const App = () => {
+
     return (
       <Router>
         <AuthProvider>
@@ -100,6 +96,6 @@ class App extends React.Component {
       </Router>
     );
   }
-}
+
 
 export default App;
