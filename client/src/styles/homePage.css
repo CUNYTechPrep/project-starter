@@ -1,0 +1,31 @@
+:root{
+    background-color: grey;
+}
+
+.leftSide{
+    width: 500px;
+    height: 100vh;
+}
+.rightSide{
+    position: fixed;
+    display: inline-block;
+    top:0;
+    right: 0;
+    height: 100%;
+    width: calc(100% - 500px);
+}
+.innerRight{
+    width: 100%;
+    height: 100%;
+}
+.parent {
+    display: flex;
+    /*grid-template-columns: minmax(150px, 25%) 1fr;*/
+    
+    /*background-color: #000000;*/
+    
+  }
+
+.inputSetting{
+    padding: 20px 20px 0;
+}

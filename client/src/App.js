@@ -7,7 +7,7 @@ import {
   NavLink,
   useHistory,
 } from "react-router-dom";
-import PostsListPage from "./pages/PostsListPage";
+import HomePage from "./pages/HomePage";
 import AboutUsPage from "./pages/AboutUsPage";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -16,7 +16,10 @@ import PrivateRoute from "./components/PrivateRoute";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.css";
-
+import $ from 'jquery';
+import Popper from 'popper.js';
+import 'bootstrap/dist/js/bootstrap.bundle';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // import PostFormPage from "./pages/PostFormPage";
 // import ShowPostPage from "./pages/ShowPostPage";
@@ -31,7 +34,7 @@ function Navigation(props) {
   }
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
+    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow navIndex">
       <Link className="navbar-brand" to="/">
         School Finder
       </Link>
@@ -84,19 +87,15 @@ class App extends React.Component {
       <Router>
         <AuthProvider>
           <Navigation />
-          <div className="container-fluid text-center">
-            <div className="row justify-content-center">
               <Switch>
                 <PrivateRoute exact path="/profile" component={Profile} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/login" component={Login} />
-                <Route path="/" component={PostsListPage} />
+                <Route path="/" component={HomePage} />
                 {/* <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} /> */}
               </Switch>
-            </div>
-          </div>
         </AuthProvider>
       </Router>
     );

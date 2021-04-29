@@ -1,10 +1,13 @@
 import React from 'react';
 import Post from '../components/Post';
 import Loading from '../components/Loading';
+import Map from '../components/Map'
+import "../styles/homePage.css"
+import InputForm from '../components/InputForms'
+import FilterRow from '../components/FilterOptions'
 
-
-class PostsListPage extends React.Component {
-  state = {
+const HomePage = () => {
+  /*state = {
     posts: [],
     loading: true,
   }
@@ -33,7 +36,21 @@ class PostsListPage extends React.Component {
         </div>
       </div>
     );
-  }
+  }*/
+
+  
+  return(
+    <div className="parent">
+      <div className="leftSide">
+        <InputForm/>
+        <FilterRow/>
+      </div>
+      <div className="rightSide">
+        <Map/>
+      </div>
+      
+    </div>
+  );
 }
 
-export default PostsListPage;
+export default HomePage;
