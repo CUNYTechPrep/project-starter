@@ -12,6 +12,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import Review from "./pages/Review";
 import PrivateRoute from "./components/PrivateRoute";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useAuth } from "./contexts/AuthContext";
@@ -54,6 +55,11 @@ function Navigation(props) {
               </NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" exact to="/review">
+                Reviews
+              </NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" onClick={handleLogout} exact to="/">
                 Logout
               </NavLink>
@@ -91,6 +97,7 @@ class App extends React.Component {
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/login" component={Login} />
+                <Route path="/review" component={Review} />
                 <Route path="/" component={PostsListPage} />
                 {/* <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} /> */}
