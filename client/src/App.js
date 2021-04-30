@@ -7,13 +7,19 @@ import {
   Link,
   NavLink,
 } from 'react-router-dom';
+
+//Authentication imports
+import PrivateRoute from './components/PrivateRoute';
+import AuthButton from './components/AuthButton';
+import LoginPage from './pages/LoginPage';
+
 //import PostsListPage from './pages/PostsListPage';
 //import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 import ForumPage from './pages/ForumPage';
 import WelcomePage from './pages/WelcomePage';
-import LoginPage from './pages/LoginPage';
+
 import PlacesPage from './pages/PlacesPage';
 import SignUpPage from './pages/SignUpPage';
 import ContactUsPage from './pages/ContactUsPage';
@@ -122,10 +128,9 @@ class App extends React.Component {
               <Route path="/sign-in" component={LoginPage} />
               <Route path="/sign-up" component={SignUpPage} />
               <Route path="/contact-us" component={ContactUsPage} />
-              <Route path="/swipe" component={SwipePage} />
-          
-              <Route path="/profile" component={ProfilePage} />
-              {/* <Route path="/" component={PostsListPage} /> */}
+              <PrivateRoute path="/swipe" component={SwipePage} />
+              <PrivateRoute path="/profile" component={ProfilePage} />
+              
             </Switch>
           </div>
         </div>

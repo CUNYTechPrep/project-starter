@@ -14,7 +14,7 @@ const threadController = require('./thread.js'); //GET, POST, PUT, DELETE
 //    PUT    /thread/:specific thread
 //    DELETE /thread/:specific thread
 
-const profileController = require('./profile.js'); //GET, PUT, POST, DELETE
+const profileController = require('./user.js'); //GET, PUT, POST, DELETE
 
 // GET, PUT (to update data on server)
     // If two people swiped on each other, 
@@ -29,12 +29,14 @@ const placesController = require('./places.js'); //GET
 
 
 const appConfigController = require('./appConfig.js');
+const authController = require('./auth');
 
 
 // Mount each controller under a specific route. These
 // will be prefixes to all routes defined inside the controller
 router.use('/posts', postsController);
 router.use('/application-configuration', appConfigController);
+router.use('/auth', authController);
 
 
 module.exports = router;

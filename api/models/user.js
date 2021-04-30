@@ -18,29 +18,52 @@ const { Model } = require('sequelize');
 //     the controller then speaks to the model which speaks to the database.
 
 module.exports = (sequelize, DataTypes) => {
-  class Profile extends Model {}
+  class User extends Model {
+    getFullname() {
+      return [this.firstName, this.lastName].join(' ');
+    }
+  }
 
-  Profile.init({
-    name: {
+  User.init({
+    firstName: { type: DataTypes.STRING },
+    lastName: { type: DataTypes.STRING },
+    email: {
       type: DataTypes.STRING,
+      unique: true,
       validate: {
-        len: [3, 250],
-        notEmpty: true,
-      }
+        isEmail: true,
+      },
+    },
+    passwordHash: { type: DataTypes.STRING },
+    password: { 
+      type: DataTypes.VIRTUAL,
+      validate: {
+        isLongEnough: (val) => {
+          if (val.length < 7) {
+            throw new Error("Please choose a longer password"); //we can decide any other restrictions
+          }
+        },
+      },
     },
   }, {
     sequelize,
-    modelName: 'profile'
+    modelName: 'user'
   });
 
-  Profile.associate = (models) => {
+  User.associate = (models) => {
     // associations can be defined here
 
-    models.Profile.hasMany(models.Swipe, {as: "swiper"});
-    models.Profile.hasMany(models.Swipe, {as: 'swipee'});
+    models.User.hasMany(models.Swipe, {as: "swiper"});
+    models.User.hasMany(models.Swipe, {as: 'swipee'});
   };
 
-  return Profile;
+  User.beforeSave((user, options) => {
+    if(user.password) {
+      user.passwordHash = bcrypt.hashSync(user.password, 10);
+    }
+  });
+
+  return User;
 };
 
 //my profile is id#1, and there are 5 potential buddies
