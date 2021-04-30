@@ -7,7 +7,9 @@ const classes = "btn btn-primary";
 
 const AuthButton = withRouter(({ history }) => {
   if(!auth.isAuthenticated) {
-    return <Link className={classes} to="/login">Login</Link>;
+    return (
+      <Link className={classes} to="/login">Login</Link>
+    );
   }
 
   const logout = () => {

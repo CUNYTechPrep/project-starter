@@ -51,29 +51,45 @@ class LoginPage extends React.Component {
     }
 
     return (
-      <form onSubmit={this.login}>
-        <div className="form-row">
-          { err }
-          <input 
-            type="email"
-            className="form-control"
-            name="email"
-            placeholder="Email" 
-            value={this.state.email} 
-            onChange={this.fieldChanged('email')} />
-          <input 
-            type="password"
-            className="form-control"
-            name="password"
-            placeholder="Password" 
-            value={this.state.password} 
-            onChange={this.fieldChanged('password')} />
-          <button 
-            type="submit"
-            className="btn btn-primary ml-auto"
-          >Login</button>
-        </div>
-      </form>
+      <div>
+        <form onSubmit={this.login}>
+          <div className="div-heading">
+            <img className="logo" alt="dumbell-logo" src={logo} />
+            <h1>Login to Fitbud!</h1>
+          </div>
+          <div className="div-background">
+            { err }
+            <input 
+              type="email"
+              className="form-control"
+              name="email"
+              placeholder="Email" 
+              value={this.state.email} 
+              onChange={this.fieldChanged('email')} />
+              <br></br>
+            <input 
+              type="password"
+              className="form-control"
+              name="password"
+              placeholder="Password" 
+              value={this.state.password} 
+              onChange={this.fieldChanged('password')} />
+              <br></br>
+            <button className="button-login" type="submit">
+              Login
+            </button>
+            <Link to="./sign-up">
+              <button className="button-signup" type="button">
+                Sign Up
+              </button>
+            </Link>
+          </div>
+        </form>
+          <div style={{float: "right", color: "#979797",
+            marginBottom: 10}}>
+            @Fitbud
+          </div>
+      </div>
     );
   }
 }
@@ -99,32 +115,32 @@ export default LoginPage;
 //           <button className="button-login" type="submit">
 //             Login
 //           </button>
-//           <Link to="./sign-up">
-//             <button className="button-signup" type="button">
-//               Sign Up
-//             </button>
-//           </Link>
+          // <Link to="./sign-up">
+          //   <button className="button-signup" type="button">
+          //     Sign Up
+          //   </button>
+          // </Link>
 //         </form>
 //       </div>
-//       <div style={{ color: 'gray', paddingTop: 20 }}>OR</div>
-//       <div style={{ paddingTop: 20 }}>
-//         <button
-//           style={{ backgroundColor: 'lightgray', borderRadius: 5
-//           , marginBottom: 40  }}
-//           type="submit"
-//         >
-//           Sign in with <span className="blue">G</span>
-//           <span className="red">o</span>
-//           <span className="yellow">o</span>
-//           <span className="blue">g</span>
-//           <span className="green">l</span>
-//           <span className="red">e</span>
-//         </button>
-//       </div>
-//       <div style={{float: "right", color: "#979797",
-//         marginBottom: 10}}>
-//         @Fitbud
-//       </div>
+      // <div style={{ color: 'gray', paddingTop: 20 }}>OR</div>
+      // <div style={{ paddingTop: 20 }}>
+      //   <button
+      //     style={{ backgroundColor: 'lightgray', borderRadius: 5
+      //     , marginBottom: 40  }}
+      //     type="submit"
+      //   >
+      //     Sign in with <span className="blue">G</span>
+      //     <span className="red">o</span>
+      //     <span className="yellow">o</span>
+      //     <span className="blue">g</span>
+      //     <span className="green">l</span>
+      //     <span className="red">e</span>
+      //   </button>
+      // </div>
+      // <div style={{float: "right", color: "#979797",
+      //   marginBottom: 10}}>
+      //   @Fitbud
+      // </div>
 //     </div>
 //   );
 // }
