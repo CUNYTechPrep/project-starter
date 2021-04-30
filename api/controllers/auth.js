@@ -3,7 +3,7 @@ const { User } = require('../models');
 const passport = require('../middlewares/authentication');
 
 
-router.post('/sign-up', (req, res) => {
+router.post('/signup', (req, res) => {
   console.log("POST body: ", req.body);
   User.create({
     firstName: req.body.firstName,
@@ -19,7 +19,7 @@ router.post('/sign-up', (req, res) => {
     });
 });
 
-router.post('/sign-in',
+router.post('/login',
   passport.authenticate('local'), 
   (req, res) => {
     // If this function gets called, authentication was successful.
@@ -27,8 +27,7 @@ router.post('/sign-in',
     res.json(req.user);
   });
 
-  // we might not need a sign-out url here, we might prefer redirection instead
-router.post('/sign-out', (req, res) => {
+router.post('/logout', (req, res) => {
   req.logout();
   res.status(200).json({ message: 'Logout successful' });
 })

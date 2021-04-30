@@ -3,6 +3,7 @@ import 'w3-css/w3.css';
 import '../../css/ProfilePage.css';
 import ProfileStat from './ProfileStat';
 import ProfilePic from './ProfilePic';
+import AuthButton from '../AuthButton';
 
 function ProfilePage(props) {
   return (
@@ -46,10 +47,10 @@ function ProfilePage(props) {
               </div>
               <br></br>
               <div style={{borderRadius: 30}}>
-                <button className="button-edits" style={{marginLeft: 30, backgroundColor: '#34865D',
+                <AuthButton className="button-edits" style={{marginLeft: 30, backgroundColor: '#34865D',
                   height: 50, width: 300, borderRadius: 30, marginTop: 30}}>
                   Logout
-                </button>
+                </AuthButton>
               </div>
             </div>
           </div>

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
 import auth from '../services/auth';
+import AuthSignUpButton from '../components/AuthSignUpButton';
 
 import logo from '../img/dumbbell.png';
 import '../App.css';
@@ -26,16 +27,16 @@ class SignUpPage extends React.Component {
     }
   }
 
-  login = (e) => {
-    e.preventDefault();
-    let { email, password } = this.state;
-    auth.authenticate(email, password)
-      .then((user) => {
-        this.setState({ redirectToReferrer: true });
-      })
-      .catch((err) => {
-        this.setState({ failed: true });
-      });
+  signup = (e) => {
+    // e.preventDefault();
+    // let { email, password } = this.state;
+    // auth.authenticate(email, password)
+    //   .then((user) => {
+    //     this.setState({ redirectToReferrer: true });
+    //   })
+    //   .catch((err) => {
+    //     this.setState({ failed: true });
+    //   });
   }
 
   render() {
@@ -53,7 +54,7 @@ class SignUpPage extends React.Component {
 
     return (
       <div>
-        <form onSubmit={this.login}>
+        <form onSubmit={this.signup}>
           <div className="div-heading">
             <img className="logo" alt="dumbell-logo" src={logo} />
             <h1>Sign Up to Fitbud!</h1>
@@ -76,14 +77,9 @@ class SignUpPage extends React.Component {
               value={this.state.password} 
               onChange={this.fieldChanged('password')} />
               <br></br>
-            <button className="button-signup" type="submit">
+            <AuthSignUpButton className="button-signup" type="submit">
               Sign Up
-            </button>
-            {/* <Link to="./sign-up">
-              <button className="button-signup" type="button">
-                Sign Up
-              </button>
-            </Link> */}
+            </AuthSignUpButton>
           </div>
         </form>
           <div style={{float: "right", color: "#979797",

@@ -35,9 +35,9 @@ module.exports = (sequelize, DataTypes) => {
 
   Swipe.associate = (models) => {
     // associations can be defined here
-    models.Swipe.hasOne(models.Profile, {as: 'swiper'});
+    models.Swipe.belongsTo(models.User, {as: 'swiper'});
 
-    models.Swipe.hasOne(models.Profile, {as: 'swipee'});
+    models.Swipe.belongsTo(models.User, {as: 'swipee'});
     //our code has a relationship, AND a status [left or right]
     //SHOWN in line 24
   };

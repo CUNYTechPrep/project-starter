@@ -5,7 +5,10 @@ const router = express.Router();
 // Load each controller
 const postsController = require('./posts.js');
 //const forumController = require('./forum.js'); //GET, POST, PUT, DELETE
-const threadController = require('./thread.js'); //GET, POST, PUT, DELETE
+//const threadController = require('./thread.js'); //GET, POST, PUT, DELETE
+
+
+
 //you could combine forum and thread into one IF it works out
 //a thread belongs to a single forum post, but it also depends on what you mean by forum
 //    GET    /thread
@@ -14,7 +17,7 @@ const threadController = require('./thread.js'); //GET, POST, PUT, DELETE
 //    PUT    /thread/:specific thread
 //    DELETE /thread/:specific thread
 
-const profileController = require('./user.js'); //GET, PUT, POST, DELETE
+//const profileController = require('./user.js'); //GET, PUT, POST, DELETE
 
 // GET, PUT (to update data on server)
     // If two people swiped on each other, 
@@ -24,9 +27,7 @@ const swipeProfileController = require('./swipe.js'); //GET, PUT
 //get maps location info from front end to here
 
 
-const matchedbuddiesController = require('./buddies.js'); //GET
-const placesController = require('./places.js'); //GET
-
+//const matchedbuddiesController = require('./buddies.js'); //GET
 
 const appConfigController = require('./appConfig.js');
 const authController = require('./auth');
