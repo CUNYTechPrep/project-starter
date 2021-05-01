@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Card({ content, createdAt, id }) {
+function Card({ content, name, id }) {
   return (
     <div className="col-10 col-md-8 col-lg-7 m-auto pt-4">
       <div className="card mb-4 shadow">
         <div className="card-header text-left">
-          { createdAt }
+          { name }
         </div>
         <div className="card-body card-text">
-          <Link to={"/posts/"+id}>{ content }</Link>
+          {content}
         </div>
       </div>
     </div>
@@ -17,3 +17,4 @@ function Card({ content, createdAt, id }) {
 }
 
 export default Card;
+//<Link to={"/posts/"+id}>{ content }</Link>

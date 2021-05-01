@@ -25,10 +25,10 @@ const SchoolForm = ({items, compItems}) => {
     const [error, setError] = useState('')
     
     const formSubmit = (e) =>{
+        //Remove this once I add school page
         e.preventDefault()
-        console.log(e.target[0].defaultValue)
-        //console.log(e.target[0].defaultValue in compItems)
         if(e.target[0].defaultValue in compItems === false){
+            //e.preventDefault()
             setError('Please type in the correct school name.')
             return
         }

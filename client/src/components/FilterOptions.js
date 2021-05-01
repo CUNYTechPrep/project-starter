@@ -4,7 +4,15 @@ import { Dropdown, DropdownButton} from "react-bootstrap";
 
 
 const FilterRow = (props) => {
-    let filter = {}
+    let filter = {
+        borough: [],
+        advancedplacement_courses: [],
+        //[0] = psal_sports_boys, [1] = psal_sports_girls, [2] = psal_sports_coed
+        sports: [[],[],[]],
+        subway: [],
+        postcode: [],
+        accessbility: [],
+    }
     const [checked_boxes, setCheckedBoxes] = useState({
         borough: [],
         advancedplacement_courses: [],
@@ -14,6 +22,7 @@ const FilterRow = (props) => {
         postcode: [],
         accessbility: [],
     }) 
+
 
     const checkedBox = (e) => {
         e.persist()
@@ -151,12 +160,242 @@ const FilterRow = (props) => {
         }
 
         
-
-        console.log(filter)
-        //props.parentCallback(filter);
+        filterSchools(filter)
         setCheckedBoxes(filter)
     }
-    console.log("checking",checked_boxes)
+
+    const filterSchools = (filterOption) =>{
+        //FILTER ONE BY ONE , FIRST borough,, THEN THE REST 
+        /*
+
+        borough: [],
+        advancedplacement_courses: [],
+        //[0] = psal_sports_boys, [1] = psal_sports_girls, [2] = psal_sports_coed
+        sports: [[],[],[]],
+        subway: [],
+        postcode: [],
+        accessbility: [],
+        */
+    if (filterOption.borough.length > 0 || filterOption.advancedplacement_courses.length > 0 || filterOption.sports[0].length > 0 || filterOption.sports[1].length > 0|| filterOption.sports[2].length > 0|| filterOption.subway.length > 0 || filterOption.postcode.length > 0|| filterOption.accessbility.length > 0 ){
+        var temp = [];
+        ["borough"].forEach((curr) => {
+            filterOption[curr].forEach((e)=>{
+              temp = temp.concat(props.data.filter((dict,n) => {return dict[curr] === e}))
+          })
+        });
+  
+        ["advancedplacement_courses"].forEach((curr) => {
+          if(temp.length === 0 && filterOption.advancedplacement_courses.length > 0){
+            temp = props.data
+            filterOption["advancedplacement_courses"].forEach((e)=>{   
+              var temp_2 = [];       
+              temp_2 = temp_2.concat(temp.filter((dict,n) => {
+                if(dict["advancedplacement_courses"] !== undefined){
+                  return dict["advancedplacement_courses"].includes(e);
+                }
+                return
+              }))
+              temp = temp_2
+            })
+          }
+          else if(filterOption.advancedplacement_courses.length > 0){
+            
+            filterOption["advancedplacement_courses"].forEach((e)=>{   
+              var temp_2 = [];       
+              temp_2 = temp_2.concat(temp.filter((dict,n) => {
+                if(dict["advancedplacement_courses"] !== undefined){
+                  return dict["advancedplacement_courses"].includes(e);
+                } 
+                return
+              }))
+              temp = temp_2
+            })
+          }
+        });
+        
+        ["subway"].forEach((curr) => {
+          if(temp.length === 0 && filterOption.subway.length > 0){
+            temp = props.data
+            filterOption[curr].forEach((e)=>{   
+              var temp_2 = [];       
+              temp_2 = temp_2.concat(temp.filter((dict,n) => {
+                if(dict[curr] !== undefined){
+                  if (dict[curr].includes(e+",")){
+                    return dict[curr].includes(e);
+                  }
+                  else if (dict[curr].includes(e+" ")){
+                    return dict[curr].includes(e);
+                  }
+                } 
+                return
+  
+              }))
+              temp = temp_2
+            })
+          }
+          else if(filterOption.subway.length > 0){
+            filterOption[curr].forEach((e)=>{   
+              var temp_2 = [];       
+              temp_2 = temp_2.concat(temp.filter((dict,n) => {
+                if(dict[curr] !== undefined){
+                  if (dict[curr].includes(e+",")){
+                    return dict[curr].includes(e);
+                  }
+                  else if (dict[curr].includes(e+" ")){
+                    return dict[curr].includes(e);
+                  }
+                }
+                return
+              }))
+              temp = temp_2
+            })
+          }
+        });
+        
+       ["sports"].forEach((curr) => {
+          if(temp.length === 0 && (filterOption.sports[0].length > 0 || filterOption.sports[1].length > 0 || filterOption.sports[2].length > 0)){
+            temp = props.data
+            if(filterOption.sports[0].length > 0){
+              filterOption[curr][0].forEach((e)=>{
+                
+                var temp_2 = [];       
+                temp_2 = temp_2.concat(temp.filter((dict,n) => {
+                  if(dict["psal_sports_boys"] !== undefined){
+                    return dict["psal_sports_boys"].includes(e);
+                  } 
+                }))
+                temp = temp_2
+              })
+            }
+            if(filterOption.sports[1].length > 0){
+              filterOption[curr][1].forEach((e)=>{
+                var temp_2 = [];       
+                temp_2 = temp_2.concat(temp.filter((dict,n) => {
+                  if(dict["psal_sports_girls"] !== undefined){
+                    return dict["psal_sports_girls"].includes(e);
+                  } 
+                }))
+                temp = temp_2
+              })
+            }
+            if(filterOption.sports[2].length > 0){
+              filterOption[curr][2].forEach((e)=>{
+                var temp_2 = [];       
+                temp_2 = temp_2.concat(temp.filter((dict,n) => {
+                  if(dict["psal_sports_coed"] !== undefined){
+                    return dict["psal_sports_coed"].includes(e);
+                  } 
+                }))
+                temp = temp_2
+              })
+            }
+            return
+          }
+          else{
+            if(filterOption.sports[0].length > 0){
+              filterOption[curr][0].forEach((e)=>{
+                
+                var temp_2 = [];       
+                temp_2 = temp_2.concat(temp.filter((dict,n) => {
+                  if(dict["psal_sports_boys"] !== undefined){
+                    return dict["psal_sports_boys"].includes(e);
+                  } 
+                }))
+                temp = temp_2
+              })
+            }
+            if(filterOption.sports[1].length > 0){
+              filterOption[curr][1].forEach((e)=>{
+                var temp_2 = [];       
+                temp_2 = temp_2.concat(temp.filter((dict,n) => {
+                  if(dict["psal_sports_girls"] !== undefined){
+                    return dict["psal_sports_girls"].includes(e);
+                  } 
+                }))
+                temp = temp_2
+              })
+            }
+            if(filterOption.sports[2].length > 0){
+              filterOption[curr][2].forEach((e)=>{
+                var temp_2 = [];       
+                temp_2 = temp_2.concat(temp.filter((dict,n) => {
+                  if(dict["psal_sports_coed"] !== undefined){
+                    return dict["psal_sports_coed"].includes(e);
+                  } 
+                }))
+                temp = temp_2
+              })
+            }
+            return
+          }
+        });
+        ["postcode"].forEach((curr) => {
+          if(temp.length === 0 && filterOption.postcode.length > 0){
+            temp = []
+            filterOption[curr].forEach((e)=>{   
+              var temp_2 = [];       
+              temp_2 = temp_2.concat(props.data.filter((dict,n) => {
+                if(dict[curr] !== undefined){
+                    return dict[curr].includes(e);
+                } 
+                return
+  
+              }))
+              temp = temp.concat(temp_2)
+            })
+          }
+          else if(filterOption.postcode.length > 0){
+            var temp_2 = [];
+            filterOption[curr].forEach((e)=>{          
+              temp_2 = temp_2.concat(temp.filter((dict,n) => {
+                if(dict[curr] !== undefined){
+                    return dict[curr].includes(e);
+                }
+                return
+              }))
+              
+            })
+            temp = temp_2
+          }
+        });
+        ["accessbility"].forEach((curr) => {
+          if(temp.length === 0 && filterOption.accessbility.length > 0){
+            temp = []
+            filterOption[curr].forEach((e)=>{   
+              var temp_2 = [];       
+              temp_2 = temp_2.concat(props.data.filter((dict,n) => {
+                if(dict["accessbility"] !== undefined){
+                    return dict["grades"].includes(e);
+                }
+                return
+  
+              }))
+              temp = temp.concat(temp_2)
+            })
+          }
+          else if(filterOption.accessbility.length > 0){
+            var temp_2 = [];
+            filterOption[curr].forEach((e)=>{          
+              temp_2 = temp_2.concat(temp.filter((dict,n) => {
+                if(dict["school_accessibility"] !== undefined){
+                  return dict["school_accessibility"].includes(e);
+                }
+                return
+  
+              }))
+              
+            })
+            temp = temp_2
+          }
+        });
+        props.selectedSchoolCallback(temp);
+     }
+     else{
+      props.selectedSchoolCallback(null)
+     }
+    }
+
+    
     const BoroughFilter = () => {
         return(
             <div  className="dropdown">

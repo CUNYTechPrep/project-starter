@@ -1,23 +1,23 @@
-import React, {useState} from 'react'
+import React, {useState, props} from 'react'
 // eslint-disable-next-line 
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
   
 
 
 //GOOGLE MAP
-function Map() {
-  let activeCard = ""  
+function Map({data}) {
+
   const center = {
   lat: 40.6930,
   lng: -74.0125
   };
-
   const containerStyle = {
     width: '100%',
     height: '100%',
     position: 'absolute',
     overflow: "hidden",
   };
+  console.log(data)
 //Change API KEY
     return (
       <LoadScript
@@ -26,10 +26,20 @@ function Map() {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={12}
+          zoom={11}
         >
-          { /* Child components, such as markers, info windows, etc. */ 
-      
+          {
+            data && data.map((school) =>{
+              const position = {
+                lat: parseFloat(school.latitude),
+                lng: parseFloat(school.longitude),
+              }
+              return(
+                <Marker
+                  position={position}
+                />
+              );
+            })
           }
           
         </GoogleMap>
