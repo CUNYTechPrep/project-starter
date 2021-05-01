@@ -25,7 +25,6 @@ const SchoolForm = ({items, compItems}) => {
     const [error, setError] = useState('')
     
     const formSubmit = (e) =>{
-        e.persist()
         e.preventDefault()
         console.log(e.target[0].defaultValue)
         //console.log(e.target[0].defaultValue in compItems)
@@ -33,7 +32,7 @@ const SchoolForm = ({items, compItems}) => {
             setError('Please type in the correct school name.')
             return
         }
-        setError(' ')
+        setError('')
         //If this works, make sure to redirect to school page once that's set up 
         //FINISH THIS 
     }

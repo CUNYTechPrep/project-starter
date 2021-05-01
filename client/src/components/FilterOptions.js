@@ -4,15 +4,7 @@ import { Dropdown, DropdownButton} from "react-bootstrap";
 
 
 const FilterRow = (props) => {
-    let filter = {
-        borough: [],
-        advancedplacement_courses: [],
-        //[0] = psal_sports_boys, [1] = psal_sports_girls, [2] = psal_sports_coed
-        sports: [[],[],[]],
-        subway: [],
-        postcode: [],
-        accessbility: [],
-    }
+    let filter = {}
     const [checked_boxes, setCheckedBoxes] = useState({
         borough: [],
         advancedplacement_courses: [],

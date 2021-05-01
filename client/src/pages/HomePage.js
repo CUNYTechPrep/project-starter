@@ -1,5 +1,5 @@
 import React,{useEffect, useState, props} from 'react';
-import Post from '../components/Post';
+import Card from '../components/SchoolCard';
 import Loading from '../components/Loading';
 import Map from '../components/Map'
 import "../styles/homePage.css"
@@ -48,8 +48,20 @@ const HomePage = () => {
     loading ? <Loading /> : 
     <div className="parent">
       <div className="leftSide">
-        <InputForm items = {items}  compItems = {compItems}/>
-        <FilterRow/>
+        <div>
+          <InputForm items = {items}  compItems = {compItems}/>
+          <FilterRow/>
+        </div>
+        <div>
+          <Card content={"TRUEsdsdsd"} createdAt={"BRUH TIME"} id={1} />
+          <Card content={"TRUEsdsdsd"} createdAt={"BRUH TIME"} id={2} />
+          <Card content={"TRUEsdsdsd"} createdAt={"BRUH TIME"} id={3} />
+          <Card content={"TRUEsdsdsd"} createdAt={"BRUH TIME"} id={4} />
+          <Card content={"TRUEsdsdsd"} createdAt={"BRUH TIME"} id={5} />
+          <Card content={"TRUEsdsdsd"} createdAt={"BRUH TIME"} id={6} />
+          <Card content={"TRUEsdsdsd"} createdAt={"BRUH TIME"} id={7} />
+          <Card content={"TRUEsdsdsd"} createdAt={"BRUH TIME"} id={8} />
+        </div>
       </div>
       <div className="rightSide">
         <Map/>
