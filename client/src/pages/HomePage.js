@@ -33,7 +33,7 @@ const HomePage = () => {
             dbn: e.dbn,
             school_name: e.school_name,
           })
-          tempComp[e.school_name] = true
+          tempComp[e.school_name] = e.dbn
 
         }
         )
