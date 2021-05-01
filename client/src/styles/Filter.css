@@ -37,5 +37,10 @@
 }
 
 .rowPad{
-    padding: 20px 20px 0;
+    padding-right: 10px;
 }
+.btn{
+    background-color: #784cfc !important;
+    color: white !important;
+}
+

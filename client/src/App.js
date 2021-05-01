@@ -30,7 +30,7 @@ function Navigation(props) {
   }
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow navIndex">
+    <nav className="navbar navbar-expand-sm navbar-dark bg-custom shadow navIndex">
       <Link className="navbar-brand" to="/">
         School Finder
       </Link>

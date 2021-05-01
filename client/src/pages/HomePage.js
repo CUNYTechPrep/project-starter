@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect, useState, props} from 'react';
 import Post from '../components/Post';
 import Loading from '../components/Loading';
 import Map from '../components/Map'
@@ -7,43 +7,48 @@ import InputForm from '../components/InputForms'
 import FilterRow from '../components/FilterOptions'
 
 const HomePage = () => {
-  /*state = {
-    posts: [],
-    loading: true,
-  }
-
-  componentDidMount() {
-    fetch("/api/posts")
+  var [schoolJSON, setJSON] = useState(null);
+  var [loading, setLoading] = useState(true)
+  var [items, setItems ]= useState([])
+  var [compItems, setCompItems] = useState([])
+  useEffect(() => {
+    const options ={
+      type: "GET",
+      data: {
+        "$limit" : 5000,
+        "$$app_token" : "YOURAPPTOKENHEREs"
+      }
+    };
+    fetch("https://data.cityofnewyork.us/resource/qpj9-6qjn.json", options)
       .then(res => res.json())
-      .then(posts => {
-        this.setState({
-          loading: false,
-          posts: posts.map((p,ii) => <Post {...p} key={ii} />),
-        });
+      .then(data => {
+        var tempItems = []
+        var tempComp = []
+        var index = 0
+        data.forEach((e)=> {
+          tempItems.push({
+            id: index++,
+            dbn: e.dbn,
+            school_name: e.school_name,
+          })
+          tempComp[e.school_name] = true
+
+        }
+        )
+        setItems(tempItems)
+        setCompItems(tempComp)
+        setJSON(data)
+        setLoading(false)
       })
       .catch(err => console.log("API ERROR: ", err));
-  }
 
-  render() {
-    if(this.state.loading) {
-      return <Loading />;
-    }
+  }, [])
 
-    return (
-      <div className="container-fluid text-center">
-        <div className="row justify-content-center">
-          { this.state.posts }
-        </div>
-      </div>
-    );
-  }*/
-console.log(React.version);
-
-  
   return(
+    loading ? <Loading /> : 
     <div className="parent">
       <div className="leftSide">
-        <InputForm/>
+        <InputForm items = {items}  compItems = {compItems}/>
         <FilterRow/>
       </div>
       <div className="rightSide">
