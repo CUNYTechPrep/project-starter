@@ -5,7 +5,6 @@ const db = require('./models');
 const app = express();
 const PORT = process.env.PORT;
 
-
 // this lets us parse 'application/json' content in http requests
 app.use(express.json());
 

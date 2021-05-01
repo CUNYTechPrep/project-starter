@@ -22,3 +22,9 @@
 }
 */
 
+.navIndex{
+  z-index: 1;
+}
+.bg-custom{
+  background-color: #784cfc !important;
+}

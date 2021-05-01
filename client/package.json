@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.14.0",
+    "@react-google-maps/api": "^2.1.1",
+    "bootstrap": "^4.6.0",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
+    "react": "^17.0.2",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-simple-star-rating": "^1.0.6",
-    "react-star-rating-component": "^1.4.1"
+    "react-star-rating-component": "^1.4.1",
+    "react-search-autocomplete": "^5.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
