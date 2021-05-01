@@ -52,11 +52,7 @@ const SchoolForm = ({items, compItems}) => {
                 autoFocus
               />
           </div>
-          {error && <Alert className=" mt-2 mb-auto" variant="danger" 
-                styles={{
-                    zIndex:"10",
-
-                }}
+          {error && <Alert className=" mt-2 mb-auto" variant="danger"
             >{error}</Alert>}
         </form>
     );

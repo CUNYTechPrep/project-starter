@@ -45,6 +45,7 @@ const FilterRow = (props) => {
                     filter["borough"].push(current_borough)
                 }
             }
+            console.log(filter)
         }
         else if(e.target.id === "postcode"){
             for(i =1; i<e.target.length-1 ; i++){
@@ -163,6 +164,7 @@ const FilterRow = (props) => {
         //props.parentCallback(filter);
         setCheckedBoxes(filter)
     }
+    console.log("checking",checked_boxes)
     const BoroughFilter = () => {
         return(
             <div  className="dropdown">
@@ -176,13 +178,25 @@ const FilterRow = (props) => {
             <ul className="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
                 {
                     ["Queens", "Brooklyn", "Manhattan", "Bronx", "Staten IS"].map((e) => {
+                        if(checked_boxes["borough"].includes(e.toUpperCase())){
                             return(
+                                <li key={e}>
+                                    <label>
+                                        <input defaultChecked="true" type="checkbox" /> {e}
+                                    </label>
+                                </li>
+                            );
+                        }
+                        else{
+                            return(
+                                
                                 <li key={e}>
                                     <label>
                                         <input type="checkbox" /> {e}
                                     </label>
                                 </li>
                             );
+                        }
                         
                     })
                 }
@@ -210,6 +224,16 @@ const FilterRow = (props) => {
                     <div className="dropsize">
                     {
                         ['1', '2', '3', '4', '5', '6', '7', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'J', 'L', 'M', 'N', 'Q', 'R', 'S', 'SIR ', 'W', 'Z'].map((e) => {
+                            if(checked_boxes["subway"].includes(e)){
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input defaultChecked="true" type="checkbox" /> {e}
+                                        </label>
+                                    </li>
+                                );
+                            }
+                            else{
                                 return(
                                     <li key={e}>
                                         <label>
@@ -217,6 +241,7 @@ const FilterRow = (props) => {
                                         </label>
                                     </li>
                                 );
+                            }
                         })
                     }
                     </div>
