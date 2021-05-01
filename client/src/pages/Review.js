@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import Rating from 'react-simple-star-rating';
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Review() {
-    const [rating, setRating] = useState(0) // initial rating value
+    const [rating, setRating] = useState(0); // initial rating value
+    const { currentUser } = useAuth();
     
     // Catch Rating value
     const handleRating = (rate) => {
@@ -10,10 +12,16 @@ export default function Review() {
         // Some logic
     }
 
+    const submission = (e) => {
+        e.persist();
+        console.log(e);
+        e.preventDefault();
+    }
+
     return (
         <div className="col-3">
             <h1>Submit a Review</h1>
-            <form className="input-large">
+            <form className="input-large" onSubmit={ (e) => submission(e) }>
                 <div class="form-group">
                     <label for="schoolName">School Name</label>
                     <select class="form-control" id="schoolName">
@@ -40,7 +48,7 @@ export default function Review() {
                     />
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-            </form>
+            </form>            
         </div>
     );
 }
