@@ -13,6 +13,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import PrivateRoute from "./components/PrivateRoute";
+import Compare from "./pages/Compare"
 import { AuthProvider } from "./contexts/AuthContext";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.css";
@@ -91,6 +92,7 @@ class App extends React.Component {
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/login" component={Login} />
+                <Route path="/compare" component={Compare} />
                 <Route path="/" component={PostsListPage} />
                 {/* <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} /> */}
