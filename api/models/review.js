@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Review.init({
         reviewerUUID: {
-            type: DataTypes.UUID,
+            type: DataTypes.STRING,
             validate: {
                 notEmpty: true,
             },
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         schoolDBID: {
-            type: DataTypes.INTEGER, 
+            type: DataTypes.STRING, 
             validate: {
                 notEmpty: true,
             },

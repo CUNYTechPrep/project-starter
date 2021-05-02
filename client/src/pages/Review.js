@@ -95,8 +95,7 @@ export default function Review() {
             description: e.target[1].value,
             rating: rating,
         }
-        console.log(data)
-        console.log(JSON.stringify(data))
+        //console.log("data: " + JSON.stringify(data))
         //Change according to deployed backend after we deploy
         fetch('http://localhost:8080/api/review/addReview', {
             method: 'POST', // or 'PUT'

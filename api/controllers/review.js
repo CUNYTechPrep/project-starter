@@ -9,7 +9,6 @@ router.get('/', (req,res) => {
 });
 
 router.post('/addReview' , (req, res) => {
-    
     Review.create({ reviewerUUID: req.body.reviewewUUID, 
                     reviewerName: req.body.reviewerName,
                     schoolDBID: req.body.schoolDBID,
