@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
 import auth from '../services/auth';
-import AuthSignUpButton from '../components/AuthSignUpButton';
 
 import logo from '../img/dumbbell.png';
 import '../App.css';
@@ -28,15 +27,15 @@ class SignUpPage extends React.Component {
   }
 
   signup = (e) => {
-    // e.preventDefault();
-    // let { email, password } = this.state;
-    // auth.authenticate(email, password)
-    //   .then((user) => {
-    //     this.setState({ redirectToReferrer: true });
-    //   })
-    //   .catch((err) => {
-    //     this.setState({ failed: true });
-    //   });
+    e.preventDefault();
+    let { email, password } = this.state;
+    auth.authenticate(email, password)
+      .then((user) => {
+        this.setState({ redirectToReferrer: true });
+      })
+      .catch((err) => {
+        this.setState({ failed: true });
+      });
   }
 
   render() {
@@ -77,9 +76,9 @@ class SignUpPage extends React.Component {
               value={this.state.password} 
               onChange={this.fieldChanged('password')} />
               <br></br>
-            <AuthSignUpButton className="button-signup" type="submit">
+            <button className="button-signup-only" type="submit">
               Sign Up
-            </AuthSignUpButton>
+            </button>
           </div>
         </form>
           <div style={{float: "right", color: "#979797",

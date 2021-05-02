@@ -10,7 +10,7 @@ import {
 
 //Authentication imports
 import PrivateRoute from './components/PrivateRoute';
-import AuthButton from './components/AuthButton';
+import AuthBurgerButton from './components/AuthBurgerButton';
 import LoginPage from './pages/LoginPage';
 
 //import PostsListPage from './pages/PostsListPage';
@@ -60,28 +60,31 @@ function Navigation(props) {
           Forum
         </NavLink>
       </div>
-      <div className="nav-item">
-        <NavLink className="nav-link" exact to="/sign-in">
-          Sign In
-        </NavLink>
-      </div>
       <ul className={click ? 'nav-item-burger active' : 'nav-item-burger'}>
         {click ? (
           <CloseMenu className="menu-icon-close" />
         ) : (
           <MenuIcon className="menu-icon" />
         )}
-        <li className="option" onClick={closeMenu}>
+        {/* <li className="option" onClick={closeMenu}>
           <NavLink className="nav-link" onClick={closeMenu} exact to="/profile">
             My Profile
           </NavLink>
-        </li>
+        </li> */}
+
         <li className="option" onClick={closeMenu}>
+          <AuthBurgerButton className="nav-link" onClick={closeMenu} exact to="/sign-in">
+            Login
+          </AuthBurgerButton>
+        </li>
+
+
+        {/* <li className="option" onClick={closeMenu}>
           <NavLink className="nav-link" onClick={closeMenu} exact to="/places">
             Places
           </NavLink>
-        </li>
-        <li className="option" onClick={closeMenu}>
+        </li> */}
+        {/* <li className="option" onClick={closeMenu}>
           <NavLink
             className="nav-link"
             onClick={closeMenu}
@@ -100,7 +103,7 @@ function Navigation(props) {
           >
             Contact
           </NavLink>
-        </li>
+        </li> */}
       </ul>
       <div className="menu" onClick={handleClick}>
         {click ? (

@@ -18,9 +18,9 @@
 .nav-item-burger {
   display: flex;
   width: 200px;
-  height: 400px;
+  height: 350px;
   position: absolute;
-  top: 80px;
+  top: 60px;
   right: -100%;
   opacity: 0;
   transition: all 2s ease;
@@ -30,7 +30,7 @@
 
 .option {
   display: flex;
-  padding: 30px 0px;
+  padding: 20px 0px;
 }
 
 .option:hover .nav-link {

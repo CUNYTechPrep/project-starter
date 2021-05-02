@@ -26,7 +26,6 @@ function WelcomePage(props) {
     <div className="w3-display-bottomleft w3-padding-large"></div>
 </div>
     
-    
   );
 }
 

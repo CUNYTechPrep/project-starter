@@ -11,7 +11,6 @@ const AuthButton = withRouter(({ history }) => {
     return (
       <div>
         <Link className={classes} to="/login">Login</Link>
-        {/* <Link className={classes} to="/signup">SignUp</Link> */}
       </div>
     );
   }
