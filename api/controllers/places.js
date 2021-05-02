@@ -1,18 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const places = require("../controllers/places.json");
+//const places = require("../controllers/places.json");
+const { Place } = require("../models");
 
 //    GET    /places
 //    GET    /places/:id
 
 router.get("/", (req, res) => {
-  //Post.findAll({}).then((posts) => res.json(posts));
-  res.json(places);
+  Place.findAll({}).then((place) => res.json(place));
+  //res.json(places);
 });
-router.get("/:id", (req, res) => {
-  //Post.findAll({}).then((posts) => res.json(posts));
-  const { id } = req.params;
-  res.json(places.find((place) => place.place_id == id));
+router.get("/:place_id", (req, res) => {
+  const { place_id } = req.params;
+  Place.findOne({ where: { place_id: place_id } }).then((place) =>
+    res.json(place)
+  );
+  //res.json(places.find((place) => place.place_id == id));
 });
 
 module.exports = router;
