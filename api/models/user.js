@@ -1,34 +1,41 @@
 "use strict";
 const { Model } = require("sequelize");
+//const bcrypt = require("bcryptjs");
 
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {}
+  class User extends Model {
+    getFullname() {
+      return [this.firstName, this.lastName].join(" ");
+    }
+  }
 
   User.init(
     {
-      userID: {
+      firstName: { type: DataTypes.STRING },
+      lastName: { type: DataTypes.STRING },
+      email: {
         type: DataTypes.STRING,
+        unique: true,
+        allowNull: false,
         validate: {
-          len: [3, 250],
-          notEmpty: true,
+          isEmail: true,
         },
       },
-      emailAddress: {
-        type: DataTypes.STRING,
-        validate: {
-          len: [5, 100],
-          notEmpty: true,
-        },
-      },
-      // groups: {
-      //     type: DataTypes.ARRAY,
-      // },
+      //passwordHash: { type: DataTypes.STRING },
       password: {
+        //type: DataTypes.VIRTUAL,
         type: DataTypes.STRING,
         validate: {
-          len: [8, 100],
-          notEmpty: true,
+          isLongEnough: (val) => {
+            if (val.length < 7) {
+              throw new Error("Please choose a longer password");
+            }
+          },
         },
+      },
+      profilePicture: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
     },
     {
@@ -39,7 +46,14 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = (models) => {
     // associations can be defined here
+    //models.User.belongsToMany(models.Group, { through: "GroupUser" });
   };
 
+  //   User.beforeSave((user, options) => {
+  //     if (user.password) {
+  //       user.passwordHash = bcrypt.hashSync(user.password, 10);
+  //     }
+  //   });
   return User;
 };
+

@@ -1,17 +1,18 @@
 //api folder handles the backend
-
 const express = require('express'); //load in library from node modules
 const morgan = require('morgan'); //load in library from node modules
 const path = require('path'); //load in library from node modules
 const db = require('./models'); //load in my own code, the entire models folder to handle DB stuff
 const app = express();
 const PORT = process.env.PORT;
+const seed = require("./seed");
+
+seed(); // initialize the database
 
 //setting up our application
 // this lets us parse 'application/json' content in http requests
 app.use(express.json());
 
-// add http request logging to help us debug and audit app use
 const logFormat = process.env.NODE_ENV==='production' ? 'combined' : 'dev';
 app.use(morgan(logFormat)); //set up morgan to output to the terminal
 
@@ -27,8 +28,8 @@ if(process.env.NODE_ENV==='production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 
   // all unknown routes should be handed to our react app
-  app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
   });
 }
 
@@ -38,8 +39,8 @@ if(process.env.NODE_ENV==='production') {
 db.sequelize.sync({ force: false });
 
 // start up the server
-if(PORT) {
+if (PORT) {
   app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 } else {
-  console.log("===== ERROR ====\nCREATE A .env FILE!\n===== /ERROR ====")
+  console.log("===== ERROR ====\nCREATE A .env FILE!\n===== /ERROR ====");
 }

@@ -6,6 +6,8 @@ const router = express.Router();
 const postsController = require('./posts.js');
 const appConfigController = require('./appConfig.js');
 const placesController = require("./places.js");
+const usersController = require("./users");
+const groupsController = require("./groups");
 // what you need to declare when adding more controllers
 //const commentController = require('./comment.js');
 //const likesController = require('./likes.js');
@@ -18,7 +20,8 @@ router.use('/posts', postsController); //full api that gives us access to all ou
 //router.use('/comments', commentsController);
 //router.use('/likes', likesController);
 router.use('/application-configuration', appConfigController);
-
 router.use("/places", placesController);
+router.use("/users", usersController);
+router.use("/groups", groupsController);
 
 module.exports = router;

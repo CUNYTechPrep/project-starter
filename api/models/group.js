@@ -6,26 +6,24 @@ module.exports = (sequelize, DataTypes) => {
 
   Group.init(
     {
-      groupID: {
+      groupId: {
         type: DataTypes.STRING,
         validate: {
-          len: [8],
+          len: [10, 20],
           notEmpty: true,
         },
+        unique: true,
       },
-      // members: {
-      //     type: DataTypes.ARRAY,
-      //     validate: {
-      //         len: [1, 8],
-      //         notEmpty: true,
-      //     }
-      // },
-      eventDate: {
-        type: DataTypes.DATE,
+      groupName: {
+        type: DataTypes.STRING,
+        defaultValue: "UnNamedGroup",
       },
-      // places: {
-      //     type: DataTypes.ARRAY
-      // },
+      members: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+      },
+      places: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+      },
     },
     {
       sequelize,
@@ -35,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Group.associate = (models) => {
     // associations can be defined here
+    //models.Group.belongsToMany(models.User, { through: "GroupUser" });
   };
 
   return Group;
