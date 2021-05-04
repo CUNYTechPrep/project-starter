@@ -13,5 +13,9 @@ router.get("/:userId", (req, res) => {
   const { userId } = req.params;
   User.findOne({ where: { email: userId } }).then((user) => res.json(user));
 });
+router.get("/:userId", (req, res) => {
+  const { userId } = req.params.userId;
+  console.log(userId);
+});
 
 module.exports = router;
