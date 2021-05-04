@@ -53,7 +53,7 @@ const GROUPS = [
     members: [
       "jephter.maurice@gmail.com",
       "boris.anthony@gmail.com",
-      "user3@gmail.com",
+      "shanice.smith@gmail.com",
     ],
     places: [
       "ChIJob8BhadewokROi32ccC9Bzg",
@@ -66,7 +66,7 @@ const GROUPS = [
     groupName: "EndOfTheTunnel",
     members: [
       "jephter.maurice@gmail.com",
-      "shanice.smith@gmail.com",
+      "boris.anthony@gmmail.com",
       "user5@gmail.com",
     ],
     places: [
@@ -87,11 +87,11 @@ const GROUPS = [
 ];
 
 // const Groups_USERS = [
-//   { groupId: "1111111111", email: "user1.gmail.com" },
-//   { groupId: "1111111111", email: "user2.gmail.com" },
-//   { groupId: "1111111111", email: "user3.gmail.com" },
-//   { groupId: "2222222222", email: "user4.gmail.com" },
-//   { groupId: "2222222222", email: "user5.gmail.com" },
+//   { groupId: "1111111111", email: "jephter.maurice@gmail.com" },
+//   { groupId: "1111111111", email: "boris.anthony.gmail.com" },
+//   { groupId: "1111111111", email: "shanice.smith@gmail.com" },
+//   { groupId: "2222222222", email: "boris.anthony@gmail.com" },
+//   { groupId: "2222222222", email: "jephter.maurice@gmail.com" },
 // ];
 
 const seed = () => {
@@ -123,7 +123,8 @@ const seed = () => {
         let userPromise = User.findOne({ where: { email: gu.email } });
         return Promise.all([groupPromise, userPromise]).then(
           ([group, user]) => {
-            return group.addUser(user);
+            //return group.addUser(user);
+            user.addGroup(group);
           }
         );
       });
