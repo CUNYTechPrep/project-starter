@@ -13,6 +13,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Review from "./pages/Review";
+import Compare from "./pages/Compare";
 import PrivateRoute from "./components/PrivateRoute";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useAuth } from "./contexts/AuthContext";
@@ -49,7 +50,7 @@ function Navigation(props) {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" exact to="/">
+              <NavLink className="nav-link" exact to="/compare">
                 Compare Schools
               </NavLink>
             </li>
@@ -95,6 +96,7 @@ const App = () => {
                 <Route path="/signup" component={SignUp} />
                 <Route path="/login" component={Login} />
                 <Route path="/review" component={Review} />
+                <Route path="/compare" component={Compare} />
                 <Route path="/" component={HomePage} />
 
                 {/* <Route path="/posts/new" component={PostFormPage} />
