@@ -1,4 +1,5 @@
 "use strict";
+const { User } = require("../models");
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
@@ -33,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Group.associate = (models) => {
     // associations can be defined here
-    //models.Group.belongsToMany(models.User, { through: "GroupUser" });
+    models.Group.belongsToMany(models.User, { through: "GroupUser" });
   };
 
   return Group;
