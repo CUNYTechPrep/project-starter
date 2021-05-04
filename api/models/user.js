@@ -1,4 +1,5 @@
 "use strict";
+const { Group } = require("../models");
 const { Model } = require("sequelize");
 //const bcrypt = require("bcryptjs");
 
@@ -46,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = (models) => {
     // associations can be defined here
-    //models.User.belongsToMany(models.Group, { through: "GroupUser" });
+    models.User.belongsToMany(models.Group, { through: "GroupUser" });
   };
 
   //   User.beforeSave((user, options) => {
@@ -56,4 +57,3 @@ module.exports = (sequelize, DataTypes) => {
   //   });
   return User;
 };
-
