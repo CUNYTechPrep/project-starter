@@ -10,7 +10,8 @@ router.get('/', (req, res) => {
 
 router.post('/addReview' , (req, res) => {
     Review.create({ reviewerUUID: req.body.reviewewUUID, 
-                    reviewerName: req.body.reviewerName,
+                    reviewerEmail: req.body.reviewerEmail,
+                    schoolName: req.body.schoolName,
                     schoolDBID: req.body.schoolDBID,
                     description: req.body.description, 
                     rating: req.body.rating })
@@ -22,7 +23,7 @@ router.post('/addReview' , (req, res) => {
         });
 });
 
-router.get('/school', (req, res) => {
+router.post('/school', (req, res) => {
     Review.findAll({where: {schoolDBID: req.body.schoolDBID}})
         .then(review => {
             res.status(200).json(review);
@@ -33,7 +34,7 @@ router.get('/school', (req, res) => {
         });
 });
 
-router.get('/user', (req, res) => {
+router.post('/user', (req, res) => {
     Review.findAll({where: {reviewerUUID: req.body.reviewerUUID}})
         .then(review => {
             res.status(200).json(review);
