@@ -5,7 +5,7 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import {Alert} from 'react-bootstrap'
 
 export default function Review() {
-    const [rating, setRating] = useState(null); 
+    const [rating, setRating] = useState(null); // initial rating value
     const { currentUser } = useAuth();
     const [schoolNameError, setSchoolNameError] = useState('');
     const [descriptionError, setDescriptionError] = useState('');
@@ -14,9 +14,6 @@ export default function Review() {
     const [loading, setLoading] = useState(true);
     const [items, setItems ]= useState([]);
     const [compItems, setCompItems] = useState([]);
-    
-
-
     useEffect(() => {
         const options ={
           type: "GET",
@@ -47,14 +44,13 @@ export default function Review() {
             setLoading(false)
           })
           .catch(err => console.log("API ERROR: ", err));
-          // fetch for all of user's review
-        
-
+    
       }, [])
 
     // Catch Rating value
     const handleRating = (rate) => {
         setRating(rate)
+        // Some logic
     }
 
     const submission = (e) => {
@@ -62,7 +58,6 @@ export default function Review() {
         e.persist();
         console.log(e);
         let noErrors = true
-
         if(e.target[0].defaultValue in compItems === false){
             e.preventDefault()
             noErrors = false
@@ -88,25 +83,22 @@ export default function Review() {
         else{
             setRatingError('');
         }
+
         if (noErrors === false){
             return
         }
-        
+        //Remember to change reviewerName to reviewerEmail
         const data = { 
             reviewewUUID: currentUser.uid,
-            reviewerEmail: currentUser.email,
-            schoolName: e.target[0].defaultValue,
+            reviewerName: currentUser.email,
             schoolDBID: compItems[e.target[0].defaultValue],
             description: e.target[1].value,
             rating: rating,
         }
-
-        // NOTE STILL NEED TO IMPLMENT ! 
-        //fetch request needs to check if reviewer already submitted a review for this school
-
+        //console.log("data: " + JSON.stringify(data))
         //Change according to deployed backend after we deploy
         fetch('http://localhost:8080/api/review/addReview', {
-            method: 'POST',
+            method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -115,7 +107,6 @@ export default function Review() {
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
-            alert('Review submitted successfully!');
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -141,11 +132,6 @@ export default function Review() {
     const handleOnFocus = () => {
       console.log('Focused')
     }
-
-
-
-
-    // Review card display by School
   
     return (
         <div className="col-3 text-center m-auto">
@@ -183,8 +169,8 @@ export default function Review() {
                 </div>
                 {ratingError && <Alert className=" mt-2 mb-auto" variant="danger">{ratingError}</Alert>}
                 <button type="submit" className="btn btn-primary btn-lg">Submit</button>
-            </form>    
-          
+            </form>            
+            
         </div>
     );
 }

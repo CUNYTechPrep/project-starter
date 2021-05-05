@@ -10,17 +10,11 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true,
             },
         },
-        reviewerEmail: {
+        reviewerName: {
             type: DataTypes.STRING, 
             validate: {
                 notEmpty: true,
             }
-        },
-        schoolName: {
-            type: DataTypes.STRING, 
-            validate: {
-                notEmpty: true,
-            },
         },
         schoolDBID: {
             type: DataTypes.STRING, 
