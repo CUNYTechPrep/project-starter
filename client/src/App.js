@@ -7,17 +7,18 @@ import {
   NavLink,
   useHistory,
 } from "react-router-dom";
-import PostsListPage from "./pages/PostsListPage";
+import HomePage from "./pages/HomePage";
 import AboutUsPage from "./pages/AboutUsPage";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import Review from "./pages/Review";
+import Compare from "./pages/Compare";
 import PrivateRoute from "./components/PrivateRoute";
 import Compare from "./pages/Compare"
 import { AuthProvider } from "./contexts/AuthContext";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.css";
-
 
 // import PostFormPage from "./pages/PostFormPage";
 // import ShowPostPage from "./pages/ShowPostPage";
@@ -32,7 +33,7 @@ function Navigation(props) {
   }
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
+    <nav className="navbar navbar-expand-sm navbar-dark bg-custom shadow navIndex">
       <Link className="navbar-brand" to="/">
         School Finder
       </Link>
@@ -50,8 +51,13 @@ function Navigation(props) {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" exact to="/">
+              <NavLink className="nav-link" exact to="/compare">
                 Compare Schools
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" exact to="/review">
+                Reviews
               </NavLink>
             </li>
             <li className="nav-item">
@@ -79,30 +85,28 @@ function Navigation(props) {
   );
 }
 
-class App extends React.Component {
-  render() {
+const App = () => {
+
     return (
       <Router>
         <AuthProvider>
           <Navigation />
-          <div className="container-fluid text-center">
-            <div className="row justify-content-center">
               <Switch>
                 <PrivateRoute exact path="/profile" component={Profile} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/login" component={Login} />
+                <Route path="/review" component={Review} />
                 <Route path="/compare" component={Compare} />
-                <Route path="/" component={PostsListPage} />
+                <Route path="/" component={HomePage} />
+
                 {/* <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} /> */}
               </Switch>
-            </div>
-          </div>
         </AuthProvider>
       </Router>
     );
   }
-}
+
 
 export default App;
