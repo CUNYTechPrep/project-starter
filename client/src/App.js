@@ -15,7 +15,6 @@ import Profile from "./pages/Profile";
 import Review from "./pages/Review";
 import Compare from "./pages/Compare";
 import PrivateRoute from "./components/PrivateRoute";
-import Compare from "./pages/Compare"
 import { AuthProvider } from "./contexts/AuthContext";
 import { useAuth } from "./contexts/AuthContext";
 import "./App.css";
