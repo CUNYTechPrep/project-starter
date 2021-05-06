@@ -22,13 +22,11 @@ class ProfilePage extends React.Component {
 
   componentDidMount() {
     const { email } = this.props.match.params;
-    //console.log(this.props);
     fetch("/api/users/" + email)
       .then((res) => res.json())
       .then((ResUser) => {
         this.setState({
           user: ResUser,
-          //loading: false,
         });
       })
       .catch((err) => {
@@ -59,7 +57,6 @@ class ProfilePage extends React.Component {
               style={{ backgroundColor: "lightblue" }}
             >
               <h1>Welcome To Night Out</h1>
-              {/* <h2>email: {this.state.user.email}</h2> */}
               <img
                 src={this.state.user.profilePicture}
                 alt="profilePic"
@@ -79,7 +76,6 @@ class ProfilePage extends React.Component {
                       name="group"
                     />
                     <p>{group.groupName}</p>
-                    {/* </input> */}
                   </>
                 );
               })}
@@ -110,10 +106,10 @@ class ProfilePage extends React.Component {
                   );
                 })}
               </div>
-              <div>
-                <h1>Map</h1>
-              </div>
             </div>
+          </div>
+          <div className="row groupMap">
+            <h1>Map</h1>
           </div>
         </div>
       </>
