@@ -9,7 +9,7 @@ class ProfilePage extends React.Component {
       loading: true,
       notFound: false,
       groups: [],
-      selectedGroup: -1,
+      selectedGroup: 0,
     };
     this.handleGroupSelect = this.handleGroupSelect.bind(this);
   }
