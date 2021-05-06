@@ -21,7 +21,9 @@
   color: #09d3ac;
 }
 */
-
+body{
+  min-height: 100vh;
+}
 .navIndex{
   z-index: 1;
 }

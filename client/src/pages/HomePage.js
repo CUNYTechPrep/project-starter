@@ -5,6 +5,7 @@ import Map from '../components/Map'
 import "../styles/homePage.css"
 import InputForm from '../components/InputForms'
 import FilterRow from '../components/FilterOptions'
+import '../styles/theme.css'
 import { data } from 'jquery';
 
 const HomePage = () => {
@@ -49,7 +50,7 @@ const HomePage = () => {
   const selectedSchoolCallback = ( childData ) =>{
     setSelectedSchools(childData)
   }
-
+  console.log("SELECTED", selectedSchools)
   return(
     loading ? <Loading /> : 
     <div className="parent">
@@ -62,7 +63,7 @@ const HomePage = () => {
           {
             selectedSchools && selectedSchools.map((school) =>{
               return(
-                <Card content={school.overview_paragraph} name={school.school_name} id={school.dbn} />
+                <Card content={school} name={school.school_name} id={school.dbn} />
               );
             })
           }

@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import Rating from 'react-simple-star-rating';
 import { useAuth } from "../contexts/AuthContext";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import {Alert} from 'react-bootstrap'
-
+import Rating from '@material-ui/lab/Rating'
 export default function Review() {
     const [rating, setRating] = useState(null); 
     const { currentUser } = useAuth();
@@ -53,7 +52,8 @@ export default function Review() {
       }, [])
 
     // Catch Rating value
-    const handleRating = (rate) => {
+    const handleRating = (event, rate) => {
+        console.log(rate)
         setRating(rate)
     }
 
@@ -173,12 +173,9 @@ export default function Review() {
                 <div className="form-group">
                     <p>Rating</p>
                     <Rating
-                        onClick={handleRating}
-                        ratingValue={rating}
-                        size={20}
-                        transition
-                        fillColor='orange'
-                        emptyColor='gray'
+                    name="simple-controlled"
+                    value={rating}
+                    onChange={handleRating}
                     />
                 </div>
                 {ratingError && <Alert className=" mt-2 mb-auto" variant="danger">{ratingError}</Alert>}

@@ -454,21 +454,206 @@ const FilterRow = (props) => {
                 <ul className="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
                     <div className="dropsize">
                     {
-                        ['1', '2', '3', '4', '5', '6', '7', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'J', 'L', 'M', 'N', 'Q', 'R', 'S', 'SIR ', 'W', 'Z'].map((e) => {
+                        ['1', '2', '3'].map((e) => {
                             if(checked_boxes["subway"].includes(e)){
                                 return(
                                     <li key={e}>
                                         <label>
-                                            <input defaultChecked="true" type="checkbox" /> {e}
+                                            <input defaultChecked="true" type="checkbox" /> <span className="subway-icon mta-red">{e}</span>
                                         </label>
                                     </li>
                                 );
                             }
                             else{
+
                                 return(
                                     <li key={e}>
                                         <label>
-                                            <input type="checkbox" /> {e}
+                                            <input type="checkbox" /> <span className="subway-icon mta-red">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                        })
+                    }
+                    {
+                        ['4', '5','6'].map((e) => {
+                            if(checked_boxes["subway"].includes(e)){
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input defaultChecked="true" type="checkbox" /> <span className="subway-icon mta-green">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                            else{
+
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input type="checkbox" /> <span className="subway-icon mta-green">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                        })
+                    }
+                    {
+                        ['A', 'C','E'].map((e) => {
+                            if(checked_boxes["subway"].includes(e)){
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input defaultChecked="true" type="checkbox" /> <span className="subway-icon mta-blue">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                            else{
+
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input type="checkbox" /> <span className="subway-icon mta-blue">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                        })
+                    }
+                    {
+                        ['B' ,'D', 'F','M'].map((e) => {
+                            if(checked_boxes["subway"].includes(e)){
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input defaultChecked="true" type="checkbox" /> <span className="subway-icon mta-orange">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                            else{
+
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input type="checkbox" /> <span className="subway-icon mta-orange">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                        })
+                    }
+                    {
+                        ['7'].map((e) => {
+                            if(checked_boxes["subway"].includes(e)){
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input defaultChecked="true" type="checkbox" /> <span className="subway-icon mta-purple">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                            else{
+
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input type="checkbox" /> <span className="subway-icon mta-purple">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                        })
+                    }
+                    {
+                        ['G'].map((e) => {
+                            if(checked_boxes["subway"].includes(e)){
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input defaultChecked="true" type="checkbox" /> <span className="subway-icon mta-green-2">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                            else{
+
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input type="checkbox" /> <span className="subway-icon mta-green-2">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                        })
+                    }
+                    {
+                        ['N','Q','W', 'R'].map((e) => {
+                            if(checked_boxes["subway"].includes(e)){
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input defaultChecked="true" type="checkbox" /> <span className="subway-icon mta-yellow">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                            else{
+
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input type="checkbox" /> <span className="subway-icon mta-yellow">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                        })
+                    }
+                    {
+                        ['L',  'S'].map((e) => {
+                            if(checked_boxes["subway"].includes(e)){
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input defaultChecked="true" type="checkbox" /> <span className="subway-icon mta-gray">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                            else{
+
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input type="checkbox" /> <span className="subway-icon mta-gray">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                        })
+                    }
+                    {
+                        ['J', 'Z'].map((e) => {
+                            if(checked_boxes["subway"].includes(e)){
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input defaultChecked="true" type="checkbox" /> <span className="subway-icon mta-brown">{e}</span>
+                                        </label>
+                                    </li>
+                                );
+                            }
+                            else{
+
+                                return(
+                                    <li key={e}>
+                                        <label>
+                                            <input type="checkbox" /> <span className="subway-icon mta-brown">{e}</span>
                                         </label>
                                     </li>
                                 );

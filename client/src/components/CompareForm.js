@@ -3,10 +3,8 @@ import "../styles/homePage.css";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import {Alert} from 'react-bootstrap'
 
-  const styles = {
-      zIndex: "1"
-  }
-  const handleOnSearch = (string, results) => {
+  
+    const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
     console.log('OnSearch', string, results)
@@ -21,9 +19,11 @@ import {Alert} from 'react-bootstrap'
     console.log('Focused')
   }
 
-const SchoolForm = ({items, compItems}) => {
+const SchoolForm = ({items, compItems, priority}) => {
     const [error, setError] = useState('')
-    
+    const styles = {
+      zIndex: priority
+    }
     const formSubmit = (e) =>{
         //Remove this once I add school page
         e.preventDefault()
@@ -61,8 +61,8 @@ const SchoolForm = ({items, compItems}) => {
 const CompareForm = ({items, compItems}) =>{
     return (
       <div className="container-fluid text-center">
-          <SchoolForm items = {items} compItems = {compItems}/>
-          <SchoolForm items = {items} compItems = {compItems}/>
+          <SchoolForm items = {items} compItems = {compItems} priority={"2"}/>
+          <SchoolForm items = {items} compItems = {compItems} priority={"1"}/>
       </div>
     );
 }
