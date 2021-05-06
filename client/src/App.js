@@ -37,7 +37,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <Navigation />
+        {/* <Navigation /> */}
         <div>
           <Switch>
             <Route path="/users/:email" component={ProfilePage} />
