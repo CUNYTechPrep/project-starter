@@ -2,12 +2,23 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 
 class ProfilePage extends React.Component {
-  state = {
-    user: null,
-    loading: true,
-    notFound: false,
-    groups: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+      loading: true,
+      notFound: false,
+      groups: [],
+      selectedGroup: -1,
+    };
+    this.handleGroupSelect = this.handleGroupSelect.bind(this);
+  }
+  handleGroupSelect(index) {
+    console.log("selected group with index " + index);
+    this.setState({
+      selectedGroup: index,
+    });
+  }
 
   componentDidMount() {
     const { email } = this.props.match.params;
@@ -60,25 +71,46 @@ class ProfilePage extends React.Component {
               <h3>Your Groups</h3>
               {this.state.groups.map((group, index) => {
                 return (
-                  <h3 key={index} style={{ backgroundColor: "green" }}>
-                    {group.groupName} {group.groupId}
-                  </h3>
+                  <>
+                    <input
+                      onClick={() => this.handleGroupSelect(index)}
+                      type="radio"
+                      key={group.groupId}
+                      name="group"
+                    />
+                    <p>{group.groupName}</p>
+                    {/* </input> */}
+                  </>
                 );
               })}
             </div>
             <div className="col" style={{ backgroundColor: "gray" }}>
-              <div style={{ backgroundColor: "lightgreen", height: "48%" }}>
+              <div style={{ backgroundColor: "lightgreen", height: "auto" }}>
                 <h1>GroupInfo</h1>
+                {this.state.groups.map((group, index) => {
+                  return (
+                    <div
+                      style={{
+                        display:
+                          index === this.state.selectedGroup
+                            ? "inline"
+                            : "none",
+                      }}
+                    >
+                      <p>Group Name: {group.groupName}</p>
+                      <h3>Members:</h3>
+                      {group.members.map((member) => (
+                        <p>{member} </p>
+                      ))}
+                      <h3>Places of interest</h3>
+                      {group.places.map((placeId) => (
+                        <p>{placeId} </p>
+                      ))}
+                    </div>
+                  );
+                })}
               </div>
-              <div
-                style={{
-                  backgroundColor: "white",
-                  height: "50%",
-                  borderTop: "0px",
-                  marginTop: "0px",
-                  paddingTop: "0px",
-                }}
-              >
+              <div>
                 <h1>Map</h1>
               </div>
             </div>
