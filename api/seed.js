@@ -6,31 +6,36 @@ const Locations = [
     state: "New York",
     city: "Brooklyn",
     zipCode: 11230,
-    coord: { type: "Point", coordinates: [63.1257009, 14.5928298] },
+    lat: 63.1257009, 
+    lng: 14.5928298,
   },
   {
     state: "New Jersey",
     city: "Jersey City",
     zipCode: 12321,
-    coord: { type: "Point", coordinates: [39.3433574, 117.3616476] },
+    lat: 39.3433574, 
+    lng: 117.3616476,
   },
   {
     state: "Washington",
     city: "Seattle",
     zipCode: 32011,
-    coord: { type: "Point", coordinates: [31.491169, 120.31191] },
+    lat: 31.491169, 
+    lng: 120.31191,
   },
   {
     state: "Virginia",
     city: "Washington DC",
     zipCode: 13002,
-    coord: { type: "Point", coordinates: [31.5909061, 120.4927974] },
+    lat: 31.5909061,
+    lng: 120.4927974,
   },
   {
     state: "New York",
     city: "Brooklyn",
     zipCode: 40110,
-    coord: { type: "Point", coordinates: [-8.7552, 120.7106] },
+    lat: -8.7552,
+    lng: 120.7106,
   },
 ];
 
@@ -74,9 +79,11 @@ const Posts = [
 ];
 
 const Medias = [
-  { link: "sfhsjkfhasjkfsjkfh", postId: 1 },
-  { link: "dafhdsjkfasfjhsafjks", postId: 3 },
-  { link: "sdafhjdksafjskhfkja", postId: 5 },
+  { link: "https://firebasestorage.googleapis.com/v0/b/travelers-log.appspot.com/o/images%2F1018283_web1_web-outdoors.jpeg?alt=media&token=78979d56-0d4d-4b2a-88e5-83405a86e296", postId: 1 },
+  { link: "https://firebasestorage.googleapis.com/v0/b/travelers-log.appspot.com/o/images%2F117085_kings_park-1021x580.webp?alt=media&token=c6443315-dbef-4204-81e3-30f7c3a143df", postId: 3 },
+  { link: "https://firebasestorage.googleapis.com/v0/b/travelers-log.appspot.com/o/images%2F2_ALDR0430__1_.14.jpg?alt=media&token=67a6aa59-106b-4a74-b239-6f2531a5b45e", postId: 5 },
+  { link: "https://firebasestorage.googleapis.com/v0/b/travelers-log.appspot.com/o/images%2FColorado%20Outdoors.jpeg?alt=media&token=8f26e4b1-a1b3-49c6-a053-ef1b0d65d444", postId: 2 },
+  { link: "https://firebasestorage.googleapis.com/v0/b/travelers-log.appspot.com/o/images%2Fnew-york-city-cartoon-wall-mural-%5B2%5D-3171-p.jpeg?alt=media&token=043d96f0-c437-4d8f-a1ef-b203bbc451c9", postId: 4 }
 ];
 
 const Users = [
@@ -87,7 +94,7 @@ const Users = [
     fName: "Otes",
     lName: "Keson",
     birthDate: "04/03/1995",
-    profilePic: "http://dummyimage.com/173x100.png/5fa2dd/ffffff",
+    profilePic: "https://firebasestorage.googleapis.com/v0/b/travelers-log.appspot.com/o/images%2F27276711443_51746feb4c_c.jpeg?alt=media&token=48da388b-5b8c-4754-b1cb-92f48304343f",
     status: true,
   },
   {
@@ -97,7 +104,7 @@ const Users = [
     fName: "Hannis",
     lName: "Pendry",
     birthDate: "07/29/2015",
-    profilePic: "http://dummyimage.com/155x100.png/5fa2dd/ffffff",
+    profilePic: "https://firebasestorage.googleapis.com/v0/b/travelers-log.appspot.com/o/images%2FSweet-Images-For-Whatsapp-Profile-Pictures-DP-Photos-Download.jpeg?alt=media&token=d63a669e-aa4f-4533-95ed-5d129fb04563",
     status: false,
   },
   {
@@ -107,7 +114,7 @@ const Users = [
     fName: "Tresa",
     lName: "Lawtey",
     birthDate: "10/05/2000",
-    profilePic: "http://dummyimage.com/184x100.png/ff4444/ffffff",
+    profilePic: "https://firebasestorage.googleapis.com/v0/b/travelers-log.appspot.com/o/images%2Fcat_profile_196806.jpeg?alt=media&token=226d40ba-c1b8-4df3-ba14-f586f3c74bae",
     status: true,
   },
   {
@@ -117,7 +124,7 @@ const Users = [
     fName: "Vivianna",
     lName: "Meagh",
     birthDate: "11/01/2020",
-    profilePic: "http://dummyimage.com/237x100.png/dddddd/000000",
+    profilePic: "https://firebasestorage.googleapis.com/v0/b/travelers-log.appspot.com/o/images%2Fmona-lisa.jpeg?alt=media&token=4a820b95-ad70-499d-b77f-fc117aaf8b3a",
     status: false,
   },
   {
@@ -127,7 +134,7 @@ const Users = [
     fName: "Florinda",
     lName: "Segebrecht",
     birthDate: "01/16/2019",
-    profilePic: "http://dummyimage.com/116x100.png/5fa2dd/ffffff",
+    profilePic: "https://firebasestorage.googleapis.com/v0/b/travelers-log.appspot.com/o/images%2Fv0caqchbtn741.jpeg?alt=media&token=5c2295c0-19c3-4d34-872f-bdf55b5be0ae",
     status: true,
   },
 ];
@@ -202,21 +209,6 @@ const Categories = [
   },
 ];
 
-//   const createPost = async () => {
-//       const point = {type: 'Point', coordinates: [63.1257009, 14.5928298]}
-//       let location = await Location.findOne({where: {coord: point}})
-
-//       const post = await Post.create({body:'Cras mi pede, malesuada in', title: 'Thunder Buddies', likes: 2008, dislikes: 1231})
-
-//       if(location){
-//           location.setPost(post)
-//       }else {
-//           location = await Location.create({ state: 'New York', city: 'Brooklyn', zipCode: 11230, coord: {type: 'Point', coordinates: [63.1257009, 14.5928298]}})
-
-//           location.setPost(post)
-//       }
-
-//   }
 
 const seed = async () => {
   await db.sequelize.sync({ force: true });
@@ -228,7 +220,6 @@ const seed = async () => {
   await Users.map((U) => User.create(U));
   await Comments.map((C) => Comment.create(C));
   await Categories.map(Cat=> Category.create(Cat)) 
-// await createPost()
 };
 
 module.exports = seed;

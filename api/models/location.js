@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     class Location extends Model {}
   
     Location.init({
+        streetAddress: {
+            type : DataTypes.STRING
+        },
+
         state: {
             type : DataTypes.STRING,
         },
@@ -17,12 +21,18 @@ module.exports = (sequelize, DataTypes) => {
             type : DataTypes.STRING,
         },
 
-        coord: {
-            type: DataTypes.GEOMETRY('POINT'),
+        lat: {
+            type: DataTypes.FLOAT,
             validate:{
                 notEmpty: true,
-            },
-            unique: true
+            }
+        },
+
+        lng: {
+            type: DataTypes.FLOAT,
+            validate:{
+                notEmpty: true,
+            }
         },
 
     }, {
