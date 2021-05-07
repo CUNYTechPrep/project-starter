@@ -26,8 +26,7 @@ class ShowPostPage extends React.Component {
         });
       });
   }
-
-
+  
   render() {
     if(this.state.notFound) return <Redirect to="/" />;
     if(this.state.loading) return <Loading />;
