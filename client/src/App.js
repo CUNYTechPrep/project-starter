@@ -13,6 +13,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Review from "./pages/Review";
+import SchoolPage from "./pages/SchoolPage";
 import PrivateRoute from "./components/PrivateRoute";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useAuth } from "./contexts/AuthContext";
@@ -98,6 +99,7 @@ const App = () => {
                 <Route path="/login" component={Login} />
                 <Route path="/review" component={Review} />
                 <Route path="/compare" component={Compare} />
+                <Route path="/school/:school_dbn" component= {SchoolPage} />
                 <Route path="/" component={HomePage} />
 
                 {/* <Route path="/posts/new" component={PostFormPage} />
