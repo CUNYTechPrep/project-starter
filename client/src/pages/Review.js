@@ -142,9 +142,6 @@ export default function Review() {
       console.log('Focused')
     }
 
-
-
-
     // Review card display by School
   
     return (
