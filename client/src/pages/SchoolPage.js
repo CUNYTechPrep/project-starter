@@ -20,9 +20,11 @@ const SchoolPage = () => {
         };
         
         //https://data.cityofnewyork.us/resource/qpj9-6qjn.json?dbn=01M292
+        
+        // note that not found is shown until school is found (change it to timer based loading)
 
         // highschool fetch 
-        //EX: 01M448, 02M135, 02M296
+        //EX: 01M448, 02M135, 02M296, 24Q610
         // If this can't fetch the highschool, then it'll remain null and fetch through middle/elementary school
         fetch(`https://data.cityofnewyork.us/resource/qpj9-6qjn.json?dbn=${school_dbn}`, options)
             .then(res => res.json())
@@ -70,10 +72,10 @@ const SchoolPage = () => {
                 <ElementarySchoolInfo data={elementarySchoolData}/>    
             }
             {
-                !highSchoolData && !middleSchoolData && !elementarySchoolData &&
+                /* !highSchoolData && !middleSchoolData && !elementarySchoolData &&
                 <div>
                     <p>School Not Found</p>
-                </div>
+                </div> */
             }
         </div>
     )
