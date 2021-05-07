@@ -66,44 +66,11 @@ function Navigation(props) {
         ) : (
           <MenuIcon className="menu-icon" />
         )}
-        {/* <li className="option" onClick={closeMenu}>
-          <NavLink className="nav-link" onClick={closeMenu} exact to="/profile">
-            My Profile
-          </NavLink>
-        </li> */}
-
         <li className="option" onClick={closeMenu}>
           <AuthBurgerButton className="nav-link" onClick={closeMenu} exact to="/sign-in">
             Login
           </AuthBurgerButton>
         </li>
-
-
-        {/* <li className="option" onClick={closeMenu}>
-          <NavLink className="nav-link" onClick={closeMenu} exact to="/places">
-            Places
-          </NavLink>
-        </li> */}
-        {/* <li className="option" onClick={closeMenu}>
-          <NavLink
-            className="nav-link"
-            onClick={closeMenu}
-            exact
-            to="/about-us"
-          >
-            About Us
-          </NavLink>
-        </li>
-        <li className="option" onClick={closeMenu}>
-          <NavLink
-            className="nav-link"
-            onClick={closeMenu}
-            exact
-            to="/contact-us"
-          >
-            Contact
-          </NavLink>
-        </li> */}
       </ul>
       <div className="menu" onClick={handleClick}>
         {click ? (

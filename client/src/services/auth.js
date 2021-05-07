@@ -49,10 +49,10 @@ const auth = {
 
       //takes email password and sends as a POSt,
       // change URL to /api/auth/signup
-    register(firstName, lastName, email, password) {
+    register(firstName, lastName, email, password, age, gender, fitLevel, height, weight, bio) {
       return fetch('/api/auth/signup', { 
         method: 'POST',
-        body: JSON.stringify({ firstName, lastName, email, password }),
+        body: JSON.stringify({ firstName, lastName, email, password, age, gender, fitLevel, height, weight, bio }),
         headers: {
           'Content-Type': 'application/json',
         }

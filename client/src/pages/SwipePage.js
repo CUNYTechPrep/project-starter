@@ -25,7 +25,7 @@ function SwipePage() {
   // We will use ANOTHER fetch call to know if the swipe was left or right.
   for (let i=0; i<5; i+=1){
     slides.push(
-      <SwiperSlide key={`slide-${i}`} tag="ul">
+      <SwiperSlide key={`slide-${i}`} tag="ul" style={{position: "center"}}>
         <div class='rectangle'>
           <div class='profile_image'></div>
           <div class='detailcontainer'>

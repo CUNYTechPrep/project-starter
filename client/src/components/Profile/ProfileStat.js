@@ -3,6 +3,8 @@ import 'w3-css/w3.css';
 import '../../css/ProfilePage.css';
 
 function ProfileStat(props) {
+
+    
   return (
       <div>
         <div>
