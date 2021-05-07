@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import { Redirect } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ class SignUpPage extends React.Component {
   signup = (e) => {
     e.preventDefault();
     let { email, password } = this.state;
-    auth.authenticate(email, password)
+    auth.register(email, password) //we created an auth function called register
       .then((user) => {
         this.setState({ redirectToReferrer: true });
       })

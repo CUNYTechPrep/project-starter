@@ -17,6 +17,12 @@ SwiperCore.use([Navigation]);
 function SwipePage() {
   const slides=[];
 
+  //Fetch data from the api that has all the profiles
+  // sends back an array and we do this forloop and we push the real data into
+  //  these slides...
+  // then we will see real profiles back and forth as we swipe.
+  // anytime you want to get information with express we have to use FETCH, POST,GET...etc
+  // We will use ANOTHER fetch call to know if the swipe was left or right.
   for (let i=0; i<5; i+=1){
     slides.push(
       <SwiperSlide key={`slide-${i}`} tag="ul">

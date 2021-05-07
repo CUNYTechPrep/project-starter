@@ -45,6 +45,29 @@ const auth = {
           this.isAuthenticated = false;
           return body;
         });
+    },
+
+      //takes email password and sends as a POSt,
+      // change URL to /api/auth/signup
+    register(email, password) {
+      return fetch('/api/auth/signup', { 
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+        .then((response) => {
+          if(!response.ok) {
+            throw new Error('SignUp Failed');
+          }
+  
+          return response.json();
+        })
+        .then((body) => {
+          this.isAuthenticated = true; //this means the user will stay logged in
+          return body;
+        });
     }
   }
   
