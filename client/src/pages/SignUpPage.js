@@ -15,6 +15,8 @@ class SignUpPage extends React.Component {
   state = {
     redirectToReferrer: false,
     failed: false, 
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   }
@@ -28,8 +30,8 @@ class SignUpPage extends React.Component {
 
   signup = (e) => {
     e.preventDefault();
-    let { email, password } = this.state;
-    auth.register(email, password) //we created an auth function called register
+    let { firstName, lastName, email, password } = this.state;
+    auth.register(firstName, lastName, email, password) //we created an auth function called register
       .then((user) => {
         this.setState({ redirectToReferrer: true });
       })
@@ -60,6 +62,20 @@ class SignUpPage extends React.Component {
           </div>
           <div className="div-background">
             { err }
+            <input 
+              type="firstName"
+              className="form-control"
+              name="firstName"
+              placeholder="First Name" 
+              value={this.state.firstName} 
+              onChange={this.fieldChanged('firstName')} />
+            <input 
+              type="lastName"
+              className="form-control"
+              name="lastName"
+              placeholder="Last Name" 
+              value={this.state.lastName} 
+              onChange={this.fieldChanged('lastName')} />
             <input 
               type="email"
               className="form-control"
