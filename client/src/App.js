@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Button } from './components/Button';
 import Dropdown from './components/Dropdown';
 import {
   BrowserRouter as Router,

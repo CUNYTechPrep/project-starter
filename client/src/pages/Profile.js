@@ -1,4 +1,6 @@
 import React from 'react';
+import Footer from '../components/Footer';
+import Tag from '../components/Tag';
 import { Redirect } from 'react-router-dom';
 import '../Form.css'
 
@@ -63,31 +65,33 @@ function ProfilePage(props) {
     );
 }
 
-function Tags(props){
+function Tags(props) {
 
     return (
-       
+
+        <div className="tag-section my-5">
             <div className='row justify-content-around bg-secondary'>
 
-                <div className='col-md-4 bg-light'>
-                    <p>Tag</p>
+                <div className='col-md-4 p-3'>
+                    <Tag category='Tag1'/>
                 </div>
 
-                <div className='col-md-4 bg-light'>
-                    <p>Tag</p>
+                <div className='col-md-4 p-3'>
+                    <Tag category='Tag2'/>
                 </div>
-                <div className='col-md-4 bg-light'>
-                    <p>Tag</p>
+
+                <div className='col-md-4 p-3'>
+                    <Tag category='Tag3'/>
                 </div>
-                <div className='col-md-4 bg-light'>
-                    <p>Tag</p>
+
+                <div className='col-md-4 p-3'>
+                    <Tag category='Tag4'/>
                 </div>
-                <div className='col-md-4 bg-light'>
-                    <p>Tag</p>
-                </div>
+
+                
 
             </div>
-       
+        </div>
     )
 }
 
@@ -98,6 +102,7 @@ class Profile extends React.Component {
             <div>
                 <ProfilePage />
                 <Tags />
+                <Footer />
             </div>
         )
     }
