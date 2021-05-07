@@ -19,7 +19,7 @@ const HighSchoolInfo = ({data}) => {
                     <h3 class="card-title">Contact</h3>
                     <p class="card-text">Phone: {data.phone_number}</p>
                     <p class="card-text">Email: {data.school_email}</p>
-                    <a href={school_website} target="_blank">{data.website}</a>
+                    <a href={`http://${data.website}`} target="_blank">{data.website}</a>
                 </div>
             </div>
             <div class="card row">

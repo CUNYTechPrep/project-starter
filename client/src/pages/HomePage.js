@@ -70,7 +70,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="rightSide">
-        <Map data = {selectedSchools}/>
+        <Map highSchoolData = {selectedSchools}/>
       </div>
       
     </div>
