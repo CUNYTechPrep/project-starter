@@ -13,12 +13,12 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     firstName: { type: DataTypes.STRING },
     lastName: { type: DataTypes.STRING },
-    age: { type: DataTypes.INTEGER },
-    gender: { type: DataTypes.STRING },
-    fitLevel: {type: DataTypes.STRING },
-    height: {type: DataTypes.INTEGER }, 
-    weight: {type: DataTypes.INTEGER },
-    bio: { type: DataTypes.STRING },
+    // age: { type: DataTypes.INTEGER },
+    // gender: { type: DataTypes.STRING },
+    // fitLevel: {type: DataTypes.STRING },
+    // height: {type: DataTypes.INTEGER }, 
+    // weight: {type: DataTypes.INTEGER },
+    // bio: { type: DataTypes.STRING },
     email: {
       type: DataTypes.STRING,
       unique: true,

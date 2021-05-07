@@ -10,11 +10,11 @@ router.post('/signup', (req, res) => {
     lastName: req.body.lastName,
     email: req.body.email,
     password: req.body.password,
-    gender: req.body.gender,
-    height: req.body.height,
-    weight: req.body.weight,
-    fitLevel: req.body.fitLevel,
-    bio: req.body.bio,
+    // gender: req.body.gender,
+    // height: req.body.height,
+    // weight: req.body.weight,
+    // fitLevel: req.body.fitLevel,
+    // bio: req.body.bio,
   })
     .then((user) => {
       req.login(user, () => res.status(201).json(user));
