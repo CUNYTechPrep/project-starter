@@ -1,8 +1,10 @@
 import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route, 
+// import { Button } from './components/Button';
+// import Dropdown from './components/Dropdown';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
   Link,
   NavLink
 } from 'react-router-dom';
@@ -11,15 +13,34 @@ import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 import SignUp from './pages/SignUp';
 import CreatePost from './pages/CreatePost';
-import LogIn from './pages/LogIn'
+import LogIn from './pages/LogIn';
 import PrivateRoute from './components/PrivateRoute';
 import AuthButton from './components/AuthButton';
-
+import Profile from './pages/Profile';
 
 import './App.css';
 
 
 function Navigation(props) {
+/*
+  const [dropdown, setDropdown] = useState(false);
+
+  const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
+  };
+
+  const onMouseLeave = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
+  }; 
+  */
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
       <Link className="navbar-brand" to="/">Micro Blog</Link>
@@ -27,13 +48,19 @@ function Navigation(props) {
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/posts/new">
             Create a Post
-          </NavLink>
+        </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/profile">
+            Profile
+        </NavLink>
         </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/about-us">
             About Us
-          </NavLink>
+        </NavLink>
         </li>
+        
       </ul>
       
       <AuthButton/>
@@ -45,22 +72,23 @@ function Navigation(props) {
 class App extends React.Component {
   render() {
     return (
-       
-        <Router>
-          <Navigation />
-          <div className="container-fluid text-center">
-            <div className="row justify-content-center">
-              <Switch>
-                <PrivateRoute path="/posts/new" component={CreatePost} />
-                <Route path="/posts/:id" component={ShowPostPage} />
-                <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/sign-up" component={SignUp} />
-                <Route path="/log-in" component={LogIn} />
-                <Route path="/" component={PostsListPage} />
-              </Switch>
-            </div>
+
+      <Router>
+        <Navigation />
+        <div className="container-fluid text-center">
+          <div className="row justify-content-center">
+            <Switch>
+              <PrivateRoute path="/posts/new" component={CreatePost} />
+              <Route path="/posts/:id" component={ShowPostPage} />
+              <Route path="/about-us" component={AboutUsPage} />
+              <Route path="/sign-up" component={SignUp} />
+              <Route path="/log-in" component={LogIn} />
+              <PrivateRoute path="/profile" component={Profile} />
+              <Route path="/" component={PostsListPage} />
+            </Switch>
           </div>
-        </Router>
+        </div>
+      </Router>
     );
   }
 }
