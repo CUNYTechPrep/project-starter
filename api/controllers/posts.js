@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const passport = require('../middlewares/authentication');
 const { Post, Location, Media, User } = db;
 
 // This is a simple example for providing basic CRUD routes for
@@ -49,14 +50,14 @@ router.get('/', async (req,res) => {
 //then creates post instance and associates the location id to it.
 //then the media instance is created for that post. 
 //finally an array containing the location, post, and media json objects is returned. int the format [{location}, {post}, {media}]
-router.post('/', (req, res) => {
+router.post('/', passport.isAuthenticated(), (req, res) => {
   let content  = req.body;
   let resArr = []
 
   Location.findOrCreate({where: {lat: parseFloat(content.lat), lng: parseFloat(content.lng)}, defaults: {state: content.state, city: content.city, zipCode: content.zip, streetAddress: content.streetAddress}})
           .then(([location, created]) =>{
             resArr.push(location)
-            return  Post.create({body: content.body, title: content.title, fkUserName: "okeson0", likes: 0, dislikes: 0, locationId: location.id})    
+            return  Post.create({body: content.body, title: content.title, fkUserName: content.userName, likes: 0, dislikes: 0, locationId: location.id})    
           })
           .then(post =>{
             resArr.push(post)
@@ -78,7 +79,7 @@ router.post('/', (req, res) => {
 //  "media": {media obj stuff},
 //  "location": {location obj stuff}  
 //}
-router.get('/:id', async (req, res) => {
+router.get('/:id', passport.isAuthenticated(), async (req, res) => {
   const {id}  = req.params;
   let post = await Post.findByPk(parseInt(id, 10))
     
@@ -99,7 +100,7 @@ router.get('/:id', async (req, res) => {
 
 // ./api/posts/like/:id 
 // pass the post id to increment the like in that post. 
-router.put('/like/:id', (req, res) => {
+router.put('/like/:id', passport.isAuthenticated(), (req, res) => {
   const { id } = req.params;
   Post.findByPk(parseInt(id, 10))
     .then(post => {
@@ -120,7 +121,7 @@ router.put('/like/:id', (req, res) => {
 
 // ./api/posts/dislike/:id 
 // use this endpoint and pass the post id to increment the dislike value by one. 
-router.put('/dislike/:id', (req, res) => {
+router.put('/dislike/:id', passport.isAuthenticated(), (req, res) => {
   const { id } = req.params;
   Post.findByPk(parseInt(id, 10))
     .then(post => {
@@ -143,7 +144,7 @@ router.put('/dislike/:id', (req, res) => {
 // call this endpoint with the userName and get an array of all posts made by that user. 
 // the array holds objects that have the properties post, media and location. 
 // in the following format [{"post": {post data}, "media": {media data}, "location": {location data}}]
-router.get('/getByUser/:userName', async (req,res) => {
+router.get('/getByUser/:userName', passport.isAuthenticated(), async (req,res) => {
   const { userName } = req.params;
   const user = await User.findByPk(userName);
   const posts = await user.getPosts();
@@ -168,7 +169,7 @@ router.get('/getByUser/:userName', async (req,res) => {
 });
 
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', passport.isAuthenticated(), async (req, res) => {
   const { id } = req.params;
   let post = await Post.findByPk(parseInt(id, 10))
     

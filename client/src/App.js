@@ -7,12 +7,14 @@ import {
   NavLink
 } from 'react-router-dom';
 import PostsListPage from './pages/PostsListPage';
-import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 import SignUp from './pages/SignUp';
 import CreatePost from './pages/CreatePost';
 import LogIn from './pages/LogIn'
+import PrivateRoute from './components/PrivateRoute';
+import AuthButton from './components/AuthButton';
+
 
 import './App.css';
 
@@ -32,17 +34,9 @@ function Navigation(props) {
             About Us
           </NavLink>
         </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/sign-up">
-            Sign Up
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/log-in">
-            Log In 
-          </NavLink>
-        </li>
       </ul>
+      
+      <AuthButton/>
     </nav>
   );
 }
@@ -57,7 +51,7 @@ class App extends React.Component {
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
-                <Route path="/posts/new" component={CreatePost} />
+                <PrivateRoute path="/posts/new" component={CreatePost} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/sign-up" component={SignUp} />

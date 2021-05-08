@@ -5,6 +5,7 @@ import firebase from '../firebase.js';
 import Map from '../components/Map';
 import Loading from '../components/Loading';
 import Geocode from "react-geocode";
+import auth from '../services/auth';
 const apiKey = process.env.REACT_APP_MAP_API 
 
 Geocode.setApiKey(apiKey);
@@ -90,6 +91,7 @@ class CreatePost extends React.Component {
                             zip : " ",
                             body : " ",
                             link: " ",
+                            userName: auth.userName,
                             streetAddress: " "
                         }, 
         };
@@ -101,6 +103,7 @@ class CreatePost extends React.Component {
     }
 
     componentDidMount(){
+        // console.log(this.state.dataObj.userName)
         navigator.geolocation.getCurrentPosition((position) =>{
             console.log("Latitude is :", position.coords.latitude);
             console.log("Longitude is :", position.coords.longitude);
@@ -285,7 +288,7 @@ class CreatePost extends React.Component {
 
     render(){
         if(this.state.success) return <Redirect to="/" />;
-       else if(this.state.isCancle) return  <Redirect to="/" /> ;
+        if(this.state.isCancle) return  <Redirect to="/" />;
 
         let pos = this.state.dataObj
        return (
