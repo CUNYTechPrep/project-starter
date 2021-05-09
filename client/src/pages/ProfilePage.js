@@ -1,5 +1,16 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+} from "react-google-maps";
+const GAPIKEY = process.env.GAPIKEY;
+const mapURL =
+  "https://maps.googleapis.com/maps/api/js?key=" +
+  GAPIKEY +
+  "&v=3.exp&libraries=geometry";
 
 class ProfilePage extends React.Component {
   constructor(props) {
@@ -46,6 +57,24 @@ class ProfilePage extends React.Component {
   }
 
   render() {
+    const MapWithMarker = withScriptjs(
+      withGoogleMap((props) => (
+        <GoogleMap
+          defaultZoom={11}
+          defaultCenter={{ lat: 40.7074077, lng: -73.92179039999999 }}
+        >
+          <Marker
+            label="some place"
+            position={{ lat: 40.7074077, lng: -73.92179039999999 }}
+          />
+          <Marker
+            label="some place2"
+            position={{ lat: 40.7274077, lng: -73.91179039999999 }}
+          />
+        </GoogleMap>
+      ))
+    );
+
     if (this.state.notFound) return <Redirect to="/" />;
     else if (this.state.loading) return <h1>Loading</h1>;
     return (
@@ -108,8 +137,15 @@ class ProfilePage extends React.Component {
               </div>
             </div>
           </div>
-          <div className="row groupMap">
-            <h1>Map</h1>
+          <div className="row" style={{ height: "100%" }}>
+            <MapWithMarker
+              googleMapURL={mapURL}
+              loadingElement={<div style={{ height: "100%", width: "100%" }} />}
+              containerElement={
+                <div style={{ height: "450px", width: "100%" }} />
+              }
+              mapElement={<div style={{ height: "100%", width: "100%" }} />}
+            />
           </div>
         </div>
       </>
