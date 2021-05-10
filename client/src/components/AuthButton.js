@@ -23,7 +23,7 @@ const AuthButton = withRouter(({ history }) => {
 
   return (
     <div className={AuthButtonCSS.welcome}>
-      Welcome! {auth.userName}
+      Welcome! {auth.user.userName}
       <button className={`btn ${AuthButtonCSS.logout}`} onClick={logout}><LockIcon/></button>
     </div>
   );

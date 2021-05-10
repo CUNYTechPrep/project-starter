@@ -109,7 +109,7 @@ class CreatePost extends React.Component {
                             zip : " ",
                             body : " ",
                             link: " ",
-                            userName: auth.userName,
+                            userName: auth.user,
                             streetAddress: " "
                         }, 
         };
@@ -121,7 +121,7 @@ class CreatePost extends React.Component {
     }
 
     componentDidMount(){
-        // console.log(this.state.dataObj.userName)
+        console.log(this.state.dataObj.userName)
         navigator.geolocation.getCurrentPosition((position) =>{
             console.log("Latitude is :", position.coords.latitude);
             console.log("Longitude is :", position.coords.longitude);

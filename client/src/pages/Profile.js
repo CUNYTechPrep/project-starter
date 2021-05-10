@@ -1,8 +1,10 @@
 import React from 'react';
-import Footer from '../components/Footer';
 import Tag from '../components/Tag';
 import { Redirect } from 'react-router-dom';
+import auth from '../services/auth';
+import PostCard from '../components/Postcard';
 import '../Form.css'
+import Loading from '../components/Loading';
 
 function ProfilePage(props) {
 
@@ -96,13 +98,44 @@ function Tags(props) {
 }
 
 class Profile extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.state ={
+            userInfo: auth.user,
+            posts: [],
+            loading: true,
+        }
+        
+
+        //this.handleSubmit= this.handleSubmit.bind(this);
+        //this.handleCancle= this.handleCancle.bind(this);
+    }
+
+    componentDidMount() {
+        //const { id } = this.props.match.params;
+      
+        console.log(this.state.userInfo);
+
+        fetch("./api/posts/getByUser/okeson0")
+          .then(res => res.json())
+          .then(post => {
+            console.log(post);
+            this.setState({
+              posts: post,
+              loading: false,
+            });
+          })
+          .catch(err => {
+              console.log(err);
+        });
+    }
 
     render() {
-        return (
+        //if(this.state.loading) return <Loading />
+        return ( 
             <div>
                 <ProfilePage />
-                <Tags />
-                <Footer />
             </div>
         )
     }
