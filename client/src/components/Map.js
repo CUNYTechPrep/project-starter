@@ -4,9 +4,11 @@ const apiKey = process.env.REACT_APP_MAP_API
 
 
 const containerStyle = {
-  width: '100vw',
-  height: '79vh',
-  marginbottom: '25px'
+  width: '1060px',
+  height: '500px',
+  border: '5px solid black',
+  borderRadius: '10px',
+  boxShadow: '10px 10px 8px #750eeb'
 };
 
 

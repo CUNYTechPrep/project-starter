@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "@react-google-maps/api": "^2.1.1",
     "dotenv": "^8.2.0",
     "firebase": "^8.4.3",
@@ -10,6 +12,7 @@
     "react-dom": "^16.14.0",
     "react-geocode": "^0.2.3",
     "react-google-maps": "^9.4.5",
+    "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3"
   },

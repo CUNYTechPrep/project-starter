@@ -75,7 +75,7 @@ class App extends React.Component {
 
       <Router>
         <Navigation />
-        <div className="container-fluid text-center">
+        <div className="container text-center">
           <div className="row justify-content-center">
             <Switch>
               <PrivateRoute path="/posts/new" component={CreatePost} />

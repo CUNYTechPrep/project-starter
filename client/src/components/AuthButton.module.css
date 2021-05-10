@@ -1,0 +1,51 @@
+.login {
+color: black;
+background-color: #FFC312;
+width: 110px;
+margin-right: 5px;
+border: 1px solid black;
+box-shadow: -3px 3px black, -2px 2px black, -1px 1px black;
+}
+
+.signup {
+color: black;
+background-color: #750eeb;
+width: 100px;
+margin-left: 5px;
+border: 1px solid black;
+box-shadow: -3px 3px black, -2px 2px black, -1px 1px black;
+}
+
+.logout {
+color: black;
+background-color: #eb1d0e;
+width: 50px;
+height:50px;
+border: 1px solid black;
+border-radius: 50%;
+margin-left: 10px;
+box-shadow: -3px 3px black, -2px 2px black, -1px 1px black;
+}
+.signup:hover{
+    color:#eb1d0e;
+    border: 1px solid #eb1d0e;
+    box-shadow: -3px 3px #eb1d0e, -2px 2px #eb1d0e, -1px 1px #eb1d0e;
+}
+
+.logout:hover{
+    background-color: #750eeb;
+    color: #eb1d0e;
+    border: 1px solid #eb1d0e;
+    box-shadow: -3px 3px #eb1d0e, -2px 2px #eb1d0e, -1px 1px #eb1d0e;
+}
+
+.login:hover{
+    background-color: #750eeb;
+    color:#eb1d0e;  
+    border: 1px solid #eb1d0e;
+    box-shadow: -3px 3px #eb1d0e, -2px 2px #eb1d0e, -1px 1px #eb1d0e;
+}
+
+.welcome {
+    color: rgb(86, 209, 14);
+}

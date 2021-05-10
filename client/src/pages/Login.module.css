@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+.loginBody, .loginHtml{
+background-image: url('../nyc-wallpaper.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 370px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+border-radius: 10px;
+background-color: rgba(0,0,0,0.7) !important;
+}
+
+.cardheader h3{
+color: white;
+}
+
+.input_group_prepend span{
+width: 50px;
+background-color: #750eeb;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+margin-top: 15px;
+border: 1px solid black;
+box-shadow: -3px 3px black, -2px 2px black, -1px 1px black;
+}
+
+.login_btn:hover{
+color: black;
+background-color: #750eeb;
+color:#eb1d0e;
+border: 1px solid #eb1d0e;
+box-shadow: -3px 3px #eb1d0e, -2px 2px #eb1d0e, -1px 1px #eb1d0e;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}

@@ -2,6 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import '../Form.css'
 import firebase from '../firebase.js';
+import SignUpCSS from './Signup.module.css'
+import Helmet from 'react-helmet'
 
 const bucket = firebase.storage();
 
@@ -24,53 +26,89 @@ function SignUpForm(props) {
     };
 
     return (
-        <form className="bg-secondary p-5 row g-3" onSubmit={props.onSubmit}>
-            <div className="col-12">
-                <input type="file" name="file" accept="image/*" onChange={handleImageUpload} ref={imageUploader} style={{display: "none"}}/>
-                <div onClick = {()=> imageUploader.current.click()}>
-                    <img ref={uploadedImage} src="https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg" className="profilePic"/> 
+
+        <div className="container">
+            <div className="d-flex justify-content-center h-100">
+                <div className={SignUpCSS.card}>
+                    <div className="card-body">
+                        <form onSubmit={props.onSubmit} className="row g-3">
+                            <div className="form-group col-md-3">
+                            </div>
+
+                            <div className="form-group col-md-6">
+                                <h3 className={SignUpCSS.title}>Sign Up</h3>
+                                <div className={SignUpCSS.profileDiv}>
+                                    <input type="file" name="file" accept="image/*" onChange={handleImageUpload} ref={imageUploader} style={{display: "none"}}/>
+                                    <div onClick = {()=> imageUploader.current.click()}>
+                                    <img ref={uploadedImage} src="https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg" className={SignUpCSS.profilePic} alt=""/> 
+                                    </div>
+                                    Click to upload profile picture
+                                </div>
+                            </div>
+
+                            <div className="form-group col-md-3">
+                            </div>
+
+                            <div className="input-group form-group col-md-10">
+                                <div className={SignUpCSS.input_group_prepend}>
+                                    <span className="input-group-text">📧</span>
+                                </div>
+                                <input type="text" name="email" className="form-control" placeholder="email"/>
+                            </div>
+
+                            <div className="input-group form-group col-md-6">
+                                <div className={SignUpCSS.input_group_prepend}>
+                                    <span className="input-group-text">👤</span>
+                                </div>
+                                <input type="text" name="userName" className="form-control" placeholder="username"/>
+                                
+                            </div>
+
+                            <div className="input-group form-group col-md-6">
+                                <div className={SignUpCSS.input_group_prepend}>
+                                    <span className="input-group-text">🔑</span>
+                                </div>
+                                <input type="password" name="password" className="form-control" placeholder="password"/>
+                            </div>
+
+                            <div className="input-group form-group col-md-4">
+                                <div className={SignUpCSS.input_group_prepend}>
+                                    <span className="input-group-text">📋</span>
+                                </div>
+                                <input type="text" name="fName" className="form-control" placeholder="first name"/>
+                            </div>
+
+                            <div className="input-group form-group col-md-4">
+                                <div className={SignUpCSS.input_group_prepend}>
+                                    <span className="input-group-text">📋</span>
+                                </div>
+                                <input type="text" name="lName" className="form-control" placeholder="last name"/>
+                            </div>
+
+                            <div className="input-group form-group col-md-4">
+                                <div className={SignUpCSS.input_group_prepend}>
+                                    <span className="input-group-text">📅</span>
+                                </div>
+                                <input name="birthDate" className="form-control" placeholder="" type="date" min="1900-01-01"max={new Date().toISOString().split("T")[0]}/>
+                            </div>
+
+                            <div className="form-group col-md-4">
+                            </div>
+
+                            <div className="form-group col-md-4">
+                                <button className="btn btn-danger m-3" onClick={props.OnCancle} >Cancel</button>
+                                <input type="submit" value="Sign Up" className={`btn float-right ${SignUpCSS.signup_btn}`}/>
+ 
+                            </div>
+
+                            <div className="form-group col-md-4">
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                Click to upload profile picture
             </div>
-
-            <div className="col-md-12">
-                <label className="form-label text-warning float-start"> Email :</label>
-                <input type="text" name="email" className="form-control" placeholder="Enter Email"/>
-            </div>
-
-            <div className="col-md-12">
-                <label className="form-label text-warning"> User : </label>
-                <input type="text" name="userName" className="form-control" placeholder="Enter User"/>
-            </div>
-
-
-            <div className="col-md-12">
-                <label className="form-label text-warning"> Password : </label>
-                <input type="text" name="password" className="form-control" placeholder="Enter Password"/>
-            </div>
-
-            <div className="col-md-5">
-                <label className="form-label text-warning"> First Name : </label>
-                <input type="text" name="fName" className="form-control" placeholder="Enter First Name"/>
-            </div>
-
-            <div className="col-md-5">
-                <label className="form-label text-warning"> Last Name : </label>
-                <input type="text" name="lName" className="form-control" placeholder="Enter Last Name"/>
-            </div>
-
-            <div className="col-2">
-                <label className="form-label text-warning"> Birth Date : </label>
-                <input name="birthDate" className="form-control" placeholder="" type="date" min="1900-01-01"max={new Date().toISOString().split("T")[0]}/>
-            </div>
-
-            <div className="col-12">
-                <input  className="btn btn-primary m-3" type="submit" value="Sign Up"/>
-                <button className="btn btn-danger m-3" onClick={props.OnCancle} >Cancel</button>
-            </div>
-
-
-        </form>
+            {props.err}
+        </div>
     );
 }
 
@@ -94,6 +132,7 @@ class SignUp extends React.Component {
         }
 
         this.handleSubmit= this.handleSubmit.bind(this);
+        this.handleCancle= this.handleCancle.bind(this);
     }
 
     
@@ -149,6 +188,7 @@ class SignUp extends React.Component {
                         .then(response => {
                             if(response.ok){
                                 console.log("success")
+                                this.setState({success: true})
                             }
                         })
                         .catch(error => {
@@ -160,9 +200,25 @@ class SignUp extends React.Component {
         )
     }
 
+    handleCancle(e){
+        e.preventDefault();
+        this.setState({
+            isCancle : true
+        })
+    }
+
     render(){
+        if(this.state.success) return <Redirect to="/log-in" />;
+        if(this.state.isCancle) return  <Redirect to="/" />;
         return (
-            <SignUpForm onSubmit ={this.handleSubmit}/>
+            <div>
+                <Helmet>
+                    <body className={SignUpCSS.signupBody}/>
+                    <html className={SignUpCSS.signupHtml}/>
+                </Helmet>
+                <SignUpForm onSubmit ={this.handleSubmit} OnCancle={this.handleCancle}/>
+            </div>
+            
         )
     }
         
