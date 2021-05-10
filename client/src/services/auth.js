@@ -1,5 +1,5 @@
 const auth = {
-    userName : "",
+    user : {},
     isAuthenticated: false,
     authenticate(userName, password) {
       return fetch('/api/auth/login', { 
@@ -18,7 +18,7 @@ const auth = {
         })
         .then((body) => {
           this.isAuthenticated = true;
-          this.userName = body.userName
+          this.user = body
           return body;
         });
     },
