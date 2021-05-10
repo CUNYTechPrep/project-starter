@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Dropdown from './components/Dropdown';
+import Footer from './components/Footer';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,25 +21,7 @@ import './App.css';
 
 
 function Navigation(props) {
-/*
-  const [dropdown, setDropdown] = useState(false);
 
-  const onMouseEnter = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(true);
-    }
-  };
-
-  const onMouseLeave = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(false);
-    }
-  }; 
-  */
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
       <Link className="navbar-brand" to="/">Micro Blog</Link>
@@ -93,6 +76,7 @@ class App extends React.Component {
             </Switch>
           </div>
         </div>
+        <Footer />
       </Router>
     );
   }
