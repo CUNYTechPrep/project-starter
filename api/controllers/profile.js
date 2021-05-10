@@ -19,20 +19,20 @@ router.get('/', (req, res) => {
 router.put('/', (req, res) => {
     const { id } = req.params;
     User.findByPk(id)
-      .then(post => {
-        if(!post) {
+      .then(user => {
+        if(!user) {
           return res.sendStatus(404);
         }
   
-    post.age = req.body.age;
-    post.bio = req.body.bio;
-    post.fitLevel = req.body.fitLevel;
-    post.height = req.body.height;
-    post.weight = req.body.weight;
+        user.age = req.body.age;
+        user.bio = req.body.bio;
+        user.fitLevel = req.body.fitLevel;
+        user.height = req.body.height;
+        user.weight = req.body.weight;
 
-    post.save()
-        .then(post => {
-        res.json(post);
+        user.save()
+        .then(user => {
+        res.json(user);
         })
         .catch(err => {
         res.status(400).json(err);

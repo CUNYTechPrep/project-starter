@@ -23,6 +23,8 @@ const profileController = require('./profile.js'); //GET, PUT, POST, DELETE
     // If two people swiped on each other, 
     // THEN they get each others profiles shown in their buddies list
 const swipeProfileController = require('./swipe.js'); //GET, PUT
+
+
 //this will help us track the location of the user 
 //get maps location info from front end to here
 
@@ -39,9 +41,9 @@ router.use('/posts', postsController);
 router.use('/application-configuration', appConfigController);
 
 
-router.use('/user', profileController);
-router.use('/users', swipeProfileController);
+router.use('/profile', profileController); //single user
 
+router.use('/users', swipeProfileController);
 
 router.use('/auth', authController);
 

@@ -18,6 +18,8 @@ class ProfilePage extends React.Component {
     showBuddiesPopup: false,
   }
 
+  //fetch from /api/profile
+
   fieldChanged = (name) => {
     return (event) => {
       let { value } = event.target;
