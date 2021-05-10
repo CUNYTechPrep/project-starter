@@ -2,31 +2,29 @@ import React from 'react';
 import 'w3-css/w3.css'; 
 import '../../css/ProfilePage.css';
 
-function ProfileStat(props) {
+function Profile({ id, firstName, lastName, age, gender, fitLevel, height, weight, bio }) {
 
-    
   return (
       <div>
         <div>
             <h5 style={{fontSize: 27}}>
-                Alex, 22 
+                { firstName }, { lastName } - { age } 
                 <span style={{color: 'white'}}>..................................</span>
-                <span style={{color: '#585858'}}>Male</span>
+                <span style={{color: '#585858'}}> {gender} </span>
             </h5>
             <h5 style={{color: '#757575', fontSize: 20}}>
-                FitLevel: Mid
+                FitLevel: { fitLevel } 
             </h5>
             <div className="flex-container-profile" style={{color:'#585858'}}>
                 <h5>
-                    Height: 5'7"
+                    Height: { height } inches
                 </h5>
                 <h5>
-                    Weight: 170lbs
+                    Weight: { weight } lbs
                 </h5>
             </div>
             <p style={{maxWidth: 400, marginLeft: 20, marginTop: 10}}>
-            I am outgoing and I would like to go to the gym every Saturdays! 
-            I prefer a gym buddy from Jackson Heights in NYC :)
+            { bio }
             </p>
         </div>
       </div>
@@ -35,4 +33,4 @@ function ProfileStat(props) {
   );
 }
 
-export default ProfileStat;
+export default Profile;

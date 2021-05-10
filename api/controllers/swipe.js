@@ -8,10 +8,9 @@ const { User } = db;
 
 //populate the Swipe tab
 router.get('/', (req,res) => {
-    User.findAll({})
-      .then(posts => res.json(posts));
+  User.findAll({})
+    .then(users => res.json(users));
 });
-
 
 // Here you have to figure out what do you do when someone HAS Swiped!
 
@@ -19,3 +18,4 @@ router.get('/', (req,res) => {
 
 // when someone swipes, what data do I send back
 
+module.exports = router;

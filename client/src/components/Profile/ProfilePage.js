@@ -105,7 +105,6 @@ class ProfilePage extends React.Component {
                             </h5>
                         </div>
                         <p style={{maxWidth: 400, marginLeft: 20, marginTop: 10}}>
-                          {this.state.bio}
                           Sample Bio Data
                         </p>
                     </div>

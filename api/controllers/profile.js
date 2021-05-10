@@ -4,7 +4,7 @@ const db = require('../models');
 const passport = require('../middlewares/authentication');
 const { User } = db;
 
-router.get('/user', (req, res) => {
+router.get('/', (req, res) => {
     const { id } = req.params;
     User.findByPk(id) 
         .then(post => {
@@ -16,7 +16,7 @@ router.get('/user', (req, res) => {
 });
 
 //for editing profile info
-router.put('/user', (req, res) => {
+router.put('/', (req, res) => {
     const { id } = req.params;
     User.findByPk(id)
       .then(post => {
@@ -39,3 +39,5 @@ router.put('/user', (req, res) => {
         });
     });
 });
+
+module.exports = router;
