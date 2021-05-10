@@ -1,0 +1,47 @@
+.CPbody, .CPhtml{
+    background-image: url('../fractal-pattern.jpg');
+    background-size: cover;
+    background-repeat: repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    }
+
+.picInput{
+    color: #750eeb;
+}
+
+.picInput:hover{
+    cursor: pointer;
+}
+
+    
+.card{
+height: 830px;
+margin-top: 30px;
+margin-bottom: auto;
+width: 1050px;
+border-radius: 10px;
+background-color: rgba(0,0,0,0.7) !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.create_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+border: 1px solid black;
+box-shadow: -3px 3px black, -2px 2px black, -1px 1px black;
+}
+
+.create_btn:hover{
+color: black;
+background-color: #750eeb;
+color:#eb1d0e;
+border: 1px solid #eb1d0e;
+box-shadow: -3px 3px #eb1d0e, -2px 2px #eb1d0e, -1px 1px #eb1d0e;
+}
