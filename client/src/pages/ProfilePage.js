@@ -6,7 +6,7 @@ import {
   GoogleMap,
   Marker,
 } from "react-google-maps";
-const GAPIKEY = process.env.GAPIKEY;
+const GAPIKEY = process.env.REACT_APP_GAPIKEY;
 const mapURL =
   "https://maps.googleapis.com/maps/api/js?key=" +
   GAPIKEY +
