@@ -1,4 +1,5 @@
-import React from 'react';
+  
+import React, { useState } from 'react'
 import 'w3-css/w3.css';
 import '../styles.css';
 import { Swiper, SwiperSlide} from 'swiper/react';
@@ -6,7 +7,11 @@ import SwiperCore, { Navigation} from 'swiper'
 import'swiper/swiper-bundle.css';
 import Profile from '../components/Profile/Profile';
 import Loading from '../components/Loading';
+import '../css/SwipePage.css';
+
 SwiperCore.use([Navigation]);
+
+
 
 class SwipePage extends React.Component {
   state = {
@@ -38,7 +43,7 @@ class SwipePage extends React.Component {
         <SwiperSlide key={`slide-${i}`} tag="ul">
           <div class='rectangle'>
             {this.state.profiles[i]}
-          </div>
+          </div>  
         </SwiperSlide>
       );
 //after everyone has been swiped, transfer them to another array of already been swiped.
@@ -51,6 +56,11 @@ class SwipePage extends React.Component {
    
     return ( 
       <React.Fragment>
+      {/* <form > */}
+        <button className="button-no">
+          No
+        </button>
+      {/* </form> */}
       <Swiper 
         id="main" 
         tag="section"
@@ -66,6 +76,11 @@ class SwipePage extends React.Component {
       >
         {slides}
       </Swiper>
+      {/* <form>       */}
+        <button className="button-yes">
+          Yes
+        </button>
+      {/* </form> */}
       </React.Fragment>
     );
   }
