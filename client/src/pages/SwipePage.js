@@ -17,8 +17,8 @@ SwiperCore.use([Navigation]);
 class SwipePage extends React.Component {
   state = {
     profiles: [],
+    idArray: [],
     loading: true,
-    id: null,
   }
 
   componentDidMount() {
@@ -41,11 +41,10 @@ class SwipePage extends React.Component {
       return <Loading />
     
     let slides = []; //we needed a new array to be modified, because we cannot modify the state itself without setState.  
-    console.log(this.state.profiles[1].res);
+    console.log(this.state.profiles[0].props.id);
 
     for (let i=0; i<this.state.profiles.length; i+=1){
-      if(this.state.profiles[i].id !== this.state.id){
-
+      if(this.state.profiles[i].props.id !== this.state.id){
         slides.push(
           <SwiperSlide key={`slide-${i}`} tag="ul">
             <div class='rectangle'>
