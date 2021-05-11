@@ -1,0 +1,26 @@
+
+.break {
+    word-break: break-all;
+  }
+.review-size{
+    max-height:836px;
+    max-width:700px;
+    overflow-y: auto;
+}
+.card-setting{
+    max-width:700px;
+}
+
+.review-section{
+    max-height: 240px;
+    min-height: 240px;
+    max-width: 2000px;
+    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+
+.card-scroll{
+    overflow-y: scroll;
+}

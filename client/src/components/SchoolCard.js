@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Heart from "react-animated-heart";
 import '../styles/homePage.css'
 function Card({ content, name, id }) {
+  const [isClick, setClick] = useState(false);
+  
   return (
     <div className="col-10 col-md-8 col-lg-7 m-auto pt-4">
       <div className="card mb-4 shadow">
         <div className="card-header text-left ">
           { name }
+        </div>
+        <div className="mx-auto">
+          <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
         </div>
         <div className="card-body card-text text-center ">
           <p>{content.location.split(" (")[0]}</p>

@@ -2,6 +2,7 @@ import React, {useState, useEffect, props} from "react";
 import { Container} from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import Rating from 'react-simple-star-rating';
+import ReviewCard from "../components/ReviewCard";
 
 export default function Profile() {
   const [userReviewData, setUserReviewData] = useState();
@@ -66,7 +67,7 @@ export default function Profile() {
           <strong>Email:{currentUser.email}</strong>
         </div>
       </Container>
-      <UserReviewCard reviews={userReviewData}/>  
+      <ReviewCard reviews={userReviewData}/>  
     </div>
   );
 }

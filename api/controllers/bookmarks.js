@@ -22,6 +22,7 @@ router.get('/', (req, res)=>{
     .then(bookmark =>res.json(bookmark));
     
 })
+
 router.get('/bookmarkedSchools', (req, res)=>{
 
     Bookmark.findAll({
@@ -37,10 +38,9 @@ router.get('/bookmarkedSchools', (req, res)=>{
     
 });
 
-router.post('/addBookmark', (req, res,next)=>{
-
-    Bookmark.findOrCreate({where: {userUUID: req.query.userUUID,
-    schoolDBID: req.query.schoolDBID}})
+router.post('/addBookmark', (req, res)=>{
+    Bookmark.findOrCreate({where: {userUUID: req.body.userUUID,
+    schoolDBID: req.body.schoolDBID}})
     .then(([bookmark, created])=>{
         console.log(created);
         res.status(201).json(bookmark);
@@ -54,8 +54,8 @@ router.delete('/deleteBookmark', (req, res, next)=>{
         {
             where: {
                 [Op.and]: [
-                    {userUUID: req.query.userUUID},
-                    {schoolDBID: req.query.schoolDBID}
+                    {userUUID: req.body.userUUID},
+                    {schoolDBID: req.body.schoolDBID}
                 ]
             }
         }

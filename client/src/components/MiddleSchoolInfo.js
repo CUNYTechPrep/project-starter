@@ -1,6 +1,8 @@
 import React from 'react'
-import Map from '../components/SchoolMap'
-const MiddleSchoolInfo = ({data}) => {
+import Map from '../components/SchoolMap';
+import ReviewCard from "../components/ReviewCard";
+
+const MiddleSchoolInfo = ({data, userReviewData}) => {
     console.log("middle school data: ", data);
     return (
         <div>
@@ -52,6 +54,12 @@ const MiddleSchoolInfo = ({data}) => {
                     <p className="card-text">{data.activities_description}</p>
                     <h6 className="card-subtitle mb-2">Sports: </h6>
                     <p className="card-text">{data.othersports}</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body justify-content-center mx-auto col-8">
+                    <h3 class="card-title text-center">Reviews</h3> 
+                    <ReviewCard reviews={userReviewData}/>
                 </div>
             </div>
             <Map data={data} name={data.name}/>
