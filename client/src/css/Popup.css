@@ -29,3 +29,13 @@ h1 {
     margin: auto;
     background: rgb(206, 216, 215);
   }
+
+  .popup-buddies {
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    top: 5%;
+    bottom: 5%;
+    margin: auto;
+    background: #f0f3f3;
+  }

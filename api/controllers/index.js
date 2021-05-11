@@ -29,7 +29,7 @@ const swipeProfileController = require('./swipe.js'); //GET, PUT
 //get maps location info from front end to here
 
 
-//const matchedbuddiesController = require('./buddies.js'); //GET
+const matchedbuddiesController = require('./buddies.js'); //GET
 
 const appConfigController = require('./appConfig.js');
 const authController = require('./auth');
@@ -41,11 +41,14 @@ router.use('/posts', postsController);
 router.use('/application-configuration', appConfigController);
 
 
-router.use('/profile', profileController); //single user
+router.use('/profile', profileController); //single user - for the profile
 
 router.use('/users', swipeProfileController);
 
 router.use('/auth', authController);
 
+router.use('/matchedusers', matchedbuddiesController);
+
 
 module.exports = router;
+
