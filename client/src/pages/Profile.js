@@ -3,9 +3,11 @@ import { Container} from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import Rating from 'react-simple-star-rating';
 import ReviewCard from "../components/ReviewCard";
+import Card from "../components/SchoolCard";
 
 export default function Profile() {
-  const [userReviewData, setUserReviewData] = useState();
+  const [userReviewData, setUserReviewData] = useState([]);
+  const [userBookmark, setUserBookmark] = useState([]);
   const [rating, setRating] = useState(null); 
   const { currentUser } = useAuth();
 
@@ -21,6 +23,22 @@ export default function Profile() {
         .then(data => {
             setUserReviewData(data)
             console.log(data)
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+    fetch('http://localhost:8080/api/bookmarks/bookmarkedSchools', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({userUUID: currentUser.uid}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            setUserBookmark(data)
+            console.log('bookmark: ', data)
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -46,7 +64,7 @@ export default function Profile() {
                         size={20}
                         fillColor='orange'
                         emptyColor='gray'
-                    />
+                      />
                     </div>
                   </div>
                 )
@@ -67,7 +85,15 @@ export default function Profile() {
           <strong>Email:{currentUser.email}</strong>
         </div>
       </Container>
-      <ReviewCard reviews={userReviewData}/>  
+      <ReviewCard reviews={userReviewData}/> 
+      {
+        userBookmark && userBookmark.map((school) =>{
+          console.log(school)
+          /* return(
+            <Card content={school} name={school.school_name} id={school.dbn} bookmark={userBookmark} userID = {currentUser.uid}/>
+          ); */
+        })
+      }
     </div>
   );
 }

@@ -12,6 +12,7 @@
     "react": "^17.0.2",
     "react-animated-heart": "*",
     "react-dom": "^16.14.0",
+    "react-heart": "^1.0.6",
     "react-leaflet": "^3.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",

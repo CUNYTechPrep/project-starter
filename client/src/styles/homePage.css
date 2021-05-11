@@ -39,3 +39,7 @@
 .compare-box{
     min-width: 100vw;
 }
+
+.Card-Size{
+    max-width: 1900px;
+}

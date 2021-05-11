@@ -10,7 +10,7 @@ const SchoolPage = () => {
     const [middleSchoolData, setMiddleSchoolData] = useState();
     const [elementarySchoolData, setElementarySchoolData] = useState();
     const [loading, setLoading] = useState(true);
-    const [userReviewData, setUserReviewData] = useState();
+    const [userReviewData, setUserReviewData] = useState([]);
 
     useEffect(() => {
         const options ={

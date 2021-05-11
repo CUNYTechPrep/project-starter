@@ -23,24 +23,27 @@ router.get('/', (req, res)=>{
     
 })
 
-router.get('/bookmarkedSchools', (req, res)=>{
-
+router.post('/bookmarkedSchools', (req, res)=>{
     Bookmark.findAll({
         attributes: ['schoolDBID'],
         where: {
-            userUUID: req.query.userUUID
+            userUUID: req.body.userUUID
         }
     }).then(saveBookmark=>{
         res.json(saveBookmark);
     }).catch(err =>{
         res.status(400).send(err);
     })
-    
 });
 
-router.post('/addBookmark', (req, res)=>{
-    Bookmark.findOrCreate({where: {userUUID: req.body.userUUID,
-    schoolDBID: req.body.schoolDBID}})
+router.post('/add', (req, res)=>{
+    Bookmark.findOrCreate(
+        { 
+            where: { 
+                userUUID: req.body.userUUID,
+                schoolDBID: req.body.schoolDBID
+            }
+        })
     .then(([bookmark, created])=>{
         console.log(created);
         res.status(201).json(bookmark);
@@ -49,26 +52,21 @@ router.post('/addBookmark', (req, res)=>{
     })
 })
 
-router.delete('/deleteBookmark', (req, res, next)=>{
+router.delete('/delete', (req, res)=>{
     Bookmark.findOne(
         {
             where: {
-                [Op.and]: [
-                    {userUUID: req.body.userUUID},
-                    {schoolDBID: req.body.schoolDBID}
-                ]
+                    userUUID: req.body.userUUID,
+                    schoolDBID: req.body.schoolDBID
             }
-        }
-    ).then(bookmark =>{
+        })
+    .then(bookmark =>{
         if(!bookmark){
-            return res.sendStatus(404);
+            return res.sendstatus(404);
         }
-
         bookmark.destroy();
         res.sendStatus(204);
     })
-    
-
 })
 
 module.exports = router;

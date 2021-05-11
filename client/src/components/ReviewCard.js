@@ -6,7 +6,7 @@ function ReviewCard ({reviews}) {
     return(
         <div className=" mx-auto review-size">
             {
-              reviews ? reviews.map((data) => {
+              reviews.length>0 ? reviews.map((data) => {
                 return(
                   <div className="card mb-4 card-setting mx-auto">
                     <h5 className="card-header">{data.schoolName}</h5>
@@ -21,7 +21,6 @@ function ReviewCard ({reviews}) {
                     </div>
                   </div>
                 )
-                
               })
               :
               <div className="card mb-4 card-setting mx-auto">
@@ -29,8 +28,6 @@ function ReviewCard ({reviews}) {
                       <p className="card-text">No Reviews</p>
                     </div>
               </div>
-             
-              
             }
         </div>
     );
