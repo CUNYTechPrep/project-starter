@@ -3,6 +3,7 @@ import 'w3-css/w3.css';
 import '../../css/ProfilePage.css';
 // import ProfileStat from './ProfileStat';
 import ProfilePic from './ProfilePic';
+import Profile from '../../components/Profile/Profile';
 import AuthButton from '../AuthButton';
 import edit from '../../services/profileedit';
 import PopupBio from '../Popup/PopupBio';
@@ -16,7 +17,22 @@ class ProfilePage extends React.Component {
     showFitPopup: false,
     showHWPopup: false,
     showBuddiesPopup: false,
+    profile: "",
   }
+  
+    componentDidMount() {
+      fetch("/api/profile/:profile")
+      .then(res => res.json())
+      .then(profiles => {
+        this.setState({
+          loading: false,
+          profile: profiles.map((p, ii) => 
+            <Profile {...p} key={ii} />
+          ),
+        });
+      })
+      .catch(err => console.log("API ERROR: ", err));
+    }
 
   //fetch from /api/profile
 
@@ -68,12 +84,7 @@ class ProfilePage extends React.Component {
       })
   }
 
-  //PUT function for Edit Profile Picture
-  //PUT function for Height & Weight
   render() {
-
-
-
     return (
         <div >
           <div className="background">
@@ -90,29 +101,15 @@ class ProfilePage extends React.Component {
                   paddingRight: 10, borderRadius: 30}}>
                   <div>
                     <div>
-                        <h5 style={{fontSize: 27}}>
-                            Alex, 22 
-                            <span style={{color: 'white'}}>..................................</span>
-                            <span style={{color: '#585858'}}>Male</span>
-                        </h5>
-                        <h5 style={{color: '#757575', fontSize: 20}}>
-                            FitLevel: Mid
-                        </h5>
-                        <div className="flex-container-profile" style={{color:'#585858'}}>
-                            <h5>
-                                Height: 5'7"
-                            </h5>
-                            <h5>
-                                Weight: 170lbs
-                            </h5>
-                        </div>
-                        <p style={{maxWidth: 400, marginLeft: 20, marginTop: 10}}>
-                          Sample Bio Data
-                        </p>
+                      {this.state.profile}
+                        <Profile />
                     </div>
                   </div>
                 </div>
               </div>
+
+
+              {/* EDITING SECTION */}
               <div style={{border:'1px solid lightgray', borderRadius: 20, borderStyle: "groove",
                     margin: 30, paddingTop: 50, paddingBottom: 100, textAlign: "center", flexShrink: 1,  flexGrow: 1, justifyContent: "start"}}>
                 <div style={{marginBottom: 30, borderRadius: 30}}>

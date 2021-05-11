@@ -44,7 +44,7 @@ class PopupBio extends React.Component {
                     onChange={this.fieldChanged('bio')} 
                   />
                     <br></br>
-                  <button className= " button-edits" style={{marginLeft: 30, height: 50, width: 300, borderRadius: 30}}
+                  <button className= " button-edits" style={{height: 50, width: 300, borderRadius: 30}}
                     onClick={this.props.closePopup} type="submit"> 
                     Save 
                   </button>

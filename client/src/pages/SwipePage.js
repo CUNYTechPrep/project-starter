@@ -32,7 +32,8 @@ class SwipePage extends React.Component {
     
     let slides = []; //we needed a new array to be modified, because we cannot modify the state itself without setState.  
     
-    for (let i=0; i<this.state.profiles.length; i+=1){       
+    for (let i=0; i<this.state.profiles.length; i+=1){
+             
       slides.push(
         <SwiperSlide key={`slide-${i}`} tag="ul">
           <div class='rectangle'>

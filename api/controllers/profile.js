@@ -4,19 +4,19 @@ const db = require('../models');
 const passport = require('../middlewares/authentication');
 const { User } = db;
 
-router.get('/', (req, res) => {
+router.get('/:profile', (req, res) => {
     const { id } = req.params;
     User.findByPk(id) 
-        .then(post => {
-        if(!post) {
+        .then(user => {
+        if(!user) {
             return res.sendStatus(404);
         }
-        res.json(post);
+        res.json(user);
         });
 });
 
 //for editing profile info
-router.put('/', (req, res) => {
+router.put('/:profile', (req, res) => {
     const { id } = req.params;
     User.findByPk(id)
       .then(user => {
