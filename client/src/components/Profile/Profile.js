@@ -1,13 +1,13 @@
 import React from 'react';
 import 'w3-css/w3.css'; 
 import '../../css/ProfilePage.css';
-import { Link } from 'react-router-dom';
 
 function Profile({ id, firstName, lastName, age, gender, fitLevel, height, weight, bio, image }) {
-return (
+    var imageURL = image + ".jpg";
+    return (
       <div>
         <div>
-            <img src={image} alt={id} style={{height: 300, width: 250}}/>
+            <img src= {imageURL} alt={id} style={{height: 300, width: 280}}/>
             <h5 style={{fontSize: 27}}>
                 { firstName }, { lastName } - { age } 
                 <span style={{color: '#585858'}}>..................................</span>
@@ -29,8 +29,6 @@ return (
             </p>
         </div>
       </div>
-    
-    
   );
 }
 
