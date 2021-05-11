@@ -4,6 +4,7 @@ import '../../css/ProfilePage.css';
 // import ProfileStat from './ProfileStat';
 import ProfilePic from './ProfilePic';
 import Profile from '../../components/Profile/Profile';
+import CurrentProfile from '../../components/Profile/CurrProfile';
 import AuthButton from '../AuthButton';
 import edit from '../../services/profileedit';
 import PopupBio from '../Popup/PopupBio';
@@ -17,31 +18,29 @@ class ProfilePage extends React.Component {
     showFitPopup: false,
     showHWPopup: false,
     showBuddiesPopup: false,
-    profile: "",
+    profile: null,
   }
   
     componentDidMount() {
-      fetch("/api/profile/:profile")
+      const { id } = this.props.match.params;
+      fetch("/api/profile/"+id)
       .then(res => res.json())
       .then(profiles => {
         this.setState({
           loading: false,
-          profile: profiles.map((p, ii) => 
-            <Profile {...p} key={ii} />
-          ),
+          profile: <CurrentProfile {...profiles} />
         });
       })
-      .catch(err => console.log("API ERROR: ", err));
     }
 
   //fetch from /api/profile
 
-  fieldChanged = (name) => {
-    return (event) => {
-      let { value } = event.target;
-      this.setState({ [name]: value });
-    }
-  }
+  // fieldChanged = (name) => {
+  //   return (event) => {
+  //     let { value } = event.target;
+  //     this.setState({ [name]: value });
+  //   }
+  // }
 
   //For EDITING BIO
   toggleBioPopup() {
@@ -85,7 +84,9 @@ class ProfilePage extends React.Component {
   }
 
   render() {
+    
     return (
+      
         <div >
           <div className="background">
             <div className="title" style={{border: '3px groove lightgray', borderRadius: 20}}>
@@ -102,7 +103,6 @@ class ProfilePage extends React.Component {
                   <div>
                     <div>
                       {this.state.profile}
-                        <Profile />
                     </div>
                   </div>
                 </div>
