@@ -1,0 +1,80 @@
+
+.button-no {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+    font-family:'Garamond', sans-serif;
+    background-color:rgb(167, 34, 34);
+    font-weight: bold;
+    font-size: 40px;
+    height: 200px;
+    width: 200px;
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+  }
+  
+  /* Used an online reference */
+  .button-no:after {
+    content: "";
+    position: absolute;  
+    left: -210%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to right, hsla(0, 0%, 100%, 0.314) 50%,
+                hsla(143, 72%, 7%, 0.129) 100%
+      );
+  }
+  
+  /* when hovered, look at the after class */
+  .button-no:hover:after {
+    top: 0%;
+    left: 0%;
+    transition-property: top, left;
+    transition-duration: 0.7s, 0.7s;
+    transition-timing-function: ease-in-out;
+    color: goldenrod;
+  } 
+  
+
+  .button-yes {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+    font-family:'Garamond', sans-serif;
+    background-color:#03ac73;
+    font-weight: bold;
+    font-size: 40px;
+    height: 200px;
+    width: 200px;
+    margin-top: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+
+  }
+  
+  /* Used an online reference */
+  .button-yes:after {
+    content: "";
+    position: absolute;  
+    left: -210%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to right, hsla(0, 0%, 100%, 0.314) 50%,
+                hsla(143, 72%, 7%, 0.129) 100%
+      );
+  }
+  
+  /* when hovered, look at the after class */
+  .button-yes:hover:after {
+    top: 0%;
+    left: 0%;
+    transition-property: top, left;
+    transition-duration: 0.7s, 0.7s;
+    transition-timing-function: ease-in-out;
+    color: goldenrod;
+  } 

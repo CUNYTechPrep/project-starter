@@ -3,7 +3,7 @@ import 'w3-css/w3.css';
 import '../../css/ProfilePage.css';
 // import ProfileStat from './ProfileStat';
 import ProfilePic from './ProfilePic';
-import Profile from '../../components/Profile/Profile';
+//import Profile from '../../components/Profile/Profile';
 import CurrentProfile from '../../components/Profile/CurrProfile';
 import AuthButton from '../AuthButton';
 import edit from '../../services/profileedit';
@@ -19,6 +19,7 @@ class ProfilePage extends React.Component {
     showHWPopup: false,
     showBuddiesPopup: false,
     profile: null,
+    //id: this.props.match.params.id,
   }
   
     componentDidMount() {
@@ -32,16 +33,6 @@ class ProfilePage extends React.Component {
         });
       })
     }
-
-  //fetch from /api/profile
-
-  // fieldChanged = (name) => {
-  //   return (event) => {
-  //     let { value } = event.target;
-  //     this.setState({ [name]: value });
-  //   }
-  // }
-
   //For EDITING BIO
   toggleBioPopup() {
     this.setState({

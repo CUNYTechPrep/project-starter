@@ -1,4 +1,5 @@
-import React from 'react';
+  
+import React, { useState } from 'react'
 import 'w3-css/w3.css';
 import '../styles.css';
 import { Swiper, SwiperSlide} from 'swiper/react';
@@ -6,12 +7,17 @@ import SwiperCore, { Navigation} from 'swiper'
 import'swiper/swiper-bundle.css';
 import Profile from '../components/Profile/Profile';
 import Loading from '../components/Loading';
+import '../css/SwipePage.css';
+
 SwiperCore.use([Navigation]);
+
+
 
 class SwipePage extends React.Component {
   state = {
     profiles: [],
     loading: true,
+    userID: null,
   }
 
   componentDidMount() {
@@ -19,8 +25,11 @@ class SwipePage extends React.Component {
     .then(res => res.json())
     .then(profiles => {
       this.setState({
+        userID: this.props.match.params,
         loading: false,
-        profiles: profiles.map((p, ii) => <Profile {...p} key={ii} />),
+        profiles: profiles.map((p, ii) => 
+          <Profile {...p} key={ii} />
+          ),
       });
     })
     .catch(err => console.log("API ERROR: ", err));
@@ -33,12 +42,12 @@ class SwipePage extends React.Component {
     let slides = []; //we needed a new array to be modified, because we cannot modify the state itself without setState.  
     
     for (let i=0; i<this.state.profiles.length; i+=1){
-             
+      // if(this.state.profiles[i].Profile.id != {this.state.userID})
       slides.push(
         <SwiperSlide key={`slide-${i}`} tag="ul">
           <div class='rectangle'>
             {this.state.profiles[i]}
-          </div>
+          </div>  
         </SwiperSlide>
       );
 //after everyone has been swiped, transfer them to another array of already been swiped.
@@ -51,6 +60,11 @@ class SwipePage extends React.Component {
    
     return ( 
       <React.Fragment>
+      {/* <form > */}
+        <button className="button-no">
+          No
+        </button>
+      {/* </form> */}
       <Swiper 
         id="main" 
         tag="section"
@@ -66,6 +80,11 @@ class SwipePage extends React.Component {
       >
         {slides}
       </Swiper>
+      {/* <form>       */}
+        <button className="button-yes">
+          Yes
+        </button>
+      {/* </form> */}
       </React.Fragment>
     );
   }
