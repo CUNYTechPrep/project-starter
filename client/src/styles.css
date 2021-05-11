@@ -10,7 +10,7 @@
 }
 
 .rectangle {  
-  position: center;
+  
   width: 414px;
   height: 548px;
 
@@ -109,4 +109,12 @@
   position: relative;
   color: var(--swiper-navigation-color, #45de37);
   background: #45DE37;}
+
+
+/* .swiper-slide swiper-slide-active {
+  width: 600px; 
+  margin-right: 0.5px;
+  margin-left: 75px;
+}  */
+
 

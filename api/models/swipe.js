@@ -35,9 +35,11 @@ module.exports = (sequelize, DataTypes) => {
 
   Swipe.associate = (models) => {
     // associations can be defined here
-    models.Swipe.belongsTo(models.User, {as: 'swiper'});
+    models.Swipe.belongsTo(models.User, {as: 'swiper'}); //actually userIDs - foreign keys to the each user IDs
 
-    models.Swipe.belongsTo(models.User, {as: 'swipee'});
+    models.Swipe.belongsTo(models.User, {as: 'swipee'}); // also userIDs - foreign keys to the each user IDs
+
+    
     //our code has a relationship, AND a status [left or right]
     //SHOWN in line 24
   };
