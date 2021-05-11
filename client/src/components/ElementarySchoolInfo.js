@@ -1,7 +1,8 @@
 import React from 'react'
-import Map from '../components/SchoolMap'
+import Map from '../components/SchoolMap';
+import ReviewCard from "../components/ReviewCard";
 
-const ElementarySchoolInfo = ({data}) => {
+const ElementarySchoolInfo = ({data, userReviewData}) => {
     console.log("elementary school: ", data);
     return (
         <div>
@@ -33,8 +34,12 @@ const ElementarySchoolInfo = ({data}) => {
                     <p class="card-text">{data.dual_language? data.dual_language : "N/A"}</p>
                 </div>
             </div>
-
-
+            <div class="card">
+                <div class="card-body justify-content-center mx-auto col-8">
+                    <h3 class="card-title text-center">Reviews</h3>  
+                    <ReviewCard reviews={userReviewData}/>
+                </div>
+            </div>
             <Map data={data} name={data.school_name}/>
             
         </div>
