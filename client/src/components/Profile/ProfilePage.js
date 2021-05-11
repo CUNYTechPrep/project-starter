@@ -1,9 +1,7 @@
 import React from 'react';
 import 'w3-css/w3.css'; 
 import '../../css/ProfilePage.css';
-// import ProfileStat from './ProfileStat';
-import ProfilePic from './ProfilePic';
-//import Profile from '../../components/Profile/Profile';
+
 import CurrentProfile from '../../components/Profile/CurrProfile';
 import AuthButton from '../AuthButton';
 import edit from '../../services/profileedit';
@@ -11,6 +9,8 @@ import PopupBio from '../Popup/PopupBio';
 import PopupFit from '../Popup/PopUpFit';
 import PopupHW from '../Popup/PopUpHW';
 import PopupBuddies from '../Popup/PopUpBuddies';
+import auth from '../../services/auth.js';
+
 
 class ProfilePage extends React.Component {
   state = {
@@ -23,13 +23,13 @@ class ProfilePage extends React.Component {
   }
   
     componentDidMount() {
-      const { id } = this.props.match.params;
-      fetch("/api/profile/"+id)
+      const { id } = auth.currentUser;
+      fetch("/api/users/"+id)
       .then(res => res.json())
-      .then(profiles => {
+      .then(myProfile => {
         this.setState({
           loading: false,
-          profile: <CurrentProfile {...profiles} />
+          profile: <CurrentProfile {...myProfile} />
         });
       })
     }
@@ -85,20 +85,8 @@ class ProfilePage extends React.Component {
             </div>
             <div className="flex-container-profile"> 
               <div>
-                <div style={{height: 430, width: 400, alignItems: "center",
-                  borderRadius: 30, margin: 30}}>
-                    <ProfilePic />
-                </div>       
-                <div style={{border: '1px groove lightgray', paddingTop: 10, paddingBottom: 20, paddingLeft: 10, 
-                  paddingRight: 10, borderRadius: 30}}>
-                  <div>
-                    <div>
-                      {this.state.profile}
-                    </div>
-                  </div>
-                </div>
+                {this.state.profile}
               </div>
-
 
               {/* EDITING SECTION */}
               <div style={{border:'1px solid lightgray', borderRadius: 20, borderStyle: "groove",

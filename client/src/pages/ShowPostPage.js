@@ -12,7 +12,7 @@ class ShowPostPage extends React.Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch("/api/posts/"+id)
+    fetch("/api/posts/"+id) // :id
       .then(res => res.json())
       .then(post => {
         this.setState({

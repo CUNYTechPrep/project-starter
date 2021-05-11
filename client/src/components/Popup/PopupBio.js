@@ -18,6 +18,22 @@ class PopupBio extends React.Component {
     }
   }
 
+  // componentDidMount() {
+  //   // const { id } = this.props.match.params;
+  //   fetch("/api/profile/:bio4")
+  //     .then(res => res.json())
+  //     .then(user => {
+  //       this.setState({
+  //         // post: <Post {...post} />,
+  //       });
+  //     })
+  //     .catch(err => {
+  //       this.setState({
+  //         notFound: true,
+  //       });
+  //     });
+  // }
+
   submit = (e) => {
     e.preventDefault();
     let userInput = this.state;

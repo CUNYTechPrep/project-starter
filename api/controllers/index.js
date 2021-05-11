@@ -17,12 +17,10 @@ const postsController = require('./posts.js');
 //    PUT    /thread/:specific thread
 //    DELETE /thread/:specific thread
 
-const profileController = require('./profile.js'); //GET, PUT, POST, DELETE
-
 // GET, PUT (to update data on server)
     // If two people swiped on each other, 
     // THEN they get each others profiles shown in their buddies list
-const swipeProfileController = require('./swipe.js'); //GET, PUT
+const swipeProfileController = require('./profile&swipe.js'); //GET, PUT
 
 
 //this will help us track the location of the user 
@@ -39,9 +37,6 @@ const authController = require('./auth');
 // will be prefixes to all routes defined inside the controller
 router.use('/posts', postsController);
 router.use('/application-configuration', appConfigController);
-
-
-router.use('/profile', profileController); //single user - for the profile
 
 router.use('/users', swipeProfileController);
 

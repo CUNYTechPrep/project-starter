@@ -7,6 +7,9 @@
 
 const auth = {
     isAuthenticated: false,
+
+    currentUser: null, //this helps us with the User profile page
+
     authenticate(email, password) {
       return fetch('/api/auth/login', { 
         method: 'POST',
@@ -24,6 +27,8 @@ const auth = {
         })
         .then((body) => {
           this.isAuthenticated = true;
+          this.currentUser = body; //body is the whole object.
+          console.log(this.currentUser);
           return body;
         });
     },
