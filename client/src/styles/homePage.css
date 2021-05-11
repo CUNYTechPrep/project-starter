@@ -39,3 +39,26 @@
 .compare-box{
     min-width: 100vw;
 }
+
+
+.Card-Size{
+    max-width: 1900px;
+
+
+/* compare page style */
+
+
+.main{
+    display: flex;
+}
+
+.leftSchool {
+    width: 50vw;
+    padding: 40px 20px 40px 20px;
+}
+
+.rightSchool{
+    width: 50vw;
+    padding: 40px 20px 40px 20px;
+
+}

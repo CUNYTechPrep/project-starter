@@ -1,48 +1,49 @@
 import React, {useEffect, useState, props} from 'react'
+import Link from 'react-router-dom'
 // eslint-disable-next-line 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 //GOOGLE MAP
-function Map({data}) {
-const [ code, setCode] = useState();
-const [ addresses, setAddresses] = useState();
-const [positions, setPositions ] = useState();
+function Map({highSchoolData}) {
+const [code, setCode] = useState();
+const [addresses, setAddresses] = useState();
+const [positions, setPositions] = useState();
 
 useEffect(() => {
-    if(data){
-    let check = {}
+    if(highSchoolData){
+    let addressTemp = {}
     let samePositions={}
     let tempCode = []
-    data.forEach(school => {
-      let dict = school.location.split('(')[0].trim()
+    highSchoolData.forEach(school => {
+      let location = school.location.split('(')[0].trim()
       let tempPosition = {
         lat: parseFloat(school.latitude),
         lng: parseFloat(school.longitude),
       }
-      if(check[dict]){
+      if(addressTemp[location]){
         if(school.school_name.includes(', The')){
-        check[dict].push(school.school_name.split(",")[0]);
+        addressTemp[location].push([school.school_name.split(",")[0], school.dbn]);
         }
         else{
           
-          check[dict].push(school.school_name);
+          addressTemp[location].push([school.school_name, school.dbn]);
         
         }
         
       }else{
         if(school.school_name.includes(', The')){
-          check[dict] = [school.school_name.split(",")[0]];
+          addressTemp[location] = [ [school.school_name.split(",")[0], school.dbn] ];
         }
         else{
-          check[dict] = [school.school_name];
+          addressTemp[location] = [[school.school_name, school.dbn]];
         }
-        samePositions[dict] = tempPosition
-        tempCode.push(dict)
+        samePositions[location] = tempPosition
+        tempCode.push(location)
       }
       
-      setAddresses(check)
+      setAddresses(addressTemp)
       setPositions(samePositions)
       setCode(tempCode)
     });
@@ -53,7 +54,7 @@ useEffect(() => {
     setCode(null)
   }
 
-}, [data])
+}, [highSchoolData])
 
 let DefaultIcon = L.icon({
   iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png',
@@ -74,7 +75,8 @@ let DefaultIcon = L.icon({
     position: 'absolute',
     overflow: "hidden",
   };
-
+console.log(addresses)
+console.log(positions)
 //Change API sKEYs
     return(
       <MapContainer style={containerStyle} center={center} zoom={11} scrollWheelZoom={false}>
@@ -91,11 +93,13 @@ let DefaultIcon = L.icon({
                   icon = {DefaultIcon}
                 >
                   <Popup >
-                    {
-                      addresses[tcode].map((name,index)=>{
-                        return <p className="text-center" key={index}>{name}</p>
-                      })
-                    }
+                    <ul className="text-center">
+                      {
+                        addresses[tcode].map((array,index)=>{
+                          return <li><a href={`/school/${array[1]}`} key={index} target="_blank">{array[0]}</a> </li>
+                        })
+                      }
+                    </ul>
                   </Popup>
                 </Marker>
               );
@@ -107,36 +111,3 @@ let DefaultIcon = L.icon({
 
 export default Map
 
-
-/*
-return (
-      <LoadScript
-        googleMapsApiKey="AIzaSyBY-yZ1U_3rRxWt3srlxJj6Ue3vU7A1aJ4"
-      >
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={11}
-        >
-          {
-            data && data.map((school) =>{
-              
-              let position = {
-                lat: parseFloat(school.latitude),
-                lng: parseFloat(school.longitude),
-              }
-              console.log(school, position)
-              return(
-                <Marker key={school.dbn}
-                  position={position}
-                  title="SDSDSDSD"
-                  onClick={(e)=> loadInfo(school.school_name, position)}
-                >
-                  </Marker>
-              );
-            })
-          }
-          
-        </GoogleMap>
-      </LoadScript>
-    );*/

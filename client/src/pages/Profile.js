@@ -10,7 +10,8 @@ import {Tabs, Tab} from "react-bootstrap";
 
 
 export default function Profile() {
-  const [userReviewData, setUserReviewData] = useState();
+  const [userReviewData, setUserReviewData] = useState([]);
+  const [userBookmark, setUserBookmark] = useState([]);
   const [rating, setRating] = useState(null); 
   const { currentUser } = useAuth();
 
@@ -28,6 +29,22 @@ export default function Profile() {
         .then(data => {
             setUserReviewData(data)
             console.log(data)
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+    fetch('http://localhost:8080/api/bookmarks/bookmarkedSchools', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({userUUID: currentUser.uid}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            setUserBookmark(data)
+            console.log('bookmark: ', data)
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -53,7 +70,7 @@ export default function Profile() {
                         size={20}
                         fillColor='orange'
                         emptyColor='gray'
-                    />
+                      />
                     </div>
                   </div>
                 )

@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { useAuth } from "../contexts/AuthContext";
-import { ReactSearchAutocomplete } from 'react-search-autocomplete'
-import {Alert} from 'react-bootstrap'
-import Rating from '@material-ui/lab/Rating'
+import { ReactSearchAutocomplete } from 'react-search-autocomplete';
+import {Alert} from 'react-bootstrap';
+import Rating from '@material-ui/lab/Rating';
+
 export default function Review() {
     const [rating, setRating] = useState(null); 
     const { currentUser } = useAuth();
@@ -14,8 +15,6 @@ export default function Review() {
     const [items, setItems ]= useState([]);
     const [compItems, setCompItems] = useState([]);
     
-
-
     useEffect(() => {
         const options ={
           type: "GET",
@@ -47,8 +46,6 @@ export default function Review() {
           })
           .catch(err => console.log("API ERROR: ", err));
           // fetch for all of user's review
-        
-
       }, [])
 
     // Catch Rating value
@@ -141,9 +138,6 @@ export default function Review() {
     const handleOnFocus = () => {
       console.log('Focused')
     }
-
-
-
 
     // Review card display by School
   
