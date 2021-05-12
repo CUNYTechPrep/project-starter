@@ -1,0 +1,26 @@
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.resize {
+    width: 110px;
+    height: auto;
+}
+
+img:hover{
+    filter: brightness(50%);
+}
+
+.centered:hover{
+    filter: brightness(50%);
+}
