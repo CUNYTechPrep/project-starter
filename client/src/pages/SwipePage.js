@@ -9,7 +9,8 @@ import Profile from '../components/Profile/Profile';
 import Loading from '../components/Loading';
 import '../css/SwipePage.css';
 import auth from '../services/auth.js';
-import { Frame, useMotionValue, useTransform, useAnimation } from 'framer';
+import Cards, { Card } from 'react-swipe-card';
+
 
 
 SwiperCore.use([Navigation]);
@@ -39,31 +40,35 @@ class SwipePage extends React.Component {
   render() {
     if(this.state.loading) //API info retrieval loading 
       return <Loading />
-    
-    let slides = []; //we needed a new array to be modified, because we cannot modify the state itself without setState.  
-    console.log(this.state.profiles[0].props.id);
+   //after everyone has been swiped, transfer them to another array of already been swiped.
+   let slides = []; //we needed a new array to be modified, because we cannot modify the state itself without setState.  
+   console.log(this.state.profiles[0].props.id);
 
-    for (let i=0; i<this.state.profiles.length; i+=1){
-      if(this.state.profiles[i].props.id !== this.state.id){
-        slides.push(
-          <SwiperSlide key={`slide-${i}`} tag="ul">
-            <div class='rectangle'>
-              {this.state.profiles[i]}
-            </div>  
-          </SwiperSlide>
+   for (let i=0; i<this.state.profiles.length; i+=1){
+     if(this.state.profiles[i].props.id !== this.state.id){
+       slides.push( 
+        <SwiperSlide key={`slide-${i}`} tag="ul">
+          <div class='rectangle'>
+            {this.state.profiles[i]}
+          </div>  
+        </SwiperSlide>
         );
-      }
+     }
 //after everyone has been swiped, transfer them to another array of already been swiped.
-    }
-   
-    return ( 
+   }
+
+    return (
+      // <Cards onEnd={action('end')} className='master-root'>
+      //   {slides.map(item => 
+      //     <Card 
+      //       onSwipeLeft={action('swipe left')} 
+      //       onSwipeRight={action('swipe right')}>
+      //       <h2>{item}</h2>
+      //     </Card>
+      //   )}
+      // </Cards>
       <React.Fragment>
-      {/* <form > */}
-        <button className="button-no">
-          No
-        </button>
-      {/* </form> */}
-      <Swiper 
+        <Swiper 
         id="main" 
         tag="section"
         wrapperTag="ul" 
@@ -75,16 +80,11 @@ class SwipePage extends React.Component {
         onInit={(swiper) => console.log('Swiper initialized!', swiper)}
         onSlideChange={(swiper) => console.log('Slide index changed to !', swiper.activeIndex)}
         onReachEnd={() => console.log('Swiper end reached!')}
-      >
-        {slides}
-      </Swiper>
-      {/* <form>       */}
-        <button className="button-yes">
-          Yes
-        </button>
-      {/* </form> */}
+        >
+          {slides}
+        </Swiper>
       </React.Fragment>
-    );
+    )
   }
 }
 
