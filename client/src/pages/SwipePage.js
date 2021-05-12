@@ -9,10 +9,10 @@ import Profile from '../components/Profile/Profile';
 import Loading from '../components/Loading';
 import '../css/SwipePage.css';
 import auth from '../services/auth.js';
+import { Frame, useMotionValue, useTransform, useAnimation } from 'framer';
+
 
 SwiperCore.use([Navigation]);
-
-
 
 class SwipePage extends React.Component {
   state = {

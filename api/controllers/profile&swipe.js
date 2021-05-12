@@ -33,22 +33,30 @@ router.get('/:me', (req, res) => {
 
 
 
-
-
-
-
-
 //CHANGE THESE URL here later for editing profiles
 //for editing profile info
-router.put('/:bio', (req, res) => {
-  const { id } = req.params;
-  User.findByPk(id)
+router.put('/:me', (req, res) => {
+  const { me } = req.params;
+  User.findByPk(me)
     .then(user => {
       if(!user) {
         return res.sendStatus(404);
       }
 
-      user.bio = req.body.bio;
+      // user.bio = req.body.bio;
+      console.log(user);
+      const newBio = req.body.bio ? req.body.bio : user.bio;
+      const newFit = req.body.fitLevel ? req.body.fitLevel : user.fitLevel;
+      const newHeight = req.body.height ? req.body.height : user.height;
+      const newWeight = req.body.weight ? req.body.weight : user.weight;
+
+      user.update({
+        bio: newBio,
+        fitLevel: newFit,
+        height: newHeight,
+        weight: newWeight,
+      })
+
 
       user.save()
       .then(user => {
@@ -59,11 +67,6 @@ router.put('/:bio', (req, res) => {
       });
   });
 });
-
-//OTHER PUT ROUTER functions for later
-// user.fitLevel = req.body.fitLevel;
-//         user.height = req.body.height;
-//         user.weight = req.body.weight;
 
 
 module.exports = router;
