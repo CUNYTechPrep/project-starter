@@ -36,30 +36,22 @@ function ProfilePage(props) {
                 Click to upload profile picture
                 </div>
 
-                <div className='col mid-3'>
+                <div className='col-4 pt-4 justify-content-center text-center'>
+                    <p className='text-warning'>First Name: <span className="text-white">{props.info.fName}</span></p>
 
-                    <label className="form-label text-warning"> First Name : </label>
-                    <input type="text" name="firstName" className="form-control" placeholder={props.info.fName} />
-
-                    <label className="form-label text-warning float-start"> Email :</label>
-                    <input type="text" name="email" className="form-control" placeholder={props.info.email} />
-
+                    <p className='text-warning'>Last Name: <span className="text-white">{props.info.lName}</span></p>
+        
+                    <p className='text-warning'>Email: <span className="text-white">{props.info.email}</span></p>
+                
+                    <p className='text-warning'>Birth Date: <span className="text-white">{props.info.birthDate}</span></p>
                 </div>
 
-                <div className="col-md-3">
-                    <label className="form-label text-warning"> Last Name : </label>
-                    <input type="text" name="lastName" className="form-control" placeholder={props.info.lName} />
-
-                    <label className="form-label text-warning"> Birth Date : </label>
-                    <input name="dateOfBirth" className="form-control" placeholder={props.info.birthDate} type="date" min="1900-01-01" max={new Date().toISOString().split("T")[0]} />
-                </div>
-
-
-
-            </div>
 
 
         </div>
+
+
+        </div >
     );
 }
 
