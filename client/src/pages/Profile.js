@@ -3,10 +3,10 @@ import React, {useState, useEffect, props} from "react";
 import { Container} from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import Rating from 'react-simple-star-rating';
-import Card from '../components/SchoolCard';
 import '../styles/theme.css';
 import {data} from 'jquery';
 import {Tabs, Tab} from "react-bootstrap";
+import Bookmark from '../components/ProfileBookmark';
 
 
 export default function Profile() {
@@ -91,9 +91,15 @@ export default function Profile() {
           <strong>Email:{currentUser.email}</strong>
         </div>
       </Container>
-     
-          
-          <UserReviewCard reviews={userReviewData}/>
+     {
+       userBookmark && userBookmark.map((bookmark, index) => {
+         return(
+          <Bookmark schoolName={bookmark["schoolName"]} schoolID={bookmark["schoolDBID"]} userID={currentUser.uid}/>
+         );
+       })
+     }
+      
+      <UserReviewCard reviews={userReviewData}/>
          
       
     </div>

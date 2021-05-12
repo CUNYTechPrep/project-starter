@@ -49,7 +49,6 @@ export default function Test() {
             })
             .then( response => {
                 if(response.ok){
-                    count++;
                     alert("Review has been deleted")
                 }else{
                     console.log("Not successful")
