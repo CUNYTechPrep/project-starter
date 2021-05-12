@@ -25,7 +25,7 @@ router.get('/', (req, res)=>{
 
 router.post('/bookmarkedSchools', (req, res)=>{
     Bookmark.findAll({
-        attributes: ['schoolDBID'],
+        attributes: ['schoolDBID', 'schoolName'],
         where: {
             userUUID: req.body.userUUID
         }
@@ -41,7 +41,8 @@ router.post('/add', (req, res)=>{
         { 
             where: { 
                 userUUID: req.body.userUUID,
-                schoolDBID: req.body.schoolDBID
+                schoolDBID: req.body.schoolDBID,
+                schoolName: req.body.schoolName
             }
         })
     .then(([bookmark, created])=>{
