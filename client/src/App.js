@@ -17,7 +17,8 @@ import SchoolPage from "./pages/SchoolPage";
 import PrivateRoute from "./components/PrivateRoute";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useAuth } from "./contexts/AuthContext";
-import Compare from "./pages/Compare"
+import Compare from "./pages/Compare";
+import Test from "./pages/Test";
 import "./App.css";
 
 // import PostFormPage from "./pages/PostFormPage";
@@ -96,12 +97,13 @@ const App = () => {
                 <PrivateRoute exact path="/profile" component={Profile} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/signup" component={SignUp} />
-                <Route path="/login" component={Login} />
+                <Route path="/login" component={Login}/>
                 <Route path="/review" component={Review} />
+                <Route path = "/test" component ={Test}/>
                 <Route path="/compare" component={Compare} />
                 <Route path="/school/:school_dbn" component= {SchoolPage} />
                 <Route path="/" component={HomePage} />
-
+              
                 {/* <Route path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} /> */}
               </Switch>

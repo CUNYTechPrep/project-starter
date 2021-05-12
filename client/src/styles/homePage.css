@@ -41,8 +41,12 @@
 }
 
 
-/* compare page style */
+.Card-Size{
+    max-width: 1900px;
 
+
+/* compare page style */
+}
 
 .main{
     display: flex;
@@ -56,4 +60,5 @@
 .rightSchool{
     width: 50vw;
     padding: 40px 20px 40px 20px;
+
 }

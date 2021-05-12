@@ -10,13 +10,16 @@
     "leaflet": "^1.7.1",
     "popper.js": "^1.16.1",
     "react": "^17.0.2",
+    "react-animated-heart": "*",
     "react-dom": "^16.14.0",
+    "react-heart": "^1.0.6",
     "react-leaflet": "^3.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-search-autocomplete": "^5.1.0",
     "react-simple-star-rating": "^1.0.6",
-    "react-star-rating-component": "^1.4.1"
+    "react-star-rating-component": "^1.4.1",
+    "react-tabs": "^3.2.2"
   },
   "scripts": {
     "start": "react-scripts start",

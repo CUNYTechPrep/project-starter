@@ -8,20 +8,15 @@ module.exports = (sequelize, DataTypes) => {
         userUUID: {
             type: DataTypes.STRING,
             validate: {
-                notEmpty: true,
-              
-                
+                notEmpty: true,   
             }
         },
         schoolDBID: {
             type: DataTypes.STRING, 
             validate: {
-                notEmpty: true,
-               
+                notEmpty: true,  
             }
         }
-        
-    
     }, {
         sequelize, 
         modelName: 'bookmark'

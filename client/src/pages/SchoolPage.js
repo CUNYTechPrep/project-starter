@@ -9,7 +9,9 @@ const SchoolPage = () => {
     const [highSchoolData, setHighSchoolData] = useState();
     const [middleSchoolData, setMiddleSchoolData] = useState();
     const [elementarySchoolData, setElementarySchoolData] = useState();
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+    const [userReviewData, setUserReviewData] = useState([]);
+
     useEffect(() => {
         const options ={
             type: "GET",
@@ -32,7 +34,7 @@ const SchoolPage = () => {
                 setHighSchoolData(data[0]);
                 setLoading(false)
             } )
-            .catch(e=> {console.log(e);})
+            .catch(e=> {console.log(e);});
 
         // middle school fetch
         //EX:01M034,  01M332, 02M126
@@ -42,7 +44,7 @@ const SchoolPage = () => {
                 setMiddleSchoolData(data[0]);
                 setLoading(false)
             } )
-            .catch(e=> {console.log(e);})
+            .catch(e=> {console.log(e);});
 
             
         // elementary school fetch
@@ -54,6 +56,22 @@ const SchoolPage = () => {
                 setLoading(false)
             } )
             .catch(e=> {console.log(e);})
+
+        fetch('http://localhost:8080/api/review/school', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({schoolDBID: school_dbn}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                setUserReviewData(data);
+                console.log("data: ", data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
         
     }, [])
     console.log(highSchoolData)
@@ -61,15 +79,15 @@ const SchoolPage = () => {
         loading ? <Loading /> :
         <div>
             { highSchoolData &&
-                <HighSchoolInfo data={highSchoolData}/>
+                <HighSchoolInfo data={highSchoolData} userReviewData={userReviewData}/>
             }
             {
                 middleSchoolData && 
-                <MiddleSchoolInfo data={middleSchoolData}/>
+                <MiddleSchoolInfo data={middleSchoolData} userReviewData={userReviewData}/>
             }
             {
                 elementarySchoolData && 
-                <ElementarySchoolInfo data={elementarySchoolData}/>    
+                <ElementarySchoolInfo data={elementarySchoolData} userReviewData={userReviewData}/>    
             }
             {
                 /* !highSchoolData && !middleSchoolData && !elementarySchoolData &&

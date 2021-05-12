@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const { Review } = db;
+const {Op} = require("sequelize");
 
 router.get('/', (req, res) => {
     Review.findAll({})
@@ -45,4 +46,23 @@ router.post('/user', (req, res) => {
         });
 });
 
+router.delete('/deleteReview', (req, res, next)=>{
+   
+    Review.findOne({
+        where: {
+            [Op.and]:[
+                {reviewerUUID: req.body.reviewerUUID},
+                {schoolDBID: req.body.schoolDBID}
+            ]
+           
+        }
+    }).then(review =>{
+        if(!review){
+            return res.sendStatus(404);
+        }
+            review.destroy();
+            res.sendStatus(204);
+        
+    })
+})
 module.exports = router;
