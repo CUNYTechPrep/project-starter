@@ -177,218 +177,222 @@ const FilterRow = (props) => {
         accessbility: [],
         */
     if (filterOption.borough.length > 0 || filterOption.advancedplacement_courses.length > 0 || filterOption.sports[0].length > 0 || filterOption.sports[1].length > 0|| filterOption.sports[2].length > 0|| filterOption.subway.length > 0 || filterOption.postcode.length > 0|| filterOption.accessbility.length > 0 ){
-        var temp = [];
-        ["borough"].forEach((curr) => {
-            filterOption[curr].forEach((e)=>{
-              temp = temp.concat(props.data.filter((dict,n) => {return dict[curr] === e}))
-          })
-        });
-  
-        ["advancedplacement_courses"].forEach((curr) => {
-          if(temp.length === 0 && filterOption.advancedplacement_courses.length > 0){
-            temp = props.data
-            filterOption["advancedplacement_courses"].forEach((e)=>{   
-              var temp_2 = [];       
-              temp_2 = temp_2.concat(temp.filter((dict,n) => {
-                if(dict["advancedplacement_courses"] !== undefined){
-                  return dict["advancedplacement_courses"].includes(e);
-                }
-                return
-              }))
-              temp = temp_2
+        //Start off with all the data
+        var temp = props.data;
+        //Fillin this temp
+        var temp2 = []
+
+        //FILTER BY BOROUGH
+        if(filterOption["borough"].length!==0){
+            filterOption["borough"].forEach((e)=>{
+                temp2 = temp2.concat(temp.filter((dict,n) => {return dict["borough"] === e}))
             })
-          }
-          else if(filterOption.advancedplacement_courses.length > 0){
+        }
+
+        //FILTER BY SUBWAY
+        if(filterOption["subway"].length !== 0){
+            if(temp2.length===0){
+                var temp3 = temp;
+                filterOption["subway"].forEach((e)=>{
+                    temp3 = temp3.filter((dict,n) => {
+                            if(dict["subway"] !== undefined){
+                                if (dict["subway"].includes(e+",")){
+                                return dict["subway"].includes(e);
+                                }
+                                else if (dict["subway"].includes(e+" ")){
+                                return dict["subway"].includes(e);
+                                }
+                            }
+                            return 
+                        })
+                    
+                })
+
+                temp2=(temp3)
+            }else{
+
+                filterOption["subway"].forEach((e) =>{
+                    temp2 = temp2.filter((dict,n) =>{
+                        if(dict["subway"] !== undefined){
+                            if (dict["subway"].includes(e+",")){
+                            return dict["subway"].includes(e);
+                            }
+                            else if (dict["subway"].includes(e+" ")){
+                            return dict["subway"].includes(e);
+                            }
+                        }
+                        return 
+                    })
+                })
+            }
+            if(temp2.length===0){
+                props.selectedSchoolCallback(null)
+                return
+            }
+        }
+        console.log("SUBWAY", temp);
+
+        //FILTER BY SPORTS - PSAL SPORTS BOYS
+        if(filterOption["sports"][0].length !== 0){
+            if(temp2.length===0){
+                var temp3 = temp;
+                filterOption["sports"][0].forEach((e)=>{
+                    temp3 = temp3.filter((dict,n) => {
+                            if(dict["psal_sports_boys"] !== undefined){
+                                return dict["psal_sports_boys"].includes(e);
+                            }
+                            return 
+                        })
+                    
+                })
+
+                temp2=(temp3)
+            }
+            else{
+                filterOption["sports"][0].forEach((e)=>{
+                    temp2 = temp2.filter((dict,n) => {
+                        if(dict["psal_sports_boys"] !== undefined){
+                            return dict["psal_sports_boys"].includes(e);
+                        }
+                        return 
+                    })
+                })
+            }
+            if(temp2.length===0){
+                props.selectedSchoolCallback(null)
+                return
+            }
+
+        }
+        //FILTER BY SPORTS - PSAL SPORTS GIRLS
+        if(filterOption["sports"][1].length !== 0){
+            if(temp2.length===0){
+                var temp3 = temp;
+                filterOption["sports"][1].forEach((e)=>{
+                    temp3 = temp3.filter((dict,n) => {
+                            if(dict["psal_sports_girls"] !== undefined){
+                                return dict["psal_sports_girls"].includes(e);
+                            }
+                            return 
+                        })
+                    
+                })
+
+                temp2=(temp3)
+            }
+            else{
+                filterOption["sports"][1].forEach((e)=>{
+                    temp2 = temp2.filter((dict,n) => {
+                        if(dict["psal_sports_girls"] !== undefined){
+                            return dict["psal_sports_girls"].includes(e);
+                        }
+                        return 
+                    })
+                })
+            }
+            if(temp2.length===0){
+                props.selectedSchoolCallback(null)
+                return
+            }
+
+        }
+        if(filterOption["sports"][2].length !== 0){
+            if(temp2.length===0){
+                var temp3 = temp;
+                filterOption["sports"][2].forEach((e)=>{
+                    temp3 = temp3.filter((dict,n) => {
+                            if(dict["psal_sports_coed"] !== undefined){
+                                return dict["psal_sports_coed"].includes(e);
+                            }
+                            return 
+                        })
+                    
+                })
+
+                temp2=(temp3)
+            }
+            else{
+                filterOption["sports"][2].forEach((e)=>{
+                    temp2 = temp2.filter((dict,n) => {
+                        if(dict["psal_sports_coed"] !== undefined){
+                            return dict["psal_sports_coed"].includes(e);
+                        }
+                        return 
+                    })
+                })
+            }
+            if(temp2.length===0){
+                props.selectedSchoolCallback(null)
+                return
+            }
+        }
+        console.log("SPORTS", temp);
+        //FILTER BY SPORTS - PSAL SPORTS COED   
+        //console.log("SPORTS", filterOption["postcode"]);
+        if(filterOption["postcode"].length !== 0){
+            if(temp2.length===0){
+                
+                filterOption["postcode"].forEach((e)=>{
+                    temp2 = temp2.concat(temp.filter((dict,n) => {return dict["postcode"] === e}))
+                    
+                })
+
+            }
+            else{
+                
+                var setTemp = []
+                filterOption["postcode"].forEach((e)=>{
+                    var temp3 = temp2
+                    console.log("TEMP3",temp3,e)
+                    temp3 = temp3.filter((dict,n) => {
+                        return dict["postcode"].includes(e);
+        
+                    })
+                    console.log("TEMP4",temp3)
+                    setTemp = setTemp.concat(temp3)
+                })
+                temp2= setTemp
+            }
+            if(temp2.length===0){
+                props.selectedSchoolCallback(null)
+                return
+            }
+
+        }
+        
+
+        
+        if(filterOption["accessbility"].length !== 0){
+            if(temp2.length===0){
+                
+                filterOption["accessbility"].forEach((e)=>{
+                    temp2 = temp2.concat(temp.filter((dict,n) => {return dict["school_accessibility"] === e}))
+                    
+                })
+
+            }
+            else{
+                var setTemp = []
+                filterOption["accessbility"].forEach((e)=>{
+                    var temp3 = temp2;
+                    console.log("TEMP3", temp3)
+                    console.log("setTEMP", setTemp)
+                    temp3 = temp3.filter((dict,n) => {
+                        return dict["school_accessibility"].includes(e);
+        
+                    })
+                    setTemp = setTemp.concat(temp3)
+                })
+                temp2= setTemp
+            }
+            if(temp2.length===0){
+                props.selectedSchoolCallback(null)
+                return
+            }
             
-            filterOption["advancedplacement_courses"].forEach((e)=>{   
-              var temp_2 = [];       
-              temp_2 = temp_2.concat(temp.filter((dict,n) => {
-                if(dict["advancedplacement_courses"] !== undefined){
-                  return dict["advancedplacement_courses"].includes(e);
-                } 
-                return
-              }))
-              temp = temp_2
-            })
-          }
-        });
+        }
         
-        ["subway"].forEach((curr) => {
-          if(temp.length === 0 && filterOption.subway.length > 0){
-            temp = props.data
-            filterOption[curr].forEach((e)=>{   
-              var temp_2 = [];       
-              temp_2 = temp_2.concat(temp.filter((dict,n) => {
-                if(dict[curr] !== undefined){
-                  if (dict[curr].includes(e+",")){
-                    return dict[curr].includes(e);
-                  }
-                  else if (dict[curr].includes(e+" ")){
-                    return dict[curr].includes(e);
-                  }
-                } 
-                return
-  
-              }))
-              temp = temp_2
-            })
-          }
-          else if(filterOption.subway.length > 0){
-            filterOption[curr].forEach((e)=>{   
-              var temp_2 = [];       
-              temp_2 = temp_2.concat(temp.filter((dict,n) => {
-                if(dict[curr] !== undefined){
-                  if (dict[curr].includes(e+",")){
-                    return dict[curr].includes(e);
-                  }
-                  else if (dict[curr].includes(e+" ")){
-                    return dict[curr].includes(e);
-                  }
-                }
-                return
-              }))
-              temp = temp_2
-            })
-          }
-        });
-        
-       ["sports"].forEach((curr) => {
-          if(temp.length === 0 && (filterOption.sports[0].length > 0 || filterOption.sports[1].length > 0 || filterOption.sports[2].length > 0)){
-            temp = props.data
-            if(filterOption.sports[0].length > 0){
-              filterOption[curr][0].forEach((e)=>{
-                
-                var temp_2 = [];       
-                temp_2 = temp_2.concat(temp.filter((dict,n) => {
-                  if(dict["psal_sports_boys"] !== undefined){
-                    return dict["psal_sports_boys"].includes(e);
-                  } 
-                }))
-                temp = temp_2
-              })
-            }
-            if(filterOption.sports[1].length > 0){
-              filterOption[curr][1].forEach((e)=>{
-                var temp_2 = [];       
-                temp_2 = temp_2.concat(temp.filter((dict,n) => {
-                  if(dict["psal_sports_girls"] !== undefined){
-                    return dict["psal_sports_girls"].includes(e);
-                  } 
-                }))
-                temp = temp_2
-              })
-            }
-            if(filterOption.sports[2].length > 0){
-              filterOption[curr][2].forEach((e)=>{
-                var temp_2 = [];       
-                temp_2 = temp_2.concat(temp.filter((dict,n) => {
-                  if(dict["psal_sports_coed"] !== undefined){
-                    return dict["psal_sports_coed"].includes(e);
-                  } 
-                }))
-                temp = temp_2
-              })
-            }
-            return
-          }
-          else{
-            if(filterOption.sports[0].length > 0){
-              filterOption[curr][0].forEach((e)=>{
-                
-                var temp_2 = [];       
-                temp_2 = temp_2.concat(temp.filter((dict,n) => {
-                  if(dict["psal_sports_boys"] !== undefined){
-                    return dict["psal_sports_boys"].includes(e);
-                  } 
-                }))
-                temp = temp_2
-              })
-            }
-            if(filterOption.sports[1].length > 0){
-              filterOption[curr][1].forEach((e)=>{
-                var temp_2 = [];       
-                temp_2 = temp_2.concat(temp.filter((dict,n) => {
-                  if(dict["psal_sports_girls"] !== undefined){
-                    return dict["psal_sports_girls"].includes(e);
-                  } 
-                }))
-                temp = temp_2
-              })
-            }
-            if(filterOption.sports[2].length > 0){
-              filterOption[curr][2].forEach((e)=>{
-                var temp_2 = [];       
-                temp_2 = temp_2.concat(temp.filter((dict,n) => {
-                  if(dict["psal_sports_coed"] !== undefined){
-                    return dict["psal_sports_coed"].includes(e);
-                  } 
-                }))
-                temp = temp_2
-              })
-            }
-            return
-          }
-        });
-        ["postcode"].forEach((curr) => {
-          if(temp.length === 0 && filterOption.postcode.length > 0){
-            temp = []
-            filterOption[curr].forEach((e)=>{   
-              var temp_2 = [];       
-              temp_2 = temp_2.concat(props.data.filter((dict,n) => {
-                if(dict[curr] !== undefined){
-                    return dict[curr].includes(e);
-                } 
-                return
-  
-              }))
-              temp = temp.concat(temp_2)
-            })
-          }
-          else if(filterOption.postcode.length > 0){
-            var temp_2 = [];
-            filterOption[curr].forEach((e)=>{          
-              temp_2 = temp_2.concat(temp.filter((dict,n) => {
-                if(dict[curr] !== undefined){
-                    return dict[curr].includes(e);
-                }
-                return
-              }))
-              
-            })
-            temp = temp_2
-          }
-        });
-        ["accessbility"].forEach((curr) => {
-          if(temp.length === 0 && filterOption.accessbility.length > 0){
-            temp = []
-            filterOption[curr].forEach((e)=>{   
-              var temp_2 = [];       
-              temp_2 = temp_2.concat(props.data.filter((dict,n) => {
-                if(dict["accessbility"] !== undefined){
-                    return dict["grades"].includes(e);
-                }
-                return
-  
-              }))
-              temp = temp.concat(temp_2)
-            })
-          }
-          else if(filterOption.accessbility.length > 0){
-            var temp_2 = [];
-            filterOption[curr].forEach((e)=>{          
-              temp_2 = temp_2.concat(temp.filter((dict,n) => {
-                if(dict["school_accessibility"] !== undefined){
-                  return dict["school_accessibility"].includes(e);
-                }
-                return
-  
-              }))
-              
-            })
-            temp = temp_2
-          }
-        });
-        props.selectedSchoolCallback(temp);
+        props.selectedSchoolCallback(temp2);
      }
      else{
       props.selectedSchoolCallback(null)

@@ -38,7 +38,7 @@ const SchoolForm = ({items, compItems}) => {
     }
     return(
         <form onSubmit={(e) => formSubmit(e)}>
-          <div className="form-group inputSetting m-auto">
+          <div className="form-group inputSetting">
               <ReactSearchAutocomplete 
                 items={items}
                 onSearch={handleOnSearch}
@@ -75,9 +75,8 @@ const AddressForm = (props) => {
 }
 const InputForm = ({items, compItems}) =>{
     return (
-      <div className="container-fluid text-center">
+      <div className="container-fluid text-center ">
           <SchoolForm items = {items} compItems = {compItems}/>
-          <AddressForm/>
       </div>
     );
 }

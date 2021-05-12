@@ -48,7 +48,12 @@ const HomePage = () => {
   }, [])
   
   const selectedSchoolCallback = ( childData ) =>{
-    setSelectedSchools(childData)
+    if(childData && childData.length===0){
+      setSelectedSchools(null)
+    }
+    else{
+      setSelectedSchools(childData)
+    }
   }
   console.log("SELECTED", selectedSchools)
   return(
@@ -70,7 +75,12 @@ const HomePage = () => {
         </div>
       </div>
       <div className="rightSide">
-        <Map highSchoolData = {selectedSchools}/>
+        {
+          selectedSchools!==null?
+          <Map highSchoolData = {selectedSchools}/>
+          :
+          <Map highSchoolData = {selectedSchools}/>
+        }
       </div>
       
     </div>
