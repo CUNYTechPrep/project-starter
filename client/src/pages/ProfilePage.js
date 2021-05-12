@@ -1,3 +1,4 @@
+import PLACES_INFO from "../places.json";
 import React from "react";
 import { Redirect } from "react-router-dom";
 import {
@@ -21,14 +22,20 @@ class ProfilePage extends React.Component {
       notFound: false,
       groups: [],
       selectedGroup: 0,
+      selectedGroupPlaces: [],
     };
     this.handleGroupSelect = this.handleGroupSelect.bind(this);
+    this.getPlaceInfo = this.getPlaceInfo.bind(this);
   }
   handleGroupSelect(index) {
     console.log("selected group with index " + index);
     this.setState({
       selectedGroup: index,
     });
+  }
+
+  getPlaceInfo(place_id) {
+    return PLACES_INFO.filter((place) => place.place_id === place_id)[0];
   }
 
   componentDidMount() {
@@ -53,24 +60,38 @@ class ProfilePage extends React.Component {
           groups: groups,
           loading: false,
         });
-      });
+      })
+      .then(() =>
+        this.setState({
+          selectedGroupPlaces:
+            this.state.groups[this.state.selectedGroup].places,
+        })
+      )
+      .then(() => console.log(this.state.selectedGroupPlaces));
   }
 
   render() {
     const MapWithMarker = withScriptjs(
       withGoogleMap((props) => (
         <GoogleMap
-          defaultZoom={11}
+          defaultZoom={13}
           defaultCenter={{ lat: 40.7074077, lng: -73.92179039999999 }}
         >
-          <Marker
-            label="some place"
-            position={{ lat: 40.7074077, lng: -73.92179039999999 }}
-          />
-          <Marker
-            label="some place2"
-            position={{ lat: 40.7274077, lng: -73.91179039999999 }}
-          />
+          {this.state.groups[this.state.selectedGroup].places.map(
+            (place_id, index) => {
+              const placeInfo = this.getPlaceInfo(place_id);
+              return (
+                <Marker
+                  key={place_id}
+                  label={placeInfo.name}
+                  position={{
+                    lat: placeInfo.geometry.location.lat,
+                    lng: placeInfo.geometry.location.lng,
+                  }}
+                />
+              );
+            }
+          )}
         </GoogleMap>
       ))
     );
@@ -98,13 +119,14 @@ class ProfilePage extends React.Component {
               {this.state.groups.map((group, index) => {
                 return (
                   <>
-                    <input
+                    <button
                       onClick={() => this.handleGroupSelect(index)}
-                      type="radio"
                       key={group.groupId}
                       name="group"
-                    />
-                    <p>{group.groupName}</p>
+                    >
+                      <p>{group.groupName}</p>
+                    </button>
+                    <hr></hr>
                   </>
                 );
               })}
@@ -115,6 +137,7 @@ class ProfilePage extends React.Component {
                 {this.state.groups.map((group, index) => {
                   return (
                     <div
+                      key={index}
                       style={{
                         display:
                           index === this.state.selectedGroup
@@ -124,12 +147,12 @@ class ProfilePage extends React.Component {
                     >
                       <p>Group Name: {group.groupName}</p>
                       <h3>Members:</h3>
-                      {group.members.map((member) => (
-                        <p>{member} </p>
+                      {group.members.map((member, index) => (
+                        <p key={index}>{member} </p>
                       ))}
                       <h3>Places of interest</h3>
-                      {group.places.map((placeId) => (
-                        <p>{placeId} </p>
+                      {group.places.map((placeId, index) => (
+                        <p key={index}>{placeId} </p>
                       ))}
                     </div>
                   );
