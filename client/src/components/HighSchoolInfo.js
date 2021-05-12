@@ -84,5 +84,4 @@ const HighSchoolInfo = ({data, userReviewData}) => {
     )
 }
 
-
 export default HighSchoolInfo

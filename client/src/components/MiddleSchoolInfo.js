@@ -80,5 +80,4 @@ const MiddleSchoolInfo = ({data, userReviewData}) => {
     )
 }
 
-
 export default MiddleSchoolInfo
