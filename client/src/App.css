@@ -1,14 +1,6 @@
-.App {
-  text-align: center;
-  background-image: url('./nyc-wallpaper.jpg');
-  position: fixed;
-  min-width: 100%;
-  min-height: 100%;
-  background-size: cover;
-  background-position: center;
-}
 
-/* .App {
+/* 
+.App {
   text-align: center;
 }
 
@@ -28,33 +20,34 @@
 }
 
 .App-link {
-  color: #09d3ac;
-}
+  color: #065848;
+} */
 
 .navbar {
-  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
-  height: 80px;
+  /* background: linear-gradient(90deg, rgb(165, 49, 14) 0%, rgb(98, 150, 15) 100%) ; */
+  background-image: url(./navBarBg3.jpg);
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
 }
 
-.navbar-logo {
+/* .navbar-logo {
   color: #fff;
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
-}
+} */
 
-.fa-firstdraft {
+/* .fa-firstdraft {
   margin-left: 0.5rem;
   font-size: 1.6rem;
-}
+} */
 
-.nav-menu {
+/* .nav-menu {
   display: grid;
   grid-template-columns: repeat(5, auto);
   grid-gap: 10px;
@@ -63,12 +56,12 @@
   width: 70vw;
   justify-content: end;
   margin-right: 2rem;
-}
+} */
 
 .nav-item {
   display: flex;
   align-items: center;
-  height: 80px;
+  height: 70px;
 }
 
 .nav-links {
@@ -78,12 +71,13 @@
 }
 
 .nav-links:hover {
-  background-color: #1888ff;
+  color: #750eeb !important;
+  /* transform: scale(1.005); */
   border-radius: 4px;
-  transition: all 0.2s ease-out;
+  transition: all 0.4s ease-out;
 }
 
-.fa-bars {
+/* .fa-bars {
   color: #fff;
 }
 
@@ -120,7 +114,7 @@
     z-index: 1;
   }
 
-  .nav-links {
+  /* .nav-links {
     text-align: center;
     padding: 2rem;
     width: 100%;
@@ -130,9 +124,9 @@
   .nav-links:hover {
     background-color: #1888ff;
     border-radius: 0;
-  }
+  } */
 
-  .navbar-logo {
+  /* .navbar-logo {
     position: absolute;
     top: 0;
     left: 0;
@@ -152,9 +146,9 @@
   .fa-times {
     color: #fff;
     font-size: 2rem;
-  }
+  }  */
 
-  .nav-links-mobile {
+  /* .nav-links-mobile {
     display: block;
     text-align: center;
     padding: 1.5rem;
@@ -165,9 +159,9 @@
     text-decoration: none;
     color: #fff;
     font-size: 1.5rem;
-  }
+  } */
 
-  .nav-links-mobile:hover {
+  /* .nav-links-mobile:hover {
     background: #fff;
     color: #1888ff;
     transition: 250ms;
@@ -175,7 +169,7 @@
 
   button {
     display: none;
-  }
-}
+  } */
 
-*/
+
+ 

@@ -20,13 +20,14 @@ const AuthButton = withRouter(({ history }) => {
   const logout = () => {
     auth.signout().then(() => history.push('/'));
   }
-
+  let message = `Welcome ${auth.user.userName}`
   return (
-    <div className={AuthButtonCSS.welcome}>
-      Welcome! {auth.user.userName}
+    <div>
+      <span  className={AuthButtonCSS.welcome}>{message}</span>  
       <button className={`btn ${AuthButtonCSS.logout}`} onClick={logout}><LockIcon/></button>
     </div>
   );
 });
 
+//Welcome! {auth.user.userName}
 export default AuthButton;
