@@ -3,20 +3,10 @@ import { Link } from 'react-router-dom';
 import Heart from "react-heart";
 import '../styles/homePage.css';
 
-function Card({ content, name, id, bookmark, userID}) {
+function Bookmark({schoolName, schoolID, userID}) {
 
-  const [active, setActive] = useState(false);
-
-  function checkBookmark(){
-    for(let i = 0; i < bookmark.length; i++){ 
-      if(bookmark[i]["schoolDBID"] == id){
-        setActive(true);
-        return;
-      } 
-    }
-    setActive(false);
-    return;
-  }
+  const [active, setActive] = useState(true);
+  console.log("profile bookmark: " + schoolID);
 
   function setUserBookmark(){
     if(userID){
@@ -27,7 +17,7 @@ function Card({ content, name, id, bookmark, userID}) {
                       'Content-Type': 'application/json',
                   },
                   body: JSON.stringify({userUUID: userID,
-                                        schoolDBID: id}),
+                                        schoolDBID: schoolID}),
               })
               .then(
                 console.log("deleted bookmark")
@@ -36,24 +26,8 @@ function Card({ content, name, id, bookmark, userID}) {
                   console.error('Error:', error);
               });
       }
-      else if(!active){ // add bookmark
-        fetch('http://localhost:8080/api/bookmarks/add', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({userUUID: userID,
-                                        schoolDBID: id,
-                                        schoolName: name}),
-              })
-              .then(
-                console.log("added bookmark")
-              )
-              .catch((error) => {
-                  console.error('Error:', error);
-              });
-      }
       setActive(!active);
+      window.location.reload();
       return;
     }
     else{
@@ -62,17 +36,13 @@ function Card({ content, name, id, bookmark, userID}) {
     }
   }
   
-  useEffect(() => {
-    checkBookmark();
-  }, [])
-  
   return (
     <div className="col-10 col-md-8 col-lg-10 m-auto pt-4">
       <div className="card mb-4 shadow">
         <div className="card-header " style={{textAlign:"center"}}>
           <div className="row">
             <div className="col-11">
-              <h4>{name}</h4>
+              <h4>{schoolName}</h4>
             </div>
             <div className="ml-auto" style={{ width: "2rem", height:"2rem" }}>
               <Heart isActive={(active)} onClick={() => setUserBookmark()} animationScale = {1.25} style = {{marginBottom:'1rem'}}/>
@@ -81,11 +51,6 @@ function Card({ content, name, id, bookmark, userID}) {
         </div>
         
         <div className="card-body card-text text-center ">
-          <div className="col"><p>{content.location.split(" (")[0]}</p></div>
-          <div className="dropdown-divider"></div>
-          <div className="col"><p>{content.subway}</p></div>
-          <div className="dropdown-divider"></div>
-          <div className="col"><p>{content.bus} </p></div>
           <button className="btn" type="button"  
                         aria-haspopup="true" aria-expanded="true">
                     Show more info
@@ -97,5 +62,4 @@ function Card({ content, name, id, bookmark, userID}) {
   );
 }
 
-export default Card;
-//<Link to={"/posts/"+id}>{ content }</Link>
+export default Bookmark;
