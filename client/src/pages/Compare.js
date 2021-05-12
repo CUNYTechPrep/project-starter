@@ -7,7 +7,7 @@ export default function Compare() {
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
   const [compItems, setCompItems] = useState([]);
-  const [startCompare, setStartCompare] = useState(false);
+  const [startCompare, setStartCompare] = useState(0);
   const [schoolOne, setSchoolOne] = useState({});
   const [schoolTwo, setSchoolTwo] = useState({});
 
@@ -53,8 +53,10 @@ export default function Compare() {
   }, []);
 
   const setSchools = (e) => {
+    
     e.preventDefault();
-    setStartCompare(true);
+    
+    setStartCompare(startCompare+1);
   };
 
 

@@ -89,7 +89,7 @@ const HomePage = () => {
           {
             selectedSchools && selectedSchools.map((school) =>{
               return(
-                <Card content={school} name={school.school_name} id={school.dbn} bookmark={userBookmark} userID = {currentUser.uid}/>
+                <Card content={school} name={school.school_name} id={school.dbn} bookmark={userBookmark} userID = {currentUser ? currentUser.uid : null}/>
               );
             })
           }

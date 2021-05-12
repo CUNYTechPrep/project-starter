@@ -71,7 +71,7 @@ const CompareForm = ({items, compItems, makeComparison, setSchoolOne: compareSch
     }
   }
   useEffect(() => {
-    if(makeComparison) {
+    if(makeComparison>0) {
       //render map - send schoolOne, schoolTwo value to Compare component
       compareSchoolOne(schoolOne);
       compareSchoolTwo(schoolTwo);
