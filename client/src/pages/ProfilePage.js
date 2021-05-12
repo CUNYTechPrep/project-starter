@@ -120,13 +120,14 @@ class ProfilePage extends React.Component {
                 return (
                   <>
                     <button
+                      className="btn btn-dark btn-lg btn-block"
+                      type="button"
                       onClick={() => this.handleGroupSelect(index)}
                       key={group.groupId}
                       name="group"
                     >
                       <p>{group.groupName}</p>
                     </button>
-                    <hr></hr>
                   </>
                 );
               })}
