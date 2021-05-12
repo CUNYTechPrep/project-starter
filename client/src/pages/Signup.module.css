@@ -9,6 +9,7 @@
 .profilePic:hover{
 cursor: pointer;
 border-color: #750eeb;
+transform: scale(1.05);
 }
 
 .profileDiv{

@@ -24,6 +24,7 @@ background-color: rgba(0,0,0,0.7) !important;
 
 .cardheader h3{
 color: white;
+margin-top: 10px;
 }
 
 .input_group_prepend span{
