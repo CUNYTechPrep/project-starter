@@ -8,7 +8,7 @@ const { Model } = require('sequelize');
 // models only work in the backend, they connect to the database, and writes SQL for you
 // we prefer a library like sequelize that generates that SQL for us
 // models speak to the database
-// this is an abstraction really 
+// this is an abstraction really
 // these classes help to save records of the same shape of the class
 
 //React is on the front end, which handles the user interface, and the user can never be trusted!
@@ -19,19 +19,21 @@ const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Post extends Model {}
-
-  Post.init({
-    content: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [3, 250],
-        notEmpty: true,
-      }
+  Post.init(
+    {
+      content: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [3, 250],
+          notEmpty: true,
+        },
+      },
     },
-  }, {
-    sequelize,
-    modelName: 'post'
-  });
+    {
+      sequelize,
+      modelName: 'post',
+    }
+  );
 
   Post.associate = (models) => {
     // associations can be defined here

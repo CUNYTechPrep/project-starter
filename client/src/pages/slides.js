@@ -25,7 +25,7 @@ const Simple = (props) => {
       <h1>React Tinder Card</h1>
       <div className='cardContainer'>
         {characters.map((character) =>
-          <TinderCard className='swipe' key={character} onSwipe={(dir) => swiped(dir, character)} onCardLeftScreen={() => outOfFrame(character)}>
+          <TinderCard className='swipe' key={character.name} onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
             <div className='card'>
               <h3>{character}</h3>
             </div>
