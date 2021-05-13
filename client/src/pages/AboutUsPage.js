@@ -1,7 +1,15 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "../styles/aboutPage.css";
 
+
 function AboutUsPage(props) {
+  let history = useHistory();
+
+  function handleClick() {
+    history.push("/");
+  }
+  
   return (
     <div>
       <div className="bg-white py-4">
@@ -18,9 +26,9 @@ function AboutUsPage(props) {
                 ac sit amet eros. Sed nec purus non metus sagittis dapibus. Nulla facilisi. In diam est, interdum in varius eu, tincidunt sed mi. 
                 Etiam pellentesque dignissim fringilla. Integer bibendum sem lectus, rutrum pharetra dui sollicitudin nec. 
               </p>
-                <a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">
+                <button type="button" onClick={handleClick} class="btn btn-light px-5 rounded-pill shadow-sm">
                 Try it out
-              </a>
+              </button>
             </div>
           </div>
         </div>
