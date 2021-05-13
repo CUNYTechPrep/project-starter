@@ -3,7 +3,8 @@ import 'w3-css/w3.css';
 import React from "react";
 import '../../css/Popup.css';
 import '../../css/ProfilePage.css';
-import profileEdit from '../../services/profileedit'; 
+import auth from '../../services/auth.js';
+
 
 class PopupBio extends React.Component {
   state = {
@@ -18,13 +19,25 @@ class PopupBio extends React.Component {
     }
   }
 
-  submit = (e) => {
+
+  submit = (e) => { //calls endpoint and sends in state
     e.preventDefault();
-    let userInput = this.state;
-    profileEdit.editBio(userInput)
-      .then((user) => {
-        this.setState({ bioField: userInput });
+    const { id } = auth.currentUser;
+    const setObject = { bio: this.state.bioField };
+
+    const requestOptions = { 
+      method: "PUT",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(setObject)
+    }
+    fetch("/api/users/"+id, requestOptions ) //sending it as options
+      .then(res => res.json())
+      .then(user => {
+        this.props.closePopup();
       })
+      .catch(err => {
+        console.log( err );
+      }) 
   }
 
   render() {
@@ -36,16 +49,16 @@ class PopupBio extends React.Component {
             <div className="div-heading">
               <form onSubmit={this.submit}>
                 <input 
-                    type="bio"
+                    type="bioField"
                     className="form-control"
-                    name="bio"
+                    name="bioField"
                     placeholder="Tell us about yourself in 255 words or less" 
                     value={this.state.bioField} 
-                    onChange={this.fieldChanged('bio')} 
+                    onChange={this.fieldChanged('bioField')} 
                   />
                     <br></br>
                   <button className= " button-edits" style={{height: 50, width: 300, borderRadius: 30}}
-                    onClick={this.props.closePopup} type="submit"> 
+                   type="submit"> 
                     Save 
                   </button>
                 </form>
