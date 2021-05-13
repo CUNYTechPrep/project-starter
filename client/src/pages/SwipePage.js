@@ -14,30 +14,7 @@ class SwipePage1 extends React.Component {
   state = {
     profiles: [],
     loading: true,
-    pointerStart: 0,
-    db: [
-      {
-        name: 'Richard Hendricks',
-        url: './img/richard.jpg'
-      },
-      {
-        name: 'Erlich Bachman',
-        url: './img/erlich.jpg'
-      },
-      {
-        name: 'Monica Hall',
-        url: './img/monica.jpg'
-      },
-      {
-        name: 'Jared Dunn',
-        url: './img/jared.jpg'
-      },
-      {
-        name: 'Dinesh Chugtai',
-        url: './img/dinesh.jpg'
-      }
-    ]
-    
+    pointerStart: 0,   
   }
 
   componentDidMount() {
@@ -57,13 +34,34 @@ class SwipePage1 extends React.Component {
 
   
 
-render(){
-  
-    return (<Simple db={this.state.profiles} />);   ///this part will allow us to send data to our cards and populate them
-  
-}
+  render(){
+    if(this.state.loading) //API info retrieval loading 
+      return <Loading />
+
+      let slides =[];
+     
+
+      for(let i = 0; i < this.state.profiles.length; i+=1){
+        if(auth.currentUser.id !== this.state.profiles[i].props.id){
+          slides.push(
+            this.state.profiles[i]
+          );
+        }
+      }
+      
+      return (
+        <div >
+          <Simple db={slides} />
+        </div>
+      );   
+      //this part will allow us to send data to our cards and populate them
+  }
 
 }
 
 
   export default SwipePage1;
+
+
+
+  

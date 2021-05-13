@@ -28,10 +28,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  // Forum.associate = (models) => {
-  //   models.Forum.belongsTo(models.User, { as: 'author' });
-  //   models.Forum.hasMany(models.threadPosts, { as: 'thread_posts' });
-  // };
+  Forum.associate = (models) => {
+    //models.Forum.belongsTo(models.User, { as: 'author' });
+    
+    
+    // models.Forum.hasMany(models.threadPosts, { as: 'thread_posts' });
+  };
 
   return Forum;
 };

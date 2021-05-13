@@ -1,7 +1,6 @@
 'use strict';
 const { Model } = require('sequelize');
 const { Sequelize } = require('.');
-require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class threadPosts extends Model {}
@@ -29,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   threadPosts.associate = (models) => {
-    // models.threadPosts.belongsTo(models.Swipe, { as: 'author' });
+    //models.threadPosts.belongsTo(models.Forum, { as: 'thread' }); //So this would be one Thread to Many Posts relation
   };
 
   return threadPosts;

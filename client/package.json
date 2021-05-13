@@ -10,6 +10,7 @@
     "react-resize-image": "^1.0.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-tinder-card": "^1.4.0",
     "w3-css": "^4.1.0"
   },
   "scripts": {
