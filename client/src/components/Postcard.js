@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import './Postcard.css'
 
 
-function Postcard() {
+function Postcard({ post, media, location, key }) {
   return (
     <div className="col-10 col-md-8 col-lg-7 p-0 mx-0 my-4  ">
       <div className="post-container shadow row">
@@ -22,10 +22,10 @@ function Postcard() {
             <svg width="20" height="20" version="1.1" viewBox="0 0 5.2917 5.2917" xmlns="http://www.w3.org/2000/svg"><g transform="translate(273.36 37.321)" opacity=".998"><path transform="matrix(.078115 0 0 .067649 -266.05 -23.461)" d="m-25.84-165.77-67.742 39.111 2e-6 -39.111-2e-6 -39.111 33.871 19.555z" fill="#f2f2f2" opacity=".997" Style="mix-blend-mode:normal"/></g></svg>
           </div>
           <div className="post-likes">
-            <p>likes#</p>
+            <p>{post.likes}</p>
             <svg width="30" height="30" version="1.1" viewBox="0 0 7.9375 7.9375" xmlns="http://www.w3.org/2000/svg"><g transform="translate(274.45 38.853)" opacity=".998"><path d="m-274.45-35.811 3.9688-3.0422 3.9688 3.0422v1.4814l-1.6896-0.0054v3.4193h-4.5583v-3.4193l-1.6896 0.0054z" fill="#f55" opacity=".998" strokeWidth="1.26"/></g></svg>
             <svg width="30" height="30" version="1.1" viewBox="0 0 7.9375 7.9375" xmlns="http://www.w3.org/2000/svg"><g transform="translate(279.65 44.137)" opacity=".998"><path d="m-279.65-39.242 3.9688 3.0422 3.9688-3.0422v-1.4814l-1.6896 0.0053-1e-5 -3.4193h-4.5583v3.4193l-1.6896-0.0053z" fill="#55f" opacity=".998" strokeWidth="1.26"/></g></svg>
-            <p>dislikes#</p>
+            <p>{post.dislikes}</p>
           </div>
           <div className="post-pic-enlarge">
             <svg width="30" height="30" version="1.1" viewBox="0 0 7.9375 7.9375" xmlns="http://www.w3.org/2000/svg"><g transform="translate(275.04 38.727)" opacity=".998"><path d="m-275.04-38.727v3.3073h0.66146v-2.6458h2.6458v-0.66146zm4.6302 0v0.66146h2.6458v2.6458h0.66146v-3.3073zm-4.6302 4.6302v3.3073h3.3073v-0.66146h-2.6458v-2.6458zm7.276 0v2.6458h-2.6458v0.66146h3.3073v-3.3073z" fill="#f2f2f2" opacity=".997"/></g></svg>
@@ -34,7 +34,7 @@ function Postcard() {
         <div className="text-area col-4 p-0 "> 
           <div className="post-title">
             <div className="one">
-              <h3>Title</h3>
+              <h3>{post.title}</h3>
             </div>
             <div className="two"> 
               <svg width="30" height="30" version="1.1" viewBox="0 0 79.375 79.375" xmlns="http://www.w3.org/2000/svg"><g transform="translate(261.77 26.254)" opacity=".998"><g transform="translate(-264.22 151.12)" fill="#808080" opacity=".998"><path d="m23.904-137.65a7.9375 7.9375 0 0 1-7.9375 7.9375 7.9375 7.9375 0 0 1-7.9375-7.9375 7.9375 7.9375 0 0 1 7.9375-7.9375 7.9375 7.9375 0 0 1 7.9375 7.9375z" opacity=".997"/><path d="m49.337-137.73a7.9375 7.9375 0 0 1-7.9375 7.9375 7.9375 7.9375 0 0 1-7.9375-7.9375 7.9375 7.9375 0 0 1 7.9375-7.9375 7.9375 7.9375 0 0 1 7.9375 7.9375z" opacity=".997"/><path d="m76.248-137.73a7.9375 7.9375 0 0 1-7.9375 7.9375 7.9375 7.9375 0 0 1-7.9375-7.9375 7.9375 7.9375 0 0 1 7.9375-7.9375 7.9375 7.9375 0 0 1 7.9375 7.9375z" opacity=".997"/></g></g></svg>
@@ -43,17 +43,14 @@ function Postcard() {
               <h5>Author</h5> 
             </div> 
             <div className="four">
-              <h5>Location (Coords)</h5>  
+              <h5>{location.city}, {location.state} ({location.lat}, {location.lng})</h5>  
             </div>
           </div>
           <div className="post-body">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-              when an unknown printer took a galley of type and scrambled it to make a type 
-              specimen book.</p>
+            <p>{post.body}</p>
             <div className="post-categ">
-              <button type="button" class="btn btn-primary m-1">Attraction</button>
-              <button type="button" class="btn btn-primary m-1">Landmark</button>
+              <button type="button" className="btn btn-primary m-1">Attraction</button>
+              <button type="button" className="btn btn-primary m-1">Landmark</button>
             </div>
           </div>
         </div>

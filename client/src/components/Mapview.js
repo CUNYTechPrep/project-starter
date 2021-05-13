@@ -18,21 +18,21 @@ function Mapview() {
       </div>
       { /* this list is to demonstrate the layout. can be populated from the DB later */ }
       <div className="filters-container row shadow"> 
-        <button type="button" class="btn btn-primary m-2">Restaurant</button>
-        <button type="button" class="btn btn-primary m-2">Hotel</button>
-        <button type="button" class="btn btn-primary m-2">Pool</button>
-        <button type="button" class="btn btn-primary m-2">Beach</button>
-        <button type="button" class="btn btn-primary m-2">Park</button>
-        <button type="button" class="btn btn-primary m-2">Attraction</button>
-        <button type="button" class="btn btn-primary m-2">Landmark</button>
-        <button type="button" class="btn btn-primary m-2">Historic Site</button>
-        <button type="button" class="btn btn-primary m-2">Pet Friendly</button>
-        <button type="button" class="btn btn-primary m-2">Museum</button>
-        <button type="button" class="btn btn-primary m-2">Bar</button>
-        <button type="button" class="btn btn-primary m-2">Club</button>
-        <button type="button" class="btn btn-primary m-2">Landmark</button>
-        <button type="button" class="btn btn-primary m-2">Landmark</button>
-        <button type="button" class="btn btn-primary m-2">Landmark</button>
+        <button type="button" className="btn btn-primary m-2">Restaurant</button>
+        <button type="button" className="btn btn-primary m-2">Hotel</button>
+        <button type="button" className="btn btn-primary m-2">Pool</button>
+        <button type="button" className="btn btn-primary m-2">Beach</button>
+        <button type="button" className="btn btn-primary m-2">Park</button>
+        <button type="button" className="btn btn-primary m-2">Attraction</button>
+        <button type="button" className="btn btn-primary m-2">Landmark</button>
+        <button type="button" className="btn btn-primary m-2">Historic Site</button>
+        <button type="button" className="btn btn-primary m-2">Pet Friendly</button>
+        <button type="button" className="btn btn-primary m-2">Museum</button>
+        <button type="button" className="btn btn-primary m-2">Bar</button>
+        <button type="button" className="btn btn-primary m-2">Club</button>
+        <button type="button" className="btn btn-primary m-2">Landmark</button>
+        <button type="button" className="btn btn-primary m-2">Landmark</button>
+        <button type="button" className="btn btn-primary m-2">Landmark</button>
       </div>
     </div>
   );

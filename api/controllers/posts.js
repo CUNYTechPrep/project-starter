@@ -32,16 +32,13 @@ router.get('/', async (req,res) => {
     let location = await post.getLocation()
     let postMedLocObj= {}
     
-    postMedLocObj.post =  post 
+    postMedLocObj.post =  post
     postMedLocObj.media = media
     postMedLocObj.location = location
     postMedLocArr.push(postMedLocObj)
   
-
-    if(i === posts.length-1){
-      res.json(postMedLocArr)
-    }
   }
+  res.json(postMedLocArr)
 });
 
 // ./api/posts (post)
