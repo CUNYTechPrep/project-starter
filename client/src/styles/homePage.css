@@ -43,11 +43,9 @@
 
 .Card-Size{
     max-width: 1900px;
-
-
-/* compare page style */
 }
 
+/* compare page style */
 .main{
     display: flex;
 }

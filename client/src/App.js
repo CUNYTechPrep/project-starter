@@ -21,9 +21,6 @@ import Compare from "./pages/Compare";
 import Test from "./pages/Test";
 import "./App.css";
 
-// import PostFormPage from "./pages/PostFormPage";
-// import ShowPostPage from "./pages/ShowPostPage";
-
 function Navigation(props) {
   const { currentUser, logout } = useAuth();
   const history = useHistory();
@@ -103,9 +100,6 @@ const App = () => {
                 <Route path="/compare" component={Compare} />
                 <Route path="/school/:school_dbn" component= {SchoolPage} />
                 <Route path="/" component={HomePage} />
-              
-                {/* <Route path="/posts/new" component={PostFormPage} />
-                <Route path="/posts/:id" component={ShowPostPage} /> */}
               </Switch>
         </AuthProvider>
       </Router>
