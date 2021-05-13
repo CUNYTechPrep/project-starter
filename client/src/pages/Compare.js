@@ -40,7 +40,9 @@ export default function Compare() {
             academicopportunities1: e.academicopportunities1,
             academicopportunities2: e.academicopportunities2,
             academicopportunities3: e.academicopportunities3,
-            addtl_info1: e.addtl_info1
+            academicopportunities4: e.academicopportunities4,
+            academicopportunities5: e.academicopportunities5,
+            addtl_info1: e.addtl_info1,
           });
           tempComp[e.school_name] = e.dbn;
         });
@@ -53,12 +55,10 @@ export default function Compare() {
   }, []);
 
   const setSchools = (e) => {
-    
     e.preventDefault();
-    
-    setStartCompare(startCompare+1);
-  };
 
+    setStartCompare(startCompare + 1);
+  };
 
   return (
     <div>
@@ -97,9 +97,9 @@ export default function Compare() {
               <div className="card-body">
                 <h5 className="card-title">{schoolTwo.school_name}</h5>
                 <h6 className="card-subtitle mb-2 text-muted">
-                  Grades: {schoolTwo.grades2020} &nbsp; &nbsp; 
-                  Total Students:{" "}{schoolTwo.total_students} &nbsp; &nbsp; 
-                  Accessibility:{" "}{schoolTwo.school_accessibility}
+                  Grades: {schoolTwo.grades2020} &nbsp; &nbsp; Total Students:{" "}
+                  {schoolTwo.total_students} &nbsp; &nbsp; Accessibility:{" "}
+                  {schoolTwo.school_accessibility}
                 </h6>
                 <hr />
                 <p className="card-text">
@@ -107,7 +107,6 @@ export default function Compare() {
                 </p>
                 <hr />
                 <p className="card-text">
-
                   <b>PSAL Sports Boys: </b> {schoolTwo.psal_sports_boys}
                   <br />
                   <b>PSAL Sports Girls: </b> {schoolTwo.psal_sports_girls}
@@ -115,15 +114,15 @@ export default function Compare() {
                 <hr />
                 <p className="card-text">
                   <b>Academic Opportunties: </b>{" "}
-                  {schoolTwo.academicopportunities1},{" "}
-                  {schoolTwo.academicopportunities2},
-                  {schoolTwo.academicopportunities3}
+                  {schoolTwo.academicopportunities1}{" "}
+                  {schoolTwo.academicopportunities2}{" "}
+                  {schoolTwo.academicopportunities3}{" "}
+                  {schoolTwo.academicopportunities4}{" "}
+                  {schoolTwo.academicopportunities5}{" "}
                 </p>
                 <hr />
                 <p className="card-text">
-                  <b>Additional Info: </b>{" "}
-                  {schoolTwo.addtl_info1}
-                  
+                  <b>Additional Info: </b> {schoolTwo.addtl_info1}
                 </p>
               </div>
             </div>
@@ -135,9 +134,9 @@ export default function Compare() {
               <div className="card-body">
                 <h5 className="card-title">{schoolOne.school_name}</h5>
                 <h6 className="card-subtitle mb-2 text-muted">
-                  Grades: {schoolOne.grades2020} &nbsp; &nbsp; 
-                  Total Students:{" "}{schoolOne.total_students} &nbsp; &nbsp; 
-                  Accessibility:{" "}{schoolOne.school_accessibility}
+                  Grades: {schoolOne.grades2020} &nbsp; &nbsp; Total Students:{" "}
+                  {schoolOne.total_students} &nbsp; &nbsp; Accessibility:{" "}
+                  {schoolOne.school_accessibility}
                 </h6>
                 <hr />
                 <p className="card-text">
@@ -152,16 +151,15 @@ export default function Compare() {
                 <hr />
                 <p className="card-text">
                   <b>Academic Opportunties: </b>{" "}
-                  {schoolOne.academicopportunities1},{" "}
-                  {schoolOne.academicopportunities2},
-                  {schoolOne.academicopportunities3},
-                  {schoolOne.academicopportunities4}
+                  {schoolOne.academicopportunities1}{" "}
+                  {schoolOne.academicopportunities2}{" "}
+                  {schoolOne.academicopportunities3}{" "}
+                  {schoolOne.academicopportunities4}{" "}
+                  {schoolOne.academicopportunities5}{" "}
                 </p>
                 <hr />
                 <p className="card-text">
-                  <b>Additional Info: </b>{" "}
-                  {schoolTwo.addtl_info1}
-                  
+                  <b>Additional Info: </b> {schoolOne.addtl_info1}
                 </p>
               </div>
             </div>
