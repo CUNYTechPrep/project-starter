@@ -144,60 +144,81 @@ class SignUp extends React.Component {
         let fName = e.target.fName.value;
         let lName = e.target.lName.value;
         let birthDate = e.target.birthDate.value;
-        let file = e.target.file.files[0];
-
         
 
-        const uploadTask = bucket.ref(`images/${file.name}`).put(file);
+        if(e.target.file.files[0]){
+            let file = e.target.file.files[0];
 
-        uploadTask.on(
-            "state_changed",
-            snapshot =>{},
-            error =>{
-                console.log(error);
+            const uploadTask = bucket.ref(`images/${file.name}`).put(file);
+
+            uploadTask.on(
+                "state_changed",
+                snapshot =>{},
+                error =>{
+                    console.log(error);
+                },
+                () => {
+                    bucket
+                        .ref("images")
+                        .child(file.name)
+                        .getDownloadURL()
+                        .then(url => {
+                            console.log("Url:", url);
+
+                            this.setState(prevState => {
+                                let dataObj = { ...prevState.dataObj };
+                                dataObj.email = email;
+                                dataObj.userName = userName;
+                                dataObj.password = password;
+                                dataObj.fName = fName;
+                                dataObj.lName = lName;
+                                dataObj.birthDate = birthDate;
+                                dataObj.profilePic = url;
+                                return {dataObj}
+                            }, ()=> {
+                                this.makePostReq()
+                            })
+
+                            
+
+                        })
+                }
+            )
+        } else {
+            let defaultPic = "https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
+            this.setState(prevState => {
+                let dataObj = { ...prevState.dataObj };
+                dataObj.email = email;
+                dataObj.userName = userName;
+                dataObj.password = password;
+                dataObj.fName = fName;
+                dataObj.lName = lName;
+                dataObj.birthDate = birthDate;
+                dataObj.profilePic = defaultPic;
+                return {dataObj}
+            }, ()=>{
+                this.makePostReq()
+            })
+        }
+    }
+
+    makePostReq(){
+        fetch('/api/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            () => {
-                bucket
-                    .ref("images")
-                    .child(file.name)
-                    .getDownloadURL()
-                    .then(url => {
-                        console.log("Url:", url);
-
-                        this.setState(prevState => {
-                            let dataObj = { ...prevState.dataObj };
-                            dataObj.email = email;
-                            dataObj.userName = userName;
-                            dataObj.password = password;
-                            dataObj.fName = fName;
-                            dataObj.lName = lName;
-                            dataObj.birthDate = birthDate;
-                            dataObj.profilePic = url;
-                            return {dataObj}
-                        })
-
-                        // console.log(this.state.dataObj);
-
-                        fetch('/api/user', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify(this.state.dataObj),
-                        })
-                        .then(response => {
-                            if(response.ok){
-                                console.log("success")
-                                this.setState({success: true})
-                            }
-                        })
-                        .catch(error => {
-                            console.log('Error', error);
-                        });
-
-                    })
+            body: JSON.stringify(this.state.dataObj),
+        })
+        .then(response => {
+            if(response.ok){
+                console.log("success")
+                this.setState({success: true})
             }
-        )
+        })
+        .catch(error => {
+            console.log('Error', error);
+        });
     }
 
     handleCancle(e){

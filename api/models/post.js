@@ -52,6 +52,15 @@ module.exports = (sequelize, DataTypes) => {
     // It creates a new table (PostCategory) to hold postId and categoryId
     // This will add methods getCategories, setCategories, addCategory, addCategories to Post instances.
     models.Post.belongsToMany(models.Category, {through: 'PostCategory'});
+
+    // This will create a Many-to-Many relationship
+    // It creates a new table (PostLikes) to hold postId and userName
+    // This will add methods getUsers, setUsers, addUser, addUsers to Post instances.
+    models.Post.belongsToMany(models.User, {through: models.PostLikes})
+
+    models.Post.belongsToMany(models.User, {through: models.PostDislikes})
+
+
   };
 
   return Post;

@@ -120,6 +120,56 @@ class CreatePost extends React.Component {
     this.onLocationChange=this.onLocationChange.bind(this);
     }
 
+    reverseGeoCoding(lat, lng){
+        Geocode.fromLatLng( lat , lng ).then(
+            response => {
+             const address = response.results[0].formatted_address,
+              addressArray =  response.results[0].address_components
+              console.table(addressArray)
+              console.log(address)
+              
+
+            let city
+            let state
+            let zipCode
+
+            addressArray.forEach(type => {
+                
+                if(type.types.includes("political") && city === undefined){
+                city = type.long_name;
+                }else if(type.types.includes("administrative_area_level_1") && state === undefined){
+                // console.log(type.long_name)
+                state = type.long_name;
+                }else if(type.types.includes("postal_code") && zipCode === undefined){
+                // console.log(type.long_name)
+                zipCode = type.long_name;
+                }
+                
+                if(city !== undefined && state!== undefined && zipCode!== undefined){
+                    console.log(city)
+                    console.log(state)
+                    console.log(zipCode)
+                    this.setState(prevState => {
+                        let dataObj = { ...prevState.dataObj };
+                        dataObj.city = city;
+                        dataObj.state = state;
+                        dataObj.zip = zipCode;
+                        dataObj.lat = lat;
+                        dataObj.lng = lng;
+                        dataObj.streetAddress = address.split(",")[0];
+            
+                        return {dataObj}
+                    })
+                }
+            });
+        
+            },
+            error => {
+             console.error(error);
+            }
+           );
+    }
+
     componentDidMount(){
         // console.log(this.state.dataObj.user)
         navigator.geolocation.getCurrentPosition((position) =>{
@@ -133,52 +183,8 @@ class CreatePost extends React.Component {
                 return {dataObj}
             })
 
-            Geocode.fromLatLng( this.state.dataObj.lat , this.state.dataObj.lng ).then(
-                response => {
-                 const address = response.results[0].formatted_address,
-                  addressArray =  response.results[0].address_components
+            this.reverseGeoCoding(this.state.dataObj.lat , this.state.dataObj.lng);
 
-                  console.table(addressArray)
-                  console.log(address)
-                  let city
-                  let state
-                  let zipCode
-
-                  addressArray.forEach(type => {
-                      
-                        if(type.types.includes("political") && city === undefined){
-                        city = type.long_name;
-                        }else if(type.types.includes("administrative_area_level_1") && state === undefined){
-                        // console.log(type.long_name)
-                        state = type.long_name;
-                        }else if(type.types.includes("postal_code") && zipCode === undefined){
-                        // console.log(type.long_name)
-                        zipCode = type.long_name;
-                        }
-
-                        if(city !== undefined && state!== undefined && zipCode!== undefined){
-                            console.log(city)
-                            console.log(state)
-                            console.log(zipCode)
-                            this.setState(prevState => {
-                                let dataObj = { ...prevState.dataObj };
-                                dataObj.city = city;
-                                dataObj.state = state;
-                                dataObj.zip = zipCode;
-                                dataObj.streetAddress = address.split(",")[0];
-                    
-                                return {dataObj}
-                            })
-                        }
-
-                      
-                  });
-                 
-                },
-                error => {
-                 console.error(error);
-                }
-               );
           })
     }
 
@@ -195,7 +201,6 @@ class CreatePost extends React.Component {
         let streetAddress = e.target.streetAddress.value;
 
         const uploadTask = bucket.ref(`images/${file.name}`).put(file);
-
         uploadTask.on(
             "state_changed",
             snapshot =>{},
@@ -249,53 +254,7 @@ class CreatePost extends React.Component {
     }
 
     onLocationChange(lat, lng){
-        Geocode.fromLatLng( lat , lng ).then(
-            response => {
-             const address = response.results[0].formatted_address,
-              addressArray =  response.results[0].address_components
-              console.table(addressArray)
-              console.log(address)
-              
-
-            let city
-            let state
-            let zipCode
-
-            addressArray.forEach(type => {
-                
-                if(type.types.includes("political") && city === undefined){
-                city = type.long_name;
-                }else if(type.types.includes("administrative_area_level_1") && state === undefined){
-                // console.log(type.long_name)
-                state = type.long_name;
-                }else if(type.types.includes("postal_code") && zipCode === undefined){
-                // console.log(type.long_name)
-                zipCode = type.long_name;
-                }
-                
-                if(city !== undefined && state!== undefined && zipCode!== undefined){
-                    console.log(city)
-                    console.log(state)
-                    console.log(zipCode)
-                    this.setState(prevState => {
-                        let dataObj = { ...prevState.dataObj };
-                        dataObj.city = city;
-                        dataObj.state = state;
-                        dataObj.zip = zipCode;
-                        dataObj.lat = lat;
-                        dataObj.lng = lng;
-                        dataObj.streetAddress = address.split(",")[0];
-            
-                        return {dataObj}
-                    })
-                }
-            });
-        
-            },
-            error => {
-             console.error(error);
-            }
-           );
+        this.reverseGeoCoding(lat, lng)
     }
 
     handleCancle(e){

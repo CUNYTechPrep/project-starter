@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const passport = require('../middlewares/authentication');
-const { Post, Location, Media, User } = db;
+const { Post, Location, Media, User, PostLikes, PostDislikes } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -98,46 +98,102 @@ router.get('/:id', passport.isAuthenticated(), async (req, res) => {
 
 
 
-// ./api/posts/like/:id 
-// pass the post id to increment the like in that post. 
-router.put('/like/:id', passport.isAuthenticated(), (req, res) => {
-  const { id } = req.params;
-  Post.findByPk(parseInt(id, 10))
-    .then(post => {
-      if(!post) {
-        return res.sendStatus(404);
-      }
+// ./api/posts/like/:id/:userName
+// pass the post id and the userName of the user that is liking the post, to increment the like in that post. 
+// If this endpoint is hit again a second time, it will unlike and decrement the likes count. 
+// It will keep toggling for infinite clicks
+// if the user currently dislikes the post and then hits like, the dislike will be decremented and unmarked. and like will be incremented and marked
+//user can either like or dislike but not both 
 
-      post.likes = post.likes +1;
+router.put('/like/:id/:userName', passport.isAuthenticated(), async (req, res) => {
+    const id = req.params.id;
+    const userName = req.params.userName;
+    // console.log(userName)
+
+    let post = await Post.findByPk(parseInt(id, 10))
+    if(!post) {
+      return res.sendStatus(404);
+    }
+
+    let likeFound = await PostLikes.findOne({where: {postId: id, userUserName: userName}})
+
+    let dislikeFound = await PostDislikes.findOne({where: {postId: id, userUserName: userName}})
+
+    if(dislikeFound){
+      dislikeFound.destroy()
+      post.dislikes = post.dislikes-1
       post.save()
-        .then(post => {
-          res.status(200).json(post);
-        })
-        .catch(err => {
-          res.status(400).json(err);
-        });
-    });
-});
+    }
 
-// ./api/posts/dislike/:id 
-// use this endpoint and pass the post id to increment the dislike value by one. 
-router.put('/dislike/:id', passport.isAuthenticated(), (req, res) => {
-  const { id } = req.params;
-  Post.findByPk(parseInt(id, 10))
-    .then(post => {
-      if(!post) {
-        return res.sendStatus(404);
-      }
-
-      post.dislikes = post.dislikes +1;
+    if(likeFound){
+      likeFound.destroy()
+      post.likes = post.likes-1
       post.save()
-        .then(post => {
-          res.status(200).json(post);
-        })
-        .catch(err => {
-          res.status(400).json(err);
-        });
-    });
+          .then(post => {
+            res.status(200).json(post);
+          })
+          .catch(err => {
+                    res.status(400).json(err);
+                  });
+    }else{
+      PostLikes.create({postId: id, userUserName: userName})
+      post.likes = post.likes+1
+      post.save()
+          .then(post => {
+            res.status(200).json(post);
+          })
+          .catch(err => {
+            res.status(400).json(err);
+          });
+    }
+          
+  });
+
+// ./api/posts/dislike/:id/:userName
+// use this endpoint and pass the post id and the userName to increment the dislike value by one.
+// if this endpoint is hit again it will decrement the dislike and keep toggling it for more clicks. 
+// if the user currently likes the post and then hits disllike, the like would be decremented and marked as not liked.
+//user can either like or dislike but not both 
+router.put('/dislike/:id/:userName', passport.isAuthenticated(), async (req, res) => {
+  const id = req.params.id;
+  const userName = req.params.userName;
+
+  let post = await Post.findByPk(parseInt(id, 10))
+  if(!post) {
+    return res.sendStatus(404);
+  }
+
+  let likeFound = await PostLikes.findOne({where: {postId: id, userUserName: userName}})
+
+  let dislikeFound = await PostDislikes.findOne({where: {postId: id, userUserName: userName}})
+
+  if(likeFound){
+    likeFound.destroy()
+    post.likes = post.likes-1;
+    post.save()
+  }
+
+  if(dislikeFound){
+    dislikeFound.destroy()
+      post.dislikes = post.dislikes-1
+      post.save()
+          .then(post => {
+            res.status(200).json(post);
+          })
+          .catch(err => {
+                    res.status(400).json(err);
+          });
+    }else{
+      PostDislikes.create({postId: id, userUserName: userName})
+      post.dislikes = post.dislikes+1
+      post.save()
+          .then(post => {
+            res.status(200).json(post);
+          })
+          .catch(err => {
+            res.status(400).json(err);
+          });
+    }
 });
 
 // ./api/posts/getByUser/:userName
