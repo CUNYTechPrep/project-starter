@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import '../css/Welcomepage.css';
 import 'w3-css/w3.css';
-import { Link } from 'react-router-dom';
+import AuthHomeButton from '../components/AuthHomeButton.js';
 
 function WelcomePage(props) {
   return (
@@ -17,11 +17,10 @@ function WelcomePage(props) {
         </h2>
         <br></br>        
         
-        <Link to="./sign-up">
-            <button className="w3-large w3-center button" type="button">
-              Sign Up Now!
-            </button>
-        </Link>
+        <AuthHomeButton>
+          Sign Up Now!
+        </AuthHomeButton>
+        
     </div>
     <div className="w3-display-bottomleft w3-padding-large"></div>
 </div>

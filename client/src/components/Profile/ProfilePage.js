@@ -19,7 +19,6 @@ class ProfilePage extends React.Component {
     showHWPopup: false,
     showBuddiesPopup: false,
     profile: null,
-    //id: this.props.match.params.id,
   }
   
     componentDidMount() {

@@ -1,12 +1,14 @@
 import 'w3-css/w3.css'; 
 import React from "react";
 import '../../css/Popup.css';
-import profileEdit from '../../services/profileedit'; 
+import auth from '../../services/auth.js';
+
 
 class PopupHW extends React.Component {
   state = {
     failed: false,
-    HWfield: "",
+    heightField: "",
+    weightField: "",
   }
   
   fieldChanged = (name) => {
@@ -16,13 +18,27 @@ class PopupHW extends React.Component {
     }
   }
 
-  submit = (e) => {
+  submit = (e) => { //calls endpoint and sends in state
     e.preventDefault();
-    let userInput = this.state;
-    profileEdit.bio(userInput)
-      .then((user) => {
-        this.setState({ HWfield: userInput });
+    const { id } = auth.currentUser;
+    const setObject = { 
+      height: this.state.heightField,
+      weight: this.state.weightField,
+     };
+
+    const requestOptions = { 
+      method: "PUT",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(setObject)
+    }
+    fetch("/api/users/"+id, requestOptions ) //sending it as options
+      .then(res => res.json())
+      .then(user => {
+        this.props.closeHWPopup();
       })
+      .catch(err => {
+        console.log( err );
+      }) 
   }
 
   render() {
@@ -34,25 +50,25 @@ class PopupHW extends React.Component {
             <div className="div-heading">
               <form onSubmit={this.submit}>
                 <input 
-                    type="bio"
+                    type="heightField"
                     className="form-control"
-                    name="bio"
+                    name="heightField"
                     placeholder="In inches" 
-                    value={this.state.fitLevelField} 
-                    onChange={this.fieldChanged('height')} 
+                    value={this.state.heightField} 
+                    onChange={this.fieldChanged('heightField')} 
                   />
                     <br></br>
                   <input 
-                    type="bio"
+                    type="weightField"
                     className="form-control"
-                    name="bio"
+                    name="weightField"
                     placeholder="In lbs" 
-                    value={this.state.fitLevelField} 
-                    onChange={this.fieldChanged('weight')} 
+                    value={this.state.weightField} 
+                    onChange={this.fieldChanged('weightField')} 
                   />
                   <br></br>
                   <button className= " button-edits" style={{height: 50, width: 300, borderRadius: 30}}
-                    onClick={this.props.closeHWPopup} type="submit"> 
+                    type="submit"> 
                     Save 
                   </button>
                 </form>
