@@ -1,36 +1,43 @@
 import React from 'react';
-import Post from '../components/Post';
+import Postcard from '../components/Postcard';
 import Loading from '../components/Loading';
+import Mapview from '../components/Mapview';
 
 
 class PostsListPage extends React.Component {
   state = {
-    posts: [],
+    
     loading: true,
+    posts: [],
   }
 
   componentDidMount() {
-    fetch("/api/posts")
+    fetch("/api/posts", {mode: 'same-origin'})
       .then(res => res.json())
       .then(posts => {
         this.setState({
           loading: false,
-          posts: posts.map((p,ii) => <Post {...p} key={ii} />),
+          posts: posts.map((p,ii) => <Postcard {...p} key={ii} />),
         });
       })
       .catch(err => console.log("API ERROR: ", err));
   }
 
   render() {
-    if(this.state.loading) {
-      return <Loading />;
-    }
+   /*  if(this.state.loading) {
+      return <div>
+                <Mapview /> 
+                <Loading />
+              </div>
+        
+    } */
 
     return (
-      <div className="container-fluid text-center">
-        <div className="row justify-content-center">
+      <div className="d-flex flex-column text-center justify-content-center">
+        
+          <Mapview />
           { this.state.posts }
-        </div>
+        
       </div>
     );
   }
