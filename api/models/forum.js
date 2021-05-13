@@ -29,10 +29,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Forum.associate = (models) => {
-    //models.Forum.belongsTo(models.User, { as: 'author' });
-    
-    
-    // models.Forum.hasMany(models.threadPosts, { as: 'thread_posts' });
+    models.Forum.belongsTo(models.User, { as: 'author' });
+    models.Forum.hasMany(models.ThreadPosts, { as: 'thread_posts' });
   };
 
   return Forum;
