@@ -5,8 +5,8 @@ import '../../css/ForumCategoryTable.css';
 function ThreadCategoryTable(props) {
   return (
     <section>
-      <table className="thread-category-table">
-        <ForumCategoryTableRow />
+      <table className='thread-category-table'>
+        {/* <ForumCategoryTableRow /> */}
       </table>
     </section>
   );
