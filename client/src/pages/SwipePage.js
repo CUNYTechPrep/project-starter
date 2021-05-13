@@ -1,25 +1,26 @@
   
-import React, { useState } from 'react'
+import React from 'react'
 import 'w3-css/w3.css';
 import '../styles.css';
-import { Swiper, SwiperSlide} from 'swiper/react';
-import SwiperCore, { Navigation} from 'swiper'
-import'swiper/swiper-bundle.css';
 import Profile from '../components/Profile/Profile';
 import Loading from '../components/Loading';
 import '../css/SwipePage.css';
 import auth from '../services/auth.js';
-import Cards, { Card } from 'react-swipe-card';
+// import TinderCard from 'react-tinder-card';
+// import Switch from 'react-ios-switch';
 
-
-
-SwiperCore.use([Navigation]);
 
 class SwipePage extends React.Component {
-  state = {
-    profiles: [],
-    idArray: [],
-    loading: true,
+  constructor(props) {
+    super(props);
+    this.state = {
+      profiles: [],
+      loading: true,
+      // end: null,
+      // swipeLeft: null,
+      // swipeRight: null,
+      // lastDirection: "",
+    };
   }
 
   componentDidMount() {
@@ -37,54 +38,49 @@ class SwipePage extends React.Component {
     .catch(err => console.log("API ERROR: ", err));
   }
 
+  // outOfFrame = (name) => {
+  //   console.log(name + ' left the screen!');
+  // }
+
+  // swiped = (direction, nameToDelete) => {
+  //   console.log('removing: ' + nameToDelete);
+  //   this.setState(
+  //     {
+  //       lastDirection: direction
+  //     }
+  //   )
+  // }
+
   render() {
     if(this.state.loading) //API info retrieval loading 
       return <Loading />
-   //after everyone has been swiped, transfer them to another array of already been swiped.
-   let slides = []; //we needed a new array to be modified, because we cannot modify the state itself without setState.  
-   console.log(this.state.profiles[0].props.id);
 
-   for (let i=0; i<this.state.profiles.length; i+=1){
-     if(this.state.profiles[i].props.id !== this.state.id){
-       slides.push( 
-        <SwiperSlide key={`slide-${i}`} tag="ul">
-          <div class='rectangle'>
-            {this.state.profiles[i]}
-          </div>  
-        </SwiperSlide>
-        );
-     }
-//after everyone has been swiped, transfer them to another array of already been swiped.
-   }
+    let slides=[];
+
+    for(let i=0; i < this.state.profiles.length; i+=1){
+      if(this.state.profiles[i].props.id !== this.state.id){
+        slides.push(this.state.profiles[i]);
+      }
+    }
 
     return (
-      // <Cards onEnd={action('end')} className='master-root'>
-      //   {slides.map(item => 
-      //     <Card 
-      //       onSwipeLeft={action('swipe left')} 
-      //       onSwipeRight={action('swipe right')}>
-      //       <h2>{item}</h2>
-      //     </Card>
-      //   )}
-      // </Cards>
-      <React.Fragment>
-        <Swiper 
-        id="main" 
-        tag="section"
-        wrapperTag="ul" 
-        navigation
-        //pagination   //blue dots in bottom not needed
-        spaceBetween={0.5} 
-        speed={400}
-        slidesPerView={1}
-        onInit={(swiper) => console.log('Swiper initialized!', swiper)}
-        onSlideChange={(swiper) => console.log('Slide index changed to !', swiper.activeIndex)}
-        onReachEnd={() => console.log('Swiper end reached!')}
-        >
-          {slides}
-        </Swiper>
-      </React.Fragment>
-    )
+    //   <div>
+    //   <link href='https://fonts.googleapis.com/css?family=Damion&display=swap' rel='stylesheet' />
+    //   <link href='https://fonts.googleapis.com/css?family=Alatsi&display=swap' rel='stylesheet' />
+    //   <h1>Title</h1>
+    //   <div className='cardContainer'>
+    //     {slides.map((slides) =>
+    //       <TinderCard className='swipe' key={slides.name} onSwipe={(dir) => this.props.swiped(dir, slides.name)} onCardLeftScreen={() => this.props.outOfFrame(slides.name)}>
+    //         <div className='card'>
+    //           {slides}
+    //         </div>
+    //       </TinderCard>
+    //     )}
+    //   </div>
+    //   {this.state.lastDirection ? <h2 className='infoText'>You swiped {this.state.lastDirection}</h2> : <h2 className='infoText' />}
+    // </div>
+    null
+    );
   }
 }
 
@@ -104,5 +100,4 @@ export default SwipePage;
     // then we will see real profiles back and forth as we swipe.
     // anytime you want to get information with express we have to use FETCH, POST,GET...etc
     // We will use ANOTHER fetch call to know if the swipe was left or right.
-
 
