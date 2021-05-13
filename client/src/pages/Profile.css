@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+.profile-page{
+    font-family: 'Numans', sans-serif;
+    background-image: url('../fractal-pattern2.jpg');
+    background-size: cover;
+    background-repeat: repeat;
+    height: 100%;
+}
+
+.profile-info{
+    background-color: rgba(0,0,0,0.7) !important;
+}
+
+.profilePic {
+    width: 200px;
+    height: 200px; 
+    border-radius: 50%;
+    background-color: black;
+}
+
+label{
+    float: left;
+    clear: left;
+    text-align: right;
+} 
+
+.posts{
+
+}
+
+

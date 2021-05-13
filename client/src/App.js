@@ -1,6 +1,6 @@
-import React from 'react';
-// import { Button } from './components/Button';
-// import Dropdown from './components/Dropdown';
+import React, { useState } from 'react';
+//import Dropdown from './components/Dropdown';
+import Footer from './components/Footer';
 import {
   BrowserRouter as Router,
   Switch,
@@ -97,6 +97,7 @@ class App extends React.Component {
             </Switch>
           </div>
         </div>
+        <Footer />
       </Router>
     );
   }
