@@ -102,6 +102,7 @@
 
 .swiper-button-prev:after, 
 .swiper-button-next:after {
+  font-family: null;
   width: 306px;
   height: 105px;
   border-radius: 100px;

@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   threadPosts.associate = (models) => {
-    models.threadPosts.belongsTo(models.Swipe, { as: 'author' });
+    // models.threadPosts.belongsTo(models.Swipe, { as: 'author' });
   };
 
   return threadPosts;
