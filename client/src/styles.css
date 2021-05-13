@@ -116,4 +116,7 @@
   margin-left: 75px;
 }  */
 
+.app {
+  user-select: none;
+}
 

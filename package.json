@@ -26,6 +26,7 @@
     "react-id-swiper": "^4.0.0",
     "react-ios-switch": "^0.1.19",
     "react-swipe-card": "^0.1.4",
+    "react-swipeable": "^6.1.0",
     "react-tinder-card": "^1.4.0",
     "resize-image": "^0.1.0",
     "sequelize": "^5.22.3",

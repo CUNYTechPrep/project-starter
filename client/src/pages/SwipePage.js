@@ -1,26 +1,20 @@
   
-import React from 'react'
+import React, { useRef } from 'react';
 import 'w3-css/w3.css';
 import '../styles.css';
 import Profile from '../components/Profile/Profile';
 import Loading from '../components/Loading';
 import '../css/SwipePage.css';
 import auth from '../services/auth.js';
-// import TinderCard from 'react-tinder-card';
-// import Switch from 'react-ios-switch';
+import { useSwipeable } from 'react-swipeable';
+//import Swipe from '../components/Swipe.js';
 
 
 class SwipePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      profiles: [],
-      loading: true,
-      // end: null,
-      // swipeLeft: null,
-      // swipeRight: null,
-      // lastDirection: "",
-    };
+  state = {
+    profiles: [],
+    loading: true,
+    pointerStart: 0,
   }
 
   componentDidMount() {
@@ -31,25 +25,37 @@ class SwipePage extends React.Component {
         id: auth.currentUser.id,
         loading: false,
         profiles: profiles.map((p, ii) => 
-          <Profile {...p} key={ii} />
+            <Profile {...p} key={ii} />
           ),
       });
     })
     .catch(err => console.log("API ERROR: ", err));
   }
 
-  // outOfFrame = (name) => {
-  //   console.log(name + ' left the screen!');
-  // }
+  touchStart = (event) => {
+    // this.setState({
+    //   pointerStart: //something here that gets pointer x position
+    // });
+    console.log("down", event.clientX);
 
-  // swiped = (direction, nameToDelete) => {
-  //   console.log('removing: ' + nameToDelete);
-  //   this.setState(
-  //     {
-  //       lastDirection: direction
-  //     }
-  //   )
-  // }
+    this.setState({
+      pointerStart: event.clientX
+    });
+  }
+
+  touchEnd = (e) => {
+    console.log("up", e.clientX);
+
+    if(e.clientX > this.state.pointerStart + 100){
+      console.log("SWIPED RIGHT");
+    }
+    else if(e.clientX < this.state.pointerStart - 100){
+      console.log("SWIPED LEFT");
+    }
+    else {
+      console.log("NO SWIPE!");
+    }
+  }
 
   render() {
     if(this.state.loading) //API info retrieval loading 
@@ -59,27 +65,20 @@ class SwipePage extends React.Component {
 
     for(let i=0; i < this.state.profiles.length; i+=1){
       if(this.state.profiles[i].props.id !== this.state.id){
-        slides.push(this.state.profiles[i]);
+        slides.push(this.state.profiles[i]);     
       }
     }
+//maybe use carousel?
 
+//when someone swipes, show the next thing in the array of the slides..
     return (
-    //   <div>
-    //   <link href='https://fonts.googleapis.com/css?family=Damion&display=swap' rel='stylesheet' />
-    //   <link href='https://fonts.googleapis.com/css?family=Alatsi&display=swap' rel='stylesheet' />
-    //   <h1>Title</h1>
-    //   <div className='cardContainer'>
-    //     {slides.map((slides) =>
-    //       <TinderCard className='swipe' key={slides.name} onSwipe={(dir) => this.props.swiped(dir, slides.name)} onCardLeftScreen={() => this.props.outOfFrame(slides.name)}>
-    //         <div className='card'>
-    //           {slides}
-    //         </div>
-    //       </TinderCard>
-    //     )}
-    //   </div>
-    //   {this.state.lastDirection ? <h2 className='infoText'>You swiped {this.state.lastDirection}</h2> : <h2 className='infoText' />}
-    // </div>
-    null
+      <div>
+        <div className="div-heading" style={{height: 500, width: 500}} onMouseDown={(e) => this.touchStart(e)} onMouseUp={(e) => this.touchEnd(e)}>
+          {/* {slides} */}
+          hi
+        </div>
+      </div>
+    
     );
   }
 }
