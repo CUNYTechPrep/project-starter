@@ -59,7 +59,7 @@ class SwipePage1 extends React.Component {
 
 render(){
   
-    return (<Simple db={this.state.db} />);   ///this part will allow us to send data to our cards and populate them
+    return (<Simple db={this.state.profiles} />);   ///this part will allow us to send data to our cards and populate them
   
 }
 

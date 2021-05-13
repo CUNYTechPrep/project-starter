@@ -8,7 +8,7 @@ const Simple = (props) => {
   const db = props.db;
   const characters = db;
   const [lastDirection, setLastDirection] = useState()
-
+  console.log(db)
   const swiped = (direction, nameToDelete) => {
     console.log('removing: ' + nameToDelete)
     setLastDirection(direction)
@@ -25,9 +25,9 @@ const Simple = (props) => {
       <h1>React Tinder Card</h1>
       <div className='cardContainer'>
         {characters.map((character) =>
-          <TinderCard className='swipe' key={character.name} onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-            <div style={{ backgroundImage: 'url(' + character.url + ')' }} className='card'>
-              <h3>{character.name}</h3>
+          <TinderCard className='swipe' key={character} onSwipe={(dir) => swiped(dir, character)} onCardLeftScreen={() => outOfFrame(character)}>
+            <div className='card'>
+              <h3>{character}</h3>
             </div>
           </TinderCard>
         )}
