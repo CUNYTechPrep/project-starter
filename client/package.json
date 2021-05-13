@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "clipboard": "^2.0.8",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-id-swiper": "^4.0.0",
+    "react-resize-image": "^1.0.4",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "w3-css": "^4.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

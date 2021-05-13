@@ -18,11 +18,11 @@ const { Model } = require('sequelize');
 //     the controller then speaks to the model which speaks to the database.
 
 module.exports = (sequelize, DataTypes) => {
-  class Post extends Model {}
+  class Swipe extends Model {}
 
-  Post.init({
-    content: {
-      type: DataTypes.STRING,
+  Swipe.init({
+    status: {
+      type: DataTypes.BOOLEAN,
       validate: {
         len: [3, 250],
         notEmpty: true,
@@ -30,12 +30,50 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'post'
+    modelName: 'swipe'
   });
 
-  Post.associate = (models) => {
+  Swipe.associate = (models) => {
     // associations can be defined here
+    models.Swipe.belongsTo(models.User, {as: 'swiper'});
+
+    models.Swipe.belongsTo(models.User, {as: 'swipee'});
+    //our code has a relationship, AND a status [left or right]
+    //SHOWN in line 24
   };
 
-  return Post;
+  return Swipe;
 };
+
+/*
+ * We have the 
+ * swiper id, -> user that did the swiping
+ * swipee id -> the person that was rated or swiped by 
+ * status -> boolean or enum or string - how you would do the yes or no [left or right]
+ *      later you want to query this table, 
+ * Get list of all the list you got a yes on and no on
+ * 
+ * In the future, we do not want the users to be able to see old users! 
+ * If new users come, we want to add it to their list of unseen users. 
+ */
+
+//When Im swipee, I will see some people swiped me yes or no
+
+// If I see who swiped yes on me, I look at where Im swipee, I look at status true
+//          if status is false, don't show that profile ever again
+
+//Any time a user does a swipe, you create a new log of ALL the actions
+//              It will have all of those actions the user took
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+body, html {height: 100%}
+.bgimg {
+  background-image: url('../img/Welcomepagepic.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.welcometitle{
+    font-family: 'Anton', sans-serif;
+    font-size: 50px;
+    color: white;
+    opacity: 0;
+    margin-top: 25px;
+    font-size: 21px;
+    text-align: center;
+    -webkit-transition: opacity 6s ease-out;
+    -moz-transition: opacity 6s ease-out;
+    -o-transition: opacity 6s ease-out;
+    -ms-transition: opacity 6s ease-out;
+    transition: opacity 6s ease-out;
+  }
+  .welcometitles{
+    font-family: 'Anton', sans-serif;
+    font-size: 35px;
+    color: white;
+    overflow: hidden;
+    margin: auto; /* Borrowed from css.tricks.com - React Scrolling motion */
+    white-space: nowrap; /* Borrowed from css.tricks.com - Keeps the content on a single line */
+    border-right: .10em solid; /* The typwriter cursor */
+    animation: /* Borrowed from css.tricks.com - helps animate with the key frames */
+      typing-motion 1.5s steps(100, end),
+      cursor-blinking .75s step-end infinite;
+  }
+
+  /* The typing effect - learned from css-tricks.com */
+  @keyframes typing-motion {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+/* The typewriter cursor effect - learned from css-tricks.com*/
+  @keyframes cursor-blinking {
+    from, to { border-color: transparent }
+    50% { border-color: #3ddb9a; }
+  }
+
+.button { 
+    background-color: green !important;
+    border: none !important;
+    color: black !important;
+    padding: 15px 32px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-size: 16px !important;
+    margin: 4px 2px !important;
+    cursor: pointer !important;
+  }
+
+
