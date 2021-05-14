@@ -1,6 +1,9 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react';
+import '../css/SwipePage.css';
 // import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card';
+
+//Almost all of this code is borrowed from Tinder Card code
 
 const alreadyRemoved = []
 
@@ -27,7 +30,7 @@ const Simple = (props) => {
     setCharacters(charactersState)
   }
 
-    const swipe = (dir) => {
+  const swipe = (dir) => {
     const cardsLeft = characters.filter(person => !alreadyRemoved.includes(person.name))
     if (cardsLeft.length) {
       const toBeRemoved = cardsLeft[cardsLeft.length - 1].name // Find the card object to be removed
@@ -38,109 +41,25 @@ const Simple = (props) => {
   }
 
   return (
-      <div>
+      <div className="app">
         <link href='https://fonts.googleapis.com/css?family=Damion&display=swap' rel='stylesheet' />
         <link href='https://fonts.googleapis.com/css?family=Alatsi&display=swap' rel='stylesheet' />
         <h1>Fitbud Swipe Cards</h1>
         <br></br>
-        {/* this part might be messing with remove */}
+        
         <div className='cardContainer'>    
           {characters.map((character, index) =>
             <TinderCard ref={childRefs[index]} className='swipe' key={character} onSwipe={(dir) => swiped(dir, character)} onCardLeftScreen={() => outOfFrame(character)}>
-              <div className='card'>
+              <div className='card' style={{maxWidth: 600}}>
                 <h3>{character}</h3>
               </div>
             </TinderCard>
           )}
         </div>
-        <div >
-          <button className='button-no' onClick={() => swipe('left')}>Swipe left!</button>
-          <button className='button-yes' onClick={() => swipe('right')}>Swipe right!</button>
-        </div>
+        
         {lastDirection ? <h2 key={lastDirection} className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText'>Swipe a card or press a button to get started!</h2>}
       </div>
   )
 }
 
 export default Simple
-
-
-
-
-
-
-/////
-
-
-// const alreadyRemoved = []
-// let charactersState = db // This fixes issues with updating characters state forcing it to use the current state and not the state that was active when the card was created.
-
-// function Advanced () {
-//   const [characters, setCharacters] = useState(db)
-//   const [lastDirection, setLastDirection] = useState()
-
-//   const childRefs = useMemo(() => Array(db.length).fill(0).map(i => React.createRef()), [])
-
-//   const swiped = (direction, nameToDelete) => {
-//     console.log('removing: ' + nameToDelete)
-//     setLastDirection(direction)
-//     alreadyRemoved.push(nameToDelete)
-//   }
-
-//   const outOfFrame = (name) => {
-//     console.log(name + ' left the screen!')
-//     charactersState = charactersState.filter(character => character.name !== name)
-//     setCharacters(charactersState)
-//   }
-
-//   const swipe = (dir) => {
-//     const cardsLeft = characters.filter(person => !alreadyRemoved.includes(person.name))
-//     if (cardsLeft.length) {
-//       const toBeRemoved = cardsLeft[cardsLeft.length - 1].name // Find the card object to be removed
-//       const index = db.map(person => person.name).indexOf(toBeRemoved) // Find the index of which to make the reference to
-//       alreadyRemoved.push(toBeRemoved) // Make sure the next card gets removed next time if this card do not have time to exit the screen
-//       childRefs[index].current.swipe(dir) // Swipe the card!
-//     }
-//   }
-
-//   return (
-//     <div>
-//       <link href='https://fonts.googleapis.com/css?family=Damion&display=swap' rel='stylesheet' />
-//       <link href='https://fonts.googleapis.com/css?family=Alatsi&display=swap' rel='stylesheet' />
-//       <h1>React Tinder Card</h1>
-//       <div className='cardContainer'>
-//         {characters.map((character, index) =>
-//           <TinderCard ref={childRefs[index]} className='swipe' key={character.name} onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-//             <div style={{ backgroundImage: 'url(' + character.url + ')' }} className='card'>
-//               <h3>{character.name}</h3>
-//             </div>
-//           </TinderCard>
-//         )}
-//       </div>
-//       <div className='buttons'>
-//         <button onClick={() => swipe('left')}>Swipe left!</button>
-//         <button onClick={() => swipe('right')}>Swipe right!</button>
-//       </div>
-//       {lastDirection ? <h2 key={lastDirection} className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText'>Swipe a card or press a button to get started!</h2>}
-//     </div>
-//   )
-// }
-
-
-
-
-// <div>
-    //   <link href='https://fonts.googleapis.com/css?family=Damion&display=swap' rel='stylesheet' />
-    //   <link href='https://fonts.googleapis.com/css?family=Alatsi&display=swap' rel='stylesheet' />
-    //   <h1>React Tinder Card</h1>
-    //   <div className='cardContainer'>
-    //     {characters.map((character) =>
-    //       <TinderCard className='swipe' key={character.name} onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-    //         <div className='card'>
-    //           <h3>{character}</h3>
-    //         </div>
-    //       </TinderCard>
-    //     )}
-    //   </div>
-    //   {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
-    // </div>
