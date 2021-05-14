@@ -17,7 +17,13 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  let { content } = req.body;
+  // let { content } = req.body;
+  console.log("POST body: ", req.body);
+  Forum.create({
+    content: req.body.content,
+    category: req.body.category,
+    threadTitle: req.body.threadTitle,
+  })
   Forum.create({ content })
     .then((post) => {
       res.status(201).json(post);
