@@ -33,9 +33,9 @@
 }
 
 .new-thread-button {
-  color: hsl(162, 69%, 36%);
+  color:hsl(227deg 67% 42%);
   font-size: 1rem;
-  border: 1px solid hsl(162, 67%, 42%);
+  border: 1px solid hsl(227deg 67% 42%);
   margin: 20px 0px 0px 0px;
   padding: 6px 6px;
   position: relative;

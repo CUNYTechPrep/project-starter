@@ -22,7 +22,7 @@ const AuthButton = withRouter(({ history }) => {
   return (
     <div>
       <button className={classes} onClick={logout} 
-          style={{marginLeft: 30, backgroundColor: '#34865D',
+          style={{marginLeft: 30, backgroundColor: '#71737A',
           height: 50, width: 300, borderRadius: 30, marginTop: 30}}>
         Logout
       </button>

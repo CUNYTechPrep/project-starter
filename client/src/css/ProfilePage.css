@@ -13,7 +13,7 @@
   font-weight: 600px;
   color: hsl(0, 0%, 100%);
   -webkit-text-stroke: 0.5px rgb(129, 116, 116);
-  background: linear-gradient(hsl(160, 55%, 33%), hsl(180, 65%, 44%));
+  background: hsl(227deg 67% 42%);
 
 }
 
@@ -28,7 +28,7 @@
   color: rgb(255, 255, 255);
   margin-right: 20px;
   font-family:'Garamond', sans-serif;
-  background-color:hsl(162, 67%, 42%);
+  background-color:hsl(227deg 58% 56%);
   font-weight: bold;
 }
 

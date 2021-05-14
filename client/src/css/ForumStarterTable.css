@@ -10,7 +10,7 @@
   font-family: 'Garamond', sans-serif;
 }
 .thread-starter-table th {
-  background-color: hsl(162, 67%, 42%);
+  background-color: hsl(227deg 67% 42%);
   border: 1.2px solid rgb(162, 158, 158);
   text-align: left;
   color: white;
@@ -24,7 +24,7 @@
 }
 
 .thread-starter-title {
-  color: hsl(162, 67%, 42%);
+  color: hsl(227deg 67% 42%);
 }
 
 .thread-starter-info {
@@ -32,5 +32,5 @@
 }
 
 .starter-user {
-  color: hsl(162, 68%, 29%);
+  color: orange;
 }

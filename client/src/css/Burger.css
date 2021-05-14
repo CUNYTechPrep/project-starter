@@ -6,7 +6,7 @@
   z-index: 1;
   justify-content: flex-start;
   padding-right: 0px;
-  background: linear-gradient(hsl(160, 63%, 30%), rgb(69, 184, 164));
+  background: hsl(227deg 85% 24%);
   max-width: 200px;
 }
 
@@ -34,8 +34,8 @@
 }
 
 .option:hover .nav-link {
-  color:#e68a34;
-  -webkit-text-stroke: 0.5px #fd9b08;
+  color:orange;
+  -webkit-text-stroke: 0.5px orange;
 }
 
 .menu-icon {
