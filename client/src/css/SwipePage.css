@@ -1,80 +1,97 @@
 
-.button-no {
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-    color: rgb(255, 255, 255);
-    font-family:'Garamond', sans-serif;
-    background-color:rgb(167, 34, 34);
-    font-weight: bold;
-    font-size: 20px;
-    height: 150px;
-    width: 150px;
-    margin-top: 10%;
-    margin-left: 10%;
-    margin-bottom: 5%;
-  }
+  #root {
+    /* text-align: center;
+    display: flex;
+    
+    width: 100vw;
+    min-height: 100vh;
+    overflow: hidden; */
+    justify-content: center;
   
-  /* Used an online reference */
-  .button-no:after {
-    content: "";
-    position: absolute;  
-    left: -210%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      to right, hsla(0, 0%, 100%, 0.314) 50%,
-                hsla(143, 72%, 7%, 0.129) 100%
-      );
-  }
-  
-  /* when hovered, look at the after class */
-  .button-no:hover:after {
-    top: 0%;
-    left: 0%;
-    transition-property: top, left;
-    transition-duration: 0.7s, 0.7s;
-    transition-timing-function: ease-in-out;
-    color: goldenrod;
   } 
   
-
-  .button-yes {
+  #root>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .app>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* .row {
+    flex-direction: row !important;
+  }
+  
+  .row>* {
+    margin: 5px;
+  } */
+  
+  /* h1 {
+    font-family: 'Damion', cursive;
+    color: #fff;
+    text-shadow: 0px 0px 60px 0px rgba(0,0,0,0.30);
+  } */
+  
+  /* h2 {
+    color: #fff;
+  } */
+  
+  .swipe {
+    position: absolute;
+  }
+  
+  .cardContainer {
+    width: 90vw;
+    max-width: auto;
+    height: 300px;
+  }
+  
+  .card {
+    top: 200px;
     position: relative;
-    overflow: hidden;
-    border-radius: 50%;
+    background-color: #fff;
+    width: 80vw;
+    max-width: 260px;
+    height: 650px;
+    box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.30);
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .cardContent {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .infoText {
+    width: auto;
+    position: relative; 
+    height: 28px;
+    justify-content: center;
+    display: flex;
     color: rgb(255, 255, 255);
-    font-family:'Garamond', sans-serif;
-    background-color:#03ac73;
-    font-weight: bold;
-    font-size: 20px;
-    height: 150px;
-    width: 150px;
-    margin-top: 10%;
-    margin-right: 10%;
-    margin-bottom: 5%;
-
+    background-color: #10362e67;
+    animation-name: popup;
+    animation-duration: 900ms;
   }
   
-  /* Used an online reference */
-  .button-yes:after {
-    content: "";
-    position: absolute;  
-    left: -210%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      to right, hsla(0, 0%, 100%, 0.314) 50%,
-                hsla(143, 72%, 7%, 0.129) 100%
-      );
+  @keyframes popup {
+    0%   { transform: scale(1,1) }
+    10%  { transform: scale(1.1,1.1) }
+    30%  { transform: scale(.9,.9) }
+    50%  { transform: scale(1,1) }
+    57%  { transform: scale(1,1) }
+    64%  { transform: scale(1,1) }
+    100% { transform: scale(1,1) }
   }
   
-  /* when hovered, look at the after class */
-  .button-yes:hover:after {
-    top: 0%;
-    left: 0%;
-    transition-property: top, left;
-    transition-duration: 0.7s, 0.7s;
-    transition-timing-function: ease-in-out;
-    color: goldenrod;
-  } 
+ 
+ 
+  

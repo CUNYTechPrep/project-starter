@@ -100,7 +100,6 @@ class App extends React.Component {
               <Route path="/contact-us" component={ContactUsPage} />
               <PrivateRoute path="/swipe" component={SwipePage} />
               <PrivateRoute path="/profile" component={ProfilePage} />
-              
             </Switch>
           </div>
         </div>

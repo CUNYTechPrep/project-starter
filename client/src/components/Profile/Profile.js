@@ -6,11 +6,19 @@ function Profile({ id, firstName, lastName, age, gender, fitLevel, height, weigh
     var imageURL = image + ".jpg";
     return (
       <div>
+            <div style={{ 
+                 backgroundImage: `url(${imageURL})`,
+                 backgroundRepeat: 'no-repeat',
+                 backgroundSize: 'cover',
+                 borderRadius: 10,
+                 height: 400,
+                 backgroundSize: 600,
+            }}>
+            </div>
         <div>
-            <img src= {imageURL} alt={id} style={{height: 300, width: 280}}/>
             <h5 style={{fontSize: 27}}>
                 { firstName }, { lastName } - { age } 
-                <span style={{color: '#585858'}}>..................................</span>
+                <span style={{color: 'white'}}>..................................</span>
                 <span style={{color: '#585858'}}> {gender} </span>
             </h5>
             <h5 style={{color: '#757575', fontSize: 20}}>
@@ -24,7 +32,7 @@ function Profile({ id, firstName, lastName, age, gender, fitLevel, height, weigh
                     Weight: { weight } lbs
                 </h5>
             </div>
-            <p style={{maxWidth: 400, marginLeft: 20, marginTop: 10}}>
+            <p style={{alignSelf: "center"}}>
             { bio }
             </p>
         </div>

@@ -3,6 +3,8 @@ import React from 'react';
 import logo from '../img/dumbbell.png';
 import Farhene from '../img/Ria.jpg';
 import Justin from '../img/Justin.png';
+import Omar from '../img/edgar.jpeg';
+import Yun from '../img/Yun.png';
 import '../css/AboutUsPage.css';
 
 function AboutUsPage(props) {
@@ -118,18 +120,18 @@ function AboutUsPage(props) {
                     Comp Sci Student @ CUNY Hunter
                   </h4>
                   <h4 style={{ fontSize: 13.5, marginLeft: 15, maxWidth: 200 }}>
-                    Your bio
+                    I am a Web Developer Fellow at CUNY Tech Prep as well learning fullstack.
                     <div className="dropdown">
-                      <span>front [or end or full stack] development.</span>
+                      <span> Mainly into FrontEnd Development and familiar with select libraries.</span>
                       <div className="dropdown-content">
-                        <p>Type your skills here</p>
+                        <p>C++, JavaScript, Reactjs, HTML, CSS, PostgreSQL </p>
                       </div>
                     </div>
-                    <br></br>I aspire to be a
+                    <br></br>
                     <div className="dropdown">
-                      <span>[Type your future goal here]</span>
+                      <span>I aspire to be a Web Developer.</span>
                       <div className="dropdown-content">
-                        <p>[Explain your goal here]</p>
+                        <p>I want to be able to develop complex and aesthetically pleasing web applications for myself and for others</p>
                       </div>
                     </div>
                     <p style={{ color: '#88E0BE' }}>................</p>
@@ -143,9 +145,9 @@ function AboutUsPage(props) {
             <img
               className="profile-pictures"
               alt="edgar"
-              src={logo}
+              src={Omar}
               style={{
-                width: 255,
+                width: 285,
                 height: 310,
                 borderRadius: 30,
                 border: '3px ridge #45C493',
@@ -207,10 +209,10 @@ function AboutUsPage(props) {
             <img
               className="profile-pictures"
               alt="yun"
-              src={logo}
+              src={Yun}
               style={{
-                width: 255,
-                height: 310,
+                width: 275,
+                height: 330,
                 borderRadius: 30,
                 border: '3px ridge #88E0BE',
               }}
@@ -239,20 +241,19 @@ function AboutUsPage(props) {
                     Comp Sci Student @ CUNY Brooklyn
                   </h4>
                   <h4 style={{ fontSize: 13.5, marginLeft: 20, maxWidth: 200 }}>
-                    Your bio
+                    I'm a Web Developer Fellow at CUNY Tech Prep who aspires to be a Product Manager.
                     <div className="dropdown">
-                      <span>front [or end or full stack] development.</span>
+                      <span>FrontEnd development.</span>
                       <div className="dropdown-content">
-                        <p>Type your skills here</p>
+                        <p>Reactjs, Java, JavaScript, HHTML, CSS, C++</p>
                       </div>
                     </div>
-                    <br></br>I aspire to be a
-                    <div className="dropdown">
+                    {/* <div className="dropdown">
                       <span>[Type your future goal here]</span>
                       <div className="dropdown-content">
                         <p>[Explain your goal here]</p>
                       </div>
-                    </div>
+                    </div> */}
                     <p style={{ color: '#88E0BE' }}>................</p>
                   </h4>
                 </div>
