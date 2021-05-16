@@ -34,7 +34,11 @@ const AuthHomeButton = withRouter(({ history }) => {
 
               <div class="container ">
                   <br></br>
-                  <div class="row justify-content-between text-center text-md-left">
+                  <div class="row justify-content-between text-center text-md-right">
+                      <div class="col-md-6 align-self-center flex-md-first"> 
+                          <img style={{height: 400, width: 550, margin: 30}} 
+                          src={ProfilePic} />
+                      </div>
                       <div class="col-md-6 flex-md-last">
                           <h2 class="font-weight-bold">First you can create your Profile Page!</h2>
                           <p class="my-4">
@@ -47,10 +51,6 @@ const AuthHomeButton = withRouter(({ history }) => {
                             Sign Up!
                             </button>
                           </Link>
-                      </div>
-                      <div class="col-md-6 align-self-center flex-md-first"> 
-                          <img style={{height: 400, width: 550, margin: 30}} 
-                          src={ProfilePic} />
                       </div>
                   </div> 
               </div>
@@ -78,7 +78,10 @@ const AuthHomeButton = withRouter(({ history }) => {
 
             <div class="jumbotron jumbotron-fluid feature" id="feature-last">
                 <div class="container">
-                    <div class="row justify-content-between text-center text-md-left">
+                    <div class="row justify-content-between text-center text-md-right">
+                        <div class="col-md-6 align-self-center flex-md-first">
+                            <img style={{height: 200, width: 550}} src= {ForumPic} class="mx-auto d-block" />
+                        </div>
                         <div class="col-md-6 flex-md-last">
                             <h2 class="font-weight-bold">Make Sure Check Out Our Forum Page!</h2>
                             <p class="my-4">
@@ -87,9 +90,6 @@ const AuthHomeButton = withRouter(({ history }) => {
                             </p>
                             <a href="/forum" class="btn my-4 font-weight-bold"
                                 style={{backgroundColor: 'blue', color: 'white', padding: 10, borderRadius: 10}}>Check it Out!</a>
-                        </div>
-                        <div class="col-md-6 align-self-center flex-md-first">
-                            <img style={{height: 200, width: 550}} src= {ForumPic} class="mx-auto d-block" />
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@ const AuthHomeButton = withRouter(({ history }) => {
           <div class="container ">
               <br></br>
               <div class="row justify-content-between text-center text-md-right">
-              <div class="col-md-6 align-self-center flex-md-first"> 
+                  <div class="col-md-6 align-self-center flex-md-first"> 
                       <img style={{height: 400, width: 550, margin: 30}} 
                       src={ProfilePic} />
                   </div>
