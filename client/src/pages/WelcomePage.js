@@ -39,7 +39,7 @@ function WelcomePage(props) {
                         After you sign up you can go on the profile page and you can look at your profile but not only that, here is where you can change 
                         your FitLevel, Height & Weight, and your Bio
                     </p>
-                    <AuthHomeButton></AuthHomeButton>
+                    <AuthHomeButton>Sign Up</AuthHomeButton>
                 </div>
                 <div class="col-md-6 align-self-center flex-md-first"> 
                     <img style={{height: 400, width: 550, margin: 30}} 

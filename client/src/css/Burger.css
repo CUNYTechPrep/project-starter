@@ -6,7 +6,7 @@
   z-index: 1;
   justify-content: flex-start;
   padding-right: 0px;
-  background: linear-gradient(#071749, hsl(226, 70%, 59%));
+  background: rgb(6, 42, 83);
   max-width: 200px;
 }
 

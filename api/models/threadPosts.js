@@ -3,8 +3,8 @@ const { Model } = require('sequelize');
 const { Sequelize } = require('.');
 
 module.exports = (sequelize, DataTypes) => {
-  class threadPosts extends Model {}
-  threadPosts.init(
+  class ThreadPosts extends Model {}
+  ThreadPosts.init(
     {
       content: {
         type: DataTypes.STRING,
@@ -27,9 +27,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  threadPosts.associate = (models) => {
-    //models.threadPosts.belongsTo(models.Forum, { as: 'thread' }); //So this would be one Thread to Many Posts relation
+  ThreadPosts.associate = (models) => {
+    models.ThreadPosts.belongsTo(models.Forum, { as: 'thread' }); //So this would be one Thread to Many Posts relation
+    models.ThreadPosts.belongsTo(models.User, { as: 'author' });
   };
 
-  return threadPosts;
+  return ThreadPosts;
 };

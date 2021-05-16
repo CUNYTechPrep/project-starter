@@ -2,13 +2,14 @@ const router = require('express').Router();
 const { User } = require('../models');
 const passport = require('../middlewares/authentication');
 
-
 router.post('/signup', (req, res) => {
-  console.log("POST body: ", req.body);
+  console.log('POST body: ', req.body);
   User.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
+    age: req.body.age,
     email: req.body.email,
+    age: req.body.age,
     password: req.body.password,
     gender: req.body.gender,
     height: req.body.height,
@@ -25,17 +26,15 @@ router.post('/signup', (req, res) => {
     });
 });
 
-router.post('/login',
-  passport.authenticate('local'), 
-  (req, res) => {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-    res.json(req.user);
-  });
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  // If this function gets called, authentication was successful.
+  // `req.user` contains the authenticated user.
+  res.json(req.user);
+});
 
 router.post('/logout', (req, res) => {
   req.logout();
   res.status(200).json({ message: 'Logout successful' });
-})
+});
 
-module.exports = router; 
+module.exports = router;

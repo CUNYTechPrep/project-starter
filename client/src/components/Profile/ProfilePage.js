@@ -116,7 +116,7 @@ class ProfilePage extends React.Component {
                 </div>
                 <br></br>
                 <div style={{borderRadius: 30}}>
-                  <AuthButton className="button-edits" style={{marginLeft: 30, backgroundColor: '#34865D',
+                  <AuthButton className="button-edits" style={{marginLeft: 30, backgroundColor: '#71737A',
                     height: 50, width: 300, borderRadius: 30, marginTop: 30}}>
                     Logout
                   </AuthButton>

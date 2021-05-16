@@ -12,7 +12,7 @@ function ContactUsPage(props) {
         Please Click on Our Email Below to copy to clipboard!
       </h5>
       <button class="btn" data-clipboard-text="fitbudteam@gmail.com">
-        fitbudteam@gmail.com
+        Fitbudteam@gmail.com
       </button>
     </div>
   );

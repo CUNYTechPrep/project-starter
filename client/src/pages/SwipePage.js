@@ -13,8 +13,7 @@ import Simple from './slides';
 class SwipePage1 extends React.Component {
   state = {
     profiles: [],
-    loading: true,
-    pointerStart: 0,   
+    loading: true, 
   }
 
   componentDidMount() {
