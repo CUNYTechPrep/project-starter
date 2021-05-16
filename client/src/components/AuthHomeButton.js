@@ -32,7 +32,7 @@ const AuthHomeButton = withRouter(({ history }) => {
                   </div>
               </div>
 
-              <div class="container ">
+              <div class="container">
                   <br></br>
                   <div class="row justify-content-between text-center text-md-right">
                       <div class="col-md-6 align-self-center flex-md-first"> 
