@@ -1,23 +1,26 @@
 
 .button-login {
-    background-color:hsl(162, 67%, 42%);
-    border-color: lightseagreen;
+    background-color:rgb(110, 139, 202);
+    border-color: #748bbb;
     border-radius: 10%;
     color: white;
-    font-family:'Garamond', sans-serif;
-    /* margin-right: 20px; */
-  
+    padding: 10px;
+
+    font-family:'Garamond', sans-serif;  
   }
   
   .button-signup {
-    background-color: #f0850c;
+    background-color: #879ba5;
     border-radius: 10%;
     color: white;
+    padding: 10px;
+
     font-family:'Garamond', sans-serif;
     margin-left: 20px;
   }
   .button-signup-only {
-    background-color: #f0850c;
+    background-color: hsl(229, 62%, 40%);
+    padding: 10px;
     border-radius: 10%;
     color: white;
     font-family:'Garamond', sans-serif;

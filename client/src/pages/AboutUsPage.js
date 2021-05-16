@@ -20,20 +20,20 @@ function AboutUsPage(props) {
                 width: 245,
                 height: 310,
                 borderRadius: 30,
-                border: '3px ridge #45C493',
+                border: '3px ridge #4244DF',
               }}
             />
             <div>
               <div
                 style={{
-                  backgroundColor: '#88E0BE',
+                  backgroundColor: '#3D8DE9',
                   borderRadius: 10,
                   maxWidth: 250,
                 }}
               >
                 <div
                   style={{
-                    color: '#FF2DA1',
+                    color: '#031161',
                     marginRight: 20,
                     marginLeft: 25,
                     fontSize: 25,
@@ -41,7 +41,7 @@ function AboutUsPage(props) {
                 >
                   <b>Farhene Sultana</b>
                 </div>
-                <div style={{ fontSize: 17, color: '#2C443B' }}>
+                <div style={{ fontSize: 17, color: '#FDFDFD' }}>
                   <h4 style={{ fontSize: 14 }}>
                     Comp Sci Student @ CUNY Hunter
                   </h4>
@@ -74,7 +74,7 @@ function AboutUsPage(props) {
                         </p>
                       </div>
                     </div>
-                    <p style={{ color: '#88E0BE' }}>................</p>
+                    <p style={{ color: '#354FA3' }}>................</p>
                   </h4>
                 </div>
               </div>
@@ -90,13 +90,13 @@ function AboutUsPage(props) {
                 width: 255,
                 height: 310,
                 borderRadius: 30,
-                border: '3px ridge #88E0BE',
+                border: '3px ridge #4244DF',
               }}
             />
             <div>
               <div
                 style={{
-                  backgroundColor: '#88E0BE',
+                  backgroundColor: '#3D8DE9',
                   borderRadius: 10,
                   marginRight: 10,
                   marginLeft: 10,
@@ -105,7 +105,7 @@ function AboutUsPage(props) {
               >
                 <div
                   style={{
-                    color: '#2656B1',
+                    color: '#031161',
                     marginRight: 20,
                     marginLeft: 25,
                     fontSize: 25,
@@ -113,7 +113,7 @@ function AboutUsPage(props) {
                 >
                   <b>Justin Kuang</b>
                 </div>
-                <div style={{ fontSize: 17, color: '#2C443B' }}>
+                <div style={{ fontSize: 17, color: 'white' }}>
                   <h4 style={{ fontSize: 14, marginLeft: 4, marginRight: 5 }}>
                     Comp Sci Student @ CUNY Hunter
                   </h4>
@@ -132,7 +132,7 @@ function AboutUsPage(props) {
                         <p>[Explain your goal here]</p>
                       </div>
                     </div>
-                    <p style={{ color: '#88E0BE' }}>................</p>
+                    <p style={{ color: '#3D8DE9' }}>................</p>
                   </h4>
                 </div>
               </div>
@@ -148,13 +148,13 @@ function AboutUsPage(props) {
                 width: 255,
                 height: 310,
                 borderRadius: 30,
-                border: '3px ridge #45C493',
+                border: '3px ridge #4244DF',
               }}
             />
             <div>
               <div
                 style={{
-                  backgroundColor: '#88E0BE',
+                  backgroundColor: '#3D8DE9',
                   borderRadius: 10,
                   marginRight: 10,
                   marginLeft: 10,
@@ -162,7 +162,7 @@ function AboutUsPage(props) {
               >
                 <div
                   style={{
-                    color: 'green',
+                    color: '#031161',
                     marginRight: 20,
                     marginLeft: 25,
                     fontSize: 25,
@@ -170,7 +170,7 @@ function AboutUsPage(props) {
                 >
                   <b>Edgar Quintero</b>
                 </div>
-                <div style={{ fontSize: 17, color: '#2C443B' }}>
+                <div style={{ fontSize: 17, color: 'white' }}>
                   <h4 style={{ fontSize: 14, marginLeft: 5, marginRight: 5 }}>
                     Comp Sci Student @ CUNY City Tech
                   </h4>
@@ -196,7 +196,7 @@ function AboutUsPage(props) {
                            Electric vehicles</p>
                       </div>
                     </div>
-                    <p style={{ color: '#88E0BE' }}>................</p>
+                    <p style={{ color: '#3D8DE9' }}>................</p>
                   </h4>
                 </div>
               </div>
@@ -212,13 +212,13 @@ function AboutUsPage(props) {
                 width: 255,
                 height: 310,
                 borderRadius: 30,
-                border: '3px ridge #88E0BE',
+                border: '3px ridge #4244DF',
               }}
             />
             <div>
               <div
                 style={{
-                  backgroundColor: '#88E0BE',
+                  backgroundColor: '#3D8DE9',
                   borderRadius: 10,
                   marginRight: 10,
                   marginLeft: 10,
@@ -226,7 +226,7 @@ function AboutUsPage(props) {
               >
                 <div
                   style={{
-                    color: '#DD1D3D',
+                    color: '#031161',
                     marginRight: 20,
                     marginLeft: 25,
                     fontSize: 25,
@@ -234,26 +234,19 @@ function AboutUsPage(props) {
                 >
                   <b>Yun Tang</b>
                 </div>
-                <div style={{ fontSize: 17, color: '#2C443B' }}>
+                <div style={{ fontSize: 17, color: 'white' }}>
                   <h4 style={{ fontSize: 14, marginLeft: 5, marginRight: 5 }}>
                     Comp Sci Student @ CUNY Brooklyn
                   </h4>
                   <h4 style={{ fontSize: 13.5, marginLeft: 20, maxWidth: 200 }}>
-                    Your bio
+                    I am currently a Web Developer Fellow at CTP and I aspire to be a Product Manager.
                     <div className="dropdown">
-                      <span>front [or end or full stack] development.</span>
+                      <span>frontend development.</span>
                       <div className="dropdown-content">
-                        <p>Type your skills here</p>
+                        <p>Java, JavaScript, C++, Reactjs</p>
                       </div>
                     </div>
-                    <br></br>I aspire to be a
-                    <div className="dropdown">
-                      <span>[Type your future goal here]</span>
-                      <div className="dropdown-content">
-                        <p>[Explain your goal here]</p>
-                      </div>
-                    </div>
-                    <p style={{ color: '#88E0BE' }}>................</p>
+                    <p style={{ color: '#3D8DE9' }}>................</p>
                   </h4>
                 </div>
               </div>

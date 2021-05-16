@@ -6,13 +6,13 @@
   z-index: 1;
   justify-content: flex-start;
   padding-right: 0px;
-  background: linear-gradient(hsl(160, 63%, 30%), rgb(69, 184, 164));
+  background: linear-gradient(#071749, hsl(226, 70%, 59%));
   max-width: 200px;
 }
 
 .nav-item-burger.active .nav-link {
   color:white;
-  -webkit-text-stroke: 0.5px hsl(150, 100%, 90%);
+  -webkit-text-stroke: 0.5px hsl(199, 51%, 35%);
 }
 
 .nav-item-burger {
@@ -33,9 +33,8 @@
   padding: 20px 0px;
 }
 
-.option:hover .nav-link {
-  color:#e68a34;
-  -webkit-text-stroke: 0.5px #fd9b08;
+.option:hover .nav-link:hover {
+  color:hsl(182, 87%, 70%);
 }
 
 .menu-icon {

@@ -46,7 +46,7 @@ function Navigation(props) {
   const closeMenu = () => setClick(false); //to close the burger menu
 
   return (
-    <nav className="navbar navbar-default navbar-dark">
+    <nav className="navbar navbar-dark bg-primary">
       <Link className="navbar-brand" to="/welcomepage">
         Fitbud
       </Link>
