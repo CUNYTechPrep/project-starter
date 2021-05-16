@@ -38,7 +38,6 @@ router.use('/auth', authController);
 
 router.use('/matchedusers', matchedbuddiesController);
 
-// router.use('/posts', postsController);
 router.use('/forum', forumController);
 
 module.exports = router;
