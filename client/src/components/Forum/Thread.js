@@ -4,7 +4,7 @@ import '../../css/Thread.css';
 
 //Here we want to map out all the posts here from threadPosts table
 
-function Thread ({props}) {
+function Thread ({forum}) {
   
     return (
       <div>

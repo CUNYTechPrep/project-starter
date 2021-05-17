@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Loading from '../Loading';
-import auth from '../../services/auth.js';
 
 //here I want the thread to be clickable to the Post it is connected to
-
-function ForumThreadRow({ id, category, threadTitle, createdAt, updatedAt, authorId }) {
-    return(
-        <tr>
-            <td>
-            <text className="thread-starter-title">
-                {category} category here:
-                <Link to="/thread">
-                    <b>{threadTitle} title here</b>
-                </Link>
-            </text>
-            <p className="thread-starter-info">
-                by <text className="starter-user">John Cena</text>, {createdAt}
-            </p>
-            </td>
-        </tr>
-    );
+//{ id, category, threadTitle, createdAt, updatedAt, authorId }
+function ForumThreadRow({threads}) {
+    return (
+        <div>
+            {threads.map((t) =>
+            <tr >
+                <td className="thread-starter-table td">
+                    <text className="thread-starter-title">
+                        Category: {t.props.category}
+                        <Link to="/thread">
+                            <b> {t.props.threadTitle}</b>          
+                        </Link>
+                    </text>
+                    <p className="thread-starter-info">
+                        by <text className="starter-user">
+                            {t.props.authorId}
+                            </text>
+                        , {t.props.createdAt}
+                    </p>
+                </td>
+            </tr>
+            )}
+        </div>
+    )
 }
 
 export default ForumThreadRow;
