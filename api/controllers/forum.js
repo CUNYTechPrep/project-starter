@@ -12,10 +12,12 @@ const { Forum, threadPosts } = db;
 //    PUT    /posts/:id
 //    DELETE /posts/:id
 
+//For getting all Threads from the Forum table
 router.get('/', (req, res) => {
   Forum.findAll({}).then((threads) => res.json(threads));
 });
 
+//For posting a Thread to the Forum Table
 router.post('/', (req, res) => {
   // let { content } = req.body;
   console.log("POST body: ", req.body);
@@ -31,6 +33,20 @@ router.post('/', (req, res) => {
       res.status(400).json(err);
     });
 });
+
+//for deleting a Thread in the Forum Table
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  Forum.findByPk(id).then((threads) => {
+    if (!threads) {
+      return res.sendStatus(404);
+    }
+    threads.destroy();
+    res.sendStatus(204);
+  });
+});
+
+
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
