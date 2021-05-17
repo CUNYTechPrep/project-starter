@@ -23,10 +23,12 @@ export const middleSchoolData = [
     'telephone',
     'independentwebsite',
     'overview',
-    'electiveclassNamees',
-    'languageclassNamees',
+    'electiveclasses',
+    'languageclasses',
     'activities_description',
     'othersports',
+    'ellprograms',
+    'eligibility_prog1',
 ];
 
 export const highSchoolData = [

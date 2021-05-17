@@ -28,11 +28,6 @@ const SchoolForm = ({ items, compItems, priority, selectedSchool, schoolName, sc
   };
 
   useEffect(() => {
-    console.log('change in schoolName schoolForm', schoolName)
-    setItem(schoolName)
-  }, schoolName)
-
-  useEffect(() => {
     if(schoolGrade === "elementary" || schoolGrade === "highschool") {
       setResultString("school_name")
     } else if(schoolGrade === "middle") {
@@ -85,7 +80,7 @@ const CompareForm = ({
   setSchoolTwo: compareSchoolTwo,
   schoolOne: firstSchoolOption,
   schoolTwo: secondSchoolOption,
-  schoolGrade
+  schoolGrade, 
 }) => {
   const [schoolOne, setSchoolOne] = useState({});
   const [schoolTwo, setSchoolTwo] = useState({});
@@ -103,10 +98,6 @@ const CompareForm = ({
       compareSchoolTwo(schoolTwo);
     }
   }, [makeComparison]);
-
-  useEffect(() => {
-    console.log('firstSchoolOption, secondSchoolOption', firstSchoolOption, secondSchoolOption)
-  }, [firstSchoolOption, secondSchoolOption])
 
   return (
     <div className="container-fluid text-center">

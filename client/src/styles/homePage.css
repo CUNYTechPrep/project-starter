@@ -1,62 +1,58 @@
-:root{
-    background-color: grey;
+:root {
+  background-color: grey;
 }
 
-.leftSide{
-    width: 500px;
-    height: 100%;
+.leftSide {
+  width: 500px;
+  height: 100%;
 }
-.rightSide{
-    position: fixed;
-    display: inline-block;
-    top:0;
-    right: 0;
-    height: 100%;
-    width: calc(100% - 500px);
+.rightSide {
+  position: fixed;
+  display: inline-block;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: calc(100% - 500px);
 }
-.innerRight{
-    width: 100%;
-    height: 100%;
+.innerRight {
+  width: 100%;
+  height: 100%;
 }
 .parent {
-    display: flex;
-    /*grid-template-columns: minmax(150px, 25%) 1fr;*/
-    
-    /*background-color: #000000;*/
-    
-  }
+  display: flex;
+  /*grid-template-columns: minmax(150px, 25%) 1fr;*/
 
-.inputSetting{
-    padding: 20px 20px 0;
+  /*background-color: #000000;*/
+}
+
+.inputSetting {
+  padding: 20px 20px 0;
 }
 
 .card-header {
-    
-    background-color: #784cfc !important;
-    color: white !important;
+  background-color: #784cfc !important;
+  color: white !important;
 }
 
-.compare-box{
-    min-width: 100vw;
+.compare-box {
+  min-width: 100vw;
 }
 
-
-.Card-Size{
-    max-width: 1900px;
+.Card-Size {
+  max-width: 1900px;
 }
 
 /* compare page style */
-.main{
-    display: flex;
+.main {
+  display: flex;
 }
 
 .leftSchool {
-    width: 50vw;
-    padding: 40px 20px 40px 20px;
+  width: 50vw;
+  padding: 40px 20px 40px 20px;
 }
 
-.rightSchool{
-    width: 50vw;
-    padding: 40px 20px 40px 20px;
-
+.rightSchool {
+  width: 50vw;
+  padding: 40px 20px 40px 20px;
 }

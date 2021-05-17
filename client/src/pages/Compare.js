@@ -3,7 +3,12 @@ import { Container } from "react-bootstrap";
 import "../styles/homePage.css";
 import CompareForm from "../components/CompareForm";
 import SchoolDropdown from "../components/SchoolDropdown";
-import { elementarySchoolData, middleSchoolData, highSchoolData } from "../utils/schoolDataFields.js";
+import {
+  elementarySchoolData,
+  middleSchoolData,
+  highSchoolData,
+} from "../utils/schoolDataFields.js";
+import CompareSchools from "../components/CompareSchools";
 
 export default function Compare() {
   const [loading, setLoading] = useState(true);
@@ -16,8 +21,6 @@ export default function Compare() {
   const [url, setUrl] = useState(null);
 
   useEffect(() => {
-    console.log('url', url)
-    console.log('schoolGrade', schoolGrade);
     if (url !== null) {
       let dataFields;
       switch (schoolGrade) {
@@ -41,7 +44,6 @@ export default function Compare() {
       fetch(url, options)
         .then((res) => res.json())
         .then((data) => {
-          console.log('fetch data', data)
           let tempItems = [];
           let tempComp = [];
           let index = 0;
@@ -49,7 +51,7 @@ export default function Compare() {
             let infoItem = {};
             infoItem.id = index++;
             dataFields.forEach((dataField) => {
-              infoItem[dataField] = e[dataField]
+              infoItem[dataField] = e[dataField];
             });
 
             tempItems.push(infoItem);
@@ -73,13 +75,7 @@ export default function Compare() {
   const handleDropdown = (schoolGrade, url) => {
     setSchoolGrade(schoolGrade);
     setUrl(url);
-    clearSelectedSchools()
   };
-
-  const clearSelectedSchools = () => {
-    setSchoolOne({});
-    setSchoolTwo({});
-  }
 
   return (
     <div>
@@ -92,7 +88,6 @@ export default function Compare() {
         </div>
         <SchoolDropdown
           schoolGrade={(schoolGrade, url) => handleDropdown(schoolGrade, url)}
-          clearSchoolSelection={() => clearSelectedSchools()}
         />
         {schoolGrade && (
           <>
@@ -122,82 +117,14 @@ export default function Compare() {
         )}
       </Container>
 
-      <div className="main">
-        {Object.keys(schoolTwo).length > 0 && (
-          <div className="leftSchool">
-            <div className="card" style={{ width: "100%" }}>
-              <div className="card-body">
-                <h5 className="card-title">{schoolTwo.school_name}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">
-                  Grades: {schoolTwo.grades2020} &nbsp; &nbsp; Total Students:{" "}
-                  {schoolTwo.total_students} &nbsp; &nbsp; Accessibility:{" "}
-                  {schoolTwo.school_accessibility}
-                </h6>
-                <hr />
-                <p className="card-text">
-                  <b>AP Courses: </b> {schoolTwo.advancedplacement_courses}
-                </p>
-                <hr />
-                <p className="card-text">
-                  <b>PSAL Sports Boys: </b> {schoolTwo.psal_sports_boys}
-                  <br />
-                  <b>PSAL Sports Girls: </b> {schoolTwo.psal_sports_girls}
-                </p>
-                <hr />
-                <p className="card-text">
-                  <b>Academic Opportunties: </b>{" "}
-                  {schoolTwo.academicopportunities1}{" "}
-                  {schoolTwo.academicopportunities2}{" "}
-                  {schoolTwo.academicopportunities3}{" "}
-                  {schoolTwo.academicopportunities4}{" "}
-                  {schoolTwo.academicopportunities5}{" "}
-                </p>
-                <hr />
-                <p className="card-text">
-                  <b>Additional Info: </b> {schoolTwo.addtl_info1}
-                </p>
-              </div>
-            </div>
-          </div>
+      {Object.keys(schoolOne).length > 0 &&
+        Object.keys(schoolTwo).length > 0 && (
+          <CompareSchools
+            schoolGrade={schoolGrade}
+            schoolOne={schoolOne}
+            schoolTwo={schoolTwo}
+          />
         )}
-        {Object.keys(schoolOne).length > 0 && (
-          <div className="rightSchool">
-            <div className="card" style={{ width: "100%" }}>
-              <div className="card-body">
-                <h5 className="card-title">{schoolOne.school_name}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">
-                  Grades: {schoolOne.grades2020} &nbsp; &nbsp; Total Students:{" "}
-                  {schoolOne.total_students} &nbsp; &nbsp; Accessibility:{" "}
-                  {schoolOne.school_accessibility}
-                </h6>
-                <hr />
-                <p className="card-text">
-                  <b>AP Courses: </b> {schoolOne.advancedplacement_courses}
-                </p>
-                <hr />
-                <p className="card-text">
-                  <b>PSAL Sports Boys: </b> {schoolOne.psal_sports_boys}
-                  <br />
-                  <b>PSAL Sports Girls: </b> {schoolOne.psal_sports_girls}
-                </p>
-                <hr />
-                <p className="card-text">
-                  <b>Academic Opportunties: </b>{" "}
-                  {schoolOne.academicopportunities1}{" "}
-                  {schoolOne.academicopportunities2}{" "}
-                  {schoolOne.academicopportunities3}{" "}
-                  {schoolOne.academicopportunities4}{" "}
-                  {schoolOne.academicopportunities5}{" "}
-                </p>
-                <hr />
-                <p className="card-text">
-                  <b>Additional Info: </b> {schoolOne.addtl_info1}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
     </div>
   );
 }
