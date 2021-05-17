@@ -8,6 +8,21 @@ import '../css/SwipePage.css';
 import auth from '../services/auth.js';
 import Simple from './slides';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class SwipePage1 extends React.Component {
   state = {
     profiles: [],

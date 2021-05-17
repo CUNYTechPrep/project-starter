@@ -14,6 +14,42 @@ router.get('/', (req,res) => {
 
 // Here you have to figure out what do you do when someone HAS Swiped!
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Are they friends or on the block list or buddies list.... 
 
 // when someone swipes, what data do I send back
@@ -54,7 +90,6 @@ router.put('/:me', (req, res) => {
         height: newHeight,
         weight: newWeight,
       })
-
 
       user.save()
       .then(user => {
