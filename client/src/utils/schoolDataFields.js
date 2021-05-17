@@ -1,0 +1,48 @@
+export const elementarySchoolData = [
+    'school_name',
+    'grades',
+    'accessibility',
+    'school_type',
+    'borough',
+    'address',
+    'phone',
+    'dual_language',
+];
+
+export const middleSchoolData = [
+    'name',
+    'gradespan',
+    'totalstudents',
+    'start_time',
+    'end_time',
+    'accessibility_description',
+    'borough',
+    'address',
+    'subway',
+    'bus',
+    'telephone',
+    'independentwebsite',
+    'overview',
+    'electiveclassNamees',
+    'languageclassNamees',
+    'activities_description',
+    'othersports',
+];
+
+export const highSchoolData = [
+  'dbn',
+  'school_name',
+  'grades2020',
+  'total_students',
+  'school_accessibility',
+  'psal_sports_boys',
+  'psal_sports_girls',
+  'psal_sports_coed',
+  'advancedplacement_courses',
+  'academicopportunities1',
+  'academicopportunities2',
+  'academicopportunities3',
+  'academicopportunities4',
+  'academicopportunities5',
+  'addtl_info1',
+];
