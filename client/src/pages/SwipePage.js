@@ -10,6 +10,21 @@ import TinderCard from 'react-tinder-card';
 import Simple from './slides';
 // import Switch from 'react-ios-switch';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class SwipePage1 extends React.Component {
   state = {
     profiles: [],
