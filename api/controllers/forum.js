@@ -13,20 +13,19 @@ const { Forum, threadPosts } = db;
 //    DELETE /posts/:id
 
 router.get('/', (req, res) => {
-  Forum.findAll({}).then((posts) => res.json(posts));
+  Forum.findAll({}).then((threads) => res.json(threads));
 });
 
 router.post('/', (req, res) => {
   // let { content } = req.body;
   console.log("POST body: ", req.body);
   Forum.create({
-    content: req.body.content,
+    authorId: req.body.authorId,
     category: req.body.category,
     threadTitle: req.body.threadTitle,
   })
-  Forum.create({ content })
-    .then((post) => {
-      res.status(201).json(post);
+    .then((threads) => {
+      res.status(201).json(threads);
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -35,25 +34,28 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  threadPosts.findByPk(id).then((post) => {
-    if (!post) {
+  threadPosts.findByPk(id).then((threads) => {
+    if (!threads) {
       return res.sendStatus(404);
     }
-    res.json(post);
+    res.json(threads);
   });
 });
 
 router.put('/:id', (req, res) => {
   const { id } = req.params;
-  threadPosts.findByPk(id).then((post) => {
-    if (!post) {
+  threadPosts.findByPk(id).then((threads) => {
+    if (!threads) {
       return res.sendStatus(404);
     }
-    post.content = req.body.content;
-    post
+    threads.authorId = req.body.authorId,
+    threads.category = req.body.category,
+    threads.threadTitle = req.body.threadTitle,
+
+    threads
       .save()
-      .then((post) => {
-        res.json(post);
+      .then((threads) => {
+        res.json(threads);
       })
       .catch((err) => {
         res.status(400).json(err);
@@ -63,11 +65,11 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  threadPosts.findByPk(id).then((post) => {
-    if (!post) {
+  threadPosts.findByPk(id).then((threads) => {
+    if (!threads) {
       return res.sendStatus(404);
     }
-    post.destroy();
+    threads.destroy();
     res.sendStatus(204);
   });
 });

@@ -43,8 +43,6 @@ router.put('/:me', (req, res) => {
         return res.sendStatus(404);
       }
 
-      // user.bio = req.body.bio;
-      console.log(user);
       const newBio = req.body.bio ? req.body.bio : user.bio;
       const newFit = req.body.fitLevel ? req.body.fitLevel : user.fitLevel;
       const newHeight = req.body.height ? req.body.height : user.height;
