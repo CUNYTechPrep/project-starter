@@ -27,6 +27,7 @@ import ContactUsPage from './pages/ContactUsPage';
 import SwipePage from './pages/SwipePage'
 import ProfilePage from './components/Profile/ProfilePage';
 import Thread from './components/Forum/Thread';
+import AddThreadPost from './components/Forum/AddThreadPost';
 
 import './App.css';
 import { ReactComponent as CloseMenu } from './assets/x.svg';
@@ -46,7 +47,8 @@ function Navigation(props) {
   const closeMenu = () => setClick(false); //to close the burger menu
 
   return (
-    <nav className="navbar navbar-dark bg-primary">
+    <nav className="navbar navbar-dark bg-primary" 
+      style={{borderColor: '#192544', borderWidth: 7, borderBottomStyle: 'solid'}}>
       <Link className="navbar-brand" to="/welcomepage">
         Fitbud
       </Link>
@@ -104,6 +106,7 @@ class App extends React.Component {
           </div>
         </div>
         <Route path="/thread" component={Thread} />
+        <Route path="/add-thread-post" component={AddThreadPost} />
         <Route path="/welcomepage" component={WelcomePage} />
       </Router>
     );

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const passport = require('../middlewares/authentication');
-const { Forum, threadPosts } = db;
+const { User, Forum, threadPosts } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -14,7 +14,17 @@ const { Forum, threadPosts } = db;
 
 //For getting all Threads from the Forum table
 router.get('/', (req, res) => {
-  Forum.findAll({}).then((threads) => res.json(threads));
+  Forum.findAll({
+    include: [{
+      model: User,
+      as: "author",
+      // through: {
+      //   attributes: ['firstName', 'lastName']
+      // }
+      
+    }]
+  })
+    .then((threads) => res.json(threads));
 });
 
 //For posting a Thread to the Forum Table
@@ -47,7 +57,7 @@ router.delete('/:id', (req, res) => {
 });
 
 
-
+//we will have to navigate here through the Forum's threadID for its list of posts
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   threadPosts.findByPk(id).then((threads) => {
@@ -58,26 +68,26 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.put('/:id', (req, res) => {
-  const { id } = req.params;
-  threadPosts.findByPk(id).then((threads) => {
-    if (!threads) {
-      return res.sendStatus(404);
-    }
-    threads.authorId = req.body.authorId,
-    threads.category = req.body.category,
-    threads.threadTitle = req.body.threadTitle,
+// router.put('/:id', (req, res) => {
+//   const { id } = req.params;
+//   Forum.findByPk(id).then((threads) => {
+//     if (!threads) {
+//       return res.sendStatus(404);
+//     }
+//     // threads.authorId = req.body.authorId,
+//     threads.category = req.body.category,
+//     threads.threadTitle = req.body.threadTitle,
 
-    threads
-      .save()
-      .then((threads) => {
-        res.json(threads);
-      })
-      .catch((err) => {
-        res.status(400).json(err);
-      });
-  });
-});
+//     threads
+//       .save()
+//       .then((threads) => {
+//         res.json(threads);
+//       })
+//       .catch((err) => {
+//         res.status(400).json(err);
+//       });
+//   });
+// });
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;

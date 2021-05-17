@@ -12,7 +12,6 @@ class ForumPage extends React.Component  {
       threadTitle: '',
       id: 0,
       threads: [],
-      // users: [],
     }
   
     contentChanged = (name) => {
@@ -59,6 +58,7 @@ class ForumPage extends React.Component  {
       fetch('/api/forum')
       .then(res => res.json())
       .then(threads => {
+        console.log(threads);
         this.setState({
           threads: threads.map((p, ii) => 
               <ForumThreadRow {...p} key={ii} />

@@ -5,8 +5,9 @@
 // in the backend api. It was also modified to return promises instead
 // of using callbacks `cb`.
 
+
 const auth = {
-    isAuthenticated: false,
+    isAuthenticated: false, //after logging in, set to true for debugging purposes
 
     currentUser: null, //this helps us with the User profile page
 

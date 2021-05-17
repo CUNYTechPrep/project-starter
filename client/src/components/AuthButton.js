@@ -16,6 +16,8 @@ const AuthButton = withRouter(({ history }) => {
   }
 
   const logout = () => {
+    // localStorage.setItem(auth.isAuthenticated, false);
+    // localStorage.clear();
     auth.signout().then(() => history.push('/'));
   }
 

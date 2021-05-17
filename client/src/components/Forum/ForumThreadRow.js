@@ -29,13 +29,16 @@ function ForumThreadRow({threads}) {
             <tr >
                 <td className="thread-starter-table td">
                     <text className="thread-starter-title">
-                        Category: {t.props.category}
-                        <Link to="/thread">
-                            <b> {t.props.threadTitle}</b>          
+                        <b>Category: </b> 
+                            {t.props.category}
+                        <br></br>
+                        <b>Title: </b>
+                        <Link to="/thread" forumThread={t}> 
+                            {t.props.threadTitle}
                         </Link>
                         <div>
                             {
-                            auth.currentUser.id === t.props.authorId
+                            auth.isAuthenticated && auth.currentUser.id === t.props.authorId
                             ? 
                                 <button className="delete-button btn my-10 font-weight-bold"
                                     type="submit" 
@@ -50,7 +53,7 @@ function ForumThreadRow({threads}) {
                     </text>
                     <p className="thread-starter-info">
                         by <text className="starter-user">
-                            {t.props.authorId}
+                            {t.props.author.firstName + ' ' + t.props.author.lastName} 
                             </text>
                         , {t.props.createdAt}
                     </p>

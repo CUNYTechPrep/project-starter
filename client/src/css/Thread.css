@@ -45,3 +45,24 @@
   margin: 0px 7px 10px 7px;
   border: 1px grey solid;
 }
+
+.post-button {
+  background-color: hsl(221, 98%, 63%);
+  color: white;
+  margin-bottom: 30px;
+}
+
+.post-button:hover {
+  background-color: #142db9;
+  color: hsla(192, 100%, 72%, 0.74);
+}
+
+.post-login-button {
+  background-color: hsl(221, 98%, 63%);
+  color: white;
+  margin-bottom: 30px;
+}
+
+.post-login-button:hover {
+  background-color: hsl(204, 45%, 58%);
+}
