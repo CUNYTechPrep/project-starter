@@ -1,115 +1,159 @@
-import React from 'react-dom';
+import React from 'react';
 import ThreadPost from './ThreadPost';
 import '../../css/Thread.css';
+import 'w3-css/w3.css'; 
 import auth from '../../services/auth';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-//Here we want to map out all the posts here from threadPosts table
 
-// class Thread extends React.Component {
-  function Thread({forumThread}) {
+class Thread extends React.Component {
+      state = {
+        failed: false,
+        title: "",
+        content: "",
+        success: false,
+        error: false,
+        posts: [], //array of ThreadPosts
+      }
+
+    //Call fieldChanged function to get user input
+    
+      fieldChanged = (name) => {
+        return (event) => {
+          let { value } = event.target;
+          this.setState({ [name]: value });
+        }
+      }
+    
+
+
+    /* 
+      Here I want to do an API call to POST to the threadPosts table
+    */
+    
+      postPostinThread = (event) => {
+        event.preventDefault();
+
+      fetch("/api/forum/posts/", {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          content: this.state.content,
+          title: this.state.title,
+          authorId: auth.currentUser.id,
+          forumId: this.props.match.params.id 
+        }),
+      })      
+        .then(res => res.json())
+        .then(user => {
+        })
+        .then(post => {
+            this.setState({
+              success: true,
+            });
+            alert('Posted successfully!');    
+        })
+        .catch(err => {
+          this.setState({
+            error: true,
+          });
+        });
+    
+    }
+
+
+    /* I want to do an API call here to GET the threadPosts to later 
+    MAP it in the return statement BELOW */
+    componentDidMount() {
+      const { id } = this.props.match.params; // this one got it from the react router id
+      fetch("/api/forum/posts/"+id) //get the id of the forum -> threadId
+      .then(res => res.json())
+      .then(posts => {
+        console.log(posts);
+        this.setState({
+
+          posts: posts.map((p, ii) => 
+              <ThreadPost {...p} key={ii} />
+            ),
+        });
+      })
+      .catch(err => console.log("API ERROR: ", err));
+    }
+
+
+
   //here I want to pass in the forum's primary key which is its id.
   // with that id I can get it to be the forumId value in ThreadPosts model
-
-      return (
-        <div>
-          <h6 className="thread-heading">
-            <b>Thread: </b>
-            <text className="thread-topic">
-              Best ways to cut while bulking? 
-              {/* {forumThread.props.threadTitle} */}
-              {/* Here above we want to have gotten threadTitle from 
-                Forum table here, shown above */}
-            </text>
-          </h6>
+     render() {
+      // console.log(forumThread);
+      
+        return (
           <div>
-              {
-              auth.isAuthenticated
-              ? 
-                <div>
-                  <Link to="/add-thread-post"className="post-button btn my-10 font-weight-bold"> 
-                    Add a Post 
-                  </Link>
-                </div>
-              : 
-                <Link to="/sign-in" className="post-login-button btn my-10 font-weight-bold"> 
-                  Login to Post In This Thread
-                </Link>
-              }        
-          </div>
-
-                <ThreadPost />
-
-
-        {/* <div> */}
-          {/* Here is where in a loop or mapping we would map all posts connected to the FORUM ID */}
-          {/* {forumThread.map((ft) => 
+            <h6 className="thread-heading">
+              <b>Thread: </b>
+              <text className="thread-topic">
+                Best ways to cut while bulking? 
+                {/* {forumThread.props.threadTitle} */}
+                {/* Here above we want to have gotten threadTitle from 
+                  Forum table here, shown above */}
+              </text>
+            </h6>
             <div>
-              <h6 className="thread-heading">
-                <b>Thread: </b>
-                <text className="thread-topic">
-                  Best ways to cut while bulking? 
-                  {/* {ft.props.threadTitle} */}
-                  {/* Here above we want to have gotten threadTitle from 
-                    Forum table here, shown above */}
-                {/* </text>
-              </h6> */}
-              
-              {/* POSTS LIST BEGINS HERE */}
-              {/* <div>
-                <p className="post-date">Posted on: 
-                    {ft.props.createdAt} 
-                02-13-2021 9:20am</p>
-                <article className="each-post">
-                  <div>
-                    <div className="user-info-container">
-                      <h6> John Cena </h6>
-                      <img
-                        className="user-pp"
-                        alt="John Cena"
-                        src="https://resizing.flixster.com/IpEFWZUF1Cd_NZPC5gCEVhcJd-M=/506x652/v2/https://flxt.tmsimg.com/v9/AllPhotos/487578/487578_v9_ba.jpg"
-                        width="90px"
-                        height="90px"
-                      ></img>
-                      <p>Height: 6'1 </p>
-                      <p>Weight:251 lbs</p>
-                      <p>Bud rep: 1,462 nugs</p>
-                    </div>
-                    <div>
-                      <p>
-                        <b>
-                          {title}
-                          Best ways to Bulk while cutting?</b>
-                        <br></br>
-                        <br></br>
-                        {content}
-                        Hola Buddies! As you are all probably aware, summer is coming and you
-                        know what they say ..."Suns out, tums out!", or rather, that's what I
-                        usually say. My goal is to change "tums" into "guns" and to do that I
-                        need to lose fat while simultaneously building muscle, all before June
-                        comes around. Does anyone have experience attempting and succeeding or
-                        failing and wouldn't mind sharing what they learned, or if it's just an
-                        unachievable dream you can say that too :/ Thanks! <br></br> P.S. Let me
-                        know if you can't see my profile picture
-                      </p>
-                      <p className="post-last-edited-date">
-                        <i>Last edited on: 
-                          {updatedAt}
-                          02-13-2021 9:20am</i>
-                      </p>
-                    </div>
+                {
+                auth.isAuthenticated
+                ? 
+                  <div className="post">
+                      <h2 className="postTitle font-weight-bold">
+                        Add a FitPost!
+                      </h2>
+                      
+                      <div style={{paddingTop: 20}}>
+                        <form 
+                          // onSubmit={this.postPostinThread}
+                        >
+                        <h4 class="text-muted">Title of Post</h4>
+                        <input 
+                            type="title"
+                            className="form-control"
+                            name="title"
+                            placeholder="Please enter your Post's title" 
+                            // value={this.state.title} 
+                            // onChange={this.fieldChanged('title')} 
+                          />
+                            <br></br>
+                          <h4 class="text-muted">Content of Post</h4>
+                          <textarea 
+                            type="content"
+                            className="form-control"
+                            name="content"
+                            placeholder="Please enter your Post's content" 
+                            // value={this.state.content} 
+                            // onChange={this.fieldChanged('content')} 
+                          />
+                          <br></br>
+                          <button className="post-button btn my-10 font-weight-bold"
+                            type="submit"> 
+                            Save Post 
+                          </button>
+                        </form>
+                      </div>
                   </div>
-                </article>
-              </div> 
-
-
-
-
+                : 
+                  <Link to="/sign-in" className="post-login-button btn my-10 font-weight-bold"> 
+                    Login to Post In This Thread
+                  </Link>
+                }        
             </div>
-          )} */}
-        </div>
-      );
-  // }
+              <div>
+                {/* <ThreadPost threadPosts={this.state.posts} /> */}
+                {this.state.posts}
+              </div>
+          </div>
+        );
+    }
 }
 
 export default Thread;

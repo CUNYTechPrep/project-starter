@@ -58,7 +58,6 @@ class ForumPage extends React.Component  {
       fetch('/api/forum')
       .then(res => res.json())
       .then(threads => {
-        console.log(threads);
         this.setState({
           threads: threads.map((p, ii) => 
               <ForumThreadRow {...p} key={ii} />
@@ -66,14 +65,7 @@ class ForumPage extends React.Component  {
         });
       })
       .catch(err => console.log("API ERROR: ", err));
-
-      // fetch('/api/users')
-      // .then(resp => resp.json())
-      // .then( resp =>
-      //   this.setState({
-      //     users: resp
-      //  })
-      // )
+      
     }
   
   render() {
@@ -86,14 +78,14 @@ class ForumPage extends React.Component  {
           </h1>
           <section>
               <table className="thread-starter-table">
-              <tr>
-                  <th> Title/Thread Starter</th> {/* <th> Last Post By</th> */}{/* <th> Replies</th> */}
-              </tr>
-      
-              {/* ForumThreadRow will be MAPPED like an array to showcase all threads we have in the Forum here */}
-              <tr>
-                <ForumThreadRow threads = {this.state.threads} />
-              </tr>
+                <tr>
+                    <th> Title/Thread Starter</th> {/* <th> Last Post By</th> */}{/* <th> Replies</th> */}
+                </tr>
+        
+                {/* ForumThreadRow will be MAPPED like an array to showcase all threads we have in the Forum here */}
+                <tr>
+                  <ForumThreadRow threads = {this.state.threads} />
+                </tr>
 
               </table>
           </section>

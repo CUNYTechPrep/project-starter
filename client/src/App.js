@@ -27,7 +27,6 @@ import ContactUsPage from './pages/ContactUsPage';
 import SwipePage from './pages/SwipePage'
 import ProfilePage from './components/Profile/ProfilePage';
 import Thread from './components/Forum/Thread';
-import AddThreadPost from './components/Forum/AddThreadPost';
 
 import './App.css';
 import { ReactComponent as CloseMenu } from './assets/x.svg';
@@ -94,7 +93,7 @@ class App extends React.Component {
           <div className="row justify-content-center">
             <Switch>
               <Route path="/forum" component={ForumPage} />
-              <Route path="/posts/:id" component={ShowPostPage} />
+              {/* <Route path="/posts/:id" component={ShowPostPage} /> */}
               <Route path="/places" component={PlacesPage} />
               <Route path="/about-us" component={AboutUsPage} />
               <Route path="/sign-in" component={LoginPage} />
@@ -102,11 +101,15 @@ class App extends React.Component {
               <Route path="/contact-us" component={ContactUsPage} />
               <PrivateRoute path="/swipe" component={SwipePage} />
               <PrivateRoute path="/profile" component={ProfilePage} />
+              <Route path="/thread/:id" component={Thread} />
+              {/*    
+              Prop came from react router, pull id from whatever Link given, 
+              use id to fetch from backend
+              */}
             </Switch>
           </div>
         </div>
-        <Route path="/thread" component={Thread} />
-        <Route path="/add-thread-post" component={AddThreadPost} />
+        
         <Route path="/welcomepage" component={WelcomePage} />
       </Router>
     );

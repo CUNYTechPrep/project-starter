@@ -66,3 +66,13 @@
 .post-login-button:hover {
   background-color: hsl(204, 45%, 58%);
 }
+
+.post {
+  width: 500px;
+  max-width: auto;
+  display: column;
+}
+
+.postTitle {
+  text-align: center;
+}
