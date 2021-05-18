@@ -20,10 +20,6 @@ router.get('/', (req, res) => {
     include: [{
       model: User,
       as: "author",
-      // through: {
-      //   attributes: ['firstName', 'lastName']
-      // }
-      
     }]
   })
     .then((threads) => res.json(threads));
@@ -60,6 +56,25 @@ router.delete('/:id', (req, res) => {
 
 // ------------------------------------------- THREADPOSTS -----------------------------
 
+//For posting a Thread to the Forum Table
+router.post('/posts', (req, res) => {
+  // let { content } = req.body;
+  console.log("POST body: ", req.body);
+  ThreadPosts.create({
+    authorId: req.body.authorId,
+    threadId: req.body.threadId,
+    forumId: req.body.forumId,
+    content: req.body.content,
+    title: req.body.title,
+  })
+    .then((threads) => {
+      res.status(201).json(threads);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
+
 //id here lets us know WHICH thread posts to get from WHICH forum thread.
 // Study this nested code below
 router.get('/posts/:id', (req, res) => {
@@ -88,67 +103,15 @@ router.get('/posts/:id', (req, res) => {
     .then((threads) => res.json(threads));
 });
 
-//For posting a Thread to the Forum Table
-router.post('/posts', (req, res) => {
-  // let { content } = req.body;
-  console.log("POST body: ", req.body);
-  ThreadPosts.create({
-    authorId: req.body.authorId,
-    threadId: req.body.threadId,
-    content: req.body.content,
-    title: req.body.title,
-  })
-    .then((threads) => {
-      res.status(201).json(threads);
-    })
-    .catch((err) => {
-      res.status(400).json(err);
-    });
-});
-
-
-
-//we will have to navigate here through the Forum's threadID for its list of posts
-router.get('/:id', (req, res) => {
+router.delete('/posts/:id', (req, res) => {
   const { id } = req.params;
-  threadPosts.findByPk(id).then((threads) => {
+  ThreadPosts.findByPk(id).then((threads) => {
     if (!threads) {
       return res.sendStatus(404);
     }
-    res.json(threads);
+    threads.destroy();
+    res.sendStatus(204);
   });
 });
-
-// router.put('/:id', (req, res) => {
-//   const { id } = req.params;
-//   Forum.findByPk(id).then((threads) => {
-//     if (!threads) {
-//       return res.sendStatus(404);
-//     }
-//     // threads.authorId = req.body.authorId,
-//     threads.category = req.body.category,
-//     threads.threadTitle = req.body.threadTitle,
-
-//     threads
-//       .save()
-//       .then((threads) => {
-//         res.json(threads);
-//       })
-//       .catch((err) => {
-//         res.status(400).json(err);
-//       });
-//   });
-// });
-
-// router.delete('/:id', (req, res) => {
-//   const { id } = req.params;
-//   ThreadPosts.findByPk(id).then((threads) => {
-//     if (!threads) {
-//       return res.sendStatus(404);
-//     }
-//     threads.destroy();
-//     res.sendStatus(204);
-//   });
-// });
 
 module.exports = router;

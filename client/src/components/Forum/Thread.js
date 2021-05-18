@@ -44,7 +44,8 @@ class Thread extends React.Component {
           content: this.state.content,
           title: this.state.title,
           authorId: auth.currentUser.id,
-          forumId: this.props.match.params.id 
+          forumId: this.props.match.params.id,
+          threadId: this.props.match.params.id
         }),
       })      
         .then(res => res.json())
@@ -69,6 +70,7 @@ class Thread extends React.Component {
     MAP it in the return statement BELOW */
     componentDidMount() {
       const { id } = this.props.match.params; // this one got it from the react router id
+      
       fetch("/api/forum/posts/"+id) //get the id of the forum -> threadId
       .then(res => res.json())
       .then(posts => {
@@ -108,7 +110,7 @@ class Thread extends React.Component {
                       
                       <div style={{paddingTop: 20}}>
                         <form 
-                          // onSubmit={this.postPostinThread}
+                          onSubmit={this.postPostinThread}
                         >
                         <h4 class="text-muted">Title of Post</h4>
                         <input 
@@ -116,8 +118,8 @@ class Thread extends React.Component {
                             className="form-control"
                             name="title"
                             placeholder="Please enter your Post's title" 
-                            // value={this.state.title} 
-                            // onChange={this.fieldChanged('title')} 
+                            value={this.state.title} 
+                            onChange={this.fieldChanged('title')} 
                           />
                             <br></br>
                           <h4 class="text-muted">Content of Post</h4>
@@ -126,8 +128,8 @@ class Thread extends React.Component {
                             className="form-control"
                             name="content"
                             placeholder="Please enter your Post's content" 
-                            // value={this.state.content} 
-                            // onChange={this.fieldChanged('content')} 
+                            value={this.state.content} 
+                            onChange={this.fieldChanged('content')} 
                           />
                           <br></br>
                           <button className="post-button btn my-10 font-weight-bold"
