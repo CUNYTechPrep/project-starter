@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../css/Thread.css';
 
-function ThreadPost({id, content, title, createdAt, updatedAt, forumId, threadId, authorId, author}) {
+const ThreadPost = (id, content, title, createdAt, updatedAt, forumId, threadId, authorId, author, props) => {
 
 // I want to map HERE
     return (

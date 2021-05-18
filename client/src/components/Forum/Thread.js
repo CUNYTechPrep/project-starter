@@ -74,7 +74,6 @@ class Thread extends React.Component {
       .then(posts => {
         console.log(posts);
         this.setState({
-
           posts: posts.map((p, ii) => 
               <ThreadPost {...p} key={ii} />
             ),
@@ -96,9 +95,6 @@ class Thread extends React.Component {
               <b>Thread: </b>
               <text className="thread-topic">
                 Best ways to cut while bulking? 
-                {/* {forumThread.props.threadTitle} */}
-                {/* Here above we want to have gotten threadTitle from 
-                  Forum table here, shown above */}
               </text>
             </h6>
             <div>
@@ -145,6 +141,7 @@ class Thread extends React.Component {
                   <Link to="/sign-in" className="post-login-button btn my-10 font-weight-bold"> 
                     Login to Post In This Thread
                   </Link>
+                  
                 }        
             </div>
               <div>

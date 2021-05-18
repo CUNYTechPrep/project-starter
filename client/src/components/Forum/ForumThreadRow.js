@@ -30,21 +30,15 @@ function ForumThreadRow({threads}) {
         <div>
             {threads.map((t) =>
             <tr >
+            {/* {console.log(t)} */}
                 <td className="thread-starter-table td">
                     <text className="thread-starter-title">
                         <b>Category: </b> 
                             {t.props.category}
                         <br></br>
                         <b>Title: </b>
-                        {/* <Thread forumThread={t} />  */}
-                        {/* <Link to= {{
-                                pathname: "/thread",
-                                state: {
-                                    forumThread: t
-                                }
-                            }}
-                        >    */}
                         
+                        {/* Just gets Id of Thread --> Ex: 16 */}
                         <Link to={`thread/${t.props.id}`}>
                             {t.props.threadTitle}
                         </Link>
