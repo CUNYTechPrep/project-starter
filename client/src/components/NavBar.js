@@ -17,20 +17,20 @@ function NavBar(props) {
       </Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
+          <NavLink className="nav-link" exact to={"/createGroup/" + props.user}>
             Create a Group
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
-            Join a Group
+          <NavLink className="nav-link" exact to={"/searchJoin/" + props.user}>
+            Search/Join a Group
           </NavLink>
         </li>
       </ul>
-      <NavLink className="nav-link" exact to="">
-        SIGN UP
+      <NavLink className="nav-link" exact to="/">
+        Log out
       </NavLink>
-      <NavLink className="nav-link" exact to="">
+      <NavLink className="nav-link" exact to="/aboutUs">
         About Us
       </NavLink>
     </nav>
