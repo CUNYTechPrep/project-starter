@@ -1,5 +1,3 @@
-
-
 .flex-container-profile {
   display: flex;
   flex-wrap: wrap;
@@ -14,7 +12,6 @@
   color: hsl(0, 0%, 100%);
   -webkit-text-stroke: 0.5px rgb(129, 116, 116);
   background: hsl(227deg 67% 42%);
-
 }
 
 .background {
@@ -27,22 +24,23 @@
   border-radius: 10%;
   color: rgb(255, 255, 255);
   margin-right: 20px;
-  font-family:'Garamond', sans-serif;
-  background-color:hsl(227deg 58% 56%);
+  font-family: 'Garamond', sans-serif;
+  background-color: hsl(227deg 58% 56%);
   font-weight: bold;
 }
 
 /* Used an online reference */
 .button-edits:after {
-  content: "";
-  position: absolute;  
+  content: '';
+  position: absolute;
   left: -210%;
   width: 200%;
   height: 200%;
   background: linear-gradient(
-    to right, hsla(0, 0%, 100%, 0.314) 50%,
-              hsla(143, 72%, 7%, 0.129) 100%
-    );
+    to right,
+    hsla(0, 0%, 100%, 0.314) 50%,
+    hsla(143, 72%, 7%, 0.129) 100%
+  );
 }
 
 /* when hovered, look at the after class */
@@ -53,5 +51,4 @@
   transition-duration: 0.7s, 0.7s;
   transition-timing-function: ease-in-out;
   color: goldenrod;
-} 
-
+}

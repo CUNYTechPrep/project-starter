@@ -17,6 +17,9 @@ router.post('/signup', (req, res) => {
     fitLevel: req.body.fitLevel,
     bio: req.body.bio,
     image: req.body.image,
+    // city: req.body.city,
+    // state: req.body.state,
+    // zipCode: req.body.zipCode,
   })
     .then((user) => {
       req.login(user, () => res.status(201).json(user));

@@ -3,11 +3,12 @@ import React from 'react';
 import '../../css/Popup.css';
 import auth from '../../services/auth.js';
 
-class PopupHW extends React.Component {
+class PopupCityStateZip extends React.Component {
   state = {
     failed: false,
-    heightField: '',
-    weightField: '',
+    cityField: '',
+    stateField: '',
+    zipCodeField: '',
   };
 
   fieldChanged = (name) => {
@@ -22,11 +23,10 @@ class PopupHW extends React.Component {
     e.preventDefault();
     const { id } = auth.currentUser;
     const setObject = {
-      height: this.state.heightField,
-      weight: this.state.weightField,
+      city: this.state.cityField,
+      state: this.state.stateField,
+      zipCode: this.state.zipField,
     };
-
-    let currWeight = 0;
 
     const requestOptions = {
       method: 'PUT',
@@ -36,7 +36,7 @@ class PopupHW extends React.Component {
     fetch('/api/users/' + id, requestOptions) //sending it as options
       .then((res) => res.json())
       .then((user) => {
-        this.props.closeHWPopup();
+        this.props.closeCityStateZipPopup();
       })
       .catch((err) => {
         console.log(err);
@@ -52,21 +52,30 @@ class PopupHW extends React.Component {
             <div className='div-heading'>
               <form onSubmit={this.submit}>
                 <input
-                  type='heightField'
+                  type='cityField'
                   className='form-control'
-                  name='heightField'
-                  placeholder='In inches'
-                  value={this.state.heightField}
-                  onChange={this.fieldChanged('heightField')}
+                  name='cityField'
+                  placeholder='Los Angeles, Brooklyn, etc.'
+                  value={this.state.cityField}
+                  onChange={this.fieldChanged('cityField')}
                 />
                 <br></br>
                 <input
-                  type='weightField'
+                  type='stateField'
                   className='form-control'
-                  name='weightField'
-                  placeholder={'In lbs'}
-                  value={this.state.weightField}
-                  onChange={this.fieldChanged('weightField')}
+                  name='stateField'
+                  placeholder='CA, NY, etc.'
+                  value={this.state.stateField}
+                  onChange={this.fieldChanged('stateField')}
+                />
+                <br></br>
+                <input
+                  type='zipCodeField'
+                  className='form-control'
+                  name='zipCodeField'
+                  placeholder='91791, 11213, etc.'
+                  value={this.state.zipCodeField}
+                  onChange={this.fieldChanged('zipCodeField')}
                 />
                 <br></br>
                 <button
@@ -85,4 +94,4 @@ class PopupHW extends React.Component {
   }
 }
 
-export default PopupHW;
+export default PopupCityStateZip;
