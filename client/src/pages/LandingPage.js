@@ -10,7 +10,6 @@ class LandingPage extends React.Component {
       success: false,
       error: false,
     };
-
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -25,11 +24,9 @@ class LandingPage extends React.Component {
   }
   handleSubmit = (event) => {
     event.preventDefault();
-    //console.log(this.state.email, this.state.password);
     fetch("/api/users/" + this.state.email)
       .then((res) => res.json())
       .then((user) => {
-        //console.log(user);
         if (user && user.password === this.state.password) {
           this.setState({
             success: true,
@@ -44,44 +41,62 @@ class LandingPage extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row justify-content-center">
-          <div className="col-4">
+          <div className="login_form">
+            <div className="text-center">
+              <p>Welcome to Night Out!</p>
+              <p>Please Login or ***Sign-Up***</p>
+            </div>
             <form>
-              <div className="form-group">
-                <label htmlFor="inputEmail">Email: </label>
-                <input
-                  required
-                  name="email"
-                  type="text"
-                  className="form-control"
-                  id="inputEmail"
-                  placeholder="Enter Your Email"
-                  onChange={this.handleInputChange}
-                />
+              <div className="form-group row">
+                <label
+                  htmlFor="inputEmail"
+                  className="col-form-label col-sm-4 col-lg-4"
+                >
+                  Email:{" "}
+                </label>
+                <div className="col-lg-8 col-sm-8">
+                  <input
+                    required
+                    name="email"
+                    type="text"
+                    className="form-control"
+                    id="inputEmail"
+                    placeholder="Enter Your Email"
+                    onChange={this.handleInputChange}
+                  />
+                </div>
               </div>
-              <div className="form-group">
-                <label htmlFor="inputPassword">Password: </label>
-                <input
-                  required
-                  name="password"
-                  type="password"
-                  className="form-control"
-                  id="inputPassword"
-                  placeholder="Enter Password"
-                  onChange={this.handleInputChange}
-                />
+              <div className="form-group row">
+                <label
+                  htmlFor="inputPassword"
+                  className="col-form-label col-sm-4 col-lg-4"
+                >
+                  Password:{" "}
+                </label>
+                <div className="col-lg-8 col-sm-8">
+                  <input
+                    required
+                    name="password"
+                    type="password"
+                    className="form-control"
+                    id="inputPassword"
+                    placeholder="Enter Password"
+                    onChange={this.handleInputChange}
+                  />
+                </div>
               </div>
-              <button
-                type="submit"
-                className="btn btn-primary"
-                onClick={this.handleSubmit}
-              >
-                Submit
-              </button>
+              <div className="d-flex form-group row justify-content-center">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  onClick={this.handleSubmit}
+                >
+                  Submit
+                </button>
+              </div>
             </form>
           </div>
         </div>
-        {/*Inquiry: onChange on both input fields and submit button*/}
-        {/* <h1>{this.state.username}    {this.state.password}</h1> */}
       </div>
     );
   }
