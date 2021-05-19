@@ -1,6 +1,7 @@
 import PLACES_INFO from "../places.json";
 import React from "react";
 import { Redirect } from "react-router-dom";
+import NavBar from "../components/NavBar";
 import {
   withScriptjs,
   withGoogleMap,
@@ -100,6 +101,7 @@ class ProfilePage extends React.Component {
     else if (this.state.loading) return <h1>Loading</h1>;
     return (
       <>
+        <NavBar user={this.state.user.email} />
         <div className="container-fluid">
           <div className="row justify-content-start">
             <div
