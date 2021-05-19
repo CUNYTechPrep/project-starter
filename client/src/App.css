@@ -21,3 +21,19 @@
   color: #09d3ac;
 }
 */
+
+.login_form {
+  /* background-color: rgba(red, green, blue, 50%); */
+  background-color: rgba(255, 0, 0, 0.2);
+  border-radius: 5%;
+  margin-top: 5%;
+  color: white;
+  font-size: 2rem;
+  font-weight: bolder;
+  text-justify: auto;
+}
+
+body {
+  /* background-color: blue; */
+  background-image: url("https://images.unsplash.com/photo-1541683142766-bd6163178577?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+}
