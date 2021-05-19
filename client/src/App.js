@@ -101,7 +101,7 @@ class App extends React.Component {
               <Route path="/contact-us" component={ContactUsPage} />
               <PrivateRoute path="/swipe" component={SwipePage} />
               <PrivateRoute path="/profile" component={ProfilePage} />
-              <Route path="/thread/:id" component={Thread} />
+              <Route path="/posts/:id" component={Thread} />
               {/*    
               Prop came from react router, pull id from whatever Link given, 
               use id to fetch from backend

@@ -89,17 +89,30 @@ router.get('/posts/:id', (req, res) => {
         },
         {
           model: ThreadPosts,
+          // as: "thread",
             include: [
               {
                 model: User, //I want the user's info from the ThreadPost
                 as: "author", 
               },
             ],
-          as: "thread", //this will help me show main thread title
+           //this will help me show main thread title
         }
       ]
     }
   )
+    .then((threads) => res.json(threads));
+});
+
+
+
+router.get('/posts', (req, res) => {
+    ThreadPosts.findAll({
+      include: [{
+        model: User,
+        as: "author",
+      }]
+    })
     .then((threads) => res.json(threads));
 });
 

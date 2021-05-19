@@ -98,6 +98,9 @@ class ForumPage extends React.Component  {
       <h1>
         Fitbud Forum Page
       </h1>
+      <br></br>
+      <br></br>
+
       <form onSubmit={this.postThread}>
           <div className="thread-create">
             <input 
@@ -121,6 +124,8 @@ class ForumPage extends React.Component  {
             </button>
           </div>
       </form>
+      <br></br>
+
       <section>
           <table className="thread-starter-table">
             <tr>

@@ -69,16 +69,18 @@ class Thread extends React.Component {
     /* I want to do an API call here to GET the threadPosts to later 
     MAP it in the return statement BELOW */
     componentDidMount() {
+      
       const { id } = this.props.match.params; // this one got it from the react router id
       
       fetch("/api/forum/posts/"+id) //get the id of the forum -> threadId
       .then(res => res.json())
       .then(posts => {
-        console.log(posts);
+        console.log(posts.threadPosts);
         this.setState({
-          posts: posts.map((p, ii) => 
-              <ThreadPost {...p} key={ii} />
-            ),
+          posts: posts.threadPosts
+            // posts.map((p, ii) => 
+            //   <ThreadPost {...p} key={ii} />
+            // ),
         });
       })
       .catch(err => console.log("API ERROR: ", err));
@@ -89,8 +91,7 @@ class Thread extends React.Component {
   //here I want to pass in the forum's primary key which is its id.
   // with that id I can get it to be the forumId value in ThreadPosts model
      render() {
-      // console.log(forumThread);
-      
+     
         return (
           <div>
             <h6 className="thread-heading">
@@ -139,16 +140,18 @@ class Thread extends React.Component {
                         </form>
                       </div>
                   </div>
-                : 
+                  : 
                   <Link to="/sign-in" className="post-login-button btn my-10 font-weight-bold"> 
                     Login to Post In This Thread
                   </Link>
-                  
                 }        
             </div>
               <div>
-                {/* <ThreadPost threadPosts={this.state.posts} /> */}
-                {this.state.posts}
+              {/* key is important here because it makes every thread unique in React */}
+                  {this.state.posts.map((post, index) => (
+                    <ThreadPost post={post} />
+                  )
+                )}
               </div>
           </div>
         );

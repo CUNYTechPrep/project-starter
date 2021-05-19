@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   ThreadPosts.associate = (models) => {
-    models.ThreadPosts.belongsTo(models.Forum, { as: 'thread' }); //So this would be one Thread to Many Posts relation
+    models.ThreadPosts.belongsTo(models.Forum, {as: "thread"}); //So this would be one Thread to Many Posts relation
     models.ThreadPosts.belongsTo(models.User, { as: 'author' });
   };
 

@@ -30,7 +30,6 @@ function ForumThreadRow({threads}) {
         <div>
             {threads.map((t) =>
             <tr >
-            {/* {console.log(t)} */}
                 <td className="thread-starter-table td">
                     <text className="thread-starter-title">
                         <b>Category: </b> 
@@ -39,7 +38,7 @@ function ForumThreadRow({threads}) {
                         <b>Title: </b>
                         
                         {/* Just gets Id of Thread --> Ex: 16 */}
-                        <Link to={`thread/${t.props.id}`}>
+                        <Link to={`posts/${t.props.id}`}>
                             {t.props.threadTitle}
                         </Link>
                         <div>
@@ -74,3 +73,13 @@ function ForumThreadRow({threads}) {
 }
 
 export default ForumThreadRow;
+
+
+
+
+/*
+
+nhandled rejection SequelizeEagerLoadingError: threadPosts is associated to forum using an alias. 
+You've included an alias (thread), but it does not match the alias(es) defined in your association (threadposts).
+
+*/
