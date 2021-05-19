@@ -128,7 +128,7 @@ const AuthHomeButton = withRouter(({ history }) => {
                       src={ProfilePic} />
                   </div>
                   <div class="col-md-6 flex-md-last">
-                      <h2 class="font-weight-bold">Check out your Profile Farhene!</h2>
+                      <h2 class="font-weight-bold">Check out your Profile,{auth.currentUser.firstName} !</h2>
                       <p class="my-4">
                           You can now go to the profile page to look at your profile but not only that, here is where you can now change 
                           your FitLevel, Height & Weight, and your Bio.
