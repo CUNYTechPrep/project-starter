@@ -76,6 +76,8 @@ class ForumPage extends React.Component  {
           <h1>
             Fitbud Forum Page
           </h1>
+          <br></br>
+          <br></br>
           <section>
               <table className="thread-starter-table">
                 <tr>
