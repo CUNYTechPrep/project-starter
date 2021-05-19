@@ -1,10 +1,25 @@
 import React from "react";
 
 class GroupCreationPage extends React.Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+    };
+  }
 
+  componentDidMount() {
+    const { email } = this.props.match.params;
+    this.setState({
+      email: email,
+    });
+  }
   render() {
-    return <h1>GroupCreationPage</h1>;
+    return (
+      <h1 style={{ color: "white" }}>
+        GroupCreationPage for {this.state.email}
+      </h1>
+    );
   }
 }
 

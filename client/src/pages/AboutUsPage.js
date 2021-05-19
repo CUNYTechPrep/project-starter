@@ -1,9 +1,14 @@
-import React from 'react';
+import React from "react";
 
-function AboutUsPage(props) {
-  return (
-    <div>Our Project Starters about page</div>
-  );
+class AboutUsPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return <h1 style={{ color: "white" }}>About Us Page</h1>;
+  }
 }
 
 export default AboutUsPage;
