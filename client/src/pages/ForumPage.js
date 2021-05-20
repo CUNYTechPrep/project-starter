@@ -3,7 +3,7 @@ import ForumThreadRow from '../components/Forum/ForumThreadRow.js';
 import '../css/ForumCategoryTable.css';
 import '../css/ForumStarterTable.css';
 import auth from '../services/auth';
-
+<style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');</style>
 class ForumPage extends React.Component  {
     state = {
       error: false,
@@ -73,7 +73,7 @@ class ForumPage extends React.Component  {
     if(!auth.isAuthenticated) {
       return (
         <div className="div-heading">
-          <h1>
+          <h1 class="title">
             Fitbud Forum Page
           </h1>
           <br></br>

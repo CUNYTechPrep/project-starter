@@ -35,3 +35,6 @@
 .new-thread-button:hover {
   background-color: #62e9f3da;
 }
+.title{
+  font-family: 'Inter', sans-serif;
+}
