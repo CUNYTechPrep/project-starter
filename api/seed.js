@@ -1,5 +1,5 @@
 const db = require("./models");
-const { User, Group, Place } = db;
+const { User, Group, Place, Vote } = db;
 const PLACES = require("./controllers/places.json");
 const { sequelize } = require("sequelize");
 
@@ -86,19 +86,28 @@ const GROUPS = [
   },
 ];
 
-// const Groups_USERS = [
-//   { groupId: "1111111111", email: "jephter.maurice@gmail.com" },
-//   { groupId: "1111111111", email: "boris.anthony.gmail.com" },
-//   { groupId: "1111111111", email: "shanice.smith@gmail.com" },
-//   { groupId: "2222222222", email: "boris.anthony@gmail.com" },
-//   { groupId: "2222222222", email: "jephter.maurice@gmail.com" },
-// ];
+const VOTES = [
+  {g: "1111111111", p:"ChIJob8BhadewokROi32ccC9Bzg",},
+  {g: "1111111111", p: "ChIJs8E2cSFcwokRwt6W_ly2b7E",},
+  {g: "1111111111", p: "ChIJh00YQZpewokRFYJK8QJ9ric",},
+  {g: "2222222222", p: "ChIJdeS2mydcwokRRhTrtCgbGYs",},
+  {g: "2222222222", p: "ChIJdcj03CdcwokRbKx-Q1ldpNE",},
+  {g: "2222222222", p: "ChIJPWW-myNcwokRKZpmbfqCeZY",},
+  {g: "3333333333", p: "ChIJkbeKH_lYwokRI-A2Yuf_XSg",},
+  {g: "3333333333", p: "ChIJr9cp0ldYwokRxolUb1zQPzE",},
+  {g: "3333333333", p: "ChIJ2_sBETNiwokRMiIz3QweJcY",},
+]
 
 const seed = () => {
   return db.sequelize
     .sync({ force: true })
     .then(() => {
       // create all the entries
+      let votePromises = VOTES.map((data) => Vote.create({
+        gId: data.g,
+        pId: data.p,
+        vCount: "0",
+      }));
       let userPromises = USERS.map((user) => User.create(user));
       let groupPromises = GROUPS.map((group) => Group.create(group));
       let placespromises = PLACES.map((place) =>
@@ -111,25 +120,26 @@ const seed = () => {
       );
 
       return Promise.all([
+        ...votePromises,
         ...userPromises,
         ...groupPromises,
         ...placespromises,
       ]);
     })
-    .then(() => {
-      // create the associations
-      let associationPromises = Groups_USERS.map((gu) => {
-        let groupPromise = Group.findOne({ where: { groupId: gu.groupId } });
-        let userPromise = User.findOne({ where: { email: gu.email } });
-        return Promise.all([groupPromise, userPromise]).then(
-          ([group, user]) => {
-            //return group.addUser(user);
-            user.addGroup(group);
-          }
-        );
-      });
-      return Promise.all(associationPromises);
-    });
+    // .then(() => {
+    //   // create the associations
+    //   let associationPromises = Groups_USERS.map((gu) => {
+    //     let groupPromise = Group.findOne({ where: { groupId: gu.groupId } });
+    //     let userPromise = User.findOne({ where: { email: gu.email } });
+    //     return Promise.all([groupPromise, userPromise]).then(
+    //       ([group, user]) => {
+    //         //return group.addUser(user);
+    //         user.addGroup(group);
+    //       }
+    //     );
+    //   });
+    //   return Promise.all(associationPromises);
+    // });
 };
 
 module.exports = seed;

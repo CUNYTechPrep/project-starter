@@ -9,6 +9,7 @@ const placesController = require("./places.js");
 const usersController = require("./users");
 const groupsController = require("./groups");
 const userGroupsController = require("./userGroups");
+const voteController = require("./votes");
 // what you need to declare when adding more controllers
 //const commentController = require('./comment.js');
 //const likesController = require('./likes.js');
@@ -25,5 +26,6 @@ router.use("/places", placesController);
 router.use("/users", usersController);
 router.use("/groups", groupsController);
 router.use("/userGroups", userGroupsController);
+router.use("/votes", voteController);
 
 module.exports = router;

@@ -7,7 +7,6 @@ const app = express();
 const PORT = process.env.PORT;
 const seed = require("./seed");
 
-seed(); // initialize the database
 
 //setting up our application
 // this lets us parse 'application/json' content in http requests
@@ -37,6 +36,8 @@ if(process.env.NODE_ENV==='production') {
 // update DB tables based on model updates. Does not handle renaming tables/columns
 // NOTE: toggling this to true drops all tables (including data)
 db.sequelize.sync({ force: false });
+seed(); // initialize the database
+
 
 // start up the server
 if (PORT) {
