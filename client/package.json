@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.14.0",
+    "react-bootstrap": "^1.6.0",
     "react-dom": "^16.14.0",
     "react-google-maps": "^9.4.5",
     "react-router-dom": "^5.2.0",
