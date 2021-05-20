@@ -21,6 +21,10 @@ function CurrentProfile({
   var location = '';
   if (zipCode && city && state) {
     location = `Location: ${city}, ${state} ${zipCode}`;
+  } else if (!zipCode && city && state) {
+    location = `Location: ${city}, ${state}`;
+  } else {
+    location = '';
   }
   return (
     <div>

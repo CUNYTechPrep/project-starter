@@ -25,7 +25,7 @@ class PopupCityStateZip extends React.Component {
     const setObject = {
       city: this.state.cityField,
       state: this.state.stateField,
-      zipCode: this.state.zipField,
+      zipCode: this.state.zipCodeField,
     };
 
     const requestOptions = {
