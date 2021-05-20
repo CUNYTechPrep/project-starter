@@ -54,7 +54,7 @@ function Profile({
         <div className='flex-container-profile' style={{ color: '#585858' }}>
           <h5 className='location-text'>{location}</h5>
         </div>
-        <p style={{ maxWidth: 700, marginLeft: 20, marginTop: 10 }}>{bio}</p>
+        {/* <p style={{ maxWidth: 700, marginLeft: 20, marginTop: 10 }}>{bio}</p> */}
         <p style={{ alignSelf: 'center' }}>{bio}</p>
       </div>
     </div>
