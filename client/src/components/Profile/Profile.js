@@ -41,17 +41,17 @@ function Profile({
       <div>
         <h5 style={{ fontSize: 27 }}>
           {firstName} {lastName} - {age}
-          <span style={{ color: 'white' }}>
-            ..................................
+          <span style={{ color: 'black' }}>
+            
           </span>
-          <span style={{ color: '#585858' }}> {gender} </span>
+          <span style={{ color: 'black' }}> {gender} </span>
         </h5>
-        <h5 style={{ color: '#757575', fontSize: 20 }}>FitLevel: {fitLevel}</h5>
-        <div className='flex-container-profile' style={{ color: '#585858' }}>
+        <h5 style={{ color: 'black', fontSize: 20 }}>FitLevel: {fitLevel}</h5>
+        <div className='flex-container-profile' style={{ color: 'black' }}>
           <h5>Height: {height} inches</h5>
           <h5>Weight: {weight} lbs</h5>
         </div>
-        <div className='flex-container-profile' style={{ color: '#585858' }}>
+        <div className='flex-container-profile' style={{ color: 'black' }}>
           <h5 className='location-text'>{location}</h5>
         </div>
         {/* <p style={{ maxWidth: 700, marginLeft: 20, marginTop: 10 }}>{bio}</p> */}
