@@ -3,7 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.thread-container{
+  display: flex;
+  width: 1000px;
+}
 .thread-topic {
   color: rgb(5 123 254);
 }
@@ -26,6 +29,7 @@
   border-top: 1px solid black;
   margin-top: 200px;
   font-size: 0.9rem;
+  width: 800px;
 }
 
 .user-info-container {
@@ -34,6 +38,7 @@
   padding-left: 4px;
   background-color: hsl(212deg 99% 51%);
   font-size: 0.8rem;
+  width: 250px;
 }
 
 .user-pp {
@@ -68,9 +73,10 @@
 }
 
 .post {
-  width: 500px;
+  width: 800px;
   max-width: auto;
   display: column;
+
 }
 
 .postTitle {
