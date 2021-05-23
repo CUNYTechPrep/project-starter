@@ -4,11 +4,30 @@ const db = require('../models');
 const passport = require('../middlewares/authentication');
 const { Swipe } = db;
 const { User } = db;
+const { cloudinary } = require('../utils/cloudinary');
 
 //populate the Swipe tab
 router.get('/', (req, res) => {
   User.findAll({}).then((users) => res.json(users));
 });
+
+router.get('/records', (req, res) => {
+  Swipe.findAll({
+    include: [
+      {
+      model: User,
+      as: "swipee",
+      },
+      {
+        model: User,
+        as: "swiper",
+      }
+    ]
+  })
+    .then((threads) => res.json(threads));
+//find by PK with WHERE clause and OR clauses
+});
+
 
 // Here you have to figure out what do you do when someone HAS Swiped!
 /////api/users/swipd   verything setup by farhene index.js   note to self
@@ -30,27 +49,6 @@ router.post('/swiped', (req,res) => {
     });
 });
 
-router.get('/swiped/:swpid/:swprid', (req, res) => {
-  const { swpid } = req.params;
-  const { swprid } = req.params;
-
-
-  console.log(swprid)
-  Swipe.findByFk(swpid)
-    .then((swipe) => res.json(swipe));
-});
-
-
-
-
-
-
-
-
-
-// Are they friends or on the block list or buddies list....
-
-// when someone swipes, what data do I send back
 
 //for the user profile
 router.get('/:me', (req, res) => {
@@ -66,6 +64,20 @@ router.get('/:me', (req, res) => {
 //CHANGE THESE URL here later for editing profiles
 //for editing profile info
 router.put('/:me', (req, res) => {
+  // const image = req.body.image;
+  // try {
+  //   const uploadedResponse = cloudinary.uploader.upload(image, {
+  //     upload_preset: 'mmppva7q',
+  //   });
+  //   console.log(uploadedResponse);
+  //   res.json({ msg: 'UPLOADED TO CLOUDINARY' });
+  // } catch (error) {
+  //   console.log(error);
+  //   res
+  //     .status(500)
+  //     .json({ err: 'Something went wrong with the upload to Cloudinary' });
+  // }
+
   const { me } = req.params;
   User.findByPk(me).then((user) => {
     if (!user) {
@@ -79,6 +91,8 @@ router.put('/:me', (req, res) => {
     const newZip = req.body.zipCode ? req.body.zipCode : user.zipCode;
     const newCity = req.body.city ? req.body.city : user.city;
     const newState = req.body.state ? req.body.state : user.state;
+    const newImage = req.body.image ? req.body.image : user.image;
+    console.log('new image: ', newImage);
 
     user.update({
       bio: newBio,
@@ -88,6 +102,7 @@ router.put('/:me', (req, res) => {
       zipCode: newZip,
       city: newCity,
       state: newState,
+      image: newImage,
     });
 
     user

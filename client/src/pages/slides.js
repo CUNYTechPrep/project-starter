@@ -2,11 +2,15 @@ import React, { useState, useMemo } from 'react';
 import '../css/SwipePage.css';
 // import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card';
-import Profile from '../components/Profile/Profile';
-import Loading from '../components/Loading';
+// import { authenticate } from 'passport';
+// import Profile from '../components/Profile/Profile';
+// import Loading from '../components/Loading';
 import auth from '../services/auth.js';
+// import { Table } from 'react-bootstrap';
+// import { canTreatArrayAsAnd } from 'sequelize/types/lib/utils';
 // import ProfileSwipe from '../components/Profile/ProfileSwipe';
 //Almost all of this code is borrowed from Tinder Card code
+
 
 const Simple = (props) => {
   const alreadyRemoved = []
@@ -21,14 +25,56 @@ const Simple = (props) => {
 
   const childRefs = useMemo(() => Array(db.length).fill(0).map(i => React.createRef()), [])
 
-  const swiped = (direction, nameToDelete) => {
+  const swiped = (direction, nameToDelete, character) => {
     console.log('removing: ' + nameToDelete)
-    setLastDirection(direction)                            /////condition where if direction == right. get(pk  with swiprid and swipe id combined) to display in buddies
+    setLastDirection(direction)
+    // console.log(nameToDelete);
+    console.log(character.props.id);
+    if(direction === "left") {//Status = false 
+    //fetch call here to POST to table Swipe
+    console.log(" FALSE FOR: " + auth.currentUser.id + " to " + character.props.id );
+
+      fetch('/api/users/swiped', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+         status: false,
+         swiperId: auth.currentUser.id,
+         swipeeId: character.props.id,
+          
+        }),
+      })
+        .then((res) => res.json())
+        .catch((err) => err);
+    }
+    else if(direction === "right") {//Status = false 
+      //fetch call here to POST to table Swipe
+      console.log(" TRUE FOR: " + auth.currentUser.id + " to " + character.props.id);
+        fetch('/api/users/swiped', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+           status: true,
+           swiperId: auth.currentUser.id,
+           swipeeId: character.props.id,
+            
+          }),
+        })
+          .then((res) => res.json())
+          .catch((err) => err);
+      };
+
     alreadyRemoved.push(nameToDelete)
   }
 
   const outOfFrame = (name) => {
-    console.log(name + ' left the screen!')
+    // console.log(name + ' left the screen!')
     charactersState = charactersState.filter(character => character.props.id !== name)
     setCharacters(charactersState)
   }
@@ -52,7 +98,7 @@ const Simple = (props) => {
         
         <div className='cardContainer'>    
           {characters.map((character, index) =>
-            <TinderCard ref={childRefs[index]} className='swipe' key={character.props.id} onSwipe={(dir) => swiped(dir, character.props.id)} onCardLeftScreen={() => outOfFrame(character.props.id)}>
+            <TinderCard ref={childRefs[index]} className='swipe' key={character.props.id} onSwipe={(dir) => swiped(dir, character.props.id, character)} onCardLeftScreen={() => outOfFrame(character.props.id)}>
               {buddies.push(character.props)}
               <div className='card' style={{maxWidth: 600}}>
                 <h3>{character}</h3>
@@ -62,35 +108,12 @@ const Simple = (props) => {
           )}
         </div>
         {lastDirection ? <h2 key={lastDirection} className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText'>Swipe a card or press a button to get started!</h2>}
-        {console.log(buddies)}
+        {/* {console.log(buddies)} */}
       </div>
   )
 }
 
 export default Simple
-
-
-
-
-// editBuddies = (e) => {
-//   e.preventDefault();
-//   let buddies = this.state.buddies;
-//   edit.buddies(buddies)
-//     .then((user) => {
-//       this.setState({ buddies: this.state.buddies });
-//     })
-//     .catch((err) => {
-//       this.setState({ failed: true})
-//     })
-// }
-
-
-
-
-
-
-
-
 
 
 
