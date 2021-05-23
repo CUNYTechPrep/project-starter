@@ -30,7 +30,6 @@ function CurrentProfile({
 
   const [selectedFile, setSelectedFile] = useState('');
   const [previewSource, setPreviewSource] = useState('');
-  const [imageToSubmit, setImageToSubmit] = useState('');
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
@@ -58,11 +57,11 @@ function CurrentProfile({
     const file = previewSource;
     formData.append('file', file);
     formData.append('upload_preset', 'mmppva7q');
+
     axios
       .post('https://api.cloudinary.com/v1_1/dadhurnls/image/upload', formData)
       .then((response) => {
         console.log(response.data.secure_url);
-        setImageToSubmit(response.data.secure_url);
         fetch('/api/users/' + id, {
           method: 'PUT',
           body: JSON.stringify({ image: response.data.secure_url }),
@@ -104,7 +103,7 @@ function CurrentProfile({
                   src={previewSource ? previewSource : imageURL}
                   alt={id}
                   style={{
-                    // backgroundImage: `url(${imageURL})`,
+                    backgroundImage: `url(${imageURL})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
                     borderRadius: 10,

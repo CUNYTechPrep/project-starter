@@ -27,7 +27,6 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue:
           'https://louisville.edu/enrollmentmanagement/images/person-icon/image',
       },
-
       email: {
         type: DataTypes.STRING,
         unique: true,
