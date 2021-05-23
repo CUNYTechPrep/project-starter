@@ -5,6 +5,7 @@ import auth from '../../services/auth.js';
 import snap from  '../../img/sc.jpg';
 import insta from '../../img/insta.jpg';
 import fb from '../../img/fb.jpg';
+import email from '../../img/email.png';
 import { right } from '@popperjs/core';
 
 const MatchedProfile = (props) => {
@@ -33,13 +34,13 @@ if(props.profile.swiperId === auth.currentUser.id)
           backgroundImage: `url(${imageURL})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          borderRadius: 10,
+          borderRadius: 20,
           height: 400,
           backgroundSize: 600,
         }}
       ></div>
       <div >
-        <h5 style={{ fontSize: 27}}>
+        <h5  style={{ fontSize: 26}}>
           {props.profile.swiper.firstName} {props.profile.swiper.lastName} - {props.profile.swiper.age}
           <span style={{ color: 'black', float: right }}> {props.profile.swiper.gender} </span>
         </h5>
@@ -47,11 +48,10 @@ if(props.profile.swiperId === auth.currentUser.id)
           <h5 className='location-text'>{location}</h5>
         </div>
         <div className='flex-container-profile' style={{ color: 'black' }}>
-        <span><img className="social" src={snap} />{props.profile.swiper.snap}</span> <br></br>
+        <span><img className="social" src={snap} /> {props.profile.swiper.snap}</span> <br></br>
         <span><img className="social" src={insta} /> {props.profile.swiper.insta}</span> <br></br>
         <span><img className="social" src={fb} /> {props.profile.swiper.fb}</span> <br></br>
         </div>
-
       </div>
     </div>
   );
