@@ -6,11 +6,11 @@ const ThreadPost = (props) => {
 // get the array of threadPosts here and then map it here
 var imageURL = props.post.author.image + '.jpg';
     return (
-      <div>
+      
           <div>
             <p className="post-date"> Posted on: {props.post.createdAt} </p>
             <article className="each-post">
-              <div>
+              <div className="thread-container">
                 <div className="user-info-container">
                   <h6> 
                     {props.post.author.firstName + ' ' + props.post.author.lastName} 
@@ -38,7 +38,7 @@ var imageURL = props.post.author.image + '.jpg';
               </div>
             </article>
           </div>
-      </div>
+      
     );
 }
 
