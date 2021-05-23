@@ -98,8 +98,8 @@ function CurrentProfile({
             <div>
               <div
                 style={{
-                  height: 430,
-                  width: 400,
+                  // height: 430,
+                  // width: 400,
                   alignItems: 'center',
                   borderRadius: 30,
                   margin: 30,
@@ -113,8 +113,9 @@ function CurrentProfile({
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
                     borderRadius: 10,
-                    height: 380,
-                    width: 340,
+                    // height: 380,
+                    // width: 340,
+                    maxHeight: 400
                   }}
                 />
                 {/* upload_image form, submit button, and preview_of_image */}
