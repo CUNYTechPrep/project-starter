@@ -98,8 +98,7 @@ function CurrentProfile({
             <div>
               <div
                 style={{
-                  // height: 430,
-                  // width: 400,
+
                   alignItems: 'center',
                   borderRadius: 30,
                   margin: 30,
@@ -109,12 +108,9 @@ function CurrentProfile({
                   src={previewSource ? previewSource : imageURL}
                   alt={id}
                   style={{
-                    // backgroundImage: `url(${imageURL})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
                     borderRadius: 10,
-                    // height: 380,
-                    // width: 340,
                     maxHeight: 400
                   }}
                 />
@@ -125,10 +121,10 @@ function CurrentProfile({
                     type='file'
                     name='image'
                     onChange={handleFileInputChange}
-                    className='upload-image-form'
+                    className='button-file'
                   ></input>
                   <button
-                    className='image-submit-btn'
+                    className='button-file'
                     type='submit'
                     style={{ width: '60px', height: '30px' }}
                   >

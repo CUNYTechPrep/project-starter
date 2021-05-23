@@ -5,7 +5,6 @@ import auth from '../../services/auth.js';
 import snap from  '../../img/sc.jpg';
 import insta from '../../img/insta.jpg';
 import fb from '../../img/fb.jpg';
-import email from '../../img/email.png';
 import { right } from '@popperjs/core';
 
 const MatchedProfile = (props) => {
@@ -23,9 +22,6 @@ if(props.profile.swiperId === auth.currentUser.id)
   } else {
     location = '';
   }
-
-  var inches = props.profile.swiper.height%12;
-  var feet = Math.floor(props.profile.swiper.height / 12);
 
   return (
     <div >
