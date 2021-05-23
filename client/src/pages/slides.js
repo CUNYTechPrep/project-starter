@@ -23,7 +23,7 @@ const Simple = (props) => {
 
   const swiped = (direction, nameToDelete) => {
     console.log('removing: ' + nameToDelete)
-    setLastDirection(direction)
+    setLastDirection(direction)                            /////condition where if direction == right. get(pk  with swiprid and swipe id combined) to display in buddies
     alreadyRemoved.push(nameToDelete)
   }
 
