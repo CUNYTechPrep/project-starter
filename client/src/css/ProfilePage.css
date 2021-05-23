@@ -52,3 +52,7 @@
   transition-timing-function: ease-in-out;
   color: goldenrod;
 }
+
+.social {
+  max-height: 60px;
+}

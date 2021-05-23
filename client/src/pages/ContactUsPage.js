@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../img/dumbbell.png';
+import logo from '../img/FBlogo.png';
 import Clipboard from 'clipboard';
 
 function ContactUsPage(props) {

@@ -11,6 +11,7 @@ import PopupBio from '../Popup/PopupBio';
 import PopupFit from '../Popup/PopUpFit';
 import PopupHW from '../Popup/PopUpHW';
 import PopupBuddies from '../Popup/PopUpBuddies';
+import PopUpSocialMedia from '../Popup/PopUpSocialMedia';
 import auth from '../../services/auth.js';
 import PopupCityStateZip from '../Popup/PopUpCityStateZip';
 
@@ -18,6 +19,7 @@ class ProfilePage extends React.Component {
   state = {
     showBioPopup: false,
     showFitPopup: false,
+    showSocialMediaPopup: false,
     showHWPopup: false,
     showBuddiesPopup: false,
     showCityStateZipPopup: false,
@@ -72,6 +74,13 @@ class ProfilePage extends React.Component {
     });
   }
 
+  //For EDITING Social Media Links
+  togglesocialMediaPopup() {
+    this.setState({
+      showSocialMediaPopup: !this.state.showSocialMediaPopup,
+    });
+  }
+
   //PUT function for Edit Bio
   editBio = (e) => {
     e.preventDefault();
@@ -99,7 +108,6 @@ class ProfilePage extends React.Component {
           <div className='flex-container-profile'>
             <div>{this.state.profile}</div>
 
-            {/* EDITING SECTION */}
             <div
               style={{
                 border: '1px solid lightgray',
@@ -179,6 +187,20 @@ class ProfilePage extends React.Component {
                     width: 300,
                     borderRadius: 30,
                   }}
+                  onClick={this.togglesocialMediaPopup.bind(this)}
+                >
+                  Edit Social Media
+                </button>
+              </div>
+              <div style={{ marginBottom: 30, borderRadius: 30 }}>
+                <button
+                  className='button-edits'
+                  style={{
+                    marginLeft: 30,
+                    height: 50,
+                    width: 300,
+                    borderRadius: 30,
+                  }}
                   onClick={this.toggleBuddiesPopup.bind(this)}
                 >
                   See Buddies
@@ -230,6 +252,12 @@ class ProfilePage extends React.Component {
                   closeCityStateZipPopup={this.toggleCityStateZipPopup.bind(
                     this
                   )}
+                />
+              ) : null}
+              {this.state.showSocialMediaPopup ? (
+                <PopUpSocialMedia
+                  text='Edit Social Media'
+                  closeSocialMediaPopup={this.togglesocialMediaPopup.bind(this)}
                 />
               ) : null}
             </div>

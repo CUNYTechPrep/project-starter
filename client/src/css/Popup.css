@@ -62,3 +62,8 @@ h1 {
     margin: auto;
     background: rgb(206, 216, 215);
   }
+
+  .swiper-button-prev, .swiper-button-next{
+    display: hidden !important;
+    z-index: 0 !important;
+  }
