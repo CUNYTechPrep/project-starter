@@ -68,9 +68,6 @@ class PopupBuddies extends React.Component {
       if(matches.length > 0)
         console.log(matches);
 
-        // let finalMatches = matches.map((p, ii) => 
-        //     <Profile {...p} key={ii} />
-        // )
 
       return (
         <div className='popup'>
@@ -81,7 +78,7 @@ class PopupBuddies extends React.Component {
               {
                 matches.map((m, index) => 
                   <div>
-                    {/* <Profile {...m} key={index} /> */}
+                    <MatchedProfile profile={m} />
                   </div>
                 )
               }
@@ -89,8 +86,8 @@ class PopupBuddies extends React.Component {
 
 
           <button className= " button-edits" style={{height: 50, width: 300, borderRadius: 30}}
-            onClick={this.props.closeBuddiesPopup} type="submit"> 
-            Save 
+            onClick={this.props.closeBuddiesPopup}> 
+            Exit 
           </button>
           </div>
         </div>
