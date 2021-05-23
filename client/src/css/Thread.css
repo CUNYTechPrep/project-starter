@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.thread-container {
+  display: flex;
+  width: 800px;
+}
+
 .thread-topic {
   color: rgb(0, 131, 0);
 }
@@ -26,6 +31,7 @@
   border-top: 1px solid black;
   margin-top: 200px;
   font-size: 0.9rem;
+  width: fit-content;
 }
 
 .user-info-container {
@@ -65,14 +71,4 @@
 
 .post-login-button:hover {
   background-color: hsl(204, 45%, 58%);
-}
-
-.post {
-  width: 500px;
-  max-width: auto;
-  display: column;
-}
-
-.postTitle {
-  text-align: center;
 }

@@ -14,15 +14,20 @@ module.exports = (sequelize, DataTypes) => {
       firstName: { type: DataTypes.STRING },
       lastName: { type: DataTypes.STRING },
       age: { type: DataTypes.INTEGER },
-      city: {type: DataTypes.STRING},
-      state: {type: DataTypes.STRING},
+      city: { type: DataTypes.STRING },
+      state: { type: DataTypes.STRING },
       zipCode: { type: DataTypes.INTEGER },
       gender: { type: DataTypes.STRING },
       fitLevel: { type: DataTypes.STRING },
       height: { type: DataTypes.INTEGER },
       weight: { type: DataTypes.INTEGER },
       bio: { type: DataTypes.STRING },
-      image: { type: DataTypes.STRING },
+      image: {
+        type: DataTypes.STRING,
+        defaultValue:
+          'https://louisville.edu/enrollmentmanagement/images/person-icon/image',
+      },
+
       email: {
         type: DataTypes.STRING,
         unique: true,
