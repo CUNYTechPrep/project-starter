@@ -26,6 +26,13 @@ function CurrentProfile({
   } else {
     location = '';
   }
+
+//converting height to feet and inches here maybe.
+// let feet = 0;
+// let inches = 0;
+    var inches = height%12;
+    var feet = Math.floor(height / 12);
+
   return (
     <div>
       <div>
@@ -89,7 +96,7 @@ function CurrentProfile({
                       className='flex-container-profile'
                       style={{ color: '#585858' }}
                     >
-                      <h5>Height: {height} inches</h5>
+                      <h5>Height: {feet}' {inches}" </h5>
                       <h5>Weight: {weight} lbs</h5>
                     </div>
                     <div

@@ -26,6 +26,10 @@ function Profile({
   } else {
     location = '';
   }
+
+  var inches = height%12;
+  var feet = Math.floor(height / 12);
+
   return (
     <div>
       <div
@@ -48,7 +52,7 @@ function Profile({
         </h5>
         <h5 style={{ color: 'black', fontSize: 20 }}>FitLevel: {fitLevel}</h5>
         <div className='flex-container-profile' style={{ color: 'black' }}>
-          <h5>Height: {height} inches</h5>
+          <h5>Height: {feet}' {inches}" </h5>
           <h5>Weight: {weight} lbs</h5>
         </div>
         <div className='flex-container-profile' style={{ color: 'black' }}>
