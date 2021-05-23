@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'w3-css/w3.css';
 import '../../css/ProfilePage.css';
+import axios from 'axios';
 
 function CurrentProfile({
   id,
@@ -17,7 +18,7 @@ function CurrentProfile({
   city,
   state,
 }) {
-  var imageURL = image + '.jpg';
+  var imageURL = image;
   var location = '';
   if (zipCode && city && state) {
     location = `Location: ${city}, ${state} ${zipCode}`;
@@ -32,6 +33,53 @@ function CurrentProfile({
 // let inches = 0;
     var inches = height%12;
     var feet = Math.floor(height / 12);
+  const [selectedFile, setSelectedFile] = useState('');
+  const [previewSource, setPreviewSource] = useState('');
+  const [imageToSubmit, setImageToSubmit] = useState('');
+
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+  };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    setSelectedFile(file.name);
+
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
+
+  const handleSubmitFile = async (e) => {
+    e.preventDefault();
+    if (!previewSource && !selectedFile) return;
+    uploadImage(selectedFile);
+  };
+
+  const uploadImage = (selectedImage) => {
+    const formData = new FormData();
+    const file = previewSource;
+    formData.append('file', file);
+    formData.append('upload_preset', 'mmppva7q');
+    axios
+      .post('https://api.cloudinary.com/v1_1/dadhurnls/image/upload', formData)
+      .then((response) => {
+        console.log(response.data.secure_url);
+        setImageToSubmit(response.data.secure_url);
+        fetch('/api/users/' + id, {
+          method: 'PUT',
+          body: JSON.stringify({ image: response.data.secure_url }),
+          headers: { 'Content-type': 'application/json' },
+        }).catch((err) => {
+          console.log('Error in PUT request: ', err);
+        });
+      })
+      .catch((error) => {
+        console.log('Error uploading image to Cloudinary', error);
+      });
+  };
 
   return (
     <div>
@@ -58,18 +106,36 @@ function CurrentProfile({
                 }}
               >
                 <img
-                  src={imageURL}
+                  src={previewSource ? previewSource : imageURL}
                   alt={id}
                   style={{
-                    backgroundImage: `url(${imageURL})`,
+                    // backgroundImage: `url(${imageURL})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
                     borderRadius: 10,
                     height: 380,
-                    backgroundSize: 800,
+                    width: 340,
                   }}
                 />
+                {/* upload_image form, submit button, and preview_of_image */}
+
+                <form onSubmit={handleSubmitFile}>
+                  <input
+                    type='file'
+                    name='image'
+                    onChange={handleFileInputChange}
+                    className='upload-image-form'
+                  ></input>
+                  <button
+                    className='image-submit-btn'
+                    type='submit'
+                    style={{ width: '60px', height: '30px' }}
+                  >
+                    Submit
+                  </button>
+                </form>
               </div>
+
               <div
                 style={{
                   border: '1px groove lightgray',

@@ -1,6 +1,8 @@
 import React from 'react';
 import 'w3-css/w3.css';
 import '../../css/ProfilePage.css';
+// import axios from 'axios';
+// import { Image } from 'cloudinary-react';
 
 import CurrentProfile from '../../components/Profile/CurrProfile';
 import AuthButton from '../AuthButton';
@@ -20,6 +22,9 @@ class ProfilePage extends React.Component {
     showBuddiesPopup: false,
     showCityStateZipPopup: false,
     profile: null,
+    fileInputState: '',
+    selectedFile: '',
+    previewSource: '',
   };
 
   componentDidMount() {

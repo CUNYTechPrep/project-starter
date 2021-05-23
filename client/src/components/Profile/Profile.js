@@ -17,7 +17,7 @@ function Profile({
   state,
   zipCode,
 }) {
-  var imageURL = image + '.jpg';
+  var imageURL = image;
   var location = '';
   if (zipCode && city && state) {
     location = `Location: ${city}, ${state} ${zipCode}`;
