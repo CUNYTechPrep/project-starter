@@ -7,55 +7,9 @@ import Loading from '../components/Loading';
 import auth from '../services/auth.js';
 // import ProfileSwipe from '../components/Profile/ProfileSwipe';
 //Almost all of this code is borrowed from Tinder Card code
-
-
-
-// class Swipes extends React.Component {
-//   state = {
-//    Buddies:[]
-//   }
-  
-//     // componentDidMount() {
-//     //   const { id } = auth.currentUser;
-//     //   fetch("/api/users/"+id)
-//     //   .then(res => res.json())
-//     //   .then(myProfile => {
-//     //     this.setState({
-//     //       loading: false,
-//     //       profile: <CurrentProfile {...myProfile} />
-//     //     });
-//     //   })
-//     // }
-//   //For EDITING Buddies List
-//   addBuddieslist() {
-//     this.setState({
-//       // Buddies: swipee id
-//     });
-//   }
-
-//   //PUT function for Edit Bio
-//   editBuddies = (e) => {
-//     e.preventDefault();
-//     let buddies = this.state;
-//     edit.buddies(buddies)
-//       .then((user) => {
-//         this.setState({ buddies: this.state.buddies });
-//       })
-//       .catch((err) => {
-//         this.setState({ failed: true})
-//       })
-//   }
-// }
-
-////
-
-
-
-
-
 const Simple = (props) => {
   const alreadyRemoved = []
-  const buddies =[]
+  const buddies = []
 
   const db = props.db;
 
@@ -68,7 +22,7 @@ const Simple = (props) => {
 
   const swiped = (direction, nameToDelete) => {
     console.log('removing: ' + nameToDelete)
-    setLastDirection(direction)
+    setLastDirection(direction)                            /////condition where if direction == right. get(pk  with swiprid and swipe id combined) to display in buddies
     alreadyRemoved.push(nameToDelete)
   }
 
@@ -114,20 +68,6 @@ const Simple = (props) => {
 
 export default Simple
 
-
-
-
-// editBuddies = (e) => {
-//   e.preventDefault();
-//   let buddies = this.state.buddies;
-//   edit.buddies(buddies)
-//     .then((user) => {
-//       this.setState({ buddies: this.state.buddies });
-//     })
-//     .catch((err) => {
-//       this.setState({ failed: true})
-//     })
-// }
 
 
 

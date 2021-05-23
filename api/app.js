@@ -28,6 +28,20 @@ app.use(morgan(logFormat));
 // this mounts controllers/index.js at the route `/api`
 app.use('/api', require('./controllers'));
 
+
+
+// app.get('/swipr', (req, res) => {
+//   res.send({"name": "edgar"})
+  
+//   });
+
+
+
+
+
+
+
+
 // for production use, we serve the static react build folder
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
@@ -40,7 +54,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // update DB tables based on model updates. Does not handle renaming tables/columns
 // NOTE: toggling this to true drops all tables (including data)
-db.sequelize.sync({ force: false });
+db.sequelize.sync({ alter: true });
 
 // start up the server
 if (PORT) {

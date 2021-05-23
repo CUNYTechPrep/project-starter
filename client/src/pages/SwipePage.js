@@ -1,29 +1,12 @@
   
-import React, { useState } from 'react'
+import React from 'react'
 import 'w3-css/w3.css';
 import '../styles.css';
 import Profile from '../components/Profile/Profile';
 import Loading from '../components/Loading';
 import '../css/SwipePage.css';
 import auth from '../services/auth.js';
-import TinderCard from 'react-tinder-card';
 import Simple from './slides';
-// import Switch from 'react-ios-switch';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class SwipePage1 extends React.Component {
   state = {

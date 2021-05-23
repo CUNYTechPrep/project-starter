@@ -26,10 +26,11 @@
   background-color: hsl(227deg 67% 42%);
   color: white;
   display: flex;
+  
 }
 
 .nav-link {
-  color: white;
+  color: black;
 }
 
 .nav-item.active .nav-link,
@@ -70,12 +71,10 @@ html, body {
 body > div {
   width: 100%;
   height: 90%;
-  background: hsl(212, 82%, 15%);
 }
 
 body > div > div {
   width: 100%;
-  margin-top: 20px;
   background: white;
   margin-bottom: 20px;
 }

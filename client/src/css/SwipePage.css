@@ -37,10 +37,10 @@
   .card {
     top: 200px;
     position: relative;
-    background-color: #fff;
+    background-color: #057bfe;
     width: 80vw;
     max-width: 260px;
-    height: 650px;
+    height: 750px;
     box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.30);
     border-radius: 20px;
     background-size: cover;
@@ -55,7 +55,7 @@
   .infoText {
     width: auto;
     position: relative; 
-    height: 28px;
+    height: 35px;
     justify-content: center;
     display: flex;
     color: rgb(255, 255, 255);

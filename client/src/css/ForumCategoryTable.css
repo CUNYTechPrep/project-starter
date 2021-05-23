@@ -4,47 +4,37 @@
   box-sizing: border-box;
 }
 
-.thread-category-table {
-  width: 1000px;
-  margin-top: 50px;
-  font-family: 'Garamond', sans-serif;
-}
-.thread-category-table th {
-  background-color: hsl(162, 67%, 42%);
+.thread-create {
+  background-color: rgb(5 123 254);
   border: 1.2px solid rgb(162, 158, 158);
+  border-radius: 10px;
   text-align: left;
-  color: white;
+  color: rgb(0, 12, 17);
   padding-left: 5px;
+  align-items: flex-end;
 }
 
-.thread-category-table td {
-  text-align: left;
-  border: 1.1px solid rgb(162, 158, 158);
-  padding-left: 5px;
-}
-
-.thread-category {
-  color: hsl(162, 67%, 42%);
-  font-size: 1rem;
-}
-
-.thread-description {
-  font-size: 0.7rem;
+.thread-new {
+  padding: 5px;
+  margin: 30px;
+  
 }
 
 .new-thread-button {
   color:hsl(227deg 67% 42%);
   font-size: 1rem;
   border: 1px solid hsl(227deg 67% 42%);
-  margin: 20px 0px 0px 0px;
+  margin: 20px 20px 0px 0px;
   padding: 6px 6px;
   position: relative;
   border-radius: 5px;
   background-color: rgba(245, 245, 245, 0.986);
-  margin-top: 100px;
-  margin-left: -900px;
+  margin-left: 5px;
 }
 
 .new-thread-button:hover {
-  background-color: rgba(17, 179, 52, 0.123);
+  background-color: #62e9f3da;
+}
+.title{
+  font-family: 'Inter', sans-serif;
 }

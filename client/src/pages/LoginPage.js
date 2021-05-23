@@ -10,6 +10,7 @@ import '../App.css';
 import '../css/LoginPage.css';
 
 
+
 class LoginPage extends React.Component {
   state = {
     redirectToReferrer: false,
@@ -31,6 +32,7 @@ class LoginPage extends React.Component {
     auth.authenticate(email, password)
       .then((user) => {
         this.setState({ redirectToReferrer: true });
+        // localStorage.setItem(auth.isAuthenticated, true);
       })
       .catch((err) => {
         this.setState({ failed: true });
