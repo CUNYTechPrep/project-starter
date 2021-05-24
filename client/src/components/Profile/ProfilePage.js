@@ -101,11 +101,11 @@ class ProfilePage extends React.Component {
         <div className='background'>
           <div
             className='title'
-            style={{ border: '3px groove lightgray', borderRadius: 20 }}
+            style={{ border: '3px groove lightgray', borderRadius: 20, marginBottom: 30 }}
           >
-            My Profile
+            My FitProfile
           </div>
-          <div className='flex-container-profile'>
+          <div className='flex-container-profile' >
             <div>{this.state.profile}</div>
 
             <div
@@ -120,6 +120,7 @@ class ProfilePage extends React.Component {
                 flexShrink: 1,
                 flexGrow: 1,
                 justifyContent: 'start',
+                backgroundColor: '#E6E9EE5E'
               }}
             >
               <div style={{ marginBottom: 30, borderRadius: 30 }}>

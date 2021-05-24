@@ -92,6 +92,8 @@ function CurrentProfile({
             paddingLeft: 10,
             paddingRight: 10,
             borderRadius: 30,
+            backgroundColor: '#E6E9EE5E',
+            
           }}
         >
           <div>
@@ -102,6 +104,7 @@ function CurrentProfile({
                   alignItems: 'center',
                   borderRadius: 30,
                   margin: 30,
+                 
                 }}
               >
                 <img
@@ -141,36 +144,44 @@ function CurrentProfile({
                   paddingLeft: 10,
                   paddingRight: 10,
                   borderRadius: 30,
+                  backgroundColor: '#5796F35E',
                 }}
               >
-                <div>
-                  <div>
+                <div style={{backgroundColor: '#ffffff', borderRadius: 20}}>
+                  <div >
                     <h5 style={{ fontSize: 27 }}>
-                      {firstName} {lastName} - {age}
-                      <span style={{ color: '#585858', float: 'right' }}>
+                      <span style={{ color: '#585858', float: 'left', marginLeft: 20 }}>
+                        {' '}
+                        {firstName} {lastName} - {age}{' '}
+                      </span>
+                      <span style={{ color: '#585858', float: 'right', marginRight: 20  }}>
                         {' '}
                         {gender}{' '}
                       </span>
                     </h5>
-                    <h5 style={{ color: '#757575', fontSize: 20 }}>
-                      FitLevel: {fitLevel}
-                    </h5>
-                    <div
-                      className='flex-container-profile'
-                      style={{ color: '#585858' }}
-                    >
-                      <h5>Height: {feet}' {inches}" </h5>
-                      <h5>Weight: {weight} lbs</h5>
+                    <br></br><br></br>
+                    <div style={{backgroundColor: 'white'}}>
+                      <h5 style={{ color: '#757575', fontSize: 20 }}>
+                        FitLevel: {fitLevel}
+                      </h5>
+                      <div
+                        className='flex-container-profile'
+                        style={{ color: '#585858' }}
+                      >
+                        <h5>Height: {feet}' {inches}" </h5>
+                        <h5>Weight: {weight} lbs</h5>
+                      </div>
+                      <div
+                        className='flex-container-profile'
+                        style={{ color: '#585858' }}
+                      >
+                        <h5 className='location-text'>{location}</h5>
+                      </div>
+                      <div style={{ maxWidth: 700, marginLeft: 40, marginTop: 10, marginRight: 40,
+                                backgroundColor: 'white', borderRadius: 40}}>
+                        {bio}
+                      </div>
                     </div>
-                    <div
-                      className='flex-container-profile'
-                      style={{ color: '#585858' }}
-                    >
-                      <h5 className='location-text'>{location}</h5>
-                    </div>
-                    <p style={{ maxWidth: 700, marginLeft: 20, marginTop: 10 }}>
-                      {bio}
-                    </p>
                   </div>
                 </div>
               </div>
