@@ -6,7 +6,7 @@ const db = require('./models');
 const passport = require('./middlewares/authentication');
 const app = express();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 
 // this lets us parse 'application/json' content in http requests
 // set limit to 50mb allow for uploading of higher-res images
