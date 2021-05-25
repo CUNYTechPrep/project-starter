@@ -1,8 +1,9 @@
 import PLACES_INFO from "../places.json";
+import VOTES from "../votes.json";
 import React from "react";
 import { Redirect } from "react-router-dom";
 import NavBar from "../components/NavBar";
-import MemberDisplay from "../components/MemberDisplay";
+
 import {
   withScriptjs,
   withGoogleMap,
@@ -14,6 +15,7 @@ const mapURL =
   "https://maps.googleapis.com/maps/api/js?key=" +
   GAPIKEY +
   "&v=3.exp&libraries=geometry";
+let voteCache = VOTES;
 
 class ProfilePage extends React.Component {
   constructor(props) {
@@ -31,6 +33,7 @@ class ProfilePage extends React.Component {
     this.handleGroupSelect = this.handleGroupSelect.bind(this);
     this.getPlaceInfo = this.getPlaceInfo.bind(this);
     this.getUserInfo = this.getUserInfo.bind(this);
+    this.handleVote = this.handleVote.bind(this);
   }
   handleGroupSelect(index) {
     console.log("selected group with index " + index);
@@ -39,6 +42,11 @@ class ProfilePage extends React.Component {
       members: this.state.groups[index].members,
       places: this.state.groups[index].places,
     });
+  }
+
+  handleVote(pid, gid) {
+    voteCache.filter((vote) => vote.g === gid && vote.p === pid)[0].v += 1;
+    this.setState({});
   }
 
   getPlaceInfo(place_id) {
@@ -78,8 +86,7 @@ class ProfilePage extends React.Component {
           members: this.state.groups[this.state.selectedGroup].members,
           places: this.state.groups[this.state.selectedGroup].places,
         })
-      )
-      .then(() => console.log(this.state.selectedGroupPlaces));
+      );
   }
 
   render() {
@@ -149,20 +156,43 @@ class ProfilePage extends React.Component {
                     {this.state.groups[this.state.selectedGroup].groupName}{" "}
                     details
                   </p>
-                  <h5>Members</h5>
+                  <span>Members: {this.state.members.length}</span>
 
                   <h5>Places of Interests</h5>
                   {this.state.places.map((pId) => {
-                    const place = this.getPlaceInfo(pId);
                     return (
                       <p>
                         <span>
-                          {this.getPlaceInfo(pId).name} : 0{" "}
+                          {this.getPlaceInfo(pId).name.substring(0, 10).length <
+                          10
+                            ? this.getPlaceInfo(pId).name.substring(0, 10) +
+                              " ".repeat(
+                                10 -
+                                  this.getPlaceInfo(pId).name.substring(0, 10)
+                                    .length
+                              )
+                            : this.getPlaceInfo(pId).name.substring(0, 10)}{" "}
+                          :{" "}
+                          {
+                            voteCache.filter(
+                              (vote) =>
+                                vote.g ===
+                                  this.state.groups[this.state.selectedGroup]
+                                    .groupId && vote.p === pId
+                            )[0].v
+                          }{" "}
                           <button>
                             <img
                               src="https://cdn4.iconfinder.com/data/icons/aiga-symbol-signs/581/aiga_uparrow_inv-512.png"
                               alt="upVote"
                               style={{ height: "15px" }}
+                              onClick={() =>
+                                this.handleVote(
+                                  pId,
+                                  this.state.groups[this.state.selectedGroup]
+                                    .groupId
+                                )
+                              }
                             ></img>
                           </button>
                         </span>
