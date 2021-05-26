@@ -31,11 +31,12 @@
   .cardContainer {
     width: 90vw;
     max-width: auto;
-    height: 300px;
+    margin-top: 230px;
+    /* height: 300px; */
   }
   
   .card {
-    top: 200px;
+    top: 90px;
     position: relative;
     background-color: #057bfe;
     width: 80vw;
