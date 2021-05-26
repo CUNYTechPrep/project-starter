@@ -22,7 +22,6 @@ const swipeProfileController = require('./profile&swipe.js'); //GET, PUT
 //this will help us track the location of the user
 //get maps location info from front end to here
 
-const matchedbuddiesController = require('./buddies.js'); //GET
 
 const appConfigController = require('./appConfig.js');
 const authController = require('./auth');
@@ -35,8 +34,6 @@ const forumController = require('./forum.js');
 router.use('/users', swipeProfileController);
 
 router.use('/auth', authController);
-
-router.use('/matchedusers', matchedbuddiesController);
 
 router.use('/forum', forumController);
 

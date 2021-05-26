@@ -88,6 +88,11 @@ router.put('/:me', (req, res) => {
     const newFit = req.body.fitLevel ? req.body.fitLevel : user.fitLevel;
     const newHeight = req.body.height ? req.body.height : user.height;
     const newWeight = req.body.weight ? req.body.weight : user.weight;
+    
+    const newSnap = req.body.snap ? req.body.snap : user.snap;
+    const newInsta = req.body.insta ? req.body.insta : user.insta;
+    const newFacebook = req.body.fb ? req.body.fb : user.fb;
+
     const newZip = req.body.zipCode ? req.body.zipCode : user.zipCode;
     const newCity = req.body.city ? req.body.city : user.city;
     const newState = req.body.state ? req.body.state : user.state;
@@ -103,6 +108,9 @@ router.put('/:me', (req, res) => {
       city: newCity,
       state: newState,
       image: newImage,
+      snap: newSnap,
+      insta: newInsta,
+      fb: newFacebook,
     });
 
     user

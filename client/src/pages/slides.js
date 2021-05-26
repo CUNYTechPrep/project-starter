@@ -1,14 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import '../css/SwipePage.css';
-// import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card';
-// import { authenticate } from 'passport';
-// import Profile from '../components/Profile/Profile';
-// import Loading from '../components/Loading';
+
 import auth from '../services/auth.js';
-// import { Table } from 'react-bootstrap';
-// import { canTreatArrayAsAnd } from 'sequelize/types/lib/utils';
-// import ProfileSwipe from '../components/Profile/ProfileSwipe';
+
 //Almost all of this code is borrowed from Tinder Card code
 
 
@@ -30,7 +25,7 @@ const Simple = (props) => {
     setLastDirection(direction)
     // console.log(nameToDelete);
     console.log(character.props.id);
-    if(direction === "left") {//Status = false 
+    if(direction === "left" || direction === "down") {//Status = false 
     //fetch call here to POST to table Swipe
     console.log(" FALSE FOR: " + auth.currentUser.id + " to " + character.props.id );
 
@@ -50,7 +45,7 @@ const Simple = (props) => {
         .then((res) => res.json())
         .catch((err) => err);
     }
-    else if(direction === "right") {//Status = false 
+    else if(direction === "right" || direction === "up") {//Status = true 
       //fetch call here to POST to table Swipe
       console.log(" TRUE FOR: " + auth.currentUser.id + " to " + character.props.id);
         fetch('/api/users/swiped', {
@@ -79,21 +74,21 @@ const Simple = (props) => {
     setCharacters(charactersState)
   }
 
-  const swipe = (dir) => {
-    const cardsLeft = characters.filter(person => !alreadyRemoved.includes(person.props.id))
-    if (cardsLeft.length) {
-      const toBeRemoved = cardsLeft[cardsLeft.length - 1].props.id // Find the card object to be removed
-      const index = db.map(person => person.props.id).indexOf(toBeRemoved) // Find the index of which to make the reference to
-      alreadyRemoved.push(toBeRemoved) // Make sure the next card gets removed next time if this card do not have time to exit the screen
-      childRefs[index].current.swipe(dir) // Swipe the card!
-    }
-  }
+  // const swipe = (dir) => {
+  //   const cardsLeft = characters.filter(person => !alreadyRemoved.includes(person.props.id))
+  //   if (cardsLeft.length) {
+  //     const toBeRemoved = cardsLeft[cardsLeft.length - 1].props.id // Find the card object to be removed
+  //     const index = db.map(person => person.props.id).indexOf(toBeRemoved) // Find the index of which to make the reference to
+  //     alreadyRemoved.push(toBeRemoved) // Make sure the next card gets removed next time if this card do not have time to exit the screen
+  //     childRefs[index].current.swipe(dir) // Swipe the card!
+  //   }
+  // }
 
   return (
       <div className="app">
         <link href='https://fonts.googleapis.com/css?family=Damion&display=swap' rel='stylesheet' />
         <link href='https://fonts.googleapis.com/css?family=Alatsi&display=swap' rel='stylesheet' />
-        <h1>Fitbud Swipe Cards</h1>
+        <h1 style={{margin: 40}}>Fitbud Swipe Cards</h1>
         <br></br>
         
         <div className='cardContainer'>    

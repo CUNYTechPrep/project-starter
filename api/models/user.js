@@ -27,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
         // defaultValue:
         //   'https://www.seekpng.com/png/full/46-462959_unknown-person-icon-png-download-single-people-logo.png',
       },
+      snap: { type: DataTypes.STRING },
+      insta:  { type: DataTypes.STRING },
+      fb:  { type: DataTypes.STRING },
+      
 
       email: {
         type: DataTypes.STRING,

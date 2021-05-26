@@ -62,3 +62,15 @@ h1 {
     margin: auto;
     background: rgb(206, 216, 215);
   }
+
+  .swiper-button-prev, .swiper-button-next{
+    display: hidden !important;
+    z-index: 0 !important;
+  }
+
+  .swiper-button-prev:after, .swiper-button-next:after{
+    background-color: rgba(95, 158, 160, 0);
+    color: rgba(0, 0, 255, 0);
+  }
+
+  

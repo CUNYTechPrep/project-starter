@@ -26,11 +26,12 @@
   background-color: hsl(227deg 67% 42%);
   color: white;
   display: flex;
-  
 }
 
 .nav-link {
   color: black;
+  font-size: 20px;
+
 }
 
 .nav-item.active .nav-link,
@@ -52,8 +53,10 @@
 }
 
 .logo {
-  height: 150px;
-  width: 150px;
+  margin-top: 120px;
+  height: 80px;
+  width: 200px;
+  margin-bottom: 30px;
 }
 
 .flex-container {
@@ -66,16 +69,21 @@
 html, body {
   width: 100%;
   height: 100%;
+  background-image: url("./img/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body > div {
   width: 100%;
-  height: 90%;
+  height: 100%;
+
 }
 
 body > div > div {
   width: 100%;
   background: white;
+  opacity: 0.95;
   margin-bottom: 20px;
 }
 

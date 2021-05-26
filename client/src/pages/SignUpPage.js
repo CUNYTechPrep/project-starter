@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 import auth from '../services/auth';
 
-import logo from '../img/dumbbell.png';
+import logo from '../img/FBlogo.png';
 import '../App.css';
 import '../css/LoginPage.css';
 //import { Dropdown } from 'bootstrap';
