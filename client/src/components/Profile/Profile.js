@@ -44,22 +44,28 @@ function Profile({
       ></div>
       <div>
         <h5 style={{ fontSize: 27 }}>
-          {firstName} {lastName} - {age}
-          <span style={{ color: 'black' }}>
-            
+          <span style={{ color: 'white', float: 'left', marginLeft: 40 }}>
+            {' '}
+            {firstName} {lastName} - {age}{' '}
           </span>
-          <span style={{ color: 'black' }}> {gender} </span>
+          <span style={{ color: 'white', float: 'right', marginRight: 40  }}>
+            {' '}
+            {gender}{' '}
+          </span>
         </h5>
-        <h5 style={{ color: 'black', fontSize: 20 }}>FitLevel: {fitLevel}</h5>
-        <div className='flex-container-profile' style={{ color: 'black' }}>
-          <h5>Height: {feet}' {inches}" </h5>
-          <h5>Weight: {weight} lbs</h5>
+        <br></br><br></br>
+        <h5 style={{ color: 'lightGray', fontSize: 20 }}>FitLevel: {fitLevel}</h5>
+        <div className='flex-container-profile' style={{ color: 'lightGray' }}>
+          <h5 className='location-text'>Height: {feet}' {inches}" </h5>
+          <h5 className='location-text'>Weight: {weight} lbs</h5>
         </div>
-        <div className='flex-container-profile' style={{ color: 'black' }}>
+        <div className='flex-container-profile' style={{ color: 'white' }}>
           <h5 className='location-text'>{location}</h5>
         </div>
-        {/* <p style={{ maxWidth: 700, marginLeft: 20, marginTop: 10 }}>{bio}</p> */}
-        <p style={{ alignSelf: 'center' }}>{bio}</p>
+        <h5 className='location-text' style={{ maxWidth: 700, marginLeft: 40, marginTop: 10, 
+            marginRight: 40, color: "lightGray", fontSize: 22 }}>
+          {bio}
+        </h5>
       </div>
     </div>
   );

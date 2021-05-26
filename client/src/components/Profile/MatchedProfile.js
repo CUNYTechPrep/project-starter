@@ -1,71 +1,57 @@
 import React from 'react';
 import 'w3-css/w3.css';
 import '../../css/ProfilePage.css';
+import auth from '../../services/auth.js';
+import snap from  '../../img/sc.jpg';
+import insta from '../../img/insta.jpg';
+import fb from '../../img/fb.jpg';
+import { right } from '@popperjs/core';
 
-const Profile = (props) => {
-// { 
-//   id,
-//   firstName,
-//   lastName,
-//   age,
-//   gender,
-//   fitLevel,
-//   height,
-//   weight,
-//   bio,
-//   image,
-//   city,
-//   state,
-//   zipCode,
-// }
-//) {
+const MatchedProfile = (props) => {
 
+console.log(props.profile);
+if(props.profile.swiperId === auth.currentUser.id)
+    return null;
 
-//   var imageURL = image;
-//   var location = '';
-//   if (zipCode && city && state) {
-//     location = `Location: ${city}, ${state} ${zipCode}`;
-//   } else if (!zipCode && city && state) {
-//     location = `Location: ${city}, ${state}`;
-//   } else {
-//     location = '';
-//   }
-
-//   var inches = height%12;
-//   var feet = Math.floor(height / 12);
+  var imageURL = props.profile.swiper.image;
+  var location = '';
+  if (props.profile.swiper.zipCode && props.profile.swiper.city && props.profile.swiper.state) {
+    location = `Location: ${props.profile.swiper.city}, ${props.profile.swiper.state} ${props.profile.swiper.zipCode}`;
+  } else if (!props.profile.swiper.zipCode && props.profile.swiper.city && props.profile.swiper.state) {
+    location = `Location: ${props.profile.swiper.city}, ${props.profile.swiper.state}`;
+  } else {
+    location = '';
+  }
 
   return (
-    <div>
-      {/* <div
+    <div >
+      <div 
         style={{
           backgroundImage: `url(${imageURL})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          borderRadius: 10,
+          borderRadius: 20,
           height: 400,
           backgroundSize: 600,
         }}
       ></div>
-      <div>
-        <h5 style={{ fontSize: 27 }}>
-          {firstName} {lastName} - {age}
-          <span style={{ color: 'black' }}>
-            
-          </span>
-          <span style={{ color: 'black' }}> {gender} </span>
+      <div >
+        <h5  style={{ fontSize: 26}}>
+          {props.profile.swiper.firstName} {props.profile.swiper.lastName} - {props.profile.swiper.age}
+          <span style={{ color: 'black', float: right }}> {props.profile.swiper.gender} </span>
         </h5>
-        <h5 style={{ color: 'black', fontSize: 20 }}>FitLevel: {fitLevel}</h5>
-        <div className='flex-container-profile' style={{ color: 'black' }}>
-          <h5>Height: {feet}' {inches}" </h5>
-          <h5>Weight: {weight} lbs</h5>
-        </div>
         <div className='flex-container-profile' style={{ color: 'black' }}>
           <h5 className='location-text'>{location}</h5>
         </div>
-        <p style={{ alignSelf: 'center' }}>{bio}</p>
-      </div> */}
+        <div className='flex-container-profile' style={{ color: 'black' }}>
+        <span><img className="social" src={snap} /> {props.profile.swiper.snap}</span> <br></br>
+        <span><img className="social" src={insta} /> {props.profile.swiper.insta}</span> <br></br>
+        <span><img className="social" src={fb} /> {props.profile.swiper.fb}</span> <br></br>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Profile;
+export default MatchedProfile;
+

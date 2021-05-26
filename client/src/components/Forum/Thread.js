@@ -73,9 +73,7 @@ class Thread extends React.Component {
         this.setState({
           posts: posts.threadPosts,
           originalTitle: posts.threadTitle,
-          // posts.map((p, ii) =>
-          //   <ThreadPost {...p} key={ii} />
-          // ),
+          
         });
       })
       .catch((err) => console.log('API ERROR: ', err));

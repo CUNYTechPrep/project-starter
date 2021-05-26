@@ -31,6 +31,7 @@ import Thread from './components/Forum/Thread';
 import './App.css';
 import { ReactComponent as CloseMenu } from './assets/x.svg';
 import { ReactComponent as MenuIcon } from './assets/menu.svg';
+import FBLogo from './img/FBlogo.png';
 import './css/Burger.css';
 
 
@@ -49,7 +50,7 @@ function Navigation(props) {
     <nav className="navbar navbar-dark bg-primary" 
       style={{borderColor: '#192544', borderWidth: 7, borderBottomStyle: 'solid'}}>
       <Link className="navbar-brand" to="/welcomepage">
-        Fitbud
+        <img src={FBLogo} alt="logo" style={{height: 40}}/>
       </Link>
       <div className="nav-item">
         <NavLink className="nav-link" exact to="/swipe">
