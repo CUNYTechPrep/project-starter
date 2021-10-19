@@ -14,55 +14,8 @@ A starter repo for building CUNY Tech Prep projects with React, Express.js, and 
 - Bootstrap 4.x added to `/client/public/index.html`
 - React Router
 
-*Project Structure*
 
-<pre>
-.
-├── README.md
-├── <strong>api</strong>
-│   ├── app.js
-│   ├── <strong>config</strong>
-│   │   └── config.json
-│   ├── <strong>controllers</strong>
-│   │   ├── appConfig.js
-│   │   ├── index.js
-│   │   └── posts.js
-│   └── <strong>models</strong>
-│       ├── index.js
-│       └── post.js
-├── <strong>client</strong>
-│   ├── README.md
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── <strong>public</strong>
-│   │   ├── favicon.ico
-│   │   ├── index.html
-│   │   ├── logo192.png
-│   │   ├── logo512.png
-│   │   ├── manifest.json
-│   │   └── robots.txt
-│   └── <strong>src</strong>
-│       ├── App.css
-│       ├── App.js
-│       ├── App.test.js
-│       ├── <strong>components</strong>
-│       │   ├── Loading.js
-│       │   └── Post.js
-│       ├── index.css
-│       ├── index.js
-│       ├── logo.svg
-│       ├── <strong>pages</strong>
-│       │   ├── AboutUsPage.js
-│       │   ├── PostFormPage.js
-│       │   ├── PostsListPage.js
-│       │   └── ShowPostPage.js
-│       └── serviceWorker.js
-├── package-lock.json
-└── package.json
-</pre>
-
-
-## Dev Setup
+## Development Setup
 
 Each team member will need to do this on their local machine.
 
@@ -80,10 +33,10 @@ createuser -P -s -e ctp_user
 Create a separate db for this project:
 
 ```
-createdb -h localhost -U ctp_user app2019_development
+createdb -h localhost -U ctp_user app2021_development
 ```
 
-> You will create a DB for each project you start based on this repo. For other projects change `app2019_development` to the new apps database name.
+> You will create a DB for each project you start based on this repo. For other projects change `app2021_development` to the new apps database name.
 
 *For more details see this [installing postgres guide](https://github.com/CUNYTechPrep/ctp2019/blob/master/guides/installing-postgresql.md)*
 
@@ -149,3 +102,52 @@ git push heroku main
 ```
 
 > This command deploys your main branch. You can change that and deploy a different branch such as: `git push heroku development`
+
+
+
+## Project Structure
+
+<pre>
+.
+├── README.md
+├── <strong>api</strong>
+│   ├── app.js
+│   ├── <strong>config</strong>
+│   │   └── config.json
+│   ├── <strong>controllers</strong>
+│   │   ├── appConfig.js
+│   │   ├── index.js
+│   │   └── posts.js
+│   └── <strong>models</strong>
+│       ├── index.js
+│       └── post.js
+├── <strong>client</strong>
+│   ├── README.md
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── <strong>public</strong>
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   └── <strong>src</strong>
+│       ├── App.css
+│       ├── App.js
+│       ├── App.test.js
+│       ├── <strong>components</strong>
+│       │   ├── Loading.js
+│       │   └── Post.js
+│       ├── index.css
+│       ├── index.js
+│       ├── logo.svg
+│       ├── <strong>pages</strong>
+│       │   ├── AboutUsPage.js
+│       │   ├── PostFormPage.js
+│       │   ├── PostsListPage.js
+│       │   └── ShowPostPage.js
+│       └── serviceWorker.js
+├── package-lock.json
+└── package.json
+</pre>

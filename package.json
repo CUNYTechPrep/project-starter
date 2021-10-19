@@ -14,14 +14,13 @@
   "dependencies": {
     "express": "^4.17.1",
     "morgan": "^1.10.0",
-    "pg": "^8.4.1",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^5.22.3",
-    "sqlite3": "^4.2.0"
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.7.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.14"
   },
   "nodemonConfig": {
     "ignore": [
