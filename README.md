@@ -38,7 +38,7 @@ createdb -h localhost -U ctp_user app2021_development
 
 > You will create a DB for each project you start based on this repo. For other projects change `app2021_development` to the new apps database name.
 
-*For more details see this [installing postgres guide](https://github.com/CUNYTechPrep/ctp2019/blob/master/guides/installing-postgresql.md)*
+*For more details see the [installing postgres guides](https://github.com/CUNYTechPrep/guides#postgresql)*
 
 ### Running the app
 
