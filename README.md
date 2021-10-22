@@ -52,7 +52,12 @@ cp .env.example .env
 npm install
 npm run dev
 ```
-
+```bash
+# For window users
+copy .env.example .env
+npm install
+npm run dev
+```
 ```bash
 # react-client terminal 2
 cd client
