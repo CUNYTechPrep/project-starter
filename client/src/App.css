@@ -21,3 +21,26 @@
   color: #09d3ac;
 }
 */
+.horizontal {
+  display: flex;
+}
+.flex{
+  display: flex;
+  justify-content: space-between;
+}
+
+.size{
+  border: 1px solid black;
+  padding: 20px;
+  margin: 10px;
+}
+.size:active{
+  background-color: orange;
+  border: 2px solid black;
+}
+
+.button{
+  margin-top:5px;
+}
+
+
