@@ -13,6 +13,7 @@ export const ResponsiveParentContainer = styled.div`
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
+
         @media (max-width: 30em) {
             margin: 20px;
             width: calc(100%-40px);
