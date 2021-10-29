@@ -3,21 +3,20 @@ import Item from './Item';
 import {Container, Row, Col} from 'react-bootstrap';
 class ItemShelf extends Component{
     render() {
-        const { items } = this.props;
+        const { items, shelfItems } = this.props;
         return(
-            <div>
-                <div>
-                <ol className="horizontal">
-                        {items.map(item => (
-                            <div key={item.id}>
-                                <Item
-                                item={item}
-                                />
-                            </div>
+            <Container>
+                <Row>
+
+                        {shelfItems.map(id => (
+                            <Col sm={6} md={4} lg={3}>
+                                    <Item
+                                    id={id}
+                                    items={items}/>
+                            </Col>
                         ))}
-                    </ol>
-                </div>
-            </div>
+                </Row>
+            </Container>
         )
     }
 }

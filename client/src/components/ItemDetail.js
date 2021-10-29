@@ -30,8 +30,8 @@ class ItemDetail extends Component {
     }
     render() {
         const {items} = this.props;
-        const item = items[0];
-        console.log(this.state)
+        const { id } = this.props.match.params;
+        const item = items[id];
         const {quantity, size} = this.state;
         return(
             
