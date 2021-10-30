@@ -21,6 +21,10 @@
   color: #09d3ac;
 }
 */
+.flex{
+	display: flex;
+	justify-content: space-between;
+}
 .size{
   border: 1px solid black;
   padding: 20px;

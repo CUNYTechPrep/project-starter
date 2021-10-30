@@ -8,14 +8,18 @@ class ItemDetail extends Component {
             size: "xxs"
         }
         this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = (event,id) => {
         event.preventDefault();
         const {quantity, size} = this.state;
         console.log(quantity, size);
-
+        const itemInfo = {
+            id,
+            quantity,
+            size
+        }
+        this.props.addToCart(itemInfo)
         this.setState({
             quantity: "1", 
             size: "xxs"})
@@ -44,7 +48,7 @@ class ItemDetail extends Component {
                         <h2><strong>{item.color}</strong></h2>
                         <h3>${item.price}</h3>
                         <div>
-                            <form onSubmit={this.handleSubmit}>
+                            <form onSubmit={(event)=>this.handleSubmit(event, id)}>
                                 <label>
                                     Pick your size:
                                     <select value={size} onChange={this.handleChange} name="size">
@@ -63,7 +67,7 @@ class ItemDetail extends Component {
                                     <input type="number" value={quantity} name="quantity" onChange={this.handleChange} min="1" />
                                 </label>
                                 <div className="d-grid gap-2 button">
-                                    <Button variant="secondary" size="lg" type="submit">
+                                    <Button variant="success" size="lg" type="submit">
                                         Add to Cart
                                     </Button>
                                 </div>

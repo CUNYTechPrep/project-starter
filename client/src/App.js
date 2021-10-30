@@ -7,7 +7,9 @@ import {
 import ItemList from './components/ItemList';
 import ItemDetail from './components/ItemDetail';
 import './App.css';
-import Navigation from './components/Navigation'
+import Navigation from './components/Navigation';
+import ItemsByShelf from './components/ItemsByShelf';
+import SearchResults from './components/SearchResults';
 class App extends React.Component {
 
   state = {
@@ -51,7 +53,7 @@ class App extends React.Component {
           imageLink: "https://cdn.shopify.com/s/files/1/0133/1907/7947/products/DENIM-03_1_1_900x.jpg?v=1634171769",
           price: 48,
           color: "heather grey",
-          shelf: "tees",
+          shelf: "tee",
           descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
           sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578"
         },
@@ -97,6 +99,13 @@ class App extends React.Component {
         }
     }
   }
+
+  addToCart = (item) => {
+    this.setState({
+      cart: [...this.state.cart, item]
+    })
+  }
+
   render() {
     const { items, cart } = this.state;
     return (
@@ -110,10 +119,17 @@ class App extends React.Component {
               )} 
               />
               <Route  path="/products/:id" render={(props) => (
-                <ItemDetail {...props} items={items} />
+                <ItemDetail {...props} items={items} addToCart={(itemInfo) => this.addToCart(itemInfo)}/>
               )} 
               />
-              {/* <Route path="/products/:shelf" component/> */}
+              <Route path="/products" render={(props) => (
+                <ItemsByShelf {...props} items={items} />
+              )}
+              />
+              <Route path="/search-results" render={(props) => (
+                <SearchResults {...props} items={items} />
+              )}
+              />
               {/* <Route exact path="/aboutus" component={AboutUsPage} /> */}
             </Switch>
         </Router>

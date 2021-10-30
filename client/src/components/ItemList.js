@@ -11,13 +11,16 @@ const ItemList = props => {
         <div className="list-books-content">
         {shelfTypes.map((shelf, index) => {
           const shelfItems = Object.keys(items).filter(key => items[key].shelf === shelf.type);
-          console.log(shelfItems)
+
           return (
-            <div className="bookshelf" key={index} id="jacket">
-              <h2 className="bookshelf-title">{shelf.title}</h2>
-              <div className="bookshelf-books">
-                <ItemShelf shelfItems={shelfItems} items={items} />
-              </div>
+            <div key={index} >
+              {shelfItems.length >0 && 
+                <div>
+                  <h2>{shelf.title}</h2>
+                  <div >
+                    <ItemShelf shelfItems={shelfItems} items={items} />
+                  </div>
+                </div>}
             </div>
           );
         })}

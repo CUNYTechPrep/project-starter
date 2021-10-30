@@ -1,8 +1,9 @@
 import React, { Component } from "react"; 
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 class Navigation extends Component {
   state = {
-    query: ""
+    query: "",
+    results: []
   }
 
   handleChange = (query) => {
@@ -12,7 +13,8 @@ class Navigation extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { query } = this.state;
-    const filterItems = this.props.items && this.props.items.filter( (item)=>{
+    const filterItems = this.props.items && Object.keys(this.props.items).filter( (key)=>{
+      const item = this.props.items[key];
       if (
         item.name.toLowerCase().includes(query) ||
         item.color.toLowerCase().includes(query) ||
@@ -22,8 +24,13 @@ class Navigation extends Component {
       }
     })
 
-    this.setState({query:""})
-    console.log(filterItems)
+    this.setState({
+      query: "",
+      results: filterItems
+    })
+
+  
+    
     //redirect to /search pass filterItems, then display items on /search
   }
   render() {
@@ -41,10 +48,10 @@ class Navigation extends Component {
             <div className="nav-item dropdown">
               <div  data-toggle="dropdown" className="nav-item nav-link dropdown-toggle">Closet</div>
               <div className="dropdown-menu">					
-                <Link to="/products/jakcets"className="dropdown-item">Jackets</Link>
-                <Link to="" className="dropdown-item">Bottoms</Link>
-                <Link to="" className="dropdown-item">Tees</Link>
-                <Link to="" className="dropdown-item">Other</Link>
+                <Link to="/products?shelf=jacket"className="dropdown-item">Jackets</Link>
+                <Link to="/products?shelf=bottom" className="dropdown-item">Bottoms</Link>
+                <Link to="/products?shelf=tee" className="dropdown-item">Tees</Link>
+                <Link to="/products?shelf=other" className="dropdown-item">Other</Link>
                       </div>
                   </div>
             <Link to="/contact" className="nav-item nav-link">Contact</Link>
@@ -57,16 +64,23 @@ class Navigation extends Component {
                 className="form-control" 
                 placeholder="Search here..." 
                 onChange={(e) => this.handleChange(e.target.value.toLowerCase())}
-                value={this.state.query} />
-              <div className="input-group-append">
+                value={this.state.query} 
+                />
+              <div className="input-group-append" style={{marginLeft: "10px"}}>
                 <span className="input-group-text">
-                  <button className="btn btn-primary" onClick={(e) => this.handleSubmit(e)}>
+                  <button className="btn btn-primary"  disabled={!this.state.query} onClick={(e) => this.handleSubmit(e)}>
                     <i className="material-icons">&#xE8B6;</i>
                   </button>
                 </span>
               </div>
             </div>
           </form>
+          {this.state.results.length > 0 &&
+          <Redirect to={{
+            pathname: '/search-results',
+            state: { results: this.state.results }
+          }}/>
+        }
           <div className="navbar-nav ml-auto action-buttons">
               <Link to="/login" className="nav-link dropdown-toggle mr-4">Login</Link>
                       {/* <div className="dropdown-menu action-form">
