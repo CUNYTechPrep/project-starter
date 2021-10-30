@@ -9,7 +9,9 @@ export const FlexContainerCenteredChildren = css`
 export const BaseButton = styled.button`
   border:none;
   border-radius: var(--border-radius);
-  ${FlexContainerCenteredChildren}
+  ${FlexContainerCenteredChildren};
+  cursor: pointer;
+  
   &:hover {
     opacity: .8;
   }
@@ -18,4 +20,3 @@ export const BaseButton = styled.button`
     opacity: .9;
   }
 `
-

@@ -39,15 +39,16 @@ const RowContainer = styled.div`
 `
 
 const ColumnContainer = styled.div`
-  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
   background-color: var(--fg);
-  padding:  1rem;
+
   border-radius: var(--border-radius);
-  margin: 1rem .5rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  width: calc(100% - 2rem);
   
   button {
     width: 100%;

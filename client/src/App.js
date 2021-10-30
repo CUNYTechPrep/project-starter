@@ -4,18 +4,16 @@ import LandingPage from "./pages/landingPage";
 
 import "./App.css";
 
-class App extends React.Component {
-    render() {
-        return (
-            <Router>
-                <Switch>
-                    <Route path="/">
-                        <LandingPage />
-                    </Route>
-                </Switch>
-            </Router>
-        );
-    }
+const App = () => {
+    return (
+        <Router>
+            <Switch>
+                <Route path="/">
+                    <LandingPage />
+                </Route>
+            </Switch>
+        </Router>
+    );
 }
 
 export default App;

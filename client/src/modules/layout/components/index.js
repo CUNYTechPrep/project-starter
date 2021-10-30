@@ -41,7 +41,11 @@ export const NavList = styled.ul`
   
   li {
     a {
+      text-decoration: none;
       color: white;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   
@@ -61,17 +65,36 @@ export const NavList = styled.ul`
   @media(max-width: 30em) {
     li {
       &:not(:first-child) {
-        margin: .5rem 0;
+        margin: 1rem 0;
+      }
+      
+      a {
+        font-size: 1rem;
       }
     }
   }
 `
 
-export const LoginButton = styled(BaseButton)`
+export const LoginButton = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #262626;
   border-radius: var(--border-radius);
-  padding: .25rem 1rem;
   height: var(--button-height);
-  color: white;
+  width: 100%;
+  color: #FFF;
+  text-decoration: none;
+  text-align: center;
+  font-size: .875rem;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: .8;
+  }
+  
+  &:active {
+    opacity: .9;
+  }
 `
 
