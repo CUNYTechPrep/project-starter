@@ -10,6 +10,7 @@ import './App.css';
 import Navigation from './components/Navigation';
 import ItemsByShelf from './components/ItemsByShelf';
 import SearchResults from './components/SearchResults';
+import NotFoundError from './components/error/NotFoundError'
 class App extends React.Component {
 
   state = {
@@ -183,6 +184,7 @@ class App extends React.Component {
               )}
               />
               {/* <Route exact path="/aboutus" component={AboutUsPage} /> */}
+              <Route component={NotFoundError}/>
             </Switch>
         </Router>
     );
