@@ -349,9 +349,10 @@ template {
 }
 
 :root {
-    --main-blue: #349e6;
+    --main-blue: #3494E6;
     --main-red: #EC6EAD;
     --fg: #1a1a1a;
+    --text-white: #F7F8F8;
     --border-radius: .5rem;
     --button-height: 2.5rem;
 }

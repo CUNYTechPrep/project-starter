@@ -22,6 +22,10 @@ const NavContainer = styled.nav`
       grid-template-columns: .1fr .8fr .1fr; 
       align-items: center;
       justify-content: center;
+      img {
+        height: 46px;
+        width: auto;
+      }
     }
     .mobile {
       display: none;
@@ -41,7 +45,6 @@ const NavContainer = styled.nav`
       justify-content: flex-start;
       align-items: center;
       flex-direction: column;
-      
     }
   }
 `;

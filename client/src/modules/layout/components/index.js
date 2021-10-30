@@ -42,7 +42,7 @@ export const NavList = styled.ul`
   li {
     a {
       text-decoration: none;
-      color: white;
+      color: var(--text-white);
       &:hover {
         text-decoration: underline;
       }

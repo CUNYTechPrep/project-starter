@@ -36,6 +36,11 @@ const RowContainer = styled.div`
   align-items: center;
   flex-direction: row;
   height: 46px;
+  
+  img {
+    height: 100%;
+    width: auto;
+  }
 `
 
 const ColumnContainer = styled.div`

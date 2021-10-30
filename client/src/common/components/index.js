@@ -11,6 +11,8 @@ export const BaseButton = styled.button`
   border-radius: var(--border-radius);
   ${FlexContainerCenteredChildren};
   cursor: pointer;
+  transition: all 0.5s ease 0s;
+  text-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
   
   &:hover {
     opacity: .8;
