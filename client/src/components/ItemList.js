@@ -5,7 +5,8 @@ const ItemList = props => {
     const shelfTypes = [
         { type: 'jacket', title: 'Jackets' },
         { type: 'bottom', title: 'Bottoms' },
-        { type: 'tees', title: 'Tees' }
+        { type: 'tee', title: 'Tees' },
+        { type: 'accessory', title: 'Accessories'}
     ]
     return(
         <div className="list-books-content">

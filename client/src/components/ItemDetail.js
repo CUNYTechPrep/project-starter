@@ -49,7 +49,8 @@ class ItemDetail extends Component {
                         <h3>${item.price}</h3>
                         <div>
                             <form onSubmit={(event)=>this.handleSubmit(event, id)}>
-                                <label>
+                                {item.sizeAble && (
+                                    <label>
                                     Pick your size:
                                     <select value={size} onChange={this.handleChange} name="size">
                                         <option value="xxs">xxs</option>
@@ -61,6 +62,7 @@ class ItemDetail extends Component {
                                         <option value="xxl">xxl</option>
                                     </select>
                                 </label>
+                                )}
 
                                 <label>
                                     Quantity:

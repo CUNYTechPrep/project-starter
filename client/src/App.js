@@ -24,7 +24,8 @@ class App extends React.Component {
          shelf: "jacket",
          sizes: ["xxs", "xs", "s", "m", "l", "xl", "xxl"],
          descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
-         sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578"
+         sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578",
+         sizeAble: true
         },
         "5c9qojr2d1738zlx09afby": {
           id: "5c9qojr2d1738zlx09afby",
@@ -35,7 +36,8 @@ class App extends React.Component {
           shelf: "jacket",
           sizes: ["xxs", "xs", "s", "m", "l", "xl", "xxl"],
           descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
-          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578"
+          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578",
+          sizeAble: true
         },
         "5c9qojr2d1738zlx09afba": {
           id:"5c9qojr2d1738zlx09afba",
@@ -45,17 +47,19 @@ class App extends React.Component {
           color: "stone wash",
           shelf: "jacket",
           descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
-          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578"
+          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578",
+          sizeAble: true
         },
         "6c9qojr2d1738zlx09afby": {
           id:"6c9qojr2d1738zlx09afby",
           name: "basic ss tee",
-          imageLink: "https://cdn.shopify.com/s/files/1/0133/1907/7947/products/DENIM-03_1_1_900x.jpg?v=1634171769",
+          imageLink: "https://cdn.shopify.com/s/files/1/0133/1907/7947/products/TRUCKER-159_1_900x.jpg?v=1631209823",
           price: 48,
           color: "heather grey",
           shelf: "tee",
           descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
-          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578"
+          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578",
+          sizeAble: true
         },
         "5c9qojr2d1738zlx09afay": {
           id: "5c9qojr2d1738zlx09afay",
@@ -65,7 +69,8 @@ class App extends React.Component {
           color: "vintage indigo",
           shelf: "bottom",
           descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
-          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578"
+          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578",
+          sizeAble: true
         },
         "5d9qojr2d1738zlx09afby": {
           id:"5d9qojr2d1738zlx09afby",
@@ -75,7 +80,8 @@ class App extends React.Component {
           color: "vintage indigo",
           shelf: "bottom",
           descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
-          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578"
+          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578",
+          sizeAble: true
         },
         "5c9q1jr2d1738zlx09afby": {
           id:"5c9q1jr2d1738zlx09afby",
@@ -85,7 +91,8 @@ class App extends React.Component {
           color: "vintage indigo",
           shelf: "bottom",
           descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
-          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578"
+          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578",
+          sizeAble: true
         },
         "5c9qojr2d1738zlx09a1by": {
           id:"5c9qojr2d1738zlx09a1by",
@@ -95,8 +102,53 @@ class App extends React.Component {
           color: "stone wash",
           shelf: "bottom",
           descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
-          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578"
-        }
+          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578",
+          sizeAble: true
+        },
+        "5c9qojr2d1738zlx09a123": {
+          id:"5c9qojr2d1738zlx09a123",
+          name: "riverside tote",
+          imageLink: "https://cdn.shopify.com/s/files/1/0133/1907/7947/products/5D3A60212_900x.jpg?v=1632355408",
+          price: 118,
+          color: "golden yellow",
+          shelf: "accessory",
+          descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
+          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578",
+          sizeAble: false
+        },
+        "abcqojr2d1738zlx09a123": {
+          id:"abcqojr2d1738zlx09a123",
+          name: "hearty snapback hat",
+          imageLink: "https://cdn.shopify.com/s/files/1/0133/1907/7947/products/TRUCKER-174_900x.jpg?v=1630883679",
+          price: 58,
+          color: "black",
+          shelf: "accessory",
+          descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
+          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578",
+          sizeAble: false
+        },
+        "abccbar2d1738zlx09a123": {
+          id:"abccbar2d1738zlx09a123",
+          name: "hearty snapback hatmascot drew house",
+          imageLink: "https://cdn.shopify.com/s/files/1/0133/1907/7947/products/UnoFlats-26_900x.jpg?v=1633541538",
+          price: 38,
+          color: "royal blue",
+          shelf: "accessory",
+          descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
+          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578",
+          sizeAble: false
+        },
+        "abccbar2d1738zlx09aqwe": {
+          id:"abccbar2d1738zlx09aqwe",
+          name: "mascot foot bag",
+          imageLink: "https://cdn.shopify.com/s/files/1/0133/1907/7947/products/MASCOTHACKYSACK_DETAIL_900x.jpg?v=1623200262",
+          price: 8,
+          color: "golden yellow",
+          shelf: "accessory",
+          descriptions: ["100% cotton", "fits true to size with a dropped shoulder", "screenprint detailing throughout", "branded trims","imported" ],
+          sizeChart: "https://cdn.shopify.com/s/files/1/0133/1907/7947/files/denim_trucker_jacket.jpg?v=1623357578",
+          sizeAble: false
+        },
     }
   }
 

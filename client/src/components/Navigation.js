@@ -51,7 +51,7 @@ class Navigation extends Component {
                 <Link to="/products?shelf=jacket"className="dropdown-item">Jackets</Link>
                 <Link to="/products?shelf=bottom" className="dropdown-item">Bottoms</Link>
                 <Link to="/products?shelf=tee" className="dropdown-item">Tees</Link>
-                <Link to="/products?shelf=other" className="dropdown-item">Other</Link>
+                <Link to="/products?shelf=accessory" className="dropdown-item">Accessories</Link>
                       </div>
                   </div>
             <Link to="/contact" className="nav-item nav-link">Contact</Link>
