@@ -1,6 +1,5 @@
 import React from "react";
-import Layout from "../components/general/Layout";
-import { ResponsiveContentContainer } from "../components/general";
+import { ResponsiveContentContainer, Layout } from "../modules/layout";
 
 const LandingPage = () => {
     return (
