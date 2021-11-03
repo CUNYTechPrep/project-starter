@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="18405889-7b39-4661-ae3e-feed2abe0a79" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/public/images/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/logoWhite.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/common/components/IconButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/common/components/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/hero/components/Announcement.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/hero/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/layout/components/DesktopMenu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/layout/components/Layout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/layout/components/Menu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/layout/components/MobileMenu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/layout/components/Nav.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/layout/components/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/layout/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/DropBy.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/general/Layout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/general/Nav.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/general/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/landingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/landingPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="20ENhLGdJWZlHjhn4M1U5YOMMSq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/.env" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="18405889-7b39-4661-ae3e-feed2abe0a79" name="Changes" comment="" />
+      <created>1635605905122</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635605905122</updated>
+      <workItem from="1635605906670" duration="2178000" />
+      <workItem from="1635639689169" duration="13000" />
+      <workItem from="1635963928559" duration="348000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

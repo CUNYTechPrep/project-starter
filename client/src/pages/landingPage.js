@@ -1,12 +1,12 @@
 import React from "react";
-import Layout from "../components/general/Layout";
-import { ResponsiveContentContainer } from "../components/general";
+import { ResponsiveContentContainer, Layout } from "../modules/layout";
+import Hero from "../modules/hero";
 
 const LandingPage = () => {
     return (
         <Layout>
             <ResponsiveContentContainer>
-                <p>hi</p>
+                <Hero />
             </ResponsiveContentContainer>
         </Layout>
     );
