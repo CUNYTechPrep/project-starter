@@ -1,5 +1,8 @@
 import React, { Component } from "react"; 
 import { Link, NavLink, Redirect } from 'react-router-dom';
+import LoginButton from './LoginButton';
+import LogoutButton from "./LogoutButton";
+import Profile from "./Profile";
 class Navigation extends Component {
   state = {
     query: "",
@@ -22,6 +25,7 @@ class Navigation extends Component {
       ) {
         return item;
       }
+      return 0
     })
 
     this.setState({
@@ -34,6 +38,7 @@ class Navigation extends Component {
     //redirect to /search pass filterItems, then display items on /search
   }
   render() {
+    
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link to="/" className="navbar-brand">Get<b>It</b></Link>  		
@@ -44,7 +49,7 @@ class Navigation extends Component {
         <div id="navbarCollapse" className="collapse navbar-collapse justify-content-start">
           <div className="navbar-nav">
             <NavLink to="/" className="nav-item nav-link">Home</NavLink>
-            <NavLink to="/about-us" className="nav-item nav-link">About</NavLink>			
+            {/* <NavLink to="/about-us" className="nav-item nav-link">About</NavLink>			 */}
             <div className="nav-item dropdown">
               <div  data-toggle="dropdown" className="nav-item nav-link dropdown-toggle">Closet</div>
               <div className="dropdown-menu">					
@@ -54,7 +59,7 @@ class Navigation extends Component {
                 <Link to="/products?shelf=accessory" className="dropdown-item">Accessories</Link>
                       </div>
                   </div>
-            <Link to="/contact" className="nav-item nav-link">Contact</Link>
+            {/* <Link to="/contact" className="nav-item nav-link">Contact</Link> */}
           </div>
           <form className="navbar-form form-inline">
             <div className="input-group query-box">								
@@ -66,7 +71,7 @@ class Navigation extends Component {
                 onChange={(e) => this.handleChange(e.target.value.toLowerCase())}
                 value={this.state.query} 
                 />
-              <div className="input-group-append" style={{marginLeft: "10px"}}>
+              <div className="input-group-append" style={{marginLeft: "10px", marginRight: "10px", height: "45px",}}>
                 <span className="input-group-text">
                   <button className="btn btn-primary"  disabled={!this.state.query} onClick={(e) => this.handleSubmit(e)}>
                     <i className="material-icons">&#xE8B6;</i>
@@ -82,7 +87,10 @@ class Navigation extends Component {
           }}/>
         }
           <div className="navbar-nav ml-auto action-buttons">
-              <Link to="/login" className="nav-link dropdown-toggle mr-4">Login</Link>
+              <LoginButton />
+              <LogoutButton />
+              {/* <Link to="/login" className="nav-link dropdown-toggle mr-4">Login</Link>
+              <Link to="/logout" className="nav-link dropdown-toggle mr-4">Logout</Link> */}
                       {/* <div className="dropdown-menu action-form">
                         <form action="/examples/actions/confirmation.php" method="post">
                           <p className="hint-text">Sign in with your social media account</p>
@@ -103,7 +111,7 @@ class Navigation extends Component {
                           </div>
                         </form>
                       </div> */}
-              <Link to="/signup" className="btn btn-primary dropdown-toggle sign-up-btn">Sign up</Link>
+              {/* <Link to="/signup" className="btn btn-primary dropdown-toggle sign-up-btn">Sign up</Link> */}
                 {/* <div className="dropdown-menu action-form">
                       <form action="/examples/actions/confirmation.php" method="post">
                         <p className="hint-text">Fill in this form to create your account!</p>
@@ -122,8 +130,8 @@ class Navigation extends Component {
                         <input type="submit" className="btn btn-primary btn-block" value="Sign up" />
                       </form>
                 </div> */}
-              <Link to="/checkout" className="nav-link dropdown-toggle mr-4">Cart</Link>
-              {this.props.cart.length > 0 && (<span>{this.props.cart.length}</span>)}
+              <Link to="/checkout" className="nav-link dropdown-toggle mr-4">Shopping bag {this.props.cart.length > 0 && (<span>({this.props.cart.length})</span>)}</Link>
+              <Profile />
           </div>
         </div>
       </nav>

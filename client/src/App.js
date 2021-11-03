@@ -10,7 +10,11 @@ import './App.css';
 import Navigation from './components/Navigation';
 import ItemsByShelf from './components/ItemsByShelf';
 import SearchResults from './components/SearchResults';
-import NotFoundError from './components/error/NotFoundError'
+import NotFoundError from './components/error/NotFoundError';
+import LoginButton from './components/LoginButton';
+import LogoutButton from './components/LogoutButton';
+
+
 class App extends React.Component {
 
   state = {
@@ -165,6 +169,7 @@ class App extends React.Component {
           <Router>
             <div className="header">
               <Navigation items={items} cart={cart}/>
+              {/* <Profile /> */}
             </div>
             <Switch>
               <Route exact path="/" render={(props) => (
@@ -183,6 +188,8 @@ class App extends React.Component {
                 <SearchResults {...props} items={items} />
               )}
               />
+              <Route path="/login" component={LoginButton} />
+              <Route path="/logout" component={LogoutButton} />
               {/* <Route exact path="/aboutus" component={AboutUsPage} /> */}
               <Route component={NotFoundError}/>
             </Switch>

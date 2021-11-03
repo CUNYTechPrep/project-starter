@@ -17,7 +17,7 @@ const ItemList = props => {
             <div key={index} >
               {shelfItems.length >0 && 
                 <div>
-                  <h2>{shelf.title}</h2>
+                  <h2>{shelf.title.charAt(0).toUpperCase() + shelf.title.slice(1)}</h2>
                   <div >
                     <ItemShelf shelfItems={shelfItems} items={items} />
                   </div>

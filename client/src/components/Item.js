@@ -7,7 +7,7 @@ class Item extends Component {
         const item = items[id];
         return (
             <Link to={`/products/${id}`} style={{textDecoration:"none"}} > 
-                <Card style={{color: "black"}}>
+                <Card style={{color: "black"}} className="h-100" >
                         <Image src={item['imageLink']} fluid />
                         <Card.Body>
                             <Card.Title><b>{item['name']}</b></Card.Title>
