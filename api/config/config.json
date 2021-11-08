@@ -2,7 +2,7 @@
   "development": {
     "username": "ctp_user",
     "password": "ctp_pass",
-    "database": "app2021_development",
+    "database": "hobbyHub_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
