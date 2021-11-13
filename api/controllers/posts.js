@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('../middlewares/authentication');
 const router = express.Router();
 const db = require('../models');
 const { Post } = db;
@@ -9,7 +10,7 @@ const { Post } = db;
 //    POST   /posts
 //    GET    /posts/:id
 //    PUT    /posts/:id
-//    DELETE /posts/:id 
+//    DELETE /posts/:id
 
 // There are other styles for creating these route handlers, we typically
 // explore other patterns to reduce code duplication.
@@ -22,16 +23,18 @@ router.get('/', (req,res) => {
 });
 
 
-router.post('/', (req, res) => {
-  let { content } = req.body;
-  
-  Post.create({ content })
-    .then(post => {
-      res.status(201).json(post);
-    })
-    .catch(err => {
-      res.status(400).json(err);
-    });
+router.post('/',
+  passport.isAuthenticated(),
+  (req, res) => {
+    let { content } = req.body;
+
+    Post.create({ content })
+      .then(post => {
+        res.status(201).json(post);
+      })
+      .catch(err => {
+        res.status(400).json(err);
+      });
 });
 
 
@@ -48,37 +51,41 @@ router.get('/:id', (req, res) => {
 });
 
 
-router.put('/:id', (req, res) => {
-  const { id } = req.params;
-  Post.findByPk(id)
-    .then(post => {
-      if(!post) {
-        return res.sendStatus(404);
-      }
+router.put('/:id',
+  passport.isAuthenticated(),
+  (req, res) => {
+    const { id } = req.params;
+    Post.findByPk(id)
+      .then(post => {
+        if(!post) {
+          return res.sendStatus(404);
+        }
 
-      post.content = req.body.content;
-      post.save()
-        .then(post => {
-          res.json(post);
-        })
-        .catch(err => {
-          res.status(400).json(err);
-        });
-    });
+        post.content = req.body.content;
+        post.save()
+          .then(post => {
+            res.json(post);
+          })
+          .catch(err => {
+            res.status(400).json(err);
+          });
+      });
 });
 
 
-router.delete('/:id', (req, res) => {
-  const { id } = req.params;
-  Post.findByPk(id)
-    .then(post => {
-      if(!post) {
-        return res.sendStatus(404);
-      }
+router.delete('/:id',
+  passport.isAuthenticated(),
+  (req, res) => {
+    const { id } = req.params;
+    Post.findByPk(id)
+      .then(post => {
+        if(!post) {
+          return res.sendStatus(404);
+        }
 
-      post.destroy();
-      res.sendStatus(204);
-    });
+        post.destroy();
+        res.sendStatus(204);
+      });
 });
 
 

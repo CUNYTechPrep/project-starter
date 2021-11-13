@@ -57,4 +57,7 @@ passport.deserializeUser((id, done) => {
     .catch(err => done(err, null));
 });
 
+passport.isAuthenticated = () =>
+  (req, res, next) => (req.user ? next() : res.sendStatus(401));
+
 module.exports = passport;
