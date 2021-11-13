@@ -13,6 +13,7 @@ import AboutUsPage from './pages/AboutUsPage';
 
 import './App.css';
 import { AuthProvider } from './context/AuthContext';
+import AuthButton from './components/AuthButton';
 
 
 function Navigation(props) {
@@ -31,6 +32,7 @@ function Navigation(props) {
           </NavLink>
         </li>
       </ul>
+      <AuthButton />
     </nav>
   );
 }
