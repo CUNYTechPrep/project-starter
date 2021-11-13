@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18405889-7b39-4661-ae3e-feed2abe0a79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/common/components/styled.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/hero/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/hero/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/layout/components/DesktopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/layout/components/DesktopMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/layout/components/MobileMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/layout/components/MobileMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/layout/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/layout/components/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +50,11 @@
       <updated>1635605905122</updated>
       <workItem from="1635605906670" duration="2178000" />
       <workItem from="1635639689169" duration="13000" />
-      <workItem from="1635963928559" duration="1852000" />
+      <workItem from="1635963928559" duration="2029000" />
+      <workItem from="1635965966378" duration="6000" />
+      <workItem from="1635973614668" duration="2349000" />
+      <workItem from="1636055846747" duration="1000" />
+      <workItem from="1636057127320" duration="13000" />
     </task>
     <servers />
   </component>

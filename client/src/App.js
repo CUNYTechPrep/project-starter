@@ -5,15 +5,15 @@ import LandingPage from "./pages/landingPage";
 import "./App.css";
 
 const App = () => {
-    return (
-        <Router>
-            <Switch>
-                <Route path="/">
-                    <LandingPage />
-                </Route>
-            </Switch>
-        </Router>
-    );
-}
+	return (
+		<Router>
+			<Switch>
+				<Route path="/">
+					<LandingPage />
+				</Route>
+			</Switch>
+		</Router>
+	);
+};
 
 export default App;
