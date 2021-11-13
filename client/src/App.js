@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route, 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
   Link,
   NavLink
 } from 'react-router-dom';
@@ -12,6 +12,7 @@ import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 
 import './App.css';
+import { AuthProvider } from './context/AuthContext';
 
 
 function Navigation(props) {
@@ -38,6 +39,7 @@ function Navigation(props) {
 class App extends React.Component {
   render() {
     return (
+      <AuthProvider>
         <Router>
           <Navigation />
           <div className="container-fluid text-center">
@@ -51,6 +53,7 @@ class App extends React.Component {
             </div>
           </div>
         </Router>
+      </AuthProvider>
     );
   }
 }
