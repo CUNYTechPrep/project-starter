@@ -15,6 +15,7 @@ import './App.css';
 import { AuthProvider } from './context/AuthContext';
 import AuthButton from './components/AuthButton';
 import LoginPage from './pages/LoginPage';
+import PrivateRoute from './components/PrivateRoute';
 
 
 function Navigation(props) {
@@ -49,7 +50,7 @@ class App extends React.Component {
             <div className="row justify-content-center">
               <Switch>
                 <Route path="/login" component={LoginPage} />
-                <Route path="/posts/new" component={PostFormPage} />
+                <PrivateRoute path="/posts/new" component={PostFormPage} />
                 <Route path="/posts/:id" component={ShowPostPage} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/" component={PostsListPage} />
