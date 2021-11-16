@@ -69,14 +69,12 @@ npm start
 
 ### Setting up Heroku
 
-Install the heroku cli if you don't already have it.
-
-> You will also need a heroku account
-> And this will only be done once on your machine
+1. Create a Heroku account (_if you don't have one_)
+2. Install the [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) (_if you don't already have it_)
+  + Requires that you have `git` installed
 
 ```bash
-# on mac
-brew install heroku/brew/heroku
+# login with the cli tool
 heroku login
 ```
 
@@ -85,24 +83,26 @@ heroku login
 Next, `cd` into this project directory and create a project:
 
 ```bash
+# replace `cool-appname` with your preferred app name
 heroku create cool-appname
+
+# add a free postgres database to your heroku project
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
-> This will deploy your apps to https://cool-appname.herokuapp.com, assuming that it is not taken already.
+> This will make your app accessible at https://cool-appname.herokuapp.com (_if the name is available_).
 
 > You only need to do this once per app
 
 ### Deploying the app
 
-Whenever you want to update the app run this command.
+Whenever you want to update the deployed app run this command.
 
 ```bash
 git push heroku main
 ```
 
 > This command deploys your main branch. You can change that and deploy a different branch such as: `git push heroku development`
-
 
 
 ## Project Structure
