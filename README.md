@@ -94,6 +94,18 @@ heroku addons:create heroku-postgresql:hobby-dev
 
 > You only need to do this once per app
 
+### Add Environment Variables
+
+Any environment variables your app needs will be available through your heroku project's settings page.
+
+> NOTE: _Heroku calls them **Config Vars**_
+
+* Go to the dashboard page here: https://dashboard.heroku.com/apps
+* Click on the Settings tab
+* Click `Reveal Config Vars`
+* Add any environment variables you have in your `.env` file
+
+
 ### Deploying the app
 
 Whenever you want to update the deployed app run this command.
