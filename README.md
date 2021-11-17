@@ -1,4 +1,4 @@
-ClickFlix
+## ClickFlix
 A starter repo for building CUNY Tech Prep projects with React, Express.js, and Sequelize.js
 
 ## Stack
