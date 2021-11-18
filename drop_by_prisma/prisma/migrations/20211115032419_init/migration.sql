@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "age" DROP NOT NULL,
+ALTER COLUMN "is_vaccinated" DROP NOT NULL,
+ALTER COLUMN "is_verifed" DROP NOT NULL;

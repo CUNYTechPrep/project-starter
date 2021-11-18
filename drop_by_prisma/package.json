@@ -1,0 +1,23 @@
+{
+  "name": "drop_by_prisma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "prisma": "^3.4.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.4.2",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0"
+  }
+}

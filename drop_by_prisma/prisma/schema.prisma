@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  user_id String @default(uuid()) @id
+  username String @db.VarChar(255) @unique
+  password String
+  first_name String
+  last_name String
+  email String @unique
+  phone_number String @unique
+  birth_date DateTime 
+  age Int? //derviated off Date.now()-birth_date
+  address String
+  city String
+  state String
+  country String
+  zip String
+  is_vaccinated Boolean?
+  is_verifed Boolean?
+  pfp String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  Event Event[]
+  Participant Participant[]
+}
+model Event{
+  event_id String @default(uuid()) @id
+  event_name String
+  event_desc String
+  is_online Boolean @default(false)
+  capacity Int?
+  taken Int?
+  hit_capacity Boolean? @default(false)
+  event_address String?
+  event_city String?
+  event_state String?
+  event_country String?
+  event_zip String?
+  event_long String?
+  event_lat String?
+  event_start DateTime
+  event_end DateTime
+  event_image String?
+  past Boolean @default(false)
+  require_vac Boolean?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  User User @relation(fields: [creator], references: [user_id])
+  creator String
+  Participant Participant[]
+}
+model Participant{
+  User User @relation(fields: [user_id], references: [user_id])
+  Event Event @relation(fields: [event_id], references: [event_id])
+  participant_id String @id
+  user_id String
+  event_id String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
