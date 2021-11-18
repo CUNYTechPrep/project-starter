@@ -1,26 +1,32 @@
 import React, { Component, useState, useEffect } from "react";
 import {Container, Row, Col, Card, Button} from 'react-bootstrap';
 import ItemDetail from "./ItemDetail";
-function Cart ( {items, cart, itemdelete} ) {
+function Cart ( {items, cart, itemdelete, updateQuantity} ) {
+        console.log(cart)
+        const [totalAmount, setTotalAmount] = useState(0);
+        const [cartItems, setCartItems] = useState([]);
+        const [carts, setCarts] = useState([]);
 
-        const [cartitems, setcartitems]=useState([])
         useEffect (() =>{
-
-        
-        const cartitems=[];
-        let total=0;
-        for(let i = 0; i < cart.length; i++) {
-            const item = items[cart[i].id];
-            const itemInfo = {
-                ...item,
-                size: cart[i].size,
-                quantity: cart[i].quantity,
-                
+            let totalPrice = 0;
+            let items_in_cart = [];
+            let quantities = [];
+            for(let i = 0; i < cart.length; i++) {
+                const item = items[cart[i].id];
+                const itemInfo = {
+                    ...item,
+                    size: cart[i].size,
+                    quantity: cart[i].quantity,
+                }
+                items_in_cart.push(itemInfo)
+                let id_quantity = {}
+                id_quantity[cart[i].id] = parseInt(cart[i].quantity)
+                quantities.push(id_quantity)
+                // totalPrice += (parseInt(item['price']) * parseInt(itemInfo['quantity']));
             }
-            cartitems.push(itemInfo)
-            total+=item['price']
-        }
-        setcartitems(cartitems)
+            setTotalAmount(totalPrice);
+            setCartItems(items_in_cart);
+            setCarts(cart)
     }, [items, cart])
 
     const removeItem = (id , e) =>{
@@ -28,7 +34,27 @@ function Cart ( {items, cart, itemdelete} ) {
     }
 
     const handleChange = (id ,e ) =>{
-        setcartitems({...cartitems, quantity:e.target.value})
+        let x = carts.find((item) => item.id === id); 
+        let changedItem = cartItems.find((item) => item.id === id);
+        changedItem.quantity = e.target.value;
+        x.quantity = e.target.value;
+        // console.log(changedItem)
+        setCartItems([
+            ...cartItems.filter((item) => item.id !== id),
+            changedItem
+        ])
+        setCarts([
+            ...carts.filter((item) => item.id !== id),
+            x
+        ])
+        console.log(carts, cartItems)
+    }
+
+    const handleUpdate = (e, id) => {
+        let changedItem = cartItems.find((item) => item.id === id);
+        let quantity = changedItem["quantity"];
+        console.log(quantity)
+        updateQuantity(id, quantity)
     }
         
         return(
@@ -51,7 +77,7 @@ function Cart ( {items, cart, itemdelete} ) {
                         </Row>
                             <hr bold="200"/>
                         
-                        {cartitems.map( ( item ) => (
+                        {cartItems.map( ( item ) => (
                         <Row>
                         
                             <Col className="flex"  xs={6} md={4}>
@@ -60,6 +86,9 @@ function Cart ( {items, cart, itemdelete} ) {
                                     <Card.Title ><b>{item['name']}</b></Card.Title>
                                     <Card.Text> xs </Card.Text>
                                     <Button onClick={(e) => removeItem(item.id , e)}> remove </Button>
+                                    <Button variant="secondary" size="lg" type="submit" onClick={(e) => handleUpdate(e, item.id)}style={{background:'#FFFFFF',color:'#000000', fontWeight:'500',  }}>
+                                        Update
+                                    </Button>
                                 </Col>
                                 
                             </Col>
@@ -80,9 +109,7 @@ function Cart ( {items, cart, itemdelete} ) {
                  
                 <Card body style={{ width: '100%' }}>
                     <div style={{float:'right'}}>
-                    <Button variant="secondary" size="lg" type="submit" style={{background:'#FFFFFF',color:'#000000', fontWeight:'500',  }}>
-                        Update
-                    </Button>
+
                     <Card.Text style={{textAlign:'right',marginTop:'45px'}}> SubTotal</Card.Text>
                     </div>
                 </Card>

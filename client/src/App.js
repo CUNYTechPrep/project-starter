@@ -167,12 +167,24 @@ class App extends React.Component {
   deleteItems = (id) => {
     this.setState({
       ...this.state,
-      cart: this.state.cart.filter()
+      cart: this.state.cart.filter(item => item.id !== id)
+    })
+  }
+  updateItem = (id, quantity) => {
+    console.log(id, quantity)
+    let changedItem = this.state.cart.filter(item => item.id === id);
+    // console.log(changedItem)
+    // changedItem[0]["quantity"] = quantity;
+    // console.log(changedItem)
+    this.setState({
+      ...this.state,
+      cart: [...this.state.cart.filter(item => item.id !== id), {...changedItem}]
     })
   }
 
   render() {
     const { items, cart } = this.state;
+    console.log(cart)
     return (
           <Router>
             <div className="header">
@@ -197,7 +209,7 @@ class App extends React.Component {
               )}
               />
               <Route path="/cart" render={(props) => (
-                <Cart {...props} items={items} cart={cart} itemdelete={( id ) => this.deleteItems( id)}/>
+                <Cart {...props} items={items} cart={cart} itemdelete={( id ) => this.deleteItems( id)} updateQuantity={( id, quantity ) => this.updateItem( id, quantity)}/>
               )}
               />
               <Route path="/login" component={LoginButton} />
