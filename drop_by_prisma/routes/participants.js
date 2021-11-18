@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const {PrismaClient} = require('@prisma/client');
 const { PrismaClientRustPanicError } = require("@prisma/client/runtime");
-var { participant, event } = new PrismaClient();
+const { participant, event } = new PrismaClient();
 
 router.get('/', async(req,res)=>{
     try{
