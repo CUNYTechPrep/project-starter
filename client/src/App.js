@@ -13,6 +13,7 @@ import SearchResults from './components/SearchResults';
 import NotFoundError from './components/error/NotFoundError';
 import LoginButton from './components/LoginButton';
 import LogoutButton from './components/LogoutButton';
+import Cart from './components/Cart'
 
 
 class App extends React.Component {
@@ -163,6 +164,13 @@ class App extends React.Component {
     })
   }
 
+  deleteItems = (id) => {
+    this.setState({
+      ...this.state,
+      cart: this.state.cart.filter()
+    })
+  }
+
   render() {
     const { items, cart } = this.state;
     return (
@@ -186,6 +194,10 @@ class App extends React.Component {
               />
               <Route path="/search-results" render={(props) => (
                 <SearchResults {...props} items={items} />
+              )}
+              />
+              <Route path="/cart" render={(props) => (
+                <Cart {...props} items={items} cart={cart} itemdelete={( id ) => this.deleteItems( id)}/>
               )}
               />
               <Route path="/login" component={LoginButton} />
