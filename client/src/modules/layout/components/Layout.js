@@ -7,8 +7,8 @@ const Layout = ({ children }) => (
 		<Box m={["20px", "0"]}>
 			<Nav />
 			<Box
-				display={"flex"}
 				as={"main"}
+				display={"flex"}
 				justifyContent={"center"}
 				flexDirection={"column"}
 				alignItems={"center"}

@@ -1,88 +1,129 @@
-const env = require('dotenv').config();
+const env = require("dotenv").config();
 const router = require("express").Router();
-const {PrismaClient} = require('@prisma/client');
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-const req_method = {method:'GET'};
+const { PrismaClient } = require("@prisma/client");
+const fetch = (...args) =>
+	import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const req_method = { method: "GET" };
 const { PrismaClientRustPanicError } = require("@prisma/client/runtime");
-const {event} = new PrismaClient();
+const { event } = new PrismaClient();
 const geolocation_key = process.env.GEO_KEY;
 // see all events
-router.get('/',async(req,res)=>{
-    try{
-        const events = await event.findMany();
-        return res.json(events);
-      }catch(err){
-        console.log(err);
-        return res.status(500).json(err);
-      }
+router.get("/", async (req, res) => {
+	try {
+		const events = await event.findMany();
+		return res.json(events);
+	} catch (err) {
+		console.log(err);
+		return res.status(500).json(err);
+	}
 });
 // see all non-expired events
-router.get('/active',async(req,res)=>{
-    try{
-        const events = await event.findMany({
-            where:{
-                event_end:{gt: new Date(Date.now())}
-            }
-        });
-        return res.json(events);
-      }catch(err){
-        console.log(err);
-        return res.status(500).json(err);
-      }
+router.get("/active", async (req, res) => {
+	try {
+		const events = await event.findMany({
+			where: {
+				event_end: { gt: new Date(Date.now()) },
+			},
+		});
+		return res.json(events);
+	} catch (err) {
+		console.log(err);
+		return res.status(500).json(err);
+	}
 });
 // see past evemts
-router.get('/past',async(req,res)=>{
-    try{
-        const events = await event.findMany({
-            where:{
-                event_end:{lte: new Date(Date.now())}
-            }
-        });
-        return res.json(events);
-      }catch(err){
-        console.log(err);
-        return res.status(500).json(err);
-      }
+router.get("/past", async (req, res) => {
+	try {
+		const events = await event.findMany({
+			where: {
+				event_end: { lte: new Date(Date.now()) },
+			},
+		});
+		return res.json(events);
+	} catch (err) {
+		console.log(err);
+		return res.status(500).json(err);
+	}
 });
 // host a event
-router.post('/', async(req,res) =>{
-    let {event_name,event_desc,is_online,capacity, taken,
-      event_address, event_city, event_state, event_country, event_zip,
-      event_long, event_lat, event_start, event_end, event_image, event_past,
-      require_vac, creator} = req.body;
-    try{
-      if(Date(event_start)<Date.now()) throw {'msg': 'Start date and time has already past'};
-      if(event_end<Date.now()) throw {'msg': 'End date and time has already past'};
-      let query = [`https://api.geoapify.com/v1/geocode/search?text=`];
-      let verify = [event_address,event_city,event_state,event_country,event_zip];
-      while(verify.length){
-          const curr = verify.pop(); 
-          if(curr) query.push(curr.replace(/\s+/g,'%20'),'%20');
-      }
-      query.pop(); // removes the final '%20'
-      query.push('&apiKey=');
-      query.push(geolocation_key);
-      query = query.join('');
-      if(query!==''){
-        await fetch(query, req_method).then(res => res.json()).then(res=>{
-          if(res.statusCode) throw {'msg':res.message};
-          event_long = String(res.features[0].properties.lon);
-          event_lat = String(res.features[0].properties.lat);
-        });
-      }
-      const createEvent = await event.create({
-        data:{
-          event_name,event_desc,is_online,capacity, taken,
-          event_address, event_city, event_state, event_country, event_zip,
-          event_long, event_lat, event_start, event_end, event_image, event_past,
-          require_vac, creator
-        }
-      });
-      res.json(createEvent);
-  }catch(err){
-    console.log(err);
-    return res.status(500).json(err);
-  }
+router.post("/", async (req, res) => {
+	let {
+		event_name,
+		event_desc,
+		is_online,
+		capacity,
+		taken,
+		event_address,
+		event_city,
+		event_state,
+		event_country,
+		event_zip,
+		event_long,
+		event_lat,
+		event_start,
+		event_end,
+		event_image,
+		event_past,
+		require_vac,
+		creator,
+	} = req.body;
+	try {
+		if (Date(event_start) < Date.now())
+			throw { msg: "Start date and time has already past" };
+		if (event_end < Date.now())
+			throw { msg: "End date and time has already past" };
+		let query = [`https://api.geoapify.com/v1/geocode/search?text=`];
+		let verify = [
+			event_address,
+			event_city,
+			event_state,
+			event_country,
+			event_zip,
+		];
+		while (verify.length) {
+			const curr = verify.pop();
+			if (curr) query.push(curr.replace(/\s+/g, "%20"), "%20");
+		}
+		query.pop(); // removes the final '%20'
+		query.push("&apiKey=");
+		query.push(geolocation_key);
+		query = query.join("");
+		if (query !== "") {
+			await fetch(query, req_method)
+				.then((res) => res.json())
+				.then((res) => {
+					if (res.statusCode) throw { msg: res.message };
+					event_long = String(res.features[0].properties.lon);
+					event_lat = String(res.features[0].properties.lat);
+				});
+		}
+		const createEvent = await event.create({
+			data: {
+				event_name,
+				event_desc,
+				is_online,
+				capacity,
+				taken,
+				event_address,
+				event_city,
+				event_state,
+				event_country,
+				event_zip,
+				event_long,
+				event_lat,
+				event_start,
+				event_end,
+				event_image,
+				event_past,
+				require_vac,
+				creator,
+			},
+		});
+		res.json(createEvent);
+	} catch (err) {
+		console.log(err);
+		return res.status(500).json(err);
+	}
 });
 
 module.exports = router;
