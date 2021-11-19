@@ -12,6 +12,7 @@ datasource db {
 
 model User{
   user_id String @default(uuid()) @id
+  user_public_id String @default(uuid()) 
   username String @db.VarChar(255) @unique
   password String
   first_name String
@@ -35,6 +36,7 @@ model User{
 }
 model Event{
   event_id String @default(uuid()) @id
+  event_public_id String @default(uuid()) 
   event_name String
   event_desc String
   is_online Boolean @default(false)

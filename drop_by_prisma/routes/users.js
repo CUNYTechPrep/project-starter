@@ -1,14 +1,18 @@
 const router = require("express").Router();
 const { PrismaClient } = require("@prisma/client");
 const { PrismaClientRustPanicError } = require("@prisma/client/runtime");
-const { user } = new PrismaClient();
+const { user, participant, event } = new PrismaClient();
 let bcrypt = require("bcrypt");
 const { json } = require("express");
 const bcypt_num = 8;
-// // Get list of users
-router.get("/", async (req, res) => {
+// Get list of users
+router.get("", async (req, res) => {
 	try {
-		const users = await user.findMany();
+		const users = await user.findMany({
+			orderBy:{
+				createdAt: 'desc'
+			}
+		});
 		return res.json(users);
 	} catch (err) {
 		console.log(err);
@@ -33,7 +37,7 @@ router.get("/:user_id", async (req, res) => {
 	}
 });
 // password needs to be hashed via bcrypt
-router.post("/", async (req, res) => {
+router.post("", async (req, res) => {
 	let {
 		username,
 		password,
@@ -99,8 +103,8 @@ router.post("/", async (req, res) => {
 	res.json(createUser);
 });
 // verify a vaccination status
-router.patch("/:username/vaccinated", (res, req) => {
-	const { username } = req.body;
+router.patch("/:username/vaccinated", async (req, res) => {
+	const { username } = req.params.username;
 	try {
 		const updateUserInfo = await user.update({
 			where: {
@@ -110,14 +114,15 @@ router.patch("/:username/vaccinated", (res, req) => {
 				is_vaccinated: true,
 			},
 		});
+        res.json(updateUserInfo);
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
 	}
 });
 // verify a user
-router.patch("/:username/verifed", (res, req) => {
-	const { username } = req.body;
+router.patch("/:username/verifed", async(req, res) => {
+	const { username } = req.params.username;
 	try {
 		const updateUserInfo = await user.update({
 			where: {
@@ -127,12 +132,14 @@ router.patch("/:username/verifed", (res, req) => {
 				is_verifed: true,
 			},
 		});
+        res.json(updateUserInfo);
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
 	}
 });
-router.patch("/edit", (res, req) => {
+// edit user profile
+router.patch("/edit", async(req, res) => {
 	const {
 		user_id,
 		first_name,
@@ -165,10 +172,127 @@ router.patch("/edit", (res, req) => {
 				updatedAt: Date.now(),
 			},
 		});
+        res.json(updateUserInfo);
 	} catch (err) {
 		console.log(err);
 		res.status(500).json(err);
 	}
 });
-router.patch("/verifed", (res, req) => {});
+// get a list of all events that the user registered for
+router.get('/:username/events', async(req, res)=>{
+    try{
+        const {username} = req.params;
+        const user_id = await user.findMany({
+            where:{username:username},
+            select:{user_id:true}
+        }).then(res=>{
+            if(res.length===0) throw ({'msg':'Invalid username'});
+            return res[0].user_id;
+        });
+        if(!user_id) throw ({'msg':'Invalid user login'});
+        let event_ids = await participant.findMany({
+            where:{
+                user_id: user_id
+            },
+            select:{
+                event_id: true
+            }
+        });
+		event_ids = event_ids.map(i=> i.event_id);
+		const events = await event.findMany({
+			where:{
+				event_id:{
+					in: event_ids
+				}
+			},
+			orderBy:{
+				event_start: 'desc'
+			}
+		})
+        return res.json(events);
+    }catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
+// get a list of all events that the user registered for that has past
+router.get('/:username/events/past', async(req, res)=>{
+    try{
+        const {username} = req.params;
+        const user_id = await user.findMany({
+            where:{username:username},
+            select:{user_id:true}
+        }).then(res=>{
+            if(res.length===0) throw ({'msg':'Invalid username'});
+            return res[0].user_id;
+        });
+        if(!user_id) throw ({'msg':'Invalid user login'});
+        let event_ids = await participant.findMany({
+            where:{
+                user_id: user_id
+            },
+            select:{
+                event_id: true
+            }
+        });
+		event_ids = event_ids.map(i=> i.event_id);
+		const events = await event.findMany({
+			where:{
+				event_id:{
+					in: event_ids
+				},
+				event_end:{
+					lt: new Date(Date.now())
+				}
+			},
+			orderBy:{
+				event_start: 'asc'
+			}
+		})
+        return res.json(events);
+    }catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
+// get a list of all events that the user registered for that has not past
+router.get('/:username/events/active', async(req, res)=>{
+    try{
+        const {username} = req.params;
+        const user_id = await user.findMany({
+            where:{username:username},
+            select:{user_id:true}
+        }).then(res=>{
+            if(res.length===0) throw ({'msg':'Invalid username'});
+            return res[0].user_id;
+        });
+        if(!user_id) throw ({'msg':'Invalid user login'});
+		let event_ids = await participant.findMany({
+            where:{
+                user_id: user_id
+            },
+            select:{
+                event_id: true
+            }
+        });
+		event_ids = event_ids.map(i=> i.event_id);
+		const events = await event.findMany({
+			where:{
+				event_id:{
+					in: event_ids
+				},
+				event_end:{
+					gte: new Date(Date.now())
+				}
+			},
+			orderBy:{
+				event_start: 'desc'
+			}
+		})
+        return res.json(events);
+    }catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
 module.exports = router;

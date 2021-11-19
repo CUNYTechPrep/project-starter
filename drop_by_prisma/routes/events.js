@@ -5,7 +5,7 @@ const fetch = (...args) =>
 	import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const req_method = { method: "GET" };
 const { PrismaClientRustPanicError } = require("@prisma/client/runtime");
-const { event } = new PrismaClient();
+const { event, participant, user } = new PrismaClient();
 const geolocation_key = process.env.GEO_KEY;
 // see all events
 router.get("/", async (req, res) => {
@@ -24,6 +24,9 @@ router.get("/active", async (req, res) => {
 			where: {
 				event_end: { gt: new Date(Date.now()) },
 			},
+			orderBy:{
+				event_start: 'asc'
+			}
 		});
 		return res.json(events);
 	} catch (err) {
@@ -38,6 +41,9 @@ router.get("/past", async (req, res) => {
 			where: {
 				event_end: { lte: new Date(Date.now()) },
 			},
+			orderBy:{
+				event_start: 'asc'
+			}
 		});
 		return res.json(events);
 	} catch (err) {
@@ -68,10 +74,13 @@ router.post("/", async (req, res) => {
 		creator,
 	} = req.body;
 	try {
-		if (Date(event_start) < Date.now())
-			throw { msg: "Start date and time has already past" };
-		if (event_end < Date.now())
-			throw { msg: "End date and time has already past" };
+		// error checking for wrong dates
+		if (new Date(event_start) < Date.now())
+			throw { msg: "Start date and time has already past." };
+		if (new Date(event_end) < Date.now())
+			throw { msg: "End date and time has already past." };
+		if (new Date(event_end) < new Date(event_start))
+			throw { msg: "Event cannot end before it is started." };
 		let query = [`https://api.geoapify.com/v1/geocode/search?text=`];
 		let verify = [
 			event_address,
@@ -120,6 +129,38 @@ router.post("/", async (req, res) => {
 			},
 		});
 		res.json(createEvent);
+	} catch (err) {
+		console.log(err);
+		return res.status(500).json(err);
+	}
+});
+// get all events that a user partipated in
+router.get("/:event_id/partipants", async (req, res) => {
+	try {
+		const { event_id } = req.body;
+		let user_ids = await participant.findMany({
+			where: {
+				event_id,
+			},
+			select:{
+				user_id: true
+			},
+			orderBy:{
+				createdAt: 'asc'
+			}
+		});
+		user_ids = user_ids.map(user=>{
+			return user.user_id;
+		});
+		// user_ids = user_ids.join(',');
+		const users_info = await user.findMany({
+			where:{
+				user_id:{
+					in: user_ids
+				}
+			}
+		});
+		return res.json(users_info);
 	} catch (err) {
 		console.log(err);
 		return res.status(500).json(err);

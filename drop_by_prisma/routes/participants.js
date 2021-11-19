@@ -3,13 +3,16 @@ const { PrismaClient } = require("@prisma/client");
 
 const { participant, event } = new PrismaClient();
 
-router.get("/", async (req, res) => {
+router.get("", async (req, res) => {
 	try {
 		const { participant_id } = req.body;
 		const events = await participant.findMany({
 			where: {
 				participant_id,
 			},
+			orderBy:{
+				createdAt: 'asc'
+			}
 		});
 		return res.json(events);
 	} catch (err) {
@@ -17,38 +20,9 @@ router.get("/", async (req, res) => {
 		return res.status(500).json(err);
 	}
 });
-// get all partipants of a event
-router.get("/event", async (req, res) => {
-	try {
-		const { event_id } = req.body;
-		const users = await participant.findMany({
-			where: {
-				event_id,
-			},
-		});
-		return res.json(users);
-	} catch (err) {
-		console.log(err);
-		return res.status(500).json(err);
-	}
-});
-// get all events that a user partipated in
-router.get("/user", async (req, res) => {
-	try {
-		const { user_id } = req.body;
-		const events = await participant.findMany({
-			where: {
-				user_id,
-			},
-		});
-		return res.json(events);
-	} catch (err) {
-		console.log(err);
-		return res.status(500).json(err);
-	}
-});
+
 // register for a event
-router.post("/", async (req, res) => {
+router.post("", async (req, res) => {
 	try {
 		const { user_id, event_id } = req.body;
 		const participant_id = `${user_id}_${event_id}`;
@@ -67,8 +41,10 @@ router.post("/", async (req, res) => {
 				hit_capacity: true,
 				capacity: true,
 				taken: true,
+				event_start: true
 			},
 		});
+		if(status.event_start>Date.now()) throw {'msg':'The event has already started'};
 		if (typeof status.capacity === "number" && status.hit_capacity)
 			throw { msg: "Sorry the event is full!" };
 		status.taken++;
@@ -100,7 +76,7 @@ router.post("/", async (req, res) => {
 	}
 });
 // unregister for a event
-router.delete("/", async (req, res) => {
+router.delete("", async (req, res) => {
 	try {
 		let { participant_id, user_id, event_id } = req.body;
 		if (!participant_id) participant_id = `${user_id}_${event_id}`;
@@ -110,7 +86,7 @@ router.delete("/", async (req, res) => {
 		const existUser = await participant.findUnique({
 			where: {
 				participant_id,
-			},
+			}
 		});
 		if (!existUser) throw { msg: "User is not registered for the event" };
 		const status = await event.findUnique({
@@ -121,9 +97,13 @@ router.delete("/", async (req, res) => {
 				hit_capacity: true,
 				capacity: true,
 				taken: true,
+				event_start: true,
 			},
 		});
-		if (typeof status.hit === "number") {
+		// cannot unregisted for a event once it has started or past
+		if(status.event_start<Date.now())
+			throw {'msg': 'Event has already started or past'};
+		if(typeof status.hit === "number") {
 			status.taken--;
 			status.hit_capacity = status.taken >= status.capacity;
 		}
