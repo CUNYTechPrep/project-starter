@@ -11,9 +11,9 @@ import Navigation from './components/Navigation';
 import ItemsByShelf from './components/ItemsByShelf';
 import SearchResults from './components/SearchResults';
 import NotFoundError from './components/error/NotFoundError';
-import LoginButton from './components/LoginButton';
-import LogoutButton from './components/LogoutButton';
-import Cart from './components/Cart'
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import Cart from './components/Cart';
 
 
 class App extends React.Component {
@@ -187,14 +187,14 @@ class App extends React.Component {
     console.log(cart)
     return (
           <Router>
-            <div className="header">
-              <Navigation items={items} cart={cart}/>
-              {/* <Profile /> */}
-            </div>
+            <Navigation items={items} cart={cart}/>
             <Switch>
               <Route exact path="/" render={(props) => (
-                <ItemList {...props} items={items} />
-              )} 
+                  <div>
+                      <div className="header"></div>
+                      <ItemList {...props} items={items} />
+                  </div>
+                )} 
               />
               <Route  path="/products/:id" render={(props) => (
                 <ItemDetail {...props} items={items} addToCart={(itemInfo) => this.addToCart(itemInfo)}/>
@@ -212,8 +212,8 @@ class App extends React.Component {
                 <Cart {...props} items={items} cart={cart} itemdelete={( id ) => this.deleteItems( id)} updateQuantity={( id, quantity ) => this.updateItem( id, quantity)}/>
               )}
               />
-              <Route path="/login" component={LoginButton} />
-              <Route path="/logout" component={LogoutButton} />
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={SignUp} />
               {/* <Route exact path="/aboutus" component={AboutUsPage} /> */}
               <Route component={NotFoundError}/>
             </Switch>

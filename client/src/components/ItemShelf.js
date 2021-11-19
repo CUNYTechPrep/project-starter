@@ -9,7 +9,7 @@ class ItemShelf extends Component{
                 <Row>
 
                         {shelfItems.map((id,idx) => (
-                            <Col sm={6} md={4} lg={3}>
+                            <Col sm={6} md={4} lg={3} key={idx}>
                                     <Item
                                     key={idx}
                                     id={id}

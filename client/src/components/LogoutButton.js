@@ -1,14 +1,17 @@
-import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import React, { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { withRouter,Link } from 'react-router-dom';
 
-const LogoutButton = () => {
-  const { logout, isAuthenticated } = useAuth0();
-
+const LogoutButton = ({history}) => {
+  const auth = useContext(AuthContext);
+  const logout = () => {
+    auth.signout().then(() => history.push('/'));
+  }
   return (
-    isAuthenticated && <button className="btn btn-primary" onClick={() => logout({ returnTo: window.location.origin })}>
+    auth.isAuthenticated && <button className="btn btn-primary" onClick={logout}>
       Log Out
     </button>
   );
 };
 
-export default LogoutButton;
+export default withRouter(LogoutButton);

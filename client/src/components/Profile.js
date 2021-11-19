@@ -1,17 +1,13 @@
-import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-
+import React, { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  }
+  const auth = useContext(AuthContext);
+  const { user, isAuthenticated } = auth;
 
   return (
     isAuthenticated && (
       <div className="nav-item nav-link">
-         <p>{user.name}</p>
+         <p>{user.email}</p>
       </div>
     )
   );

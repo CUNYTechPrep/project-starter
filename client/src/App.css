@@ -241,3 +241,26 @@
 .error{
 	text-align: center;
 }
+
+.loginForm{
+	margin:auto;/* nice thing of auto margin if display:flex; it center both horizontal and vertical :) */
+	width: 50%;
+}
+  
+form > h3{
+text-align: center;
+}
+  
+  
+.forgot-password,
+.forgot-password a {
+text-align: right;
+font-size: 13px;
+padding-top: 10px;
+color: #7f7d7d;
+margin: 0;
+}
+
+.forgot-password a {
+color: #167bff;
+}
