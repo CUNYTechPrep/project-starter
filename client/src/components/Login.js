@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import  { AuthContext } from '../context/AuthContext'
-import { Redirect } from "react-router";
+import { Redirect, Link } from "react-router-dom";
 const initialValues = {
     email: "",
     password: "",
@@ -9,7 +9,6 @@ function LogIn(props){
     const [values, setValues] = useState(initialValues);
     const [alert, setAlert] = useState("");
     const [redirect, setRedirect] = useState(false);
-    const [failed, setFailed] = useState(false);
     const auth = useContext(AuthContext);
     const handleInputChange = (event) => {
         const {name, value} = event.target;
@@ -30,7 +29,7 @@ function LogIn(props){
           setRedirect(true)
         })
         .catch((err) => {
-          setFailed(true)
+          setAlert("Invalid email or password")
         });
 
     }
@@ -75,10 +74,12 @@ function LogIn(props){
                 </div>
             </div> */}
 
-            <button type="submit" className="btn btn-primary btn-block">Submit</button>
-            <p className="forgot-password text-right">
+            <button type="submit" className="btn btn-primary btn-block">Sign In</button>
+            {/* <p className="forgot-password text-right">
                 Forgot <a href="#">password?</a>
-            </p>
+            </p> */}
+
+            <Link to="/signup">Create Account</Link>
         </form>
     );
 }

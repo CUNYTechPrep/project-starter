@@ -5,7 +5,8 @@ class ItemDetail extends Component {
         super(props)
         this.state = {
             quantity: "1",
-            size: "xxs"
+            size: "xxs",
+            item: {}
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -13,7 +14,7 @@ class ItemDetail extends Component {
     handleSubmit = (event,id) => {
         event.preventDefault();
         const {quantity, size} = this.state;
-        console.log(quantity, size);
+        // console.log(quantity, size);
         const itemInfo = {
             id,
             quantity,
@@ -27,28 +28,37 @@ class ItemDetail extends Component {
 
     handleChange = (event) => {
         const value= event.target.value;
-        console.log(value)
         this.setState({
             [event.target.name]: value
         })
     }
-    render() {
-        const {items} = this.props;
+
+    componentDidMount(){
         const { id } = this.props.match.params;
-        const item = items[id];
-        const {quantity, size} = this.state;
+        fetch(`http://localhost:5000/product/${id}`)
+        .then(res => res.json())
+        .then(product => {
+            this.setState({
+                ...this.state,
+                item: product
+            })
+        })
+    }
+    render() {
+        const {quantity, size, item } = this.state;
+        const imageLink = item.imageLink ? item.imageLink : null;
         return(
             
             <Container>
                 <Row className="horizontal">
-                    <Col md={12}lg={6}><img src={item.imageLink} alt={items.name} style={{width: '30rem'}}/></Col>
+                    <Col md={12}lg={6}><img src={imageLink} alt={item.name} style={{width: '30rem'}}/></Col>
                     <Col md={6}lg={6}>
                     <div>
                         <h2><strong>{item.name}</strong></h2>
                         <h2><strong>{item.color}</strong></h2>
                         <h3>${item.price}</h3>
                         <div>
-                            <form onSubmit={(event)=>this.handleSubmit(event, id)}>
+                            <form onSubmit={(event)=>this.handleSubmit(event, item.product_id)}>
                                 {item.sizeAble && (
                                     <label>
                                     Pick your size:
@@ -79,7 +89,7 @@ class ItemDetail extends Component {
                         <div>
                             <h3>Detail</h3>
                             <ul>
-                                {item.descriptions.map((d,idx) => (
+                                {item.description && item.description.map((d,idx) => (
                                     <li key={idx}>{d}</li>
                                 ))}
                             </ul>

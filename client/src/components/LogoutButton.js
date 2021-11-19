@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { withRouter,Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const LogoutButton = ({history}) => {
   const auth = useContext(AuthContext);

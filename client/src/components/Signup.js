@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Redirect } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 const initialValues = {
     email: "",
     password: "",
 } 
-function SignUp(){
+function Signup(props){
     const [values, setValues] = useState(initialValues);
     const [alert, setAlert] = useState("")
+    const [redirect, setRedirect] = useState(false);
+    const auth = useContext(AuthContext);
     const handleInputChange = (event) => {
         const {name, value} = event.target;
         setValues({
@@ -18,22 +22,20 @@ function SignUp(){
         e.preventDefault();
         //authenticate the account
         // if it is authenticated, redirect to home page
-        fetch("http://localhost:5000/auth/signup", {
-            method: "POST",
-            headers: { 
-                'Content-Type': 'application/json'
-             },
-            body: JSON.stringify(values)
-        }).then(res => res.json())
-        .then(obj => {
-            if(!obj.success){
-                setAlert(obj.message)
-            }else{
-                // setValues(initialValues);
-                console.log(obj)
-                window.location = `/`
-            }
-        })
+        const { email, password } = values;
+        auth.signup(email, password)
+          .then((user) => {
+            setRedirect(true)
+          })
+          .catch((err) => {
+            console.error(err)
+            setAlert("User already exists")
+          });
+
+    }
+    const { from } = props.location.state || { from: { pathname: "/" } }
+    if(redirect){
+        return <Redirect to={from} />
     }
     return (
         <form onSubmit={handleSubmit} className="loginForm">
@@ -73,12 +75,9 @@ function SignUp(){
             </div> */}
 
             <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
-            <p className="forgot-password text-right">
-                Forgot <a href="#">password?</a>
-            </p>
         </form>
     );
 }
 
 
-export default SignUp;
+export default Signup;

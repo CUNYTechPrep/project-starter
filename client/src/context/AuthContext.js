@@ -41,6 +41,24 @@ const AuthProvider = ({ children }) => {
       });
   }
 
+  const signup = (email, password) => {
+    return fetch('http://localhost:5000/auth/signup', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then(response => {
+      if(!response.ok) {
+        throw new Error('Signup Failed');
+      }
+      return response.JSON()
+    }).then((user) => {
+      setUser(user)
+      return user;
+    })
+  }
+
   const signout = () => {
     return fetch('http://localhost:5000/auth/logout', {
       method: 'POST',

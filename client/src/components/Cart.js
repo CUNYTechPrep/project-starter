@@ -78,7 +78,7 @@ function Cart ( {items, cart, itemdelete, updateQuantity} ) {
                             <hr bold="200"/>
                         
                         {cartItems.map( ( item ) => (
-                        <Row>
+                        <Row key={item.product_id}>
                         
                             <Col className="flex"  xs={6} md={4}>
                                     <Card.Img variant="top" src={item['imageLink']} style={{width: '10rem'}}/>
