@@ -4,8 +4,8 @@
   "description": "An api backend",
   "main": "index.js",
   "scripts": {
-    "start": "node api/app.js",
-    "dev": "nodemon -r dotenv/config api/app.js",
+    "start": "node server/app.js",
+    "dev": "nodemon server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm install && npm run build"
   },
