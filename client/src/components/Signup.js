@@ -29,7 +29,7 @@ function Signup(props){
           })
           .catch((err) => {
             console.error(err)
-            setAlert("User already exists")
+            setAlert("Sign up failed")
           });
 
     }

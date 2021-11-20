@@ -3,16 +3,14 @@ import ItemList from './ItemList';
 class SearchResult extends Component {
     render(){
         const { results } = this.props.location.state;
-        const { items } = this.props;
-        let filterItems = [];
-        
-        console.log(items[results[0]])
-        for (let i = 0; i < results.length; i++) {
-            filterItems.push(items[results[i]])
+        const items = {}
+        for(let i = 0; i < results.length; i++){
+          const item = results[i];
+          items[item.product_id] = item
         }
         return(
             <div> 
-                <ItemList items={filterItems}/>
+                <ItemList items={items}/>
             </div>
         )
     }

@@ -2,7 +2,6 @@ import React, { Component, useState, useEffect } from "react";
 import {Container, Row, Col, Card, Button} from 'react-bootstrap';
 import ItemDetail from "./ItemDetail";
 function Cart ( {items, cart, itemdelete, updateQuantity} ) {
-        console.log(cart)
         const [totalAmount, setTotalAmount] = useState(0);
         const [cartItems, setCartItems] = useState([]);
         const [carts, setCarts] = useState([]);
@@ -85,8 +84,8 @@ function Cart ( {items, cart, itemdelete, updateQuantity} ) {
                                 <Col style={{marginTop: '50px'}} >
                                     <Card.Title ><b>{item['name']}</b></Card.Title>
                                     <Card.Text> xs </Card.Text>
-                                    <Button onClick={(e) => removeItem(item.id , e)}> remove </Button>
-                                    <Button variant="secondary" size="lg" type="submit" onClick={(e) => handleUpdate(e, item.id)}style={{background:'#FFFFFF',color:'#000000', fontWeight:'500',  }}>
+                                    <Button onClick={(e) => removeItem(item.product_id , e)}> remove </Button>
+                                    <Button variant="secondary" size="lg" type="submit" onClick={(e) => handleUpdate(e, item.product_id)}style={{background:'#FFFFFF',color:'#000000', fontWeight:'500',  }}>
                                         Update
                                     </Button>
                                 </Col>

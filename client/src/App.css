@@ -264,3 +264,14 @@ margin: 0;
 .forgot-password a {
 color: #167bff;
 }
+
+.grow img{
+	transition: 1s ease;
+}
+
+.grow img:hover{
+-webkit-transform: scale(1.3);
+-ms-transform: scale(1.3);
+transform: scale(1.09);
+transition: 1s ease;
+}

@@ -6,7 +6,8 @@ import Profile from "./Profile";
 class Navigation extends Component {
   state = {
     query: "",
-    results: []
+    results: [],
+    items: []
   }
 
   handleChange = (query) => {
@@ -15,9 +16,8 @@ class Navigation extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { query } = this.state;
-    const filterItems = this.props.items && Object.keys(this.props.items).filter( (key)=>{
-      const item = this.props.items[key];
+    const { query,items } = this.state;
+    const filterItems = items.filter( (item)=>{
       if (
         item.name.toLowerCase().includes(query) ||
         item.color.toLowerCase().includes(query) ||
@@ -29,13 +29,21 @@ class Navigation extends Component {
     })
 
     this.setState({
+      ...this.state,
       query: "",
       results: filterItems
     })
-
-  
-    
     //redirect to /search pass filterItems, then display items on /search
+  }
+  componentDidMount(){
+    fetch("http://localhost:5000/product")
+    .then(res => res.json())
+    .then(products => {
+      this.setState({
+        ...this.state,
+        items: products
+      })
+    })
   }
   render() {
     

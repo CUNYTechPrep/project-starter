@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { Link } from 'react-router-dom'
 const Profile = () => {
   const auth = useContext(AuthContext);
   const { user, isAuthenticated } = auth;
@@ -7,7 +8,7 @@ const Profile = () => {
   return (
     isAuthenticated && (
       <div className="nav-item nav-link">
-         <p>{user.email}</p>
+         <Link to="/account">{user.email}</Link>
       </div>
     )
   );

@@ -14,7 +14,8 @@ import NotFoundError from './components/error/NotFoundError';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Cart from './components/Cart';
-
+import Account from './components/Account';
+import PrivateRoute from './components/PrivateRoute';
 
 class App extends React.Component {
 
@@ -50,13 +51,11 @@ class App extends React.Component {
     fetch("http://localhost:5000/product")
     .then(res => res.json())
     .then(products => {
-      console.log(products)
       const items = {}
       for(let i=0; i < products.length; i++){
         const item = products[i];
         items[item.product_id] = item
       }
-      console.log(items)
       this.setState({
         ...this.state,
         items
@@ -66,7 +65,6 @@ class App extends React.Component {
 
   render() {
     const { items, cart } = this.state;
-    console.log(cart, items)
     return (
           <Router>
             <Navigation items={items} cart={cart}/>
@@ -94,6 +92,7 @@ class App extends React.Component {
                 <Cart {...props} items={items} cart={cart} itemdelete={( id ) => this.deleteItems( id)} updateQuantity={( id, quantity ) => this.updateItem( id, quantity)}/>
               )}
               />
+              <PrivateRoute path="/account" component={Account}/>
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               {/* <Route exact path="/aboutus" component={AboutUsPage} /> */}

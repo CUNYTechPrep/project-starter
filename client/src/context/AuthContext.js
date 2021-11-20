@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
       if(!response.ok) {
         throw new Error('Signup Failed');
       }
-      return response.JSON()
+      return response.json();
     }).then((user) => {
       setUser(user)
       return user;
@@ -85,6 +85,7 @@ const AuthProvider = ({ children }) => {
         authenticate,
         signout,
         isAuthenticated: user ? true : false,
+        signup,
         user
       }}
     >
