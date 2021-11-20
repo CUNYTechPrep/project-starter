@@ -1,22 +1,33 @@
-const { sequelize } = require('./models')
+const { sequelize, User, Product, Order } = require('./models')
 const db = require('./models');
 const express = require('express');
-const cookieParser = require('cookie-parser')
+const expressSession = require('express-session');
+// const flash = require('connect-flash');
+const passport = require('./middlewares/authentication');
 const index = require('./routes/index');
 const user = require('./routes/user');
 const product = require('./routes/product');
-const cors = require('cors')
 const auth = require('./auth');
+const cors = require('cors')
 const app = express();
+
 app.use(express.json());
-app.use(cookieParser("keyboard_cat"));
+// setup passport and session cookies
+app.use(expressSession({
+    secret: "keyboard_cat",
+    resave: false,
+    saveUninitialized: true
+  }));
+app.use(passport.initialize());
+app.use(passport.session());
 const issue2options = {
-    origin: "http://localhost:3000",
-    methods: ["GET","POST","PATCH","PUT"],
-    credentials: true,
-    maxAge: 3600
-  };
+origin: "http://localhost:3000",
+methods: ["GET","POST","PATCH","PUT"],
+credentials: true,
+maxAge: 3600
+};
 app.use(cors(issue2options));
+// app.use(flash())
 
 app.use('/', index);
 app.use('/user', user);

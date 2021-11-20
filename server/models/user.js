@@ -11,14 +11,39 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // User.belongsToMany(models.Product, { as: "ProductsInUsers", through: models.Order, foreignKey:"user_id"})
     }
+    // toJSON(){
+    //   return{...this.get(), id: undefined}
+    // }
   };
   User.init({
-    email: DataTypes.STRING,
-    password: DataTypes.STRING
+    user_id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: "User must have a email."},
+        notEmpty: { msg: "Email must not be empty."}
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: "User must have a passsword."},
+        notEmpty: { msg: "Password must not be empty."}
+      }
+    }
   }, {
     sequelize,
-    modelName: 'user',
+    tableName: "user",
+    modelName: 'User',
+
   });
   return User;
 };

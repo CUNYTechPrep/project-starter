@@ -33,10 +33,10 @@ createuser -P -s -e ctp_user
 Create a separate db for this project:
 
 ```
-createdb -h localhost -U ctp_user app2021_development
+createdb -h localhost -U ctp_user sequelize_db
 ```
 
-> You will create a DB for each project you start based on this repo. For other projects change `app2021_development` to the new apps database name.
+> You will create a DB for each project you start based on this repo. For other projects change `sequelize_db` to the new apps database name.
 
 *For more details see the [installing postgres guides](https://github.com/CUNYTechPrep/guides#postgresql)*
 
@@ -48,9 +48,8 @@ For local development you will need two terminals open, one for the api-backend 
 
 ```bash
 # api-backend terminal 1
-cp .env.example .env
-npm install
-npm run dev
+cd server
+nodemon app.js
 ```
 
 ```bash
@@ -60,7 +59,7 @@ npm install
 npm start
 ```
 
-- api-backend will launch at: http://localhost:8080
+- api-backend will launch at: http://localhost:5000
 - react-client will launch at: http://localhost:3000
 
 > In production you will only deploy a single app. The react client will build into static files that will be served from the backend.
