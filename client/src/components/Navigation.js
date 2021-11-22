@@ -35,16 +35,16 @@ class Navigation extends Component {
     })
     //redirect to /search pass filterItems, then display items on /search
   }
-  componentDidMount(){
-    fetch("http://localhost:5000/product")
-    .then(res => res.json())
-    .then(products => {
-      this.setState({
-        ...this.state,
-        items: products
-      })
-    })
-  }
+  // componentDidMount(){
+  //   fetch("http://localhost:5000/product")
+  //   .then(res => res.json())
+  //   .then(products => {
+  //     this.setState({
+  //       ...this.state,
+  //       items: products
+  //     })
+  //   })
+  // }
   render() {
     
     return (
