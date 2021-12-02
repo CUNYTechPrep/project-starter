@@ -1,6 +1,8 @@
 import React from "react";
 import Nav from "./Nav";
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
+import { useColorModeValue } from "@chakra-ui/color-mode";
+import Toggle from "../../../common/components/ThemeToggle";
 
 const Layout = ({ children }) => (
 	<Box margin="0 auto" maxWidth={800} transition="0.5s ease-out">
@@ -14,6 +16,14 @@ const Layout = ({ children }) => (
 				alignItems={"center"}
 			>
 				{children}
+			</Box>
+			<Box
+				as={"footer"}
+				bg={useColorModeValue("gray.100", "gray.900")}
+				px={4}
+				p={5}
+			>
+				<Toggle />
 			</Box>
 		</Box>
 	</Box>
