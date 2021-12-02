@@ -4,7 +4,47 @@ const { PrismaClientRustPanicError } = require("@prisma/client/runtime");
 const { user, participant, event } = new PrismaClient();
 let bcrypt = require("bcrypt");
 const { json } = require("express");
-const bcypt_num = 8;
+const salt = bcrypt.genSaltSync(8);
+const updateInfo = (user) =>{
+	return {
+		'username':user.username,
+		'first_name':user.first_name,
+		'last_name':user.last_name,
+		'email':user.email,
+		'phone_number':user.phone_number,
+		'birth_date':user.birth_date,
+		'address':user.address,
+		'city':user.city,
+		'state':user.state,
+		'country':user.country,
+		'zip':user.zip,
+		'is_vaccinated':user.is_vaccinated,
+		'is_verifed':user.is_verifed,
+		'pfp':user.pfp
+	};
+}
+		
+		
+function checkLogin(req){
+	if(req.session.login) return true; // incase of null, we need the if statement
+	return false;
+}
+function login(user,req){
+	if(checkLogin(req)) return {'msg':"You are already logged in."};
+	req.session.login = true;
+	req.session.user_id = user.user_id;
+	let userInfo = updateInfo(user);
+	req.session.user_info = userInfo;
+	return {'msg':"Logged in successfully.",'user_id':req.session.user_id,"user_info":req.session.user_info};
+}
+function logout(req){
+	if(!checkLogin(req)) return {'msg': 'You are not logged in.'};
+	req.session.login = false;
+	req.session.user_id = null;
+	req.session.user_info = null;
+	return {'msg': 'Logged out successfully'};
+}
+
 // Get list of users
 router.get("", async (req, res) => {
 	try {
@@ -19,30 +59,37 @@ router.get("", async (req, res) => {
 		return res.status(500).json(err);
 	}
 });
-router.get("/:user_id", async (req, res) => {
-	const username = req.params.user_id || "",
-		user_id = req.params.user_id || "";
-	try {
+router.get("/login", async (req, res) => {
+	let { user_identification, password } = req.body;
+	try{
 		const users = await user.findFirst({
 			where: {
-				OR: [{ user_id: user_id }, { username: username }],
+				OR: [{ user_id: user_identification }, { username: user_identification }],
 			},
 		});
-		if (!users)
-			return res.json({ msg: "Enter a valid username or user ID." });
-		return res.json(users);
-	} catch (err) {
-		console.log(err);
-		return res.status(500).json(err);
+		if(!users) return res.json({ msg: "Username/email is not found" });
+		password = bcrypt.compareSync(password,users.password);
+		if(password){
+			res.json(login(users,req));
+		}else return {'msg':'Incorrect password'};
+	}catch(err){
+		res.json({'msg': 'Login failed'});
+	}
+});
+router.get("/logout", async (req, res) => {
+	try{
+		res.json(logout(req));
+	}catch(err){
+		res.json({'msg': 'Cannot log out'});
 	}
 });
 // password needs to be hashed via bcrypt
-router.post("", async (req, res) => {
+router.post("/sign_up", async (req, res) => {
 	let {
 		username,
-		password,
 		first_name,
 		last_name,
+		password,
 		email,
 		phone_number,
 		birth_date,
@@ -54,6 +101,8 @@ router.post("", async (req, res) => {
 		is_vaccinated,
 		is_verifed,
 	} = req.body;
+	zip = String(zip);
+	birth_date = new Date(birth_date);
 	const itemExists = await function (item) {
 		let res = user.findUnique({
 			where: {
@@ -74,8 +123,7 @@ router.post("", async (req, res) => {
 			});
 		}
 	}
-
-	password = bcrypt.hashSync(password, bcypt_num);
+	password = bcrypt.hashSync(password, salt);
 	// let age = Math.floor((Date.now()-birth_date)* 0.0001);
 	/*
     We can add age later on, issue with age is that
@@ -102,6 +150,22 @@ router.post("", async (req, res) => {
 	});
 	res.json(createUser);
 });
+router.get("/:user_id", async (req, res) => {
+	const user_identification = req.params.user_id || "";
+	try {
+		const users = await user.findFirst({
+			where: {
+				OR: [{ user_id: user_identification }, { username: user_identification }],
+			},
+		});
+		if (!users) return res.json({ msg: "Enter a valid username or user ID." });
+		return res.json(users);
+	} catch (err) {
+		console.log(err);
+		return res.status(500).json(err);
+	}
+});
+
 // verify a vaccination status
 router.patch("/:username/vaccinated", async (req, res) => {
 	const { username } = req.params.username;

@@ -1,6 +1,14 @@
-const express = require('express')
+const express = require('express');
+const session = require('express-session'); // npm install express-session
+
 const app = express();
 app.use(express.json());
+app.set('trust proxy', 1);
+app.use(session({
+    secret: 'drop_by',
+    resave: false,
+    saveUninitialized: true,
+}));
 app.use('/users', require('./routes/Users'));
 app.use('/event', require('./routes/Events'))
 app.use('/participant', require('./routes/Participants'))
@@ -16,8 +24,13 @@ app.listen({ port: 8000 }, async () => {
 /*
 Users
 - users/
-    Creat user
     Get a list of all users
+- users/sign_up
+    Create user
+- user/login
+    Validates user creds and grabs infomation if correct
+- user/logout
+    logs the user out
 - users/:user_id
     Get individual user info
 - user/:username/vaccinated
