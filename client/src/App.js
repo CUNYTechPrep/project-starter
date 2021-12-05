@@ -30,6 +30,8 @@ function Navigation(props) {
           </NavLink>
         </li>
       </ul>
+     <AuthButton/>
+
     </nav>
   );
 }
@@ -38,19 +40,23 @@ function Navigation(props) {
 class App extends React.Component {
   render() {
     return (
-        <Router>
-          <Navigation />
-          <div className="container-fluid text-center">
-            <div className="row justify-content-center">
-              <Switch>
-                <Route path="/posts/new" component={PostFormPage} />
-                <Route path="/posts/:id" component={ShowPostPage} />
-                <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/" component={PostsListPage} />
-              </Switch>
-            </div>
+      <AuthProvider>
+      <Router>
+        <Navigation />
+        <div className="container-fluid text-center">
+          <div className="row justify-content-center">
+            <Switch>
+              <Route path="/login" component={LoginPage} />
+              <Route path="/signup" component={SignUp} />
+              <PrivateRoute path="/posts/new" component={PostFormPage} />
+              <PrivateRoute path="/posts/:id" component={ShowPostPage} />
+              <Route path="/about-us" component={AboutUsPage} />
+              <PrivateRoute path="/" component={PostsListPage} />
+            </Switch>
           </div>
-        </Router>
+        </div>
+      </Router>
+      </AuthProvider>
     );
   }
 }
