@@ -1,5 +1,7 @@
 import React from 'react';
-import UserPic from '../images/blankProfilePic.png';
+import leah from '../images/leah.jpg';
+import ibnat from '../images/ibnat.jpg';
+import andy from '../images/andy.jpg';
 
 function MessagePage(props) {
   return (
@@ -13,15 +15,15 @@ function MessagePage(props) {
         <div className="row">
           <div className="col-3 colMessages">
             <div className="MoveDownMessages">
-              <div className="row messageView"> <img src={UserPic} alt='User' className="UserPicM" /> &nbsp; Leah</div>
+              <div className="row messageView"> <img src={leah} alt='User' className="UserPicM" /> &nbsp; Leah</div>
               <hr />
-              <div className="row messageView"> <img src={UserPic} alt='User' className="UserPicM" /> &nbsp; Ibnat</div>
+              <div className="row messageView"> <img src={ibnat} alt='User' className="UserPicM" /> &nbsp; Ibnat</div>
               <hr />
-              <div className="row messageView"> <img src={UserPic} alt='User' className="UserPicM" /> &nbsp; Andy</div>
+              <div className="row messageView"> <img src={andy} alt='User' className="UserPicM" /> &nbsp; Andy</div>
             </div>
           </div>
           <div className="col-8 contains">
-            <div className="MatchUsername"> <img src={UserPic} alt='User' className="UserPicM" /> &nbsp; Leah <hr /></div>
+            <div className="MatchUsername"> <img src={leah} alt='User' className="UserPicM" /> &nbsp; Leah <hr /></div>
             <div className="contentHere">
               <div className="messageEx"> <span className="mesExText">&nbsp; Try clicking on another page! &nbsp;</span></div>
             </div>

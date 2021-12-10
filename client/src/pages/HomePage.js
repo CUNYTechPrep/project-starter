@@ -1,5 +1,7 @@
 import React from 'react';
-import UserPic from '../images/blankProfilePic.png';
+import leah from '../images/leah.jpg';
+import ibnat from '../images/ibnat.jpg';
+import andy from '../images/andy.jpg';
 
 function HomePage(props) {
   return (
@@ -13,7 +15,7 @@ function HomePage(props) {
 
         <div className="col-md-3">
           <div class="card">
-            <img class="card-img-top" src={UserPic} alt="Matches" />
+            <img class="card-img-top" src={andy} alt="Matches" />
             <div class="card-body">
               <h5 class="card-title">Andy</h5>
               <button type="button" class="btn btn-primary">Message</button>
@@ -23,7 +25,7 @@ function HomePage(props) {
 
         <div className="col-md-3">
           <div class="card">
-            <img class="card-img-top" src={UserPic} alt="Matches" />
+            <img class="card-img-top" src={ibnat} alt="Matches" />
             <div class="card-body">
               <h5 class="card-title">Ibnat</h5>
               <button type="button" class="btn btn-primary">Message</button>
@@ -33,7 +35,7 @@ function HomePage(props) {
 
         <div className="col-md-3">
           <div class="card">
-            <img class="card-img-top" src={UserPic} alt="Matches" />
+            <img class="card-img-top" src={leah} alt="Matches" />
             <div class="card-body">
               <h5 class="card-title">Leah</h5>
               <button type="button" class="btn btn-primary">Message</button>
@@ -47,11 +49,11 @@ function HomePage(props) {
 
       <div className="recentMessages">
 
-        <div className="row recents"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Andy : &nbsp;
+        <div className="row recents"> <img src={andy} alt='User' className="UserPicM"/> &nbsp; Andy : &nbsp;
         <div className="homeMessage"> Welcome to Hobbies Hub!</div></div>
-        <div className="row recents"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Ibnat : &nbsp;
+        <div className="row recents"> <img src={ibnat} alt='User' className="UserPicM"/> &nbsp; Ibnat : &nbsp;
         <div className="homeMessage"> Are you viewing this at demo night?</div></div>
-        <div className="row recents"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Leah : &nbsp;
+        <div className="row recents"> <img src={leah} alt='User' className="UserPicM"/> &nbsp; Leah : &nbsp;
         <div className="homeMessage"> Try clicking on another page!</div></div>
 
       </div>

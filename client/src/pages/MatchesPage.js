@@ -2,11 +2,11 @@ import React from 'react';
 import monica from '../images/monica.jpg';
 import rachel from '../images/rachel.jpg';
 import ross from '../images/ross.jpg';
-import phoebe from '../images/phoebe.jpg';
-import joey from '../images/joey.jpg';
+import phoebe from '../images/phoebe.png';
+import joey from '../images/joey.png';
 import chandler from '../images/chandler.jpg';
-import janice from '../images/janice.jpg';
-import gunther from '../images/gunther.png';
+import janice from '../images/janice.png';
+import gunther from '../images/gunther.jpg';
 import marcel from '../images/marcel.jpg';
 
 function MatchesPage(props) {
