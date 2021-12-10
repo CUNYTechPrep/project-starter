@@ -1,5 +1,5 @@
 import React, {useState} from 'react'; 
-import UserPic from '../images/blankProfilePic.png';
+import UserPic from '../images/userpic.png';
 
 
 function ProfilePage(props) {
@@ -29,7 +29,7 @@ function ProfilePage(props) {
 
                             <img className="profileProfile" src={UserPic} alt="Profile" />
                             <br/>
-                            <div className="Username"> Username </div>
+                            <div className="Username"> JaneDoe123 </div>
 
                         </div>
 

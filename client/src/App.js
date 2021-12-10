@@ -11,7 +11,7 @@ import MatchesPage from './pages/MatchesPage';
 import MessagePage from './pages/MessagePage';
 import HomePage from './pages/HomePage';
 import AboutUsPage from './pages/AboutUsPage';
-import UserPic from './images/blankProfilePic.png';
+import UserPic from './images/userpic.png';
 import './App.css';
 
 

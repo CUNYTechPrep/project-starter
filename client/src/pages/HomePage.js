@@ -47,9 +47,12 @@ function HomePage(props) {
 
       <div className="recentMessages">
 
-        <div className="row recents"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Andy</div>
-        <div className="row recents"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Ibnat </div>
-        <div className="row recents"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Leah </div>
+        <div className="row recents"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Andy : &nbsp;
+        <div className="homeMessage"> Welcome to Hobbies Hub!</div></div>
+        <div className="row recents"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Ibnat : &nbsp;
+        <div className="homeMessage"> Are you viewing this at demo night?</div></div>
+        <div className="row recents"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Leah : &nbsp;
+        <div className="homeMessage"> Try clicking on another page!</div></div>
 
       </div>
 
