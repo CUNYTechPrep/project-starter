@@ -20,7 +20,7 @@ function Navigation(props) {
     <nav className="sidenav">
       <div className="MoveDown">
         <img src={UserPic} alt="Profile" className="UserPic" />
-        <Link className="navbar-brand" exact to="/profile">Username</Link>
+        <Link className="navbar-brand" exact to="/profile">JaneDoe123</Link>
       </div>
       <ul className="navbar-nav mr-auto">
         <div className="myText">

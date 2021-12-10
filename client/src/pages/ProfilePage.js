@@ -6,7 +6,7 @@ function ProfilePage(props) {
 
     const [firstName,setFirstName] = useState("Jane")
     const [lastName,setLastName] = useState("Doe")
-    const [userName,setUserName] = useState("Username")
+    const [userName,setUserName] = useState("JaneDoe123")
     const [email,setEmail] = useState("JaneDoe123@gmail.com")
 
     function onChange(e,state) {

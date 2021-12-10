@@ -13,15 +13,15 @@ function MessagePage(props) {
         <div className="row">
           <div className="col-3 colMessages">
             <div className="MoveDownMessages">
-            <div className="row messageView"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Name #1</div>
+            <div className="row messageView"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Leah</div>
             <hr/>
-            <div className="row messageView"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Name #2</div>
+            <div className="row messageView"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Ibnat</div>
             <hr/>
-            <div className="row messageView"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Name #3</div>
+            <div className="row messageView"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Andy</div>
             </div>
           </div>
           <div className="col-8 contains">
-            <div className="MatchUsername"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Match's Username <hr /></div>
+            <div className="MatchUsername"> <img src={UserPic} alt='User' className="UserPicM"/> &nbsp; Leah <hr /></div>
             <div className="contentHere">  </div>
             <div className="input-group">
               <input
