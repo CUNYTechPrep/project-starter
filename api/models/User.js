@@ -56,6 +56,7 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = (models) => {
     // associations can be defined here
 
+    models.User.hasOne(models.MatchProfile);
     models.User.hasMany(models.Message, {as: 'Sender', foreignKey: 'senderId'});
     models.User.hasMany(models.Message, {as: 'Recipient', foreignKey: 'recipientId'});
     models.User.hasMany(models.UserMatch, {as: 'CurrentUser', foreignKey: 'userId'});
