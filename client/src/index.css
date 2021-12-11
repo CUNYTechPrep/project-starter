@@ -12,3 +12,12 @@ code {
     monospace;
 }
 */
+
+body{
+  font-family: 'Domine', serif;
+  font-family: 'Old Standard TT', serif;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 900;
+  height:max-content;
+  background: linear-gradient(to top,rgba(192,174,199,95), rgba(254,235,247,55), rgba(255,204,204,20));
+  }

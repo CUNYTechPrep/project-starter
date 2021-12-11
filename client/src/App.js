@@ -46,6 +46,8 @@ function Navigation(props) {
           </li>
         </div>
       </ul>
+     <AuthButton/>
+
       <footer className="text-center">  &copy; Hobbies Hub </footer>
     </nav>
   );
@@ -55,21 +57,26 @@ function Navigation(props) {
 class App extends React.Component {
   render() {
     return (
+      <AuthProvider>
+
       <Router>
         <Navigation />
         <div className="container-fluid text-center">
           <div className="row justify-content-center">
             <Switch>
+              <Route path="/login" component={LoginPage} />
+              <Route path="/signup" component={SignUp} />
               <Route path="/home" component={HomePage}/>
               <Route path="/profile" component={ProfilePage}/>
               <Route path="/messages" component={MessagePage}/>
               <Route path="/matches" component={MatchesPage}/>
-              <Route path="/about-us" component={AboutUsPage} />
               <Route path="/" component={HomePage} />
             </Switch>
           </div>
         </div>
       </Router>
+
+      </AuthProvider>
     );
   }
 }
