@@ -58,4 +58,18 @@ router.get('/:userId/:hobby/:age', (req, res) => {
   }) 
 })
 
+router.get('/:currUserId', (req, res) => {
+  const currUserId = req.params.currUserId;
+
+  MatchProfile.findOne({
+    where: {
+      userId: currUserId
+    }
+  })
+  .then(matchProfile => {
+    res.json(matchProfile.dataValues)
+  })
+  .catch(e => res.json(e))
+})
+
 module.exports = router;

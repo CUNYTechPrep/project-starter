@@ -27,15 +27,53 @@ class SignUp extends React.Component{
     //on submit
     signup = (e) =>{
         e.preventDefault();
-        const auth = this.context;
-        let { email, password } = this.state;
-        auth.authenticate(email, password)
-          .then((user) => {
-            this.setState({ redirectToReferrer: true });
+
+        let {username, fname, lname, email, password} = this.state;
+
+        fetch("/api/user/", {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            username: username,
+            firstName: fname,
+            lastName: lname,
+            dob: null,
+            gender: null,
+            email: email,
+            password: password
+          }),
+        })
+          .then(res => {
+            if(res.ok) {
+              return res.json()
+            }
+    
+            throw new Error('Content validation');
           })
-          .catch((err) => {
-            this.setState({ failed: true });
+          .then(user => {
+            this.setState({
+              success: true,
+            });
+          })
+          .catch(err => {
+            this.setState({
+              error: true,
+            });
           });
+          
+
+        // const auth = this.context;
+        // let { email, password } = this.state;
+        // auth.authenticate(email, password)
+        //   .then((user) => {
+        //     this.setState({ redirectToReferrer: true });
+        //   })
+        //   .catch((err) => {
+        //     this.setState({ failed: true });
+        //   });
     }
     render(){
         const { from } = this.props.location.state || { from: { pathname: '/' } };

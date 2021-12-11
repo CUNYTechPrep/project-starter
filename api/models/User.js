@@ -1,12 +1,12 @@
 'use strict';
 const { Model } = require('sequelize');
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    getFullname() {
-      return [this.firstName, this.lastName].join(' ');
-    }
+    // getFullname() {
+    //   return [this.firstName, this.lastName].join(' ');
+    // }
   }
 
   User.init({
@@ -32,11 +32,12 @@ module.exports = (sequelize, DataTypes) => {
             notEmpty: true,
         },
     },
-    dob: {
-        type: DataTypes.DATEONLY,
-    },
-    gender: {
-        type: DataTypes.STRING,
+    age: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty:true
+      }
     },
     email: {
         type: DataTypes.STRING,
@@ -48,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         unique: true,
     },
-    passwordHash: { type: DataTypes.STRING },
+    // passwordHash: { type: DataTypes.STRING },
     password: {
       type: DataTypes.VIRTUAL,
       validate: {
@@ -74,11 +75,11 @@ module.exports = (sequelize, DataTypes) => {
     models.User.hasMany(models.UserMatch, {as: 'OtherUser', foreignKey: 'matchId'});
   };
 
-  User.beforeSave((user, options) => {
-    if(user.password) {
-      user.passwordHash = bcrypt.hashSync(user.password, 10);
-    }
-  });
+  // User.beforeSave((user, options) => {
+  //   if(user.password) {
+  //     user.passwordHash = bcrypt.hashSync(user.password, 10);
+  //   }
+  // });
 
   return User;
 };

@@ -11,8 +11,13 @@ import MatchesPage from './pages/MatchesPage';
 import MessagePage from './pages/MessagePage';
 import HomePage from './pages/HomePage';
 import AboutUsPage from './pages/AboutUsPage';
+import LoginPage from './pages/LoginPage'
+import SignUp from './pages/SignUp'
 import UserPic from './images/userpic.png';
 import './App.css';
+import { AuthProvider } from './context/AuthContext';
+import PrivateRoute from './components/PrivateRoute'; 
+import AuthButton from './components/AuthButton';
 
 
 function Navigation(props) {

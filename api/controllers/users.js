@@ -19,8 +19,7 @@ router.post('/', (req, res) => {
   const username = req.body.username;
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
-  const dob = req.body.dob;
-  const gender = req.body.gender;
+  const age = req.body.age;
   const email = req.body.email;
   const password = req.body.password;
 
@@ -28,8 +27,7 @@ router.post('/', (req, res) => {
     username: username,
     firstName: firstName,
     lastName: lastName,
-    dob: dob,
-    gender: gender,
+    age:age,
     email: email,
     password: password
   })
