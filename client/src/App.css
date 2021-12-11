@@ -1,23 +1,311 @@
-/*.App {
+/* General Styles */
+
+*{
+  margin:0;
+  padding: 0;
+}
+
+.sidenav{
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(rgb(255, 245, 242),rgb(221,212,252));
+  overflow-x: hidden;
+  padding: 20px 25px;
+  align-content: center;
+}
+
+.myText{
+  position: absolute;
+  top: 40%;
+  transform: translateY(-40%);
+  text-align: center;
+  margin-top: 100px;
+}
+
+.navbar-brand{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 10px;
+  color: rgb(114, 83, 147);
+  padding-top: 20px;
+}
+
+.nav-link{
+  color: rgb(114, 83, 147) ;
+}
+
+.nav-item{
+  display: block;
+  width: 100%;
+  padding-left: 35px;
+  text-align: center;
+ 
+}
+.UserPic{
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.MoveDown {
+  padding-top: 20px;
+}
+
+footer {
+  position:absolute;
+  bottom:0;
+  height: 40px;
+  margin-left: 15px;
+  color:rgba(140,131,192,255);
+} 
+
+.Headers {
+  color: rgba(140,131,192,255);
+  background-color: rgba(236,233,252,255);
+  width: 50%;
+  text-indent: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.Logo{
+
+  font-size: 48px;
+  background: -webkit-linear-gradient(#a29acb, #7d72bd);
+  -webkit-background-clip: text;
+  background-clip: text ;
+  -webkit-text-fill-color: transparent;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.HomePage, .MessagePage, .MatchesPage, .ProfilePage{
+
+  text-align: left;
+  width: 80%;
+  margin-left: 201px;
+  height: auto;
+}
+
+/* Message Page Styles */
+
+.colMessages {
+  border:solid rgba(109,98,173,255) 1.8px;
+  height: 70vh;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.col-8 {
+  border:solid rgba(109,98,173,255) 1.8px;
+  height: 70vh;
+  margin-left: 10px;
+  border-radius: 5px;
+  
+}
+.col-10{
+  border:solid rgba(109,98,173,255) 1.8px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.MatchUsername{
+  position: relative;
+  width: 100%;
+   padding: 10px;
+  font-size: 1.2em;
+  margin: 0;
+  color: rgb(100, 72, 131);
+  height: 12%;
+}
+
+.input-group {
+  height: 50px;
+  width:100%;
+  margin-top: 10px;
+}
+
+button {
+    background-color: rgba(201,195,238,255);
+    height: 35px;
+    width: 80px;
+    border-radius: 5px;
+    border-style: none;
+    color: rgb(100, 72, 131);
+}
+
+.contentHere {
+  height: 85%;
+}
+
+.contains{
+  display: flex;
+  flex-direction: column;
+}
+
+.messageView{
+  /* border:solid red 1px; */
+  height: 10%;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+  text-align: center;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(100, 72, 131);
+}
+
+.UserPicM {
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+}
+
+.MoveDownMessages{
+margin-top: 15px;
+}
+
+.messageEx{
+  height: 95%;
+  display: flex;
+  justify-content: left;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.mesExText{
+  border: 2px solid rgba(201,195,238,255);
+  background-color: rgba(201,195,238,255);
+  border-radius: 5px;
+  padding: 3px,10px;
+  color: rgb(100, 72, 131);
+}
+
+/* Home Page Styles */
+
+.card{
+  width: 12rem;
+  margin: 10px 10px 30px 10px;
+  border: solid rgb(159, 114, 210) 1.8px;
+}
+
+.card-title{
+  text-align: center;
+  color: rgb(100, 72, 131);
+}
+
+.btn{
+  background-color: rgba(201,195,238,255);
+  border-radius: 5px;
+  border-style: none;
+  color: rgb(100, 72, 131);
+  height:35px; 
+    width:100px; 
+    margin: -20px -50px; 
+    position:relative;
+    top:50%; 
+    left:50%;
+}
+
+.card-img-top{
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-radius: 100px;
+  height: 110px;
+  width: 110px;
+  align-self: center;
+}
+
+.recentMessages {
+  /* border: solid rgb(159, 114, 210) 2px;
+  border-radius: 3px; */
+  height:auto;
+  margin: 10px;
+  margin-top: 30px;
+}
+
+.recents{
+  padding: 10px;
+  border: solid rgb(159, 114, 210) 1.8px;
+  border-radius: 3px;
+  margin: 5px 2px 8px 2px;
+  color: rgb(100, 72, 131);
+}
+
+.homeMessage{
+  font-size: .9em;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 1px;
+  color: rgb(128, 122, 130);
+}
+
+/* Profile Page  */
+
+.profileProfile {
+  height:120px;
+  width: 120px;
+  border-radius: 100px;
+  border:solid 1px rgb(221,212,252);
+}
+
+.profileCol{
+  margin-left:20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.profileCol2{
+  height: 90vh;
+  margin-right: 20px;
+  border-radius: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Contain {
+  height: 90vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.Username{
+  color: rgb(100, 72, 131);
+  font-size: 1.4em;
 }
-*/
+
+.moveProfile{
+  margin-top: 20%;
+}
+
+.myInfo{
+  color: rgb(100, 72, 131);
+  font-size: 1.5em;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 5px;
+  background-color:rgba(236,233,252,255) ;
+}
+
+.userInfo{
+  text-align: center;
+  color: rgb(100, 72, 131);
+}
+
+.changeInput{
+  text-align: center;
+  width:250px;
+  color: rgb(100, 72, 131);
+}
+
+label{
+  display: inline-block;
+  width: 200px;
+  margin-bottom: 10px;
+}
