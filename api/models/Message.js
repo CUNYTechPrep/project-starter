@@ -5,12 +5,6 @@ module.exports = (sequelize, DataTypes) => {
   class Message extends Model {}
 
   Message.init({
-    senderId: {
-        type: DataTypes.INTEGER,
-    },
-    recipientId: {
-        type: DataTypes.INTEGER,
-    },
     messageBody: {
         type: DataTypes.TEXT,
         validate: {
@@ -25,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
   Message.associate = (models) => {
     // associations can be defined here
 
-    models.Message.belongsTo(models.User);
+    models.Message.belongsTo(models.User, {as: 'Sender', foreignKey: 'senderId'});
+    models.Message.belongsTo(models.User, {as: 'Recipient', foreignKey: 'recipientId'});
   };
 
   return Message;

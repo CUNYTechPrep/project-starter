@@ -34,11 +34,10 @@ router.post('/', (req, res) => {
     password: password
   })
   .then(user => {
-    res.send(user);
+    res.status(201).json(user);
   })
   .catch(e => {
-    console.log(e)
-    res.json({message: "Error"})
+    res.status(400).json(e);
   })
 });
 
@@ -46,10 +45,13 @@ router.get('/:id', (req, res) => {
   //get user by id
   User.findByPk(req.params.id)
   .then(user => {
-    res.send(user)
+    if (!user) {
+      return res.status(404);
+    }
+    res.json(user)
   })
   .catch(e => {
-    res.send({message: "Error"})
+    res.json(e)
   })
 });
 

@@ -1,27 +1,10 @@
 'use strict';
 const { Model } = require('sequelize');
-const { User } = require('./User')
-const { Match } = require('./Match')
-
 
 module.exports = (sequelize, DataTypes) => {
   class UserMatch extends Model {}
 
   UserMatch.init({
-    userId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: User,
-          key: 'id'
-        }
-    },
-    matchId: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: Match,
-            key: 'id'
-        }
-    },
     outcome: {
         type: DataTypes.BOOLEAN
     }
@@ -29,6 +12,13 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'UserMatch'
   });
+
+  UserMatch.associate = (models) => {
+    // associations can be defined here
+    
+    models.UserMatch.belongsTo(models.User, {as: 'CurrentUser', foreignKey: 'userId'});
+    models.UserMatch.belongsTo(models.User, {as: 'OtherUser', foreignKey: 'matchId'});
+  };
 
   return UserMatch;
 };
