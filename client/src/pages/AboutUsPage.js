@@ -1,9 +1,7 @@
 import React from 'react';
 
-function AboutUsPage(props) {
-  return (
-    <div>A little info about us.</div>
-  );
+function AboutUsPage() {
+  return <div>A little info about us.</div>;
 }
 
 export default AboutUsPage;
