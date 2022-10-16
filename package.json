@@ -1,7 +1,7 @@
 {
   "name": "api-backend",
-  "version": "1.0.0",
-  "description": "An api backend",
+  "version": "2022.1",
+  "description": "A starter express api backend that can also serve a React (CRA) client",
   "main": "index.js",
   "scripts": {
     "start": "node api/app.js",
@@ -10,17 +10,17 @@
     "build": "cd client && npm install && npm run build"
   },
   "author": "Edgardo Molina",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "morgan": "^1.10.0",
-    "pg": "^8.7.1",
+    "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.7.0"
+    "sequelize": "^6.25.2"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
-    "nodemon": "^2.0.14"
+    "dotenv": "^8.6.0",
+    "nodemon": "^2.0.20"
   },
   "nodemonConfig": {
     "ignore": [
