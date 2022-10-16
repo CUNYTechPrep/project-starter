@@ -2,9 +2,9 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class Post extends Model {}
+  class MicroPost extends Model {}
 
-  Post.init(
+  MicroPost.init(
     {
       content: {
         type: DataTypes.STRING,
@@ -16,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "post",
+      modelName: "MicroPost",
     }
   );
 
-  Post.associate = (models) => {
+  MicroPost.associate = (models) => {
     // associations can be defined here
   };
 
-  return Post;
+  return MicroPost;
 };
