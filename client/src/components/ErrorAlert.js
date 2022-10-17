@@ -1,6 +1,6 @@
 import React from "react";
 
-function Error({ details }) {
+function ErrorAlert({ details }) {
   return (
     <div className="d-flex justify-content-center">
       <div className="alert alert-danger" role={"alert"}>
@@ -10,4 +10,4 @@ function Error({ details }) {
   );
 }
 
-export default Error;
+export default ErrorAlert;

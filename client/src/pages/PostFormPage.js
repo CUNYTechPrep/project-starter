@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
-import Error from "../components/Error";
+import ErrorAlert from "../components/ErrorAlert";
 
 function PostFormPage() {
   const [content, setContent] = useState("");
@@ -40,7 +40,7 @@ function PostFormPage() {
 
   return (
     <div className="col-10 col-md-8 col-lg-7">
-      {error && <Error details={"Failed to save the content"} />}
+      {error && <ErrorAlert details={"Failed to save the content"} />}
       <form onSubmit={handleSubmit}>
         <div className="input-group">
           <input

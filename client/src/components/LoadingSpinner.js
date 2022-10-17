@@ -1,6 +1,6 @@
 import React from "react";
 
-function Loading() {
+function LoadingSpinner() {
   return (
     <div className="d-flex justify-content-center">
       <div className="spinner-border text-dark" role="status">
@@ -10,4 +10,4 @@ function Loading() {
   );
 }
 
-export default Loading;
+export default LoadingSpinner;

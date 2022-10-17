@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Post from "../components/Post";
-import Loading from "../components/Loading";
-import Error from "../components/Error";
+import MicroPostCard from "../components/MicroPostCard";
+import LoadingSpinner from "../components/LoadingSpinner";
+import ErrorAlert from "../components/ErrorAlert";
 
 function PostsListPage() {
   const [posts, setPosts] = useState([]);
@@ -29,14 +29,14 @@ function PostsListPage() {
     };
   }, []);
 
-  if (error) return <Error details="Failed to fetch all micro posts" />;
-  if (loading) return <Loading />;
+  if (error) return <ErrorAlert details="Failed to fetch all micro posts" />;
+  if (loading) return <LoadingSpinner />;
 
   return (
     <div className="container-fluid text-center">
       <div className="row justify-content-center">
         {posts.map((entryData) => (
-          <Post {...entryData} key={entryData.id} />
+          <MicroPostCard {...entryData} key={entryData.id} />
         ))}
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Post from "../components/Post";
-import Loading from "../components/Loading";
-import Error from "../components/Error";
+import MicroPostCard from "../components/MicroPostCard";
+import LoadingSpinner from "../components/LoadingSpinner";
+import ErrorAlert from "../components/ErrorAlert";
 import { useParams } from "react-router-dom";
 
 function ShowPostPage() {
@@ -32,10 +32,12 @@ function ShowPostPage() {
   }, [params.id]);
 
   if (error)
-    return <Error details={"Micro post with id=" + params.id + " not found"} />;
-  if (loading) return <Loading />;
+    return (
+      <ErrorAlert details={"Micro post with id=" + params.id + " not found"} />
+    );
+  if (loading) return <LoadingSpinner />;
 
-  return <Post {...post} />;
+  return <MicroPostCard {...post} />;
 }
 
 export default ShowPostPage;
