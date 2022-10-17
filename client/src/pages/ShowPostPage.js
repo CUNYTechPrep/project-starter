@@ -32,9 +32,7 @@ function ShowPostPage() {
   }, [params.id]);
 
   if (error)
-    return (
-      <Error details={"Micro post with id=" + params.id + " was not found"} />
-    );
+    return <Error details={"Micro post with id=" + params.id + " not found"} />;
   if (loading) return <Loading />;
 
   return <Post {...post} />;

@@ -47,7 +47,7 @@ function PostFormPage() {
             type="text"
             placeholder="Add your words of wisdom here..."
             value={content}
-            className="form-control mr-3 rounded"
+            className="form-control"
             onChange={handleContentChange}
             autoFocus
           />
