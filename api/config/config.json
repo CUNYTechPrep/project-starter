@@ -2,14 +2,14 @@
   "development": {
     "username": "ctp_user",
     "password": "ctp_pass",
-    "database": "app2021_development",
+    "database": "ctp_appdb_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "ctp_user",
     "password": "ctp_pass",
-    "database": "app2021_test",
+    "database": "ctp_appdb_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

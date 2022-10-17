@@ -1,8 +1,6 @@
 # React client
 
-The code in this directory was initialized with [create-react-app](https://create-react-app.dev/) and uses [react-router](https://reactrouter.com/web/guides/quick-start) and [Bootstrap 4.x](https://getbootstrap.com/docs/4.3/getting-started/introduction/).
-
-> The original create-react-app README file can be found at [README-CRA.md](./README-CRA.md)
+The code in this directory was initialized with [create-react-app](https://create-react-app.dev/) and uses [react-router](https://reactrouter.com/en/main) and [Bootstrap 5.x](https://getbootstrap.com/docs/5.2/getting-started/introduction/).
 
 ## Running the client
 
@@ -25,7 +23,6 @@ The create-react-app proxy has been **pre-configured** for these ports, meaning 
 
 ```js
 fetch('/api/users/42', { ... })
-    ...
 ```
 
 > Note: you should **NOT** hardcode the domain `http://localhost/` in your API calls. If you were to do this, the calls will fail once the app is deployed.
