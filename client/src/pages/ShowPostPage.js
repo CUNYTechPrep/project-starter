@@ -1,37 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Post from "../components/Post";
 import Loading from "../components/Loading";
-import { Redirect } from "react-router-dom";
+import Error from "../components/Error";
+import { useParams } from "react-router-dom";
 
-class ShowPostPage extends React.Component {
-  state = {
-    loading: true,
-    post: null,
-    notFound: false,
-  };
+function ShowPostPage() {
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  let params = useParams();
 
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    fetch("/api/micro_posts/" + id)
-      .then((res) => res.json())
-      .then((post) => {
-        this.setState({
-          post: <Post {...post} />,
-          loading: false,
-        });
-      })
-      .catch((err) => {
-        this.setState({
-          notFound: true,
-        });
-      });
-  }
+  useEffect(() => {
+    async function getData() {
+      setLoading(true);
+      try {
+        let response = await fetch("/api/micro_posts/" + params.id);
+        let postData = await response.json();
+        setPost(postData);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching /api/micro_posts/" + params.id, error);
+        setError(true);
+      }
+    }
 
-  render() {
-    if (this.state.notFound) return <Redirect to="/" />;
-    if (this.state.loading) return <Loading />;
-    return this.state.post;
-  }
+    getData();
+
+    return () => {
+      // clean up function
+    };
+  }, [params.id]);
+
+  if (error)
+    return (
+      <Error details={"Micro post with id=" + params.id + " was not found"} />
+    );
+  if (loading) return <Loading />;
+
+  return <Post {...post} />;
 }
 
 export default ShowPostPage;
