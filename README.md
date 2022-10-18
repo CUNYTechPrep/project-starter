@@ -1,23 +1,35 @@
-# Project Starter
+# CTP Project Starter
 
-A starter repo for building CUNY Tech Prep projects with React, Express.js, and Sequelize.js
+A full stack web application starter template for building projects with React, Express.js, and Sequelize.js
+
+**Current version:** 2022.1 (Oct 2022)
 
 ## Stack
 
-_API_
+_Backend API_
 
-- express.js
-- sequelize.js
+- express.js (v4.18.2)
+- sequelize.js (v6.25.2)
+- Postgresql (v14 recommended)
 
-_React client_
+_Frontend React client_
 
-- Built using `create-react-app` and configured to work with the api.
-- Bootstrap 5.x added to `/client/public/index.html`
-- React Router 6.x
+- Based on `create-react-app`
+  - pre-configured to work with the api
+- Bootstrap (v5)
+  - added to `/client/public/index.html` (_optional_ can be removed)
+- React Router (v6)
 
 ## Development Setup
 
 Each team member will need to do this on their local machine.
+
+### Ensure you have Postgres installed
+
+- Check if you have Postgresql installed
+  - ✅ versions 10-14 should work
+  - 🚫 version 15 has not been tested
+- If you need to install Postgresql see the [installing postgres guides](https://github.com/CUNYTechPrep/guides#postgresql)
 
 ### Create a postgres db
 
@@ -38,9 +50,7 @@ createdb -h localhost -U ctp_user ctp_appdb_development
 
 > You will create a DB for each project you start based on this repo. For other projects change `ctp_appdb_development` to the new apps database name.
 
-_For more details see the [installing postgres guides](https://github.com/CUNYTechPrep/guides#postgresql)_
-
-### Running the app
+### Running the app locally
 
 For local development you will need two terminals open, one for the api-backend and another for the react-client.
 
@@ -67,7 +77,25 @@ npm start
 
 ## Deployment
 
-### Setting up Heroku
+### Hosting on Railway.app (recommended)
+
+1. Create a Starter account using your Github username
+   - You get $5 credit a month for free and do not have to provide a credit card
+2. Verify your account by answering railways questions
+3. Create a "New Project"
+4. Select "Deploy from Github repo"
+   - follow instruction to link your project repo to railway
+5. Click "Deploy now"
+   - your app will fail, but we will fix it in the next steps
+6. Click the `+` button to add a Postgresql Database to your project
+7. Add environment variables if you need any
+   - Do not add the `PORT` variable (Railway will set this for you)
+
+Your app will now be live and auto deployed on new commits. If it's not working you may need to restart the app manually in the Railway UI.
+
+### Hosting on Heroku (no longer free)
+
+> NOTE: Heroku is no longer free, but these instructions still work. We recommend getting started with railway.app
 
 1. Create a Heroku account (_if you don't have one_)
 2. Install the [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) (_if you don't already have it_)
@@ -79,7 +107,7 @@ npm start
 heroku login
 ```
 
-### Create a Heroku project
+#### Create a Heroku project
 
 Next, `cd` into this project directory and create a project:
 
@@ -95,7 +123,7 @@ heroku addons:create heroku-postgresql:hobby-dev
 
 > You only need to do this once per app
 
-### Add Environment Variables
+#### Add Environment Variables
 
 Any environment variables your app needs will be available through your heroku project's settings page.
 
@@ -106,7 +134,7 @@ Any environment variables your app needs will be available through your heroku p
 - Click `Reveal Config Vars`
 - Add any environment variables you have in your `.env` file
 
-### Deploying the app
+#### Deploying the app
 
 Whenever you want to update the deployed app run this command.
 
@@ -122,43 +150,39 @@ git push heroku main
 .
 ├── README.md
 ├── <strong>api</strong>
-│   ├── app.js
-│   ├── <strong>config</strong>
-│   │   └── config.json
-│   ├── <strong>controllers</strong>
-│   │   ├── appConfig.js
-│   │   ├── index.js
-│   │   └── posts.js
-│   └── <strong>models</strong>
-│       ├── index.js
-│       └── post.js
+│   ├── app.js
+│   ├── <strong>config</strong>
+│   │   └── config.json
+│   ├── <strong>controllers</strong>
+│   │   ├── index.js
+│   │   └── microPosts.js
+│   └── <strong>models</strong>
+│       ├── MicroPost.js
+│       └── index.js
 ├── <strong>client</strong>
-│   ├── README.md
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── <strong>public</strong>
-│   │   ├── favicon.ico
-│   │   ├── index.html
-│   │   ├── logo192.png
-│   │   ├── logo512.png
-│   │   ├── manifest.json
-│   │   └── robots.txt
-│   └── <strong>src</strong>
-│       ├── App.css
-│       ├── App.js
-│       ├── App.test.js
-│       ├── <strong>components</strong>
-│       │   ├── Loading.js
-│       │   └── Post.js
-│       ├── index.css
-│       ├── index.js
-│       ├── logo.svg
-│       ├── <strong>pages</strong>
-│       │   ├── AboutUsPage.js
-│       │   ├── PostFormPage.js
-│       │   ├── PostsListPage.js
-│       │   └── ShowPostPage.js
-│       └── serviceWorker.js
+│   ├── README.md
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── <strong>public</strong>
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   └── <strong>src</strong>
+│       ├── App.css
+│       ├── App.js
+│       ├── <strong>components</strong>
+│       │   ├── ErrorAlert.js
+│       │   ├── LoadingSpinner.js
+│       │   └── MicroPostCard.js
+│       ├── index.js
+│       └── <strong>pages</strong>
+│           ├── AboutUsPage.js
+│           ├── PostFormPage.js
+│           ├── PostsListPage.js
+│           └── ShowPostPage.js
 ├── package-lock.json
 └── package.json
 </pre>

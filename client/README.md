@@ -1,6 +1,6 @@
 # React client
 
-The code in this directory was initialized with [create-react-app](https://create-react-app.dev/) and uses [react-router](https://reactrouter.com/en/main) and [Bootstrap 5.x](https://getbootstrap.com/docs/5.2/getting-started/introduction/).
+The code in this directory was initialized with [create-react-app](https://create-react-app.dev/) and uses [react-router 6](https://reactrouter.com/en/main) and [Bootstrap 5.x](https://getbootstrap.com/docs/5.2/getting-started/introduction/).
 
 ## Running the client
 
