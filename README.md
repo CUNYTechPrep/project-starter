@@ -6,6 +6,8 @@ A full stack web application starter template for building projects with React, 
 
 ## Stack
 
+> Node.js v16 LTS is recommended
+
 _Backend API_
 
 - express.js (v4.18.2)
