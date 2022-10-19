@@ -12,7 +12,7 @@ _Backend API_
 
 - express.js (v4.18.2)
 - sequelize.js (v6.25.2)
-- Postgresql (v14 recommended)
+- PostgreSQL (v14 recommended)
 
 _Frontend React client_
 
@@ -26,16 +26,16 @@ _Frontend React client_
 
 Each team member will need to do this on their local machine.
 
-### Ensure you have Postgres installed
+### Ensure you have PostgreSQL installed
 
-- Check if you have Postgresql installed
+- Check if you have PostgreSQL installed
   - ✅ versions 10-14 should work
   - 🚫 version 15 has not been tested
-- If you need to install Postgresql see the [installing postgres guides](https://github.com/CUNYTechPrep/guides#postgresql)
+- If you need to install PostgreSQL see the [installing PostgreSQL guides](https://github.com/CUNYTechPrep/guides#postgresql)
 
-### Create a postgres db
+### Create a PostgreSQL db
 
-Create a user in postgres named `ctp_user` with the password `ctp_pass`:
+Create a user in PostgreSQL named `ctp_user` with the password `ctp_pass`:
 
 > This only needs to be done one time on your machine
 > You can create additional users if you want to.
@@ -89,11 +89,11 @@ npm start
    - follow instruction to link your project repo to railway
 5. Click **"Deploy now"**
    - your app will fail, but we will fix it in the next steps
-6. Add a Postgres Database to your Railway project
+6. Add a PostgreSQL Database to your Railway project
    - click the **"+ New"** button at the top right of the project
    - click **"Database >"**
    - click **"Add PostgreSQL"**
-   - to add a Postgresql Database to your project
+   - to add a PostgreSQL Database to your project
 7. Add environment variables if you need any
    - Do not add the `PORT` variable (Railway will set this for you)
 
@@ -121,7 +121,7 @@ Next, `cd` into this project directory and create a project:
 # replace `cool-appname` with your preferred app name
 heroku create cool-appname
 
-# add a free postgres database to your heroku project
+# add a free PostgreSQL database to your heroku project
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
