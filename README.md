@@ -82,14 +82,18 @@ npm start
 ### Hosting on Railway.app (recommended)
 
 1. Create a Starter account using your Github username
-   - You get $5 credit a month for free and do not have to provide a credit card
-2. Verify your account by answering railways questions
-3. Create a "New Project"
-4. Select "Deploy from Github repo"
+   - You get $5 in credit a month for free and do not have to provide a credit card
+2. Verify your account by answering Railways questions
+3. Create a **"New Project"**
+4. Select **"Deploy from Github repo"**
    - follow instruction to link your project repo to railway
-5. Click "Deploy now"
+5. Click **"Deploy now"**
    - your app will fail, but we will fix it in the next steps
-6. Click the `+` button to add a Postgresql Database to your project
+6. Add a Postgres Database to your Railway project
+   - click the **"+ New"** button at the top right of the project
+   - click **"Database >"**
+   - click **"Add PostgreSQL"**
+   - to add a Postgresql Database to your project
 7. Add environment variables if you need any
    - Do not add the `PORT` variable (Railway will set this for you)
 
