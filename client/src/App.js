@@ -31,24 +31,22 @@ function Navigation(props) {
   );
 }
 
-class App extends React.Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Navigation />
-        <div className="container-xl text-center">
-          <div className="row justify-content-center">
-            <Routes>
-              <Route path="/posts/new" element={<PostFormPage />} />
-              <Route path="/posts/:id" element={<ShowPostPage />} />
-              <Route path="/about-us" element={<AboutUsPage />} />
-              <Route path="/" element={<PostsListPage />} />
-            </Routes>
-          </div>
+function App() {
+  return (
+    <BrowserRouter>
+      <Navigation />
+      <div className="container-xl text-center">
+        <div className="row justify-content-center">
+          <Routes>
+            <Route path="/posts/new" element={<PostFormPage />} />
+            <Route path="/posts/:id" element={<ShowPostPage />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/" element={<PostsListPage />} />
+          </Routes>
         </div>
-      </BrowserRouter>
-    );
-  }
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;
