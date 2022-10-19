@@ -33,7 +33,21 @@ Each team member will need to do this on their local machine.
   - 🚫 version 15 has not been tested
 - If you need to install PostgreSQL see the [installing PostgreSQL guides](https://github.com/CUNYTechPrep/guides#postgresql)
 
-### Create a PostgreSQL db
+### Create a PostgreSQL user and database
+
+The project-starter template expects the following for local development:
+
+- PostgreSQL User/Role
+  - name: `ctp_user`
+  - password: `ctp_pass`
+- PostgreSQL Database
+  - name: `ctp_appdb_development`
+
+#### For Windows/pgAdmin users
+
+If you are on Windows and installed **pgAdmin** follow our [pgAdmin guide](https://github.com/CUNYTechPrep/guides/blob/master/pgAdmin-create-user-db.md) to create a user in PostgreSQL named `ctp_user` with the password `ctp_pass` and a database named `ctp_appdb_development`.
+
+#### For Mac/Linux users
 
 Create a user in PostgreSQL named `ctp_user` with the password `ctp_pass`:
 
