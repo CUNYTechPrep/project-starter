@@ -14,7 +14,7 @@ function AboutUsPage(props) {
         <h2 className="mb-3">About our Team</h2>
         <div className="row">
           <div className="col-lg-4">
-            <h3>Firstname Lastname</h3>
+            <h3>Arun Saini</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Dignissimos in itaque nihil consectetur qui natus similique
@@ -23,7 +23,7 @@ function AboutUsPage(props) {
             </p>
           </div>
           <div className="col-lg-4">
-            <h3>Firstname Lastname</h3>
+            <h3>Tshetrim (Tim) Lhendup</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Dignissimos in itaque nihil consectetur qui natus similique
@@ -32,7 +32,7 @@ function AboutUsPage(props) {
             </p>
           </div>
           <div className="col-lg-4">
-            <h3>Firstname Lastname</h3>
+            <h3>Jaichyi Chen</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Dignissimos in itaque nihil consectetur qui natus similique
