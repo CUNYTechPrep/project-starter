@@ -1,15 +1,15 @@
 {
   "development": {
-    "username": "ctp_user",
-    "password": "ctp_pass",
-    "database": "ctp_appdb_development",
+    "username": "abodem_user",
+    "password": "abodem_pass",
+    "database": "ctp_abodedb_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "ctp_user",
-    "password": "ctp_pass",
-    "database": "ctp_appdb_test",
+    "username": "abodem_user",
+    "password": "abodem_pass",
+    "database": "ctp_abodedb_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
