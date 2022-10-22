@@ -1,6 +1,6 @@
 # AbodeM
 
-A full stack web application starter template for building projects with React, Express.js, and Sequelize.js
+A full stack web application with React, Express.js, and Sequelize.js
 
 **Current version:** 2022.2 (Oct 2022)
 
