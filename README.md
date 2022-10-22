@@ -1,4 +1,4 @@
-# CTP Project Starter
+# AbodeM
 
 A full stack web application starter template for building projects with React, Express.js, and Sequelize.js
 
