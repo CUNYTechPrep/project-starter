@@ -19,15 +19,13 @@ function PostFormPage(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      let response = await fetch("/api/micro_posts", {
+      let response = await fetch("/api/micro_posts/form", {
         method: "POST",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          content: content,
-        }),
+        body: JSON.stringify(content),
       });
 
       if (response.ok) {

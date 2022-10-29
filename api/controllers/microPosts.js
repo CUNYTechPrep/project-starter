@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
-const { MicroPost } = db;
+const { MicroPost, Property } = db;
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:
@@ -30,6 +30,28 @@ router.post("/", (req, res) => {
     .catch((err) => {
       res.status(400).json(err);
     });
+});
+
+router.post("/form", (req, res) => {
+  let { address, electric, gas, mortgage, rent, step, tenanted, water } = req.body;
+
+  Property.create({ address, electric, gas, mortgage, rent, step, tenanted, water })
+    .then((newPost) => {
+      res.status(201).json(newPost);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
+
+router.get("/house/:id", (req, res) => {
+  const { id } = req.params;
+  Property.findByPk(id).then((mpost) => {
+    if (!mpost) {
+      return res.sendStatus(404);
+    }
+    res.json(mpost);
+  });
 });
 
 router.get("/:id", (req, res) => {
