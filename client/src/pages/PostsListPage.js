@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MicroPostCard from "../components/MicroPostCard";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorAlert from "../components/ErrorAlert";
+import Button from "../components/Button";
 
 function PostsListPage() {
   const [posts, setPosts] = useState([]);
@@ -35,6 +36,7 @@ function PostsListPage() {
   return (
     <div className="container-fluid text-center">
       <div className="row justify-content-center">
+        <Button/>
         {posts.map((entryData) => (
           <MicroPostCard {...entryData} key={entryData.id} />
         ))}
