@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import FormAdress from "./FormAddress"
+import FormAdress from "../form/FormAddress"
 import FormInfo from "./FormInfo"
 import FormBills from "./FormBills"
 import PostFormPage from './PostFormPage'
