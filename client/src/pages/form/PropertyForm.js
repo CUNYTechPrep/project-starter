@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import FormAdress from "../form/FormAddress"
 import FormInfo from "../form/FormRentMort"
-import FormBills from "./FormBills"
+import FormBills from "../form/FormBills"
 import PostFormPage from './PostFormPage'
 
 function PropertyForm() {
