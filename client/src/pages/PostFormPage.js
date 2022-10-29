@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import ErrorAlert from "../components/ErrorAlert";
 
-function PostFormPage() {
+function PostFormPage(props) {
   const [content, setContent] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+
+  const handleClickPrev = e => {
+    e.preventDefault();
+    {props.prevStep()};
+  }
 
   const handleContentChange = (event) => {
     setContent(event.target.value);
@@ -42,19 +47,22 @@ function PostFormPage() {
     <div className="col-10 col-md-8 col-lg-7">
       {error && <ErrorAlert details={"Failed to save the content"} />}
       <form onSubmit={handleSubmit}>
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder="Add your words of wisdom here..."
-            value={content}
-            className="form-control"
-            onChange={handleContentChange}
-            autoFocus
-          />
-          <button type="submit" className="btn btn-primary">
-            Save Post
-          </button>
-        </div>
+
+          <ul className = "list-group">
+            <li className="list-group-item">Address: {props.values.address}</li>
+            <li className="list-group-item">Rent: {props.values.rent}</li>
+            <li className="list-group-item">Mortgage: {props.values.mortgage}</li>
+            <li className="list-group-item">Electric: {props.values.electric}</li>
+            <li className="list-group-item">Gas: {props.values.gas}</li>
+            <li className="list-group-item">Water: {props.values.water}</li>
+          </ul>
+
+          <input placeholder="Confirm" onChange={handleContentChange}/>
+              
+          <br/>
+
+          <button onClick={handleClickPrev} className="btn btn-primary"> Back </button>
+          <button type="submit" className="btn btn-primary"> Save Property </button>
       </form>
     </div>
   );
