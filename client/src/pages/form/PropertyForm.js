@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import FormAdress from "../form/FormAddress"
-import FormInfo from "./FormInfo"
+import FormInfo from "../form/FormRentMort"
 import FormBills from "./FormBills"
 import PostFormPage from './PostFormPage'
 
