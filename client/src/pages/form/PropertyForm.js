@@ -9,13 +9,13 @@ function PropertyForm() {
 
     const [address, setAddress] = useState("");
 
-    const [rent, setRent] = useState(0);
+    const [rent, setRent] = useState("");
     const [tenanted, setTenanted] = useState(false);
-    const [mortgage, setMortgage] = useState(0);
+    const [mortgage, setMortgage] = useState("");
 
-    const [electric, setElectirc] = useState(0);
-    const [gas, setGas] = useState(0);
-    const [water, setWater] = useState(0);
+    const [electric, setElectirc] = useState("");
+    const [gas, setGas] = useState("");
+    const [water, setWater] = useState("");
 
     //proceed to next step
     const nextStep = () => {

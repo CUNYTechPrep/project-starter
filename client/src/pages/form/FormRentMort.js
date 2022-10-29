@@ -30,7 +30,6 @@ function FormInfo(props){
                 autoFocus
                 />) : (<></>)
             }
-            
             <input
             type="text"
             placeholder="Enter mortgage..."

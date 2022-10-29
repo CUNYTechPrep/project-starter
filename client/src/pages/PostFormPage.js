@@ -13,7 +13,7 @@ function PostFormPage(props) {
   }
 
   const handleContentChange = (event) => {
-    setContent(event.target.value);
+    setContent(props.values);
   };
 
   const handleSubmit = async (event) => {
@@ -38,7 +38,9 @@ function PostFormPage(props) {
     } catch (error) {
       console.error("Server error while creating a new micro post", error);
       setError(true);
-    }
+    }    
+
+    console.log(content);
   };
 
   if (success) return <Navigate to="/" />;
@@ -46,6 +48,7 @@ function PostFormPage(props) {
   return (
     <div className="col-10 col-md-8 col-lg-7">
       {error && <ErrorAlert details={"Failed to save the content"} />}
+      <h1>Confirmation</h1>
       <form onSubmit={handleSubmit}>
 
           <ul className = "list-group">

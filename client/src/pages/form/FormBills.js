@@ -14,6 +14,7 @@ function FormBills(props){
 
     return(
         <div>
+            <h1>Utilities</h1>
             <input
             type="text"
             placeholder="Enter electric..."
