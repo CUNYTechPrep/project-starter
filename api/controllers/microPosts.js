@@ -17,7 +17,7 @@ const { MicroPost, Property } = db;
 //    /micro_posts comes from the file ./microPosts.js
 
 router.get("/", (req, res) => {
-  MicroPost.findAll({}).then((allPosts) => res.json(allPosts));
+  Property.findAll({}).then((allHouses) => res.json(allHouses));
 });
 
 router.post("/", (req, res) => {

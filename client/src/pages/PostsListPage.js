@@ -3,6 +3,7 @@ import MicroPostCard from "../components/MicroPostCard";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorAlert from "../components/ErrorAlert";
 import Button from "../components/Button";
+import HomeCard from "../components/HomeCard";
 
 function PostsListPage() {
   const [posts, setPosts] = useState([]);
@@ -13,8 +14,18 @@ function PostsListPage() {
     async function getData() {
       setLoading(true);
       try {
-        let response = await fetch("/api/micro_posts");
+        let response = await fetch("/api/micro_posts/", {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });;
         let allPosts = await response.json();
+
+        // console.log("Fetched data");
+        // console.log(allPosts);
+
         setPosts(allPosts);
         setLoading(false);
       } catch (error) {
@@ -38,7 +49,7 @@ function PostsListPage() {
       <div className="row justify-content-center">
         <Button/>
         {posts.map((entryData) => (
-          <MicroPostCard {...entryData} key={entryData.id} />
+          <HomeCard {...entryData} key={entryData.id} />
         ))}
       </div>
     </div>
