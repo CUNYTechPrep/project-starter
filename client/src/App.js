@@ -9,6 +9,7 @@ import { AuthProvider } from "./context/AuthContext";
 import AuthButton from "./components/AuthButton";
 
 import "./App.css";
+import PrivateRouteRequiresAuth from "./components/PrivateRouteRequiresAuth";
 
 function Navigation(props) {
   return (
@@ -44,7 +45,15 @@ function App() {
           <div className="row justify-content-center">
             <Routes>
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/posts/new" element={<PostFormPage />} />
+              <Route
+                path="/posts/new"
+                element={
+                  <PrivateRouteRequiresAuth>
+                    {/* In react-router v6 we protect routes like this */}
+                    <PostFormPage />
+                  </PrivateRouteRequiresAuth>
+                }
+              />
               <Route path="/posts/:id" element={<ShowPostPage />} />
               <Route path="/about-us" element={<AboutUsPage />} />
               <Route path="/" element={<PostsListPage />} />
