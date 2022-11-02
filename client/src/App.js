@@ -5,6 +5,7 @@ import PostFormPage from "./pages/PostFormPage";
 import ShowPostPage from "./pages/ShowPostPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import { AuthProvider } from "./context/AuthContext";
+import AuthButton from "./components/AuthButton";
 
 import "./App.css";
 
@@ -28,6 +29,7 @@ function Navigation(props) {
           </li>
         </ul>
       </div>
+      <AuthButton />
     </nav>
   );
 }
