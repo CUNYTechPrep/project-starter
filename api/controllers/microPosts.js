@@ -1,4 +1,5 @@
 const express = require("express");
+const passport = require("../middlewares/authentication");
 const router = express.Router();
 const db = require("../models");
 const { MicroPost } = db;
@@ -20,7 +21,7 @@ router.get("/", (req, res) => {
   MicroPost.findAll({}).then((allPosts) => res.json(allPosts));
 });
 
-router.post("/", (req, res) => {
+router.post("/", passport.isAuthenticated(), (req, res) => {
   let { content } = req.body;
 
   MicroPost.create({ content })
@@ -43,7 +44,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", passport.isAuthenticated(), (req, res) => {
   const { id } = req.params;
   MicroPost.findByPk(id).then((mpost) => {
     if (!mpost) {
@@ -62,7 +63,7 @@ router.put("/:id", (req, res) => {
   });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", passport.isAuthenticated(), (req, res) => {
   const { id } = req.params;
   MicroPost.findByPk(id).then((mpost) => {
     if (!mpost) {
