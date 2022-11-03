@@ -7,57 +7,62 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    fetch("/api/auth/login")
-      .then((response) => {
+    async function checkIfUserIsLoggedIn() {
+      try {
+        let response = await fetch("/api/auth/login");
+
         if (!response.ok) {
           throw new Error("Unauthenticated");
         }
 
-        return response.json();
-      })
-      .then((body) => setUser(body))
-      .catch((err) => setUser(false));
+        let fetchedUser = await response.json();
+        setUser(fetchedUser);
+      } catch (error) {
+        setUser(false);
+      }
+    }
+
+    checkIfUserIsLoggedIn();
+
+    return () => {
+      // clean up function
+    };
   }, []);
 
-  const authenticate = (email, password) => {
-    return fetch("/api/auth/login", {
+  const authenticate = async (email, password) => {
+    let response = await fetch("/api/auth/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: {
         "Content-Type": "application/json",
       },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Login Failed");
-        }
+    });
 
-        return response.json();
-      })
-      .then((body) => {
-        setUser(body);
-        return body;
-      });
+    if (!response.ok) {
+      throw new Error("Login Failed");
+    }
+
+    let loggedInUser = await response.json();
+    setUser(loggedInUser);
+
+    return loggedInUser;
   };
 
-  const signout = () => {
-    return fetch("/api/auth/logout", {
+  const signout = async () => {
+    let response = await fetch("/api/auth/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Logout Failed");
-        }
+    });
+    if (!response.ok) {
+      throw new Error("Logout Failed");
+    }
 
-        return response.json();
-      })
-      .then((body) => {
-        setUser(false);
-        return body;
-      });
+    let body = await response.json();
+    setUser(false);
+
+    return body;
   };
 
   return (
