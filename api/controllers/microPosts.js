@@ -1,4 +1,5 @@
 const express = require("express");
+const { TableHints } = require("sequelize");
 const router = express.Router();
 const db = require("../models");
 const { MicroPost, Property } = db;
@@ -53,6 +54,29 @@ router.get("/house/:id", (req, res) => {
     res.json(mpost);
   });
 });
+
+
+router.get("/house/:id/tableName/:table?", (req, res) => {
+  const { id } = req.params;
+  Property.findByPk(id).then((mpost) => {
+    if (!mpost) {
+      return res.sendStatus(404);
+    }
+    res.json(mpost);
+  });
+});
+
+router.post("/house/:id/tableName/:table?", (req, res) => {
+  const { id } = req.params;
+  Property.findByPk(id).then((mpost) => {
+    if (!mpost) {
+      return res.sendStatus(404);
+    }
+    res.json(mpost);
+  });
+});
+
+
 
 router.get("/:id", (req, res) => {
   const { id } = req.params;
