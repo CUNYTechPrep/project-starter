@@ -13,6 +13,7 @@ const Map = (props) => {
     geoCode();
   }, [address]);
 
+  //converts the address fetched from backend to lat and long
   const geoCode = () => {
     axios
       .get("https://maps.googleapis.com/maps/api/geocode/json", {
@@ -22,7 +23,6 @@ const Map = (props) => {
         },
       })
       .then(function (res) {
-        // const converted = res.data.results[0].geometry.location;
         setCenter({
           lat: res.data.results[0].geometry.location.lat,
           lng: res.data.results[0].geometry.location.lng,
@@ -32,8 +32,7 @@ const Map = (props) => {
         console.log(err);
       });
   };
-  //   const url = `https://maps.googleapis.com/maps/api/streetview?size=400x400&location=${lat},${lng}
-  // &key=${process.env.REACT_APP_API_KEY}`;
+  //Google Map and Streetview
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
       <GoogleMap
