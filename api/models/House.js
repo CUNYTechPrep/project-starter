@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
 			miscellaneous: {
 				type: DataTypes.STRING,
 				validate: {
-					len: [3, 250],
 					notEmpty: true,
 				},
 			},
