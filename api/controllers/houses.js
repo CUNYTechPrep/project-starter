@@ -6,12 +6,17 @@ const { UserInfo, Bill, House, Rent } = db;
 
 //return json of houses based on userID
 router.get("/", (req, res) => {
-	Property.findAll({}).then((allHouses) => res.json(allHouses));
+	const { userId } = req.paramsl;
+	House.findAll({
+		where: {
+			ownerID: userId,
+		},
+	}).then((userHouses) => res.json(userHouses));
 });
 
 //return house specific information
 router.get("/house/:id", (req, res) => {
-	const { id } = req.params;
+	const { id, userId } = req.params;
 	House.findByPk(id).then((house) => {
 		if (!house) {
 			return res.sendStatus(404);
@@ -22,7 +27,7 @@ router.get("/house/:id", (req, res) => {
 
 // delete a house based on id
 router.delete("/house/:id", (req, res) => {
-	const { id } = req.params;
+	const { id, userId } = req.params;
 	House.findByPk(id).then((house) => {
 		if (!house) {
 			return res.sendStatus(404);
@@ -80,7 +85,6 @@ router.put("/house/:id/bills/billType/:billType?", (req, res) => {
 router.delete("/house/:id/bills/billType/:billType?", (req, res) => {
 	const { id } = req.params;
 });
-
 
 //get a rent from rent table
 router.get("/house/:id/rents", (req, res) => {
