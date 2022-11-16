@@ -8,15 +8,13 @@ module.exports = (sequelize, DataTypes) => {
 		{
 			address: {
 				type: DataTypes.STRING,
-				validate: {
-					notEmpty: true,
-				},
+				notEmpty: true,
+				validate: {},
 			},
 			miscellaneous: {
 				type: DataTypes.STRING,
-				validate: {
-					notEmpty: true,
-				},
+				notEmpty: true,
+				validate: {},
 			},
 		},
 		{
@@ -26,11 +24,11 @@ module.exports = (sequelize, DataTypes) => {
 	);
 
 	House.associate = (models) => {
-		House.belongsTo(models.UserInfo, {
-            foreignKey: 'ownerID',
-            as: 'owner',
-            allowNull: false,
-        })
+		House.belongsTo(models.User, {
+			foreignKey: "ownerID",
+			as: "owner",
+			allowNull: false,
+		});
 	};
 
 	return House;

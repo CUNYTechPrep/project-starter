@@ -1,11 +1,12 @@
 const express = require("express");
+const passport = require("../middlewares/authentication");
 const { TableHints } = require("sequelize");
 const router = express.Router();
 const db = require("../models");
-const { UserInfo, Bill, House, Rent } = db;
+const { User, Bill, House, Rent } = db;
 
 //return json of houses based on userID
-router.get("/", (req, res) => {
+router.get("/",  (req, res) => {
 	const { userId } = req.paramsl;
 	House.findAll({
 		where: {
@@ -39,8 +40,7 @@ router.delete("/house/:id", (req, res) => {
 
 //update billsTable with all bill information
 router.post("/form", (req, res) => {
-	let { address, electric, gas, mortgage, rent, step, tenanted, water } =
-		req.body;
+	let { address, electric, gas, mortgage, rent, step, tenanted, water } = req.body;
 
 	Property.create({
 		address,
