@@ -2,7 +2,7 @@ const express = require("express");
 const { TableHints } = require("sequelize");
 const router = express.Router();
 const db = require("../models");
-const { UserInfo } = db;
+const { User } = db;
 
 //save user login info into DB - fails if email already present
 router.post("/register", (req, res) => {
