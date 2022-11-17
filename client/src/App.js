@@ -4,6 +4,8 @@ import PostsListPage from "./pages/PostsListPage";
 import PostFormPage from "./pages/PostFormPage";
 import ShowPostPage from "./pages/ShowPostPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import Navbar from '../components/Navbar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import "./App.css";
 
@@ -40,6 +42,7 @@ function App() {
           <Routes>
             <Route path="/posts/new" element={<PostFormPage />} />
             <Route path="/posts/:id" element={<ShowPostPage />} />
+            <Navbar />
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/" element={<PostsListPage />} />
           </Routes>
