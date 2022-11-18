@@ -8,6 +8,6 @@ const authController = require("./auth.js");
 // Mount each controller under a specific route. These
 // will be prefixes to all routes defined inside the controller
 router.use("/houses", housesController);
-router.use("/auth", housesController);
+router.use("/auth", authController);
 
 module.exports = router;

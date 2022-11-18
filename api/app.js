@@ -4,9 +4,21 @@ const path = require("path");
 const db = require("./models");
 const app = express();
 const PORT = process.env.PORT;
+const passport = require("passport");
+const expressSession = require("express-session");
 
 // this lets us parse 'application/json' content in http requests
 app.use(express.json());
+
+app.use(
+  expressSession({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // add http request logging to help us debug and audit app use
 const logFormat = process.env.NODE_ENV === "production" ? "combined" : "dev";
@@ -24,7 +36,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "../client/build", "index.html"));
   });
 }
-
 // update DB tables based on model updates. Does not handle renaming tables/columns
 // NOTE: toggling this to true drops all tables (including data)
 db.sequelize.sync({ force: false });
