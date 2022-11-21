@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         validate: {
            defaultValue:0,
-           notEmpty:true,  //just a test
+           notEmpty:false,  //just a test
 
         }
           
