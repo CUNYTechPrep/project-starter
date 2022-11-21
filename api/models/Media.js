@@ -1,5 +1,5 @@
 "use strict";
-//   import fetch from 'node-fetch';
+import fetch from 'node-fetch';
 
 
 const { Model } = require("sequelize");
@@ -10,17 +10,19 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Media extends Model {}
 // The Media table : [MediaId | AVGRating]
-    // function myUrl(titleInput) {// setting the url
 
-    //     let url = 'https://api.tvmaze.com/shows?q=' + titleInput
-    //     return url
-    // }
-    // async function getIMBD() { // fetching // not sure if this works
-    //     const response = await fetch(myUrl(titleInput));
-    //     const data = await response.json();
-    //     const imbd = data.imbd;
-    //     return imbd;
-    // }
+
+    function myUrl(titleInput) {// setting the url
+
+        let url = 'https://api.tvmaze.com/shows?q=' + titleInput
+        return url
+    }
+    async function getIMBD() { // fetching // not sure if this works
+        const response = await fetch(myUrl(titleInput));
+        const data = await response.json();
+        const imbd = data.imbd;
+        return imbd;
+    }
 
 
   Media.init(
@@ -31,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
             notEmpty:true
         },
         AVGRating: {
-            type:DataTypes.INTEGER,
+            type:DataTypes.INTEGER,  // do not store , calcuate on query
            //need to think about it 
            // feel free to implement
            defaultValue: 0

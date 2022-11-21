@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       Username:{
         type:DataTypes.STRING,
         validate:{
+            len:[6,10],
             isAlphanumeric:true,
             notEmpty: true,
           
@@ -38,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
             // at least 1 number, 1 lowercase, 1 Uppercase, symbol, and between 8-50 length
-            is:["^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8-50}$"],
+            is:["^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8-25}$"],
             notEmpty:true,
         }
           

@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         validate: {
            defaultValue:0,
+           notEmpty:true,  //just a test
 
         }
           
@@ -30,8 +31,8 @@ module.exports = (sequelize, DataTypes) => {
  
    Rating.associate = (models) => {
     // associations can be defined here
-     models.Rating.belongsTo(models.Media); //adds a media column in Rating 
-     models.Rating.belongsTo(models.User); //adds a User column in Rating 
+     models.Rating.belongsTo(models.Media); //adds a mediaId column in Rating 
+     models.Rating.belongsTo(models.User); //adds a Userid column in Rating 
    };
 
   return Rating;
