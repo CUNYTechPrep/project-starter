@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MicroPostCard from "../components/MicroPostCard";
+import AddTransaction from "../components/AddTransaction";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorAlert from "../components/ErrorAlert";
 
@@ -38,6 +39,9 @@ function PostsListPage() {
         {posts.map((entryData) => (
           <MicroPostCard {...entryData} key={entryData.id} />
         ))}
+      </div>
+      <div className="container mt-3">
+        <AddTransaction/>
       </div>
     </div>
   );
