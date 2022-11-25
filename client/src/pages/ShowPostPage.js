@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import MicroPostCard from "../components/MicroPostCard";
-import AddTransaction from "../components/AddTransaction";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorAlert from "../components/ErrorAlert";
 import { useParams } from "react-router-dom";

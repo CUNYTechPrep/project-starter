@@ -1,5 +1,5 @@
 import React from "react";
-import {Modal, Button, ModalBody, ModalTitle, ModalHeader, Form, ModalFooter} from "react-bootstrap";
+import {Modal, Button, ModalBody, ModalTitle, ModalHeader, Form, ModalFooter, FormCheck, FormGroup, FormControl, Row, Col} from "react-bootstrap";
 
 function AddTransaction() {
     const [isShow,invokeModal]= React.useState(false)
@@ -9,20 +9,43 @@ function AddTransaction() {
     return(
       <div>
       <Button variant="primary" onClick={initModal}>
-        Add Transcation
+        Add Transaction
       </Button>
       <Modal show={isShow}>
         <ModalHeader closeButton onClick={initModal}>
-          <ModalTitle>React Modal</ModalTitle>
+          <ModalTitle>Enter Transaction Details</ModalTitle>
         </ModalHeader>
         <ModalBody>
-          Add your transaction here
+          <Form>
+            <FormGroup className="mb-3" controlId="formTransaction">
+              <FormControl type="text" placeholder="Name"/>
+            </FormGroup>
+            <FormGroup className="mb-3" controlId="formAmount">
+              <FormControl type="number" placeholder="Amount"/>
+            </FormGroup>
+            <Row>
+            <FormGroup as={Col}>
+            <FormCheck
+              type="switch"
+              id="custom-switch"
+              label="type"
+              className="float-end"
+            />
+            </FormGroup>
+            <FormGroup as={Col} >
+            <FormCheck
+              type="checkbox"
+              label="recurrent"
+            />
+            </FormGroup>
+            </Row>
+          </Form>
         </ModalBody>
         <ModalFooter>
-          <Button variant="danger" onClick={initModal}>
+          <Button variant="secondary" onClick={initModal}>
             Cancel
           </Button>
-          <Button variant="success" onClick={initModal}>
+          <Button type="submit" variant="success" onClick={initModal}>
             Confirm
           </Button>
         </ModalFooter>
