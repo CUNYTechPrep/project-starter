@@ -28,14 +28,14 @@ function AddTransaction() {
             <FormCheck
               type="switch"
               id="custom-switch"
-              label="type"
+              label="Type"
               className="float-end"
             />
             </FormGroup>
             <FormGroup as={Col} >
             <FormCheck
               type="checkbox"
-              label="recurrent"
+              label="Recurrent"
             />
             </FormGroup>
             </Row>
