@@ -1,6 +1,6 @@
 {
   "name": "api-backend",
-  "version": "2022.2",
+  "version": "2022.2.0",
   "description": "A starter express api backend that can also serve a React (CRA) client",
   "main": "index.js",
   "scripts": {
