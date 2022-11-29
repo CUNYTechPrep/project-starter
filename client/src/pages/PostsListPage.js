@@ -34,16 +34,24 @@ function PostsListPage() {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="container-fluid text-center">
-      <div className="row justify-content-center">
+    <>
+      <div className="d-flex justify-content-center">
+      <div className="col-4 justify-content-right bg-dark p-2">
+        {posts.map((entryData) => (
+          <MicroPostCard {...entryData} key={entryData.id} />
+        ))}
+      </div>
+      <div className="col-4 justify-content-left bg-primary ">
         {posts.map((entryData) => (
           <MicroPostCard {...entryData} key={entryData.id} />
         ))}
       </div>
       <div className="container mt-3">
-        <AddTransaction/>
+    <AddTransaction/>
+  </div>
       </div>
-    </div>
+  </>
+    
   );
 }
 
