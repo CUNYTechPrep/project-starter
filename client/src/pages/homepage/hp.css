@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Script&family=Montserrat:ital@1&family=Open+Sans&family=Petit+Formal+Script&family=Playfair+Display:ital@1&family=Roboto:ital,wght@1,300&display=swap");
+.title{
+    font-size: 30px;
+    text-align:center;
+  }
+  
+  body{
+    /* background: linear-gradient(rgb(89,142,197),rgb(148,194,227),rgb(192,219,242)); */
+    /* height: 6000px; */
+    /* background-; */
+    font-family: 'League Script', cursive !important;
+    font-weight: bolder !important;
+    color: black !important;
+    font-size: x-large !important;
+  }
+  
+  .welcome-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("Photoes/Support-Worker-1.png");
+    min-height: 670px;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    background-color: beige;
+  }
+  
+  .parallax {
+    /* The image used */
+    background-image: url("Photoes/pic3.png");
+  
+    /* Set a specific height */
+    min-height: 300px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+  }
+  
+  .parallax-2{
+    background-image: url("Photoes/pic2.png");
+    /* background: linear-gradient(rgb(89,142,197),rgb(148,194,227),rgb(192,219,242)); */
+    min-height: 400px;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+  }
+  
+  .parallax-3{
+    background-image: url("Photoes/city2.png");
+    min-height: 400px;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+  }
+  
+  .welcome-text{
+    /* background:white; 
+    color: black; */
+    text-align: center;
+    font-family: 'League Script', cursive;
+    font-weight: bold;
+    font-size: 70px;
+    /* background: rgba(255, 255, 255, 0.9); */
+    padding: 50px 50px;
+    background: -webkit-linear-gradient(rgb(207, 195, 21), rgb(170, 103, 103));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+  
+  /* .nav-link{
+    color: black !important;
+    font-weight: bold;
+  } */
+  
+  .nav-link:hover{
+    text-decoration: underline !important;
+  }
+  .images{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .profiles img{
+    /* border-radius: 0%; */
+    /* background-color: blue !important; */
+  }
+  
+  /* h{
+    font-size:40px;
+    font-style: bolder;
+    font-family: 'League Script', cursive;
+    
+    font-family: 'Montserrat', sans-serif;
+    
+    font-family: 'Petit Formal Script', cursive;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    color: lightblue;
+    font-size: 3em;
+    background: -webkit-linear-gradient(rgb(207, 195, 21), rgb(170, 103, 103));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  } */
+  
+  /* h1, p{
+    font-family: 'Petit Formal Script', cursive;
+    color: lightpink;
+    font-size: 1.5em;
+    background: -webkit-linear-gradient(rgb(212, 28, 56), rgb(194, 109, 109));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+  } */
+  
+  .vision, .who-we-are{  
+    font-size: 60px;
+    background: -webkit-linear-gradient(rgb(207, 195, 21), rgb(170, 103, 103));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+  
+  .container{
+    text-align:center;
+  
+  }
+  .rect{
+    text-align:center;
+  }
+  
+  .values-box p{
+    font-size: 30px;
+    /* height: 100px; */
+  }
+  
+  .values-box{
+    padding: 1% 2%;
+    /* background-color: rgb(21, 157, 241); */
+  }
+  
+  .navbar{
+    /* background-color: rgb(29, 111, 188) !important; */
+    color: white !important;
+  }
+  
+  .heading-60{
+    font-size: 60px !important;
+    background: -webkit-linear-gradient(rgb(207, 195, 21), rgb(170, 103, 103));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+  
+  .heading-personal{
+    color: black;
+  }
+  .resources{
+    /* background: linear-gradient(rgb(89,142,197),rgb(148,194,227),rgb(192,219,242)); */
+    margin-top: 40px;
+    font-size: 60px;
+  }
+  
+  .gradient-blue{
+    background: linear-gradient(rgb(89,142,197),rgb(148,194,227),rgb(192,219,242));
+  }
+  
+  .gradient-red{
+    background: -webkit-linear-gradient(rgb(212, 28, 56), rgb(194, 109, 109));
+  }
+  
+  /* 
+  .img-special{
+    width: 10% !important;
+  } */
+  
+  .feature-title{
+    font-size: 48px !important;
+    /* font-family: none; */
+    background: -webkit-linear-gradient(rgb(207, 195, 21), rgb(170, 103, 103));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    width: 100%;
+  }
+  
+  .feature-desc{
+    font-size: 20px !important;
+  }
+  
+  .feature-container{
+    padding: 5% 10% !important;
+  }
+  
+  .heading-name{
+    font-size: 40px !important;
+    background: -webkit-linear-gradient(rgb(89,142,197),rgb(148,194,227),rgb(192,219,242));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+  
+  .community-box{
+    padding: 5% 10%;
+  }
+  
+  .color-white{
+    color: white;
+  }
