@@ -59,7 +59,7 @@ router.post("/shows/:title", async (req, res) => { // create a new Media
           return res.sendStatus(404);
         }
         const {count, ratings} =  Rating.findAndCountAll({ // use await here too
-            where:{MediaID: number}
+            where:{MediaID: MediaID }
           })
       
           let total = 0; 
