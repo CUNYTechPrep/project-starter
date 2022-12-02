@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
  
   User.init(
     {
-      Email: {
+      email: {
         type: DataTypes.STRING,
         validate: {
          isEmail: true,
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             msg: 'This Email exists already in our Database!'
         }
       },
-      Username:{
+      userName:{
         type:DataTypes.STRING,
         validate:{
             len:[6,10],
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
             msg: 'Username taken!'
         },
       },
-      Password:{
+      passWord:{
         type: DataTypes.STRING,
         validate: {
             // at least 1 number, 1 lowercase, 1 Uppercase, symbol, and between 8-50 length
