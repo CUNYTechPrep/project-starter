@@ -1,6 +1,7 @@
 // The User table : [UserId | JoinDate | Email | Username| Pw]
 "use strict";
 const { Model } = require("sequelize");
+const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {}
@@ -12,10 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       email: {
         type: DataTypes.STRING,
+        unique: true,
+        allowNull: false,
         validate: {
          isEmail: true,
-          notEmpty: true,
-          
         },
         unique: {
             args: true,
@@ -35,16 +36,17 @@ module.exports = (sequelize, DataTypes) => {
             msg: 'Username taken!'
         },
       },
-      passWord:{
-        type: DataTypes.STRING,
+      passwordHash: { type: DataTypes.STRING},
+      password: {
+        type: DataTypes.VIRTUAL,
         validate: {
-            // at least 1 number, 1 lowercase, 1 Uppercase, symbol, and between 8-50 length
-            is:["^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8-25}$"],
-            notEmpty:true,
-        }
-          
-
-      }
+          isLongEnough: (val) => {
+            if (val.length < 7) {
+              throw new Error("Please choose a longer password")
+            }
+          },
+        },
+      },
     },
     {
       sequelize,
@@ -52,11 +54,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-
-
   User.associate = (models) => {
     // associations can be defined here
 
-  }
+  };
+
+  User.beforeSave((user, options) => {
+    if(user.password) {
+      user.passwordHash = bcrypt.hashSync(user.password, 10);
+    }
+  });
+
   return User;
 };
