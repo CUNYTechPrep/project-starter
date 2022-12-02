@@ -36,43 +36,64 @@ router.get("/shows/:title",(req, res) => {  // fetching
   });
 /////////////////////////////////////////////////////////////////////////////////////////
 router.post("/shows/:title", async (req, res) => { // create a new Media
-  const { title } = req.params;   // 
-  try{
-    let response = await fetch("https://api.tvmaze.com/singlesearch/shows?q=" + title)
-    
-      let show = await response.json()   // try and catch 
-   
-      const numberImdb = (show.externals.imdb)
-    await Media.create({ MediaID: numberImdb, AvgRating:0})
-  }
-  catch(e){
-    console.log(e.message)
-  }
-  
-    })
+    const { title } = req.params;   // 
+    try {
+        let response = await fetch("https://api.tvmaze.com/singlesearch/shows?q=" + title)
 
-   
-    router.put("/:MediaID", async (req, res) => { // update a new Media
-      const { MediaID } = req.params;   // 
-       Media.findByPk(MediaID).then((media)=>{
-        if (!media) {
-          return res.sendStatus(404);
-        }
-        const {count, ratings} =  Rating.findAndCountAll({ // use await here too
-            where:{MediaID: MediaID }
-          })
-      
-          let total = 0; 
-          let avg = 0;
-          ratings.map((nums)=>{
-          total+=nums;
-          })
-          avg = total/count;
-  
-         Media.update({AvgRating:avg})
-      })
-      
-        })
+        let show = await response.json()   // try and catch 
+
+        const numberImdb = show.externals.imdb
+        await Media.create({ MediaID: numberImdb, AvgRating: 0 })
+    }
+    catch (e) {
+        console.log(e.message)
+    }
+
+})
+
+
+
+
+router.post("/ratings", async (req, res) => { // create rating and update avg
+    const { userId, mediaId, ratingValue } = req.body;
+    const rating = await Rating.create({ RatingValue: ratingValue,
+                                             MediaID: mediaId,
+                                              UserId: userId }) // look at the names of db
+    const media = await Media.findByPk(mediaId);
+    if (!media) {
+        return res.sendStatus(404);
+    }
+
+    const { count, ratings } = await Rating.findAndCountAll({
+        // use await here too
+        where: { MediaID: mediaId },
+    });
+
+    let total = 0;
+    let avg = 0;
+    ratings.foreach((nums) => {
+        /// use for each
+        total += nums;
+    });
+    avg = total / count;
+
+     await Media.update({ AvgRating: avg })
+
+    return res.status(201).json(rating);
+}
+)
+
+router.get('/ratings/avarage', async (req, res) => { // show avarge fo given media
+
+    const mediaId = req.query.mediaId; // mediaId is passed from frontend as query param
+    const media = await Media.findByPk(mediaId);
+
+    if (!media) {
+        return res.sendStatus(404);
+    }
+    return res.status(200).json({avgRating:media.AvgRating});
+    
+});
 
 
 ///////////////////////////////////////////////////////////////////////
