@@ -36,12 +36,7 @@ function PostsListPage() {
   return (
     <>
       <div className="d-flex justify-content-center">
-      <div className="col-4 justify-content-right bg-dark p-2">
-        {posts.map((entryData) => (
-          <MicroPostCard {...entryData} key={entryData.id} />
-        ))}
-      </div>
-      <div className="col-4 justify-content-left bg-primary ">
+      <div className="col-4 justify-content-right">
         {posts.map((entryData) => (
           <MicroPostCard {...entryData} key={entryData.id} />
         ))}
