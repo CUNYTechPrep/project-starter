@@ -1,5 +1,5 @@
 import React from "react";
-import {Modal, Button, ModalBody, ModalTitle, ModalHeader, Form, ModalFooter, FormCheck, FormGroup, FormControl, Row, Col} from "react-bootstrap";
+import {Modal, Button, ModalBody, ModalTitle, ModalHeader, Form, ModalFooter, FormCheck, FormGroup, FormControl, Row} from "react-bootstrap";
 
 function AddTransaction() {
     const [isShow,invokeModal]= React.useState(false)
@@ -24,15 +24,7 @@ function AddTransaction() {
               <FormControl type="number" placeholder="Amount"/>
             </FormGroup>
             <Row>
-            <FormGroup as={Col}>
-            <FormCheck
-              type="switch"
-              id="custom-switch"
-              label="Type"
-              className="float-end"
-            />
-            </FormGroup>
-            <FormGroup as={Col} >
+            <FormGroup>
             <FormCheck
               type="checkbox"
               label="Recurrent"
