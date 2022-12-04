@@ -37,7 +37,7 @@ function SignUpPage(props) {
 
           <div className="col-md-6 dropdown">
             <label for="genderIdentity" className="form-label">
-              Gender Identity
+              Gender Identity *
             </label>
 
             <button className="btn dropdown-toggle border text-end form-control text-muted" type="button" data-bs-toggle="dropdown" aria-expanded="false">
