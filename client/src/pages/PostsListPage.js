@@ -33,14 +33,36 @@ function PostsListPage() {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="container-fluid text-center">
-      <div className="row justify-content-center">
-        {posts.map((entryData) => (
-          <MicroPostCard {...entryData} key={entryData.id} />
-        ))}
+    <>
+      {/* <div className="container mt-3">
+        <AddTransaction />
+      </div> */}
+
+      <div className="container-fluid text-center">
+        <div className="row justify-content-center">
+          {posts.map((entryData) => (
+            <MicroPostCard {...entryData} key={entryData.id} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
 export default PostsListPage;
+
+/**  From Affat
+ *     <>
+      <div>
+        <div className="container mt-3">
+          <AddTransaction />
+        </div>
+
+        <div className="row justify-content-center">
+          {posts.map((entryData) => (
+            <MicroPostCard {...entryData} key={entryData.id} />
+          ))}
+        </div>
+      </div>
+    </>
+ */

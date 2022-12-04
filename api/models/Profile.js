@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
           isDate: true,
         },
       },
-      sex: {
+      gender: {
         type: DataTypes.STRING,
         validate: {
           len: [1, 50],
@@ -46,6 +46,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.FLOAT,
         validate: {
           isNumeric: true,
+        },
+      },
+      aboutMe: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [3, 250],
+          notEmpty: true,
         },
       },
     },

@@ -6,6 +6,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Transaction.init(
     {
+      // Get this data from MicroPost
+      /*
       itemName: {
         type: DataTypes.STRING,
         validate: {
@@ -13,20 +15,8 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: true,
         },
       },
+      */
       price: {
-        type: DataTypes.FLOAT,
-        validate: {
-          isNumeric: true,
-        },
-      },
-      date: {
-        type: DataTypes.DATEONLY,
-        validate: {
-          isDate: true,
-        },
-      },
-
-      total: {
         type: DataTypes.FLOAT,
         validate: {
           isNumeric: true,

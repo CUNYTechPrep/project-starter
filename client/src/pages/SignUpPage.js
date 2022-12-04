@@ -5,9 +5,9 @@ function SignUpPage(props) {
 
   return (
     <>
-      <div className="container mt-5">
+      <div className="container mt-4">
         <h1>Sign up</h1>
-        <form className="row g-3">
+        <form className="row g-3 mt-2">
           <div className="col-md-6">
             <label for="firstName" className="form-label">
               First Name *
