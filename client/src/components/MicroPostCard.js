@@ -5,7 +5,6 @@ import DeleteTransaction from "./DeleteTransaction";
 
 function MicroPostCard({ content, createdAt, id }) {
   const total = 10;
-  const total = 10;
   return (
     <div className="col-10 col-md-8 col-lg-7">
       <div className="d-flex flex-row justify-content-around card" style={{"width":"450px"}}>
