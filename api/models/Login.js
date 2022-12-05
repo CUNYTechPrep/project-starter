@@ -17,10 +17,12 @@ module.exports = (sequelize, DataTypes) => {
       // For UI: Provide flag for the minimum length required of user
       password: {
         type: DataTypes.STRING,
+        set(value) {
+          this.setDataValue("password", hash(value));
+        },
         validate: {
           len: [8, 250],
           notEmpty: true,
-          // isUUID: 4,     // Use after implementing password encryption
         },
       },
     },

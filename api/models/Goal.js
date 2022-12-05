@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
           isNumeric: true,
         },
       },
-      monthlyPerformance: {
+      totalMinusIncome: {
         type: DataTypes.FLOAT,
         validate: {
           isNumeric: true,

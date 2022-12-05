@@ -1,4 +1,6 @@
 "use strict";
+import { hash } from "../util/HashingFunctions";
+
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
@@ -11,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           len: [3, 250],
           notEmpty: true,
+          unique: true,
+        },
+        set(value) {
+          this.setDataValue("content", hash(value));
         },
       },
     },
