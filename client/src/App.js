@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import PostsListPage from "./pages/PostsListPage";
-import PostFormPage from "./pages/PostFormPage";
+import TitleSearch from "./pages/TitleSearch";
 import ShowPostPage from "./pages/ShowPostPage";
 import AboutUsPage from "./pages/AboutUsPage";
 
@@ -38,10 +38,10 @@ function App() {
       <div className="container-xl text-center">
         <div className="row justify-content-center">
           <Routes>
-            <Route path="/posts/new" element={<PostFormPage />} />
+            <Route path="/posts/new" element={<PostsListPage />} />
             <Route path="/posts/:id" element={<ShowPostPage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
-            <Route path="/" element={<PostsListPage />} />
+            <Route path="/" element={<TitleSearch />} />
           </Routes>
         </div>
       </div>
