@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
+const passport = require('../middlewares/authentication')
 const { User,Media,Commment,Rating } = db; 
 
 const fetch = require('node-fetch');
@@ -35,7 +36,7 @@ router.get("/shows/:title",(req, res) => {  // fetching
       // console.log("num")
   });
 /////////////////////////////////////////////////////////////////////////////////////////
-router.post("/shows/:title", async (req, res) => { // create a new Media
+router.post("/shows/:title", passport.isAuthenticated(), async (req, res) => { // create a new Media
     const { title } = req.params;   // 
     try {
         let response = await fetch("https://api.tvmaze.com/singlesearch/shows?q=" + title)
@@ -54,7 +55,7 @@ router.post("/shows/:title", async (req, res) => { // create a new Media
 
 
 
-router.post("/ratings", async (req, res) => { // create rating and update avg
+router.post("/ratings", passport.isAuthenticated(), async (req, res) => { // create rating and update avg
     const { userId, mediaId, ratingValue } = req.body;
     const rating = await Rating.create({ RatingValue: ratingValue,
                                              MediaID: mediaId,
