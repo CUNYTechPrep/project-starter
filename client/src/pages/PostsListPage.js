@@ -35,21 +35,21 @@ function PostsListPage() {
 
   return (
     <>
-      <div className="container-fluid text-center">
+    <div className="container-fluid text-center">
       <div className="float-end mb-3">
-    <AddTransaction/>
-   </div>
-      <div className="row justify-content-center">
+      <AddTransaction/>
+      </div>
+      <div className="row justify-content-center" style={{"width":"600px"}}>
         {posts.map((entryData) => (
           <MicroPostCard {...entryData} key={entryData.id} />
         ))}
+        <div className="d-flex flex-row justify-content-end">
+          <h4 className="p-2 border rounded text-muted">Target</h4>
+          <h4 className="p-2 border rounded text-muted">Balance Forward</h4>
+        </div>
       </div>
     </div>
-    <div>
-      <span><h3>Balance Forward</h3></span><span><h3>Target</h3></span>
-    </div>
-  </>
-    
+    </>
   );
 }
 

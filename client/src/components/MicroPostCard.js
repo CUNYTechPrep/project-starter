@@ -1,15 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import DeleteTransaction from "./DeleteTransaction";
 
-function MicroPostCard({ content, createdAt, amount, id }) {
+
+function MicroPostCard({ content, createdAt, id }) {
+  const total = 10;
   return (
     <div className="col-10 col-md-8 col-lg-7">
-      <div className="card mb-4 shadow">
-        <div className="card-body card-text">
+      <div className="d-flex flex-row justify-content-around card" style={{"width":"450px"}}>
+        <div className="d-flex flex-row justify-content-between card-body align-text-center" style={{"width":"150px"}}>
           <Link to={"/posts/" + id}>{content}</Link>
-          {/* <div>{amount}</div> */}
+          <div className="pt-1 text-endt">{total}</div>
         </div>
-        <div className="card-footer small text-muted text-end">{createdAt}</div>
+        <div className="card-body small text-muted text-end">
+          {createdAt.slice(0, -14)}
+        </div>
+        <DeleteTransaction id={id}/>
       </div>
     </div>
   );
