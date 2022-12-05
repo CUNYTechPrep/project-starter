@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import DeleteTransaction from "./DeleteTransaction";
 
 function MicroPostCard({ content, createdAt, id }) {
   const total = 10;
@@ -13,6 +14,7 @@ function MicroPostCard({ content, createdAt, id }) {
         <div className="card-body small text-muted text-end">
           {createdAt.slice(0, -14)}
         </div>
+        <DeleteTransaction id={id}/>
       </div>
     </div>
   );

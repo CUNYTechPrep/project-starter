@@ -43,7 +43,7 @@ function AddTransaction() {
       return invokeModal(!isShow)
     }
 
-    if(error) return <ErrorAlert details={"Failed to save the content"} />;
+    if(error) return <ErrorAlert details={"Failed to save the transaction, refresh browser"} />;
 
     return(
       <div>
