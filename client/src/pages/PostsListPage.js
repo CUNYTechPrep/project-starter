@@ -54,3 +54,19 @@ function PostsListPage() {
 }
 
 export default PostsListPage;
+
+/**  From Affat
+ *     <>
+      <div>
+        <div className="container mt-3">
+          <AddTransaction />
+        </div>
+
+        <div className="row justify-content-center">
+          {posts.map((entryData) => (
+            <MicroPostCard {...entryData} key={entryData.id} />
+          ))}
+        </div>
+      </div>
+    </>
+ */

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import PostsListPage from "./pages/PostsListPage";
 import ShowPostPage from "./pages/ShowPostPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import SignUpPage from "./pages/SignUpPage";
 
 import "./App.css";
 
@@ -19,6 +20,11 @@ function Navigation(props) {
               About Us
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/form">
+              Fill-out Form
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>
@@ -29,12 +35,17 @@ function App() {
   return (
     <BrowserRouter>
       <Navigation />
-      <div className="container-xl text-center">
-        <div className="row justify-content-center">
+      <div className="container-xl ">
+        {" "}
+        {/*text-center*/}
+        <div className="row ">
+          {" "}
+          {/*justify-content-center*/}
           <Routes>
             <Route path="/posts/:id" element={<ShowPostPage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/" element={<PostsListPage />} />
+            <Route path="/form" element={<SignUpPage />} />
           </Routes>
         </div>
       </div>
