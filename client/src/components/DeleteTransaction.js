@@ -1,5 +1,5 @@
 import React, { useState }  from "react";
-import {Modal, Button, ModalBody, ModalTitle, ModalHeader,ModalFooter} from "react-bootstrap";
+import {Modal, Button, ModalBody, ModalTitle, ModalHeader, ModalFooter} from "react-bootstrap";
 import ErrorAlert from "./ErrorAlert";
 
 function DeleteTransaction({id}) {
