@@ -1,5 +1,5 @@
 import React, { useState }  from "react";
-import {Modal, Button, ModalBody, ModalTitle, ModalHeader, Form, ModalFooter, FormCheck, FormGroup, FormControl, Row, Col} from "react-bootstrap";
+import {Modal, Button, ModalBody, ModalTitle, ModalHeader, Form, ModalFooter, FormCheck, FormGroup, FormControl, Row} from "react-bootstrap";
 import ErrorAlert from "../components/ErrorAlert";
 
 function AddTransaction() {
