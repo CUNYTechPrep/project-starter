@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MicroPostCard from "../components/MicroPostCard";
+import AddTransaction from "../components/AddTransaction";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorAlert from "../components/ErrorAlert";
 
@@ -33,13 +34,23 @@ function PostsListPage() {
   if (loading) return <LoadingSpinner />;
 
   return (
+    <>
     <div className="container-fluid text-center">
-      <div className="row justify-content-center">
+      <div className="float-end mb-3">
+      <AddTransaction/>
+      </div>
+      <div className="row justify-content-center" style={{"width":"600px"}}>
         {posts.map((entryData) => (
           <MicroPostCard {...entryData} key={entryData.id} />
         ))}
+        <div className="d-flex flex-row justify-content-end">
+          <h4 className="p-2 border rounded text-muted">Target</h4>
+          <h4 className="p-2 border rounded text-muted">Balance Forward</h4>
+        </div>
       </div>
     </div>
+    </>
+    
   );
 }
 

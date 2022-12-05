@@ -37,7 +37,11 @@ function ShowPostPage() {
     );
   if (loading) return <LoadingSpinner />;
 
-  return <MicroPostCard {...post} />;
+  return (
+  <div>
+  <MicroPostCard {...post} />
+  </div>
+  );
 }
 
 export default ShowPostPage;
