@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import DeleteTransaction from "./DeleteTransaction";
 
+
 function MicroPostCard({ content, createdAt, id }) {
   const total = 10;
   return (

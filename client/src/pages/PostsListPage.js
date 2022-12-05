@@ -50,7 +50,6 @@ function PostsListPage() {
       </div>
     </div>
     </>
-    
   );
 }
 
