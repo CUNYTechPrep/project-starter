@@ -1,121 +1,61 @@
+// import { response } from "express";
 import React, { useState } from "react";
 // import { Navigate } from "react-router-dom";
 // import ErrorAlert from "../components/ErrorAlert";
-// import MicroPostCard from "../components/MicroPostCard";
 
-function MicroPostCard( props ) {  
-  const { title, year } = props.movieInfo
+function MediaResult({title, year, ended, genres, entryNum}) {
   return (
-    <div className="col-10 col-md-8 col-lg-7">
-      <div className="card mb-4 shadow">
-        <div className="card-body card-text">
-          {/* <Link to={"/posts/" + id}>{content}</Link> */}
-          <ul>
-            <li><strong>{title}, ({year})</strong></li><br></br>
-          </ul>
-        </div>
-      </div>
+    <div> 
+      <strong>"{title}", ({year}) </strong>
+      <ul>
+        <li>Ended: {ended}</li>
+        <li>Genres: {genres} </li>        
+      </ul>
+      <br></br>
     </div>
   );
 }
 
-function TestFunction () {
-  // const [content, setContent] = useState("");
-  const [results, setResults] = useState([]);
-
-  return (
-    <div>
-      <div className="col-10 col-md-8 col-lg-7">
-      <div className="card mb-4 shadow">
-        <div className="card-body card-text">
-          {/* <Link to={"/posts/" + id}>{content}</Link>
-          <ul>
-            <li><strong>{title}, ({year})</strong></li><br></br>
-          </ul> */}
-          <TitleSearch
-              setResults = {setResults}
-          />
-        <div>
-          {results.map((movieData) => {
-            return <MicroPostCard movieInfo = {movieData}/>
-          })}
-        </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  )
-}
-
-function TitleSearch(props) {
-  // const [content, setContent] = useState("");
-  // const [results, setResults] = useState([]);
+function TitleSearch() {
+  const [content, setContent] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   // const [success, setSuccess] = useState(false);
   // const [error, setError] = useState(false);
 
-  // const handleContentChange = (event) => {
-  //   setContent(event.target.value);
-  // };
+  const handleContentChange = (event) => {
+    setContent(document.getElementById('input').value);
+  };
 
-  // const handleSubmit = async (event) => {
-    // event.preventDefault();
-    // async function getData() {
-      
-    // };
-
-    // try {
-      // let response = await fetch("/api/media", {
-      //   method: "GET",
-      //   credentials: "include",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     content: content,
-      //   }),
-      // });        
-      
-      let userInput = document.getElementById('title').value;
-      let myURL = "https://api.tvmaze.com/search/shows?q=" + userInput
-      const callData = () => {
-        fetch(myURL)
-          .then((response) => {
-            return response.json();
-          })
-          .then((datajson) => {
-            props.setContent(datajson);
-    
-        })
-      // let response = await fetch(myURL);
-      // let allResults = await response.json();
-      // console.log(allResults);
-      // setResults(allResults);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      let response = await fetch("https://api.tvmaze.com/search/shows?q=" + content)
+      let allResults = await response.json();
+      setSearchResults(allResults);   
 
       // if (response.ok) {
       //   setSuccess(true);
       // } else {
       //   setError(true);
       // }
-    // } catch (error) {
-    //   console.error("Server error while searching for title", error);
-    //   // setError(true);
-    // } 
-    
-    // setResults([])
-  //   }
-  }
-    
+    } catch (error) {
+      console.error("Server error while creating a new micro post", error);
+      setSearchResults([]);
+      // setError(true);
+    }
+  };
 
-  // if (success) return console.log(content);
+  // if (success) return <Navigate to="/" />;
 
   return (
     <div className="col-10 col-md-8 col-lg-7">
       {/* {error && <ErrorAlert details={"Failed to save the content"} />} */}
-      {/* <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="input-group">
           <input
+            id = 'input'
             type="text"
-            placeholder="Enter a movie or TV show title here..."
+            placeholder="Enter the title of a movie or TV show..."
             value={content}
             className="form-control"
             onChange={handleContentChange}
@@ -125,14 +65,22 @@ function TitleSearch(props) {
             Search
           </button>
         </div>
-      </form>   */}
-      <div>
-        <label for= "title">Title</label> 
-          <input type="text" id="title" placeholder="type here..."
-          onClick={(callData)}></input>
-      </div>;
+        <div><br></br>
+          {searchResults.map((data) => (
+            <MediaResult 
+              title = {data.show.name}
+              year = {data.show.premiered}
+              ended = {data.show.ended}
+              genres = {data.show.genres}
+              // entryNum = {data}              
+              key = {data.show.externals.imdb}
+            />
+          ))}
+          {searchResults.length === null && <strong><p>No results found</p></strong>}
+        </div>
+      </form>
     </div>
   );
 }
 
-export default TestFunction;
+export default TitleSearch;
