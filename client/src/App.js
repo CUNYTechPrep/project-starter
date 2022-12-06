@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import PostsListPage from "./pages/PostsListPage";
 import ShowPostPage from "./pages/ShowPostPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import Header from "./components/Header";
 
 import "./App.css";
 
@@ -28,7 +29,7 @@ function Navigation(props) {
 function App() {
   return (
     <BrowserRouter>
-      <Navigation />
+    <Header/>
       <div className="container-xl text-center">
         <div className="row justify-content-center">
           <Routes>

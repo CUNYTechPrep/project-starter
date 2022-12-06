@@ -4,6 +4,8 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorAlert from "../components/ErrorAlert";
 import { useParams } from "react-router-dom";
 
+
+
 function ShowPostPage() {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);

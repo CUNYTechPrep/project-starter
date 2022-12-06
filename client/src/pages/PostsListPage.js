@@ -4,6 +4,8 @@ import AddTransaction from "../components/AddTransaction";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorAlert from "../components/ErrorAlert";
 
+
+
 function PostsListPage() {
   
   const [posts, setPosts] = useState([]);
@@ -36,6 +38,7 @@ function PostsListPage() {
 
   return (
     <>
+    
     <div className="container-fluid text-center">
       <div className="float-end mb-3">
       <AddTransaction/>

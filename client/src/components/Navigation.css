@@ -1,0 +1,22 @@
+
+.menu{
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 20%;
+    border-right: 2px;
+    border-color: darkblue;
+    border-style: solid;
+    border-radius: 0 10px 10px 0;
+}
+.menuMask{
+    position: fixed;
+    float: left;
+    background-color:rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
