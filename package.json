@@ -12,9 +12,13 @@
   "author": "Edgardo Molina",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "morgan": "^1.10.0",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^3.3.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.25.2"

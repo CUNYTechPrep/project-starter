@@ -1,9 +1,14 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import PostsListPage from "./pages/PostsListPage";
-import PostFormPage from "./pages/PostFormPage";
+import TitleSearch from "./pages/TitleSearch";
 import ShowPostPage from "./pages/ShowPostPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import Details from "./pages/Details";
+import LoginPage from "./pages/LoginPage";
+import { AuthProvider } from "./context/AuthContext";
+import AuthButton from "./components/AuthButton";
+
 import HomePage from "./pages/HomePage";
 import logoImg from './asserts/logo.png';
 
@@ -38,23 +43,6 @@ function Navigation(props) {
             </NavLink>
           </li>
         </ul>
-        </div>
-        <div className="nt-app-header-profile-links">
-          <div className="right">
-            {
-              profile ?
-                <div className="nt-app-header-avatar" style={this.getAvatarStyle(profile)}>
-                  <Link to="/profile" title={`profile: ${profile.username}`}/>
-                </div>
-                : null
-            }
-            <div className="log-container">
-              {isLoggedIn ? <button onClick={this.logout.bind(this)} className="buttonLink logout">Log out</button> : <Link to="/login">Log in</Link>}
-            </div>
-            <div>
-              {isLoggedIn ? null : <Link to="/signup">Sign up</Link>}
-            </div>
-            </div>
       </div>
     </nav>
   );
@@ -62,20 +50,24 @@ function Navigation(props) {
 
 function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
       <Navigation />
       <div className="container-xl text-center">
         <div className="row justify-content-center">
           <Routes>
-            <Route path="/posts/new" element={<PostFormPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/posts/new" element={<PostsListPage />} />
             <Route path="/posts/:id" element={<ShowPostPage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/home" element={<HomePage />} />
-            <Route path="/" element={<PostsListPage />} />
+            <Route path="/" element={<TitleSearch />} />
+            <Route path="/details/:id" element={<Details />} />
           </Routes>
         </div>
       </div>
     </BrowserRouter>
+    </AuthProvider>
   );
 }
 
