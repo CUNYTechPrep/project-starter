@@ -3,17 +3,18 @@ import React, { useState } from "react";
 // import { Navigate } from "react-router-dom";
 // import ErrorAlert from "../components/ErrorAlert";
 
-function MediaResult({title, year, ended, genres, entryNum}) {
+function MediaResult({title, year, network,genres, ended, entryNum}) {
   return (
     <div> 
-      <strong>"{title}", ({year}) </strong>
+      <strong>{title} ({year.substring(0,4)}) </strong>
       <ul>
-        <li>Ended: {ended}</li>
-        <li>Genres: {genres} </li>        
+        <li>Network: {network}</li>
+        <li>Genres: {genres+" "} </li> 
+        <li>Ended: {ended}</li>      
       </ul>
       <br></br>
     </div>
-  );
+  ); 
 }
 
 function TitleSearch() {
@@ -29,9 +30,9 @@ function TitleSearch() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      let response = await fetch("https://api.tvmaze.com/search/shows?q=" + content)
-      let allResults = await response.json();
-      setSearchResults(allResults);   
+      let showResponse = await fetch("https://api.tvmaze.com/search/shows?q=" + content)
+      let showResults = await showResponse.json();
+      setSearchResults(showResults);   
 
       // if (response.ok) {
       //   setSuccess(true);
@@ -42,7 +43,7 @@ function TitleSearch() {
       console.error("Server error while creating a new micro post", error);
       setSearchResults([]);
       // setError(true);
-    }
+    }    
   };
 
   // if (success) return <Navigate to="/" />;
@@ -68,12 +69,13 @@ function TitleSearch() {
         <div><br></br>
           {searchResults.map((data) => (
             <MediaResult 
-              title = {data.show.name}
-              year = {data.show.premiered}
-              ended = {data.show.ended}
-              genres = {data.show.genres}
-              // entryNum = {data}              
+              title = {data.show.name} 
+              year = {(!data.show.premiered && "N/A") || data.show.premiered}
+              network = {(!data.show.network && "N/A") || data.show.network.name}
+              genres = { ((data.show.genres).length !== 0 && data.show.genres) || (data.show.genres && "N/A")} 
+              ended = {(!data.show.ended && "N/A") || data.show.ended}                          
               key = {data.show.externals.imdb}
+              // entryNum = {data} 
             />
           ))}
           {searchResults.length === null && <strong><p>No results found</p></strong>}
