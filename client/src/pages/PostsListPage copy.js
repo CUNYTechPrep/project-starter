@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import MicroPostCard from "../components/MicroPostCard";
+import AddTransaction from "../components/AddTransaction";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorAlert from "../components/ErrorAlert";
-import AddCategory from "../components/AddCategory";
 
 
 
@@ -41,7 +41,7 @@ function PostsListPage() {
     
     <div className="container-fluid text-center">
       <div className="float-end mb-3">
-      <AddCategory/>
+      <AddTransaction/>
       </div>
       <div className="row justify-content-center" style={{"width":"600px"}}>
         {posts.map((entryData) => (

@@ -1,21 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DeleteTransaction from "./DeleteTransaction";
+import DeleteCategory from "./DeleteCategory";
+import{FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import{faPlus, faTimes} from '@fortawesome/free-solid-svg-icons'
 
 
 function MicroPostCard({ content, createdAt, id }) {
-  const total = 10;
   return (
     <div className="col-10 col-md-8 col-lg-7">
       <div className="d-flex flex-row justify-content-around card" style={{"width":"450px"}}>
-        <div className="d-flex flex-row justify-content-between card-body align-text-center" style={{"width":"150px"}}>
-          <Link to={"/posts/" + id}>{content}</Link>
-          <div className="pt-1 text-endt">{total}</div>
+      <div>
+      <Link to={"/posts/" + id}>
+          <FontAwesomeIcon
+            icon={faPlus}
+            style={{"color":"purple"}}
+            type="button"
+            />
+      </Link>
+      </div>
+        <div className="d-flex flex-row justify-content-around card-body align-text-center" style={{"width":"100px"}}>
+          <div>{content}</div>
         </div>
-        <div className="card-body small text-muted text-end">
-          {createdAt.slice(0, -14)}
-        </div>
-        <DeleteTransaction id={id}/>
+        <DeleteCategory id={id}/>
       </div>
     </div>
   );

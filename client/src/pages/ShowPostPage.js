@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import MicroPostCard from "../components/MicroPostCard";
+import TransactionCard from "../components/TransactionCard";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorAlert from "../components/ErrorAlert";
+import AddTransaction from "../components/AddTransaction";
 import { useParams } from "react-router-dom";
 
 
@@ -40,9 +41,17 @@ function ShowPostPage() {
   if (loading) return <LoadingSpinner />;
 
   return (
-  <div>
-  <MicroPostCard {...post} />
-  </div>
+    <div className="container-fluid text-center">
+      <div className="row justify-content-center" style={{"width":"600px"}}>
+      <TransactionCard {...post} />
+      <div className="d-flex flex-row justify-content-end">
+          <h4 className="p-2 border rounded text-muted">Total</h4>
+        </div>
+      </div>
+      <div className="float-end mb-3">
+        <AddTransaction/>
+      </div>
+    </div>
   );
 }
 

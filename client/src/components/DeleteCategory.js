@@ -1,8 +1,10 @@
 import React, { useState }  from "react";
 import {Modal, Button, ModalBody, ModalTitle, ModalHeader, ModalFooter} from "react-bootstrap";
 import ErrorAlert from "./ErrorAlert";
+import{FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import{faTimes} from '@fortawesome/free-solid-svg-icons'
 
-function DeleteTransaction({id}) {
+function DeleteCategory({id}) {
     const [error, setError] = useState(false);
     const [isShow,invokeModal]= useState(false);
 
@@ -39,15 +41,19 @@ function DeleteTransaction({id}) {
 
     return(
       <div>
-      <Button variant="danger" onClick={initModal} type="button" className="fa fa-times">
-      </Button>
+      <FontAwesomeIcon
+            icon={faTimes}
+            onClick={()=>invokeModal(!isShow)}
+            style={{"color":"red"}}
+            type="button"
+            />
       <Modal show={isShow}>
         <ModalHeader closeButton onClick={initModal}>
           <ModalTitle>Delete Confirmation</ModalTitle>
         </ModalHeader>
         <ModalBody>
           <div>
-            Are you sure you want to delete transaction?
+            Are you sure you want to delete category?
           </div>
         </ModalBody>
         <ModalFooter>
@@ -63,4 +69,4 @@ function DeleteTransaction({id}) {
     );
 }
 
-export default DeleteTransaction;
+export default DeleteCategory;
