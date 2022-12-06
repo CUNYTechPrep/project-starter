@@ -33,7 +33,7 @@ const Details = () => {
             setSearchResults(datajson);
            console.log(datajson)
         })
-   // setSearchResults([])
+    setSearchResults([])
         console.log(searchResults)
     return (
 
