@@ -4,6 +4,7 @@ import PostsListPage from "./pages/PostsListPage";
 import TitleSearch from "./pages/TitleSearch";
 import ShowPostPage from "./pages/ShowPostPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import Details from "./pages/Details";
 
 import "./App.css";
 
@@ -42,6 +43,7 @@ function App() {
             <Route path="/posts/:id" element={<ShowPostPage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/" element={<TitleSearch />} />
+            <Route path="/details/:id" element={<Details/>} />
           </Routes>
         </div>
       </div>

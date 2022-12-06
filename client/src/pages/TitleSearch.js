@@ -3,10 +3,11 @@ import React, { useState } from "react";
 // import { Navigate } from "react-router-dom";
 // import ErrorAlert from "../components/ErrorAlert";
 
-function MediaResult({title, year, network,genres, ended, entryNum}) {
+function MediaResult({title, year, network,genres, ended, entryNum,imdbNumber}) {  //creates a link to the Detail page
+  const detailsPage = "Details/"+imdbNumber
   return (
     <div> 
-      <strong>{title} ({year.substring(0,4)}) </strong>
+      <strong> <a href= {detailsPage}>{title} ({year.substring(0,4)}) </a></strong> 
       <ul>
         <li>Network: {network}</li>
         <li>Genres: {genres+" "} </li> 
@@ -20,6 +21,7 @@ function MediaResult({title, year, network,genres, ended, entryNum}) {
 function TitleSearch() {
   const [content, setContent] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  
   // const [success, setSuccess] = useState(false);
   // const [error, setError] = useState(false);
 
@@ -33,12 +35,13 @@ function TitleSearch() {
       let showResponse = await fetch("https://api.tvmaze.com/search/shows?q=" + content)
       let showResults = await showResponse.json();
       setSearchResults(showResults);   
-
+      console.log(showResults);
       // if (response.ok) {
       //   setSuccess(true);
       // } else {
       //   setError(true);
       // }
+      
     } catch (error) {
       console.error("Server error while creating a new micro post", error);
       setSearchResults([]);
@@ -67,7 +70,8 @@ function TitleSearch() {
           </button>
         </div>
         <div><br></br>
-          {searchResults.map((data) => (
+          
+        {searchResults.map((data) => (
             <MediaResult 
               title = {data.show.name} 
               year = {(!data.show.premiered && "N/A") || data.show.premiered}
@@ -75,9 +79,12 @@ function TitleSearch() {
               genres = { ((data.show.genres).length !== 0 && data.show.genres) || (data.show.genres && "N/A")} 
               ended = {(!data.show.ended && "N/A") || data.show.ended}                          
               key = {data.show.externals.imdb}
+              imdbNumber = {data.show.externals.imdb}
               // entryNum = {data} 
             />
+            
           ))}
+          
           {searchResults.length === null && <strong><p>No results found</p></strong>}
         </div>
       </form>
