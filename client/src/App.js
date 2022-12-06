@@ -4,6 +4,14 @@ import PostsListPage from "./pages/PostsListPage";
 import TitleSearch from "./pages/TitleSearch";
 import ShowPostPage from "./pages/ShowPostPage";
 import AboutUsPage from "./pages/AboutUsPage";
+<<<<<<< Updated upstream
+=======
+import Details from "./pages/Details";
+import LoginPage from "./pages/LoginPage";
+import { AuthProvider } from "./context/AuthContext";
+import AuthButton from "./components/AuthButton";
+
+>>>>>>> Stashed changes
 
 import "./App.css";
 
