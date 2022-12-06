@@ -4,6 +4,9 @@ import PostsListPage from "./pages/PostsListPage";
 import TitleSearch from "./pages/TitleSearch";
 import ShowPostPage from "./pages/ShowPostPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import LoginPage from "./pages/LoginPage";
+import { AuthProvider } from "./context/AuthContext";
+import AuthButton from "./components/AuthButton";
 
 import "./App.css";
 
@@ -27,17 +30,20 @@ function Navigation(props) {
           </li>
         </ul>
       </div>
+      <AuthButton />
     </nav>
   );
 }
 
 function App() {
   return (
+   <AuthProvider>
     <BrowserRouter>
       <Navigation />
       <div className="container-xl text-center">
         <div className="row justify-content-center">
           <Routes>
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/posts/new" element={<PostsListPage />} />
             <Route path="/posts/:id" element={<ShowPostPage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
@@ -46,6 +52,7 @@ function App() {
         </div>
       </div>
     </BrowserRouter>
+  </AuthProvider>  
   );
 }
 
