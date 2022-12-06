@@ -26,15 +26,17 @@ module.exports = (sequelize, DataTypes) => {
           isEmail: true,
           len: [10, 250],
           notEmpty: true,
+          unique: true,
         },
       },
       dob: {
         type: DataTypes.DATEONLY,
         validate: {
           isDate: true,
+          notEmpty: true,
         },
       },
-      sex: {
+      gender: {
         type: DataTypes.STRING,
         validate: {
           len: [1, 50],
@@ -46,6 +48,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.FLOAT,
         validate: {
           isNumeric: true,
+          notEmpty: true,
+        },
+      },
+      aboutMe: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [3, 250],
         },
       },
     },

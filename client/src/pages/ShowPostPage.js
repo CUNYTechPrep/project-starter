@@ -34,10 +34,7 @@ function ShowPostPage() {
     };
   }, [params.id]);
 
-  if (error)
-    return (
-      <ErrorAlert details={"Micro post with id=" + params.id + " not found"} />
-    );
+  if (error) return <ErrorAlert details={"Micro post with id=" + params.id + " not found"} />;
   if (loading) return <LoadingSpinner />;
 
   return (
