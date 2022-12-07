@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
         return (
             <div>              
                 <h1>{title} ({year})</h1>
+                {plot}
             </div>
         )
     }
@@ -57,9 +58,9 @@ const Details = () => {
             //   network = {(!data.show.network && "N/A") || data.show.network.name}
             //   genres = { ((data.show.genres).length !== 0 && data.show.genres) || (data.show.genres && "N/A")} 
             //   ended = {(!data.show.ended && "N/A") || data.show.ended}
-            //   imdbNumber = {data.show.externals.imdb}
-            //   image = {data.show.image.medium} 
-            //   plot = {data.show.summary}                          
+            //   imdbNumber = {searchResults.externals}
+            //   image = {searchResults.image.medium} 
+               plot = {searchResults.summary}                          
             //   key = {data.show.externals.imdb}
             
             />

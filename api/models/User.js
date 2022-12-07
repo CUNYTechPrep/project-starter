@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       userName:{
         type:DataTypes.STRING,
         validate:{
-            len:[6,10],
+            len:[6,20],
             isAlphanumeric:true,
             notEmpty: true,
           
