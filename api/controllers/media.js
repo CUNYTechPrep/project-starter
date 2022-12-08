@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 const passport = require('../middlewares/authentication')
-const { User,Media,Commment,Rating } = db; 
+const { Media,Commment,Rating } = db; 
 
 const fetch = require('node-fetch');
 
@@ -37,51 +37,58 @@ const fetch = require('node-fetch');
 //       // console.log("num")
 //   });
 /////////////////////////////////////////////////////////////////////////////////////////
-router.post("/shows/:title", passport.isAuthenticated(), async (req, res) => { // create a new Media  /// this should be in rating post
-  const { title } = req.params;   // 
-  try {
-    let response = await fetch("https://api.tvmaze.com/singlesearch/shows?q=" + title)
+// router.post("/shows/:title", passport.isAuthenticated(), async (req, res) => { // create a new Media  /// this should be in rating post
+//   const { title } = req.params;   // 
+//   try {
+//     let response = await fetch("https://api.tvmaze.com/singlesearch/shows?q=" + title)
 
-    let show = await response.json()   // try and catch 
+//     let show = await response.json()   // try and catch 
 
-    const numberImdb = show.externals.imdb
-    await Media.create({ MediaID: numberImdb, AvgRating: 0 })
-  }
-  catch (e) {
-    res.status(400).json(e);//error
-  }
+//     const numberImdb = show.externals.imdb
+//     await Media.create({ MediaID: numberImdb, AvgRating: 0 })
+//   }
+//   catch (e) {
+//     res.status(400).json(e);//error
+//   }
 
-})
-
-
+// })
 
 
-router.post("/mediaId/ratings", passport.isAuthenticated(), async (req, res) => { // create rating and update avg
-  const { userId, mediaId, ratingValue } = req.body;
-  const rating = await Rating.create({
-    RatingValue: ratingValue, MediaID: mediaId, UserId: userId
+
+
+router.post("/values/:imdb/rate/:ratingValue", (req, res) => { // create rating and update avg
+  
+  const { imdb,ratingValue } = req.params;  
+  Rating.create({
+    RatingValue: ratingValue, MediaID: imdb, 
   }) // consider MediumMediaID if doesnt work
-
-  const media = await Media.findByPk(mediaId);
-  if (!media) {
-    return res.sendStatus(404);
-  }
-
-  const { count, ratings } = await Rating.findAndCountAll({
-    // use await here too
-    where: { MediaID: mediaId },
+  .then((newRating) => {
+    res.status(201).json(newRating);
+  })
+  .catch((err) => {
+    res.status(400).json(err);
   });
 
-  let total = 0;
-  let avg = 0;
-  ratings.foreach((nums) => {
-    total += nums;
-  });
-  avg = total / count;
+  // const media = await Media.findByPk(imdb);
+  // if (!media) {
+  //   return res.sendStatus(404);
+  // }
 
-  await Media.update({ AvgRating: avg })
+  // const { count, ratings } = await Rating.findAndCountAll({
+  //   // use await here too
+  //   where: { MediaID: imdb },
+  // });
 
-  return res.status(201).json(rating); // success
+  // let total = 0;
+  // let avg = 0;
+  // ratings.foreach((nums) => {
+  //   total += Number(nums);
+  // });
+  // avg = total / count;
+    
+  // await Media.update({ AvgRating: avg })
+
+  //return res.status(201).json(rating); // success
 }
 )
 
@@ -114,6 +121,18 @@ router.get("/mediaId/comments", async (req,res)=>{
   }
   return res.status(200).json({ comments: Commment.Comments });
   
+})
+router.post("/:imdb",  (req, res,next) => { // create a new Media  /// this should be in rating post
+  const { imdb } = req.params;   // 
+  
+  Media.create({ MediaID:imdb, AvgRating: 0 })
+  .then((newMedia) => {
+    res.status(201).json(newMedia);
+  })
+  .catch((err) => {
+    res.status(400).json(err); next();
+  });
+
 })
 
 

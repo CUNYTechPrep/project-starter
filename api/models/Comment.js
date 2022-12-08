@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
   Comment.associate = (models) => {
     // associations can be defined here
      models.Comment.belongsTo(models.Media); //adds a media column in Comment 
-     models.Comment.belongsTo(models.User); //adds a User column in Comment
+    // models.Comment.belongsTo(models.User); //adds a User column in Comment
   };
 
   return Comment;

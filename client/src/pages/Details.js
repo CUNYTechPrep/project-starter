@@ -2,39 +2,73 @@ import React from "react";
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 
- function FormatResults({title, year, network, genres, ended, imdbNumber, image, plot}) {
-        return (
+ function FormatResults({title, year, network, genres, ended, imdbNumber, image, plot}) { 
+  // determines the lifecycle/ runs only at the beginning
+    
+       //createRating(5)
+        return ( 
             <div>              
                 <h1>{title} ({year})</h1>
                 {plot}
+                 
             </div>
         )
     }
 
-function ImdbString() {   //copies the imdb from the route
-    const { id } = useParams();
+function getImdbString(id) {   //copies the imdb from the route
+   
     const text = JSON.stringify({ id });  // creater a string from an object
     const imdb = text.substring(7, 16);
     return imdb;
 }
+ function createMedia(id){
+ 
+    return fetch("/api/media_/" + id, {
+        method: 'POST',
+        credentials: "include",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+   
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        alert(data);
+     
+      });
+  };
+    
 
+  function createRating(id,ratingValue){
+
+  return  fetch("/api/media_/value/" +id +"/rate/"+ ratingValue, { 
+        method: 'POST',
+        credentials: "include",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+      })
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+       // alert(data);
+     
+      });
+  };
+    
+ 
 const Details = () => {
     const [searchResults, setSearchResults] = useState([]);
-    
-    const imdbID = ImdbString()
-
-    // fetch(myUrl)
-    //     .then((response) => {
-    //         return response.json();
-    //     })
-    //     .then((datajson) => {
-    //         setSearchResults(datajson);
-    //        console.log(datajson)
-    //     })
-    // setSearchResults([])
-    //     console.log(searchResults)
-
-    useEffect (() => {
+    const {id} = useParams()
+    const imdbID = getImdbString(id)
+     // console.log(imdbID);
+      useEffect(() => { createMedia(imdbID); createRating(imdbID,3)}, [imdbID]) 
+        // put creatingRating in event
+      useEffect (() => {
         async function getData() {
 
             let response = await fetch("https://api.tvmaze.com/lookup/shows?imdb=" + imdbID)
@@ -51,6 +85,7 @@ const Details = () => {
 
     }); 
     return (
+
         <div>
             <FormatResults 
               title = {searchResults.name} 

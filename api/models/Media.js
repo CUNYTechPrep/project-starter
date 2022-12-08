@@ -10,9 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       MediaID: {
         type: DataTypes.STRING,
         primaryKey: true,
-        validate: {
-          notEmpty: true
-        }
+        
       },
       AvgRating: {
         type: DataTypes.REAL,  // do not store , calcuate on query
