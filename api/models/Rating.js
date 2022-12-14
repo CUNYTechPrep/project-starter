@@ -13,13 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       
       RatingValue:{
         type: DataTypes.INTEGER,
+        defaultValue:0,
         validate: {
-           defaultValue:0,
            notEmpty:true,  //just a test
-
-        }
-          
-      }
+        },
+      },
     },
     {
       sequelize,

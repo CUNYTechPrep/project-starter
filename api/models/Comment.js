@@ -7,16 +7,11 @@ module.exports = (sequelize, DataTypes) => {
  
   Comment.init(
     {
-        
-
-            Comments:{
-
-                type:DataTypes.TEXT,
-                validate:{
-                 len:[1-200],
-                 notEmpty:true,
-
-                }
+         Content:{
+          type:DataTypes.STRING,
+            validate: {
+            len: [3, 250],
+           },
             }
     },
     {
@@ -30,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   Comment.associate = (models) => {
     // associations can be defined here
      models.Comment.belongsTo(models.Media); //adds a media column in Comment 
-    // models.Comment.belongsTo(models.User); //adds a User column in Comment
+     //models.Comment.belongsTo(models.User); //adds a User column in Comment
   };
 
   return Comment;

@@ -15,9 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       AvgRating: {
         type: DataTypes.REAL,  // do not store , calcuate on query
         defaultValue: 0,
-        validate: {
-          notEmpty: true
-        }
+       
       }
 
     },
