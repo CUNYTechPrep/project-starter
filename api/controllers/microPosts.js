@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
-const { MicroPost } = db;
+const { MicroPost } = db; 
+// const {media}= db;  calculate the avg here
+// one controller for  all the tables 
 
 // This is a simple example for providing basic CRUD routes for
 // a resource/model. It provides the following:

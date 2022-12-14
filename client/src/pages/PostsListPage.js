@@ -22,7 +22,7 @@ function PostsListPage() {
       }
     }
 
-    getData();
+    getData(); // wrapper
 
     return () => {
       // clean up function
