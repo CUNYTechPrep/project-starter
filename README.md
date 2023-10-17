@@ -2,7 +2,7 @@
 
 A full stack web application starter template for building projects with React, Express.js, and Sequelize.js
 
-**Current version:** 2022.2 (Oct 2022)
+**Current version:** 3.0.0 (Oct 2023)
 
 ## Stack
 
@@ -93,7 +93,48 @@ npm start
 
 ## Deployment
 
-### Hosting on Railway.app (recommended)
+The following are hosting options that have a free tier for deploying apps based on this project-starter. Each option has it's pro's and con's.
+
+Students can also get education credits for using Heroku through the [GitHub Student Developer Pack](https://education.github.com/pack)
+
+### Hosting on [Render.com](https://render.com/) (_recommended_)
+
+1. Create an account by clicking the __Get Started__ button
+  - It's recommended to Sign up using your __Github__ account for easy linking to project repos.
+  - The __Individual__ account type does NOT require a credit card
+2. Navigate to the [Dashboard](https://dashboard.render.com/)
+3. Create a PostgreSQL Database
+  - Click the __New +__ button at the top of the page
+  - Select __PostgreSQL__ from the drop down menu
+  - Provide a __Name__ for your projects database
+  - Choose a __Region__ closest to you or your users.
+  - Choose __Instance Type__: Free
+  - You can leave the optional settings empty
+  - Click on the __Create Database__ button
+  - Your database will be ready to use in 1-5 minutes.
+  - Once the database is active, make note of where to get the Connection details, such as "__Internal Database URL__" and "__External Database URL__"
+4. Create a Web Service
+  - Click the __New +__ button at the top of the page
+  - Select __Web Service__ from the drop down menu
+  - Click on the __"Build and deploy from a Git repository"__ option and click __Next__
+  - Connect to your project's repository on Github
+  - Provide a __Name__ for your projects web app
+  - Choose the same __Region__ as you chose for your database (_important for db connectivity_)
+  - Choose the __Branch__ with the code you want to deploy (usually `main`)
+  - Leave the __Root Directory__ empty
+  - Choose __Runtime__: Node
+  - Set __Build Command__: `npm install && npm run build`
+  - Set __Start Command__: `npm start`
+  - Choose __Instance Type__: `Free`
+  - Expand the __Advanced__ options
+  - Add __Environment Variables__
+    + key: `SESSION_SECRET` = value: click on the __Generate__ button
+    + key: `DATABASE_URL` = value: copy the "__Internal Database URL__" from your step 3.
+    - Do NOT add the `PORT` variable (Render will set this for you)
+  - Click the "__Create Web Service__" button
+  - Your application will be live in 1-5 minutes
+
+### Hosting on [Railway.app](https://railway.app/)
 
 1. Create a Starter account using your Github username
    - You get $5 in credit a month for free and do not have to provide a credit card
@@ -115,7 +156,7 @@ Your app will now be live and auto deployed on new commits. If it's not working 
 
 ### Hosting on Heroku (no longer free)
 
-> NOTE: Heroku is no longer free, but these instructions still work. We recommend getting started with railway.app
+> NOTE: Heroku is no longer free, but these instructions still work. We recommend getting started with render.com or railway.app
 
 1. Create a Heroku account (_if you don't have one_)
 2. Install the [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) (_if you don't already have it_)
