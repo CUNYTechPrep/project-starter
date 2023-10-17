@@ -1,6 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./App";
 
-// React 17 style loading of application
-ReactDOM.render(<App />, document.getElementById("root"));
+const htmlContainer = document.getElementById("root");
+const root = ReactDOM.createRoot(htmlContainer);
+
+root.render(<App />);
