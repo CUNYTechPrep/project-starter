@@ -1,6 +1,6 @@
 {
   "name": "api-backend",
-  "version": "2022.2",
+  "version": "3.0.0",
   "description": "A starter express api backend that can also serve a React (CRA) client",
   "main": "index.js",
   "scripts": {
@@ -14,13 +14,13 @@
   "dependencies": {
     "express": "^4.18.2",
     "morgan": "^1.10.0",
-    "pg": "^8.8.0",
+    "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.25.2"
+    "sequelize": "^6.33.0"
   },
   "devDependencies": {
-    "dotenv": "^8.6.0",
-    "nodemon": "^2.0.20"
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.1"
   },
   "nodemonConfig": {
     "ignore": [

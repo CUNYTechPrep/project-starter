@@ -11,7 +11,7 @@ A full stack web application starter template for building projects with React, 
 _Backend API_
 
 - express.js (v4.18.2)
-- sequelize.js (v6.25.2)
+- sequelize.js (v6.33.0)
 - PostgreSQL (v14 recommended)
 
 _Frontend React client_
