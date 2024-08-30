@@ -1,0 +1,28 @@
+{
+  "name": "backend-api",
+  "version": "0.1.0",
+  "description": "Backend REST API server built with express.js and sequelize.js",
+  "type": "module",
+  "scripts": {
+    "format": "prettier . --check",
+    "lint": "eslint .",
+    "start": "node app.js",
+    "dev": "node --watch --env-file=.env app.js"
+  },
+  "author": "Edgardo Molina",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "eslint": "^9.9.1",
+    "eslint-config-prettier": "9.1.0",
+    "globals": "^15.9.0",
+    "prettier": "3.3.3"
+  }
+}
