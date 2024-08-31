@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import PostsListPage from "./pages/PostsListPage";
 import PostFormPage from "./pages/PostFormPage";
@@ -7,7 +6,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 
 import "./App.css";
 
-function Navigation(props) {
+function Navigation() {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
       <div className="container-fluid">

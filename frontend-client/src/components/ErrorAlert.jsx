@@ -1,5 +1,3 @@
-import React from "react";
-
 function ErrorAlert({ details }) {
   return (
     <div className="d-flex justify-content-center">

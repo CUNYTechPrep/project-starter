@@ -1,6 +1,4 @@
-import React from "react";
-
-function AboutUsPage(props) {
+function AboutUsPage() {
   return (
     <>
       <div className="col text-center">
