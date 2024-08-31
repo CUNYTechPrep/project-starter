@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import process from "node:process";
+import path from "node:path";
 import { sequelize } from "./models/index.js";
 import apiRouter from "./controllers/index.js";
 
@@ -19,9 +20,24 @@ app.get("/", (req, res) => {
 
 app.use("/api", apiRouter);
 
+// eslint-disable-next-line no-unused-vars
 app.get("/err", (req, res) => {
   throw new Error("Intentionally throwing error");
 });
+
+// for production use, we serve the static react build folder
+if (process.env.NODE_ENV === "production") {
+  app.use(
+    express.static(path.join(import.meta.dirname, "../frontend-client/dist"))
+  );
+
+  // all unknown routes should be handed to our react app
+  app.get("*", function (req, res) {
+    res.sendFile(
+      path.join(import.meta.dirname, "../frontend-client/dist", "index.html")
+    );
+  });
+}
 
 // 404 route
 app.use((req, res) => {
