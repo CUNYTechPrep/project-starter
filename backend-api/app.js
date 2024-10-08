@@ -14,16 +14,8 @@ app.use(express.json());
 const logFormat = app.get("env") === "production" ? "combined" : "dev";
 app.use(morgan(logFormat));
 
-app.get("/", (req, res) => {
-  res.json({ message: "We're up! Hello CTP universe" });
-});
-
+// load our controller routes at /api
 app.use("/api", apiRouter);
-
-// eslint-disable-next-line no-unused-vars
-app.get("/err", (req, res) => {
-  throw new Error("Intentionally throwing error");
-});
 
 // for production use, we serve the static react build folder
 if (process.env.NODE_ENV === "production") {
