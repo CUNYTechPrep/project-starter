@@ -13,8 +13,8 @@ A full stack web application starter template for building projects with React, 
 
 _Backend API_
 
-- express.js (v4.18.2)
-- sequelize.js (v6.33.0)
+- express.js (v4.21.1)
+- sequelize.js (v6.37.3)
 - PostgreSQL (v14 recommended)
 
 _Frontend React client_
@@ -76,23 +76,23 @@ For local development you will need two terminals open, one for the api-backend 
 _Clone_ this app, then:
 
 ```bash
-# api-backend terminal 1
+# backend-api terminal 1
 cp .env.example .env
 npm install
 npm run dev
 ```
 
 ```bash
-# react-client terminal 2
-cd client
+# frontend-client terminal 2
+cd frontend-client
 npm install
-npm start
+npm run dev
 ```
 
-- api-backend will launch at: http://localhost:8080
-- react-client will launch at: http://localhost:3000
+- backend-api will launch at: http://localhost:8080
+- frontend-client will launch at: http://localhost:5173
 
-> In production you will only deploy a single app. The react client will build into static files that will be served from the backend.
+> In production you will only deploy a single app. The React client will build into static files that will be served from the backend.
 
 ## Deployment
 
@@ -212,46 +212,3 @@ git push heroku main
 ```
 
 > This command deploys your main branch. You can change that and deploy a different branch such as: `git push heroku development`
-
-## Project Structure
-
-<pre>
-.
-├── README.md
-├── <strong>api</strong>
-│   ├── app.js
-│   ├── <strong>config</strong>
-│   │   └── config.json
-│   ├── <strong>controllers</strong>
-│   │   ├── index.js
-│   │   └── microPosts.js
-│   └── <strong>models</strong>
-│       ├── MicroPost.js
-│       └── index.js
-├── <strong>client</strong>
-│   ├── README.md
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── <strong>public</strong>
-│   │   ├── favicon.ico
-│   │   ├── index.html
-│   │   ├── logo192.png
-│   │   ├── logo512.png
-│   │   ├── manifest.json
-│   │   └── robots.txt
-│   └── <strong>src</strong>
-│       ├── App.css
-│       ├── App.js
-│       ├── <strong>components</strong>
-│       │   ├── ErrorAlert.js
-│       │   ├── LoadingSpinner.js
-│       │   └── MicroPostCard.js
-│       ├── index.js
-│       └── <strong>pages</strong>
-│           ├── AboutUsPage.js
-│           ├── PostFormPage.js
-│           ├── PostsListPage.js
-│           └── ShowPostPage.js
-├── package-lock.json
-└── package.json
-</pre>
