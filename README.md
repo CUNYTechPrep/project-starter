@@ -1,8 +1,5 @@
 # CTP Project Starter
 
-> [!CAUTION]
-> This repo is actively being updated as of October 13, 2024. You can begin using and cloning the repo once this message is removed.
-
 A full stack web application starter template for building projects with React, Express.js, and Sequelize.js
 
 **Current version:** 4.0.0 (Oct 2024)
