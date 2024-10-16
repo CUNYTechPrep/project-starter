@@ -1,8 +1,24 @@
-- If you need to install PostgreSQL see the [installing PostgreSQL guides](https://github.com/CUNYTechPrep/guides#postgresql)
+# Setting up PostgreSQL locally
 
-### Create a PostgreSQL user and database
+The goals of this guide are to help you:
 
-The project-starter template expects the following for local development:
+- Install PostgreSQL
+- Create a ROLE/USER with a PASSWORD
+- Create a DATABASE
+- Get your database URL connection string
+
+## Install PostgreSQL
+
+Check if you already have PostgreSQL installed. You can try one of the following:
+
+- run the command `which psql`
+- check if it's listed in your computers Applications
+
+If you need to install PostgreSQL see the [installing PostgreSQL guides](https://github.com/CUNYTechPrep/guides#postgresql)
+
+## Create a PostgreSQL user and database
+
+For this project-starter template you can use any values for the username, password, and database name. The rest of this guide will assume the following values were chosen:
 
 - PostgreSQL User/Role
   - name: `ctp_user`
@@ -10,22 +26,22 @@ The project-starter template expects the following for local development:
 - PostgreSQL Database
   - name: `ctp_appdb_development`
 
-#### For Windows/pgAdmin users
+> [!IMPORTANT]
+> Whatever values you choose, save them or you will lose access to your database data and will have to create a new one.
 
-If you are on Windows and installed **pgAdmin** follow our [pgAdmin guide](https://github.com/CUNYTechPrep/guides/blob/master/pgAdmin-create-user-db.md) to create a user in PostgreSQL named `ctp_user` with the password `ctp_pass` and a database named `ctp_appdb_development`.
+### For Windows/pgAdmin users
 
-#### For Mac/Linux users
+If you are on Windows or installed **pgAdmin** follow our [pgAdmin guide](https://github.com/CUNYTechPrep/guides/blob/master/pgAdmin-create-user-db.md) to create a user in PostgreSQL named `ctp_user` with the password `ctp_pass` and a database named `ctp_appdb_development`.
+
+### For Mac/Linux users
 
 Create a user in PostgreSQL named `ctp_user` with the password `ctp_pass`:
-
-> This only needs to be done one time on your machine
-> You can create additional users if you want to.
 
 ```
 createuser -P -s -e ctp_user
 ```
 
-Create a separate db for this project:
+Create a new db for this project:
 
 ```
 createdb -h localhost -U ctp_user ctp_appdb_development
