@@ -5,79 +5,61 @@
 
 A full stack web application starter template for building projects with React, Express.js, and Sequelize.js
 
-**Current version:** 3.0.0 (Oct 2023)
+**Current version:** 4.0.0 (Oct 2024)
 
 ## Stack
 
-> Node.js v20 or V22 LTS is recommended
+> [!NOTE]
+> This project starter requires Node.js v20 (LTS) or newer to work properly. The project makes use of features not available in older versions such as ECMAScript/JavaScript modules ([ESM](https://nodejs.org/docs/latest-v20.x/api/esm.html)), node [watch mode](https://nodejs.org/docs/latest-v20.x/api/cli.html#--watch), and node [env-file support](https://nodejs.org/docs/latest-v20.x/api/cli.html#--env-fileconfig).
+>
+> LTS ([long-term support](https://nodejs.org/en/about/previous-releases#nodejs-releases)) versions (v20, v22) of Node.js are recommended for use with this starter.
 
 _Backend API_
 
 - express.js (v4.21.1)
 - sequelize.js (v6.37.3)
-- PostgreSQL (v14 recommended)
+- PostgreSQL (v14+ recommended or use https://supabase.com/)
 
-_Frontend React client_
+_Frontend React Web Client_
 
 - Based on `vite`
-  - pre-configured to work with the api
+  - pre-configured to work with the backend-api
 - Bootstrap (v5)
   - added to `/frontend-client/index.html` (_optional_ can be removed)
-- React Router (v6)
+- React Router (v6.26.1)
 
 ## Development Setup
 
-Each team member will need to do this on their local machine.
+Each team member will need to do this on their local machine and will need their own separate database.
 
-### Ensure you have PostgreSQL installed
+### Setup a PostgreSQL database
 
-- Check if you have PostgreSQL installed
-  - ✅ versions 10-14 should work
-  - 🚫 version 15 has not been tested
-- If you need to install PostgreSQL see the [installing PostgreSQL guides](https://github.com/CUNYTechPrep/guides#postgresql)
+You have two options:
 
-### Create a PostgreSQL user and database
+- **Option 1** (_RECOMMENDED_) - Use a hosted database
+  - Sign up to https://supabase.com/ and get a _FREE_ PostgreSQL database
+- **Option 2** (_ADVANCED_) - Install PostgreSQL locally
+  - Check if you have PostgreSQL installed
+    - ✅ versions 12-14 should work
+    - 🚫 version 15+ has not been tested but will likely work
+  - Follow the [instructions for locally setting up a PostgreSQL database](./_docs/local-postgresql.md)
 
-The project-starter template expects the following for local development:
+Save your databases URI connection string for the next steps. It will looks something like this:
 
-- PostgreSQL User/Role
-  - name: `ctp_user`
-  - password: `ctp_pass`
-- PostgreSQL Database
-  - name: `ctp_appdb_development`
-
-#### For Windows/pgAdmin users
-
-If you are on Windows and installed **pgAdmin** follow our [pgAdmin guide](https://github.com/CUNYTechPrep/guides/blob/master/pgAdmin-create-user-db.md) to create a user in PostgreSQL named `ctp_user` with the password `ctp_pass` and a database named `ctp_appdb_development`.
-
-#### For Mac/Linux users
-
-Create a user in PostgreSQL named `ctp_user` with the password `ctp_pass`:
-
-> This only needs to be done one time on your machine
-> You can create additional users if you want to.
-
-```
-createuser -P -s -e ctp_user
-```
-
-Create a separate db for this project:
-
-```
-createdb -h localhost -U ctp_user ctp_appdb_development
-```
-
-> You will create a DB for each project you start based on this repo. For other projects change `ctp_appdb_development` to the new apps database name.
+`postgresql://[YOUR-USERNAME]:[YOUR-PASSWORD]@[HOSTNAME]:5432/[DBNAME]`
 
 ### Running the app locally
 
-For local development you will need two terminals open, one for the api-backend and another for the react-client.
+> [!IMPORTANT]
+> For local development you will need two terminals open, one for the backend-api and another for the frontend-client.
 
 _Clone_ this app, then:
 
 ```bash
 # backend-api terminal 1
+cd backend-api
 cp .env.example .env
+# in the .env file update the DATABASE_URL env var with your PostgreSQL connection string
 npm install
 npm run dev
 ```
@@ -92,7 +74,8 @@ npm run dev
 - backend-api will launch at: http://localhost:8080
 - frontend-client will launch at: http://localhost:5173
 
-> In production you will only deploy a single app. The React client will build into static files that will be served from the backend.
+> [!NOTE]
+> In production you will only deploy a single app. The React client will build into static files that will be served from the backend. The project has already been configured for this, but you are free to also deploy the backend and frontend separately if you wish.
 
 ## Deployment
 
@@ -129,7 +112,7 @@ Students can also get education credits for using Heroku through the [GitHub Stu
 - Provide a **Name** for your projects web app
 - Choose the same **Region** as you chose for your database (_important for db connectivity_)
 - Choose the **Branch** with the code you want to deploy (usually `main`)
-- Leave the **Root Directory** empty
+- Set **Root Directory**: `backend-api`
 - Choose **Runtime**: Node
 - Set **Build Command**: `npm install && npm run build`
 - Set **Start Command**: `npm start`
