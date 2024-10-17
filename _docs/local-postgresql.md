@@ -48,3 +48,20 @@ createdb -h localhost -U ctp_user ctp_appdb_development
 ```
 
 > You will create a DB for each project you start based on this repo. For other projects change `ctp_appdb_development` to the new apps database name.
+
+## Getting your database URL connection string
+
+The database connection string takes the general form of:
+
+```
+postgresql://[YOUR-USERNAME]:[YOUR-PASSWORD]@[HOSTNAME]:5432/[DBNAME]
+```
+
+For the local DB setup described above, your string would be:
+
+```
+postgresql://ctp_user:ctp_pass@localhost:5432/ctp_appdb_development?sslmode=disable
+```
+
+> [!CAUTION]
+> the `?sslmode=disable` option should only be used for local development and should not be used in a deployed/production setting
