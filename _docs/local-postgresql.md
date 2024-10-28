@@ -64,4 +64,4 @@ postgresql://ctp_user:ctp_pass@localhost:5432/ctp_appdb_development?sslmode=disa
 ```
 
 > [!CAUTION]
-> the `?sslmode=disable` option should only be used for local development and should not be used in a deployed/production setting
+> the `?sslmode=disable` option should only be used for local development and _should NOT be used in a deployed/production setting_. For more info see the [SSL Mode documentation](https://www.postgresql.org/docs/14/libpq-ssl.html#LIBPQ-SSL-PROTECTION).

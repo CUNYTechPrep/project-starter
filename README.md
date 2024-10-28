@@ -124,26 +124,7 @@ Students can also get education credits for using Heroku through the [GitHub Stu
 
 ### Hosting on [Railway.app](https://railway.app/)
 
-> [!CAUTION]
-> Needs updating
-
-1. Create a Starter account using your Github username
-   - You get $5 in credit a month for free and do not have to provide a credit card
-2. Verify your account by answering Railways questions
-3. Create a **"New Project"**
-4. Select **"Deploy from Github repo"**
-   - follow instruction to link your project repo to railway
-5. Click **"Deploy now"**
-   - your app will fail, but we will fix it in the next steps
-6. Add a PostgreSQL Database to your Railway project
-   - click the **"+ New"** button at the top right of the project
-   - click **"Database >"**
-   - click **"Add PostgreSQL"**
-   - to add a PostgreSQL Database to your project
-7. Add environment variables if you need any
-   - Do not add the `PORT` variable (Railway will set this for you)
-
-Your app will now be live and auto deployed on new commits. If it's not working you may need to restart the app manually in the Railway UI.
+See the [Deploying to Railway guide](./_docs/deploy-railway.md)
 
 ### Hosting on Heroku (no longer free)
 
