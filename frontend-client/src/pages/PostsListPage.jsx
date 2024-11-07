@@ -29,6 +29,21 @@ function PostsListPage() {
     };
   }, []);
 
+  const handleDelete = async (postId) => {
+    try {
+      const response = await fetch(`/api/micro_posts/${postId}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        setPosts(posts.filter((post) => post.id !== postId));
+      } else {
+        console.error("Failed to delete the post");
+      }
+    } catch (error) {
+      console.error("Error deleting the post", error);
+    }
+  };
+
   if (error) return <ErrorAlert details="Failed to fetch all micro posts" />;
   if (loading) return <LoadingSpinner />;
 
@@ -36,7 +51,11 @@ function PostsListPage() {
     <div className="container-fluid text-center">
       <div className="row justify-content-center">
         {posts.map((entryData) => (
-          <MicroPostCard {...entryData} key={entryData.id} />
+          <MicroPostCard
+            {...entryData}
+            key={entryData.id}
+            onDelete={() => handleDelete(entryData.id)}
+          />
         ))}
       </div>
     </div>
