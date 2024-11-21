@@ -2,7 +2,7 @@ function ErrorAlert({ details }) {
   return (
     <div className="d-flex justify-content-center">
       <div className="alert alert-danger" role={"alert"}>
-        <strong>An error occurred</strong> {details || ""}
+        <h1>This will cause a merge conflict.</h1>
       </div>
     </div>
   );
